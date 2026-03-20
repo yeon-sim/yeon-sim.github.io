@@ -1,0 +1,14 @@
+# Hugo 빌드 결과물 및 캐시
+/public/
+/resources/
+
+# 게임 원본 리소스 (파싱 스크립트는 포함, 원본 데이터는 제외)
+egogift_script/gift/
+egogift_script/keyword/
+egogift_script/kr/
+
+# 업데이트용 원본 데이터
+gift_update/
+
+# 임시 파일
+temp/

@@ -1,0 +1,14 @@
+{
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-03-20",
+      "target_game_date": "2026-03-19",
+      "target_game_version": "1.101.0",
+      "changes": [
+        "최초 릴리즈",
+        "LCB 정기검진 복각 Gift 반영 완료"
+      ]
+    }
+  ]
+}

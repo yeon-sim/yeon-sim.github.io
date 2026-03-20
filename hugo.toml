@@ -1,0 +1,5 @@
+baseURL = 'https://yeon-sim.github.io/'
+languageCode = 'ko'
+title = '연심(連心)'
+
+[taxonomies]

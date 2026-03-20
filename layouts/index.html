@@ -1,0 +1,266 @@
+{{ define "main" }}
+
+{{/* 데이터 로드 */}}
+{{ $gifts := .Site.Data.egogifts.dataList }}
+{{ $categories := .Site.Data.categories.dataList }}
+
+<div x-data="checklist()" x-init="init()">
+
+  {{/* ── 헤더 ── */}}
+  <header class="site-header">
+    <h1 class="site-title">{{ .Site.Title }}</h1>
+  </header>
+
+  {{/* ── 본문 (가운데 정렬) ── */}}
+  <div class="main-content">
+
+  {{/* ── 컨트롤 바 ── */}}
+  <div class="controls">
+    <input
+      class="search-input"
+      type="search"
+      placeholder="이름으로 검색..."
+      x-model="search"
+      @input="onSearch()"
+    >
+    <div class="filter-buttons">
+      <button
+        class="filter-btn"
+        :class="{ active: activeCategory === '' }"
+        @click="activeCategory = ''"
+      >전체</button>
+      {{ range $categories }}{{ if ne .id "None" }}
+      <button
+        class="filter-btn"
+        :class="{ active: activeCategory === '{{ .id }}' }"
+        @click="activeCategory = '{{ .id }}'"
+      >{{ .name }}</button>
+      {{ end }}{{ end }}
+      <button
+        class="filter-btn"
+        :class="{ active: activeCategory === 'None' }"
+        @click="activeCategory = 'None'"
+      >범용</button>
+    </div>
+    <div class="extra-controls">
+      <button class="reset-btn" @click="document.getElementById('reset-modal').classList.add('open')">초기화</button>
+    </div>
+  </div>
+
+  {{/* ── 카테고리별 행 ── */}}
+  <div class="category-list">
+
+    {{/* 범용 제외 카테고리 */}}
+    {{ range $categories }}{{ if ne .id "None" }}
+    {{ $catId := .id }}
+    {{ $catName := .name }}
+    <div class="category-row" :style="{ display: isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
+      <div class="category-label">
+        <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}">
+        <span class="cat-name">{{ $catName }}</span>
+        <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
+      </div>
+      <div class="gift-row">
+        {{ range $gifts }}{{ if eq .category $catId }}
+        <div
+          class="gift-card"
+          data-id="{{ .id }}"
+          data-name="{{ .name }}"
+          data-category="{{ .category }}"
+          :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
+          :class="{ checked: isChecked('{{ .id }}') }"
+          @click="toggle('{{ .id }}')"
+          title="{{ .name }}&#10;{{ .desc }}"
+        >
+          <div class="gift-icon-wrap">
+            <img
+              class="gift-icon"
+              src="/images/egogift/{{ .id }}.png"
+              alt="{{ .name }}"
+              loading="lazy"
+              onerror="this.style.opacity='0.2'"
+            >
+            <div class="check-mark">✓</div>
+          </div>
+        </div>
+        {{ end }}{{ end }}
+      </div>
+    </div>
+    {{ end }}{{ end }}
+
+    {{/* 범용(None) 행 — 항상 마지막 */}}
+    {{ $noneCount := len (where $gifts "category" "None") }}
+    <div class="category-row" :style="{ display: isRowVisible('None') ? 'flex' : 'none' }">
+      <div class="category-label">
+        <img class="cat-icon" src="/images/category/none.png" alt="범용">
+        <span class="cat-name">범용</span>
+        <span class="cat-count" x-text="`${checkedInCategory('None')} / {{ $noneCount }}`"></span>
+      </div>
+      <div class="gift-row">
+        {{ range $gifts }}{{ if eq .category "None" }}
+        <div
+          class="gift-card"
+          data-id="{{ .id }}"
+          data-name="{{ .name }}"
+          data-category="None"
+          :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
+          :class="{ checked: isChecked('{{ .id }}') }"
+          @click="toggle('{{ .id }}')"
+          title="{{ .name }}&#10;{{ .desc }}"
+        >
+          <div class="gift-icon-wrap">
+            <img
+              class="gift-icon"
+              src="/images/egogift/{{ .id }}.png"
+              alt="{{ .name }}"
+              loading="lazy"
+              onerror="this.style.opacity='0.2'"
+            >
+            <div class="check-mark">✓</div>
+          </div>
+        </div>
+        {{ end }}{{ end }}
+      </div>
+    </div>
+
+  </div>
+
+  {{/* ── 결과 없음 ── */}}
+  <div class="no-result" :style="{ display: visibleRowCount === 0 ? 'block' : 'none' }">
+    조건에 맞는 기프트가 없습니다.
+  </div>
+
+  </div>{{/* end .main-content */}}
+
+  {{/* ── 초기화 확인 모달 ── */}}
+  <div id="reset-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box modal-box--sm">
+      <div class="modal-header">
+        <span class="modal-title">수집 기록 초기화</span>
+        <button class="modal-close" onclick="document.getElementById('reset-modal').classList.remove('open')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="reset-confirm-msg">모든 수집 기록이 삭제됩니다.<br>계속하시겠습니까?</p>
+        <div class="reset-confirm-btns">
+          <button class="btn-cancel" onclick="document.getElementById('reset-modal').classList.remove('open')">취소</button>
+          <button class="btn-confirm" @click="resetAll()">초기화</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p class="footer-note">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
+  <p class="footer-note">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
+  <p class="footer-version">
+    {{ with last 1 .Site.Data.changelog.versions }}{{ $v := index . 0 }}
+    Site <button class="version-btn" onclick="document.getElementById('changelog-modal').classList.add('open')">v.{{ $v.version }}</button>
+    &nbsp;|&nbsp; Game v.{{ $v.target_game_version }} ({{ $v.target_game_date }})
+    {{ end }}
+  </p>
+  <p class="footer-copy">&copy; 2025 연심(連心)</p>
+</footer>
+
+{{/* ── 체인지로그 모달 ── */}}
+<div id="changelog-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title">업데이트 로그</span>
+      <button class="modal-close" onclick="document.getElementById('changelog-modal').classList.remove('open')">&times;</button>
+    </div>
+    <div class="modal-body">
+      {{ $versions := .Site.Data.changelog.versions }}
+      {{ $len := len $versions }}
+      {{ range $i, $_ := $versions }}
+        {{ $v := index $versions (sub (sub $len 1) $i) }}
+        <div class="changelog-entry">
+          <div class="changelog-version">v{{ $v.version }} <span class="changelog-date">{{ $v.date }}</span></div>
+          <ul class="changelog-list">
+            {{ range $v.changes }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+{{/* 카테고리별 gift 맵 (검색 및 수집 현황용) */}}
+<script>
+const categoryNameMap = {
+  {{ range $categories }}{{ if ne .id "None" }}{{ $catId := .id }}
+  "{{ $catId }}": [{{ range $gifts }}{{ if eq .category $catId }}"{{ .name }}",{{ end }}{{ end }}],
+  {{ end }}{{ end }}
+  "None": [{{ range $gifts }}{{ if eq .category "None" }}"{{ .name }}",{{ end }}{{ end }}]
+};
+
+const itemCategoryMap = {
+  {{ range $gifts }}"{{ .id }}": "{{ .category }}",
+  {{ end }}
+};
+</script>
+
+<script>
+function checklist() {
+  return {
+    search: '',
+    activeCategory: '',
+    checked: {},
+    visibleRowCount: 0,
+
+    init() {
+      const saved = localStorage.getItem('egogift-checked');
+      if (saved) this.checked = JSON.parse(saved);
+      this.$nextTick(() => this.updateVisibleRowCount());
+    },
+
+    isChecked(id) {
+      return !!this.checked[id];
+    },
+
+    toggle(id) {
+      this.checked[id] = !this.checked[id];
+      if (!this.checked[id]) delete this.checked[id];
+      localStorage.setItem('egogift-checked', JSON.stringify(this.checked));
+    },
+
+    checkedInCategory(catId) {
+      return Object.keys(this.checked).filter(id => itemCategoryMap[id] === catId).length;
+    },
+
+    isGiftVisible(name) {
+      if (this.search && !name.includes(this.search)) return false;
+      return true;
+    },
+
+    isRowVisible(catId) {
+      if (this.activeCategory && this.activeCategory !== catId) return false;
+      if (this.search) {
+        const names = categoryNameMap[catId] || [];
+        return names.some(n => n.includes(this.search));
+      }
+      return true;
+    },
+
+    onSearch() {
+      this.$nextTick(() => this.updateVisibleRowCount());
+    },
+
+    updateVisibleRowCount() {
+      this.visibleRowCount = document.querySelectorAll('.category-row:not([style*="display: none"])').length;
+    },
+
+    get checkedCount() {
+      return Object.keys(this.checked).length;
+    },
+
+    resetAll() {
+      this.checked = {};
+      localStorage.removeItem('egogift-checked');
+      document.getElementById('reset-modal').classList.remove('open');
+    }
+  }
+}
+</script>
+{{ end }}

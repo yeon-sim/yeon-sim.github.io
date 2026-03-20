@@ -1,0 +1,5836 @@
+{
+  "dataList": [
+    {
+      "id": "A1c971a",
+      "name": "끓어오르는 분노"
+    },
+    {
+      "id": "A1c971b",
+      "name": "퍼져나가는 우울"
+    },
+    {
+      "id": "A1c971c",
+      "name": "계속되는 탐식"
+    },
+    {
+      "id": "A1c971d",
+      "name": "뱉어내는 호흡"
+    },
+    {
+      "id": "A1c971e",
+      "name": "상처속의 상처"
+    },
+    {
+      "id": "A1c971f",
+      "name": "게으른 나태"
+    },
+    {
+      "id": "AStrokeOfDeath",
+      "name": "절명"
+    },
+    {
+      "id": "ATL_Agility",
+      "name": "더 빠르게!"
+    },
+    {
+      "id": "ATL_Breath",
+      "name": "더 정확하게!"
+    },
+    {
+      "id": "ATL_EndureCombustion",
+      "name": "화상 저항"
+    },
+    {
+      "id": "ATL_EndureLaceration",
+      "name": "출혈 저항"
+    },
+    {
+      "id": "ATL_Target",
+      "name": "저 놈 잡아!"
+    },
+    {
+      "id": "AaCePaBa",
+      "name": "강박"
+    },
+    {
+      "id": "AaCePbBa",
+      "name": "창백한 소음"
+    },
+    {
+      "id": "AaCePbBb",
+      "name": "소음 공황"
+    },
+    {
+      "id": "AaCePbBc",
+      "name": "불순"
+    },
+    {
+      "id": "AaCePbBd",
+      "name": "불순"
+    },
+    {
+      "id": "AaCePbBe",
+      "name": "앙갚음"
+    },
+    {
+      "id": "AaCePbBf",
+      "name": "앙갚음"
+    },
+    {
+      "id": "AaCePbBg",
+      "name": "원한"
+    },
+    {
+      "id": "AaCePbBh",
+      "name": "원한"
+    },
+    {
+      "id": "AaCePbBi",
+      "name": "형님의 시험"
+    },
+    {
+      "id": "AaCePcBa",
+      "name": "표식"
+    },
+    {
+      "id": "AaCePcBb",
+      "name": "형광등 파편"
+    },
+    {
+      "id": "AaCePcBc",
+      "name": "맹목"
+    },
+    {
+      "id": "AaCePcBe",
+      "name": "하얀 공황"
+    },
+    {
+      "id": "AaCePcBf",
+      "name": "하얀 공황"
+    },
+    {
+      "id": "AaCePcBg",
+      "name": "유충"
+    },
+    {
+      "id": "AaCePcBh",
+      "name": "녹색 점액"
+    },
+    {
+      "id": "AaCePcBi",
+      "name": "거친 호흡"
+    },
+    {
+      "id": "AaCePcBj",
+      "name": "사냥감의 징표"
+    },
+    {
+      "id": "AaCePcBk",
+      "name": "결박"
+    },
+    {
+      "id": "AaCePcBl",
+      "name": "포획"
+    },
+    {
+      "id": "AaCePcBn",
+      "name": "거역할 수 없는 명령"
+    },
+    {
+      "id": "AaCePcBo",
+      "name": "핍의 자아"
+    },
+    {
+      "id": "AaCePcBp",
+      "name": "스타벅의 자아"
+    },
+    {
+      "id": "AaCePcBq",
+      "name": "퀴케그의 자아"
+    },
+    {
+      "id": "AaCePcBr",
+      "name": "원호 방어 보호막"
+    },
+    {
+      "id": "AaCePcBs",
+      "name": "원호 방어"
+    },
+    {
+      "id": "AaCePcBt",
+      "name": "원호 공격"
+    },
+    {
+      "id": "AaCeSeBa",
+      "name": "호!호!호!"
+    },
+    {
+      "id": "AaCeSeBb",
+      "name": "선물로 만들어주마"
+    },
+    {
+      "id": "AaCfPbBa",
+      "name": "폭발하는 우울"
+    },
+    {
+      "id": "AaCfPbBb",
+      "name": "폭발하는 질투"
+    },
+    {
+      "id": "AaCfPbBc",
+      "name": "폭발하는 분노"
+    },
+    {
+      "id": "AaCfPbBd",
+      "name": "깊은 상실"
+    },
+    {
+      "id": "AaCfPbBe",
+      "name": "사냥감 표시"
+    },
+    {
+      "id": "AaCfPbBf",
+      "name": "열등감"
+    },
+    {
+      "id": "AaCfPcBb",
+      "name": "버틀러의 표식"
+    },
+    {
+      "id": "AaCfPcBc",
+      "name": "포박술"
+    },
+    {
+      "id": "AaCfPcBe",
+      "name": "깊은 상실"
+    },
+    {
+      "id": "AaCfPcBf",
+      "name": "해방되지 못한 서글픔"
+    },
+    {
+      "id": "AaCfPcBg",
+      "name": "분노의 대상"
+    },
+    {
+      "id": "AaCfPcBh",
+      "name": "고통스러운 분노"
+    },
+    {
+      "id": "AaCfPcBi",
+      "name": "고열기전"
+    },
+    {
+      "id": "AaCfPcBiv2",
+      "name": "고열기전"
+    },
+    {
+      "id": "AaCfPcBm",
+      "name": "고통의 벼락"
+    },
+    {
+      "id": "AaCfPcBn",
+      "name": "찢어지는 마음"
+    },
+    {
+      "id": "AaCfPcBo",
+      "name": "각오"
+    },
+    {
+      "id": "AaCfPcBp",
+      "name": "다가갈 용기"
+    },
+    {
+      "id": "AaCfPcBq",
+      "name": "찢긴 마음"
+    },
+    {
+      "id": "AaCfPcBr",
+      "name": "고통 속에서...비참하게 깨어나기를!"
+    },
+    {
+      "id": "AaCfPcBs",
+      "name": "방해하지마"
+    },
+    {
+      "id": "AbyssalVitality",
+      "name": "깊은 바다의 생명력"
+    },
+    {
+      "id": "AccelBullet",
+      "name": "가속탄"
+    },
+    {
+      "id": "AccumulatedPast",
+      "name": "축적된 과거"
+    },
+    {
+      "id": "AccumulatedPastMirror",
+      "name": "축적된 과거"
+    },
+    {
+      "id": "AccumulatedPastSinner",
+      "name": "축적된 과거"
+    },
+    {
+      "id": "ActivatedEgoPassive",
+      "name": "E.G.O 패시브"
+    },
+    {
+      "id": "AffectionTeddy",
+      "name": "애착"
+    },
+    {
+      "id": "AgainstMyWill_LowMorale",
+      "name": "‘나, 날… 죽여줘..’"
+    },
+    {
+      "id": "AgainstMyWill_Panic",
+      "name": "‘나, 날… 죽여줘..’"
+    },
+    {
+      "id": "Aggressive",
+      "name": "본능"
+    },
+    {
+      "id": "AggressiveBokgak",
+      "name": "본능"
+    },
+    {
+      "id": "Aggro",
+      "name": "도발치"
+    },
+    {
+      "id": "Agility",
+      "name": "신속"
+    },
+    {
+      "id": "AimForTheGoal",
+      "name": "목표 조준"
+    },
+    {
+      "id": "AllSetForShooting",
+      "name": "사격 준비 만전"
+    },
+    {
+      "id": "AlriuneEGOThey",
+      "name": "잔향"
+    },
+    {
+      "id": "AlriuneEGOWe",
+      "name": "꽃잎"
+    },
+    {
+      "id": "AmberDamageDown",
+      "name": "나태 피해량 감소"
+    },
+    {
+      "id": "AmberDamageUp",
+      "name": "나태 피해량 증가"
+    },
+    {
+      "id": "AmberResistDown",
+      "name": "나태 내성 약화"
+    },
+    {
+      "id": "AmberResistUp",
+      "name": "나태 내성 강화"
+    },
+    {
+      "id": "AmberResultUp",
+      "name": "나태 위력 증가"
+    },
+    {
+      "id": "AmberTakeDamageDown",
+      "name": "나태 보호"
+    },
+    {
+      "id": "AmberTakeDamageUp",
+      "name": "나태 취약"
+    },
+    {
+      "id": "Anger",
+      "name": "분노"
+    },
+    {
+      "id": "AntiSheepGround",
+      "name": "대양전 접지 플러그"
+    },
+    {
+      "id": "ArcanaQueenOfHate",
+      "name": "매지컬 아르카나"
+    },
+    {
+      "id": "AreaAtk",
+      "name": "광역 공격"
+    },
+    {
+      "id": "ArrowInTheEyeFau",
+      "name": "박힌 화살"
+    },
+    {
+      "id": "ArrowShiFau",
+      "name": "화살 - 시"
+    },
+    {
+      "id": "ArtifactBeeSting",
+      "name": "박힌 작살 [말벌침]"
+    },
+    {
+      "id": "Assemble",
+      "name": "광신"
+    },
+    {
+      "id": "AssemblePersonality",
+      "name": "광신"
+    },
+    {
+      "id": "AttackDmgDown",
+      "name": "피해량 감소"
+    },
+    {
+      "id": "AttackDmgUp",
+      "name": "피해량 증가"
+    },
+    {
+      "id": "AttackDmgUp_Weak",
+      "name": "약점 공격 시 피해량 증가"
+    },
+    {
+      "id": "AttackDown",
+      "name": "공격 레벨 감소 "
+    },
+    {
+      "id": "AttackLevelAdder",
+      "name": "공격 레벨+"
+    },
+    {
+      "id": "AttackUp",
+      "name": "공격 레벨 증가"
+    },
+    {
+      "id": "AzureDamageDown",
+      "name": "우울 피해량 감소"
+    },
+    {
+      "id": "AzureDamageUp",
+      "name": "우울 피해량 증가"
+    },
+    {
+      "id": "AzureResistDown",
+      "name": "우울 내성 약화"
+    },
+    {
+      "id": "AzureResistUp",
+      "name": "우울 내성 강화"
+    },
+    {
+      "id": "AzureResultUp",
+      "name": "우울 위력 증가"
+    },
+    {
+      "id": "AzureTakeDamageDown",
+      "name": "우울 보호"
+    },
+    {
+      "id": "AzureTakeDamageUp",
+      "name": "우울 취약"
+    },
+    {
+      "id": "BabayagaTimeLimit",
+      "name": "다가오는 바바야가"
+    },
+    {
+      "id": "BackstreetsNight_LowMorale",
+      "name": "뒷골목의 밤"
+    },
+    {
+      "id": "BackstreetsNight_Panic",
+      "name": "뒷골목의 밤"
+    },
+    {
+      "id": "BandageOfTheBoundKing",
+      "name": "묶인 왕의 붕대"
+    },
+    {
+      "id": "BattleSense",
+      "name": "저력 [底力]"
+    },
+    {
+      "id": "BattlefieldHorse",
+      "name": "호령"
+    },
+    {
+      "id": "BeastEyesAlly",
+      "name": "오버히트"
+    },
+    {
+      "id": "BeastEyes_LowMorale",
+      "name": "맹수의 본능 - 사기저하"
+    },
+    {
+      "id": "BeastEyes_Panic",
+      "name": "맹수의 본능 - 패닉"
+    },
+    {
+      "id": "BeeSting",
+      "name": "박힌 작살 [벌침]"
+    },
+    {
+      "id": "BeingGolden",
+      "name": "황금빛"
+    },
+    {
+      "id": "BestWelfareTeamCaptain",
+      "name": "복지팀 팀장"
+    },
+    {
+      "id": "BestWelfareTeamMember",
+      "name": "복지팀 우수 직원"
+    },
+    {
+      "id": "BigWelcome",
+      "name": "성대한 환대"
+    },
+    {
+      "id": "Binding",
+      "name": "속박"
+    },
+    {
+      "id": "BirdCage",
+      "name": "달궈진 새장"
+    },
+    {
+      "id": "BitOfEmotion",
+      "name": "감정 공유"
+    },
+    {
+      "id": "BlackCloud",
+      "name": "검은 구름"
+    },
+    {
+      "id": "BlackCloudBlade",
+      "name": "흑운도"
+    },
+    {
+      "id": "BlackNightmare",
+      "name": "지령 탐닉"
+    },
+    {
+      "id": "BlackNightmareYisang",
+      "name": "지령 탐닉"
+    },
+    {
+      "id": "BlackTearsAlly",
+      "name": "깊은 눈물"
+    },
+    {
+      "id": "BladeResultUpTier1",
+      "name": "본국검 - 세법 전수"
+    },
+    {
+      "id": "BladeResultUpTier2",
+      "name": "본국검 - 자법 전수"
+    },
+    {
+      "id": "Blame_LowMorale",
+      "name": "비난"
+    },
+    {
+      "id": "Blame_Panic",
+      "name": "비난"
+    },
+    {
+      "id": "Blandishment",
+      "name": "당연한 믿음"
+    },
+    {
+      "id": "BlandishmentShinEnemyDelete",
+      "name": "신(心) - ???"
+    },
+    {
+      "id": "Blandishment_Enemy",
+      "name": "당연한 믿음"
+    },
+    {
+      "id": "Blandishment_Shin",
+      "name": "신(心) - 대행"
+    },
+    {
+      "id": "Blandishment_Shin_Enemy",
+      "name": "신(心) - 소라"
+    },
+    {
+      "id": "Bleeding",
+      "name": "출혈"
+    },
+    {
+      "id": "BlessingAlly",
+      "name": "가호"
+    },
+    {
+      "id": "BlessingOfIndexPrescriptAlly",
+      "name": "지령의 가호"
+    },
+    {
+      "id": "BlessingOfIndexPrescriptEnemy",
+      "name": "지령의 가호"
+    },
+    {
+      "id": "BlindFaith_LowMorale",
+      "name": "지령 붕괴 위기"
+    },
+    {
+      "id": "BlindFaith_Panic",
+      "name": "지령 붕괴 위기"
+    },
+    {
+      "id": "BloodArmor",
+      "name": "경혈"
+    },
+    {
+      "id": "BloodArmorCasting",
+      "name": "주조된 경혈"
+    },
+    {
+      "id": "BloodArmorMeursault",
+      "name": "경혈 갑주"
+    },
+    {
+      "id": "BloodArmorPersonalityFirst",
+      "name": "경혈"
+    },
+    {
+      "id": "BloodArmorPersonalitySecond",
+      "name": "경혈 II"
+    },
+    {
+      "id": "BloodArmorPersonalityThird",
+      "name": "경혈 III"
+    },
+    {
+      "id": "BloodArmor_2nd",
+      "name": "경혈 II"
+    },
+    {
+      "id": "BloodArmor_3rd",
+      "name": "경혈 III"
+    },
+    {
+      "id": "BloodBranch",
+      "name": "망혈[盲血]"
+    },
+    {
+      "id": "BloodDinner",
+      "name": "혈찬"
+    },
+    {
+      "id": "BloodDinner_Accumulation",
+      "name": "누적 소모 혈찬"
+    },
+    {
+      "id": "BloodDinner_Common_Accumulation",
+      "name": "공용 누적 소모 혈찬"
+    },
+    {
+      "id": "BloodPocket",
+      "name": "피주머니"
+    },
+    {
+      "id": "BloodPocket_LowMorale",
+      "name": "흡혈 갈망"
+    },
+    {
+      "id": "BloodPocket_Panic",
+      "name": "흡혈 갈망"
+    },
+    {
+      "id": "BloodScissor",
+      "name": "핏빛 가위날"
+    },
+    {
+      "id": "BloodScissorPersonalityFirst",
+      "name": "핏빛 가위날"
+    },
+    {
+      "id": "BloodScissorPersonalitySecond",
+      "name": "핏빛 가위날 II"
+    },
+    {
+      "id": "BloodScissorPersonalityThird",
+      "name": "핏빛 가위날 III"
+    },
+    {
+      "id": "BloodScissorScars",
+      "name": "깊게 베인 상처"
+    },
+    {
+      "id": "BloodScissorThree",
+      "name": "핏빛 가위날 III"
+    },
+    {
+      "id": "BloodScissorTwo",
+      "name": "핏빛 가위날 II"
+    },
+    {
+      "id": "BloodShooting",
+      "name": "블러드슈팅!!"
+    },
+    {
+      "id": "BloodborneDOQ",
+      "name": "기사의 피와 뼈"
+    },
+    {
+      "id": "Bloodthirst",
+      "name": "피갈망"
+    },
+    {
+      "id": "BloodthirstHard",
+      "name": "피갈망"
+    },
+    {
+      "id": "BloodyCrave",
+      "name": "핏빛 갈구"
+    },
+    {
+      "id": "BloodyHand",
+      "name": "피로 물든 손"
+    },
+    {
+      "id": "BloodyHandGregFirst",
+      "name": "피로 물든 손"
+    },
+    {
+      "id": "BloodyHandGregSecond",
+      "name": "피로 물든 손 II"
+    },
+    {
+      "id": "BloodyHandGregThird",
+      "name": "피로 물든 손 III"
+    },
+    {
+      "id": "BloodyHand_2nd",
+      "name": " 피로 물든 손 II"
+    },
+    {
+      "id": "BloodyHand_3rd",
+      "name": " 피로 물든 손 III"
+    },
+    {
+      "id": "BloomingRose",
+      "name": "피어나는 죄"
+    },
+    {
+      "id": "BloomingThorns",
+      "name": "피어나는 가시"
+    },
+    {
+      "id": "BloomingThornsRodionFirst",
+      "name": "피어나는 가시"
+    },
+    {
+      "id": "BloomingThornsRodionSecond",
+      "name": "피어나는 가시 II"
+    },
+    {
+      "id": "BloomingThornsRodionThird",
+      "name": "피어나는 가시 III"
+    },
+    {
+      "id": "BloomingThorns_2nd",
+      "name": "피를 엮은 가시"
+    },
+    {
+      "id": "BloomingThorns_3rd",
+      "name": "피로 빚은 가시"
+    },
+    {
+      "id": "Blue",
+      "name": "눈물"
+    },
+    {
+      "id": "BlueSand",
+      "name": "푸른 모래"
+    },
+    {
+      "id": "Blue_LowMorale",
+      "name": "우울"
+    },
+    {
+      "id": "Blue_Panic",
+      "name": "우울"
+    },
+    {
+      "id": "BoneBladeTheRings",
+      "name": "작품명: 파시아"
+    },
+    {
+      "id": "BoseProjektil",
+      "name": "찢어진 추억"
+    },
+    {
+      "id": "BoseProjektilReplica",
+      "name": "찢어진 추억"
+    },
+    {
+      "id": "Bothersome",
+      "name": "절참 [切斬]"
+    },
+    {
+      "id": "BreakthroughHorse",
+      "name": "적진 주파"
+    },
+    {
+      "id": "Breath",
+      "name": "호흡"
+    },
+    {
+      "id": "BreathLoss_LowMorale",
+      "name": "흐트러진 숨"
+    },
+    {
+      "id": "BreathLoss_Panic",
+      "name": "흐트러진 숨"
+    },
+    {
+      "id": "BreathSupport",
+      "name": "결전의 호흡"
+    },
+    {
+      "id": "BudgetBulletPropellant",
+      "name": "추진탄"
+    },
+    {
+      "id": "Bull_BuzzingEmotion",
+      "name": "울렁이는 감정"
+    },
+    {
+      "id": "Bull_FadedHeat",
+      "name": "잠시 사그라든 열기"
+    },
+    {
+      "id": "Bull_Fever",
+      "name": "흥분"
+    },
+    {
+      "id": "Bull_ReinforcedSadness",
+      "name": "팽창하는 슬픔"
+    },
+    {
+      "id": "Bull_Sadness",
+      "name": "해소되지 않은 슬픔"
+    },
+    {
+      "id": "Bullet",
+      "name": "탄환"
+    },
+    {
+      "id": "BulletFreischutz",
+      "name": "사용하지 않음"
+    },
+    {
+      "id": "BulletGodok",
+      "name": "탄환 - 고독"
+    },
+    {
+      "id": "BulletLament",
+      "name": "산나비·죽은나비"
+    },
+    {
+      "id": "BulletPropellant",
+      "name": "호표탄"
+    },
+    {
+      "id": "BulletPropellantAlly",
+      "name": "호표탄"
+    },
+    {
+      "id": "BulletPropellantSpecial",
+      "name": "맹호표탄"
+    },
+    {
+      "id": "BulletPropellantSpecialAlly",
+      "name": "맹호표탄"
+    },
+    {
+      "id": "Bullet_Crab",
+      "name": "오래된 게딱지 탄"
+    },
+    {
+      "id": "Bullet_LogicAtelier",
+      "name": "탄환 - 로직 아틀리에"
+    },
+    {
+      "id": "Burn",
+      "name": "화상"
+    },
+    {
+      "id": "BurningWoundRien",
+      "name": "이글거리는 상처"
+    },
+    {
+      "id": "BurningWoundRien_Mask",
+      "name": "뤼엔의 가면"
+    },
+    {
+      "id": "BurningWoundYisang",
+      "name": "이글거리는 상처"
+    },
+    {
+      "id": "BurningWoundYisangMask",
+      "name": "상처를 가린 가면"
+    },
+    {
+      "id": "Burst",
+      "name": "파열"
+    },
+    {
+      "id": "BurstAgility",
+      "name": "주살【신속】"
+    },
+    {
+      "id": "BurstPoison",
+      "name": "주살【독】"
+    },
+    {
+      "id": "BurstProtection",
+      "name": "파열 보호"
+    },
+    {
+      "id": "BurstStop",
+      "name": "주살【물동】"
+    },
+    {
+      "id": "BurstSuppress",
+      "name": "주살【철주】"
+    },
+    {
+      "id": "BurstVulnerable",
+      "name": "파열 취약"
+    },
+    {
+      "id": "BurstVulnerableZilu",
+      "name": "붕괴 표식"
+    },
+    {
+      "id": "BurstWave",
+      "name": "주살【즉감】"
+    },
+    {
+      "id": "BurstWeakness",
+      "name": "주살【약화】"
+    },
+    {
+      "id": "BurstZilu",
+      "name": "주살【파】"
+    },
+    {
+      "id": "CallOfSea_LowMorale",
+      "name": "동족의 부름"
+    },
+    {
+      "id": "CallOfSea_Panic",
+      "name": "동족의 부름"
+    },
+    {
+      "id": "CalmAnalysisMoses",
+      "name": "차분한 분석"
+    },
+    {
+      "id": "CanDuelGuard",
+      "name": "합 가능 가드"
+    },
+    {
+      "id": "CandyForCharon",
+      "name": "사탕?"
+    },
+    {
+      "id": "CandyForCharon_LowMorale",
+      "name": "사탕"
+    },
+    {
+      "id": "CandyForCharon_Panic",
+      "name": "사탕"
+    },
+    {
+      "id": "CentipedePoison",
+      "name": "지네 독"
+    },
+    {
+      "id": "CentralCommandTeamCaptain",
+      "name": "중앙본부팀 팀장"
+    },
+    {
+      "id": "Charge",
+      "name": "충전"
+    },
+    {
+      "id": "ChargeForceField",
+      "name": "충전 역장"
+    },
+    {
+      "id": "ChargeLoad",
+      "name": "부하"
+    },
+    {
+      "id": "ChargedSting",
+      "name": "전하침"
+    },
+    {
+      "id": "ChasingArcana",
+      "name": "영창 - 아르카나 슬레이브"
+    },
+    {
+      "id": "ChasingArcanahard",
+      "name": "영창 - 아르카나 슬레이브"
+    },
+    {
+      "id": "CheerUpXichun",
+      "name": "원[援]"
+    },
+    {
+      "id": "Chesed_Mercy",
+      "name": "헤세드의 자비"
+    },
+    {
+      "id": "ChickenFightlust",
+      "name": "혈투본능"
+    },
+    {
+      "id": "ChickenStance",
+      "name": "혈염 [血炎]"
+    },
+    {
+      "id": "ChoSuperCharge",
+      "name": "초아광축전"
+    },
+    {
+      "id": "Choice_901001",
+      "name": "불번짐"
+    },
+    {
+      "id": "Choice_901007",
+      "name": "나긋한 배웅"
+    },
+    {
+      "id": "Choice_901009",
+      "name": "명순응"
+    },
+    {
+      "id": "Choice_901010",
+      "name": "비워짐"
+    },
+    {
+      "id": "Choice_901019",
+      "name": "오물"
+    },
+    {
+      "id": "Choice_90103301",
+      "name": "바둥거림"
+    },
+    {
+      "id": "Choice_90103402",
+      "name": "후련함"
+    },
+    {
+      "id": "Choice_90104001",
+      "name": "이해"
+    },
+    {
+      "id": "Choice_9010400101",
+      "name": "각오"
+    },
+    {
+      "id": "Choice_90104002",
+      "name": "회모"
+    },
+    {
+      "id": "Church_LowMorale",
+      "name": "교단"
+    },
+    {
+      "id": "Church_Panic",
+      "name": "교단"
+    },
+    {
+      "id": "Cianjing",
+      "name": "시엔징"
+    },
+    {
+      "id": "CloudWall",
+      "name": "구름 장벽"
+    },
+    {
+      "id": "Coffin",
+      "name": "관"
+    },
+    {
+      "id": "ColdAirDOQ",
+      "name": "냉기"
+    },
+    {
+      "id": "ColdBlackTear",
+      "name": "차갑고 검은 눈물"
+    },
+    {
+      "id": "CollapseAmpoule",
+      "name": "붕괴 앰플"
+    },
+    {
+      "id": "CollapsedPride",
+      "name": "무너져 내린 긍지"
+    },
+    {
+      "id": "Combustion",
+      "name": "화상"
+    },
+    {
+      "id": "ComeForwardToTheKing",
+      "name": "알현의 시간"
+    },
+    {
+      "id": "CommonExit",
+      "name": "전장 이탈"
+    },
+    {
+      "id": "Complacency",
+      "name": "오버히트"
+    },
+    {
+      "id": "ConcentratedAttack",
+      "name": "집중 공격"
+    },
+    {
+      "id": "ConcentratedAttackMeursault",
+      "name": "집중 공격 - 뫼르소"
+    },
+    {
+      "id": "ConcussionWei",
+      "name": "뇌진탕"
+    },
+    {
+      "id": "ConcussionYisang",
+      "name": "뇌진탕"
+    },
+    {
+      "id": "CondensedBlood",
+      "name": "오혈"
+    },
+    {
+      "id": "ConfinementOfGoldenBranch",
+      "name": "황금가지의 강제 조율"
+    },
+    {
+      "id": "ConnectedPlug",
+      "name": "연결된 플러그"
+    },
+    {
+      "id": "ContemptPersonality",
+      "name": "시선의 경멸"
+    },
+    {
+      "id": "ContemptReplica",
+      "name": "경멸"
+    },
+    {
+      "id": "ContemptRyoshu",
+      "name": "경멸"
+    },
+    {
+      "id": "CoverAttack",
+      "name": "원호 공격"
+    },
+    {
+      "id": "CoveringFire",
+      "name": "타겟 포착"
+    },
+    {
+      "id": "CrazyWei",
+      "name": "광폭화"
+    },
+    {
+      "id": "Crazy_LowMorale",
+      "name": "광인"
+    },
+    {
+      "id": "Crazy_Panic",
+      "name": "광인"
+    },
+    {
+      "id": "CriHurtNightStiletto",
+      "name": "깊은 상처"
+    },
+    {
+      "id": "CrimsonDamageDown",
+      "name": "분노 피해량 감소"
+    },
+    {
+      "id": "CrimsonDamageUp",
+      "name": "분노 피해량 증가"
+    },
+    {
+      "id": "CrimsonResistDown",
+      "name": "분노 내성 약화"
+    },
+    {
+      "id": "CrimsonResistUp",
+      "name": "분노 내성 강화"
+    },
+    {
+      "id": "CrimsonResultUp",
+      "name": "분노 위력 증가"
+    },
+    {
+      "id": "CrimsonTakeDamageDown",
+      "name": "분노 보호"
+    },
+    {
+      "id": "CrimsonTakeDamageUp",
+      "name": "분노 취약"
+    },
+    {
+      "id": "CriticalDamageUp",
+      "name": "크리티컬 피해량 증가"
+    },
+    {
+      "id": "CriticalDmgUpVespa",
+      "name": "섬봉광검술 - 환도"
+    },
+    {
+      "id": "Cromer_Ecstasy",
+      "name": "희열"
+    },
+    {
+      "id": "Cromer_Madness",
+      "name": "순수"
+    },
+    {
+      "id": "Cromer_Target",
+      "name": "쥐는 자의 주시"
+    },
+    {
+      "id": "CrushMarks",
+      "name": "파쇄흔"
+    },
+    {
+      "id": "CtrlTeamCaptain",
+      "name": "지휘팀 팀장"
+    },
+    {
+      "id": "Cubism_LowMorale",
+      "name": "한물간 예술"
+    },
+    {
+      "id": "Cubism_Panic",
+      "name": "한물간 예술"
+    },
+    {
+      "id": "CuredFilm",
+      "name": "경화막"
+    },
+    {
+      "id": "Curse",
+      "name": "저주"
+    },
+    {
+      "id": "CursePackage",
+      "name": "저주 꾸러미"
+    },
+    {
+      "id": "CutbondRyoshu",
+      "name": "무아 [無我]"
+    },
+    {
+      "id": "CutoffRyoshu",
+      "name": "절사 [切絲]"
+    },
+    {
+      "id": "Cycle",
+      "name": "업보"
+    },
+    {
+      "id": "CyclingKarma",
+      "name": "순환하는 업보"
+    },
+    {
+      "id": "DOQ_LowMorale",
+      "name": "군체 의식"
+    },
+    {
+      "id": "DOQ_Panic",
+      "name": "군체 의식"
+    },
+    {
+      "id": "DamageOverTime",
+      "name": "지속 피해"
+    },
+    {
+      "id": "DarkBeastSnake_LowMorale",
+      "name": "암완"
+    },
+    {
+      "id": "DarkBeastSnake_Panic",
+      "name": "암완"
+    },
+    {
+      "id": "DarkBeast_LowMorale",
+      "name": "암수"
+    },
+    {
+      "id": "DarkBeast_Panic",
+      "name": "암수"
+    },
+    {
+      "id": "DarkFlame",
+      "name": "흑염"
+    },
+    {
+      "id": "DarkHongluParryGahwan",
+      "name": "가증스럽군요, 형님."
+    },
+    {
+      "id": "DarkHongluQiuAndHonglu",
+      "name": "패도를 걷는 자"
+    },
+    {
+      "id": "DarkHongluTeaching",
+      "name": "관철"
+    },
+    {
+      "id": "DarkHonglu_Ai",
+      "name": "기쁨, 즐거움, 슬픔"
+    },
+    {
+      "id": "DarkHonglu_EGOResourceup",
+      "name": "수없이 많은 자들의 피를 흘리게 될지라도…"
+    },
+    {
+      "id": "DarkHonglu_Le",
+      "name": "기쁨, 즐거움"
+    },
+    {
+      "id": "DarkHonglu_Nu",
+      "name": "기쁨, 즐거움, 슬픔, 분노"
+    },
+    {
+      "id": "DarkHonglu_Xi",
+      "name": "기쁨"
+    },
+    {
+      "id": "DaughterEducationSpider",
+      "name": "잘 봐둬라 딸!"
+    },
+    {
+      "id": "DeadEGOResource",
+      "name": "남겨진 의지"
+    },
+    {
+      "id": "DecoyRegenerated",
+      "name": "재생"
+    },
+    {
+      "id": "DecreamentalDefense",
+      "name": "심각한 부상"
+    },
+    {
+      "id": "DeepAngry_LowMorale",
+      "name": "울분"
+    },
+    {
+      "id": "DeepAngry_Panic",
+      "name": "울분"
+    },
+    {
+      "id": "DeepEvilHeart_LowMorale",
+      "name": "짙은 사심"
+    },
+    {
+      "id": "DeepEvilHeart_Panic",
+      "name": "짙은 사심"
+    },
+    {
+      "id": "DefenseBug",
+      "name": "방어 해충[바퀴]"
+    },
+    {
+      "id": "DefenseDown",
+      "name": "방어 레벨 감소"
+    },
+    {
+      "id": "DefenseUp",
+      "name": "방어 레벨 증가"
+    },
+    {
+      "id": "DefensiveStance",
+      "name": "방어 태세"
+    },
+    {
+      "id": "DelusionGregBigBird",
+      "name": "현혹"
+    },
+    {
+      "id": "DelusionGregBigBird_LowMorale",
+      "name": "현혹"
+    },
+    {
+      "id": "DelusionGregBigBird_Main",
+      "name": "현혹"
+    },
+    {
+      "id": "DelusionGregBigBird_Panic",
+      "name": "현혹"
+    },
+    {
+      "id": "DelusionGregBigBird_Sub",
+      "name": "현혹"
+    },
+    {
+      "id": "DelusionHohenheimBigBird",
+      "name": "현혹"
+    },
+    {
+      "id": "DerivativeHugeIrritation",
+      "name": "신(心) - 천퇴성[天退星]"
+    },
+    {
+      "id": "Desire",
+      "name": "욕망"
+    },
+    {
+      "id": "DesireToSave_LowMorale",
+      "name": "선의의 마음"
+    },
+    {
+      "id": "DesireToSave_Panic",
+      "name": "선의의 마음"
+    },
+    {
+      "id": "DespairAlly",
+      "name": "절망"
+    },
+    {
+      "id": "DesperadoBuff",
+      "name": "데스페라도"
+    },
+    {
+      "id": "DevyatDimensionalSack",
+      "name": "딜리버리 캐리어 - 로쟈"
+    },
+    {
+      "id": "DevyatDimensionalSackSinclair",
+      "name": "딜리버리 캐리어 - 싱클레어"
+    },
+    {
+      "id": "DianxueDonQuixote",
+      "name": "점혈 - 돈키호테"
+    },
+    {
+      "id": "DicipleLittleFinger",
+      "name": "월하청도"
+    },
+    {
+      "id": "DimensionRift",
+      "name": "차원 균열"
+    },
+    {
+      "id": "DimensionalBagEzraA",
+      "name": "차원가방 - 알라스 공방"
+    },
+    {
+      "id": "DimensionalBagEzraB",
+      "name": "차원가방 - 네스터 공방"
+    },
+    {
+      "id": "DimensionalBagEzraC",
+      "name": "차원가방 - 스크류 아틀리에"
+    },
+    {
+      "id": "DimensionalBagEzraD",
+      "name": "차원가방 - 나미르 공방"
+    },
+    {
+      "id": "DimensionalBagEzraE",
+      "name": "차원가방 - 유리아 공방"
+    },
+    {
+      "id": "Disarming",
+      "name": "수비 위력 감소"
+    },
+    {
+      "id": "Discard",
+      "name": "버림"
+    },
+    {
+      "id": "DisengageCombat",
+      "name": "전투 이탈"
+    },
+    {
+      "id": "DistortedDongrangEarnestAchievement",
+      "name": "간절한 성과"
+    },
+    {
+      "id": "DistortedDongrangEmptiness",
+      "name": "공허함"
+    },
+    {
+      "id": "DistortedDongrangEmptyHonor",
+      "name": "공허한 영예"
+    },
+    {
+      "id": "DistortedDongrangEmptyMark",
+      "name": "텅 빈 징표"
+    },
+    {
+      "id": "DistortedDongrangFruition",
+      "name": "맺힌 결실"
+    },
+    {
+      "id": "DistortedDongrangMomentaryGlory",
+      "name": "찰나의 영광"
+    },
+    {
+      "id": "DistortedDongrangRadiantVanity",
+      "name": "빛나는 허영"
+    },
+    {
+      "id": "DogThunder",
+      "name": "번개"
+    },
+    {
+      "id": "DongbaekFascination",
+      "name": "아찔한 정신"
+    },
+    {
+      "id": "DongbaekFlorescence",
+      "name": "개화"
+    },
+    {
+      "id": "DongbaekFullBloom",
+      "name": "만개"
+    },
+    {
+      "id": "DongbaekFullBloomDisplay",
+      "name": "만개"
+    },
+    {
+      "id": "DongbaekGrow",
+      "name": "성장"
+    },
+    {
+      "id": "DongbaekScatterPetal",
+      "name": "흩어지는 꽃잎"
+    },
+    {
+      "id": "DongbaekShowdown",
+      "name": "대결"
+    },
+    {
+      "id": "DragonLance",
+      "name": "매화첨[埋花櫼]"
+    },
+    {
+      "id": "Dreamy",
+      "name": "꿈결속 망설임"
+    },
+    {
+      "id": "DrunkAwakening",
+      "name": "정신 각성"
+    },
+    {
+      "id": "DrunkBlood",
+      "name": "혈주(血注)"
+    },
+    {
+      "id": "DrunkDrifter_LowMorale",
+      "name": "취수야객"
+    },
+    {
+      "id": "DrunkDrifter_Panic",
+      "name": "취수야객"
+    },
+    {
+      "id": "DuelDeclaration",
+      "name": "결투 선포"
+    },
+    {
+      "id": "DuelDeclarationMeursault",
+      "name": "결투 선포 - 뫼르소"
+    },
+    {
+      "id": "DuelDeclaration_Camille",
+      "name": "결투 선포 - 까미유"
+    },
+    {
+      "id": "DuelDeclaration_DonQuixote",
+      "name": "결투 선포 - 돈키호테"
+    },
+    {
+      "id": "DuelDeclaration_Outis",
+      "name": "결투 선포 - 오티스"
+    },
+    {
+      "id": "DuelDeclaration_Sinclair",
+      "name": "결투 선포 - 싱클레어"
+    },
+    {
+      "id": "DuelEdge",
+      "name": "결투 고조"
+    },
+    {
+      "id": "Duello_LowMorale",
+      "name": "1:1 전력"
+    },
+    {
+      "id": "Duello_Panic",
+      "name": "1:1 전력"
+    },
+    {
+      "id": "Duress",
+      "name": "구속"
+    },
+    {
+      "id": "EatingSin",
+      "name": "머금은 죄"
+    },
+    {
+      "id": "EchoOfMansion",
+      "name": "저택의 메아리"
+    },
+    {
+      "id": "EgoAwakenDongrangOverHeal",
+      "name": "과잉 회복"
+    },
+    {
+      "id": "EgoAwakenDongrangRadiantDesire",
+      "name": "빛나는 욕망"
+    },
+    {
+      "id": "EgoAwakenDongrangSeed",
+      "name": "씨앗"
+    },
+    {
+      "id": "EgoAwakenDongrangTree",
+      "name": "양분 흡수"
+    },
+    {
+      "id": "EgoAwakenDongrangTreeDisplay",
+      "name": "양분 흡수"
+    },
+    {
+      "id": "EgoErodeContempt_LowMorale",
+      "name": "여린 금으로 주조한 마음"
+    },
+    {
+      "id": "EgoErodeContempt_Panic",
+      "name": "여린 금으로 주조한 마음"
+    },
+    {
+      "id": "EgoErodeMemory_LowMorale",
+      "name": "새 시대로 향하는 마음"
+    },
+    {
+      "id": "EgoErodeMemory_Panic",
+      "name": "새 시대로 향하는 마음"
+    },
+    {
+      "id": "EgoErodeReplica",
+      "name": "E.G.O 침식 - N사"
+    },
+    {
+      "id": "ElectricShock",
+      "name": "감전"
+    },
+    {
+      "id": "ElectricStorage",
+      "name": "축전"
+    },
+    {
+      "id": "EmergencyChargeForceField",
+      "name": "비상용 역장 배터리"
+    },
+    {
+      "id": "EmergencyFeed",
+      "name": "긴급 영양 보급"
+    },
+    {
+      "id": "Emergency_Operation",
+      "name": "긴급_시술"
+    },
+    {
+      "id": "EmittedCurrent",
+      "name": "방출 전류"
+    },
+    {
+      "id": "Emptiness",
+      "name": "하얗게 태워버렸군"
+    },
+    {
+      "id": "Endurance",
+      "name": "수비 위력 증가"
+    },
+    {
+      "id": "EngageToBattle",
+      "name": "임전"
+    },
+    {
+      "id": "EnhanceRose",
+      "name": "강화 상태"
+    },
+    {
+      "id": "EnhanceRoseSign",
+      "name": "굴레"
+    },
+    {
+      "id": "EnhanceZilu",
+      "name": "천구성도"
+    },
+    {
+      "id": "Enhancement",
+      "name": "공격 위력 증가"
+    },
+    {
+      "id": "Enrage",
+      "name": "광란"
+    },
+    {
+      "id": "EntangledCurseTalisman",
+      "name": "얽혀버린 저주 부적"
+    },
+    {
+      "id": "EquitableDistribution",
+      "name": "시간 공동 분담 지출"
+    },
+    {
+      "id": "ErodingMind",
+      "name": "침식되는 마음"
+    },
+    {
+      "id": "EsteemNeeds",
+      "name": "인정 욕구"
+    },
+    {
+      "id": "EvilHeart_LowMorale",
+      "name": "사심"
+    },
+    {
+      "id": "EvilHeart_Panic",
+      "name": "사심"
+    },
+    {
+      "id": "Exalted",
+      "name": "고양"
+    },
+    {
+      "id": "ExaminationOfQiu",
+      "name": "일말의 기대"
+    },
+    {
+      "id": "ExpensiveJade",
+      "name": "보옥요람"
+    },
+    {
+      "id": "ExternalUpgradeModule",
+      "name": "조력자 - 외장 강화 장치"
+    },
+    {
+      "id": "ExtractCoin",
+      "name": "적출 코인"
+    },
+    {
+      "id": "EzraMiddle_LowMorale",
+      "name": "자기 방어 - 가면"
+    },
+    {
+      "id": "EzraMiddle_Panic",
+      "name": "자기 방어 - 가면"
+    },
+    {
+      "id": "FailedToAssistQueen",
+      "name": "내가… 무슨 쓸모…야?"
+    },
+    {
+      "id": "FaintMemory",
+      "name": "아련한 기억"
+    },
+    {
+      "id": "FairyCharm",
+      "name": "매혹"
+    },
+    {
+      "id": "FamilyTreasure",
+      "name": "폭발유희"
+    },
+    {
+      "id": "FamineBloodDolci_LowMorale",
+      "name": "허무의 굴레"
+    },
+    {
+      "id": "FamineBloodDolci_Panic",
+      "name": "허무의 굴레"
+    },
+    {
+      "id": "FamineBloodPriestServant_LowMorale",
+      "name": "굶주림"
+    },
+    {
+      "id": "FamineBloodPriestServant_Panic",
+      "name": "굶주림"
+    },
+    {
+      "id": "FamineBlood_LowMorale",
+      "name": "굶주림"
+    },
+    {
+      "id": "FamineBlood_Panic",
+      "name": "굶주림"
+    },
+    {
+      "id": "FaustFlameMothEmber",
+      "name": "잔불"
+    },
+    {
+      "id": "FellBulletGroggy",
+      "name": "징표"
+    },
+    {
+      "id": "FellBulletMark",
+      "name": "징표"
+    },
+    {
+      "id": "FellBulletMarkReplica",
+      "name": "징표"
+    },
+    {
+      "id": "FellBulletPersonality",
+      "name": "흉탄"
+    },
+    {
+      "id": "FerrisWheel",
+      "name": "돌고도는 관람차"
+    },
+    {
+      "id": "FestivalFever",
+      "name": "축제의 열기"
+    },
+    {
+      "id": "FestivalFeverRodion",
+      "name": "축제의 열기"
+    },
+    {
+      "id": "FireBulletPropellant",
+      "name": "작열 추진탄"
+    },
+    {
+      "id": "FirePunchFuel",
+      "name": "12구산 연료"
+    },
+    {
+      "id": "FirePunchFuelOverheated",
+      "name": "과열 연료"
+    },
+    {
+      "id": "FirmWill",
+      "name": "굳은 의지"
+    },
+    {
+      "id": "FocusOnActing",
+      "name": "연기 집중"
+    },
+    {
+      "id": "ForwardToTheBoundKing",
+      "name": "묶인 왕의 앞으로"
+    },
+    {
+      "id": "ForwardToTheKing",
+      "name": "왕의 앞으로"
+    },
+    {
+      "id": "Fragile_Mind_LowMorale",
+      "name": "위태로운 마음"
+    },
+    {
+      "id": "Fragile_Mind_Panic",
+      "name": "흐트러진 마음"
+    },
+    {
+      "id": "FragmentOfHope",
+      "name": "버스에서 동료들과 함께 여러 모험을 겪었으며,"
+    },
+    {
+      "id": "FragmentOfHopeFamilyMirror",
+      "name": "내 아이의 동료들아"
+    },
+    {
+      "id": "FragmentOfHopeSancho",
+      "name": "고통 받은 가족들을 위해 피의 만찬을 열고,"
+    },
+    {
+      "id": "FragmentOfHopeTwo",
+      "name": "꿈을 끝내지 않을 산초이자 우리의 돈키호테에 대하여"
+    },
+    {
+      "id": "FragmentOfHopeTwoFamilyMirror",
+      "name": "나를 대신해 그 아이의 꿈을 함께 해주려무나"
+    },
+    {
+      "id": "FragmentOfHopeTwoSancho",
+      "name": "자식을 등진 어버이를 처단하여 모든 죄악감을 짊어진 어느 혈귀에 대하여"
+    },
+    {
+      "id": "FreezingDOQ",
+      "name": "빙결"
+    },
+    {
+      "id": "FreischutzShotCount",
+      "name": "마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBulletCnt",
+      "name": "사수의 탄환"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_1st",
+      "name": "첫번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_2nd",
+      "name": "두번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_3rd",
+      "name": "세번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_4th",
+      "name": "네번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_5th",
+      "name": "다섯번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_6th",
+      "name": "여섯번째 마탄"
+    },
+    {
+      "id": "FreishutzOutisEgoBullet_7th",
+      "name": "일곱번째 마탄"
+    },
+    {
+      "id": "Fugacious",
+      "name": "검의 길"
+    },
+    {
+      "id": "FullBloomRose_Amber",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Azure",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Crimson",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Indigo",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Scarlet",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Shamrock",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullBloomRose_Violet",
+      "name": "피워낸 장미"
+    },
+    {
+      "id": "FullCharon",
+      "name": "포만감"
+    },
+    {
+      "id": "FullReload",
+      "name": "재장전"
+    },
+    {
+      "id": "FusionVibration",
+      "name": "진폭 얽힘"
+    },
+    {
+      "id": "FutureEyeOff",
+      "name": "예지안 과열"
+    },
+    {
+      "id": "FutureEyeOn",
+      "name": "예지안"
+    },
+    {
+      "id": "GahwanEgoContempt",
+      "name": "불안정 E.G.O 감응 - 경멸"
+    },
+    {
+      "id": "GainSinStockAdder",
+      "name": "E.G.O 자원 획득량 +"
+    },
+    {
+      "id": "GazePersonality",
+      "name": "경멸의 시선"
+    },
+    {
+      "id": "GazeReplica",
+      "name": "시선"
+    },
+    {
+      "id": "GazeRyoshu",
+      "name": "시선"
+    },
+    {
+      "id": "Gebura_Reinforcement",
+      "name": "게부라의 칼날"
+    },
+    {
+      "id": "GiftCannon",
+      "name": "화력"
+    },
+    {
+      "id": "GiftGlass",
+      "name": "연약"
+    },
+    {
+      "id": "GiveMeCandy",
+      "name": "사탕"
+    },
+    {
+      "id": "GiveMeCandy_LowMoral",
+      "name": "사탕"
+    },
+    {
+      "id": "GiveMeCandy_Panic",
+      "name": "사탕"
+    },
+    {
+      "id": "GlowingLantern",
+      "name": "미끼 요정"
+    },
+    {
+      "id": "GodokPanicType",
+      "name": "고독"
+    },
+    {
+      "id": "GodokPanicType_Main",
+      "name": "고독"
+    },
+    {
+      "id": "GodokPanicType_Sub",
+      "name": "고독"
+    },
+    {
+      "id": "Godok_Lowmorale",
+      "name": "고독"
+    },
+    {
+      "id": "Godok_Panic",
+      "name": "고독"
+    },
+    {
+      "id": "GoldenBoughSync",
+      "name": "부감응"
+    },
+    {
+      "id": "GoldenBoughSyncDistorted",
+      "name": "괴력난신"
+    },
+    {
+      "id": "GotACompliment",
+      "name": "칭찬 받았다!"
+    },
+    {
+      "id": "GraspReplica",
+      "name": "손아귀"
+    },
+    {
+      "id": "GreatAesthetics",
+      "name": "훌륭한 미감"
+    },
+    {
+      "id": "Greedy",
+      "name": "탐욕"
+    },
+    {
+      "id": "GrownHorns",
+      "name": "발각[發角]"
+    },
+    {
+      "id": "Grudge",
+      "name": "맺혀가는 응어리"
+    },
+    {
+      "id": "GuboEgoShooter",
+      "name": "불안정 E.G.O 감응 - 흉탄"
+    },
+    {
+      "id": "Guilt_LowMorale",
+      "name": "죄책감"
+    },
+    {
+      "id": "Guilt_Panic",
+      "name": "죄책감"
+    },
+    {
+      "id": "HanafudaCombo",
+      "name": "광【光】"
+    },
+    {
+      "id": "HanafudaOne",
+      "name": "짝패 - 송학"
+    },
+    {
+      "id": "HanafudaThree",
+      "name": "짝패 - 청벚꽃"
+    },
+    {
+      "id": "HanafudaTwo",
+      "name": "짝패 - 억새"
+    },
+    {
+      "id": "HardenedBlood",
+      "name": "경화 혈액"
+    },
+    {
+      "id": "HeatedGasHarpoon",
+      "name": "가열된 가스 작살"
+    },
+    {
+      "id": "HeatingWireIshmael",
+      "name": "열선"
+    },
+    {
+      "id": "HeatingWireOffSpider",
+      "name": "열선 OFF"
+    },
+    {
+      "id": "HeatingWireOnSpider",
+      "name": "열선 ON"
+    },
+    {
+      "id": "HeavenlyKillerStar",
+      "name": "천살성도 - 아라야시키 [天殺星刀阿賴耶識]"
+    },
+    {
+      "id": "HeishouAttack",
+      "name": "뜻에 따라, 베겠습니다."
+    },
+    {
+      "id": "HeishouCombo",
+      "name": "존명"
+    },
+    {
+      "id": "HeishouComboCount",
+      "name": "몰아침"
+    },
+    {
+      "id": "HeishouComboCountHonglu",
+      "name": "흑수환염[黑獣丸染]"
+    },
+    {
+      "id": "HeishouDeathCount",
+      "name": "사중구활[死中求活]"
+    },
+    {
+      "id": "HeishouSupportProtect",
+      "name": "호위"
+    },
+    {
+      "id": "HeishouSynergy",
+      "name": "모든 흑수의 주인"
+    },
+    {
+      "id": "HelplessTear",
+      "name": "무력한 눈물"
+    },
+    {
+      "id": "HighVoltageExoshell",
+      "name": "고전압 외피"
+    },
+    {
+      "id": "HitDamageDown",
+      "name": "타격 피해량 감소"
+    },
+    {
+      "id": "HitDamageUp",
+      "name": "타격 피해량 증가"
+    },
+    {
+      "id": "HitResistDown",
+      "name": "타격 내성 약화"
+    },
+    {
+      "id": "HitResistUp",
+      "name": "타격 내성 강화"
+    },
+    {
+      "id": "HitResultUp",
+      "name": "타격 위력 증가"
+    },
+    {
+      "id": "HitTakeDamageDown",
+      "name": "타격 보호"
+    },
+    {
+      "id": "HitTakeDamageUp",
+      "name": "타격 취약"
+    },
+    {
+      "id": "HohenheimBigBird_LowMorale",
+      "name": "쏟아지는 잠"
+    },
+    {
+      "id": "HohenheimBigBird_Panic",
+      "name": "쏟아지는 잠"
+    },
+    {
+      "id": "Hohenheim_LowMorale",
+      "name": "고뇌"
+    },
+    {
+      "id": "Hohenheim_Panic",
+      "name": "고뇌"
+    },
+    {
+      "id": "HoldingBreath",
+      "name": "깊은 들숨"
+    },
+    {
+      "id": "HongluParryGahwan",
+      "name": "마주하려는 의지"
+    },
+    {
+      "id": "Honglu_Ai",
+      "name": "기쁨, 즐거움, 슬픔"
+    },
+    {
+      "id": "Honglu_EGOResourceup",
+      "name": "나의 마음과 생각..."
+    },
+    {
+      "id": "Honglu_Le",
+      "name": "기쁨, 즐거움"
+    },
+    {
+      "id": "Honglu_Nu",
+      "name": "기쁨, 즐거움, 슬픔, 분노"
+    },
+    {
+      "id": "Honglu_Xi",
+      "name": "기쁨"
+    },
+    {
+      "id": "HonorableDuel_Don",
+      "name": "명예로운 결투"
+    },
+    {
+      "id": "HonorableDuel_Knight",
+      "name": "명예로운 결투"
+    },
+    {
+      "id": "HornetPoison",
+      "name": "궁니르 공명"
+    },
+    {
+      "id": "HorrHurtNightStiletto",
+      "name": "치명적인 상처"
+    },
+    {
+      "id": "HostageCharon",
+      "name": "인질극"
+    },
+    {
+      "id": "HousekeepingAssistantModule",
+      "name": "조력자 - 가사 보조 모듈"
+    },
+    {
+      "id": "HowDareYouApple",
+      "name": "감히…!"
+    },
+    {
+      "id": "HugeIrritation",
+      "name": "신(心) - 천퇴성[天退星]"
+    },
+    {
+      "id": "HugeIrritationAlly",
+      "name": "신(心) - 천퇴성[天退星]"
+    },
+    {
+      "id": "HumanBloodTheRings",
+      "name": "생체 재료(피)"
+    },
+    {
+      "id": "HumanBoneTheRings",
+      "name": "생체 재료(뼈)"
+    },
+    {
+      "id": "HumanFleshTheRings",
+      "name": "생체 재료"
+    },
+    {
+      "id": "Hunger",
+      "name": "굶주림"
+    },
+    {
+      "id": "HungryCharon",
+      "name": "배고픔-분노"
+    },
+    {
+      "id": "HurtNightStiletto",
+      "name": "상처"
+    },
+    {
+      "id": "HystericGauge",
+      "name": "히스테리"
+    },
+    {
+      "id": "IDMicroChip",
+      "name": "주민등록 마이크로칩"
+    },
+    {
+      "id": "ImpendingCollapse",
+      "name": "붕괴 임박"
+    },
+    {
+      "id": "ImperfectEternalLife",
+      "name": "불완전한 불사"
+    },
+    {
+      "id": "Inactible",
+      "name": "행동 불가"
+    },
+    {
+      "id": "IncompleteParade",
+      "name": "불완전한 퍼레이드"
+    },
+    {
+      "id": "IncrementalMotionFirmware",
+      "name": "조력자 - 운동 증량 펌웨어"
+    },
+    {
+      "id": "IndelibleGoodwill",
+      "name": "지워지지 않을 선의"
+    },
+    {
+      "id": "IndexPrescriptDon_0",
+      "name": "지령[단말기] I"
+    },
+    {
+      "id": "IndexPrescriptDon_1",
+      "name": "지령[단말기] II"
+    },
+    {
+      "id": "IndexPrescriptDon_2",
+      "name": "지령[단말기] III"
+    },
+    {
+      "id": "IndexPrescriptDon_3",
+      "name": "지령[단말기] IV"
+    },
+    {
+      "id": "IndexPrescriptFaust_0",
+      "name": "지령[쪽지] I"
+    },
+    {
+      "id": "IndexPrescriptFaust_1",
+      "name": "지령[쪽지] II"
+    },
+    {
+      "id": "IndexPrescriptFaust_2",
+      "name": "지령[쪽지] III"
+    },
+    {
+      "id": "IndexPrescriptFaust_3",
+      "name": "지령[쪽지] IV"
+    },
+    {
+      "id": "IndexPrescriptRien_0",
+      "name": "지령[단말기] I"
+    },
+    {
+      "id": "IndexPrescriptRien_1",
+      "name": "지령[단말기] II"
+    },
+    {
+      "id": "IndexPrescriptRien_2",
+      "name": "지령[단말기] III"
+    },
+    {
+      "id": "IndexPrescriptRien_3",
+      "name": "지령[단말기] IV"
+    },
+    {
+      "id": "IndexPrescriptStudent_0",
+      "name": "지령[단말기] I"
+    },
+    {
+      "id": "IndexPrescriptStudent_1",
+      "name": "지령[단말기] II"
+    },
+    {
+      "id": "IndexPrescriptStudent_2",
+      "name": "지령[단말기] III"
+    },
+    {
+      "id": "IndexPrescriptStudent_3",
+      "name": "지령[단말기] IV"
+    },
+    {
+      "id": "IndexPrescriptTargetMarkToEnemy",
+      "name": "지령 표식"
+    },
+    {
+      "id": "IndexPrescriptTargetToEnemy",
+      "name": "지령 대상"
+    },
+    {
+      "id": "IndexPrescriptTargetToPersonality",
+      "name": "검지의 지령 대상"
+    },
+    {
+      "id": "IndexPrescriptYi_0",
+      "name": "지령[단말기] I"
+    },
+    {
+      "id": "IndexPrescriptYi_1",
+      "name": "지령[단말기] II"
+    },
+    {
+      "id": "IndexPrescriptYi_2",
+      "name": "지령[단말기] III"
+    },
+    {
+      "id": "IndexPrescriptYi_3",
+      "name": "지령[단말기] IV"
+    },
+    {
+      "id": "IndexPrescript_Base",
+      "name": "지령"
+    },
+    {
+      "id": "IndexPrescript_Base_2nd",
+      "name": "지령"
+    },
+    {
+      "id": "IndexPrescript_RienSecondPhase",
+      "name": "지령[단말기] - 경고"
+    },
+    {
+      "id": "IndigoDamageDown",
+      "name": "오만 피해량 감소"
+    },
+    {
+      "id": "IndigoDamageUp",
+      "name": "오만 피해량 증가"
+    },
+    {
+      "id": "IndigoResistDown",
+      "name": "오만 내성 약화"
+    },
+    {
+      "id": "IndigoResistUp",
+      "name": "오만 내성 강화"
+    },
+    {
+      "id": "IndigoResultUp",
+      "name": "오만 위력 증가"
+    },
+    {
+      "id": "IndigoTakeDamageDown",
+      "name": "오만 보호"
+    },
+    {
+      "id": "IndigoTakeDamageUp",
+      "name": "오만 취약"
+    },
+    {
+      "id": "Inspire",
+      "name": "영감"
+    },
+    {
+      "id": "InterlockingTime",
+      "name": "맞물리는 시간"
+    },
+    {
+      "id": "InterlockingTime_Re",
+      "name": "맞물리는 시간"
+    },
+    {
+      "id": "IronMaiden_LowMorale",
+      "name": "아이언 메이든"
+    },
+    {
+      "id": "IronMaiden_Panic",
+      "name": "아이언 메이든"
+    },
+    {
+      "id": "Irritation",
+      "name": "천퇴성[天退星]"
+    },
+    {
+      "id": "IrritationAlly",
+      "name": "천퇴성[天退星]"
+    },
+    {
+      "id": "JarMaster_LowMorale",
+      "name": "돌격 지시"
+    },
+    {
+      "id": "JarMaster_Panic",
+      "name": "돌격 지시"
+    },
+    {
+      "id": "KAA1C9ActivateEffect",
+      "name": "K사 앰플 사용"
+    },
+    {
+      "id": "KAmpouleA1C94TH",
+      "name": "비상용 K사 앰플"
+    },
+    {
+      "id": "KCorpSerum",
+      "name": "K사 앰플"
+    },
+    {
+      "id": "KalpaVine",
+      "name": "억겁의 덩굴"
+    },
+    {
+      "id": "KarmaOfIndexAlly",
+      "name": "카르마"
+    },
+    {
+      "id": "KarmaOfIndexRien",
+      "name": "카르마"
+    },
+    {
+      "id": "KarmaOfIndexRien_2Phase",
+      "name": "카르마 [포르투나]"
+    },
+    {
+      "id": "KarmaOfIndexStudent",
+      "name": "카르마"
+    },
+    {
+      "id": "KeptBlood",
+      "name": "머금은 피"
+    },
+    {
+      "id": "KnightBless",
+      "name": "가호"
+    },
+    {
+      "id": "KnowledgeExplored",
+      "name": "탐구한 지식"
+    },
+    {
+      "id": "KnowledgeTraining",
+      "name": "지식 단련"
+    },
+    {
+      "id": "LCA_Bullet",
+      "name": "LCA 균열탄"
+    },
+    {
+      "id": "LCEFireFly_LowMorale",
+      "name": "열화침식"
+    },
+    {
+      "id": "LCEFireFly_Panic",
+      "name": "열화침식"
+    },
+    {
+      "id": "Laceration",
+      "name": "출혈"
+    },
+    {
+      "id": "LanternGregBigBird",
+      "name": "램프"
+    },
+    {
+      "id": "LanternHohenheimBigBird",
+      "name": "램프"
+    },
+    {
+      "id": "LastingHongwonWill_LowMorale",
+      "name": "계승된 홍원의 뜻"
+    },
+    {
+      "id": "LastingHongwonWill_Panic",
+      "name": "계승된 홍원의 뜻"
+    },
+    {
+      "id": "LeRegole_LowMorale",
+      "name": "규율"
+    },
+    {
+      "id": "LeRegole_Panic",
+      "name": "규율"
+    },
+    {
+      "id": "LegStrength",
+      "name": "각력【묘】"
+    },
+    {
+      "id": "LegStrengthHorse",
+      "name": "각력【오】"
+    },
+    {
+      "id": "LegStrengthHorseYisang",
+      "name": "각력【오】"
+    },
+    {
+      "id": "LimitedAwakenSinclair",
+      "name": "움브라 금제 해제"
+    },
+    {
+      "id": "LimitedTime",
+      "name": "빼앗은 시간"
+    },
+    {
+      "id": "LineCutting",
+      "name": "재봉 대상"
+    },
+    {
+      "id": "LineCuttingPersonality",
+      "name": "재봉 대상"
+    },
+    {
+      "id": "LittleFingerBoss_Shin",
+      "name": "신(心) - 지혜성"
+    },
+    {
+      "id": "LittleFingerID",
+      "name": "월하청도"
+    },
+    {
+      "id": "Liu_Meursault_Guard_Buff",
+      "name": "태산"
+    },
+    {
+      "id": "LivingSpecimenTheRings",
+      "name": "신체관극"
+    },
+    {
+      "id": "LogicAtelierAM",
+      "name": "집중【저격】"
+    },
+    {
+      "id": "LongLastingHongwonWill_LowMorale",
+      "name": "유구히 계승될 홍원의 뜻"
+    },
+    {
+      "id": "LongLastingHongwonWill_Panic",
+      "name": "유구히 계승될 홍원의 뜻"
+    },
+    {
+      "id": "LookingFuture",
+      "name": "가속하는 미래"
+    },
+    {
+      "id": "LvDownLittleFingerBoss",
+      "name": "관망"
+    },
+    {
+      "id": "LvDownLittleFingerBossTwo",
+      "name": "천살성상[天殺星傷]"
+    },
+    {
+      "id": "LvUpFireFly",
+      "name": "E.G.O 감응도 증가"
+    },
+    {
+      "id": "LvUpFireFly_Over",
+      "name": "E.G.O 감응도 과잉"
+    },
+    {
+      "id": "LvUpHohenheimBigBird",
+      "name": "E.G.O 감응도 증가"
+    },
+    {
+      "id": "LvUpHohenheimBigBird_Over",
+      "name": "E.G.O 감응도 과잉"
+    },
+    {
+      "id": "MD511",
+      "name": "공격 레벨 강화 I"
+    },
+    {
+      "id": "MD512",
+      "name": "방어 레벨 강화"
+    },
+    {
+      "id": "MD513",
+      "name": "강인함 I"
+    },
+    {
+      "id": "MD514",
+      "name": "성장 I"
+    },
+    {
+      "id": "MD515",
+      "name": "수비 스킬 강화"
+    },
+    {
+      "id": "MD516",
+      "name": "받는 피해량 감소 강화"
+    },
+    {
+      "id": "MD521",
+      "name": "공격 레벨 강화 II"
+    },
+    {
+      "id": "MD522",
+      "name": "육체 강화 I"
+    },
+    {
+      "id": "MD523",
+      "name": "예리 I"
+    },
+    {
+      "id": "MD524",
+      "name": "강인함 II"
+    },
+    {
+      "id": "MD525",
+      "name": "강인함 III"
+    },
+    {
+      "id": "MD526",
+      "name": "성장 II"
+    },
+    {
+      "id": "MD527",
+      "name": "완강함 I"
+    },
+    {
+      "id": "MD531",
+      "name": "예리 II"
+    },
+    {
+      "id": "MD532",
+      "name": "예리 III"
+    },
+    {
+      "id": "MD533",
+      "name": "강인함 IV"
+    },
+    {
+      "id": "MD534",
+      "name": "강인함 V"
+    },
+    {
+      "id": "MD535",
+      "name": "성장 III"
+    },
+    {
+      "id": "MD536",
+      "name": "합 위력 증폭"
+    },
+    {
+      "id": "MD537",
+      "name": "최종 위력 증폭"
+    },
+    {
+      "id": "MD538",
+      "name": "기본 위력 증폭"
+    },
+    {
+      "id": "MD541",
+      "name": "예리 IV"
+    },
+    {
+      "id": "MD542",
+      "name": "육체 강화 II"
+    },
+    {
+      "id": "MD543",
+      "name": "육체 강화 III"
+    },
+    {
+      "id": "MD544",
+      "name": "성장 IV"
+    },
+    {
+      "id": "MD545",
+      "name": "합 위력 증강"
+    },
+    {
+      "id": "MD546",
+      "name": "최종 위력 증강"
+    },
+    {
+      "id": "MD547",
+      "name": "기본 위력 증강"
+    },
+    {
+      "id": "MD548",
+      "name": "파괴력"
+    },
+    {
+      "id": "MD549",
+      "name": "완강함 II"
+    },
+    {
+      "id": "MD551",
+      "name": "예리 V"
+    },
+    {
+      "id": "MD552",
+      "name": "육체 강화 IV"
+    },
+    {
+      "id": "MD553",
+      "name": "육체 강화 V"
+    },
+    {
+      "id": "MD554",
+      "name": "성장 V"
+    },
+    {
+      "id": "MD555",
+      "name": "합 위력 증강 II"
+    },
+    {
+      "id": "MD556",
+      "name": "최종 위력 증강 II"
+    },
+    {
+      "id": "MD557",
+      "name": "기본 위력 증강 II"
+    },
+    {
+      "id": "MD558",
+      "name": "파괴력 II"
+    },
+    {
+      "id": "MD561",
+      "name": "예리 VI"
+    },
+    {
+      "id": "MD562",
+      "name": "강인함 VI"
+    },
+    {
+      "id": "MD563",
+      "name": "육체 강화 VI"
+    },
+    {
+      "id": "MD564",
+      "name": "성장 VI"
+    },
+    {
+      "id": "MD565",
+      "name": "합 위력 증강 III"
+    },
+    {
+      "id": "MD566",
+      "name": "최종 위력 증강 III"
+    },
+    {
+      "id": "MD567",
+      "name": "기본 위력 증강 III"
+    },
+    {
+      "id": "MD568",
+      "name": "파괴력 III"
+    },
+    {
+      "id": "MD571",
+      "name": "예리 VII"
+    },
+    {
+      "id": "MD572",
+      "name": "강인함 VII"
+    },
+    {
+      "id": "MD573",
+      "name": "육체 강화 VII"
+    },
+    {
+      "id": "MD574",
+      "name": "성장 VII"
+    },
+    {
+      "id": "MD575",
+      "name": "합 위력 증강 IV"
+    },
+    {
+      "id": "MD576",
+      "name": "최종 위력 증강 IV"
+    },
+    {
+      "id": "MD577",
+      "name": "기본 위력 증강 IV"
+    },
+    {
+      "id": "MD578",
+      "name": "파괴력 IV"
+    },
+    {
+      "id": "MD581",
+      "name": "예리 VIII"
+    },
+    {
+      "id": "MD582",
+      "name": "강인함 VIII"
+    },
+    {
+      "id": "MD583",
+      "name": "육체 강화 VIII"
+    },
+    {
+      "id": "MD584",
+      "name": "성장 VIII"
+    },
+    {
+      "id": "MD585",
+      "name": "합 위력 증강 V"
+    },
+    {
+      "id": "MD586",
+      "name": "최종 위력 증강 V"
+    },
+    {
+      "id": "MD587",
+      "name": "기본 위력 증강 V"
+    },
+    {
+      "id": "MD588",
+      "name": "파괴력 V"
+    },
+    {
+      "id": "MD591",
+      "name": "예리 IX"
+    },
+    {
+      "id": "MD592",
+      "name": "강인함 IX"
+    },
+    {
+      "id": "MD593",
+      "name": "육체 강화 IX"
+    },
+    {
+      "id": "MD594",
+      "name": "성장 IX"
+    },
+    {
+      "id": "MD595",
+      "name": "합 위력 증강 VI"
+    },
+    {
+      "id": "MD596",
+      "name": "최종 위력 증강 VI"
+    },
+    {
+      "id": "MD597",
+      "name": "기본 위력 증강 VI"
+    },
+    {
+      "id": "MD598",
+      "name": "파괴력 VI"
+    },
+    {
+      "id": "MD5Base",
+      "name": "추가되는 고난"
+    },
+    {
+      "id": "MD6101",
+      "name": "예리 XII"
+    },
+    {
+      "id": "MD6102",
+      "name": "강인함 XII"
+    },
+    {
+      "id": "MD6103",
+      "name": "육체 강화 XII"
+    },
+    {
+      "id": "MD6104",
+      "name": "성장 XII"
+    },
+    {
+      "id": "MD6105",
+      "name": "합 위력 증강 VII"
+    },
+    {
+      "id": "MD6106",
+      "name": "최종 위력 증강 VII"
+    },
+    {
+      "id": "MD6107",
+      "name": "기본 위력 증강 VII"
+    },
+    {
+      "id": "MD6111",
+      "name": "예리 XIII"
+    },
+    {
+      "id": "MD6112",
+      "name": "강인함 XIII"
+    },
+    {
+      "id": "MD6113",
+      "name": "육체 강화 XIII"
+    },
+    {
+      "id": "MD6114",
+      "name": "성장 XIII"
+    },
+    {
+      "id": "MD6115",
+      "name": "합 위력 증강 VIII"
+    },
+    {
+      "id": "MD6116",
+      "name": "최종 위력 증강 VIII"
+    },
+    {
+      "id": "MD6117",
+      "name": "기본 위력 증강 VIII"
+    },
+    {
+      "id": "MD6121",
+      "name": "예리 XIV"
+    },
+    {
+      "id": "MD6122",
+      "name": "강인함 XIV"
+    },
+    {
+      "id": "MD6123",
+      "name": "육체 강화 XIV"
+    },
+    {
+      "id": "MD6124",
+      "name": "성장 XIV"
+    },
+    {
+      "id": "MD6125",
+      "name": "합 위력 증강 IX"
+    },
+    {
+      "id": "MD6126",
+      "name": "최종 위력 증강 IX"
+    },
+    {
+      "id": "MD6127",
+      "name": "기본 위력 증강 IX"
+    },
+    {
+      "id": "MD6131",
+      "name": "예리 XV"
+    },
+    {
+      "id": "MD6132",
+      "name": "강인함 XV"
+    },
+    {
+      "id": "MD6133",
+      "name": "육체 강화 XV"
+    },
+    {
+      "id": "MD6134",
+      "name": "성장 XV"
+    },
+    {
+      "id": "MD6135",
+      "name": "합 위력 증강 X"
+    },
+    {
+      "id": "MD6136",
+      "name": "최종 위력 증강 X"
+    },
+    {
+      "id": "MD6137",
+      "name": "기본 위력 증강 X"
+    },
+    {
+      "id": "MD6141",
+      "name": "예리 XVI"
+    },
+    {
+      "id": "MD6142",
+      "name": "강인함 XVI"
+    },
+    {
+      "id": "MD6143",
+      "name": "육체 강화 XVI"
+    },
+    {
+      "id": "MD6144",
+      "name": "성장 XVI"
+    },
+    {
+      "id": "MD6145",
+      "name": "합 위력 증강 XI"
+    },
+    {
+      "id": "MD6146",
+      "name": "최종 위력 증강 XI"
+    },
+    {
+      "id": "MD6147",
+      "name": "기본 위력 증강 XI"
+    },
+    {
+      "id": "MD6Limit101",
+      "name": "레벨 강화"
+    },
+    {
+      "id": "MD6Limit102",
+      "name": "쇠약"
+    },
+    {
+      "id": "MD6Limit103",
+      "name": "불꽃 낙인 I"
+    },
+    {
+      "id": "MD6Limit104",
+      "name": "인플레이션 I"
+    },
+    {
+      "id": "MD6Limit105",
+      "name": "자아 간섭 I"
+    },
+    {
+      "id": "MD6Limit111",
+      "name": "레벨 강화"
+    },
+    {
+      "id": "MD6Limit112",
+      "name": "쇠약"
+    },
+    {
+      "id": "MD6Limit113",
+      "name": "정신 착란 I"
+    },
+    {
+      "id": "MD6Limit114",
+      "name": "신경 촉진 I"
+    },
+    {
+      "id": "MD6Limit115",
+      "name": "정신력 고갈 I"
+    },
+    {
+      "id": "MD6Limit121",
+      "name": "레벨 강화"
+    },
+    {
+      "id": "MD6Limit122",
+      "name": "쇠약"
+    },
+    {
+      "id": "MD6Limit123",
+      "name": "진동 차단"
+    },
+    {
+      "id": "MD6Limit124",
+      "name": "인플레이션 II"
+    },
+    {
+      "id": "MD6Limit125",
+      "name": "자아 간섭 II"
+    },
+    {
+      "id": "MD6Limit131",
+      "name": "레벨 강화"
+    },
+    {
+      "id": "MD6Limit132",
+      "name": "쇠약"
+    },
+    {
+      "id": "MD6Limit133",
+      "name": "생명력 증폭"
+    },
+    {
+      "id": "MD6Limit134",
+      "name": "파괴력"
+    },
+    {
+      "id": "MD6Limit135",
+      "name": "불꽃 낙인 II"
+    },
+    {
+      "id": "MD6Limit141",
+      "name": "레벨 강화"
+    },
+    {
+      "id": "MD6Limit142",
+      "name": "쇠약"
+    },
+    {
+      "id": "MD6Limit143",
+      "name": "정신 착란 II"
+    },
+    {
+      "id": "MD6Limit144",
+      "name": "신경 촉진 II"
+    },
+    {
+      "id": "MD6Limit145",
+      "name": "정신력 고갈 II"
+    },
+    {
+      "id": "MD6LimitBaseN",
+      "name": "추가되는 제약"
+    },
+    {
+      "id": "MDEMaa",
+      "name": "방어 레벨 강화"
+    },
+    {
+      "id": "MDEMab",
+      "name": "수비 스킬 강화"
+    },
+    {
+      "id": "MDEMac",
+      "name": "공격 레벨 강화"
+    },
+    {
+      "id": "MDEMad",
+      "name": "최대 체력 강화"
+    },
+    {
+      "id": "MDEMae",
+      "name": "받는 피해량 감소 강화"
+    },
+    {
+      "id": "MDEMca",
+      "name": "육체 비대"
+    },
+    {
+      "id": "MDEMcb",
+      "name": "육체 강대"
+    },
+    {
+      "id": "MDEMcc",
+      "name": "최대 체력 강화"
+    },
+    {
+      "id": "MDEMcd",
+      "name": "최종 공격 증강"
+    },
+    {
+      "id": "MDEMce",
+      "name": "기본 공격 증강"
+    },
+    {
+      "id": "MDEMcf",
+      "name": "합 공격 증강"
+    },
+    {
+      "id": "MDEMcg",
+      "name": "최종 위력 강화"
+    },
+    {
+      "id": "MDEMda",
+      "name": "육체 신장"
+    },
+    {
+      "id": "MDEMdb",
+      "name": "육체 보강"
+    },
+    {
+      "id": "MDEMdc",
+      "name": "기본 전투 장비"
+    },
+    {
+      "id": "MDEMdd",
+      "name": "최종 전투 장비"
+    },
+    {
+      "id": "MDEMde",
+      "name": "방어 장비"
+    },
+    {
+      "id": "MDEMdf",
+      "name": "코인 공격 증강"
+    },
+    {
+      "id": "MDEMdg",
+      "name": "강대무비"
+    },
+    {
+      "id": "MDEMdh",
+      "name": "되와 말로 주기"
+    },
+    {
+      "id": "MDHMaa",
+      "name": "육체 증폭 Ⅰ"
+    },
+    {
+      "id": "MDHMab",
+      "name": "단단함"
+    },
+    {
+      "id": "MDHMac",
+      "name": "육체 확대 Ⅰ"
+    },
+    {
+      "id": "MDHMad",
+      "name": "최대 체력 증강 Ⅰ"
+    },
+    {
+      "id": "MDHMae",
+      "name": "받는 피해량 경감"
+    },
+    {
+      "id": "MDHMba",
+      "name": "육체 증폭 Ⅱ"
+    },
+    {
+      "id": "MDHMbb",
+      "name": "육체 확대 Ⅱ"
+    },
+    {
+      "id": "MDHMbc",
+      "name": "최종 위력 증강 Ⅰ"
+    },
+    {
+      "id": "MDHMbd",
+      "name": "기본 위력 증강 Ⅰ"
+    },
+    {
+      "id": "MDHMbe",
+      "name": "강인함 Ⅰ"
+    },
+    {
+      "id": "MDHMbf",
+      "name": "말로 주기Ⅰ"
+    },
+    {
+      "id": "MDHMca",
+      "name": "육체 증폭 Ⅲ"
+    },
+    {
+      "id": "MDHMcb",
+      "name": "육체 확대 Ⅲ"
+    },
+    {
+      "id": "MDHMcc",
+      "name": "최종 위력 증강 Ⅱ"
+    },
+    {
+      "id": "MDHMcd",
+      "name": "기본 위력 증강 Ⅱ"
+    },
+    {
+      "id": "MDHMce",
+      "name": "최종 위력 증강 Ⅲ"
+    },
+    {
+      "id": "MDHMcf",
+      "name": "최대 체력 증강 Ⅱ"
+    },
+    {
+      "id": "MDHMcg",
+      "name": "합 공격 증강 Ⅰ"
+    },
+    {
+      "id": "MDHMda",
+      "name": "육체 증폭  Ⅳ"
+    },
+    {
+      "id": "MDHMdb",
+      "name": "육체 확대  Ⅳ"
+    },
+    {
+      "id": "MDHMdc",
+      "name": "최종 위력 증강 Ⅳ"
+    },
+    {
+      "id": "MDHMdd",
+      "name": "기본 위력 증강 Ⅲ"
+    },
+    {
+      "id": "MDHMde",
+      "name": "강인함 Ⅱ"
+    },
+    {
+      "id": "MDHMdf",
+      "name": "코인 위력 증강"
+    },
+    {
+      "id": "MDHMdg",
+      "name": "합 공격 증강 Ⅱ"
+    },
+    {
+      "id": "MDHMdh",
+      "name": "완강함"
+    },
+    {
+      "id": "MDHcFaBa",
+      "name": "방어 레벨 강화"
+    },
+    {
+      "id": "MDHcFaBb",
+      "name": "수비 위력 강화"
+    },
+    {
+      "id": "MDHcFaBc",
+      "name": "최대 체력 강화"
+    },
+    {
+      "id": "MDHcFaBd",
+      "name": "받는 피해량 경감"
+    },
+    {
+      "id": "MDHcFbBa",
+      "name": "공격 레벨 강화"
+    },
+    {
+      "id": "MDHcFbBb",
+      "name": "최종 위력 강화"
+    },
+    {
+      "id": "MDHcFbBc",
+      "name": "기본 위력 강화"
+    },
+    {
+      "id": "MDHcFbBd",
+      "name": "가하는 피해량 강화"
+    },
+    {
+      "id": "MDHcFcBa",
+      "name": "최종 위력 증폭 I"
+    },
+    {
+      "id": "MDHcFcBb",
+      "name": "최종 위력 증폭 II"
+    },
+    {
+      "id": "MDHcFcBc",
+      "name": "기본 위력 증폭 I"
+    },
+    {
+      "id": "MDHcFcBd",
+      "name": "기본 위력 증폭 II"
+    },
+    {
+      "id": "MDHcFcBe",
+      "name": "코인 위력 증폭"
+    },
+    {
+      "id": "MDHcFcBf",
+      "name": "과부하 I"
+    },
+    {
+      "id": "MDHcFdBa",
+      "name": "최종 위력 증폭 III"
+    },
+    {
+      "id": "MDHcFdBb",
+      "name": "최종 위력 증폭 IV"
+    },
+    {
+      "id": "MDHcFdBc",
+      "name": "코인 위력 증폭 II"
+    },
+    {
+      "id": "MDHcFdBd",
+      "name": "기본 위력 증폭 III"
+    },
+    {
+      "id": "MDHcFdBe",
+      "name": "과부하 II"
+    },
+    {
+      "id": "MDHcFdBf",
+      "name": "강인함"
+    },
+    {
+      "id": "MDHcFdBg",
+      "name": "완강함"
+    },
+    {
+      "id": "MDcFaBa",
+      "name": "화상 추가 부여"
+    },
+    {
+      "id": "MDcFaBb",
+      "name": "출혈 추가 부여"
+    },
+    {
+      "id": "MDcFaBc",
+      "name": "진동 추가 부여"
+    },
+    {
+      "id": "MDcFaBd",
+      "name": "파열 추가 부여"
+    },
+    {
+      "id": "MDcFaBe",
+      "name": "침잠 추가 부여"
+    },
+    {
+      "id": "MDcFaBf",
+      "name": "참격 강화"
+    },
+    {
+      "id": "MDcFaBg",
+      "name": "관통 강화"
+    },
+    {
+      "id": "MDcFaBh",
+      "name": "타격 강화"
+    },
+    {
+      "id": "MDcFbBa",
+      "name": "속성 내성 강화 (분노 제외)"
+    },
+    {
+      "id": "MDcFbBb",
+      "name": "속성 내성 강화 (색욕 제외)"
+    },
+    {
+      "id": "MDcFbBc",
+      "name": "속성 내성 강화 (나태 제외)"
+    },
+    {
+      "id": "MDcFbBd",
+      "name": "속성 내성 강화 (탐식 제외)"
+    },
+    {
+      "id": "MDcFbBe",
+      "name": "속성 내성 강화 (우울 제외)"
+    },
+    {
+      "id": "MDcFbBf",
+      "name": "속성 내성 강화 (오만 제외)"
+    },
+    {
+      "id": "MDcFbBg",
+      "name": "속성 내성 강화 (질투 제외)"
+    },
+    {
+      "id": "MDcFbBh",
+      "name": "체력 증진"
+    },
+    {
+      "id": "MDcFcBa",
+      "name": "슬롯 가중치 증가"
+    },
+    {
+      "id": "MDcFcBb",
+      "name": "피해량 흡수"
+    },
+    {
+      "id": "MDcFcBc",
+      "name": "속도 증가"
+    },
+    {
+      "id": "MDcFcBd",
+      "name": "정신 공격"
+    },
+    {
+      "id": "MDcFcBe",
+      "name": "예리함"
+    },
+    {
+      "id": "MDcFcBf",
+      "name": "재정비"
+    },
+    {
+      "id": "MDcFcBg",
+      "name": "일방 공격 강화"
+    },
+    {
+      "id": "MDcFcBh",
+      "name": "합 공격 강화"
+    },
+    {
+      "id": "MRR501",
+      "name": "부여량 굴절"
+    },
+    {
+      "id": "MRR502",
+      "name": "획득량 굴절"
+    },
+    {
+      "id": "MRR503",
+      "name": "굴절된 정신"
+    },
+    {
+      "id": "MRR504",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR505",
+      "name": "굴절된 충전"
+    },
+    {
+      "id": "MRR506",
+      "name": "굴절된 폭발"
+    },
+    {
+      "id": "MRR507",
+      "name": "굴절된 파열"
+    },
+    {
+      "id": "MRR508",
+      "name": "굴절된 침잠"
+    },
+    {
+      "id": "MRR509",
+      "name": "약점 파괴"
+    },
+    {
+      "id": "MRR510",
+      "name": "네뷸라이저"
+    },
+    {
+      "id": "MRR511",
+      "name": "고독한 사수"
+    },
+    {
+      "id": "MRR512",
+      "name": "이어지는 투지"
+    },
+    {
+      "id": "MRR513",
+      "name": "자원 수확"
+    },
+    {
+      "id": "MRR514",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR515",
+      "name": "완강한 방어"
+    },
+    {
+      "id": "MRR516",
+      "name": "사생결단"
+    },
+    {
+      "id": "MRR517",
+      "name": "격노한 반격"
+    },
+    {
+      "id": "MRR518",
+      "name": "추억의 펜던트"
+    },
+    {
+      "id": "MRR519",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR520",
+      "name": "흉탄 쇄도"
+    },
+    {
+      "id": "MRR521",
+      "name": "체력 왜곡"
+    },
+    {
+      "id": "MRR522",
+      "name": "위태로운 승부"
+    },
+    {
+      "id": "MRR523",
+      "name": "핏빛 연회"
+    },
+    {
+      "id": "MRR524",
+      "name": "피의 축제"
+    },
+    {
+      "id": "MRR526",
+      "name": "굴절된 참격"
+    },
+    {
+      "id": "MRR527",
+      "name": "굴절된 관통"
+    },
+    {
+      "id": "MRR528",
+      "name": "굴절된 타격"
+    },
+    {
+      "id": "MRR529",
+      "name": "성장 굴절 I"
+    },
+    {
+      "id": "MRR530",
+      "name": "성장 굴절 II"
+    },
+    {
+      "id": "MRR531",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR532",
+      "name": "자원 휘발"
+    },
+    {
+      "id": "MRR533",
+      "name": "만발한 피"
+    },
+    {
+      "id": "MRR534",
+      "name": "완강한 방어"
+    },
+    {
+      "id": "MRR535",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR536",
+      "name": "굴절된 격노"
+    },
+    {
+      "id": "MRR537",
+      "name": "체력 굴절 II"
+    },
+    {
+      "id": "MRR538",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR539",
+      "name": "핏빛 연회"
+    },
+    {
+      "id": "MRR540",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR541",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR542",
+      "name": "체력 굴절"
+    },
+    {
+      "id": "MRR543",
+      "name": "이어지는 의지"
+    },
+    {
+      "id": "MRR544",
+      "name": "위력 룰렛"
+    },
+    {
+      "id": "MRR545",
+      "name": "유리 대포"
+    },
+    {
+      "id": "MRR546",
+      "name": "하이리스크"
+    },
+    {
+      "id": "MRR547",
+      "name": "위력 룰렛"
+    },
+    {
+      "id": "MRR548",
+      "name": "위태로운 승부"
+    },
+    {
+      "id": "MRR549",
+      "name": "사생결단"
+    },
+    {
+      "id": "MRR550",
+      "name": "약간의 리스크"
+    },
+    {
+      "id": "MRR551",
+      "name": "굴절된 출혈"
+    },
+    {
+      "id": "MRR552",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR553",
+      "name": "한번의 숨"
+    },
+    {
+      "id": "MRR554",
+      "name": "버프 이름"
+    },
+    {
+      "id": "MRR555",
+      "name": "합 위력 굴절"
+    },
+    {
+      "id": "MRR556",
+      "name": "유리 대포"
+    },
+    {
+      "id": "MRR557",
+      "name": "굴절된 호흡"
+    },
+    {
+      "id": "MRR558",
+      "name": "굴절된 분노"
+    },
+    {
+      "id": "MRR559",
+      "name": "굴절된 색욕"
+    },
+    {
+      "id": "MRR560",
+      "name": "굴절된 나태"
+    },
+    {
+      "id": "MRR561",
+      "name": "굴절된 탐식"
+    },
+    {
+      "id": "MRR562",
+      "name": "굴절된 우울"
+    },
+    {
+      "id": "MRR563",
+      "name": "굴절된 오만"
+    },
+    {
+      "id": "MRR564",
+      "name": "굴절된 질투"
+    },
+    {
+      "id": "MRR565",
+      "name": "안락함"
+    },
+    {
+      "id": "MRR566",
+      "name": "공격성 굴절"
+    },
+    {
+      "id": "MRR567",
+      "name": "하이리스크"
+    },
+    {
+      "id": "MRR568",
+      "name": "방어 굴절"
+    },
+    {
+      "id": "MRR569",
+      "name": "피해량 굴절"
+    },
+    {
+      "id": "MRR5BaseN",
+      "name": "적용 중인 고난"
+    },
+    {
+      "id": "MRR5BaseP",
+      "name": "적용 중인 버프"
+    },
+    {
+      "id": "MRcAfBa",
+      "name": "목화"
+    },
+    {
+      "id": "MRcAfBb",
+      "name": "붉게 물든 목화"
+    },
+    {
+      "id": "MRcAiBa",
+      "name": "불씨"
+    },
+    {
+      "id": "MRcAiBb",
+      "name": "아른거리는 불씨"
+    },
+    {
+      "id": "MRcAiBc",
+      "name": "점화"
+    },
+    {
+      "id": "MRcAmBa",
+      "name": "경멸"
+    },
+    {
+      "id": "MRcAmBb",
+      "name": "손아귀"
+    },
+    {
+      "id": "MRcAmBbDisplay",
+      "name": "손아귀"
+    },
+    {
+      "id": "MRcAmBc",
+      "name": "시선"
+    },
+    {
+      "id": "MRcAmBd",
+      "name": "전부를 보는 시선"
+    },
+    {
+      "id": "MadFeather",
+      "name": "눈알 깃"
+    },
+    {
+      "id": "MadFeather_LowMorale",
+      "name": "양날깃"
+    },
+    {
+      "id": "MadFeather_Panic",
+      "name": "양날깃"
+    },
+    {
+      "id": "MagicalGirlAppear",
+      "name": "마법소녀 등장!"
+    },
+    {
+      "id": "MagicalGirlResponse",
+      "name": "마법소녀의 영창"
+    },
+    {
+      "id": "Malkuth_Imperfect",
+      "name": "말쿠트의 통치 - 불완전 현현"
+    },
+    {
+      "id": "MarkOfButler",
+      "name": "버.표"
+    },
+    {
+      "id": "MarkOfHeresy",
+      "name": "주시"
+    },
+    {
+      "id": "MaxHpMultiplier",
+      "name": "최대 체력 증가"
+    },
+    {
+      "id": "MeatGearForce",
+      "name": "고기 톱니:강제"
+    },
+    {
+      "id": "MeleeCover",
+      "name": "근접 지원"
+    },
+    {
+      "id": "MentalCrack",
+      "name": "정신 균열"
+    },
+    {
+      "id": "MentalIncreaseDown",
+      "name": "정신력 회복 효율 감소"
+    },
+    {
+      "id": "MentalSystemResultDecrease_Typo",
+      "name": "정신력 감소 효율"
+    },
+    {
+      "id": "MentalSystemResultIncrease_Typo",
+      "name": "정신력 회복 효율"
+    },
+    {
+      "id": "MeursaultBeeGunLong",
+      "name": "호넷[라이플]"
+    },
+    {
+      "id": "MeursaultBeeGunShort",
+      "name": "호넷[샷건]"
+    },
+    {
+      "id": "MeursaultBeeSpore",
+      "name": "포자"
+    },
+    {
+      "id": "MeursaultSporeBulletLong",
+      "name": "포자탄[기본]"
+    },
+    {
+      "id": "MeursaultSporeBulletReloading",
+      "name": "재장전[포자보충]"
+    },
+    {
+      "id": "MeursaultSporeBulletShort",
+      "name": "포자탄[산탄]"
+    },
+    {
+      "id": "MeursaultWorkerBee",
+      "name": "충성 페로몬"
+    },
+    {
+      "id": "Meursault_Last_Remodeling",
+      "name": "마지막 개조"
+    },
+    {
+      "id": "MiddleFatherGuts",
+      "name": "초근성"
+    },
+    {
+      "id": "MiddleFatherSwordFour",
+      "name": "레바테인"
+    },
+    {
+      "id": "MiddleFatherSwordOne",
+      "name": "봉인된 검"
+    },
+    {
+      "id": "MiddleFatherSwordThree",
+      "name": "2단계 봉인 해제"
+    },
+    {
+      "id": "MiddleFatherSwordTwo",
+      "name": "1단계 봉인 해제"
+    },
+    {
+      "id": "MiddleFingerBook",
+      "name": "중지의 복수 대상"
+    },
+    {
+      "id": "MiddleFingerDaddy_LowMorale",
+      "name": "광분"
+    },
+    {
+      "id": "MiddleFingerDaddy_Panic",
+      "name": "광분"
+    },
+    {
+      "id": "MiddleFingerDaughter_LowMorale",
+      "name": "흥분"
+    },
+    {
+      "id": "MiddleFingerDaughter_Panic",
+      "name": "흥분"
+    },
+    {
+      "id": "MiddleFingerEzraSin",
+      "name": "신(心) - 에즈라"
+    },
+    {
+      "id": "MineTheRings",
+      "name": "작품명: 티비아"
+    },
+    {
+      "id": "MiniDecontaminationKit",
+      "name": "조력자 - 얼룩 제거 세트"
+    },
+    {
+      "id": "MinusCoinValueDown",
+      "name": "빼기 코인 약화"
+    },
+    {
+      "id": "MinusCoinValueUp",
+      "name": "빼기 코인 강화"
+    },
+    {
+      "id": "MlynarWaiting",
+      "name": "칼집 속 사람"
+    },
+    {
+      "id": "MoonLight",
+      "name": "달빛"
+    },
+    {
+      "id": "MosesMiddle_LowMorale",
+      "name": "돌이킬 수 없이 망가진 몸"
+    },
+    {
+      "id": "MosesMiddle_Panic",
+      "name": "돌이킬 수 없이 망가진 몸"
+    },
+    {
+      "id": "MosesPurpleBreathBind",
+      "name": "보라색 숨 - 히스테릭"
+    },
+    {
+      "id": "MosesRedBreathAttack",
+      "name": "붉은 숨 - 내달리는 몸"
+    },
+    {
+      "id": "MosesRedBreathBody",
+      "name": "붉은 숨 - 육체 강화"
+    },
+    {
+      "id": "MosesRedBreathCharge",
+      "name": "깊은 숨 - 붉은색"
+    },
+    {
+      "id": "MosesRedBreathShield",
+      "name": "붉은 숨 - 보호"
+    },
+    {
+      "id": "MosesSin",
+      "name": "신(心) - 모제스"
+    },
+    {
+      "id": "MosesWarPTSD",
+      "name": "그 날의 기억"
+    },
+    {
+      "id": "MosesWhiteBreathMental",
+      "name": "하얀 숨 - 정신 보호"
+    },
+    {
+      "id": "Muckworm",
+      "name": "구더기"
+    },
+    {
+      "id": "MuscleContraction",
+      "name": "근섬유의 기계적 수축과 이완"
+    },
+    {
+      "id": "NEgoFleshSpatula_LowMorale",
+      "name": "살점 주걱"
+    },
+    {
+      "id": "NEgoFleshSpatula_Panic",
+      "name": "살점 주걱"
+    },
+    {
+      "id": "Nail",
+      "name": "N사의 못"
+    },
+    {
+      "id": "NailPersonality",
+      "name": "못"
+    },
+    {
+      "id": "NebulizerExhale",
+      "name": "네뷸라이저 α"
+    },
+    {
+      "id": "NebulizerInhale",
+      "name": "네뷸라이저 β"
+    },
+    {
+      "id": "Nervous",
+      "name": "초조함"
+    },
+    {
+      "id": "NervousImpairment",
+      "name": "신경 손상"
+    },
+    {
+      "id": "NetherseaBrand",
+      "name": "명흔"
+    },
+    {
+      "id": "NetherseaBrandUnit",
+      "name": "명흔"
+    },
+    {
+      "id": "NextHallway",
+      "name": "무리 이주"
+    },
+    {
+      "id": "NiddleEGO",
+      "name": "바늘"
+    },
+    {
+      "id": "NightDrifterGuilty",
+      "name": "미약한 죄책감"
+    },
+    {
+      "id": "NightPathfinding",
+      "name": "듀라한"
+    },
+    {
+      "id": "NoVillain",
+      "name": "역변-리버스드"
+    },
+    {
+      "id": "ObedienceGregBigBird",
+      "name": "숲의 파수꾼"
+    },
+    {
+      "id": "Obedient",
+      "name": "공허한 순종"
+    },
+    {
+      "id": "ObjectOfExploration",
+      "name": "탐구 대상"
+    },
+    {
+      "id": "ObservationMoses",
+      "name": "관찰력"
+    },
+    {
+      "id": "ObservationTheRings",
+      "name": "조망"
+    },
+    {
+      "id": "ObservedPerson",
+      "name": "피관찰자"
+    },
+    {
+      "id": "ObsessedTeacher_LowMorale",
+      "name": "가문의 수치"
+    },
+    {
+      "id": "ObsessedTeacher_Panic",
+      "name": "가문의 수치"
+    },
+    {
+      "id": "ObsessionAndGreed",
+      "name": "신(心) - 발렌치나"
+    },
+    {
+      "id": "OffenseBug",
+      "name": "공격 해충[바퀴]"
+    },
+    {
+      "id": "OminousTalisman",
+      "name": "불길한 부적"
+    },
+    {
+      "id": "OneDropNutrition",
+      "name": "한 방울의 양분"
+    },
+    {
+      "id": "OneOnOneDuel",
+      "name": "1대1 대결"
+    },
+    {
+      "id": "Operation",
+      "name": "시술"
+    },
+    {
+      "id": "OutisNoHat",
+      "name": "강력 징수 집행"
+    },
+    {
+      "id": "OutpouringAnger",
+      "name": "발악"
+    },
+    {
+      "id": "OverHeatedGasHarpoon",
+      "name": "과열된 가스 작살"
+    },
+    {
+      "id": "OwnTime",
+      "name": "분담 시간"
+    },
+    {
+      "id": "PainfulScar_LowMorale",
+      "name": "모조된 아비"
+    },
+    {
+      "id": "PainfulScar_Panic",
+      "name": "모조된 아비"
+    },
+    {
+      "id": "PaintingMaterial",
+      "name": "그림 재료"
+    },
+    {
+      "id": "ParadeConcentration",
+      "name": "라만차 퍼레이드"
+    },
+    {
+      "id": "Paralysis",
+      "name": "마비"
+    },
+    {
+      "id": "ParryingResultDown",
+      "name": "합 위력 감소"
+    },
+    {
+      "id": "ParryingResultUp",
+      "name": "합 위력 증가"
+    },
+    {
+      "id": "ParticipationMod",
+      "name": "참전"
+    },
+    {
+      "id": "PassedPortal_Blue",
+      "name": "전류를 뿜어내는 차원"
+    },
+    {
+      "id": "PassedPortal_Green",
+      "name": "독이 들끓는 차원"
+    },
+    {
+      "id": "PassedPortal_Red",
+      "name": "피가 흐르는 차원"
+    },
+    {
+      "id": "PassedPortal_Yellow",
+      "name": "끊임없이 진동하는 차원"
+    },
+    {
+      "id": "PenanceFirst",
+      "name": "참회"
+    },
+    {
+      "id": "PenanceSecond",
+      "name": "참회 - 경계"
+    },
+    {
+      "id": "PenanceThird",
+      "name": "참회 - 고해"
+    },
+    {
+      "id": "PenetrateDamageDown",
+      "name": "관통 피해량 감소"
+    },
+    {
+      "id": "PenetrateDamageUp",
+      "name": "관통 피해량 증가"
+    },
+    {
+      "id": "PenetrateResistDown",
+      "name": "관통 내성 약화"
+    },
+    {
+      "id": "PenetrateResistUp",
+      "name": "관통 내성 강화"
+    },
+    {
+      "id": "PenetrateResultUp",
+      "name": "관통 위력 증가"
+    },
+    {
+      "id": "PenetrateTakeDamageDown",
+      "name": "관통 보호"
+    },
+    {
+      "id": "PenetrateTakeDamageUp",
+      "name": "관통 취약"
+    },
+    {
+      "id": "PenetratingSword",
+      "name": "꿰뚫는 검"
+    },
+    {
+      "id": "Penetration",
+      "name": "굳어가는 피"
+    },
+    {
+      "id": "Persistent",
+      "name": "끈질김"
+    },
+    {
+      "id": "PhantomIncision",
+      "name": "검흔[잔상]"
+    },
+    {
+      "id": "PhantomIncisionTotal",
+      "name": "지혜성도"
+    },
+    {
+      "id": "PhotoElectricity",
+      "name": "광전"
+    },
+    {
+      "id": "PileObedient",
+      "name": "쌓이는 순종"
+    },
+    {
+      "id": "PinkPetals",
+      "name": "분홍 꽃잎"
+    },
+    {
+      "id": "PinkRibbon",
+      "name": "분홍 리본"
+    },
+    {
+      "id": "PinkRibbon_Ishmael",
+      "name": "분홍 리본"
+    },
+    {
+      "id": "PlusCoinValueDown",
+      "name": "더하기 코인 약화"
+    },
+    {
+      "id": "PlusCoinValueUp",
+      "name": "더하기 코인 강화"
+    },
+    {
+      "id": "Poison",
+      "name": "독"
+    },
+    {
+      "id": "PowerOfLoveAndJustice",
+      "name": "사랑/정의"
+    },
+    {
+      "id": "Precarious",
+      "name": "무책임한 꿈"
+    },
+    {
+      "id": "Predation",
+      "name": "포식"
+    },
+    {
+      "id": "PrepareSinRose",
+      "name": "면류관"
+    },
+    {
+      "id": "PreparedMeat",
+      "name": "준비된 고기"
+    },
+    {
+      "id": "PressureOfPrescript",
+      "name": "압박감"
+    },
+    {
+      "id": "PressureOfPrescript_2nd",
+      "name": "극심한 압박감"
+    },
+    {
+      "id": "Prey",
+      "name": "사냥감"
+    },
+    {
+      "id": "ProtectStance",
+      "name": "보호 태세"
+    },
+    {
+      "id": "ProtectStanceRyoshu",
+      "name": "호위태세"
+    },
+    {
+      "id": "Protection",
+      "name": "보호"
+    },
+    {
+      "id": "ProtectiveSword",
+      "name": "지키는 검"
+    },
+    {
+      "id": "Prowl_LowMorale",
+      "name": "배회"
+    },
+    {
+      "id": "Prowl_Panic",
+      "name": "배회"
+    },
+    {
+      "id": "PseudoLastBoss_KingCrap",
+      "name": "분.게"
+    },
+    {
+      "id": "PumpkinJelly",
+      "name": "오렌지맛 뀽뀽이"
+    },
+    {
+      "id": "QiuAndHonglu",
+      "name": "나의 진짜 마음…"
+    },
+    {
+      "id": "Qiu_LowMorale",
+      "name": "가치우"
+    },
+    {
+      "id": "Qiu_Panic",
+      "name": "가치우"
+    },
+    {
+      "id": "QueenBeeMark",
+      "name": "페로몬 표식"
+    },
+    {
+      "id": "QueenBeepheromone",
+      "name": "페로몬"
+    },
+    {
+      "id": "RageResonance",
+      "name": "움켜쥔 분노"
+    },
+    {
+      "id": "RapidGrowthApple",
+      "name": "급한 성장"
+    },
+    {
+      "id": "ReCompulsion",
+      "name": "반전 강박"
+    },
+    {
+      "id": "RealPaperBear",
+      "name": "진짜 곰"
+    },
+    {
+      "id": "ReattachedCurseTag",
+      "name": "다시 붙여진 저주 부적"
+    },
+    {
+      "id": "ReattachedCurseTag_Re",
+      "name": "다시 붙여진 저주 부적"
+    },
+    {
+      "id": "ReboundWei",
+      "name": "반동"
+    },
+    {
+      "id": "RecklessDuel",
+      "name": "무모한 결투"
+    },
+    {
+      "id": "RedApricotBlossom",
+      "name": "홍매화"
+    },
+    {
+      "id": "RedEyeFirst",
+      "name": "적안"
+    },
+    {
+      "id": "RedEyeSecond",
+      "name": "적안 - 경계"
+    },
+    {
+      "id": "RedEyeThird",
+      "name": "적안 - 포식"
+    },
+    {
+      "id": "RedemptionTheRings",
+      "name": "재료가 떨어지는 상처"
+    },
+    {
+      "id": "Reduction",
+      "name": "공격 위력 감소"
+    },
+    {
+      "id": "RefractedWill",
+      "name": "굴절된 의지"
+    },
+    {
+      "id": "Refraction4A",
+      "name": "1번 편성 효과"
+    },
+    {
+      "id": "Refraction4B",
+      "name": "2번 편성 효과"
+    },
+    {
+      "id": "Refraction4C",
+      "name": "3번 편성 효과"
+    },
+    {
+      "id": "Refraction4D",
+      "name": "4번 편성 효과"
+    },
+    {
+      "id": "Refraction4E",
+      "name": "5번 편성 효과"
+    },
+    {
+      "id": "Refraction4F",
+      "name": "6번 편성 효과"
+    },
+    {
+      "id": "Refraction4G",
+      "name": "7번 편성 효과"
+    },
+    {
+      "id": "Refraction4H",
+      "name": "8번 편성 효과"
+    },
+    {
+      "id": "Refraction4I",
+      "name": "9번 편성 효과"
+    },
+    {
+      "id": "Refraction4J",
+      "name": "10번 편성 효과"
+    },
+    {
+      "id": "Refraction4K",
+      "name": "11번 편성 효과"
+    },
+    {
+      "id": "Refraction4L",
+      "name": "12번 편성 효과"
+    },
+    {
+      "id": "RegainedStrength",
+      "name": "다시 도는 피의 충동"
+    },
+    {
+      "id": "RegainedStrength_2nd",
+      "name": "다시 도는 피의 충동 II"
+    },
+    {
+      "id": "RegainedStrength_3rd",
+      "name": "다시 도는 피의 충동 III"
+    },
+    {
+      "id": "ReinforcedTattooIshmael",
+      "name": "중지식 강화 문신"
+    },
+    {
+      "id": "ReinforcedTattooSpider",
+      "name": "중지 - 원한 문신 [<s>큰 형님</s>]"
+    },
+    {
+      "id": "ReinforcedTattooSpiderDaughter",
+      "name": "중지식 강화 문신"
+    },
+    {
+      "id": "ReleaseBreath",
+      "name": "가쁜 날숨"
+    },
+    {
+      "id": "ReloadKeepAmmo",
+      "name": "재장전 - 잔탄 유지"
+    },
+    {
+      "id": "ReloadLament",
+      "name": "재장전"
+    },
+    {
+      "id": "RepressedMurderousIntend",
+      "name": "억눌린 살기"
+    },
+    {
+      "id": "RepressedMurderousIntendTwo",
+      "name": "눌린 살기"
+    },
+    {
+      "id": "RequestedTarget",
+      "name": "의뢰 대상"
+    },
+    {
+      "id": "Resentment",
+      "name": "원한"
+    },
+    {
+      "id": "ResentmentIshmael",
+      "name": "중지 - 원한"
+    },
+    {
+      "id": "ResentmentSpider",
+      "name": "중지 - 원한"
+    },
+    {
+      "id": "ResentmentSpiderDaughter",
+      "name": "중지 - 원한"
+    },
+    {
+      "id": "Resonate",
+      "name": "공진"
+    },
+    {
+      "id": "RestoredBattleSense",
+      "name": "극력 [極力]"
+    },
+    {
+      "id": "ResultEnhancement",
+      "name": "위력 증가"
+    },
+    {
+      "id": "ResultReduction",
+      "name": "위력 감소"
+    },
+    {
+      "id": "RetaliationBook",
+      "name": "앙갚음 대상"
+    },
+    {
+      "id": "RetaliationBookFamily",
+      "name": "형제자매의 앙갚음 대상"
+    },
+    {
+      "id": "Retreat",
+      "name": "전략적 휴식 복지 모드"
+    },
+    {
+      "id": "RetreatForCommon",
+      "name": "전장 퇴각"
+    },
+    {
+      "id": "Retreat_FullStop",
+      "name": "후방 지원 배치"
+    },
+    {
+      "id": "RienWeapon01Hatchet",
+      "name": "손도끼로 갈비뼈를 찍어 내릴 때는…"
+    },
+    {
+      "id": "RienWeapon01Hatchet2phase",
+      "name": "손도끼로 갈비뼈를 찍어 내릴 때는…"
+    },
+    {
+      "id": "RienWeapon02Stiletto",
+      "name": "스틸레토로 허파를 꿰뚫을 때는…"
+    },
+    {
+      "id": "RienWeapon02Stiletto2phase",
+      "name": "스틸레토로 허파를 꿰뚫을 때는…"
+    },
+    {
+      "id": "RienWeapon03Greatsword",
+      "name": "바스타드 소드로 어깨와 머리를 짓이길 때는…"
+    },
+    {
+      "id": "RienWeapon03Greatsword2phase",
+      "name": "바스타드 소드로 어깨와 머리를 짓이길 때는…"
+    },
+    {
+      "id": "RienWeapon04Rapier",
+      "name": "레이피어로 몸에 10개 이상의 구멍을 내야할 때는…"
+    },
+    {
+      "id": "RienWeapon04Rapier2phase",
+      "name": "레이피어로 몸에 10개 이상의 구멍을 내야할 때는…"
+    },
+    {
+      "id": "RienWeapon05Sledgehammer",
+      "name": "망치로 뒤통수를 으깨야 할 때는…"
+    },
+    {
+      "id": "RienWeapon05Sledgehammer2phase",
+      "name": "망치로 뒤통수를 으깨야 할 때는…"
+    },
+    {
+      "id": "RienWeapon06Ultragreatsword",
+      "name": "커다란 검으로 몸통을 갈라야 할 때는…"
+    },
+    {
+      "id": "RienWeapon06Ultragreatsword2phase",
+      "name": "커다란 검으로 몸통을 갈라야 할 때는…"
+    },
+    {
+      "id": "RienWeapon07Lance",
+      "name": "랜스로 20인치의 구멍을 내야 할 때는…"
+    },
+    {
+      "id": "RienWeapon07Lance2phase",
+      "name": "랜스로 20인치의 구멍을 내야 할 때는…"
+    },
+    {
+      "id": "RienWeapon08Chain",
+      "name": "채찍으로 살점을 만 갈래 떼어내야 할 때는…"
+    },
+    {
+      "id": "RienWeapon08Chain2phase",
+      "name": "채찍으로 살점을 만 갈래 떼어내야 할 때는…"
+    },
+    {
+      "id": "RienWeapon09Scythe",
+      "name": "낫으로… 누군가처럼 공간을 따라 베어내야 할 때는…"
+    },
+    {
+      "id": "RienWeapon09Scythe2phase",
+      "name": "낫으로… 누군가처럼 공간을 따라 베어내야 할 때는…"
+    },
+    {
+      "id": "RighteousFeeling",
+      "name": "정의로운 기분이라네!!"
+    },
+    {
+      "id": "RighteousFeelingSancho",
+      "name": "피눈물을 머금고, 내가 책임지겠다."
+    },
+    {
+      "id": "RoseThorn",
+      "name": "탐식극(貪食棘)"
+    },
+    {
+      "id": "RoseWedge",
+      "name": "장미 쐐기"
+    },
+    {
+      "id": "RunHallway",
+      "name": "무리 이동 준비"
+    },
+    {
+      "id": "Run_Panic",
+      "name": "압도"
+    },
+    {
+      "id": "RunawayHorseWei_LowMorale",
+      "name": "고삐 풀린 말"
+    },
+    {
+      "id": "RunawayHorseWei_Panic",
+      "name": "고삐 풀린 말"
+    },
+    {
+      "id": "RyoshuEGOPF",
+      "name": "나생[羅生]"
+    },
+    {
+      "id": "RyoshuParryIndexFingerThey",
+      "name": "붉은 실"
+    },
+    {
+      "id": "RyoshuParryIndexFingerWe",
+      "name": "붉은 실"
+    },
+    {
+      "id": "RyoshuParrySoji",
+      "name": "뒤엉키고 틀어진 기억과 추억"
+    },
+    {
+      "id": "RyoshuParrySojiThey",
+      "name": "붉은 실"
+    },
+    {
+      "id": "RyoshuParrySojiThree",
+      "name": "끊어지지 않는 시간"
+    },
+    {
+      "id": "RyoshuParrySojiTwo",
+      "name": "끊어지지 않은 기억"
+    },
+    {
+      "id": "RyoshuParrySojiWe",
+      "name": "붉은 실"
+    },
+    {
+      "id": "RyoshuSlotPlusA1C9",
+      "name": "과거의 악취"
+    },
+    {
+      "id": "RyoshuStartA1C9",
+      "name": "되살아나는 희열"
+    },
+    {
+      "id": "RyoshuStartA1C9P2",
+      "name": "난도질당한 기억"
+    },
+    {
+      "id": "Ryoshu_Attackup",
+      "name": "난도질당한 기억"
+    },
+    {
+      "id": "Ryoshu_IndexFightBuff",
+      "name": "난도질당한 기억과 추억"
+    },
+    {
+      "id": "Ryoshu_RienBattle_1Phase",
+      "name": "케츠엔 [けつえん]"
+    },
+    {
+      "id": "Ryoshu_RienBattle_2Phase",
+      "name": "렌케츠엔 [れんけつえん]"
+    },
+    {
+      "id": "SadLamanchaland",
+      "name": "책임감"
+    },
+    {
+      "id": "SanchoMind_LowMorale",
+      "name": "깨어나는 살육의 고양감"
+    },
+    {
+      "id": "SanchoMind_Panic",
+      "name": "깨어나는 살육의 고양감"
+    },
+    {
+      "id": "SatisfyingEsteemNeeds",
+      "name": "인정 욕구 충족"
+    },
+    {
+      "id": "ScarBygoneDays_LowMorale",
+      "name": "애증"
+    },
+    {
+      "id": "ScarBygoneDays_Panic",
+      "name": "애증"
+    },
+    {
+      "id": "Scared",
+      "name": "두려움"
+    },
+    {
+      "id": "ScarletDamageDown",
+      "name": "색욕 피해량 감소"
+    },
+    {
+      "id": "ScarletDamageUp",
+      "name": "색욕 피해량 증가"
+    },
+    {
+      "id": "ScarletResistDown",
+      "name": "색욕 내성 약화"
+    },
+    {
+      "id": "ScarletResistUp",
+      "name": "색욕 내성 강화"
+    },
+    {
+      "id": "ScarletResultUp",
+      "name": "색욕 위력 증가"
+    },
+    {
+      "id": "ScarletTakeDamageDown",
+      "name": "색욕 보호"
+    },
+    {
+      "id": "ScarletTakeDamageUp",
+      "name": "색욕 취약"
+    },
+    {
+      "id": "SeaTerrorCell",
+      "name": "시테러 동화"
+    },
+    {
+      "id": "SelfCharge",
+      "name": "자가 충전"
+    },
+    {
+      "id": "SelfChargeAlly",
+      "name": "자가 충전"
+    },
+    {
+      "id": "SelfHarm_LowMorale",
+      "name": "자해"
+    },
+    {
+      "id": "SelfHarm_Panic",
+      "name": "자해"
+    },
+    {
+      "id": "SeniorCianjing",
+      "name": "상급 시엔징"
+    },
+    {
+      "id": "SeveredTendon",
+      "name": "힘줄 절단"
+    },
+    {
+      "id": "ShamrockDamageDown",
+      "name": "탐식 피해량 감소"
+    },
+    {
+      "id": "ShamrockDamageUp",
+      "name": "탐식 피해량 증가"
+    },
+    {
+      "id": "ShamrockResistDown",
+      "name": "탐식 내성 약화"
+    },
+    {
+      "id": "ShamrockResistUp",
+      "name": "탐식 내성 강화"
+    },
+    {
+      "id": "ShamrockResultUp",
+      "name": "탐식 위력 증가"
+    },
+    {
+      "id": "ShamrockTakeDamageDown",
+      "name": "탐식 보호"
+    },
+    {
+      "id": "ShamrockTakeDamageUp",
+      "name": "탐식 취약"
+    },
+    {
+      "id": "ShardOfUmbrella",
+      "name": "우산 파편"
+    },
+    {
+      "id": "ShareCharge",
+      "name": "자가 공진 회로"
+    },
+    {
+      "id": "SheutFracture",
+      "name": "셰우트의 균열"
+    },
+    {
+      "id": "ShieldManagerCryingToad",
+      "name": "울음 방울"
+    },
+    {
+      "id": "Shin_IndexFingerYisang",
+      "name": "신(心) - 운명"
+    },
+    {
+      "id": "Shin_Rien",
+      "name": "신(心) - 뤼엔"
+    },
+    {
+      "id": "SignAwakenSinclair",
+      "name": "표지 - 미래현현"
+    },
+    {
+      "id": "SignOfDespair",
+      "name": "절망의 가호"
+    },
+    {
+      "id": "SingBulletSupport",
+      "name": "(엄지 싱클 탄환 보급 받는 대상 이펙트)"
+    },
+    {
+      "id": "Sinking",
+      "name": "침잠"
+    },
+    {
+      "id": "SinkingBlack",
+      "name": "구버전 효과"
+    },
+    {
+      "id": "SinkingSurge",
+      "name": "침잠쇄도"
+    },
+    {
+      "id": "SinkingVulnerable",
+      "name": "침잠 취약"
+    },
+    {
+      "id": "SinkingWhite",
+      "name": "나비"
+    },
+    {
+      "id": "SipOfAlcohol",
+      "name": "한 모금"
+    },
+    {
+      "id": "SipOfAlcoholJin",
+      "name": "한 모금(眞)"
+    },
+    {
+      "id": "SkillPowerUp",
+      "name": "기본 위력 증가"
+    },
+    {
+      "id": "SlashDamageDown",
+      "name": "참격 피해량 감소"
+    },
+    {
+      "id": "SlashDamageUp",
+      "name": "참격 피해량 증가"
+    },
+    {
+      "id": "SlashResistDown",
+      "name": "참격 내성 약화"
+    },
+    {
+      "id": "SlashResistUp",
+      "name": "참격 내성 강화"
+    },
+    {
+      "id": "SlashResultUp",
+      "name": "참격 위력 증가"
+    },
+    {
+      "id": "SlashTakeDamageDown",
+      "name": "참격 보호"
+    },
+    {
+      "id": "SlashTakeDamageUp",
+      "name": "참격 취약"
+    },
+    {
+      "id": "Smoke",
+      "name": "연기"
+    },
+    {
+      "id": "SnakePoisonJin",
+      "name": "퍼지는 뱀 독"
+    },
+    {
+      "id": "SnakePoisonJinWeak",
+      "name": "뱀 독"
+    },
+    {
+      "id": "SnakeStance",
+      "name": "사완"
+    },
+    {
+      "id": "Snare",
+      "name": "올가미"
+    },
+    {
+      "id": "SnipingArrowMode",
+      "name": "저격 자세"
+    },
+    {
+      "id": "SojiAbiAgeFuture",
+      "name": "순행 - 연민"
+    },
+    {
+      "id": "SojiAbiAgePast",
+      "name": "역행 - 미움"
+    },
+    {
+      "id": "SojiAbiBuffOne",
+      "name": "계명(雞鳴)"
+    },
+    {
+      "id": "SojiAbiBuffThree",
+      "name": "황혼(黃昏)"
+    },
+    {
+      "id": "SojiAbiBuffTwo",
+      "name": "일입(日入)"
+    },
+    {
+      "id": "SpecimenTheRings",
+      "name": "전시회의 완성"
+    },
+    {
+      "id": "StackRienSpecialSkill",
+      "name": "대행 [헤르메스]"
+    },
+    {
+      "id": "StackYisangSpecialSkill",
+      "name": "대행 [헤르메스]"
+    },
+    {
+      "id": "StartXichun",
+      "name": "시[始]"
+    },
+    {
+      "id": "StarvingBarberOne",
+      "name": "노쇠"
+    },
+    {
+      "id": "StarvingBarberTwo",
+      "name": "노쇠"
+    },
+    {
+      "id": "StarvingDolcineaOne",
+      "name": "노쇠"
+    },
+    {
+      "id": "StarvingDolcineaServant",
+      "name": "노쇠"
+    },
+    {
+      "id": "StarvingDonqui",
+      "name": "굶주림과 노쇠"
+    },
+    {
+      "id": "StarvingPriestOne",
+      "name": "노쇠"
+    },
+    {
+      "id": "StarvingPriestTwo",
+      "name": "노쇠"
+    },
+    {
+      "id": "Stressed",
+      "name": "스트레스"
+    },
+    {
+      "id": "StudySignSinclair",
+      "name": "어느 표지"
+    },
+    {
+      "id": "StudyStatSinclair",
+      "name": "알에서 나오기 위한 몸부림"
+    },
+    {
+      "id": "StudyStatSinclair_A",
+      "name": "알에서 나오기 위한 몸부림 Ⅰ"
+    },
+    {
+      "id": "StudyStatSinclair_B",
+      "name": "알에서 나오기 위한 몸부림 ⅠⅠ"
+    },
+    {
+      "id": "StudyStatSinclair_C",
+      "name": "알에서 나오기 위한 몸부림 ⅠⅠⅠ"
+    },
+    {
+      "id": "StudyStatSinclair_D",
+      "name": "알에서 나오기 위한 몸부림 ⅠⅤ"
+    },
+    {
+      "id": "StudyStatSinclair_E",
+      "name": "알에서 나오기 위한 몸부림 Ⅴ"
+    },
+    {
+      "id": "Stun",
+      "name": "기절"
+    },
+    {
+      "id": "Suicide_LowMorale",
+      "name": "자살"
+    },
+    {
+      "id": "Suicide_Panic",
+      "name": "자살"
+    },
+    {
+      "id": "SuperCoin",
+      "name": "파괴 불가 코인"
+    },
+    {
+      "id": "SupportProtect",
+      "name": "원호 방어"
+    },
+    {
+      "id": "SupportProtectTypo",
+      "name": "원호 방어"
+    },
+    {
+      "id": "SupremeEternalLife",
+      "name": "지고한 불사"
+    },
+    {
+      "id": "SweeperA",
+      "name": "제 1파"
+    },
+    {
+      "id": "SweeperB",
+      "name": "제 2파"
+    },
+    {
+      "id": "SweeperC",
+      "name": "제 3파"
+    },
+    {
+      "id": "SweptAwayWei",
+      "name": "휩쓸림"
+    },
+    {
+      "id": "SwirlingBlood",
+      "name": "일렁임【혈귀】"
+    },
+    {
+      "id": "SwirlingBloodPersonality",
+      "name": "일렁임【혈귀】"
+    },
+    {
+      "id": "Switch_Vibration",
+      "name": "진폭 변환"
+    },
+    {
+      "id": "SwordCutwithTear",
+      "name": "눈물 벼리기"
+    },
+    {
+      "id": "SwordPlayOfTheHomeland",
+      "name": "본국검술"
+    },
+    {
+      "id": "SwordPlayOfTheMemorial",
+      "name": "추모"
+    },
+    {
+      "id": "TakeBreath_LowMorale",
+      "name": "숨 돌리기"
+    },
+    {
+      "id": "TakeBreath_Panic",
+      "name": "숨 돌리기"
+    },
+    {
+      "id": "TakeHpHealIncrease",
+      "name": "체력 회복 증가"
+    },
+    {
+      "id": "TakeHpHealReduce",
+      "name": "체력 회복 감소"
+    },
+    {
+      "id": "Talisman",
+      "name": "부적"
+    },
+    {
+      "id": "Target",
+      "name": "표적"
+    },
+    {
+      "id": "Taunt",
+      "name": "도발"
+    },
+    {
+      "id": "TcorpSpecialInvestigator",
+      "name": "T사 특별 수사관 배지"
+    },
+    {
+      "id": "TeachersCommand",
+      "name": "엄지 아비의 명령"
+    },
+    {
+      "id": "TeachersPrey",
+      "name": "사냥 표적"
+    },
+    {
+      "id": "Teaching",
+      "name": "문답"
+    },
+    {
+      "id": "TensionUp",
+      "name": "텐션 업"
+    },
+    {
+      "id": "ThatIsRhythm",
+      "name": "리듬"
+    },
+    {
+      "id": "TheDrifter_LowMorale",
+      "name": "박도"
+    },
+    {
+      "id": "TheDrifter_Panic",
+      "name": "박도"
+    },
+    {
+      "id": "ThePowerOfLoveAndHate",
+      "name": "사랑/증오"
+    },
+    {
+      "id": "TheUdjatOutis",
+      "name": "우제트의 눈 [선봉]"
+    },
+    {
+      "id": "Thirst",
+      "name": "갈증"
+    },
+    {
+      "id": "ThirstyRose",
+      "name": "목마른 장미"
+    },
+    {
+      "id": "Thorn",
+      "name": "가시"
+    },
+    {
+      "id": "ThornNoose",
+      "name": "가시 올가미"
+    },
+    {
+      "id": "ThornyFall_LowMorale",
+      "name": "가시"
+    },
+    {
+      "id": "ThornyFall_Panic",
+      "name": "가시"
+    },
+    {
+      "id": "ThreeMirrorpartYiSang",
+      "name": "깨어진 세계"
+    },
+    {
+      "id": "ThundercloudFormation",
+      "name": "전운집"
+    },
+    {
+      "id": "TickTockTickTock",
+      "name": "째깍째깍?!"
+    },
+    {
+      "id": "TimeAcceleration",
+      "name": "시간 가속"
+    },
+    {
+      "id": "TimeAccumulation",
+      "name": "시간 누진"
+    },
+    {
+      "id": "TimeEntangleDesc",
+      "name": "잔상 얽힘"
+    },
+    {
+      "id": "TimeEntangleFour",
+      "name": "4중 잔상 얽힘"
+    },
+    {
+      "id": "TimeEntangleOne",
+      "name": "1중 잔상 얽힘"
+    },
+    {
+      "id": "TimeEntangleThree",
+      "name": "3중 잔상 얽힘"
+    },
+    {
+      "id": "TimeEntangleTwo",
+      "name": "2중 잔상 얽힘"
+    },
+    {
+      "id": "TimeEntangleUnstable",
+      "name": "폭주 - 잔상 얽힘"
+    },
+    {
+      "id": "TimeGapAb",
+      "name": "괴리"
+    },
+    {
+      "id": "TimeKillerWatch",
+      "name": "시간 구제 대상"
+    },
+    {
+      "id": "TimeRental",
+      "name": "심상 속 시간 대여"
+    },
+    {
+      "id": "TimeRentalTwo",
+      "name": "T사의 시간 대여"
+    },
+    {
+      "id": "TimeRentalTwoPersonality",
+      "name": "시간 대여"
+    },
+    {
+      "id": "TimeRental_Re",
+      "name": "시간 대여"
+    },
+    {
+      "id": "TimeSuspend",
+      "name": "시간 유예"
+    },
+    {
+      "id": "TimesCoinValueDown",
+      "name": "곱하기 코인 약화"
+    },
+    {
+      "id": "TimesCoinValueUp",
+      "name": "곱하기 코인 강화"
+    },
+    {
+      "id": "TinyCarmilla",
+      "name": "작은 카르밀라"
+    },
+    {
+      "id": "Tipsiness",
+      "name": "취기"
+    },
+    {
+      "id": "TipsinessRail",
+      "name": "취기"
+    },
+    {
+      "id": "TrainTeamCaptain",
+      "name": "교육팀 팀장"
+    },
+    {
+      "id": "TraumaShield",
+      "name": "트라우마 방지장"
+    },
+    {
+      "id": "TrulyWeak",
+      "name": "약자"
+    },
+    {
+      "id": "UltraPrecisionTimeAcceleration",
+      "name": "초정밀 시간 가속"
+    },
+    {
+      "id": "UncontrolledChargeAxe_LowMorale",
+      "name": "충전 회로 역류"
+    },
+    {
+      "id": "UncontrolledChargeAxe_Panic",
+      "name": "충전 회로 역류"
+    },
+    {
+      "id": "UnfairDistribution",
+      "name": "내부 분열"
+    },
+    {
+      "id": "UnfinishedDream",
+      "name": "물보다 진한 피에서 벗어나,"
+    },
+    {
+      "id": "UnfinishedDreamMirror",
+      "name": "물보다 진한 피에서 벗어나,"
+    },
+    {
+      "id": "UnfinishedDreamSancho",
+      "name": "물보다 진한 피에서 벗어나지 못하여,"
+    },
+    {
+      "id": "UnfinishedDreamSanchoMirror",
+      "name": "물보다 진한 피에서 벗어나지 못하여,"
+    },
+    {
+      "id": "UninvitedGuest",
+      "name": "불청객"
+    },
+    {
+      "id": "UninvitedGuestPersonality",
+      "name": "초청받지 않은 자"
+    },
+    {
+      "id": "Unjust_Enrichment",
+      "name": "부당 수익"
+    },
+    {
+      "id": "UnlockBuffAlly_1",
+      "name": "해금 - I"
+    },
+    {
+      "id": "UnlockBuffAlly_2",
+      "name": "해금 - II"
+    },
+    {
+      "id": "UnlockBuffAlly_3",
+      "name": "해금 - III"
+    },
+    {
+      "id": "UnlockBuff_1",
+      "name": "해금 - I"
+    },
+    {
+      "id": "UnlockBuff_2",
+      "name": "해금 - II"
+    },
+    {
+      "id": "UnlockBuff_3",
+      "name": "해금 - III"
+    },
+    {
+      "id": "UnlockBuff_Base",
+      "name": "해금"
+    },
+    {
+      "id": "UnlockBuff_Rien1",
+      "name": "해금 - I"
+    },
+    {
+      "id": "UnlockBuff_Rien2",
+      "name": "해금 - II"
+    },
+    {
+      "id": "UnlockBuff_Rien3",
+      "name": "해금 - III"
+    },
+    {
+      "id": "Unobservable",
+      "name": "관측 불가"
+    },
+    {
+      "id": "UnstableFeeling",
+      "name": "불안정한 격정"
+    },
+    {
+      "id": "UnsteadyTheRings",
+      "name": "심하게 울리는 갑주"
+    },
+    {
+      "id": "UnstoppableFunny",
+      "name": "멈출 수 없는 환희"
+    },
+    {
+      "id": "UsedTooMuchPower",
+      "name": "힘을 너무 많이 썼나봐"
+    },
+    {
+      "id": "VendettaMark",
+      "name": "복수 대상"
+    },
+    {
+      "id": "VengeanceBookSinclair",
+      "name": "앙갚음 장부 [싱클레어]"
+    },
+    {
+      "id": "VengeanceBookSpider",
+      "name": "앙갚음 장부"
+    },
+    {
+      "id": "VerEmergencyCandy",
+      "name": "비상용 사탕"
+    },
+    {
+      "id": "VerHunger",
+      "name": "배고픔"
+    },
+    {
+      "id": "VerShiningFullness",
+      "name": "빛나는 포만감"
+    },
+    {
+      "id": "VergiliusSin",
+      "name": "신(心) - 붉은시선"
+    },
+    {
+      "id": "Vespa_LowMorale",
+      "name": "언짢음"
+    },
+    {
+      "id": "Vespa_Panic",
+      "name": "언짢음"
+    },
+    {
+      "id": "Veteran_LowMorale",
+      "name": "제 2차 연기전쟁의"
+    },
+    {
+      "id": "Veteran_Panic",
+      "name": "제 2차 연기전쟁의"
+    },
+    {
+      "id": "Vibration",
+      "name": "진동"
+    },
+    {
+      "id": "VibrationAssimilation",
+      "name": "진동 동화"
+    },
+    {
+      "id": "VibrationBleeding",
+      "name": "진동 - 과다출혈"
+    },
+    {
+      "id": "VibrationChain",
+      "name": "진동 - 사슬"
+    },
+    {
+      "id": "VibrationChainPersonality",
+      "name": "진동 - 사슬"
+    },
+    {
+      "id": "VibrationCollapse",
+      "name": "진동 - 붕괴"
+    },
+    {
+      "id": "VibrationContinue",
+      "name": "진동 - 영속"
+    },
+    {
+      "id": "VibrationCrack",
+      "name": "진동 - 균열"
+    },
+    {
+      "id": "VibrationDistribution",
+      "name": "진동 - 분배"
+    },
+    {
+      "id": "VibrationEcho",
+      "name": "진동 - 반향"
+    },
+    {
+      "id": "VibrationExplosion",
+      "name": "진동 폭발"
+    },
+    {
+      "id": "VibrationIgnition",
+      "name": "진동 - 작열"
+    },
+    {
+      "id": "VibrationNesting",
+      "name": "진동 - 중첩"
+    },
+    {
+      "id": "VibrationSpring",
+      "name": "진동 - 태엽감기"
+    },
+    {
+      "id": "VillainMark",
+      "name": "악당 표식"
+    },
+    {
+      "id": "VioletDamageDown",
+      "name": "질투 피해량 감소"
+    },
+    {
+      "id": "VioletDamageUp",
+      "name": "질투 피해량 증가"
+    },
+    {
+      "id": "VioletPeccatulumTwo",
+      "name": "질투 죄종 2형"
+    },
+    {
+      "id": "VioletResistDown",
+      "name": "질투 내성 약화"
+    },
+    {
+      "id": "VioletResistUp",
+      "name": "질투 내성 강화"
+    },
+    {
+      "id": "VioletResultUp",
+      "name": "질투 위력 증가"
+    },
+    {
+      "id": "VioletTakeDamageDown",
+      "name": "질투 보호"
+    },
+    {
+      "id": "VioletTakeDamageUp",
+      "name": "질투 취약"
+    },
+    {
+      "id": "VioletUnderstand",
+      "name": "이해"
+    },
+    {
+      "id": "Vulnerable",
+      "name": "취약"
+    },
+    {
+      "id": "WOverCharge",
+      "name": "과충전"
+    },
+    {
+      "id": "WaitingXichun",
+      "name": "대[待]"
+    },
+    {
+      "id": "WaitingforCommandMod",
+      "name": "명령 대기"
+    },
+    {
+      "id": "WanderingFootsteps",
+      "name": "다가오는 파탄"
+    },
+    {
+      "id": "WanderingFootsteps_LowMorale",
+      "name": "파탄"
+    },
+    {
+      "id": "WanderingFootsteps_Main",
+      "name": "다가오는 파탄"
+    },
+    {
+      "id": "WanderingFootsteps_Panic",
+      "name": "파탄"
+    },
+    {
+      "id": "WanderingFootsteps_Sub",
+      "name": "다가오는 파탄"
+    },
+    {
+      "id": "WaterPocket",
+      "name": "물주머니"
+    },
+    {
+      "id": "WaveFoxUmbrella",
+      "name": "보호 우산"
+    },
+    {
+      "id": "WaveSinking",
+      "name": "역류"
+    },
+    {
+      "id": "WeakenDOQ",
+      "name": "재난과 시련"
+    },
+    {
+      "id": "WeaknessAnalysis",
+      "name": "약점 분석"
+    },
+    {
+      "id": "WeighedMurderousIntend",
+      "name": "짓눌린 살기"
+    },
+    {
+      "id": "WeightOfResponsibility_LowMorale",
+      "name": "내 꿈을 버리고 이제는..."
+    },
+    {
+      "id": "WeightOfResponsibility_Panic",
+      "name": "어버이로써 가족을 위해...."
+    },
+    {
+      "id": "WideAreaRampage",
+      "name": "광역 난사"
+    },
+    {
+      "id": "WildHunt",
+      "name": "와일드헌트"
+    },
+    {
+      "id": "WildernessSurvivalModule",
+      "name": "조력자 - 야외 생존 유닛"
+    },
+    {
+      "id": "WillAwakenSinclair",
+      "name": "신(心) - 어느 싱클레어"
+    },
+    {
+      "id": "WitheredWood_LowMorale",
+      "name": "고목화"
+    },
+    {
+      "id": "WitheredWood_Panic",
+      "name": "고목화"
+    },
+    {
+      "id": "WornHeart",
+      "name": "닳아버린 마음"
+    },
+    {
+      "id": "WornHeartGreg",
+      "name": "닳아버린 마음"
+    },
+    {
+      "id": "WornOutKnight",
+      "name": "닳디 닳은 기사"
+    },
+    {
+      "id": "WrappedCurseTag",
+      "name": "얽혀온 저주 부적"
+    },
+    {
+      "id": "WrappedCurseTagRe",
+      "name": "얽혀온 저주 부적"
+    },
+    {
+      "id": "YellowHarpoon",
+      "name": "노란작살"
+    },
+    {
+      "id": "YellowHarpoonSin",
+      "name": "신(心) - 노란작살"
+    },
+    {
+      "id": "YesdragonBurst",
+      "name": "칼날 가시"
+    },
+    {
+      "id": "YesdragonNodie",
+      "name": "불허[不許]"
+    },
+    {
+      "id": "YesdragonSelf",
+      "name": "매화침[埋花針]"
+    },
+    {
+      "id": "YisangParryGubo",
+      "name": "책임감"
+    },
+    {
+      "id": "YisangWeapon01Hatchet",
+      "name": "손도끼로 갈비뼈를 찍어 내릴 때는…"
+    },
+    {
+      "id": "YisangWeapon02Stiletto",
+      "name": "스틸레토로 허파를 꿰뚫을 때는…"
+    },
+    {
+      "id": "YisangWeapon03Greatsword",
+      "name": "바스타드 소드로 어깨와 머리를 짓이길 때는…"
+    },
+    {
+      "id": "YisangWeapon04Rapier",
+      "name": "레이피어로 몸에 10개 이상의 구멍을 내야할 때는…"
+    },
+    {
+      "id": "YisangWeapon05Sledgehammer",
+      "name": "망치로 뒤통수를 으깨야 할 때는…"
+    },
+    {
+      "id": "YisangWeapon06Ultragreatsword",
+      "name": "커다란 검으로 몸통을 갈라야 할 때는…"
+    },
+    {
+      "id": "YisangWeapon07Lance",
+      "name": "랜스로 20인치의 구멍을 내야 할 때는…"
+    },
+    {
+      "id": "YisangWeapon08Chain",
+      "name": "채찍으로 살점을 만 갈래 떼어내야 할 때는…"
+    },
+    {
+      "id": "YisangWeapon09Scythe",
+      "name": "낫으로… 누군가처럼 공간을 따라 베어내야 할 때는…"
+    },
+    {
+      "id": "Yurodivy_LowMorale",
+      "name": "어긋난 단결"
+    },
+    {
+      "id": "Yurodivy_Panic",
+      "name": "어긋난 단결"
+    },
+    {
+      "id": "Zazen",
+      "name": "참선"
+    },
+    {
+      "id": "ZiluDebuff",
+      "name": "살기 억제"
+    }
+  ]
+}
