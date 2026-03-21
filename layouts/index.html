@@ -43,6 +43,7 @@
       >범용</button>
     </div>
     <div class="extra-controls">
+      <button class="toggle-name-btn" @click="toggleNameDisplay()" x-text="showName ? '이미지' : '이미지 + 이름'"></button>
       <button class="reset-btn" @click="document.getElementById('reset-modal').classList.add('open')">초기화</button>
     </div>
   </div>
@@ -59,8 +60,10 @@
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}">
         <span class="cat-name">{{ $catName }}</span>
         <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
+        <span class="cat-combo-label">조합</span>
+        <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
       </div>
-      <div class="gift-row">
+      <div class="gift-row" :class="{ 'show-name': showName }">
         {{ range $gifts }}{{ if eq .category $catId }}
         <div
           class="gift-card"
@@ -80,8 +83,14 @@
               loading="lazy"
               onerror="this.style.opacity='0.2'"
             >
-            <div class="check-mark">✓</div>
           </div>
+          <div class="check-mark">✓</div>
+          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          {{ if ne .category "None" }}<img
+            class="cat-badge"
+            src="/images/category/{{ lower .category }}.png"
+            alt="{{ .category }}"
+          >{{ end }}
         </div>
         {{ end }}{{ end }}
       </div>
@@ -95,8 +104,10 @@
         <img class="cat-icon" src="/images/category/none.png" alt="범용">
         <span class="cat-name">범용</span>
         <span class="cat-count" x-text="`${checkedInCategory('None')} / {{ $noneCount }}`"></span>
+        <span class="cat-combo-label">조합</span>
+        <span class="cat-count" x-text="`${comboCheckedInCategory('None')} / ${comboTotalInCategory('None')}`"></span>
       </div>
-      <div class="gift-row">
+      <div class="gift-row" :class="{ 'show-name': showName }">
         {{ range $gifts }}{{ if eq .category "None" }}
         <div
           class="gift-card"
@@ -116,8 +127,14 @@
               loading="lazy"
               onerror="this.style.opacity='0.2'"
             >
-            <div class="check-mark">✓</div>
           </div>
+          <div class="check-mark">✓</div>
+          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          {{ if ne .category "None" }}<img
+            class="cat-badge"
+            src="/images/category/{{ lower .category }}.png"
+            alt="{{ .category }}"
+          >{{ end }}
         </div>
         {{ end }}{{ end }}
       </div>
@@ -192,6 +209,7 @@ const comboMap = {
   {{ range .Site.Data.fusion.dataList }}"{{ .result }}": [{{ range .materials }}"{{ . }}",{{ end }}],
   {{ end }}
 };
+const comboResultIds = new Set([{{ range .Site.Data.fusion.dataList }}"{{ .result }}",{{ end }}]);
 </script>
 
 {{/* 카테고리별 gift 맵 (검색 및 수집 현황용) */}}
@@ -215,12 +233,19 @@ function checklist() {
     search: '',
     activeCategory: '',
     checked: {},
+    showName: false,
     visibleRowCount: 0,
 
     init() {
       const saved = localStorage.getItem('egogift-checked');
       if (saved) this.checked = JSON.parse(saved);
+      this.showName = localStorage.getItem('egogift-showname') === 'true';
       this.$nextTick(() => this.updateVisibleRowCount());
+    },
+
+    toggleNameDisplay() {
+      this.showName = !this.showName;
+      localStorage.setItem('egogift-showname', this.showName);
     },
 
     isChecked(id) {
@@ -270,6 +295,18 @@ function checklist() {
 
     checkedInCategory(catId) {
       return Object.keys(this.checked).filter(id => itemCategoryMap[id] === catId).length;
+    },
+
+    comboTotalInCategory(catId) {
+      let count = 0;
+      comboResultIds.forEach(id => { if (itemCategoryMap[id] === catId) count++; });
+      return count;
+    },
+
+    comboCheckedInCategory(catId) {
+      return Object.keys(this.checked).filter(id =>
+        comboResultIds.has(id) && itemCategoryMap[id] === catId
+      ).length;
     },
 
     isGiftVisible(name) {

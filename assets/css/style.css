@@ -113,6 +113,32 @@ body {
   color: #aaa;
 }
 
+.toggle-name-btn {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #7a8a9a;
+  border-radius: 4px;
+  background: transparent;
+  color: #aab;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.15s;
+}
+
+.toggle-name-btn:hover {
+  background: #7a8a9a;
+  color: #fff;
+}
+
+.gift-name-label {
+  font-size: 0.65rem;
+  color: #ccc;
+  text-align: center;
+  word-break: keep-all;
+  max-width: 100px;
+  line-height: 1.2;
+  padding: 2px 4px 0;
+}
+
 .reset-btn {
   padding: 0.3rem 0.7rem;
   border: 1px solid #c04040;
@@ -183,12 +209,12 @@ body {
 }
 
 .gift-card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100px;
   height: 100px;
-  padding: 0;
   border: none;
   border-radius: 6px;
   background: url('/images/egogift/gift_background.png') center / contain no-repeat;
@@ -205,6 +231,51 @@ body {
 
 .gift-card.checked .check-mark {
   display: flex;
+}
+
+.cat-badge {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ── 이름 표시 모드 ── */
+.gift-row.show-name {
+  grid-template-columns: repeat(10, 100px);
+}
+
+.gift-row.show-name .gift-icon-wrap {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  width: 28px;
+  height: 28px;
+}
+
+.gift-row.show-name .gift-icon {
+  max-width: 28px;
+  max-height: 28px;
+}
+
+.gift-row.show-name .gift-name-label {
+  display: block !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 82px;
+  font-size: 0.85rem;
+  color: #c8a97e;
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.gift-name-label {
+  display: none;
 }
 
 .gift-card.disabled {
