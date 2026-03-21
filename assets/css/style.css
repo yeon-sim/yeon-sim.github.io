@@ -207,6 +207,12 @@ body {
   display: flex;
 }
 
+.gift-card.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(80%);
+}
+
 .gift-icon-wrap {
   position: relative;
   width: 63px;

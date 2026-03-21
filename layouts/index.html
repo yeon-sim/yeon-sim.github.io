@@ -68,7 +68,7 @@
           data-name="{{ .name }}"
           data-category="{{ .category }}"
           :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
-          :class="{ checked: isChecked('{{ .id }}') }"
+          :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           title="{{ .name }}&#10;{{ .desc }}"
         >
@@ -104,7 +104,7 @@
           data-name="{{ .name }}"
           data-category="None"
           :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
-          :class="{ checked: isChecked('{{ .id }}') }"
+          :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           title="{{ .name }}&#10;{{ .desc }}"
         >
@@ -186,6 +186,14 @@
   </div>
 </div>
 
+{{/* 조합 맵 */}}
+<script>
+const comboMap = {
+  {{ range .Site.Data.fusion.dataList }}"{{ .result }}": [{{ range .materials }}"{{ . }}",{{ end }}],
+  {{ end }}
+};
+</script>
+
 {{/* 카테고리별 gift 맵 (검색 및 수집 현황용) */}}
 <script>
 const categoryNameMap = {
@@ -219,9 +227,44 @@ function checklist() {
       return !!this.checked[id];
     },
 
+    getMaterials(id, visited = new Set()) {
+      if (visited.has(id)) return new Set();
+      visited.add(id);
+      const result = new Set();
+      const mats = comboMap[id];
+      if (mats) {
+        mats.forEach(matId => {
+          result.add(matId);
+          this.getMaterials(matId, visited).forEach(m => result.add(m));
+        });
+      }
+      return result;
+    },
+
+    get disabledIds() {
+      const disabled = new Set();
+      Object.keys(this.checked).forEach(id => {
+        this.getMaterials(id).forEach(m => disabled.add(m));
+      });
+      return disabled;
+    },
+
+    isDisabled(id) {
+      return this.disabledIds.has(String(id));
+    },
+
     toggle(id) {
-      this.checked[id] = !this.checked[id];
-      if (!this.checked[id]) delete this.checked[id];
+      if (this.isDisabled(id)) return;
+      const willCheck = !this.checked[id];
+      this.checked[id] = willCheck;
+      if (!willCheck) {
+        delete this.checked[id];
+      } else {
+        // 결과 gift 선택 시 재료 gift 선택 해제
+        this.getMaterials(id).forEach(matId => {
+          delete this.checked[String(matId)];
+        });
+      }
       localStorage.setItem('egogift-checked', JSON.stringify(this.checked));
     },
 
