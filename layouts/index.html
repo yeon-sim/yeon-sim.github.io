@@ -16,40 +16,76 @@
 
   {{/* ── 컨트롤 바 ── */}}
   <div class="controls">
-    <input
-      class="search-input"
-      type="search"
-      placeholder="이름으로 검색..."
-      x-model="search"
-      @input="onSearch()"
-    >
-    <div class="filter-buttons">
-      <button
-        class="filter-btn"
-        :class="{ active: activeCategory === '' }"
-        @click="activeCategory = ''"
-      >전체</button>
-      {{ range $categories }}{{ if ne .id "None" }}
-      <button
-        class="filter-btn"
-        :class="{ active: activeCategory === '{{ .id }}' }"
-        @click="activeCategory = '{{ .id }}'"
-      >{{ .name }}</button>
-      {{ end }}{{ end }}
-      <button
-        class="filter-btn"
-        :class="{ active: activeCategory === 'None' }"
-        @click="activeCategory = 'None'"
-      >범용</button>
+    <div class="controls-row controls-row-1">
+      <div class="search-group">
+        <input
+          class="search-input"
+          type="search"
+          placeholder="이름 및 태그(#)으로 검색"
+          x-model="search"
+          @input="onSearch()"
+        >
+        <button
+          class="filter-btn tag-panel-btn"
+          :class="{ active: showTagPanel }"
+          @click="showTagPanel = !showTagPanel"
+        ># 태그</button>
+      </div>
+      <div class="controls-right">
+        <button class="reset-btn" @click="document.getElementById('reset-modal').classList.add('open')">초기화</button>
+      </div>
     </div>
-    <div class="extra-controls">
-      <button class="toggle-name-btn" @click="toggleNameDisplay()" x-text="showName ? '이미지' : '이미지 + 이름'"></button>
-      <button class="reset-btn" @click="document.getElementById('reset-modal').classList.add('open')">초기화</button>
+    <div class="controls-row controls-row-2">
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          :class="{ active: activeCategory === '' }"
+          @click="activeCategory = ''"
+        >전체</button>
+        {{ range $categories }}{{ if ne .id "None" }}
+        <button
+          class="filter-btn"
+          :class="{ active: activeCategory === '{{ .id }}' }"
+          @click="activeCategory = '{{ .id }}'"
+        >{{ .name }}</button>
+        {{ end }}{{ end }}
+        <button
+          class="filter-btn"
+          :class="{ active: activeCategory === 'None' }"
+          @click="activeCategory = 'None'"
+        >범용</button>
+      </div>
+      <div class="controls-right">
+        <button class="toggle-name-btn" @click="toggleNameDisplay()" x-text="showName ? '이미지' : '이미지 + 이름'"></button>
+      </div>
     </div>
   </div>
 
+  {{/* ── 태그 패널 ── */}}
+  {{ $tagCategories := .Site.Data.tag_categories.dataList }}
+  <div class="tag-panel" x-show="showTagPanel" x-transition>
+    <input
+      class="tag-filter-input"
+      type="search"
+      placeholder="태그 검색..."
+      x-model="tagFilter"
+    >
+    {{ range $tagCategories }}
+    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ . }}',{{ end }}].some(t => t.includes(tagFilter))">
+      <div class="tag-category-label">{{ .category }}</div>
+      <div class="tag-category-tags">
+        {{ range .tags }}
+        <button class="tag-btn"
+          x-show="!tagFilter || '{{ . }}'.includes(tagFilter)"
+          @click="search = (search ? search.trimEnd() + ', ' : '') + '#{{ . }}'; showTagPanel = false; tagFilter = ''; onSearch()">#{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
   {{/* ── 카테고리별 행 ── */}}
-  <div class="category-list">
+  <div class="category-list" x-show="!showTagPanel">
 
     {{/* 범용 제외 카테고리 */}}
     {{ range $categories }}{{ if ne .id "None" }}
@@ -70,7 +106,7 @@
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="{{ .category }}"
-          :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
+          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           title="{{ .name }}&#10;{{ .desc }}"
@@ -114,7 +150,7 @@
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="None"
-          :style="{ display: isGiftVisible('{{ .name }}') ? 'flex' : 'none' }"
+          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           title="{{ .name }}&#10;{{ .desc }}"
@@ -143,7 +179,7 @@
   </div>
 
   {{/* ── 결과 없음 ── */}}
-  <div class="no-result" :style="{ display: visibleRowCount === 0 ? 'block' : 'none' }">
+  <div class="no-result" x-show="!showTagPanel && visibleRowCount === 0">
     조건에 맞는 기프트가 없습니다.
   </div>
 
@@ -210,6 +246,14 @@ const comboMap = {
   {{ end }}
 };
 const comboResultIds = new Set([{{ range .Site.Data.fusion.dataList }}"{{ .result }}",{{ end }}]);
+
+const gradeMap = {
+  {{ range $gifts }}"{{ .id }}": "{{ .grade }}",
+  {{ end }}
+};
+const comboCountableIds = new Set(
+  [...comboResultIds].filter(id => ['4', '5', 'ex'].includes(gradeMap[id]))
+);
 </script>
 
 {{/* 카테고리별 gift 맵 (검색 및 수집 현황용) */}}
@@ -225,6 +269,16 @@ const itemCategoryMap = {
   {{ range $gifts }}"{{ .id }}": "{{ .category }}",
   {{ end }}
 };
+
+const itemTagsMap = {
+  {{ range $gifts }}"{{ .id }}": [{{ range .tags }}"{{ . }}",{{ end }}],
+  {{ end }}
+};
+
+const itemNameMap = {
+  {{ range $gifts }}"{{ .id }}": "{{ .name }}",
+  {{ end }}
+};
 </script>
 
 <script>
@@ -234,6 +288,8 @@ function checklist() {
     activeCategory: '',
     checked: {},
     showName: false,
+    showTagPanel: false,
+    tagFilter: '',
     visibleRowCount: 0,
 
     init() {
@@ -299,28 +355,48 @@ function checklist() {
 
     comboTotalInCategory(catId) {
       let count = 0;
-      comboResultIds.forEach(id => { if (itemCategoryMap[id] === catId) count++; });
+      comboCountableIds.forEach(id => { if (itemCategoryMap[id] === catId) count++; });
       return count;
     },
 
     comboCheckedInCategory(catId) {
       return Object.keys(this.checked).filter(id =>
-        comboResultIds.has(id) && itemCategoryMap[id] === catId
+        comboCountableIds.has(id) && itemCategoryMap[id] === catId
       ).length;
     },
 
-    isGiftVisible(name) {
-      if (this.search && !name.includes(this.search)) return false;
+    parseSearch() {
+      const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
+      const names = terms.filter(t => !t.startsWith('#'));
+      const tags  = terms.filter(t => t.startsWith('#')).map(t => t.slice(1).trim());
+      return { names, tags };
+    },
+
+    isGiftVisible(id, name) {
+      const { names, tags } = this.parseSearch();
+      if (names.length > 0 && !names.some(n => name.includes(n))) return false;
+      if (tags.length > 0) {
+        const giftTags = itemTagsMap[id] || [];
+        if (!tags.some(t => giftTags.some(gt => gt.includes(t)))) return false;
+      }
       return true;
     },
 
     isRowVisible(catId) {
       if (this.activeCategory && this.activeCategory !== catId) return false;
-      if (this.search) {
-        const names = categoryNameMap[catId] || [];
-        return names.some(n => n.includes(this.search));
-      }
-      return true;
+      const { names, tags } = this.parseSearch();
+      if (names.length === 0 && tags.length === 0) return true;
+      return Object.keys(itemCategoryMap)
+        .filter(id => itemCategoryMap[id] === catId)
+        .some(id => {
+          const name = itemNameMap[id] || '';
+          if (names.length > 0 && !names.some(n => name.includes(n))) return false;
+          if (tags.length > 0) {
+            const giftTags = itemTagsMap[id] || [];
+            if (!tags.some(t => giftTags.some(gt => gt.includes(t)))) return false;
+          }
+          return true;
+        });
     },
 
     onSearch() {

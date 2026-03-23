@@ -40,19 +40,59 @@ body {
 
 /* ── 본문 컨테이너 ── */
 .main-content {
-  width: fit-content;
-  min-width: 1118px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ── 컨트롤 바 ── */
 .controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.45rem;
   margin-bottom: 1rem;
+  width: calc(64px + 8px + 10 * 100px + 9 * (0.25rem + 2px));
+}
+
+.controls-row {
+  display: flex;
   align-items: center;
+}
+
+.controls-row-1 {
   justify-content: center;
+  position: relative;
+}
+
+.search-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.controls-right {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controls-row-2 {
+  justify-content: center;
+  position: relative;
+}
+
+.controls-row-2 .controls-right {
+  top: auto;
+  bottom: 0;
+}
+
+.controls-row-2 .filter-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, max-content);
+  gap: 0.55rem;
+  justify-items: center;
 }
 
 .search-input {
@@ -62,7 +102,8 @@ body {
   background: #2a2a3e;
   color: #e0e0e0;
   font-size: 0.9rem;
-  min-width: 180px;
+  width: 260px;
+  flex-shrink: 0;
 }
 
 .search-input:focus {
@@ -91,17 +132,23 @@ body {
   background: #3a3a5e;
 }
 
+.filter-btn.tag-panel-btn {
+  background: transparent;
+  border-color: #7a8a9a;
+  color: #aab;
+}
+
+.filter-btn.tag-panel-btn.active {
+  background: #7a8a9a;
+  color: #fff;
+  border-color: #7a8a9a;
+}
+
 .filter-btn.active {
   background: #c9a84c;
   color: #1a1a2e;
   border-color: #c9a84c;
   font-weight: bold;
-}
-
-.extra-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
 }
 
 .toggle-label {
@@ -114,7 +161,8 @@ body {
 }
 
 .toggle-name-btn {
-  padding: 0.3rem 0.7rem;
+  padding: 0.3rem 0;
+  width: 88px;
   border: 1px solid #7a8a9a;
   border-radius: 4px;
   background: transparent;
@@ -122,10 +170,90 @@ body {
   cursor: pointer;
   font-size: 0.8rem;
   transition: background 0.15s;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .toggle-name-btn:hover {
   background: #7a8a9a;
+  color: #fff;
+}
+
+
+
+/* ── 태그 패널 ── */
+.tag-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 0;
+  margin: 0 auto 4px;
+  width: calc(64px + 8px + 10 * 100px + 9 * (0.25rem + 2px));
+  border-top: 3px solid #2e3a4a;
+}
+
+.tag-category-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #2e3a4a;
+  margin-bottom: 2px;
+}
+
+.tag-category-label {
+  width: 64px;
+  min-width: 64px;
+  font-size: 1.0rem;
+  color: #8899aa;
+  font-weight: bold;
+  padding-top: 4px;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.tag-category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+}
+
+.tag-filter-input {
+  width: 200px;
+  padding: 0.3rem 0.6rem;
+  align-self: center;
+  background: #1a2233;
+  border: 1px solid #3a4a5a;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-family: inherit;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  margin-bottom: calc(4px + 0.3rem);
+}
+
+.tag-filter-input:focus {
+  outline: none;
+  border-color: #c9a84c;
+}
+
+.tag-btn {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #5a6a7a;
+  border-radius: 12px;
+  background: transparent;
+  color: #c8c8d8;
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tag-btn:hover {
+  background: #5a6a7a;
   color: #fff;
 }
 
@@ -203,9 +331,11 @@ body {
 }
 
 .gift-row {
-  display: grid;
-  grid-template-columns: repeat(10, 100px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: calc(0.25rem + 2px);
+  width: calc(10 * 100px + 9 * (0.25rem + 2px));
 }
 
 .gift-card {
