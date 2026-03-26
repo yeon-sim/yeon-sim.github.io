@@ -50,13 +50,13 @@
           class="filter-btn"
           :class="{ active: activeCategory === '' }"
           @click="activeCategory = ''"
-        ><img class="filter-btn-icon" src="/images/ui/All.png" alt="">전체</button>
+        ><img class="filter-btn-icon" src="/images/ui/all.png" alt="">전체</button>
         {{ range $categories }}
         <button
           class="filter-btn"
           :class="{ active: activeCategory === '{{ .id }}' }"
           @click="activeCategory = '{{ .id }}'"
-        ><img class="filter-btn-icon" src="/images/ui/{{ .id }}.png" alt="">{{ .name }}</button>
+        ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt="">{{ .name }}</button>
         {{ end }}
       </div>
       <div class="controls-right">
