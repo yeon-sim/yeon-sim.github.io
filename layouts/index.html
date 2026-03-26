@@ -4,11 +4,17 @@
 {{ $gifts := .Site.Data.egogifts.dataList }}
 {{ $categories := .Site.Data.categories.dataList }}
 
+{{/* fusion 결과 ID 집합 */}}
+{{ $fusionIds := slice }}
+{{ range .Site.Data.fusion.dataList }}
+  {{ $fusionIds = $fusionIds | append (string .result) }}
+{{ end }}
+
 <div x-data="checklist()" x-init="init()">
 
   {{/* ── 헤더 ── */}}
   <header class="site-header">
-    <h1 class="site-title">{{ .Site.Title }}</h1>
+    <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
   </header>
 
   {{/* ── 본문 (가운데 정렬) ── */}}
@@ -32,7 +38,10 @@
         ># 태그</button>
       </div>
       <div class="controls-right">
-        <button class="reset-btn" @click="document.getElementById('reset-modal').classList.add('open')">초기화</button>
+        <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
+          <img class="filter-btn-icon" src="/images/ui/clear.png" alt="">
+          <span>초기화</span>
+        </button>
       </div>
     </div>
     <div class="controls-row controls-row-2">
@@ -41,22 +50,21 @@
           class="filter-btn"
           :class="{ active: activeCategory === '' }"
           @click="activeCategory = ''"
-        >전체</button>
-        {{ range $categories }}{{ if ne .id "None" }}
+        ><img class="filter-btn-icon" src="/images/ui/All.png" alt="">전체</button>
+        {{ range $categories }}
         <button
           class="filter-btn"
           :class="{ active: activeCategory === '{{ .id }}' }"
           @click="activeCategory = '{{ .id }}'"
-        >{{ .name }}</button>
-        {{ end }}{{ end }}
-        <button
-          class="filter-btn"
-          :class="{ active: activeCategory === 'None' }"
-          @click="activeCategory = 'None'"
-        >범용</button>
+        ><img class="filter-btn-icon" src="/images/ui/{{ .id }}.png" alt="">{{ .name }}</button>
+        {{ end }}
       </div>
       <div class="controls-right">
-        <button class="toggle-name-btn" @click="toggleNameDisplay()" x-text="showName ? '이미지' : '이미지 + 이름'"></button>
+        <button class="guide-btn filter-btn" @click="guideModal = true">
+          <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
+          <span>가이드</span>
+        </button>
+        <button class="toggle-name-btn" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
       </div>
     </div>
   </div>
@@ -101,15 +109,17 @@
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
         {{ range $gifts }}{{ if eq .category $catId }}
+        {{ $isFusion := in $fusionIds (string .id) }}
+        {{ $isSpecial := gt (len .packs) 0 }}
         <div
-          class="gift-card"
+          class="gift-card{{ if $isFusion }} fusion{{ end }}"
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="{{ .category }}"
           :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
-          title="{{ .name }}&#10;{{ .desc }}"
+          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
         >
           <div class="gift-icon-wrap">
             <img
@@ -120,6 +130,9 @@
               onerror="this.style.opacity='0.2'"
             >
           </div>
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
+          {{ if eq .difficulty "hard" }}<img class="gift-difficulty" src="/images/ui/difficulty_hard.png" alt="hard">{{ end }}
           <div class="check-mark">✓</div>
           <span class="gift-name-label" x-show="showName">{{ .name }}</span>
           {{ if ne .category "None" }}<img
@@ -145,15 +158,17 @@
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
         {{ range $gifts }}{{ if eq .category "None" }}
+        {{ $isFusion := in $fusionIds (string .id) }}
+        {{ $isSpecial := gt (len .packs) 0 }}
         <div
-          class="gift-card"
+          class="gift-card{{ if $isFusion }} fusion{{ end }}"
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="None"
           :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
-          title="{{ .name }}&#10;{{ .desc }}"
+          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
         >
           <div class="gift-icon-wrap">
             <img
@@ -164,6 +179,9 @@
               onerror="this.style.opacity='0.2'"
             >
           </div>
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
+          {{ if eq .difficulty "hard" }}<img class="gift-difficulty" src="/images/ui/difficulty_hard.png" alt="hard">{{ end }}
           <div class="check-mark">✓</div>
           <span class="gift-name-label" x-show="showName">{{ .name }}</span>
           {{ if ne .category "None" }}<img
@@ -185,6 +203,18 @@
 
   </div>{{/* end .main-content */}}
 
+  {{/* ── 가이드 모달 ── */}}
+  <div class="modal-overlay" :class="{ open: guideModal }" @click.self="guideModal = false">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">가이드</span>
+        <button class="modal-close" @click="guideModal = false">&times;</button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+
   {{/* ── 초기화 확인 모달 ── */}}
   <div id="reset-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal-box modal-box--sm">
@@ -202,8 +232,57 @@
     </div>
   </div>
 
+  {{/* ── gift 정보 팝업 ── */}}
+  <div class="modal-overlay" :class="{ open: giftPopup.open }" @click.self="giftPopup.open = false">
+    <div class="modal-box gift-popup-box">
+      <div class="modal-header">
+        <div class="gift-popup-title-row">
+          <img class="gift-popup-grade-img" :src="`/images/egogift/gift_grade_${giftPopup.grade}.png`" :alt="`grade ${giftPopup.grade}`">
+          <span class="modal-title" x-text="giftPopup.name"></span>
+        </div>
+        <button class="modal-close" @click="giftPopup.open = false">&times;</button>
+      </div>
+      <div class="modal-body gift-popup-body">
+        <div class="gift-popup-icon-wrap" :class="{ fusion: giftPopup.isFusion }">
+          <div class="gift-icon-wrap">
+            <img class="gift-icon" :src="`/images/egogift/${giftPopup.id}.png`" :alt="giftPopup.name">
+          </div>
+          <img class="gift-frame" :src="`/images/egogift/${giftPopup.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
+          <div class="gift-grade-wrap">
+            <img class="gift-grade" :src="`/images/egogift/gift_grade_${giftPopup.grade}.png`" alt="">
+          </div>
+          <img
+            class="gift-difficulty"
+            x-show="giftPopup.difficulty === 'hard'"
+            src="/images/ui/difficulty_hard.png"
+            alt="hard"
+          >
+          <img
+            class="cat-badge"
+            x-show="giftPopup.category && giftPopup.category !== 'None'"
+            :src="`/images/category/${giftPopup.category ? giftPopup.category.toLowerCase() : ''}.png`"
+            :alt="giftPopup.category"
+          >
+        </div>
+        <div class="gift-popup-info">
+          <p class="gift-popup-desc" x-html="giftPopup.descHtml"></p>
+          <div class="gift-popup-tags" x-show="giftPopup.tags && giftPopup.tags.length">
+            <template x-for="tag in giftPopup.tags" :key="tag">
+              <span class="tag-chip" x-text="`#${tag}`"></span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
+<div class="easter-sheep-wrap">
+  <div class="easter-sheep-mover">
+    <img class="easter-sheep" src="/images/easteregg/sheep.gif" alt="">
+  </div>
+</div>
 <footer class="site-footer">
   <p class="footer-note">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
   <p class="footer-note">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
@@ -218,23 +297,30 @@
 
 {{/* ── 체인지로그 모달 ── */}}
 <div id="changelog-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal-box">
+  <div class="modal-box modal-box--changelog">
     <div class="modal-header">
       <span class="modal-title">업데이트 로그</span>
       <button class="modal-close" onclick="document.getElementById('changelog-modal').classList.remove('open')">&times;</button>
     </div>
-    <div class="modal-body">
-      {{ $versions := .Site.Data.changelog.versions }}
-      {{ $len := len $versions }}
-      {{ range $i, $_ := $versions }}
-        {{ $v := index $versions (sub (sub $len 1) $i) }}
-        <div class="changelog-entry">
-          <div class="changelog-version">v{{ $v.version }} <span class="changelog-date">{{ $v.date }}</span></div>
-          <ul class="changelog-list">
-            {{ range $v.changes }}<li>{{ . }}</li>{{ end }}
-          </ul>
+    <div class="changelog-body-wrap">
+      <div class="modal-body changelog-scroll-area">
+        {{ $versions := .Site.Data.changelog.versions }}
+        {{ $len := len $versions }}
+        {{ range $i, $_ := $versions }}
+          {{ $v := index $versions (sub (sub $len 1) $i) }}
+          <div class="changelog-entry">
+            <div class="changelog-version">v{{ $v.version }} <span class="changelog-date">{{ $v.date }}</span></div>
+            <ul class="changelog-list">
+              {{ range $v.changes }}<li>{{ . | markdownify | safeHTML }}</li>{{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      </div>
+      <div class="changelog-scrollbar">
+        <div class="changelog-scrollbar-track">
+          <div class="changelog-scrollbar-thumb"></div>
         </div>
-      {{ end }}
+      </div>
     </div>
   </div>
 </div>
@@ -279,6 +365,14 @@ const itemNameMap = {
   {{ range $gifts }}"{{ .id }}": "{{ .name }}",
   {{ end }}
 };
+
+const giftMap = {
+  {{ range $gifts }}
+  {{ $isFusion := in $fusionIds (string .id) }}
+  {{ $isSpecial := gt (len .packs) 0 }}
+  "{{ .id }}": { name: {{ .name | jsonify }}, desc: {{ .desc | jsonify }}, grade: "{{ .grade }}", tags: {{ .tags | jsonify }}, category: "{{ .category }}", isFusion: {{ $isFusion }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
+  {{ end }}
+};
 </script>
 
 <script>
@@ -291,12 +385,31 @@ function checklist() {
     showTagPanel: false,
     tagFilter: '',
     visibleRowCount: 0,
+    giftPopup: { open: false, id: null, name: '', descHtml: '', grade: '', tags: [], category: '', isFusion: false, isSpecial: false, difficulty: '' },
+    guideModal: false,
 
     init() {
       const saved = localStorage.getItem('egogift-checked');
       if (saved) this.checked = JSON.parse(saved);
       this.showName = localStorage.getItem('egogift-showname') === 'true';
       this.$nextTick(() => this.updateVisibleRowCount());
+    },
+
+    openGiftPopup(id) {
+      const g = giftMap[id];
+      if (!g) return;
+      this.giftPopup = {
+        open: true,
+        id,
+        name: g.name.replace(/^"|"$/g, ''),
+        descHtml: g.desc.replace(/^"|"$/g, '').replace(/\n/g, '<br>').replace(/\\n/g, '<br>'),
+        grade: g.grade,
+        tags: g.tags,
+        category: g.category,
+        isFusion: g.isFusion,
+        isSpecial: g.isSpecial,
+        difficulty: g.difficulty
+      };
     },
 
     toggleNameDisplay() {
@@ -418,5 +531,75 @@ function checklist() {
     }
   }
 }
+</script>
+
+<script>
+(function() {
+  const THUMB_H = 55; // scroll_bar.png를 38px 폭으로 표시했을 때의 높이
+
+  function initChangelogScrollbar() {
+    const scrollArea = document.querySelector('.changelog-scroll-area');
+    const thumb      = document.querySelector('.changelog-scrollbar-thumb');
+    const track      = document.querySelector('.changelog-scrollbar-track');
+    if (!scrollArea || !thumb || !track) return;
+
+    function getMaxScrollTop() {
+      return scrollArea.scrollHeight - scrollArea.clientHeight;
+    }
+
+    function updateThumb() {
+      const trackH   = track.clientHeight;
+      const maxTop   = trackH - THUMB_H;
+      const ratio    = getMaxScrollTop() > 0
+        ? scrollArea.scrollTop / getMaxScrollTop()
+        : 0;
+      thumb.style.top = (ratio * maxTop) + 'px';
+    }
+
+    scrollArea.addEventListener('scroll', updateThumb);
+    window.addEventListener('resize', updateThumb);
+
+    // 트랙 클릭 시 해당 위치로 이동
+    track.addEventListener('click', function(e) {
+      if (e.target === thumb) return;
+      const rect  = track.getBoundingClientRect();
+      const clickY = e.clientY - rect.top - THUMB_H / 2;
+      const maxTop = track.clientHeight - THUMB_H;
+      const ratio  = Math.max(0, Math.min(1, clickY / maxTop));
+      scrollArea.scrollTop = ratio * getMaxScrollTop();
+    });
+
+    // 드래그
+    let dragging = false, startY = 0, startScrollTop = 0;
+
+    thumb.addEventListener('mousedown', function(e) {
+      dragging = true;
+      startY = e.clientY;
+      startScrollTop = scrollArea.scrollTop;
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      const trackH = track.clientHeight;
+      const maxTop = trackH - THUMB_H;
+      const delta  = e.clientY - startY;
+      const ratio  = maxTop > 0 ? delta / maxTop : 0;
+      scrollArea.scrollTop = startScrollTop + ratio * getMaxScrollTop();
+    });
+
+    document.addEventListener('mouseup', function() { dragging = false; });
+
+    updateThumb();
+  }
+
+  // 모달이 열릴 때 초기화
+  const versionBtn = document.querySelector('.version-btn');
+  if (versionBtn) {
+    versionBtn.addEventListener('click', function() {
+      setTimeout(initChangelogScrollbar, 50);
+    });
+  }
+})();
 </script>
 {{ end }}
