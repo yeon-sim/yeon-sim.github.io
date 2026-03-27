@@ -404,7 +404,7 @@ body {
 
 .guide-btn {
   width: 96px;
-  display: flex;
+  display: none;
 }
 
 .guide-btn .filter-btn-icon {
