@@ -21,16 +21,16 @@
       "name": "침잠"
     },
     {
-      "id": "None",
-      "name": "범용"
-    },
-    {
       "id": "Breath",
       "name": "호흡"
     },
     {
       "id": "Charge",
       "name": "충전"
+    },
+    {
+      "id": "None",
+      "name": "범용"
     },
     {
       "id": "Slash",

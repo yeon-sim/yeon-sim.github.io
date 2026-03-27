@@ -53,6 +53,16 @@ body {
   margin-bottom: 1rem;
 }
 
+.site-header-btns {
+  display: none;
+}
+
+.site-header-btns-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
 .site-title {
   font-size: 3.3rem;
   color: #c9a84c;
@@ -142,7 +152,7 @@ body {
 
 @keyframes sheep-move {
   from { transform: translateX(calc(100vw + 80px)); }
-  to   { transform: translateX(-80px); }
+  to   { transform: translateX(calc(-100% - 20px)); }
 }
 
 @keyframes sheep-spin {
@@ -158,11 +168,32 @@ body {
   gap: 0.4rem;
 }
 
+.controls-right-row {
+  display: flex;
+  gap: 0.3rem;
+}
+
 .controls-row-2 .filter-buttons {
   display: grid;
   grid-template-columns: repeat(6, max-content);
   gap: 0.3rem;
   justify-items: center;
+}
+
+/* PC(6열) 카테고리 버튼 순서: 전체 화상 출혈 진동 파열 침잠 / 범용 호흡 충전 참격 관통 타격 */
+@media (min-width: 901px) {
+  .controls-row-2 .filter-buttons button:nth-child(1)  { order: 1; }
+  .controls-row-2 .filter-buttons button:nth-child(2)  { order: 2; }
+  .controls-row-2 .filter-buttons button:nth-child(3)  { order: 3; }
+  .controls-row-2 .filter-buttons button:nth-child(4)  { order: 4; }
+  .controls-row-2 .filter-buttons button:nth-child(5)  { order: 5; }
+  .controls-row-2 .filter-buttons button:nth-child(6)  { order: 6; }
+  .controls-row-2 .filter-buttons button:nth-child(7)  { order: 8; }  /* 호흡 → 8번째 */
+  .controls-row-2 .filter-buttons button:nth-child(8)  { order: 9; }  /* 충전 → 9번째 */
+  .controls-row-2 .filter-buttons button:nth-child(9)  { order: 7; }  /* 범용 → 7번째 */
+  .controls-row-2 .filter-buttons button:nth-child(10) { order: 10; }
+  .controls-row-2 .filter-buttons button:nth-child(11) { order: 11; }
+  .controls-row-2 .filter-buttons button:nth-child(12) { order: 12; }
 }
 
 .search-input {
@@ -258,6 +289,7 @@ body {
   width: 102px;
 }
 
+.sort-btn.filter-btn,
 .toggle-name-btn {
   padding: 0 4px;
   width: 102px;
@@ -325,7 +357,7 @@ body {
 }
 
 .tag-filter-input {
-  width: 200px;
+  width: 260px;
   padding: 0.3rem 0.6rem;
   align-self: center;
   background: #1a2233;
@@ -372,7 +404,7 @@ body {
 
 .guide-btn {
   width: 96px;
-  display: none;
+  display: flex;
 }
 
 .guide-btn .filter-btn-icon {
@@ -416,6 +448,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 5px;
   justify-content: center;
   padding-top: 8px;
   gap: 4px;
@@ -885,3 +918,361 @@ body {
   color: #eee;
 }
 .btn-confirm:hover { background: #9a2a2a; }
+
+/* ── 플로팅 버튼 ── */
+.float-btns {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 500;
+}
+
+.float-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  -webkit-tap-highlight-color: transparent;
+  background: #22223a;
+  border: 1px solid #3a3a6a;
+  color: #bbb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.float-btn:hover {
+  background: #3a3a6e;
+  color: #fff;
+}
+
+.float-btn:focus {
+  outline: none;
+}
+
+.float-btn:focus-visible {
+  outline: 2px solid #c9a84c;
+}
+
+.float-toc-wrap {
+  position: relative;
+}
+
+.float-scroll-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.float-btn--top {
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #2a2a5a;
+}
+
+.float-btn--bottom {
+  border-radius: 0 0 8px 8px;
+}
+
+.float-toc-panel {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
+  background: #1a1a2e;
+  border: 1px solid #3a3a6a;
+  border-radius: 8px;
+  padding: 0.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.float-toc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: #ccc;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.float-toc-item:hover {
+  background: #2a2a4e;
+  color: #fff;
+}
+
+.float-toc-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────
+   반응형 — 태블릿 (≤ 900px)
+──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .controls {
+    width: 100%;
+  }
+  .category-list {
+    width: 100%;
+  }
+  .tag-panel {
+    width: 100%;
+  }
+  .gift-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: calc(0.25rem + 2px);
+    width: 100%;
+    justify-content: center;
+  }
+  .controls-row-2 .filter-buttons {
+    grid-template-columns: repeat(4, max-content);
+  }
+}
+
+
+/* ────────────────────────────────────────
+   반응형 — 모바일 (≤ 768px)
+──────────────────────────────────────── */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  /* 헤더 버튼 */
+  .site-header {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .site-header-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+  /* 기존 컨트롤 버튼 숨기기 */
+  .controls-row-1 .controls-right,
+  .controls-row-2 .controls-right {
+    display: none;
+  }
+
+  /* 태그 패널 */
+  .tag-category-group {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tag-category-label {
+    width: 100%;
+    min-width: unset;
+    text-align: left;
+    padding-top: 0;
+  }
+  .tag-filter-input {
+    width: calc(4 * 76px + 3 * 0.3rem);
+  }
+
+  .site-title {
+    font-size: clamp(2.8rem, 7vw, 3.3rem);
+  }
+
+  /* 컨트롤 Row 1: 검색 가운데 정렬 */
+  .controls-row-1 {
+    justify-content: center;
+  }
+  .controls-row-1 .controls-right {
+    position: relative;
+    right: auto;
+  }
+  /* 검색그룹 너비 = 카테고리 버튼 4열 너비 (4 * 76px + 3 * 0.3rem) */
+  .search-group {
+    width: calc(4 * 76px + 3 * 0.3rem);
+  }
+  .search-input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* 컨트롤 Row 2: 카테고리 버튼 + 하단 버튼 세로 배치 */
+  .controls-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .controls-row-2 .filter-buttons {
+    justify-content: center;
+    grid-template-columns: repeat(4, max-content);
+  }
+  .controls-row-2 .controls-right {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    flex-direction: row;
+    align-self: flex-end;
+    justify-content: flex-end;
+  }
+
+  /* 카테고리 행: 라벨 위, gift-row 아래 */
+  .category-row {
+    flex-direction: column;
+  }
+  .category-label {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0;
+    gap: 8px;
+  }
+  .cat-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* 팝업 */
+  .modal-box {
+    width: min(480px, 92vw);
+  }
+  .gift-popup-box {
+    width: min(420px, 92vw);
+  }
+  .modal-box--sm {
+    width: min(360px, 90vw);
+  }
+
+}
+
+/* ────────────────────────────────────────
+   반응형 — 소형 모바일 (≤ 480px)
+──────────────────────────────────────── */
+@media (max-width: 480px) {
+  .gift-row {
+    grid-template-columns: repeat(auto-fill, 60px);
+  }
+  .gift-row.show-name {
+    grid-template-columns: repeat(auto-fill, 60px);
+  }
+  .gift-row.show-name .gift-name-label {
+    width: 54px;
+    font-size: 0.65rem;
+  }
+  .gift-card {
+    width: 60px;
+    height: 60px;
+  }
+  .gift-card .gift-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+  .gift-card .gift-icon {
+    max-width: 38px;
+    max-height: 38px;
+  }
+  .gift-card .gift-frame {
+    width: 46px;
+    height: 46px;
+  }
+  .gift-card .gift-grade-wrap {
+    width: 14px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+  }
+  .gift-card .gift-grade {
+    height: 18px;
+  }
+  .gift-card .gift-difficulty {
+    height: 14px;
+    top: 3px;
+    right: 3px;
+  }
+  .gift-card .cat-badge {
+    width: 17px;
+    height: 17px;
+  }
+  .gift-card .check-mark {
+    font-size: 1.2rem;
+  }
+  .filter-btn {
+    width: 66px;
+    height: 42px;
+    font-size: 0.9rem;
+  }
+  .reset-btn.filter-btn,
+  .guide-btn.filter-btn,
+  .sort-btn.filter-btn,
+  .toggle-name-btn {
+    width: 88px;
+    height: 42px;
+    font-size: 0.9rem;
+  }
+  /* 검색그룹 너비 = 카테고리 버튼 4열 너비 (4 * 66px + 3 * 0.3rem) */
+  .search-group {
+    width: calc(4 * 66px + 3 * 0.3rem);
+  }
+  .tag-filter-input {
+    width: calc(4 * 66px + 3 * 0.3rem);
+  }
+
+}
+
+/* ────────────────────────────────────────
+   업데이트 로그 팝업 — 모바일 비율 대응
+   PC 기준(560×487px) 여백 비율을 vw로 환산:
+     좌우 프레임: 40px → 40/560×92 ≈ 6.57vw
+     상단 프레임: 40px → 40/487×80 ≈ 6.57vw
+     하단 여백:   60px → 60/487×80 ≈ 9.84vw
+     스크롤바 너비:   38px → 38/560×92 ≈ 6.25vw
+     스크롤바 margin: 45px → 45/560×92 ≈ 7.40vw
+     썸 높이:     55px → 55/560×92 ≈ 9.04vw
+──────────────────────────────────────── */
+@media (max-width: 600px) {
+  .modal-box--changelog {
+    width: 92vw;
+    height: 80vw;   /* 92 × 487/560 ≈ 80 — 배경 이미지 비율 유지 */
+  }
+  .modal-box--changelog .modal-header {
+    padding-left:  calc(6.5vw + 1rem);
+    padding-right: calc(17.5vw + 1rem);
+    padding-top:   calc(6.5vw + 0.5rem);
+  }
+  .changelog-body-wrap {
+    margin-bottom: 10vw;
+  }
+  .modal-box--changelog .modal-body {
+    padding-left:   calc(6.5vw + 1rem);
+    padding-right:  1vw;
+    padding-top:    0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .changelog-scrollbar {
+    margin-right: 7.5vw;
+    width: 6.5vw;
+  }
+  .changelog-scrollbar-track {
+    width: 6.5vw;
+    background-size: 6.5vw 100%;
+  }
+  .changelog-scrollbar-thumb {
+    width: 6.5vw;
+    height: 9vw;
+    background-size: 6.5vw auto;
+  }
+  .changelog-list {
+    font-size: 0.78rem;
+  }
+}

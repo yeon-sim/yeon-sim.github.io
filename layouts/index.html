@@ -15,6 +15,28 @@
   {{/* ── 헤더 ── */}}
   <header class="site-header">
     <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
+    <div class="site-header-btns">
+      <div class="site-header-btns-row">
+        <button class="guide-btn filter-btn" @click="guideModal = true">
+          <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
+          <span>가이드</span>
+        </button>
+        <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
+          <img class="filter-btn-icon" src="/images/ui/clear.png" alt="">
+          <span>초기화</span>
+        </button>
+      </div>
+      <div class="site-header-btns-row">
+        <button class="sort-btn filter-btn" @click="toggleSort()">
+          <img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;">
+          <span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span>
+        </button>
+        <button class="toggle-name-btn" @click="toggleNameDisplay()">
+          <img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt="">
+          <span x-text="showName ? '이름' : '이미지'"></span>
+        </button>
+      </div>
+    </div>
   </header>
 
   {{/* ── 본문 (가운데 정렬) ── */}}
@@ -64,7 +86,10 @@
           <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
           <span>가이드</span>
         </button>
-        <button class="toggle-name-btn" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
+        <div class="controls-right-row">
+          <button class="sort-btn filter-btn" @click="toggleSort()"><img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;"><span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span></button>
+          <button class="toggle-name-btn" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -75,7 +100,7 @@
     <input
       class="tag-filter-input"
       type="search"
-      placeholder="태그 검색..."
+      placeholder="태그 검색"
       x-model="tagFilter"
     >
     {{ range $tagCategories }}
@@ -99,7 +124,7 @@
     {{ range $categories }}{{ if ne .id "None" }}
     {{ $catId := .id }}
     {{ $catName := .name }}
-    <div class="category-row" :style="{ display: isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
+    <div id="cat-{{ $catId }}" class="category-row" :style="{ display: isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
       <div class="category-label">
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}">
         <span class="cat-name">{{ $catName }}</span>
@@ -111,15 +136,20 @@
         {{ range $gifts }}{{ if eq .category $catId }}
         {{ $isFusion := in $fusionIds (string .id) }}
         {{ $isSpecial := gt (len .packs) 0 }}
+        {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
         <div
-          class="gift-card{{ if $isFusion }} fusion{{ end }}"
+          class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="{{ .category }}"
-          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
+          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           @contextmenu.prevent="openGiftPopup('{{ .id }}')"
+          @pointerdown="startLongPress('{{ .id }}', $event)"
+          @pointerup="cancelLongPress($event)"
+          @pointermove="cancelLongPress($event)"
+          @pointercancel="cancelLongPress($event)"
         >
           <div class="gift-icon-wrap">
             <img
@@ -148,7 +178,7 @@
 
     {{/* 범용(None) 행 — 항상 마지막 */}}
     {{ $noneCount := len (where $gifts "category" "None") }}
-    <div class="category-row" :style="{ display: isRowVisible('None') ? 'flex' : 'none' }">
+    <div id="cat-None" class="category-row" :style="{ display: isRowVisible('None') ? 'flex' : 'none' }">
       <div class="category-label">
         <img class="cat-icon" src="/images/category/none.png" alt="범용">
         <span class="cat-name">범용</span>
@@ -160,15 +190,20 @@
         {{ range $gifts }}{{ if eq .category "None" }}
         {{ $isFusion := in $fusionIds (string .id) }}
         {{ $isSpecial := gt (len .packs) 0 }}
+        {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
         <div
-          class="gift-card{{ if $isFusion }} fusion{{ end }}"
+          class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="None"
-          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none' }"
+          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           @contextmenu.prevent="openGiftPopup('{{ .id }}')"
+          @pointerdown="startLongPress('{{ .id }}', $event)"
+          @pointerup="cancelLongPress($event)"
+          @pointermove="cancelLongPress($event)"
+          @pointercancel="cancelLongPress($event)"
         >
           <div class="gift-icon-wrap">
             <img
@@ -202,6 +237,52 @@
   </div>
 
   </div>{{/* end .main-content */}}
+
+  {{/* ── 플로팅 버튼 ── */}}
+  <div class="float-btns" @click.away="showToc = false">
+    {{/* 목차 */}}
+    <div class="float-toc-wrap">
+      <div class="float-toc-panel" x-show="showToc" x-transition>
+        <button class="float-toc-item" @click="activeCategory = ''; showToc = false; window.scrollTo({top:0,behavior:'smooth'})">
+          <img src="/images/ui/all.png" alt="전체" class="float-toc-icon">
+          <span>전체</span>
+        </button>
+        <button class="float-toc-item" @click="scrollToCategory('None')">
+          <img src="/images/ui/none.png" alt="범용" class="float-toc-icon">
+          <span>범용</span>
+        </button>
+        {{ range $categories }}{{ if ne .id "None" }}
+        <button class="float-toc-item" @click="scrollToCategory('{{ .id }}')">
+          <img src="/images/ui/{{ lower .id }}.png" alt="{{ .name }}" class="float-toc-icon">
+          <span>{{ .name }}</span>
+        </button>
+        {{ end }}{{ end }}
+      </div>
+      <button class="float-btn" @click="showToc = !showToc" title="목차">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+          <circle cx="3" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
+    {{/* 이미지/이름 토글 */}}
+    <button class="float-btn" @click="toggleNameDisplay()" title="이미지/이름">
+      <img src="/images/ui/ui_switch.png" alt="" width="22" height="22" style="object-fit:contain;">
+    </button>
+    {{/* 맨 위로 / 맨 아래로 */}}
+    <div class="float-scroll-group">
+      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="맨 아래로">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
   {{/* ── 가이드 모달 ── */}}
   <div class="modal-overlay" :class="{ open: guideModal }" @click.self="guideModal = false">
@@ -370,7 +451,8 @@ const giftMap = {
   {{ range $gifts }}
   {{ $isFusion := in $fusionIds (string .id) }}
   {{ $isSpecial := gt (len .packs) 0 }}
-  "{{ .id }}": { name: {{ .name | jsonify }}, desc: {{ .desc | jsonify }}, grade: "{{ .grade }}", tags: {{ .tags | jsonify }}, category: "{{ .category }}", isFusion: {{ $isFusion }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
+  {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
+  "{{ .id }}": { name: {{ .name | jsonify }}, desc: {{ .desc | jsonify }}, grade: "{{ .grade }}", tags: {{ .tags | jsonify }}, category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
   {{ end }}
 };
 </script>
@@ -382,17 +464,52 @@ function checklist() {
     activeCategory: '',
     checked: {},
     showName: false,
+    sortMode: 'id',
     showTagPanel: false,
     tagFilter: '',
     visibleRowCount: 0,
     giftPopup: { open: false, id: null, name: '', descHtml: '', grade: '', tags: [], category: '', isFusion: false, isSpecial: false, difficulty: '' },
     guideModal: false,
+    showToc: false,
 
     init() {
       const saved = localStorage.getItem('egogift-checked');
       if (saved) this.checked = JSON.parse(saved);
       this.showName = localStorage.getItem('egogift-showname') === 'true';
       this.$nextTick(() => this.updateVisibleRowCount());
+    },
+
+    _longPressTimer: null,
+    _longPressTriggered: false,
+    _longPressStartX: 0,
+    _longPressStartY: 0,
+
+    startLongPress(id, event) {
+      if (event.button !== undefined && event.button !== 0) return;
+      this._longPressTriggered = false;
+      this._longPressStartX = event.clientX;
+      this._longPressStartY = event.clientY;
+      this._longPressTimer = setTimeout(() => {
+        this._longPressTriggered = true;
+        this._longPressTimer = null;
+        this.openGiftPopup(id);
+      }, 500);
+    },
+
+    cancelLongPress(event) {
+      if (event && event.type === 'pointermove') {
+        const dx = Math.abs(event.clientX - this._longPressStartX);
+        const dy = Math.abs(event.clientY - this._longPressStartY);
+        if (dx < 10 && dy < 10) return;
+      }
+      if (this._longPressTimer) {
+        clearTimeout(this._longPressTimer);
+        this._longPressTimer = null;
+      }
+      if (this._longPressTriggered && event) {
+        event.preventDefault();
+        this._longPressTriggered = false;
+      }
     },
 
     openGiftPopup(id) {
@@ -406,7 +523,7 @@ function checklist() {
         grade: g.grade,
         tags: g.tags,
         category: g.category,
-        isFusion: g.isFusion,
+        isFusion: g.isFusionBg,
         isSpecial: g.isSpecial,
         difficulty: g.difficulty
       };
@@ -415,6 +532,14 @@ function checklist() {
     toggleNameDisplay() {
       this.showName = !this.showName;
       localStorage.setItem('egogift-showname', this.showName);
+    },
+
+    toggleSort() {
+      this.sortMode = this.sortMode === 'id' ? 'grade' : 'id';
+    },
+
+    gradeOrder(grade) {
+      return { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, 'ex': 6 }[String(grade)] ?? 99;
     },
 
     isChecked(id) {
@@ -528,6 +653,15 @@ function checklist() {
       this.checked = {};
       localStorage.removeItem('egogift-checked');
       document.getElementById('reset-modal').classList.remove('open');
+    },
+
+    scrollToCategory(catId) {
+      this.activeCategory = catId;
+      this.showToc = false;
+      this.$nextTick(() => {
+        const el = document.getElementById('cat-' + catId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
   }
 }
@@ -569,18 +703,18 @@ function checklist() {
       scrollArea.scrollTop = ratio * getMaxScrollTop();
     });
 
-    // 드래그
-    let dragging = false, startY = 0, startScrollTop = 0;
+    // 드래그 (pointer events — PC·모바일 공통)
+    let startY = 0, startScrollTop = 0;
 
-    thumb.addEventListener('mousedown', function(e) {
-      dragging = true;
+    thumb.addEventListener('pointerdown', function(e) {
       startY = e.clientY;
       startScrollTop = scrollArea.scrollTop;
+      thumb.setPointerCapture(e.pointerId);
       e.preventDefault();
     });
 
-    document.addEventListener('mousemove', function(e) {
-      if (!dragging) return;
+    thumb.addEventListener('pointermove', function(e) {
+      if (!thumb.hasPointerCapture(e.pointerId)) return;
       const trackH = track.clientHeight;
       const maxTop = trackH - THUMB_H;
       const delta  = e.clientY - startY;
@@ -588,7 +722,8 @@ function checklist() {
       scrollArea.scrollTop = startScrollTop + ratio * getMaxScrollTop();
     });
 
-    document.addEventListener('mouseup', function() { dragging = false; });
+    thumb.addEventListener('pointerup', function(e) { thumb.releasePointerCapture(e.pointerId); });
+    thumb.addEventListener('pointercancel', function(e) { thumb.releasePointerCapture(e.pointerId); });
 
     updateThumb();
   }
@@ -600,6 +735,22 @@ function checklist() {
       setTimeout(initChangelogScrollbar, 50);
     });
   }
+})();
+
+// ── sheep 이동 속도 (px/s) 기반 duration 계산 ──
+(function() {
+  const SPEED = 150; // px/s
+  const mover = document.querySelector('.easter-sheep-mover');
+  if (!mover) return;
+
+  function updateSheepDuration() {
+    const sheepWidth = mover.offsetWidth || 120;
+    const distance = window.innerWidth + 80 + sheepWidth + 20;
+    mover.style.animationDuration = (distance / SPEED).toFixed(2) + 's';
+  }
+
+  updateSheepDuration();
+  window.addEventListener('resize', updateSheepDuration);
 })();
 </script>
 {{ end }}
