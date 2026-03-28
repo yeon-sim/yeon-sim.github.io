@@ -452,7 +452,7 @@ const giftMap = {
   {{ $isFusion := in $fusionIds (string .id) }}
   {{ $isSpecial := gt (len .packs) 0 }}
   {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
-  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: {{ jsonify (dict "noHTMLEscape" true) .tags }}, category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
+  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
   {{ end }}
 };
 </script>
