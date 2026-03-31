@@ -89,46 +89,6 @@ body {
   align-items: center;
 }
 
-/* ── 만우절 이미지 ── */
-.search-group-col {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.aprilfool-top {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 0.5rem;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.aprilfool-side {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 0.25rem;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.aprilfool-img {
-  height: 100px;
-  width: auto;
-  display: block;
-}
-
-.aprilfool-flip {
-  transform: scaleX(-1);
-}
 
 /* ── 컨트롤 바 ── */
 .controls {
