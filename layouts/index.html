@@ -45,7 +45,12 @@
   {{/* ── 컨트롤 바 ── */}}
   <div class="controls">
     <div class="controls-row controls-row-1">
-      <div class="search-group">
+      <div class="search-group-col">
+        <div class="aprilfool-top">
+          <img class="aprilfool-img" src="/images/easteregg/aprilfool_3.png" alt="">
+          <img class="aprilfool-img aprilfool-flip" src="/images/easteregg/aprilfool_4.png" alt="">
+        </div>
+        <div class="search-group">
         <input
           class="search-input"
           type="search"
@@ -58,6 +63,7 @@
           :class="{ active: showTagPanel }"
           @click="showTagPanel = !showTagPanel"
         ># 태그</button>
+        </div>
       </div>
       <div class="controls-right">
         <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
@@ -67,6 +73,10 @@
       </div>
     </div>
     <div class="controls-row controls-row-2">
+      <div class="aprilfool-side">
+        <img class="aprilfool-img" src="/images/easteregg/aprilfool_1.png" alt="">
+        <img class="aprilfool-img" src="/images/easteregg/aprilfool_2.png" alt="">
+      </div>
       <div class="filter-buttons">
         <button
           class="filter-btn"
