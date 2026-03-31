@@ -131,7 +131,8 @@ body {
   position: relative;
   width: 100%;
   height: 130px;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   margin-top: 15px;
 }
 
@@ -140,7 +141,6 @@ body {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  animation: sheep-move 12s linear infinite;
 }
 
 .easter-sheep {
@@ -148,11 +148,6 @@ body {
   height: 120px;
   width: auto;
   animation: sheep-spin 1s linear infinite;
-}
-
-@keyframes sheep-move {
-  from { transform: translateX(calc(100vw + 80px)); }
-  to   { transform: translateX(calc(-100% - 20px)); }
 }
 
 @keyframes sheep-spin {
@@ -832,7 +827,7 @@ body {
 
 /* ── gift 정보 팝업 ── */
 .gift-popup-box {
-  width: 420px;
+  width: 460px;
 }
 
 .gift-popup-title-row {
@@ -851,6 +846,30 @@ body {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+}
+
+.gift-popup-icon-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  width: 100px;
+}
+
+.gift-popup-packs {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.pack-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 .gift-popup-icon-wrap {
@@ -873,6 +892,105 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+.gift-popup-fusion-recipe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fusion-recipe-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.1rem;
+}
+
+.fusion-recipe-row-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.fusion-op {
+  color: #c8a96e;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 0.1rem;
+}
+
+/* ── 미니 gift 카드 (gift-card와 동일 구조) ── */
+.fusion-recipe-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: url('/images/egogift/gift_background.png') center / contain no-repeat;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.fusion-recipe-card.fusion {
+  background: url('/images/egogift/gift_background_fusion.png') center / contain no-repeat;
+}
+
+.fusion-icon-wrap {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.fusion-icon {
+  max-width: 30px;
+  max-height: 30px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.fusion-frame {
+  position: absolute;
+  width: 37px;
+  height: 37px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fusion-grade-wrap {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.fusion-grade {
+  height: 14px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.fusion-cat-badge {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 14px;
+  height: 14px;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .gift-popup-desc {

@@ -7,6 +7,8 @@ egogifts.json을 출력합니다.
 - 카테고리 자동 배정 (KR_EgoGiftCategory.json 참조)
 - simpleDesc 제외, name/desc/category/grade만 포함
 - grade 기본값: "-" (1, 2, 3, 4, 5, ex 중 하나로 수동 설정)
+- 5자리 id(강화 gift)는 기본 gift의 upgrade 칼럼에 레벨별로 병합
+  (예: id 11234 → id 1234의 upgrade["1"])
 
 실행 위치: egogift_script/
 출력 파일: egogift_script/egogifts.json
@@ -120,42 +122,77 @@ def assign_category(desc_raw, categories, category_ids):
 
 # ── 4. gift 파일 통합 ─────────────────────────────────────────────
 
+def parse_item(item, keyword_map, categories, category_ids, whitelist):
+    """단일 gift 항목을 파싱하여 dict 반환."""
+    item_id = item["id"]
+    desc_raw = item.get("desc", "")
+    parsed = {
+        "name": item["name"],
+        "category": assign_category(desc_raw, categories, category_ids),
+        "desc": resolve_desc(desc_raw, keyword_map),
+        "grade": "-",
+        "difficulty": "normal",
+        "tags": [],
+        "packs": [],
+    }
+    if item_id in whitelist:
+        override = whitelist[item_id]
+        for field in ("name", "category", "desc", "grade", "difficulty", "tags", "packs"):
+            if field in override:
+                parsed[field] = override[field]
+    return parsed
+
+
 def load_gifts(keyword_map, categories, category_ids, blacklist, whitelist):
     files = sorted(
         f for f in os.listdir(GIFT_DIR)
         if f.startswith("KR_EGOgift_") and f.endswith(".json")
     )
 
-    gifts = {}
+    base_gifts = {}   # id(4자리) → parsed dict
+    upgrades = {}     # base_id → { level(str) → parsed dict }
+
     for fname in files:
         with open(os.path.join(GIFT_DIR, fname), encoding="utf-8") as f:
             data = json.load(f)
         for item in data.get("dataList", []):
             item_id = item.get("id")
-            if item_id is None or item_id in gifts:
+            if item_id is None:
                 continue
             if item_id in blacklist:
                 continue
-            # 4자리 id만 포함 (강화본 제외)
-            if not (1000 <= item_id <= 9999):
-                continue
-            desc_raw = item.get("desc", "")
-            parsed = {
-                "id": item_id,
-                "name": item["name"],
-                "category": assign_category(desc_raw, categories, category_ids),
-                "desc": resolve_desc(desc_raw, keyword_map),
-                "grade": "-",
-            }
-            # 화이트리스트 항목으로 덮어쓰기
-            if item_id in whitelist:
-                override = whitelist[item_id]
-                for field in ("name", "category", "desc", "grade"):
-                    if field in override:
-                        parsed[field] = override[field]
-            gifts[item_id] = parsed
 
-    return sorted(gifts.values(), key=lambda x: x["id"])
+            if 1000 <= item_id <= 9999:
+                # 기본 gift (4자리)
+                if item_id in base_gifts:
+                    continue
+                parsed = parse_item(item, keyword_map, categories, category_ids, whitelist)
+                parsed["id"] = item_id
+                base_gifts[item_id] = parsed
+
+            elif 10000 <= item_id <= 99999:
+                # 강화 gift (5자리): 첫 자리 = 강화 레벨, 나머지 4자리 = 기본 ID
+                level = item_id // 10000
+                base_id = item_id % 10000
+                if base_id not in upgrades:
+                    upgrades[base_id] = {}
+                level_key = str(level)
+                if level_key in upgrades[base_id]:
+                    continue
+                parsed = parse_item(item, keyword_map, categories, category_ids, whitelist)
+                upgrades[base_id][level_key] = parsed
+
+    # 강화 데이터를 기본 gift의 upgrade 칼럼에 병합 (레벨 순 정렬 배열)
+    UPGRADE_EXCLUDE = {"grade", "difficulty", "packs"}
+    for base_id, levels in upgrades.items():
+        if base_id not in base_gifts:
+            continue
+        base_gifts[base_id]["upgrade"] = [
+            {k: v for k, v in upg.items() if k not in UPGRADE_EXCLUDE}
+            for _, upg in sorted(levels.items())
+        ]
+
+    return sorted(base_gifts.values(), key=lambda x: x["id"])
 
 
 # ── 5. 검증 및 저장 ───────────────────────────────────────────────
@@ -167,7 +204,8 @@ def main():
     categories, category_ids = load_categories()
     gifts = load_gifts(keyword_map, categories, category_ids, blacklist, whitelist)
 
-    print(f"EGO 선물 수집: {len(gifts)}개")
+    upgraded_count = sum(1 for g in gifts if "upgrade" in g)
+    print(f"EGO 선물 수집: {len(gifts)}개 (강화 보유: {upgraded_count}개)")
 
     # 카테고리 분포
     cat_name = {c["id"]: c["name"] for c in categories}
@@ -178,10 +216,12 @@ def main():
     for cid, cnt in sorted(dist.items(), key=lambda x: -x[1]):
         print(f"  {cat_name.get(cid, cid)}: {cnt}개")
 
-    # 미해소 키워드 경고
+    # 미해소 키워드 경고 (기본 + 강화 desc 모두 검사)
     unresolved = set()
     for g in gifts:
         unresolved.update(ASCII_KW.findall(g["desc"]))
+        for upg in g.get("upgrade", []):
+            unresolved.update(ASCII_KW.findall(upg["desc"]))
     if unresolved:
         print(f"[경고] 미해소 키워드 {len(unresolved)}개: {sorted(unresolved)}")
     else:

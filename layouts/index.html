@@ -313,52 +313,83 @@
     </div>
   </div>
 
-  {{/* ── gift 정보 팝업 ── */}}
-  <div class="modal-overlay" :class="{ open: giftPopup.open }" @click.self="giftPopup.open = false">
-    <div class="modal-box gift-popup-box">
-      <div class="modal-header">
-        <div class="gift-popup-title-row">
-          <img class="gift-popup-grade-img" :src="`/images/egogift/gift_grade_${giftPopup.grade}.png`" :alt="`grade ${giftPopup.grade}`">
-          <span class="modal-title" x-text="giftPopup.name"></span>
-        </div>
-        <button class="modal-close" @click="giftPopup.open = false">&times;</button>
-      </div>
-      <div class="modal-body gift-popup-body">
-        <div class="gift-popup-icon-wrap" :class="{ fusion: giftPopup.isFusion }">
-          <div class="gift-icon-wrap">
-            <img class="gift-icon" :src="`/images/egogift/${giftPopup.id}.png`" :alt="giftPopup.name">
+  {{/* ── gift 정보 팝업 (스택) ── */}}
+  <template x-for="(popup, si) in giftPopupStack" :key="si">
+    <div class="modal-overlay open" @click.self="giftPopupStack.splice(si, 1)" :style="`z-index: ${100 + si * 10}`">
+      <div class="modal-box gift-popup-box">
+        <div class="modal-header">
+          <div class="gift-popup-title-row">
+            <img class="gift-popup-grade-img" :src="`/images/egogift/gift_grade_${popup.grade}.png`" :alt="`grade ${popup.grade}`">
+            <span class="modal-title" x-text="popup.name"></span>
           </div>
-          <img class="gift-frame" :src="`/images/egogift/${giftPopup.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
-          <div class="gift-grade-wrap">
-            <img class="gift-grade" :src="`/images/egogift/gift_grade_${giftPopup.grade}.png`" alt="">
-          </div>
-          <img
-            class="gift-difficulty"
-            x-show="giftPopup.difficulty === 'hard'"
-            src="/images/ui/difficulty_hard.png"
-            alt="hard"
-          >
-          <img
-            class="cat-badge"
-            x-show="giftPopup.category && giftPopup.category !== 'None'"
-            :src="`/images/category/${giftPopup.category ? giftPopup.category.toLowerCase() : ''}.png`"
-            :alt="giftPopup.category"
-          >
+          <button class="modal-close" @click="giftPopupStack.splice(si, 1)">&times;</button>
         </div>
-        <div class="gift-popup-info">
-          <p class="gift-popup-desc" x-html="giftPopup.descHtml"></p>
-          <div class="gift-popup-tags" x-show="giftPopup.tags && giftPopup.tags.length">
-            <template x-for="tag in giftPopup.tags" :key="tag">
-              <span class="tag-chip" x-text="`#${tag}`"></span>
-            </template>
+        <div class="modal-body gift-popup-body">
+          <div class="gift-popup-icon-col">
+            <div class="gift-popup-icon-wrap" :class="{ fusion: popup.isFusion }">
+              <div class="gift-icon-wrap">
+                <img class="gift-icon" :src="`/images/egogift/${popup.id}.png`" :alt="popup.name">
+              </div>
+              <img class="gift-frame" :src="`/images/egogift/${popup.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
+              <div class="gift-grade-wrap">
+                <img class="gift-grade" :src="`/images/egogift/gift_grade_${popup.grade}.png`" alt="">
+              </div>
+              <img
+                class="gift-difficulty"
+                x-show="popup.difficulty === 'hard'"
+                src="/images/ui/difficulty_hard.png"
+                alt="hard"
+              >
+              <img
+                class="cat-badge"
+                x-show="popup.category && popup.category !== 'None'"
+                :src="`/images/category/${popup.category ? popup.category.toLowerCase() : ''}.png`"
+                :alt="popup.category"
+              >
+            </div>
+            <div class="gift-popup-packs" x-show="popup.packs && popup.packs.length">
+              <template x-for="packId in popup.packs" :key="packId">
+                <img class="pack-banner" :src="`/images/banner/${packId}.png`" :alt="themeMap[String(packId)] || String(packId)" onerror="this.src='/images/banner/pack_default.png'">
+              </template>
+            </div>
+          </div>
+          <div class="gift-popup-info">
+            <div class="gift-popup-fusion-recipe" x-show="popup.fusionRecipes && popup.fusionRecipes.length">
+              <template x-for="(recipe, rIdx) in popup.fusionRecipes" :key="rIdx">
+                <div class="fusion-recipe-row">
+                  <template x-for="(mat, idx) in recipe" :key="idx">
+                    <span class="fusion-recipe-row-item">
+                      <span x-show="idx > 0" class="fusion-op">+</span>
+                      <div class="fusion-recipe-card" :class="{ fusion: mat.isFusionBg }" @click.stop="openGiftPopup(mat.id)">
+                        <div class="fusion-icon-wrap">
+                          <img class="fusion-icon" :src="`/images/egogift/${mat.id}.png`" alt="">
+                        </div>
+                        <img class="fusion-frame" :src="`/images/egogift/${mat.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
+                        <div class="fusion-grade-wrap">
+                          <img class="fusion-grade" :src="`/images/egogift/gift_grade_${mat.grade}.png`" alt="">
+                        </div>
+                        <img class="fusion-cat-badge" x-show="mat.category && mat.category !== 'None'" :src="`/images/category/${mat.category ? mat.category.toLowerCase() : ''}.png`" alt="">
+                      </div>
+                    </span>
+                  </template>
+                </div>
+              </template>
+            </div>
+            <p class="gift-popup-desc" x-html="popup.descHtml"></p>
+            <div class="gift-popup-tags" x-show="popup.tags && popup.tags.length">
+              <template x-for="tag in popup.tags" :key="tag">
+                <span class="tag-chip" x-text="`#${tag}`"></span>
+              </template>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </template>
 
 </div>
 
+<script src="/js/sheep-config.js"></script>
 <div class="easter-sheep-wrap">
   <div class="easter-sheep-mover">
     <img class="easter-sheep" src="/images/easteregg/sheep.gif" alt="">
@@ -408,11 +439,21 @@
 
 {{/* 조합 맵 */}}
 <script>
-const comboMap = {
-  {{ range .Site.Data.fusion.dataList }}"{{ .result }}": [{{ range .materials }}"{{ . }}",{{ end }}],
+const fusionEntries = [
+  {{ range .Site.Data.fusion.dataList }}{ result: "{{ .result }}", materials: [{{ range .materials }}"{{ . }}",{{ end }}] },
+  {{ end }}
+];
+const comboMap = {};
+for (const e of fusionEntries) {
+  if (!comboMap[e.result]) comboMap[e.result] = [];
+  comboMap[e.result].push(e.materials);
+}
+const comboResultIds = new Set(Object.keys(comboMap));
+
+const themeMap = {
+  {{ range .Site.Data.theme.dataList }}"{{ .id }}": "{{ .name }}",
   {{ end }}
 };
-const comboResultIds = new Set([{{ range .Site.Data.fusion.dataList }}"{{ .result }}",{{ end }}]);
 
 const gradeMap = {
   {{ range $gifts }}"{{ .id }}": "{{ .grade }}",
@@ -452,7 +493,7 @@ const giftMap = {
   {{ $isFusion := in $fusionIds (string .id) }}
   {{ $isSpecial := gt (len .packs) 0 }}
   {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
-  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}" },
+  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}", packs: [{{ range .packs }}{{ . }},{{ end }}] },
   {{ end }}
 };
 </script>
@@ -468,7 +509,7 @@ function checklist() {
     showTagPanel: false,
     tagFilter: '',
     visibleRowCount: 0,
-    giftPopup: { open: false, id: null, name: '', descHtml: '', grade: '', tags: [], category: '', isFusion: false, isSpecial: false, difficulty: '' },
+    giftPopupStack: [],
     guideModal: false,
     showToc: false,
 
@@ -515,8 +556,20 @@ function checklist() {
     openGiftPopup(id) {
       const g = giftMap[id];
       if (!g) return;
-      this.giftPopup = {
-        open: true,
+      const recipes = comboMap[String(id)] || [];
+      const fusionRecipes = recipes.map(matIds =>
+        matIds.map(mid => {
+          const mg = giftMap[mid] || {};
+          return {
+            id: mid,
+            grade: mg.grade || '-',
+            isFusionBg: mg.isFusionBg || false,
+            isSpecial: mg.isSpecial || false,
+            category: mg.category || 'None'
+          };
+        })
+      );
+      this.giftPopupStack.push({
         id,
         name: g.name.replace(/^"|"$/g, ''),
         descHtml: g.desc.replace(/^"|"$/g, '').replace(/\n/g, '<br>').replace(/\\n/g, '<br>'),
@@ -525,8 +578,10 @@ function checklist() {
         category: g.category,
         isFusion: g.isFusionBg,
         isSpecial: g.isSpecial,
-        difficulty: g.difficulty
-      };
+        difficulty: g.difficulty,
+        packs: g.packs || [],
+        fusionRecipes
+      });
     },
 
     toggleNameDisplay() {
@@ -550,11 +605,13 @@ function checklist() {
       if (visited.has(id)) return new Set();
       visited.add(id);
       const result = new Set();
-      const mats = comboMap[id];
-      if (mats) {
-        mats.forEach(matId => {
-          result.add(matId);
-          this.getMaterials(matId, visited).forEach(m => result.add(m));
+      const recipes = comboMap[id];
+      if (recipes) {
+        recipes.forEach(matIds => {
+          matIds.forEach(matId => {
+            result.add(matId);
+            this.getMaterials(matId, visited).forEach(m => result.add(m));
+          });
         });
       }
       return result;
@@ -737,20 +794,55 @@ function checklist() {
   }
 })();
 
-// ── sheep 이동 속도 (px/s) 기반 duration 계산 ──
+// ── sheep |sin| 바운스 이동 ──
 (function() {
-  const SPEED = 150; // px/s
+  const SPEED      = 150;  // px/s  수평 이동 속도
+  const WAVELENGTH = 200;  // px    바운스 1회당 수평 이동 거리
+
+  function pickAmplitude() {
+    const table = (typeof SHEEP_AMPLITUDE_TABLE !== 'undefined') ? SHEEP_AMPLITUDE_TABLE : [{ value: 65, weight: 1 }];
+    const total = table.reduce(function(s, e) { return s + e.weight; }, 0);
+    let r = Math.random() * total;
+    for (var i = 0; i < table.length; i++) {
+      r -= table[i].weight;
+      if (r <= 0) return table[i].value;
+    }
+    return table[table.length - 1].value;
+  }
+
   const mover = document.querySelector('.easter-sheep-mover');
   if (!mover) return;
 
-  function updateSheepDuration() {
-    const sheepWidth = mover.offsetWidth || 120;
-    const distance = window.innerWidth + 80 + sheepWidth + 20;
-    mover.style.animationDuration = (distance / SPEED).toFixed(2) + 's';
+  let x         = null;
+  let lastTime  = null;
+  let amplitude = pickAmplitude();
+
+  function startX() { return window.innerWidth + 80; }
+  function endX()   { return -((mover.offsetWidth || 120) + 20); }
+
+  function reset() {
+    x         = startX();
+    lastTime  = null;
+    amplitude = pickAmplitude();
   }
 
-  updateSheepDuration();
-  window.addEventListener('resize', updateSheepDuration);
+  function tick(timestamp) {
+    if (lastTime === null) lastTime = timestamp;
+    const dt = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+
+    x -= SPEED * dt;
+    if (x < endX()) reset();
+
+    const traveled = startX() - x;
+    const y = amplitude * Math.abs(Math.sin(Math.PI * traveled / WAVELENGTH));
+
+    mover.style.transform = 'translateX(' + x + 'px) translateY(' + (-y) + 'px)';
+    requestAnimationFrame(tick);
+  }
+
+  reset();
+  requestAnimationFrame(tick);
 })();
 </script>
 {{ end }}
