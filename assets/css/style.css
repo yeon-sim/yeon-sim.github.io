@@ -677,6 +677,35 @@ body {
 }
 .version-btn:hover { color: #aaa; }
 
+.footer-link {
+  color: #6a6a8a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-link:hover { color: #aaa; }
+
+.analytics-section-title {
+  color: #aaa;
+  font-size: 1rem;
+  font-family: 'KOTRA_BOLD', sans-serif;
+  margin-bottom: 0.3rem;
+}
+.analytics-info-list {
+  margin: 0 0 0.8rem 1.2rem;
+  padding: 0;
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  font-family: 'LiberationSans', sans-serif;
+}
+.analytics-info-note {
+  margin-top: 0.4rem;
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  font-family: 'LiberationSans', sans-serif;
+}
+
 /* ── 모달 ── */
 .modal-overlay {
   display: none;
@@ -712,6 +741,28 @@ body {
 .modal-box--changelog .modal-header {
   border-bottom: none;
 }
+
+.modal-box--analytics {
+  background: url('/images/ui/update_log.png') center / cover no-repeat;
+  border: none;
+  width: 560px;
+  height: 487px;
+  max-height: 90vh;
+  overflow: hidden;
+}
+.modal-box--analytics .modal-header {
+  border-bottom: none;
+  padding-left: calc(1.2rem + 40px);
+  padding-right: calc(1.2rem + 100px);
+  padding-top: calc(1rem + 40px);
+}
+.modal-box--analytics .modal-body {
+  padding-top: 1rem;
+  padding-right: calc(1.2rem + 85px);
+  padding-bottom: 1rem;
+  padding-left: calc(1.2rem + 40px);
+}
+
 .modal-header {
   display: flex;
   align-items: center;

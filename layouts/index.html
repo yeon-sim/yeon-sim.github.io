@@ -398,6 +398,7 @@
 <footer class="site-footer">
   <p class="footer-note">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
   <p class="footer-note">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
+  <p class="footer-note">연심(連心)은 <a class="footer-link" href="#" onclick="event.preventDefault();document.getElementById('analytics-modal').classList.add('open')">서비스 개선</a>을 위해 Google Analytics를 사용합니다.</p>
   <p class="footer-version">
     {{ with last 1 .Site.Data.changelog.versions }}{{ $v := index . 0 }}
     Site <button class="version-btn" onclick="document.getElementById('changelog-modal').classList.add('open')">v.{{ $v.version }}</button>
@@ -433,6 +434,25 @@
           <div class="changelog-scrollbar-thumb"></div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="analytics-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box modal-box--analytics">
+    <div class="modal-header">
+      <span class="modal-title">정보 수집 안내</span>
+      <button class="modal-close" onclick="document.getElementById('analytics-modal').classList.remove('open')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="analytics-section-title">수집하는 항목</p>
+      <ul class="analytics-info-list">
+        <li><strong>방문 통계</strong> : 페이지 뷰, 세션 수, 접속 시간</li>
+        <li><strong>유입 경로</strong> : 직접 접속, 검색, 외부 링크 등</li>
+        <li><strong>환경 정보</strong> : 기기 유형, OS, 브라우저, 해상도</li>
+        <li><strong>지역 정보</strong> : 국가 및 도시</li>
+      </ul>
+      <p class="analytics-info-note">수집 과정에서 개인을 식별할 수 있는 정보 (IP 등의 개인정보)는 일절 수집하지 않습니다. 수집된 데이터는 서비스 개선 외의 목적으로 사용되지 않습니다.</p>
     </div>
   </div>
 </div>
