@@ -38,7 +38,7 @@ input, button, select, textarea {
 
 body {
   font-family: 'KOTRA_BOLD', 'Malgun Gothic', sans-serif;
-  background: #1a1a2e;
+  background: #120d08;
   color: #e0e0e0;
   padding: 1rem;
   min-height: 100vh;
@@ -194,9 +194,9 @@ body {
 
 .search-input {
   padding: 0.4rem 0.7rem;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background: #2a2a3e;
+  border: 2px solid #9c6639;
+  border-radius: 5px;
+  background: #1e150d;
   color: #e0e0e0;
   font-size: 0.9rem;
   width: 260px;
@@ -205,7 +205,7 @@ body {
 
 .search-input:focus {
   outline: none;
-  border-color: #c9a84c;
+  border-color: #f7c100;
 }
 
 .filter-buttons {
@@ -320,7 +320,7 @@ body {
   padding: 8px 0;
   margin: 0 auto 4px;
   width: calc(64px + 8px + 10 * 100px + 9 * (0.25rem + 2px));
-  border-top: 3px solid #2e3a4a;
+  border-top: 3px solid #4a3d2e;
 }
 
 .tag-category-group {
@@ -329,7 +329,7 @@ body {
   align-items: flex-start;
   gap: 8px;
   padding-bottom: 8px;
-  border-bottom: 3px solid #2e3a4a;
+  border-bottom: 3px solid #4a3d2e;
   margin-bottom: 2px;
 }
 
@@ -337,7 +337,7 @@ body {
   width: 64px;
   min-width: 64px;
   font-size: 1.0rem;
-  color: #8899aa;
+  color: #e0e0e0;
   font-weight: bold;
   padding-top: 4px;
   text-align: center;
@@ -356,9 +356,9 @@ body {
   width: 260px;
   padding: 0.3rem 0.6rem;
   align-self: center;
-  background: #1a2233;
-  border: 1px solid #3a4a5a;
-  border-radius: 6px;
+  background: #1e150d;
+  border: 2px solid #9c6639;
+  border-radius: 5px;
   color: #e0e0e0;
   font-family: inherit;
   font-size: 0.9rem;
@@ -373,10 +373,10 @@ body {
 
 .tag-btn {
   padding: 0.25rem 0.6rem;
-  border: 1px solid #5a6a7a;
+  border: 1px solid #9c836d;
   border-radius: 12px;
   background: transparent;
-  color: #c8c8d8;
+  color: #9c9c9c;
   font-family: inherit;
   font-size: 0.78rem;
   cursor: pointer;
@@ -384,7 +384,7 @@ body {
 }
 
 .tag-btn:hover {
-  background: #5a6a7a;
+  background: #634129;
   color: #fff;
 }
 
@@ -433,7 +433,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  border-top: 3px solid #2e2e4a;
+  border-top: 3px solid #4a3d2e;
   padding-top: 9px;
   margin-top: 1px;
 }
@@ -657,7 +657,7 @@ body {
   margin-top: 0;
   padding: 1.5rem 1rem;
   font-family: 'LiberationSans', 'Malgun Gothic', sans-serif;
-  border-top: 1px solid #2e2e4a;
+  border-top: 1px solid #4a3d2e;
   text-align: left;
   color: #555;
   font-size: 0.8rem;
@@ -720,13 +720,14 @@ body {
   display: flex;
 }
 .modal-box {
-  background: #1a1a2e;
-  border: 1px solid #2e2e4a;
+  background: #1e150d;
+  border: 1px solid #4a3d2e;
   border-radius: 8px;
   width: 480px;
   max-height: 70vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .modal-box--changelog {
@@ -768,7 +769,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.2rem;
-  border-bottom: 1px solid #2e2e4a;
+  border-bottom: 1px solid #4a3d2e;
 }
 .modal-title {
   font-size: 1rem;
@@ -880,6 +881,79 @@ body {
 /* ── gift 정보 팝업 ── */
 .gift-popup-box {
   width: 460px;
+  background: none;
+  border: 35px solid transparent;
+  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  padding: calc(0rem) calc(0rem) calc(1.3rem) calc(0rem);
+  position: relative;
+}
+.gift-popup-box .modal-header {
+  border-bottom: none;
+  padding: calc(0rem) calc(0rem) calc(0rem) calc(0.3rem);
+}
+.gift-popup-box .modal-title {
+  font-size: 1.1rem;
+}
+.gift-popup-hard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  pointer-events: none;
+}
+.gift-popup-hard img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+.gift-popup-hard span {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 1.2rem;
+  color: rgb(214, 20, 19);
+  margin-right: 0.6rem;
+}
+.gift-popup-box .modal-body {
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 0rem 0rem 0rem;
+}
+
+.gift-popup-info {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.gift-popup-scroll-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gift-popup-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: none;
+}
+.gift-popup-scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-indicator {
+  flex-shrink: 0;
+  height: 14px;
+  text-align: center;
+  color: #888;
+  font-size: 0.65rem;
+  line-height: 14px;
+  visibility: hidden;
+}
+.scroll-indicator.visible {
+  visibility: visible;
 }
 
 .gift-popup-title-row {
@@ -897,7 +971,7 @@ body {
 .gift-popup-body {
   display: flex;
   gap: 1rem;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .gift-popup-icon-col {
@@ -907,6 +981,8 @@ body {
   gap: 0.5rem;
   flex-shrink: 0;
   width: 100px;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .gift-popup-packs {
@@ -915,7 +991,44 @@ body {
   align-items: stretch;
   gap: 0.25rem;
   width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
+.gift-popup-packs::-webkit-scrollbar {
+  display: none;
+}
+
+.upgrade-btns {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.upgrade-btn {
+  background: url('/images/ui/btn_common.png') center / contain no-repeat;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.upgrade-btn.selected {
+  background-image: url('/images/ui/btn_common_select.png');
+}
+
+.upgrade-btn img {
+  object-fit: contain;
+}
+.upgrade-btns .upgrade-btn:nth-child(1) img { width: 12px; height: 12px; }
+.upgrade-btns .upgrade-btn:nth-child(2) img { width: 15px; height: 15px; }
+.upgrade-btns .upgrade-btn:nth-child(3) img { width: 29px; height: 29px; }
 
 .pack-banner {
   width: 100%;
@@ -1045,6 +1158,18 @@ body {
   pointer-events: none;
 }
 
+.gift-popup-related {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  font-family: 'LiberationSans', KOTRA_BOLD;
+  font-size: 1rem;
+}
+.gift-popup-related-label {
+  color: #888;
+}
+
 .gift-popup-desc {
   color: #bbb;
   font-size: 0.9rem;
@@ -1079,10 +1204,10 @@ body {
   font-family: inherit;
 }
 .btn-cancel {
-  background: #2e2e4a;
+  background: #4a3d2e;
   color: #aaa;
 }
-.btn-cancel:hover { background: #3a3a5a; }
+.btn-cancel:hover { background: #5a4b3a; }
 .btn-confirm {
   background: #7a1a1a;
   color: #eee;
@@ -1105,8 +1230,8 @@ body {
   height: 44px;
   border-radius: 8px;
   -webkit-tap-highlight-color: transparent;
-  background: #22223a;
-  border: 1px solid #3a3a6a;
+  background: #1e150d;
+  border: 1px solid #4a3d2e;
   color: #bbb;
   cursor: pointer;
   display: flex;
@@ -1116,7 +1241,7 @@ body {
 }
 
 .float-btn:hover {
-  background: #3a3a6e;
+  background: #634129;
   color: #fff;
 }
 
@@ -1139,7 +1264,7 @@ body {
 
 .float-btn--top {
   border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid #2a2a5a;
+  border-bottom: 1px solid #4a3d2e;
 }
 
 .float-btn--bottom {
@@ -1150,8 +1275,8 @@ body {
   position: absolute;
   bottom: calc(100% + 0.5rem);
   right: 0;
-  background: #1a1a2e;
-  border: 1px solid #3a3a6a;
+  background: #1e150d;
+  border: 1px solid #4a3d2e;
   border-radius: 8px;
   padding: 0.4rem;
   display: grid;
@@ -1179,7 +1304,7 @@ body {
 }
 
 .float-toc-item:hover {
-  background: #2a2a4e;
+  background: #634129;
   color: #fff;
 }
 

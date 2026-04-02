@@ -320,9 +320,12 @@
         <div class="modal-header">
           <div class="gift-popup-title-row">
             <img class="gift-popup-grade-img" :src="`/images/egogift/gift_grade_${popup.grade}.png`" :alt="`grade ${popup.grade}`">
-            <span class="modal-title" x-text="popup.name"></span>
+            <span class="modal-title" x-text="popup.upgradeLevel === 0 ? popup.name : popup.upgrades[popup.upgradeLevel-1].name"></span>
           </div>
-          <button class="modal-close" @click="giftPopupStack.splice(si, 1)">&times;</button>
+          <div class="gift-popup-hard" x-show="popup.difficulty === 'hard'">
+            <img src="/images/ui/difficulty_hard.png" alt="hard">
+            <span>HARD</span>
+          </div>
         </div>
         <div class="modal-body gift-popup-body">
           <div class="gift-popup-icon-col">
@@ -346,6 +349,17 @@
                 :src="`/images/category/${popup.category ? popup.category.toLowerCase() : ''}.png`"
                 :alt="popup.category"
               >
+            </div>
+            <div class="upgrade-btns" x-show="popup.upgrades && popup.upgrades.length">
+              <button class="upgrade-btn" :class="{ selected: popup.upgradeLevel === 0 }" @click="popup.upgradeLevel = 0">
+                <img src="/images/ui/upgrade_0.png" alt="0">
+              </button>
+              <button class="upgrade-btn" :class="{ selected: popup.upgradeLevel === 1 }" @click="popup.upgradeLevel = 1">
+                <img src="/images/ui/upgrade_1.png" alt="+">
+              </button>
+              <button class="upgrade-btn" x-show="popup.upgrades.length >= 2" :class="{ selected: popup.upgradeLevel === 2 }" @click="popup.upgradeLevel = 2">
+                <img src="/images/ui/upgrade_2.png" alt="++">
+              </button>
             </div>
             <div class="gift-popup-packs" x-show="popup.packs && popup.packs.length">
               <template x-for="packId in popup.packs" :key="packId">
@@ -375,11 +389,46 @@
                 </div>
               </template>
             </div>
-            <p class="gift-popup-desc" x-html="popup.descHtml"></p>
-            <div class="gift-popup-tags" x-show="popup.tags && popup.tags.length">
-              <template x-for="tag in popup.tags" :key="tag">
-                <span class="tag-chip" x-text="`#${tag}`"></span>
-              </template>
+            <div class="gift-popup-scroll-wrap"
+                 x-data="{ up: false, down: false, check(el) { this.up = el.scrollTop > 0; this.down = el.scrollTop + el.clientHeight < el.scrollHeight - 1; } }"
+                 x-init="$nextTick(() => check($el.querySelector('.gift-popup-scroll-area')))">
+              <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+              <div class="gift-popup-scroll-area"
+                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+                <div class="gift-popup-related" x-show="popup.curse">
+                  <span class="gift-popup-related-label">관련 축복 기프트 :</span>
+                  <div class="fusion-recipe-card" :class="{ fusion: popup.curse?.isFusionBg }" @click.stop="openGiftPopup(popup.curse?.id)">
+                    <div class="fusion-icon-wrap">
+                      <img class="fusion-icon" :src="`/images/egogift/${popup.curse?.id}.png`" alt="">
+                    </div>
+                    <img class="fusion-frame" :src="`/images/egogift/${popup.curse?.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
+                    <div class="fusion-grade-wrap">
+                      <img class="fusion-grade" :src="`/images/egogift/gift_grade_${popup.curse?.grade}.png`" alt="">
+                    </div>
+                    <img class="fusion-cat-badge" x-show="popup.curse?.category && popup.curse?.category !== 'None'" :src="`/images/category/${popup.curse?.category ? popup.curse.category.toLowerCase() : ''}.png`" alt="">
+                  </div>
+                </div>
+                <div class="gift-popup-related" x-show="popup.bless">
+                  <span class="gift-popup-related-label">관련 저주 기프트 :</span>
+                  <div class="fusion-recipe-card" :class="{ fusion: popup.bless?.isFusionBg }" @click.stop="openGiftPopup(popup.bless?.id)">
+                    <div class="fusion-icon-wrap">
+                      <img class="fusion-icon" :src="`/images/egogift/${popup.bless?.id}.png`" alt="">
+                    </div>
+                    <img class="fusion-frame" :src="`/images/egogift/${popup.bless?.isSpecial ? 'gift_frame_special' : 'gift_frame'}.png`" alt="">
+                    <div class="fusion-grade-wrap">
+                      <img class="fusion-grade" :src="`/images/egogift/gift_grade_${popup.bless?.grade}.png`" alt="">
+                    </div>
+                    <img class="fusion-cat-badge" x-show="popup.bless?.category && popup.bless?.category !== 'None'" :src="`/images/category/${popup.bless?.category ? popup.bless.category.toLowerCase() : ''}.png`" alt="">
+                  </div>
+                </div>
+                <p class="gift-popup-desc" x-html="popup.upgradeLevel === 0 ? popup.descHtml : popup.upgrades[popup.upgradeLevel-1].descHtml"></p>
+                <div class="gift-popup-tags" x-show="(popup.upgradeLevel === 0 ? popup.tags : popup.upgrades[popup.upgradeLevel-1].tags).length">
+                  <template x-for="tag in (popup.upgradeLevel === 0 ? popup.tags : popup.upgrades[popup.upgradeLevel-1].tags)" :key="tag">
+                    <span class="tag-chip" x-text="`#${tag}`"></span>
+                  </template>
+                </div>
+              </div>
+              <div class="scroll-indicator" :class="{ visible: down }">▼</div>
             </div>
           </div>
         </div>
@@ -513,7 +562,7 @@ const giftMap = {
   {{ $isFusion := in $fusionIds (string .id) }}
   {{ $isSpecial := gt (len .packs) 0 }}
   {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
-  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}", packs: [{{ range .packs }}{{ . }},{{ end }}] },
+  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}", packs: [{{ range .packs }}{{ . }},{{ end }}], upgrades: [{{ range .upgrade }}{ name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, category: "{{ .category }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}] },{{ end }}], curse: {{ if .curse }}"{{ .curse }}"{{ else }}null{{ end }}, bless: {{ if .bless }}"{{ .bless }}"{{ else }}null{{ end }}, associated: [{{ range .associated }}{{ . }},{{ end }}] },
   {{ end }}
 };
 </script>
@@ -589,6 +638,12 @@ function checklist() {
           };
         })
       );
+      const upgrades = (g.upgrades || []).map(u => ({
+        name: u.name.replace(/^"|"$/g, ''),
+        descHtml: u.desc.replace(/^"|"$/g, '').replace(/\n/g, '<br>').replace(/\\n/g, '<br>'),
+        category: u.category,
+        tags: u.tags
+      }));
       this.giftPopupStack.push({
         id,
         name: g.name.replace(/^"|"$/g, ''),
@@ -600,7 +655,11 @@ function checklist() {
         isSpecial: g.isSpecial,
         difficulty: g.difficulty,
         packs: g.packs || [],
-        fusionRecipes
+        fusionRecipes,
+        upgrades,
+        upgradeLevel: 0,
+        curse: g.curse ? (() => { const r = giftMap[g.curse] || {}; return { id: g.curse, grade: r.grade || '1', isSpecial: r.isSpecial || false, isFusionBg: r.isFusionBg || false, category: r.category || 'None' }; })() : null,
+        bless: g.bless ? (() => { const r = giftMap[g.bless] || {}; return { id: g.bless, grade: r.grade || '1', isSpecial: r.isSpecial || false, isFusionBg: r.isFusionBg || false, category: r.category || 'None' }; })() : null,
       });
     },
 
@@ -641,6 +700,10 @@ function checklist() {
       const disabled = new Set();
       Object.keys(this.checked).forEach(id => {
         this.getMaterials(id).forEach(m => disabled.add(m));
+        const g = giftMap[id];
+        if (g && g.associated) {
+          g.associated.forEach(a => disabled.add(String(a)));
+        }
       });
       return disabled;
     },
