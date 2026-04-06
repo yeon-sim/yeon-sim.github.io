@@ -400,7 +400,6 @@ body {
 
 .guide-btn {
   width: 96px;
-  display: none;
 }
 
 .guide-btn .filter-btn-icon {
@@ -884,7 +883,7 @@ body {
   background: none;
   border: 35px solid transparent;
   border-image: url('/images/ui/info_background.png') 50 fill stretch;
-  padding: calc(0rem) calc(0rem) calc(1.3rem) calc(0rem);
+  padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
   position: relative;
 }
 .gift-popup-box .modal-header {
@@ -1006,6 +1005,9 @@ body {
   gap: 4px;
   width: 100%;
 }
+.upgrade-btns--left {
+  justify-content: flex-start;
+}
 
 .upgrade-btn {
   background: url('/images/ui/btn_common.png') center / contain no-repeat;
@@ -1035,6 +1037,333 @@ body {
   height: auto;
   display: block;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.guide-modal-box {
+  width: 460px;
+  background: none;
+  border: 35px solid transparent;
+  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  padding: 0 0 0rem 0;
+  position: relative;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.guide-modal-box .modal-header {
+  border-bottom: none;
+  padding: 0.2rem 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.guide-modal-box .modal-title {
+  font-size: 1.1rem;
+}
+.guide-page-indicator {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+}
+.guide-modal-body {
+  padding: 0.9rem 0rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  overflow: hidden;
+}
+.guide-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.guide-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+.guide-desc {
+  font-family: 'LiberationSans', sans-serif;
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+  min-height: 2.8em;
+}
+.guide-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+.guide-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 1;
+  transition: opacity 0.15s;
+}
+.guide-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.guide-nav-btn img {
+  width: 30px;
+  height: auto;
+  display: block;
+}
+.guide-page-counter {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 0.8rem;
+  color: #c8a84b;
+  min-width: 52px;
+  text-align: center;
+}
+
+.pack-popup-box {
+  width: 460px;
+  background: none;
+  border: 35px solid transparent;
+  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  padding: calc(0rem) calc(0rem) calc(1.3rem) calc(0rem);
+  position: relative;
+}
+.pack-popup-box .modal-header {
+  border-bottom: none;
+  padding: calc(0rem) calc(0rem) calc(0rem) calc(1rem);
+}
+.pack-popup-box .modal-body {
+  padding-right: 0;
+}
+.pack-popup-box .modal-title {
+  font-size: 1.1rem;
+}
+.pack-popup-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pack-popup-header-banner {
+  width: auto;
+  height: 40px;
+}
+.pack-popup-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.pack-popup-sprite-wrap {
+  position: relative;
+  flex-shrink: 0;
+  -webkit-mask-image: url('/images/pack/pack_mask.png');
+  mask-image: url('/images/pack/pack_mask.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  margin-left: -11px;
+}
+.pack-popup-sprite-wrap.is-extreme {
+  -webkit-mask-image: none;
+  mask-image: none;
+  overflow: visible;
+}
+.pack-popup-extreme-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: auto;
+  z-index: 2;
+}
+.pack-popup-sprite {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+.pack-popup-boss {
+  position: absolute;
+  bottom: 63px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 138px;
+  height: auto;
+  z-index: 1;
+}
+.pack-popup-cover {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+.pack-popup-logo {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: auto;
+  z-index: 3;
+}
+.pack-popup-name {
+  position: absolute;
+  bottom: 29px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px #000;
+  z-index: 3;
+  display: inline-block;
+}
+.pack-popup-sprite-wrap.is-extreme .pack-popup-name {
+  bottom: 14px;
+  left: 50%;
+}
+.pack-popup-warning {
+  position: absolute;
+  bottom: 158px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 59px;
+  height: auto;
+  z-index: 1;
+}
+.pack-popup-baton {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: auto;
+  z-index: 1;
+}
+.pack-popup-sprite-wrap.is-extreme .pack-popup-baton {
+  bottom: 40px;
+  left: 50%;
+}
+.pack-popup-baton-label {
+  position: absolute;
+  bottom: 144px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'LiberationSans', sans-serif;
+  font-size: 1rem;
+  color: #8ae6da;
+  white-space: nowrap;
+  z-index: 1;
+}
+.pack-popup-sprite-wrap.is-extreme .pack-popup-baton-label {
+  bottom: 164px;
+  left: 50%;
+}
+.pack-popup-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.pack-popup-condition-row {
+  display: flex;
+  gap: 0.6rem;
+  font-family: 'LiberationSans', sans-serif;
+  font-size: 0.85rem;
+}
+.pack-popup-difficulty {
+  color: #c8a84b;
+  font-family: 'KOTRA_BOLD', sans-serif;
+  min-width: 5rem;
+}
+.pack-popup-floors {
+  color: #bbb;
+}
+
+.pack-popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.pack-popup-specific-gifts {
+  margin-top: 0.2rem;
+}
+.pack-popup-section-label {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 0.85rem;
+  color: #c8a84b;
+  margin-bottom: 0.4rem;
+}
+.pack-popup-gift-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+.pack-popup-gift-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: url('/images/egogift/gift_background.png') center / contain no-repeat;
+  flex-shrink: 0;
+  cursor: default;
+}
+.pack-popup-gift-icon-wrap {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.pack-popup-gift-icon {
+  max-width: 35px;
+  max-height: 35px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+.pack-popup-gift-frame {
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+.pack-popup-gift-grade-wrap {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pack-popup-gift-grade {
+  height: 17px;
+  width: auto;
+}
+.pack-popup-gift-cat-badge {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .gift-popup-icon-wrap {
@@ -1063,6 +1392,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  margin-top: 15px;
 }
 
 .fusion-recipe-row {
@@ -1168,6 +1498,30 @@ body {
 }
 .gift-popup-related-label {
   color: #888;
+}
+
+.gift-popup-used-in-label {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  margin-top: 0px;
+}
+
+.gift-popup-used-in {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: 'LiberationSans', sans-serif;
+  font-size: 1rem;
+}
+.used-in-recipe-row {
+  margin-top: 0.2rem;
+}
+.fusion-arrow {
+  font-size: 1.2rem;
+  padding: 0 0.2rem;
+}
+.fusion-recipe-card.used-in-self {
+  cursor: default;
 }
 
 .gift-popup-desc {
