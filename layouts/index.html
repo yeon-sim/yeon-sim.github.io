@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{/* 데이터 로드 */}}
-{{ $gifts := .Site.Data.egogifts.dataList }}
+{{ $gifts := where .Site.Data.egogifts.dataList "hide" "ne" true }}
 {{ $categories := .Site.Data.categories.dataList }}
 
 {{/* fusion 결과 ID 집합 */}}
@@ -329,7 +329,7 @@
 
   {{/* ── gift 정보 팝업 (스택) ── */}}
   <template x-for="(popup, si) in giftPopupStack" :key="si">
-    <div class="modal-overlay open" @click.self="giftPopupStack.splice(si, 1)" @contextmenu.prevent="giftPopupStack.splice(si, 1)" :style="`z-index: ${popup.zIndex}`">
+    <div class="modal-overlay open" @click.self="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)" @contextmenu.prevent="giftPopupStack.splice(si, 1)" :style="`z-index: ${popup.zIndex}`">
       <div class="modal-box gift-popup-box" @contextmenu.prevent="giftPopupStack.splice(si, 1)">
         <div class="modal-header">
           <div class="gift-popup-title-row">
@@ -751,6 +751,7 @@ function checklist() {
     _longPressTriggered: false,
     _longPressStartX: 0,
     _longPressStartY: 0,
+    _lastPopupOpenTime: 0,
 
     startLongPress(id, event) {
       if (event.button !== undefined && event.button !== 0) return;
@@ -760,6 +761,7 @@ function checklist() {
       this._longPressTimer = setTimeout(() => {
         this._longPressTriggered = true;
         this._longPressTimer = null;
+        this._lastPopupOpenTime = Date.now();
         this.openGiftPopup(id);
       }, 500);
     },
