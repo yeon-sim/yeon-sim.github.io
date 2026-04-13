@@ -1,0 +1,804 @@
+{
+  "missing": [
+    {
+      "id": "AggressiveBokgak",
+      "name": "본능",
+      "iconId": ""
+    },
+    {
+      "id": "AaCePcBe",
+      "name": "하얀 공황",
+      "iconId": ""
+    },
+    {
+      "id": "AaCePcBf",
+      "name": "하얀 공황",
+      "iconId": ""
+    },
+    {
+      "id": "FamineBlood_LowMorale",
+      "name": "굶주림",
+      "iconId": ""
+    },
+    {
+      "id": "DuelDeclarationMeursault",
+      "name": "결투 선포 - 뫼르소",
+      "iconId": ""
+    },
+    {
+      "id": "Duello_LowMorale",
+      "name": "1:1 전력",
+      "iconId": ""
+    },
+    {
+      "id": "FamineBloodDolci_LowMorale",
+      "name": "허무의 굴레",
+      "iconId": ""
+    },
+    {
+      "id": "ThornyFall_LowMorale",
+      "name": "가시",
+      "iconId": ""
+    },
+    {
+      "id": "BloodringUp_LowMorale",
+      "name": "피올림",
+      "iconId": ""
+    },
+    {
+      "id": "SanchoMind_LowMorale",
+      "name": "깨어나는 살육의 고양감",
+      "iconId": ""
+    },
+    {
+      "id": "KAA1C9ActivateEffect",
+      "name": "K사 앰플 사용",
+      "iconId": ""
+    },
+    {
+      "id": "Yurodivy_LowMorale",
+      "name": "어긋난 단결",
+      "iconId": ""
+    },
+    {
+      "id": "Yummy_Lowmorale",
+      "name": "맛있어짐",
+      "iconId": ""
+    },
+    {
+      "id": "AaCePbBg",
+      "name": "원한",
+      "iconId": ""
+    },
+    {
+      "id": "AaCePbBh",
+      "name": "원한",
+      "iconId": ""
+    },
+    {
+      "id": "SelfHarm_LowMorale",
+      "name": "자해",
+      "iconId": ""
+    },
+    {
+      "id": "SelfHarm_Panic",
+      "name": "자해",
+      "iconId": ""
+    },
+    {
+      "id": "Blame_LowMorale",
+      "name": "비난",
+      "iconId": ""
+    },
+    {
+      "id": "Blame_Panic",
+      "name": "비난",
+      "iconId": ""
+    },
+    {
+      "id": "Liu_Meursault_Guard_Buff",
+      "name": "태산",
+      "iconId": ""
+    },
+    {
+      "id": "SlashResistUp",
+      "name": "참격 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "PenetrateResistUp",
+      "name": "관통 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "HitResistUp",
+      "name": "타격 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "ScarletResistDown",
+      "name": "색욕 내성 약화",
+      "iconId": ""
+    },
+    {
+      "id": "AmberResistDown",
+      "name": "나태 내성 약화",
+      "iconId": ""
+    },
+    {
+      "id": "ShamrockResistDown",
+      "name": "탐식 내성 약화",
+      "iconId": ""
+    },
+    {
+      "id": "IndigoResistDown",
+      "name": "오만 내성 약화",
+      "iconId": ""
+    },
+    {
+      "id": "CrimsonResistUp",
+      "name": "분노 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "ScarletResistUp",
+      "name": "색욕 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "AmberResistUp",
+      "name": "나태 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "ShamrockResistUp",
+      "name": "탐식 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "AzureResistUp",
+      "name": "우울 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "IndigoResistUp",
+      "name": "오만 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "VioletResistUp",
+      "name": "질투 내성 강화",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_90103301",
+      "name": "바둥거림",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_90103402",
+      "name": "후련함",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_901001",
+      "name": "불번짐",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_901007",
+      "name": "나긋한 배웅",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_901009",
+      "name": "명순응",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_901010",
+      "name": "비워짐",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_901019",
+      "name": "오물",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_1030301",
+      "name": "선택지 효과",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_1030501",
+      "name": "선택지 효과",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_1031001",
+      "name": "선택지 효과",
+      "iconId": ""
+    },
+    {
+      "id": "AttackLevelAdder",
+      "name": "공격 레벨+",
+      "iconId": ""
+    },
+    {
+      "id": "Blue_LowMorale",
+      "name": "우울",
+      "iconId": ""
+    },
+    {
+      "id": "Blue_Panic",
+      "name": "우울",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_1040301",
+      "name": "알 수 없는 상처",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_90104001",
+      "name": "이해",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_9010400101",
+      "name": "각오",
+      "iconId": ""
+    },
+    {
+      "id": "Choice_90104002",
+      "name": "회모",
+      "iconId": ""
+    },
+    {
+      "id": "S2Mirror2ndFloor_Hard",
+      "name": "거울의 거울 어려움 - 2층",
+      "iconId": ""
+    },
+    {
+      "id": "S2Mirror3rdFloor_Hard",
+      "name": "거울의 거울 어려움 - 3층",
+      "iconId": ""
+    },
+    {
+      "id": "S2Mirror4thFloor_Hard",
+      "name": "거울의 거울 어려움 - 4층",
+      "iconId": ""
+    },
+    {
+      "id": "S2Mirror5thFloor_Hard",
+      "name": "거울의 거울 어려움 - 5층",
+      "iconId": ""
+    },
+    {
+      "id": "S2Mirror1stFloor_Hard",
+      "name": "거울의 거울 어려움 - 1층",
+      "iconId": ""
+    },
+    {
+      "id": "RailBuffForLine2_T_ALLY",
+      "name": "부활",
+      "iconId": ""
+    },
+    {
+      "id": "BulletFreischutz",
+      "name": "사용하지 않음",
+      "iconId": ""
+    },
+    {
+      "id": "EchoOfMansion_Main",
+      "name": "저택의 메아리",
+      "iconId": ""
+    },
+    {
+      "id": "EchoOfMansion_Sub",
+      "name": "저택의 메아리",
+      "iconId": ""
+    },
+    {
+      "id": "WanderingFootsteps_Main",
+      "name": "다가오는 파탄",
+      "iconId": ""
+    },
+    {
+      "id": "WanderingFootsteps_Sub",
+      "name": "다가오는 파탄",
+      "iconId": ""
+    },
+    {
+      "id": "WanderingFootsteps_LowMorale",
+      "name": "파탄",
+      "iconId": ""
+    },
+    {
+      "id": "SupportProtectTypo",
+      "name": "원호 방어",
+      "iconId": ""
+    },
+    {
+      "id": "SingBulletSupport",
+      "name": "(엄지 싱클 탄환 보급 받는 대상 이펙트)",
+      "iconId": ""
+    },
+    {
+      "id": "CommonExit",
+      "name": "전장 이탈",
+      "iconId": ""
+    },
+    {
+      "id": "CrushMarks_Main",
+      "name": "파쇄흔",
+      "iconId": ""
+    },
+    {
+      "id": "CrushMarks_Sub",
+      "name": "파쇄흔",
+      "iconId": ""
+    },
+    {
+      "id": "BlueSand_Main",
+      "name": "푸른 모래",
+      "iconId": ""
+    },
+    {
+      "id": "BlueSand_Sub",
+      "name": "푸른 모래",
+      "iconId": ""
+    },
+    {
+      "id": "DelusionGregBigBird_Main",
+      "name": "현혹",
+      "iconId": ""
+    },
+    {
+      "id": "DelusionGregBigBird_Sub",
+      "name": "현혹",
+      "iconId": ""
+    },
+    {
+      "id": "Godok_Lowmorale",
+      "name": "고독",
+      "iconId": ""
+    },
+    {
+      "id": "GodokPanicType_Sub",
+      "name": "고독",
+      "iconId": ""
+    },
+    {
+      "id": "GodokPanicType_Main",
+      "name": "고독",
+      "iconId": ""
+    },
+    {
+      "id": "AccumulatedPastMirror",
+      "name": "축적된 과거",
+      "iconId": ""
+    },
+    {
+      "id": "MD6101",
+      "name": "예리 XII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6102",
+      "name": "강인함 XII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6103",
+      "name": "육체 강화 XII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6104",
+      "name": "성장 XII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6105",
+      "name": "합 위력 증강 VII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6106",
+      "name": "최종 위력 증강 VII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6107",
+      "name": "기본 위력 증강 VII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6111",
+      "name": "예리 XIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6112",
+      "name": "강인함 XIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6113",
+      "name": "육체 강화 XIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6114",
+      "name": "성장 XIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6115",
+      "name": "합 위력 증강 VIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6116",
+      "name": "최종 위력 증강 VIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6117",
+      "name": "기본 위력 증강 VIII",
+      "iconId": ""
+    },
+    {
+      "id": "MD6121",
+      "name": "예리 XIV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6122",
+      "name": "강인함 XIV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6123",
+      "name": "육체 강화 XIV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6124",
+      "name": "성장 XIV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6125",
+      "name": "합 위력 증강 IX",
+      "iconId": ""
+    },
+    {
+      "id": "MD6126",
+      "name": "최종 위력 증강 IX",
+      "iconId": ""
+    },
+    {
+      "id": "MD6127",
+      "name": "기본 위력 증강 IX",
+      "iconId": ""
+    },
+    {
+      "id": "MD6131",
+      "name": "예리 XV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6132",
+      "name": "강인함 XV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6133",
+      "name": "육체 강화 XV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6134",
+      "name": "성장 XV",
+      "iconId": ""
+    },
+    {
+      "id": "MD6135",
+      "name": "합 위력 증강 X",
+      "iconId": ""
+    },
+    {
+      "id": "MD6136",
+      "name": "최종 위력 증강 X",
+      "iconId": ""
+    },
+    {
+      "id": "MD6137",
+      "name": "기본 위력 증강 X",
+      "iconId": ""
+    },
+    {
+      "id": "MD6141",
+      "name": "예리 XVI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6142",
+      "name": "강인함 XVI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6143",
+      "name": "육체 강화 XVI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6144",
+      "name": "성장 XVI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6145",
+      "name": "합 위력 증강 XI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6146",
+      "name": "최종 위력 증강 XI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6147",
+      "name": "기본 위력 증강 XI",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit101",
+      "name": "레벨 강화",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit102",
+      "name": "쇠약",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit103",
+      "name": "불꽃 낙인 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit104",
+      "name": "인플레이션 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit105",
+      "name": "자아 간섭 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit111",
+      "name": "레벨 강화",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit112",
+      "name": "쇠약",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit113",
+      "name": "정신 착란 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit114",
+      "name": "신경 촉진 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit115",
+      "name": "정신력 고갈 I",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit121",
+      "name": "레벨 강화",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit122",
+      "name": "쇠약",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit123",
+      "name": "진동 차단",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit124",
+      "name": "인플레이션 II",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit125",
+      "name": "자아 간섭 II",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit131",
+      "name": "레벨 강화",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit132",
+      "name": "쇠약",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit133",
+      "name": "생명력 증폭",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit134",
+      "name": "파괴력",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit135",
+      "name": "불꽃 낙인 II",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit141",
+      "name": "레벨 강화",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit142",
+      "name": "쇠약",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit143",
+      "name": "정신 착란 II",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit144",
+      "name": "신경 촉진 II",
+      "iconId": ""
+    },
+    {
+      "id": "MD6Limit145",
+      "name": "정신력 고갈 II",
+      "iconId": ""
+    },
+    {
+      "id": "GiveMeCandy_LowMorale",
+      "name": "사탕",
+      "iconId": ""
+    },
+    {
+      "id": "GiveMeCandy_Panic",
+      "name": "사탕",
+      "iconId": ""
+    },
+    {
+      "id": "UnfinishedDreamSanchoMirror",
+      "name": "물보다 진한 피에서 벗어나지 못하여,",
+      "iconId": ""
+    },
+    {
+      "id": "MiddleFatherGutsMirror",
+      "name": "초근성",
+      "iconId": ""
+    },
+    {
+      "id": "FutureEyeOnMirror",
+      "name": "예지안",
+      "iconId": ""
+    },
+    {
+      "id": "FutureEyeOffMirror",
+      "name": "예지안 과열",
+      "iconId": ""
+    },
+    {
+      "id": "TeachersPreyMirror",
+      "name": "사냥 표적",
+      "iconId": ""
+    },
+    {
+      "id": "ObservationTheRingsHidden",
+      "name": "조망",
+      "iconId": ""
+    },
+    {
+      "id": "MD7Limit101",
+      "name": "전력 재분배",
+      "iconId": ""
+    },
+    {
+      "id": "MD7Limit111",
+      "name": "정신적 고양",
+      "iconId": ""
+    },
+    {
+      "id": "MD7Limit121",
+      "name": "보호막 생성",
+      "iconId": ""
+    },
+    {
+      "id": "MD7Limit131",
+      "name": "균열 증식",
+      "iconId": ""
+    },
+    {
+      "id": "MD7Limit141",
+      "name": "상태이상 부여",
+      "iconId": ""
+    },
+    {
+      "id": "Unobservable",
+      "name": "관측 불가",
+      "iconId": ""
+    },
+    {
+      "id": "AreaAtk",
+      "name": "광역 공격",
+      "iconId": ""
+    },
+    {
+      "id": "Bleeding",
+      "name": "출혈",
+      "iconId": ""
+    },
+    {
+      "id": "GiveMeCandy_LowMoral",
+      "name": "사탕",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Crimson",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Scarlet",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Amber",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Shamrock",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Azure",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Indigo",
+      "name": "피워낸 장미",
+      "iconId": ""
+    },
+    {
+      "id": "FullBloomRose_Violet",
+      "name": "피워낸 장미",
+      "iconId": ""
+    }
+  ]
+}

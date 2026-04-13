@@ -1,0 +1,627 @@
+{
+  "matched": [
+    {
+      "keyword": "Vibration",
+      "buffName": "진동",
+      "count": 202
+    },
+    {
+      "keyword": "Burst",
+      "buffName": "파열",
+      "count": 197
+    },
+    {
+      "keyword": "Sinking",
+      "buffName": "침잠",
+      "count": 196
+    },
+    {
+      "keyword": "Laceration",
+      "buffName": "출혈",
+      "count": 190
+    },
+    {
+      "keyword": "Combustion",
+      "buffName": "화상",
+      "count": 181
+    },
+    {
+      "keyword": "Breath",
+      "buffName": "호흡",
+      "count": 176
+    },
+    {
+      "keyword": "Charge",
+      "buffName": "충전",
+      "count": 143
+    },
+    {
+      "keyword": "AttackUp",
+      "buffName": "공격 레벨 증가",
+      "count": 84
+    },
+    {
+      "keyword": "Agility",
+      "buffName": "신속",
+      "count": 75
+    },
+    {
+      "keyword": "AttackDmgUp",
+      "buffName": "피해량 증가",
+      "count": 47
+    },
+    {
+      "keyword": "DefenseDown",
+      "buffName": "방어 레벨 감소",
+      "count": 27
+    },
+    {
+      "keyword": "Enhancement",
+      "buffName": "공격 위력 증가",
+      "count": 25
+    },
+    {
+      "keyword": "Bullet",
+      "buffName": "탄환",
+      "count": 24
+    },
+    {
+      "keyword": "DefenseUp",
+      "buffName": "방어 레벨 증가",
+      "count": 23
+    },
+    {
+      "keyword": "VibrationExplosion",
+      "buffName": "진동 폭발",
+      "count": 20
+    },
+    {
+      "keyword": "Binding",
+      "buffName": "속박",
+      "count": 20
+    },
+    {
+      "keyword": "ChargeForceField",
+      "buffName": "충전 역장",
+      "count": 19
+    },
+    {
+      "keyword": "Vulnerable",
+      "buffName": "취약",
+      "count": 17
+    },
+    {
+      "keyword": "Protection",
+      "buffName": "보호",
+      "count": 16
+    },
+    {
+      "keyword": "PenetrateDamageUp",
+      "buffName": "관통 피해량 증가",
+      "count": 13
+    },
+    {
+      "keyword": "BloodDinner",
+      "buffName": "혈찬",
+      "count": 13
+    },
+    {
+      "keyword": "AttackDown",
+      "buffName": "공격 레벨 감소 ",
+      "count": 12
+    },
+    {
+      "keyword": "HitDamageUp",
+      "buffName": "타격 피해량 증가",
+      "count": 12
+    },
+    {
+      "keyword": "FusionVibration",
+      "buffName": "진폭 얽힘",
+      "count": 10
+    },
+    {
+      "keyword": "ResultEnhancement",
+      "buffName": "위력 증가",
+      "count": 9
+    },
+    {
+      "keyword": "Paralysis",
+      "buffName": "마비",
+      "count": 9
+    },
+    {
+      "keyword": "Switch_Vibration",
+      "buffName": "진폭 변환",
+      "count": 8
+    },
+    {
+      "keyword": "TakeHpHealIncrease",
+      "buffName": "체력 회복 증가",
+      "count": 8
+    },
+    {
+      "keyword": "BurstAgility",
+      "buffName": "주살【신속】",
+      "count": 8
+    },
+    {
+      "keyword": "Inspire",
+      "buffName": "영감",
+      "count": 7
+    },
+    {
+      "keyword": "ParryingResultUp",
+      "buffName": "합 위력 증가",
+      "count": 6
+    },
+    {
+      "keyword": "ObjectOfExploration",
+      "buffName": "탐구 대상",
+      "count": 6
+    },
+    {
+      "keyword": "TensionUp",
+      "buffName": "텐션 업",
+      "count": 6
+    },
+    {
+      "keyword": "PinkPetals",
+      "buffName": "분홍 꽃잎",
+      "count": 6
+    },
+    {
+      "keyword": "Zazen",
+      "buffName": "참선",
+      "count": 6
+    },
+    {
+      "keyword": "WaveSinking",
+      "buffName": "역류",
+      "count": 5
+    },
+    {
+      "keyword": "SlashResultUp",
+      "buffName": "참격 위력 증가",
+      "count": 5
+    },
+    {
+      "keyword": "PlusCoinValueUp",
+      "buffName": "더하기 코인 강화",
+      "count": 5
+    },
+    {
+      "keyword": "SuperCoin",
+      "buffName": "파괴 불가 코인",
+      "count": 5
+    },
+    {
+      "keyword": "ResultReduction",
+      "buffName": "위력 감소",
+      "count": 4
+    },
+    {
+      "keyword": "SlashDamageUp",
+      "buffName": "참격 피해량 증가",
+      "count": 4
+    },
+    {
+      "keyword": "PenetrateResultUp",
+      "buffName": "관통 위력 증가",
+      "count": 4
+    },
+    {
+      "keyword": "Endurance",
+      "buffName": "수비 위력 증가",
+      "count": 4
+    },
+    {
+      "keyword": "IndexPrescriptTargetToEnemy",
+      "buffName": "지령 대상",
+      "count": 4
+    },
+    {
+      "keyword": "PaintingMaterial",
+      "buffName": "그림 재료",
+      "count": 4
+    },
+    {
+      "keyword": "ChoSuperCharge",
+      "buffName": "초아광축전",
+      "count": 3
+    },
+    {
+      "keyword": "VibrationIgnition",
+      "buffName": "진동 - 작열",
+      "count": 3
+    },
+    {
+      "keyword": "RetaliationBook",
+      "buffName": "앙갚음 대상",
+      "count": 3
+    },
+    {
+      "keyword": "DesperadoBuff",
+      "buffName": "데스페라도",
+      "count": 3
+    },
+    {
+      "keyword": "Aggro",
+      "buffName": "도발치",
+      "count": 3
+    },
+    {
+      "keyword": "NailPersonality",
+      "buffName": "못",
+      "count": 3
+    },
+    {
+      "keyword": "ScarletResultUp",
+      "buffName": "색욕 위력 증가",
+      "count": 3
+    },
+    {
+      "keyword": "TimeRentalTwoPersonality",
+      "buffName": "시간 대여",
+      "count": 3
+    },
+    {
+      "keyword": "TimeSuspend",
+      "buffName": "시간 유예",
+      "count": 3
+    },
+    {
+      "keyword": "VibrationDistribution",
+      "buffName": "진동 - 분배",
+      "count": 3
+    },
+    {
+      "keyword": "VibrationNesting",
+      "buffName": "진동 - 중첩",
+      "count": 2
+    },
+    {
+      "keyword": "Discard",
+      "buffName": "버림",
+      "count": 2
+    },
+    {
+      "keyword": "HitResultUp",
+      "buffName": "타격 위력 증가",
+      "count": 2
+    },
+    {
+      "keyword": "CriticalDamageUp",
+      "buffName": "크리티컬 피해량 증가",
+      "count": 2
+    },
+    {
+      "keyword": "BloodDinner_Accumulation",
+      "buffName": "누적 소모 혈찬",
+      "count": 2
+    },
+    {
+      "keyword": "AzureResultUp",
+      "buffName": "우울 위력 증가",
+      "count": 2
+    },
+    {
+      "keyword": "KarmaOfIndexAlly",
+      "buffName": "카르마",
+      "count": 2
+    },
+    {
+      "keyword": "QueenBeeMark",
+      "buffName": "페로몬 표식",
+      "count": 2
+    },
+    {
+      "keyword": "SkillPowerUp",
+      "buffName": "기본 위력 증가",
+      "count": 2
+    },
+    {
+      "keyword": "Muckworm",
+      "buffName": "구더기",
+      "count": 2
+    },
+    {
+      "keyword": "RequestedTarget",
+      "buffName": "의뢰 대상",
+      "count": 2
+    },
+    {
+      "keyword": "RoseThorn",
+      "buffName": "탐식극(貪食棘)",
+      "count": 2
+    },
+    {
+      "keyword": "VioletResistDown",
+      "buffName": "질투 내성 약화",
+      "count": 2
+    },
+    {
+      "keyword": "VerEmergencyCandy",
+      "buffName": "비상용 사탕",
+      "count": 2
+    },
+    {
+      "keyword": "EmergencyChargeForceField",
+      "buffName": "비상용 역장 배터리",
+      "count": 2
+    },
+    {
+      "keyword": "IDMicroChip",
+      "buffName": "주민등록 마이크로칩",
+      "count": 1
+    },
+    {
+      "keyword": "ShareCharge",
+      "buffName": "자가 공진 회로",
+      "count": 1
+    },
+    {
+      "keyword": "SwirlingBloodPersonality",
+      "buffName": "일렁임【혈귀】",
+      "count": 1
+    },
+    {
+      "keyword": "GreatAesthetics",
+      "buffName": "훌륭한 미감",
+      "count": 1
+    },
+    {
+      "keyword": "QueenBeepheromone",
+      "buffName": "페로몬",
+      "count": 1
+    },
+    {
+      "keyword": "HighVoltageExoshell",
+      "buffName": "고전압 외피",
+      "count": 1
+    },
+    {
+      "keyword": "MinusCoinValueUp",
+      "buffName": "빼기 코인 강화",
+      "count": 1
+    },
+    {
+      "keyword": "VioletTakeDamageUp",
+      "buffName": "질투 취약",
+      "count": 1
+    },
+    {
+      "keyword": "MentalSystemResultIncrease_Typo",
+      "buffName": "정신력 회복 효율",
+      "count": 1
+    },
+    {
+      "keyword": "MentalSystemResultDecrease_Typo",
+      "buffName": "정신력 감소 효율",
+      "count": 1
+    },
+    {
+      "keyword": "GiftCannon",
+      "buffName": "화력",
+      "count": 1
+    },
+    {
+      "keyword": "GiftGlass",
+      "buffName": "연약",
+      "count": 1
+    },
+    {
+      "keyword": "KnightBless",
+      "buffName": "가호",
+      "count": 1
+    },
+    {
+      "keyword": "TraumaShield",
+      "buffName": "트라우마 방지장",
+      "count": 1
+    },
+    {
+      "keyword": "UltraPrecisionTimeAcceleration",
+      "buffName": "초정밀 시간 가속",
+      "count": 1
+    },
+    {
+      "keyword": "AzureResistDown",
+      "buffName": "우울 내성 약화",
+      "count": 1
+    },
+    {
+      "keyword": "RetreatForCommon",
+      "buffName": "전장 퇴각",
+      "count": 1
+    },
+    {
+      "keyword": "BloodDinner_Common_Accumulation",
+      "buffName": "공용 누적 소모 혈찬",
+      "count": 1
+    },
+    {
+      "keyword": "VerHunger",
+      "buffName": "배고픔",
+      "count": 1
+    },
+    {
+      "keyword": "TakeHpHealReduce",
+      "buffName": "체력 회복 감소",
+      "count": 1
+    },
+    {
+      "keyword": "ChargeLoad",
+      "buffName": "부하",
+      "count": 1
+    },
+    {
+      "keyword": "BloodArmorCasting",
+      "buffName": "주조된 경혈",
+      "count": 1
+    },
+    {
+      "keyword": "LookingFutureMirror",
+      "buffName": "순간의 예지",
+      "count": 1
+    },
+    {
+      "keyword": "BlessingOfIndexPrescriptAlly",
+      "buffName": "지령의 가호",
+      "count": 1
+    },
+    {
+      "keyword": "UnlockBuff_Base",
+      "buffName": "해금",
+      "count": 1
+    },
+    {
+      "keyword": "UnlockBuffAlly_2",
+      "buffName": "해금 - II",
+      "count": 1
+    }
+  ],
+  "unmatched_en": [],
+  "korean_style": [
+    {
+      "keyword": "편성 1번, 2번 인격 전용 효과",
+      "count": 16
+    },
+    {
+      "keyword": "편성 6번 인격 전용 효과",
+      "count": 14
+    },
+    {
+      "keyword": "편성 1번, 2번, 3번 인격 전용 효과",
+      "count": 8
+    },
+    {
+      "keyword": "중첩 발동 불가",
+      "count": 7
+    },
+    {
+      "keyword": "편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과",
+      "count": 7
+    },
+    {
+      "keyword": "편성 1번 인격 전용 효과",
+      "count": 7
+    },
+    {
+      "keyword": "편성 4번 인격 전용 효과",
+      "count": 6
+    },
+    {
+      "keyword": "편성 3번 인격 전용 효과",
+      "count": 5
+    },
+    {
+      "keyword": "1번 편성 전용 효과",
+      "count": 4
+    },
+    {
+      "keyword": "편성 3번, 4번 인격 전용 효과",
+      "count": 4
+    },
+    {
+      "keyword": "편성 5번, 6번 인격 전용 효과",
+      "count": 4
+    },
+    {
+      "keyword": "편성 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과",
+      "count": 3
+    },
+    {
+      "keyword": "편성 5번 인격 전용 효과",
+      "count": 3
+    },
+    {
+      "keyword": "편성 3번, 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과",
+      "count": 3
+    },
+    {
+      "keyword": "편성 3번, 4번, 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과",
+      "count": 3
+    },
+    {
+      "keyword": "편성 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과",
+      "count": 2
+    },
+    {
+      "keyword": "편성 2번 인격 전용 효과",
+      "count": 2
+    },
+    {
+      "keyword": "편성  5번, 6번 인격 전용 효과",
+      "count": 2
+    },
+    {
+      "keyword": "편성 <style=\"upgradeHighlight\">4번,</style> 6번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 4번, 6번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 <style=\"upgradeHighlight\">5번</style>, 6번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 <style=\"upgradeHighlight\">4번</style>, 6번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 3번, <style=\"upgradeHighlight\">4번</style> 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "검계 우두머리 뫼르소 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 <style=\"upgradeHighlight\">1번,</style> 6번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 7번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 1, 2, 7, 8번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 순서 2, 4번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 순서 3번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 순서 <style=\"upgradeHighlight\">2번</style>, 3번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 순서 <style=\"upgradeHighlight\">1번</style>, 2번, 3번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 순서 1번 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 2번, <style=\"upgradeHighlight\">4번</style> 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "편성 2번, 4번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과",
+      "count": 1
+    },
+    {
+      "keyword": "검지 소속 인격 전용 효과",
+      "count": 1
+    }
+  ]
+}

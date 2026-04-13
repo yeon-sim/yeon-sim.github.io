@@ -218,10 +218,10 @@ body {
   width: 76px;
   height: 44px;
   padding: 0 4px;
-  border: none;
+  border: 7px solid transparent;
+  border-image: url('/images/ui/button_common.png') 45 fill stretch;
   border-radius: 0;
-  background: url('/images/ui/button_background.png') no-repeat center center;
-  background-size: 100% 100%;
+  background: none;
   color: #ccc;
   cursor: pointer;
   font-size: 1rem;
@@ -230,6 +230,7 @@ body {
   justify-content: center;
   gap: 3px;
   transition: filter 0.15s, color 0.15s;
+  position: relative;
 }
 
 .filter-btn-icon {
@@ -248,27 +249,19 @@ body {
   filter: brightness(1.2);
 }
 
-.filter-btn.tag-panel-btn {
-  background: url('/images/ui/button_background.png') no-repeat center center;
-  background-size: 100% 100%;
-  border: none;
-  border-radius: 0;
-  color: #ccc;
-}
-
-.filter-btn.tag-panel-btn.active {
-  background:
-    url('/images/ui/button_select.png') no-repeat center center / 105% 105%,
-    url('/images/ui/button_background.png') no-repeat center center / 100% 100%;
-  color: #fff;
-}
-
 .filter-btn.active {
-  background:
-    url('/images/ui/button_select.png') no-repeat center center / 105% 105%,
-    url('/images/ui/button_background.png') no-repeat center center / 100% 100%;
   color: #fff;
   font-weight: bold;
+}
+
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  width: 125%;
+  height: 152%;
+  border: 10px solid transparent;
+  border-image: url('/images/ui/button_common_select.png') 45 fill stretch;
+  pointer-events: none;
 }
 
 .toggle-label {
@@ -290,20 +283,23 @@ body {
   padding: 0 4px;
   width: 102px;
   height: 44px;
-  border: none;
-  border-radius: 0;
-  background: url('/images/ui/button_background.png') no-repeat center center;
-  background-size: 100% 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.toggle-name-btn {
+  border: 7px solid transparent;
+  border-image: url('/images/ui/button_common.png') 45 fill stretch;
+  background: none;
   color: #ccc;
   cursor: pointer;
   font-size: 1rem;
-  white-space: nowrap;
-  transition: filter 0.15s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 3px;
-  flex-shrink: 0;
+  transition: filter 0.15s, color 0.15s;
+  position: relative;
 }
 
 .toggle-name-btn:hover {
@@ -386,6 +382,168 @@ body {
 .tag-btn:hover {
   background: #634129;
   color: #fff;
+}
+
+
+.pack-panel-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0.3rem;
+  margin-bottom: calc(4px + 0.3rem);
+}
+
+
+.pack-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 0;
+  margin: 0 auto 4px;
+  width: calc(64px + 8px + 10 * 100px + 9 * (0.25rem + 2px));
+  border-top: 3px solid #4a3d2e;
+}
+
+.pack-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #4a3d2e;
+  margin-bottom: 2px;
+}
+
+.pack-group-label {
+  width: 64px;
+  min-width: 64px;
+  font-size: 1.0rem;
+  color: #e0e0e0;
+  font-weight: bold;
+  padding-top: 4px;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.pack-group-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 15px;
+  flex: 1;
+}
+
+.pack-panel-item {
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-mask-image: url('/images/pack/pack_mask.png');
+  mask-image: url('/images/pack/pack_mask.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  transition: opacity 0.15s;
+}
+.pack-panel-item:hover {
+  opacity: 0.8;
+}
+.pack-panel-item.is-extreme {
+  -webkit-mask-image: none;
+  mask-image: none;
+  overflow: visible;
+}
+.pack-panel-sprite {
+  width: 102px;
+  height: auto;
+  display: block;
+}
+.pack-panel-boss {
+  position: absolute;
+  bottom: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 110px;
+  z-index: 1;
+}
+.pack-panel-warning {
+  position: absolute;
+  bottom: 134px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: auto;
+  z-index: 1;
+}
+.pack-panel-baton {
+  position: absolute;
+  bottom: 17px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 102px;
+  height: auto;
+  z-index: 1;
+}
+.pack-panel-item.is-extreme .pack-panel-baton {
+  bottom: 34px;
+}
+.pack-panel-baton-label {
+  position: absolute;
+  bottom: 122px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'LiberationSans', sans-serif;
+  font-size: 0.85rem;
+  color: #8ae6da;
+  white-space: nowrap;
+  z-index: 1;
+}
+.pack-panel-item.is-extreme .pack-panel-baton-label {
+  bottom: 139px;
+}
+.pack-panel-cover {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+.pack-panel-extreme-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 115%;
+  height: auto;
+  z-index: 2;
+}
+.pack-panel-logo {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 31px;
+  height: auto;
+  z-index: 3;
+}
+.pack-panel-name {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'KOTRA_BOLD', sans-serif;
+  font-size: 0.81rem;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px #000;
+  z-index: 3;
+  display: inline-block;
+}
+.pack-panel-item.is-extreme .pack-panel-name {
+  bottom: 12px;
 }
 
 .gift-name-label {
@@ -490,6 +648,7 @@ body {
   cursor: pointer;
   transition: opacity 0.15s;
   user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .gift-card.fusion {
@@ -910,8 +1069,13 @@ body {
 .gift-popup-hard span {
   font-family: 'KOTRA_BOLD', sans-serif;
   font-size: 1.2rem;
-  color: rgb(214, 20, 19);
   margin-right: 0.6rem;
+}
+.gift-popup-hard .difficulty-hard {
+  color: rgb(214, 20, 19);
+}
+.gift-popup-hard .difficulty-limited {
+  color: rgb(82, 89, 255);
 }
 .gift-popup-box .modal-body {
   overflow: hidden;
@@ -1010,7 +1174,7 @@ body {
 }
 
 .upgrade-btn {
-  background: url('/images/ui/btn_common.png') center / contain no-repeat;
+  background: url('/images/ui/button_upgrade.png') center / contain no-repeat;
   border: none;
   cursor: pointer;
   width: 32px;
@@ -1022,7 +1186,7 @@ body {
 }
 
 .upgrade-btn.selected {
-  background-image: url('/images/ui/btn_common_select.png');
+  background-image: url('/images/ui/button_upgrade_select.png');
 }
 
 .upgrade-btn img {
@@ -1177,7 +1341,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120%;
+  width: 115%;
   height: auto;
   z-index: 2;
 }
@@ -1191,8 +1355,8 @@ body {
   bottom: 63px;
   left: 50%;
   transform: translateX(-50%);
-  width: 138px;
-  height: auto;
+  width: auto;
+  height: 130px;
   z-index: 1;
 }
 .pack-popup-cover {
@@ -1299,6 +1463,12 @@ body {
   font-size: 0.85rem;
   color: #c8a84b;
   margin-bottom: 0.4rem;
+}
+.pack-popup-no-gifts {
+  font-size: 0.85rem;
+  color: #9c9c9c;
+  font-family: 'KOTRA_BOLD', sans-serif;
+  padding-left: 0.5rem;
 }
 .pack-popup-gift-list {
   display: flex;
@@ -1522,6 +1692,75 @@ body {
 }
 .fusion-recipe-card.used-in-self {
   cursor: default;
+}
+
+/* ── 버프 키워드 인라인 스타일 ── */
+.buff-keyword {
+  display: inline;
+  color: #f7c100;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.buff-keyword:hover {
+  text-decoration: underline;
+}
+.buff-keyword.no-click {
+  cursor: default;
+  text-decoration: none;
+}
+.buff-keyword-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+/* ── 버프 툴팁 ── */
+.buff-tooltip-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+}
+.buff-tooltip-box {
+  position: fixed;
+  min-width: 220px;
+  max-width: 320px;
+  border: 5px solid transparent;
+  border-image: url('/images/ui/tooltip_box.png') 15 fill stretch;
+  padding: 8px 10px 12px;
+  color: #ddd;
+  font-size: 0.85rem;
+  pointer-events: auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+}
+.buff-tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+.buff-tooltip-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.buff-tooltip-name {
+  font-family: 'KOTRA_BOLD', sans-serif;
+  color: #f7c100;
+  font-size: 1.05rem;
+  flex: 1;
+}
+.buff-tooltip-desc {
+  line-height: 1.55;
+  font-family: 'LiberationSans', sans-serif;
+  color: #bbb;
+}
+
+.upgrade-highlight {
+  color: #f7c100;
 }
 
 .gift-popup-desc {

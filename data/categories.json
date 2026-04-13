@@ -29,10 +29,6 @@
       "name": "충전"
     },
     {
-      "id": "None",
-      "name": "범용"
-    },
-    {
       "id": "Slash",
       "name": "참격"
     },
@@ -43,6 +39,15 @@
     {
       "id": "Hit",
       "name": "타격"
+    },
+    {
+      "id": "None",
+      "name": "범용"
+    },
+    {
+      "id": "Pilgrimage",
+      "name": "%!@#",
+      "easterEgg": true
     }
   ]
 }

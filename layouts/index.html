@@ -2,7 +2,7 @@
 
 {{/* 데이터 로드 */}}
 {{ $gifts := where .Site.Data.egogifts.dataList "hide" "ne" true }}
-{{ $categories := .Site.Data.categories.dataList }}
+{{ $categories := where .Site.Data.categories.dataList "hide" "ne" true }}
 
 {{/* fusion 결과 ID 집합 */}}
 {{ $fusionIds := slice }}
@@ -56,8 +56,13 @@
         <button
           class="filter-btn tag-panel-btn"
           :class="{ active: showTagPanel }"
-          @click="showTagPanel = !showTagPanel"
+          @click="showTagPanel = !showTagPanel; showPackPanel = false; packFilter = ''"
         ># 태그</button>
+        <button
+          class="filter-btn pack-panel-btn"
+          :class="{ active: showPackPanel }"
+          @click="showPackPanel = !showPackPanel; showTagPanel = false; tagFilter = ''"
+        >테마팩</button>
       </div>
       <div class="controls-right">
         <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
@@ -73,13 +78,13 @@
           :class="{ active: activeCategory === '' }"
           @click="activeCategory = ''"
         ><img class="filter-btn-icon" src="/images/ui/all.png" alt="">전체</button>
-        {{ range $categories }}
+        {{ range $categories }}{{ if not .easterEgg }}
         <button
           class="filter-btn"
           :class="{ active: activeCategory === '{{ .id }}' }"
           @click="activeCategory = '{{ .id }}'"
         ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt="">{{ .name }}</button>
-        {{ end }}
+        {{ end }}{{ end }}
       </div>
       <div class="controls-right">
         <button class="guide-btn filter-btn" @click="guideModal = true; guidePage = 1">
@@ -104,12 +109,12 @@
       x-model="tagFilter"
     >
     {{ range $tagCategories }}
-    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ . }}',{{ end }}].some(t => t.includes(tagFilter))">
+    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ . }}',{{ end }}].some(t => t.startsWith(tagFilter))">
       <div class="tag-category-label">{{ .category }}</div>
       <div class="tag-category-tags">
         {{ range .tags }}
         <button class="tag-btn"
-          x-show="!tagFilter || '{{ . }}'.includes(tagFilter)"
+          x-show="!tagFilter || '{{ . }}'.startsWith(tagFilter)"
           @click="search = (search ? search.trimEnd() + ', ' : '') + '#{{ . }}'; showTagPanel = false; tagFilter = ''; onSearch()">#{{ . }}</button>
         {{ end }}
       </div>
@@ -117,11 +122,85 @@
     {{ end }}
   </div>
 
-  {{/* ── 카테고리별 행 ── */}}
-  <div class="category-list" x-show="!showTagPanel">
+  {{/* ── 팩 패널 ── */}}
+  <div class="pack-panel" x-show="showPackPanel" x-transition>
+    <div class="pack-panel-search-row">
+      <input
+        class="tag-filter-input"
+        type="search"
+        placeholder="테마팩 검색"
+        x-model="packFilter"
+        style="margin: 0;"
+      >
+      <button
+        class="filter-btn pack-mode-btn"
+        @click="packDungeonMode = packDungeonMode === 'normal' ? 'hard' : 'normal'"
+        x-text="packDungeonMode === 'normal' ? '노말' : '하드'"
+      ></button>
+    </div>
+    <template x-for="(group, groupIdx) in packGroups" :key="groupIdx">
+      <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => !packFilter || (themeMap[String(id)] || '').includes(packFilter))">
+        <div class="pack-group-label" x-text="group.label"></div>
+        <div class="pack-group-items">
+          <template x-for="packId in group.packs" :key="packId">
+            <div class="pack-panel-item"
+              x-show="!packFilter || (themeMap[String(packId)] || '').includes(packFilter)"
+              :class="{ 'is-extreme': extremeVisualMap[String(packId)] }"
+              :title="themeMap[String(packId)] || String(packId)"
+              @contextmenu.prevent="openPackPopup(packId)"
+            >
+              <img class="pack-panel-sprite"
+                :src="spriteMap[String(packId)] ? `/images/pack/${spriteMap[String(packId)]}.png` : ''"
+                :alt="themeMap[String(packId)] || String(packId)"
+              >
+              <img class="pack-panel-boss"
+                x-show="bossMap[String(packId)]"
+                :src="`/images/boss/${bossMap[String(packId)]}.png`"
+                alt="boss"
+              >
+              <img class="pack-panel-warning"
+                x-show="warningMap[String(packId)]"
+                src="/images/pack/Warning.png"
+                alt="warning"
+              >
+              <img class="pack-panel-baton"
+                x-show="batonMap[String(packId)]"
+                src="/images/pack/Baton.png"
+                alt="baton"
+              >
+              <span class="pack-panel-baton-label" x-show="batonMap[String(packId)]">장기 전투</span>
+              <img class="pack-panel-cover"
+                x-show="!extremeVisualMap[String(packId)]"
+                src="/images/pack/pack_cover.png"
+                alt=""
+              >
+              <img class="pack-panel-extreme-frame"
+                x-show="extremeVisualMap[String(packId)]"
+                src="/images/pack/extreme_frame.png"
+                alt=""
+              >
+              <img class="pack-panel-logo"
+                x-show="!hideLogoMap[String(packId)]"
+                src="/images/pack/logo.png"
+                alt="logo"
+              >
+              <span class="pack-panel-name">
+                <template x-for="(part, i) in packNameParts(packId)" :key="i">
+                  <span :style="{ color: part.color }" x-text="part.text"></span>
+                </template>
+              </span>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
 
-    {{/* 범용 제외 카테고리 */}}
-    {{ range $categories }}{{ if ne .id "None" }}
+  {{/* ── 카테고리별 행 ── */}}
+  <div class="category-list" x-show="!showTagPanel && !showPackPanel">
+
+    {{/* 범용·이스터에그 제외 카테고리 */}}
+    {{ range $categories }}{{ if and (ne .id "None") (not .easterEgg) }}
     {{ $catId := .id }}
     {{ $catName := .name }}
     <div id="cat-{{ $catId }}" class="category-row" :style="{ display: isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
@@ -162,13 +241,13 @@
           </div>
           <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
-          {{ if eq .difficulty "hard" }}<img class="gift-difficulty" src="/images/ui/difficulty_hard.png" alt="hard">{{ end }}
+          {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
           <span class="gift-name-label" x-show="showName">{{ .name }}</span>
-          {{ if ne .category "None" }}<img
+          {{ $badgeCat := or .category_origin .category }}{{ if ne $badgeCat "None" }}<img
             class="cat-badge"
-            src="/images/category/{{ lower .category }}.png"
-            alt="{{ .category }}"
+            src="/images/category/{{ lower $badgeCat }}.png"
+            alt="{{ $badgeCat }}"
           >{{ end }}
         </div>
         {{ end }}{{ end }}
@@ -216,23 +295,79 @@
           </div>
           <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
-          {{ if eq .difficulty "hard" }}<img class="gift-difficulty" src="/images/ui/difficulty_hard.png" alt="hard">{{ end }}
+          {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
           <span class="gift-name-label" x-show="showName">{{ .name }}</span>
-          {{ if ne .category "None" }}<img
+          {{ $badgeCat2 := or .category_origin .category }}{{ if ne $badgeCat2 "None" }}<img
             class="cat-badge"
-            src="/images/category/{{ lower .category }}.png"
-            alt="{{ .category }}"
+            src="/images/category/{{ lower $badgeCat2 }}.png"
+            alt="{{ $badgeCat2 }}"
           >{{ end }}
         </div>
         {{ end }}{{ end }}
       </div>
     </div>
 
+    {{/* 이스터에그 카테고리 — None 다음 마지막 */}}
+    {{ range $categories }}{{ if .easterEgg }}
+    {{ $catId := .id }}
+    {{ $catName := .name }}
+    <div id="cat-{{ $catId }}" class="category-row" :style="{ display: showPilgrimage && isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
+      <div class="category-label">
+        <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}" @click.stop="onPilgrimageIconClick()" style="cursor: pointer;">
+        <span class="cat-name">{{ $catName }}</span>
+        <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
+        <span class="cat-combo-label">조합</span>
+        <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
+      </div>
+      <div class="gift-row" :class="{ 'show-name': showName }">
+        {{ range $gifts }}{{ if eq .category $catId }}
+        {{ $isFusion := in $fusionIds (string .id) }}
+        {{ $isSpecial := gt (len .packs) 0 }}
+        {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
+        <div
+          class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
+          data-id="{{ .id }}"
+          data-name="{{ .name }}"
+          data-category="{{ .category }}"
+          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
+          :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
+          @click="toggle('{{ .id }}')"
+          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
+          @pointerdown="startLongPress('{{ .id }}', $event)"
+          @pointerup="cancelLongPress($event)"
+          @pointermove="cancelLongPress($event)"
+          @pointercancel="cancelLongPress($event)"
+        >
+          <div class="gift-icon-wrap">
+            <img
+              class="gift-icon"
+              src="/images/egogift/{{ .id }}.png"
+              alt="{{ .name }}"
+              loading="lazy"
+              onerror="this.style.opacity='0.2'"
+            >
+          </div>
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
+          {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
+          <div class="check-mark">✓</div>
+          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          {{ $badgeCatEgg := or .category_origin .category }}{{ if ne $badgeCatEgg "None" }}<img
+            class="cat-badge"
+            src="/images/category/{{ lower $badgeCatEgg }}.png"
+            alt="{{ $badgeCatEgg }}"
+          >{{ end }}
+        </div>
+        {{ end }}{{ end }}
+      </div>
+    </div>
+    {{ end }}{{ end }}
+
   </div>
 
   {{/* ── 결과 없음 ── */}}
-  <div class="no-result" x-show="!showTagPanel && visibleRowCount === 0">
+  <div class="no-result" x-show="!showTagPanel && !showPackPanel && visibleRowCount === 0">
     조건에 맞는 기프트가 없습니다.
   </div>
 
@@ -252,7 +387,7 @@
           <span>범용</span>
         </button>
         {{ range $categories }}{{ if ne .id "None" }}
-        <button class="float-toc-item" @click="scrollToCategory('{{ .id }}')">
+        <button class="float-toc-item" @click="scrollToCategory('{{ .id }}')"{{ if .easterEgg }} x-show="showPilgrimage"{{ end }}>
           <img src="/images/ui/{{ lower .id }}.png" alt="{{ .name }}" class="float-toc-icon">
           <span>{{ .name }}</span>
         </button>
@@ -336,9 +471,9 @@
             <img class="gift-popup-grade-img" :src="`/images/egogift/gift_grade_${popup.grade}.png`" :alt="`grade ${popup.grade}`">
             <span class="modal-title" x-text="popup.upgradeLevel === 0 ? popup.name : popup.upgrades[popup.upgradeLevel-1].name"></span>
           </div>
-          <div class="gift-popup-hard" x-show="popup.difficulty === 'hard'">
-            <img src="/images/ui/difficulty_hard.png" alt="hard">
-            <span>HARD</span>
+          <div class="gift-popup-hard" x-show="popup.difficulty === 'hard' || popup.difficulty === 'limited'">
+            <img :src="`/images/ui/difficulty_${popup.difficulty}.png`" :alt="popup.difficulty">
+            <span :class="popup.difficulty === 'limited' ? 'difficulty-limited' : 'difficulty-hard'" x-text="popup.difficulty === 'limited' ? 'LIMITED' : 'HARD'"></span>
           </div>
         </div>
         <div class="modal-body gift-popup-body">
@@ -353,15 +488,15 @@
               </div>
               <img
                 class="gift-difficulty"
-                x-show="popup.difficulty === 'hard'"
-                src="/images/ui/difficulty_hard.png"
-                alt="hard"
+                x-show="popup.difficulty === 'hard' || popup.difficulty === 'limited'"
+                :src="`/images/ui/difficulty_${popup.difficulty}.png`"
+                :alt="popup.difficulty"
               >
               <img
                 class="cat-badge"
-                x-show="popup.category && popup.category !== 'None'"
-                :src="`/images/category/${popup.category ? popup.category.toLowerCase() : ''}.png`"
-                :alt="popup.category"
+                x-show="(popup.categoryOrigin || popup.category) && (popup.categoryOrigin || popup.category) !== 'None'"
+                :src="`/images/category/${(popup.categoryOrigin || popup.category || '').toLowerCase()}.png`"
+                :alt="popup.categoryOrigin || popup.category"
               >
             </div>
             <div class="upgrade-btns" x-show="popup.upgrades && popup.upgrades.length" :class="{ 'upgrade-btns--left': popup.upgrades.length < 2 }">
@@ -408,7 +543,8 @@
                  x-init="$nextTick(() => check($el.querySelector('.gift-popup-scroll-area')))">
               <div class="scroll-indicator" :class="{ visible: up }">▲</div>
               <div class="gift-popup-scroll-area"
-                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;"
+                   @click="handleDescClick($event)">
                 <div class="gift-popup-related" x-show="popup.curse">
                   <span class="gift-popup-related-label">관련 축복 기프트 :</span>
                   <div class="fusion-recipe-card" :class="{ fusion: popup.curse?.isFusionBg }" @click.stop="openGiftPopup(popup.curse?.id)">
@@ -483,6 +619,19 @@
     </div>
   </template>
 
+  {{/* ── 버프 툴팁 ── */}}
+  <div class="buff-tooltip-overlay" x-show="buffTooltip" @click.self="closeBuffTooltip()" @contextmenu.prevent="closeBuffTooltip()" style="display:none;">
+    <div class="buff-tooltip-box"
+         :style="`top:${buffTooltip?.anchorTop ?? 0}px; left:${buffTooltip?.anchorLeft ?? 0}px;`"
+         @click.stop @contextmenu.prevent="closeBuffTooltip()">
+      <div class="buff-tooltip-header">
+        <img x-show="buffTooltip?.id" class="buff-tooltip-icon" :src="`/images/buff/${buffTooltip?.id}.png`" :onerror="buffTooltip?.iconId ? `this.src='/images/buff/${buffTooltip.iconId}.png';this.onerror=null;` : `this.style.display='none';`" alt="">
+        <span class="buff-tooltip-name" x-text="buffTooltip?.name"></span>
+      </div>
+      <div class="buff-tooltip-desc" x-html="buffTooltip?.descHtml"></div>
+    </div>
+  </div>
+
   {{/* ── 팩 팝업 ── */}}
   <div class="modal-overlay" :class="{ open: packPopup }" @click.self="packPopup = null" @contextmenu.prevent="packPopup = null" :style="`z-index: ${packPopupZIndex}`">
     <div class="modal-box pack-popup-box" x-show="packPopup" @contextmenu.prevent="packPopup = null">
@@ -518,9 +667,10 @@
                 </div>
               </template>
             </div>
-            <div class="pack-popup-specific-gifts" x-show="packPopup?.specificGifts?.length > 0">
+            <div class="pack-popup-specific-gifts">
               <div class="pack-popup-section-label">테마팩 전용 기프트</div>
-              <div class="pack-popup-gift-list">
+              <span class="pack-popup-no-gifts" x-show="!packPopup?.specificGifts?.length">없음</span>
+              <div class="pack-popup-gift-list" x-show="packPopup?.specificGifts?.length > 0">
                 <template x-for="gift in (packPopup?.specificGifts || [])" :key="gift.id">
                   <div class="pack-popup-gift-item" :title="gift.name" @click.stop="openGiftPopup(gift.id)" style="cursor: pointer;">
                     <div class="pack-popup-gift-icon-wrap">
@@ -530,7 +680,7 @@
                     <div class="pack-popup-gift-grade-wrap">
                       <img :src="`/images/egogift/gift_grade_${gift.grade}.png`" class="pack-popup-gift-grade">
                     </div>
-                    <img x-show="gift.category !== 'None'" :src="`/images/category/${gift.category.toLowerCase()}.png`" class="pack-popup-gift-cat-badge">
+                    <img x-show="(gift.categoryOrigin || gift.category) !== 'None'" :src="`/images/category/${(gift.categoryOrigin || gift.category).toLowerCase()}.png`" class="pack-popup-gift-cat-badge">
                   </div>
                 </template>
               </div>
@@ -543,7 +693,10 @@
 
 </div>
 
-<script src="/js/sheep-config.js"></script>
+{{ $eggJs := resources.Get "js/esateregg-config.js" | fingerprint }}
+<script src="{{ $eggJs.RelPermalink }}"></script>
+{{ $sheepJs := resources.Get "js/sheep-config.js" | fingerprint }}
+<script src="{{ $sheepJs.RelPermalink }}"></script>
 <div class="easter-sheep-wrap">
   <div class="easter-sheep-mover">
     <img class="easter-sheep" src="/images/easteregg/sheep.gif" alt="">
@@ -642,10 +795,64 @@ const floorMap = {
   {{ end }}
 };
 
+function packNameParts(packId) {
+  const name = themeMap[String(packId)] || String(packId);
+  const rawColor = textColorMap[String(packId)];
+  if (Array.isArray(rawColor)) {
+    const colors = rawColor.map(c => `#${c}`);
+    const words = name.split(' ');
+    return words.map((word, i) => ({
+      text: i < words.length - 1 ? word + ' ' : word,
+      color: colors[Math.min(i, colors.length - 1)],
+    }));
+  } else if (rawColor) {
+    return [{ text: name, color: `#${rawColor}` }];
+  } else {
+    return [{ text: name, color: '#eacaa1' }];
+  }
+}
+
+const DUNGEON_NAMES = ['노말', '하드', '평행중첩', '익스트림'];
+const packGroups = [];
+{
+  const groupMap = {};
+  for (const [packId, conditions] of Object.entries(floorMap)) {
+    for (const cond of conditions) {
+      const idx = cond.dungeonIdx;
+      if (idx < 0 || idx > 3) continue;
+      const sf = (cond.selectableFloors || []).map(f => f + 1).sort((a, b) => a - b);
+      if (idx <= 1) {
+        // 노말/하드: 층별로 개별 그룹
+        for (const floor of sf) {
+          const key = `${idx}_${floor}`;
+          if (!groupMap[key]) groupMap[key] = { label: `${DUNGEON_NAMES[idx]}\n${floor}층`, dungeonIdx: idx, sortKey: idx * 1000 + floor, packs: [] };
+          if (!groupMap[key].packs.includes(Number(packId))) groupMap[key].packs.push(Number(packId));
+        }
+      } else {
+        // 평행중첩/익스트림: 층 범위로 하나의 그룹
+        let floorStr = '';
+        if (sf.length > 0) {
+          const consec = sf.every((f, i) => i === 0 || f === sf[i-1] + 1);
+          floorStr = ' ' + (consec && sf.length > 1 ? `${sf[0]} ~ ${sf[sf.length-1]}층` : sf.map(f => f + '층').join(', '));
+        }
+        const key = `${idx}`;
+        if (!groupMap[key]) groupMap[key] = { label: DUNGEON_NAMES[idx] + (floorStr ? '\n' + floorStr.trim() : ''), dungeonIdx: idx, sortKey: idx * 1000, packs: [] };
+        if (!groupMap[key].packs.includes(Number(packId))) groupMap[key].packs.push(Number(packId));
+      }
+    }
+  }
+  packGroups.push(...Object.values(groupMap).sort((a, b) => a.sortKey - b.sortKey));
+}
+
 const spriteMap = {
   {{ range .Site.Data.theme_floor_data.list }}"{{ .id }}": "{{ .uiConfigs.packSpriteId }}",
   {{ end }}
 };
+
+const extremeVisualMap = {};
+for (const [packId, spriteId] of Object.entries(spriteMap)) {
+  if (spriteId && spriteId.endsWith('_Extreme')) extremeVisualMap[packId] = true;
+}
 
 const warningMap = {
   {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.isShowWarning }}"{{ .id }}": true,
@@ -684,6 +891,29 @@ const gradeMap = {
 const comboCountableIds = new Set(
   [...comboResultIds].filter(id => ['4', '5', 'ex'].includes(gradeMap[id]))
 );
+
+const buffDetailMap = {
+  {{ range .Site.Data.buffs.dataList }}
+  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, iconId: "{{ .iconId }}" },
+  {{ end }}
+};
+
+function parseDesc(raw) {
+  const text = (typeof raw === 'string' ? raw : String(raw))
+    .replace(/^"|"$/g, '')
+    .replace(/\\n/g, '\n');
+  return text
+    .replace(/<style=\\?"upgradeHighlight\\?">([\s\S]*?)<\/style>/g, '<span class="upgrade-highlight">$1</span>')
+    .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
+      const b = buffDetailMap[kw];
+      if (!b) return match;
+      const fallback = b.iconId ? `this.src='/images/buff/${b.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
+      const iconHtml = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${fallback}" alt="">`;
+      const name = b.name.replace(/^"|"$/g, '');
+      return `<span class="buff-keyword" data-buff-id="${kw}">${iconHtml}${name}</span>`;
+    })
+    .replace(/\n/g, '<br>');
+}
 </script>
 
 {{/* 카테고리별 gift 맵 (검색 및 수집 현황용) */}}
@@ -695,8 +925,15 @@ const categoryNameMap = {
   "None": [{{ range $gifts }}{{ if eq .category "None" }}"{{ .name }}",{{ end }}{{ end }}]
 };
 
+const easterEggCategories = new Set([{{ range $categories }}{{ if .easterEgg }}'{{ .id }}',{{ end }}{{ end }}]);
+
 const itemCategoryMap = {
   {{ range $gifts }}"{{ .id }}": "{{ .category }}",
+  {{ end }}
+};
+
+const itemCategoryOriginMap = {
+  {{ range $gifts }}"{{ .id }}": "{{ .category_origin }}",
   {{ end }}
 };
 
@@ -715,7 +952,7 @@ const giftMap = {
   {{ $isFusion := in $fusionIds (string .id) }}
   {{ $isSpecial := gt (len .packs) 0 }}
   {{ $isFusionBg := and $isFusion (or (eq (string .grade) "4") (eq (string .grade) "ex")) }}
-  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}", packs: [{{ range .packs }}{{ . }},{{ end }}], upgrades: [{{ range .upgrade }}{ name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, category: "{{ .category }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}] },{{ end }}], curse: {{ if .curse }}"{{ .curse }}"{{ else }}null{{ end }}, bless: {{ if .bless }}"{{ .bless }}"{{ else }}null{{ end }}, associated: [{{ range .associated }}{{ . }},{{ end }}] },
+  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, grade: "{{ .grade }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}], category: "{{ .category }}", categoryOrigin: "{{ .category_origin }}", isFusion: {{ $isFusion }}, isFusionBg: {{ $isFusionBg }}, isSpecial: {{ $isSpecial }}, difficulty: "{{ .difficulty }}", packs: [{{ range .packs }}{{ . }},{{ end }}], upgrades: [{{ range .upgrade }}{ name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, category: "{{ .category }}", tags: [{{ range .tags }}"{{ . }}",{{ end }}] },{{ end }}], curse: {{ if .curse }}"{{ .curse }}"{{ else }}null{{ end }}, bless: {{ if .bless }}"{{ .bless }}"{{ else }}null{{ end }}, associated: [{{ range .associated }}{{ . }},{{ end }}] },
   {{ end }}
 };
 </script>
@@ -739,12 +976,49 @@ function checklist() {
     guidePage: 1,
     guidePages: [{{ range .Site.Data.guide.pages }}`{{ . }}`,{{ end }}],
     showToc: false,
+    buffTooltip: null,
+    showPackPanel: false,
+    packFilter: '',
+    packDungeonMode: 'normal',
+    showPilgrimage: false,
+    pilgrimageIconClickCount: 0,
 
     init() {
       const saved = localStorage.getItem('egogift-checked');
       if (saved) this.checked = JSON.parse(saved);
       this.showName = localStorage.getItem('egogift-showname') === 'true';
+      this.showPilgrimage = Math.random() < (typeof PILGRIMAGE_APPEAR_PROB !== 'undefined' ? PILGRIMAGE_APPEAR_PROB : 0);
       this.$nextTick(() => this.updateVisibleRowCount());
+      this.$watch('showPackPanel', val => {
+        if (val) this.$nextTick(() => this.fitPackPanelNames());
+      });
+      this.$watch('packDungeonMode', () => {
+        if (this.showPackPanel) this.$nextTick(() => this.fitPackPanelNames());
+      });
+    },
+
+    fitPackPanelNames() {
+      const maxW = 91;
+      const maxH = 18;
+      document.querySelectorAll('.pack-panel-name').forEach(el => {
+        el.style.fontSize = '';
+        const baseSize = parseFloat(getComputedStyle(el).fontSize);
+        let size = baseSize;
+        while ((el.offsetWidth > maxW || el.offsetHeight > maxH) && size > 4) {
+          size -= 0.5;
+          el.style.fontSize = size + 'px';
+        }
+      });
+    },
+
+    onPilgrimageIconClick() {
+      const limit = typeof PILGRIMAGE_HIDE_CLICK_COUNT !== 'undefined' ? PILGRIMAGE_HIDE_CLICK_COUNT : 5;
+      this.pilgrimageIconClickCount++;
+      if (this.pilgrimageIconClickCount >= limit) {
+        this.showPilgrimage = false;
+        this.pilgrimageIconClickCount = 0;
+        this.$nextTick(() => this.updateVisibleRowCount());
+      }
     },
 
     _longPressTimer: null,
@@ -763,7 +1037,7 @@ function checklist() {
         this._longPressTimer = null;
         this._lastPopupOpenTime = Date.now();
         this.openGiftPopup(id);
-      }, 500);
+      }, 300);
     },
 
     cancelLongPress(event) {
@@ -800,7 +1074,7 @@ function checklist() {
       );
       const upgrades = (g.upgrades || []).map(u => ({
         name: u.name.replace(/^"|"$/g, ''),
-        descHtml: u.desc.replace(/^"|"$/g, '').replace(/\n/g, '<br>').replace(/\\n/g, '<br>'),
+        descHtml: parseDesc(u.desc),
         category: u.category,
         tags: u.tags
       }));
@@ -818,10 +1092,11 @@ function checklist() {
         id,
         zIndex,
         name: g.name.replace(/^"|"$/g, ''),
-        descHtml: g.desc.replace(/^"|"$/g, '').replace(/\n/g, '<br>').replace(/\\n/g, '<br>'),
+        descHtml: parseDesc(g.desc),
         grade: g.grade,
         tags: g.tags,
         category: g.category,
+        categoryOrigin: g.categoryOrigin || '',
         isFusion: g.isFusionBg,
         isSpecial: g.isSpecial,
         difficulty: g.difficulty,
@@ -835,12 +1110,58 @@ function checklist() {
       });
     },
 
+    openBuffTooltip(buffId, clientX, clientY) {
+      const b = buffDetailMap[buffId];
+      if (!b) return;
+      const rawDesc = (b.desc || '').replace(/^"|"$/g, '');
+      const descHtml = rawDesc
+        .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
+          const inner = buffDetailMap[kw];
+          if (!inner) return match;
+          const icFallback = inner.iconId ? `this.src='/images/buff/${inner.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
+          const ic = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${icFallback}" alt="">`;
+          return `<span class="buff-keyword no-click">${ic}${inner.name.replace(/^"|"$/g, '')}</span>`;
+        })
+        .replace(/\n/g, '<br>').replace(/\\n/g, '<br>');
+
+      // 클릭 좌표 기준 (fixed overlay이므로 viewport 좌표 직접 사용)
+      const TW = 320;
+      const TH_APPROX = 160;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      let left = clientX;
+      if (left + TW > vw - 8) left = Math.max(8, vw - TW - 8);
+      const top = (clientY + TH_APPROX < vh - 8)
+        ? clientY + 8
+        : clientY - TH_APPROX - 8;
+
+      this.buffTooltip = {
+        id: buffId,
+        name: b.name.replace(/^"|"$/g, ''),
+        iconId: b.iconId,
+        descHtml,
+        anchorTop: top,
+        anchorLeft: left,
+      };
+    },
+
+    closeBuffTooltip() {
+      this.buffTooltip = null;
+    },
+
+    handleDescClick(event) {
+      const kw = event.target.closest('.buff-keyword:not(.no-click)');
+      if (!kw) { this.buffTooltip = null; return; }
+      event.stopPropagation();
+      this.openBuffTooltip(kw.dataset.buffId, event.clientX, event.clientY);
+    },
+
     openPackPopup(packId) {
       this.packPopupZIndex = this.nextZIndex;
       this.nextZIndex += 10;
       const name = themeMap[String(packId)] || String(packId);
       const conditions = floorMap[String(packId)] || [];
-      const isExtreme = conditions.length > 0 && conditions.every(c => c.dungeonIdx === 3);
+      const isExtreme = !!extremeVisualMap[String(packId)];
       const spriteId = spriteMap[String(packId)] || '';
       const showWarning = warningMap[String(packId)] || false;
       const showBaton = batonMap[String(packId)] || false;
@@ -867,6 +1188,7 @@ function checklist() {
         grade: gradeMap[String(id)] || '1',
         isSpecial: (giftMap[String(id)] || {}).isSpecial || false,
         category: (giftMap[String(id)] || {}).category || 'None',
+        categoryOrigin: (giftMap[String(id)] || {}).categoryOrigin || '',
       }));
       this.packPopup = { id: packId, name, conditions, spriteId, showWarning, showBaton, bossSpriteId, hideLogo, nameColorParts, isExtreme, specificGifts };
       const fitPackName = () => {
@@ -977,7 +1299,7 @@ function checklist() {
       if (names.length > 0 && !names.some(n => name.includes(n))) return false;
       if (tags.length > 0) {
         const giftTags = itemTagsMap[id] || [];
-        if (!tags.some(t => giftTags.some(gt => gt.includes(t)))) return false;
+        if (!tags.some(t => giftTags.some(gt => gt.startsWith(t)))) return false;
       }
       return true;
     },
@@ -993,7 +1315,7 @@ function checklist() {
           if (names.length > 0 && !names.some(n => name.includes(n))) return false;
           if (tags.length > 0) {
             const giftTags = itemTagsMap[id] || [];
-            if (!tags.some(t => giftTags.some(gt => gt.includes(t)))) return false;
+            if (!tags.some(t => giftTags.some(gt => gt.startsWith(t)))) return false;
           }
           return true;
         });
