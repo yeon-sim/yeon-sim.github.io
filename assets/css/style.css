@@ -271,8 +271,15 @@ body {
   flex-shrink: 0;
 }
 
+.search-input-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .search-input {
-  padding: 0.4rem 0.7rem;
+  padding: 0.4rem 2rem 0.4rem 0.7rem; /* 우측에 버튼 공간 확보 */
   border: 2px solid #9c6639;
   border-radius: 5px;
   background: #1e150d;
@@ -282,9 +289,38 @@ body {
   flex-shrink: 0;
 }
 
+/* 브라우저 기본 [X] 버튼 숨김 */
+.search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
 .search-input:focus {
   outline: none;
   border-color: #f7c100;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.search-clear-btn:hover {
+  opacity: 1;
+}
+.search-clear-btn img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
 }
 
 .filter-buttons {
@@ -447,18 +483,26 @@ body {
   flex: 1;
 }
 
+.tag-panel .search-input-wrap {
+  align-self: center;
+  margin-top: 0.3rem;
+  margin-bottom: calc(4px + 0.3rem);
+}
+
 .tag-filter-input {
   width: 260px;
-  padding: 0.3rem 0.6rem;
-  align-self: center;
+  padding: 0.3rem 2rem 0.3rem 0.6rem; /* 우측에 버튼 공간 확보 */
   background: #1e150d;
   border: 2px solid #9c6639;
   border-radius: 5px;
   color: #e0e0e0;
   font-family: inherit;
   font-size: 0.9rem;
-  margin-top: 0.3rem;
-  margin-bottom: calc(4px + 0.3rem);
+}
+
+/* 브라우저 기본 [X] 버튼 숨김 */
+.tag-filter-input::-webkit-search-cancel-button {
+  display: none;
 }
 
 .tag-filter-input:focus {
@@ -2589,9 +2633,12 @@ body {
   .search-group {
     width: calc(4 * 76px + 3 * 0.3rem);
   }
-  .search-input {
+  .search-input-wrap {
     flex: 1;
     min-width: 0;
+  }
+  .search-input {
+    width: 100%;
   }
 
   /* 컨트롤 Row 2: 카테고리 버튼 + 하단 버튼 세로 배치 */

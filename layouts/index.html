@@ -49,13 +49,23 @@
   <div class="controls">
     <div class="controls-row controls-row-1">
       <div class="search-group">
-        <input
-          class="search-input"
-          type="search"
-          placeholder="이름 및 태그(#)으로 검색"
-          x-model="search"
-          @input="onSearch()"
-        >
+        <div class="search-input-wrap">
+          <input
+            class="search-input"
+            type="search"
+            placeholder="이름 및 태그(#)으로 검색"
+            x-model="search"
+            @input="onSearch()"
+          >
+          <button
+            class="search-clear-btn"
+            x-show="search.length > 0"
+            @click="search = ''; onSearch()"
+            tabindex="-1"
+          >
+            <img src="/images/ui/search_clear.png" alt="지우기">
+          </button>
+        </div>
         <button
           class="filter-btn tag-panel-btn"
           :class="{ active: showTagPanel }"
@@ -132,12 +142,22 @@
   {{/* ── 태그 패널 ── */}}
   {{ $tagCategories := .Site.Data.tag_categories.dataList }}
   <div class="tag-panel" x-show="showTagPanel" x-transition>
-    <input
-      class="tag-filter-input"
-      type="search"
-      placeholder="태그 검색"
-      x-model="tagFilter"
-    >
+    <div class="search-input-wrap">
+      <input
+        class="tag-filter-input"
+        type="search"
+        placeholder="태그 검색"
+        x-model="tagFilter"
+      >
+      <button
+        class="search-clear-btn"
+        x-show="tagFilter.length > 0"
+        @click="tagFilter = ''"
+        tabindex="-1"
+      >
+        <img src="/images/ui/search_clear.png" alt="지우기">
+      </button>
+    </div>
     {{ range $tagCategories }}
     <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ . }}',{{ end }}].some(t => t.startsWith(tagFilter))">
       <div class="tag-category-label">{{ .category }}</div>
@@ -155,13 +175,23 @@
   {{/* ── 팩 패널 ── */}}
   <div class="pack-panel" x-show="showPackPanel" x-transition>
     <div class="pack-panel-search-row">
-      <input
-        class="tag-filter-input"
-        type="search"
-        placeholder="테마팩 검색"
-        x-model="packFilter"
-        style="margin: 0;"
-      >
+      <div class="search-input-wrap">
+        <input
+          class="tag-filter-input"
+          type="search"
+          placeholder="테마팩 검색"
+          x-model="packFilter"
+          style="margin: 0;"
+        >
+        <button
+          class="search-clear-btn"
+          x-show="packFilter.length > 0"
+          @click="packFilter = ''"
+          tabindex="-1"
+        >
+          <img src="/images/ui/search_clear.png" alt="지우기">
+        </button>
+      </div>
       <button
         class="filter-btn pack-mode-btn"
         @click="packDungeonMode = packDungeonMode === 'normal' ? 'hard' : 'normal'"
@@ -323,7 +353,7 @@
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="{{ .category }}"
-          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
+          :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           @contextmenu.prevent="openGiftPopup('{{ .id }}')"
@@ -377,7 +407,7 @@
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="None"
-          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
+          :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           @contextmenu.prevent="openGiftPopup('{{ .id }}')"
@@ -432,7 +462,7 @@
           data-id="{{ .id }}"
           data-name="{{ .name }}"
           data-category="{{ .category }}"
-          :style="{ display: isGiftVisible('{{ .id }}', '{{ .name }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
+          :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
           @click="toggle('{{ .id }}')"
           @contextmenu.prevent="openGiftPopup('{{ .id }}')"
@@ -2059,13 +2089,16 @@ function checklist() {
       return { names, tags };
     },
 
-    isGiftVisible(id, name) {
+    isGiftVisible(id) {
       if (this.panelMode === 'preset') {
         const preset = this.presets[this.activePanelPresetIdx];
         if (!preset || !preset.gifts.includes(String(id))) return false;
       }
       const { names, tags } = this.parseSearch();
-      if (names.length > 0 && !names.some(n => name.includes(n))) return false;
+      if (names.length > 0) {
+        const name = itemNameMap[String(id)] || '';
+        if (!names.some(n => name.includes(n))) return false;
+      }
       if (tags.length > 0) {
         const giftTags = itemTagsMap[id] || [];
         if (!tags.some(t => giftTags.some(gt => gt.startsWith(t)))) return false;
