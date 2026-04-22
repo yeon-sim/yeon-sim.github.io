@@ -8,3 +8,9 @@ title = '연심(連心)'
       unsafe = true
 
 [taxonomies]
+
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Cache-Control = "no-store"
