@@ -25262,7 +25262,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9250],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -25656,7 +25656,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9251],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -26048,7 +26048,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9252],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -26443,7 +26443,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9253],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -26837,7 +26837,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9254],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -27228,7 +27228,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9255],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -27617,7 +27617,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9829],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -28006,7 +28006,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9827],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -28396,7 +28396,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9828],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
@@ -28785,7 +28785,7 @@
         9085,
         9083
       ],
-      "specificEgoGiftPool": [],
+      "specificEgoGiftPool": [9830],
       "mapGenSequence": [
         {
           "type": "CREATE_FIXED_FLOOR",
