@@ -1,4 +1,5 @@
 baseURL = 'https://yeon-sim.github.io/'
+ignoreFiles = ['[/\\\\]temp[/\\\\]']
 languageCode = 'ko'
 title = '연심(連心)'
 
