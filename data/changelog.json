@@ -215,6 +215,14 @@
       "changes": [
         "일부 누락된 태그가 추가되었습니다."
       ]
+    },{
+      "version": "1.6.7",
+      "date": "2026-05-18",
+      "target_game_date": "2026-05-14",
+      "target_game_version": "1.105.0",
+      "changes": [
+        "건의사항 수집을 위한 Google forms가 추가되었습니다."
+      ]
     }
   ]
 }
