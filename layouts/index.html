@@ -2231,10 +2231,14 @@ function checklist() {
   }
 })();
 
-// ── sheep |sin| 바운스 이동 ──
+// ── sheep |sin| 바운스 이동 + 클릭 포물선 발사 ──
 (function() {
-  const SPEED      = 150;  // px/s  수평 이동 속도
-  const WAVELENGTH = 200;  // px    바운스 1회당 수평 이동 거리
+  const SPEED           = 150;   // px/s  수평 이동 속도
+  const WAVELENGTH      = 200;   // px    바운스 1회당 수평 이동 거리
+  const LAUNCH_SPEED    = 900;   // px/s  발사 속도 크기 (방향 무관)
+  const GRAVITY         = 1200;  // px/s² 중력 가속도 (아래 방향 양수)
+  const POST_EXIT_DELAY = 1000;  // ms    화면 이탈 후 재등장까지 대기 시간
+  const MAX_FLIGHT_TIME = 10;    // s     안전장치 (이탈 미감지 시 강제 종료)
 
   function pickAmplitude() {
     const table = (typeof SHEEP_AMPLITUDE_TABLE !== 'undefined') ? SHEEP_AMPLITUDE_TABLE : [{ value: 65, weight: 1 }];
@@ -2253,6 +2257,7 @@ function checklist() {
   let x         = null;
   let lastTime  = null;
   let amplitude = pickAmplitude();
+  let flying    = false;
 
   function startX() { return window.innerWidth + 80; }
   function endX()   { return -((mover.offsetWidth || 120) + 20); }
@@ -2263,7 +2268,9 @@ function checklist() {
     amplitude = pickAmplitude();
   }
 
+  // 바운스 이동 루프
   function tick(timestamp) {
+    if (flying) return;  // 비행 중 정지
     if (lastTime === null) lastTime = timestamp;
     const dt = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
@@ -2277,6 +2284,61 @@ function checklist() {
     mover.style.transform = 'translateX(' + x + 'px) translateY(' + (-y) + 'px)';
     requestAnimationFrame(tick);
   }
+
+  // 포물선 비행 루프
+  mover.addEventListener('click', function() {
+    if (flying) return;
+    flying = true;
+
+    // 0~180° 무작위 발사 각도 (0°=우, 90°=상, 180°=좌)
+    const angle     = Math.random() * Math.PI;
+    const vx        =  LAUNCH_SPEED * Math.cos(angle);  // 우 = 양수
+    const vy_screen = -LAUNCH_SPEED * Math.sin(angle);  // 위 = 음수 (화면 좌표)
+
+    // 클릭 시점의 translateY 캡처
+    const traveled0 = startX() - x;
+    const startTY   = -(amplitude * Math.abs(Math.sin(Math.PI * traveled0 / WAVELENGTH)));
+
+    let t0     = null;
+    let exited = false;
+
+    function flightTick(timestamp) {
+      if (!t0) t0 = timestamp;
+      const elapsed = (timestamp - t0) / 1000;  // 경과 시간 (s)
+
+      // 포물선 공식: Δx = vₓt,  Δy = vᵧt + ½gt²
+      const dx = vx * elapsed;
+      const dy = vy_screen * elapsed + 0.5 * GRAVITY * elapsed * elapsed;
+
+      mover.style.transform =
+        'translateX(' + (x + dx) + 'px) ' +
+        'translateY(' + (startTY + dy) + 'px)';
+
+      // 화면 완전 이탈 감지
+      if (!exited) {
+        const r  = mover.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const isOffScreen =
+          r.right < 0 || r.left > vw ||
+          r.bottom < 0 || r.top > vh;
+
+        if (isOffScreen || elapsed > MAX_FLIGHT_TIME) {
+          exited = true;
+          setTimeout(function() {
+            flying = false;
+            reset();
+            requestAnimationFrame(tick);
+          }, POST_EXIT_DELAY);
+          return;
+        }
+      }
+
+      requestAnimationFrame(flightTick);
+    }
+
+    requestAnimationFrame(flightTick);
+  });
 
   reset();
   requestAnimationFrame(tick);

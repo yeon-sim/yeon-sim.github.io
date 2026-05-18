@@ -143,14 +143,16 @@ body {
   overflow-x: clip;
   overflow-y: visible;
   margin-top: 15px;
+  z-index: 100;
 }
 
 .easter-sheep-mover {
   position: absolute;
   bottom: 0;
   left: 0;
-  pointer-events: none;
+  cursor: pointer;
 }
+
 
 .easter-sheep {
   display: block;
