@@ -1,0 +1,942 @@
+{{ define "main" }}
+
+{{/* ── 데이터 ── */}}
+{{ $egoCats := first 7 .Site.Data.categories.dataList }}
+{{/* 스킬 맵 (skillId → {tier, sd:[{g, a}], at, dt}) */}}
+{{ $skillMap := dict }}
+{{ range $.Site.Data.personality.skill }}
+  {{ range .list }}
+    {{ $sd := slice }}
+    {{ $ic := slice }}
+    {{ $lc := slice }}
+    {{ $cc := slice }}
+    {{ $dv := slice }}
+    {{ $ci := slice }}
+    {{ $at := "" }}
+    {{ $dt := "" }}
+    {{ $tn := 0 }}
+    {{ range .skillData }}
+      {{ if .attributeType }}
+        {{ $sd = $sd | append (dict "g" .gaksungLevel "a" .attributeType) }}
+      {{ end }}
+      {{ if .iconID }}
+        {{ $ic = $ic | append (dict "g" .gaksungLevel "i" (printf "%v" .iconID)) }}
+      {{ end }}
+      {{ if isset . "skillLevelCorrection" }}
+        {{ $lc = $lc | append (dict "g" .gaksungLevel "v" .skillLevelCorrection) }}
+      {{ end }}
+      {{ if isset . "defaultValue" }}
+        {{ $dv = $dv | append (dict "g" .gaksungLevel "v" .defaultValue) }}
+      {{ end }}
+      {{ if .coinList }}
+        {{ $cc = $cc | append (dict "g" .gaksungLevel "v" (len .coinList)) }}
+        {{ $cs := 0 }}
+        {{ $op := "ADD" }}
+        {{ with index .coinList 0 }}{{ $cs = .scale }}{{ $op = .operatorType }}{{ end }}
+        {{ $ct := slice }}
+        {{ range .coinList }}
+          {{ $isSuperCoin := false }}
+          {{ range .abilityScriptList }}
+            {{ if eq .scriptName "SuperCoin" }}{{ $isSuperCoin = true }}{{ end }}
+          {{ end }}
+          {{ if $isSuperCoin }}{{ $ct = $ct | append "S" }}
+          {{ else }}{{ $ct = $ct | append "D" }}{{ end }}
+        {{ end }}
+        {{ $ci = $ci | append (dict "g" .gaksungLevel "cs" $cs "ct" $ct "op" $op) }}
+      {{ end }}
+      {{ if and (eq $at "") .atkType }}{{ $at = .atkType }}{{ end }}
+      {{ if and (eq $dt "") .defType }}{{ $dt = .defType }}{{ end }}
+      {{ if and (eq $tn 0) (isset . "targetNum") }}{{ $tn = .targetNum }}{{ end }}
+    {{ end }}
+    {{ $skillMap = merge $skillMap (dict (string .id) (dict "tier" .skillTier "sd" $sd "ic" $ic "at" $at "dt" $dt "lc" $lc "cc" $cc "dv" $dv "ci" $ci "tn" $tn)) }}
+  {{ end }}
+{{ end }}
+{{/* 스킬 이름 맵 (skillId → nl:[{g, n}]) + 설명 맵 (skillId → dl:[{level, desc, coins}]) */}}
+{{ $skillNameMap := dict }}
+{{ $skillDescMap := dict }}
+{{ range $.Site.Data.lang.kr.skill }}
+  {{ range .dataList }}
+    {{ if .levelList }}
+      {{ $nl := slice }}
+      {{ $dl := slice }}
+      {{ range .levelList }}
+        {{ $nl = $nl | append (dict "g" .level "n" .name) }}
+        {{ $coins := slice }}
+        {{ $coinIdx := 0 }}
+        {{ range .coinlist }}
+          {{ $coinIdx = add $coinIdx 1 }}
+          {{ if .coindescs }}
+            {{ $descs := slice }}
+            {{ range .coindescs }}{{ $descs = $descs | append .desc }}{{ end }}
+            {{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}
+          {{ end }}
+        {{ end }}
+        {{ $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) }}
+      {{ end }}
+      {{ $skillNameMap = merge $skillNameMap (dict (string .id) $nl) }}
+      {{ $skillDescMap = merge $skillDescMap (dict (string .id) $dl) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* 인격 이름 맵 (id → title) */}}
+{{ $nameMap := dict }}
+{{ range .Site.Data.lang.kr.KR_Personalities.dataList }}
+  {{ $nameMap = merge $nameMap (dict (string .id) .title) }}
+{{ end }}
+{{/* 시즌 맵 (id → {title, name}), color 태그를 빌드 타임에 span으로 변환 */}}
+{{ $colorRE := `<color=(#[0-9a-fA-F]{3,8})>(.*?)</color>` }}
+{{ $seasonMap := dict }}
+{{ range .Site.Data.lang.kr.KR_Season.dataList }}
+  {{ $seasonMap = merge $seasonMap (dict (string .id) (dict
+    "title" (.title | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
+    "name"  (.name  | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
+  )) }}
+{{ end }}
+{{/* 키워드 맵 (suffix → content), color 태그 빌드 타임 변환 */}}
+{{ $keywordMap := dict }}
+{{ range .Site.Data.lang.kr.unitkeyword.KR_UnitKeyword.dataList }}
+  {{ $suffix := strings.TrimPrefix "UnitKeyword_" .id }}
+  {{ $content := .content | replaceRE $colorRE "<span style=\"color:$1\">$2</span>" }}
+  {{ $keywordMap = merge $keywordMap (dict $suffix $content) }}
+{{ end }}
+{{ $prisoners := slice
+  (dict "id" "01" "name" "이상"      "icon" "01_yisang")
+  (dict "id" "02" "name" "파우스트"   "icon" "02_faust")
+  (dict "id" "03" "name" "돈키호테"   "icon" "03_donquixote")
+  (dict "id" "04" "name" "료슈"      "icon" "04_ryoshu")
+  (dict "id" "05" "name" "뫼르소"    "icon" "05_meursault")
+  (dict "id" "06" "name" "홍루"      "icon" "06_honglu")
+  (dict "id" "07" "name" "히스클리프" "icon" "07_heathcliff")
+  (dict "id" "08" "name" "이스마엘"   "icon" "08_ishmael")
+  (dict "id" "09" "name" "로쟈"      "icon" "09_rodya")
+  (dict "id" "10" "name" "싱클레어"   "icon" "10_sinclair")
+  (dict "id" "11" "name" "오티스"    "icon" "11_outis")
+  (dict "id" "12" "name" "그레고르"   "icon" "12_gregor")
+}}
+{{/* 추가 파일 항목 수집 */}}
+{{ $ef1 := index $.Site.Data.personality.info "personality-a1c8p1" }}
+{{ $ef2 := index $.Site.Data.personality.info "personality-a1c8p2" }}
+{{ $ef3 := index $.Site.Data.personality.info "personality-a1c9p1" }}
+{{ $ef4 := index $.Site.Data.personality.info "personality-a1c9p2" }}
+{{ $extraDataList := slice }}
+{{ if $ef1 }}{{ range $ef1.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
+{{ if $ef2 }}{{ range $ef2.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
+{{ if $ef3 }}{{ range $ef3.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
+{{ if $ef4 }}{{ range $ef4.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
+{{/* 패시브 조건+텍스트 맵 (passiveID → {name, desc, res:[{t,v}], stock:[{t,v}]}) */}}
+{{ $passiveMap := dict }}
+{{ range $.Site.Data.personality.passive }}
+  {{ range .list }}
+    {{ if not .personalityID }}
+      {{ $res := slice }}
+      {{ $stock := slice }}
+      {{ range .attributeResonanceCondition }}{{ $res = $res | append (dict "t" .type "v" .value) }}{{ end }}
+      {{ range .attributeStockCondition }}{{ $stock = $stock | append (dict "t" .type "v" .value) }}{{ end }}
+      {{ $passiveMap = merge $passiveMap (dict (string .id) (dict "res" $res "stock" $stock)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ range (slice $.Site.Data.lang.kr.passive.KR_Passives.dataList (index $.Site.Data.lang.kr.passive "KR_Passives_check4").dataList) }}
+  {{ range . }}
+    {{ $existing := index $passiveMap (string .id) }}
+    {{ if $existing }}
+      {{ $passiveMap = merge $passiveMap (dict (string .id) (merge $existing (dict "name" .name "desc" .desc))) }}
+    {{ else }}
+      {{ $passiveMap = merge $passiveMap (dict (string .id) (dict "name" .name "desc" .desc "res" slice "stock" slice)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* 인격별 패시브 맵 (personalityID → {bp:[{level,ids}], sp:[{level,ids}]}) */}}
+{{ $ppMap := dict }}
+{{ range $.Site.Data.personality.passive }}
+  {{ range .list }}
+    {{ if .personalityID }}
+      {{ $bp := slice }}
+      {{ $sp := slice }}
+      {{ range .battlePassiveList }}{{ $bp = $bp | append (dict "level" .level "ids" .passiveIDList) }}{{ end }}
+      {{ range .supporterPassiveList }}{{ $sp = $sp | append (dict "level" .level "ids" .passiveIDList) }}{{ end }}
+      {{ $ppMap = merge $ppMap (dict (string .personalityID) (dict "bp" $bp "sp" $sp)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* 키워드 맵: parsingdata(name,desc,iconId) + data/buff iconId 폴백 */}}
+{{ $buffIconLookup := dict }}
+{{ range $.Site.Data.buff }}
+  {{ range .list }}
+    {{ if and .id .iconId }}
+      {{ $buffIconLookup = merge $buffIconLookup (dict (string .id) (string .iconId)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $kwMap := dict }}
+{{ range $.Site.Data.lang.kr.parsingdata }}
+  {{ $isSkillTag := .skillTag | default false }}
+  {{ range .dataList }}
+    {{ $iconId := "" }}
+    {{ if .iconId }}
+      {{ $iconId = .iconId }}
+    {{ else }}
+      {{ $lu := index $buffIconLookup (string .id) }}
+      {{ if $lu }}{{ $iconId = $lu }}{{ end }}
+    {{ end }}
+    {{ if not (isset $kwMap (string .id)) }}
+      {{ $kwMap = merge $kwMap (dict (string .id) (dict "name" (.name | default "") "desc" (.desc | default "") "iconId" $iconId "skillTag" $isSkillTag)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="personality-page" x-data="personalityPage()">
+
+  {{/* ── SVG 색상 필터 정의 ── */}}
+  <svg id="skill-color-filters-svg" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
+    <defs id="skill-color-filters-defs"></defs>
+  </svg>
+  <script>
+  (function() {
+    var colorCodes = {{ $.Site.Data.color_code.list | jsonify | safeJS }};
+    var defs = document.getElementById('skill-color-filters-defs');
+    var html = '';
+    colorCodes.forEach(function(entry) {
+      var hex = entry.color.replace('#', '');
+      var r = (parseInt(hex.slice(0, 2), 16) / 255).toFixed(4);
+      var g = (parseInt(hex.slice(2, 4), 16) / 255).toFixed(4);
+      var b = (parseInt(hex.slice(4, 6), 16) / 255).toFixed(4);
+      html += '<filter id="tint-' + entry.id + '">';
+      html += '<feColorMatrix type="matrix" values="' + r + ' 0 0 0 0  0 ' + g + ' 0 0 0  0 0 ' + b + ' 0 0  0 0 0 1 0"/>';
+      html += '</filter>';
+    });
+    defs.innerHTML = html;
+  })();
+  </script>
+  <script>
+  var passiveMap = {{ $passiveMap | jsonify | safeJS }};
+  var passiveKeywordMap = {{ $kwMap | jsonify | safeJS }};
+  var skillDescMap = {{ $skillDescMap | jsonify | safeJS }};
+  </script>
+
+  {{/* ── 헤더 ── */}}
+  <header class="site-header">
+    <div class="site-title-wrap">
+      <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
+      <button class="sponsor-btn" @click="sponsorModal = true">
+        <img src="/images/sponsor/sponsor.png" alt="후원하기">
+      </button>
+    </div>
+    <nav class="site-nav">
+      <a class="site-nav-link" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
+      <span class="site-nav-sep"></span>
+      <a class="site-nav-link site-nav-link--active" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
+    </nav>
+  </header>
+
+  {{/* ── 후원하기 모달 ── */}}
+  {{ partial "sponsor-modal.html" . }}
+
+  {{/* ── 본문 ── */}}
+  <div class="main-content">
+
+    {{/* ── 검색 영역 ── */}}
+    <div class="controls personality-controls">
+      <div class="controls-row controls-row-1">
+        <div class="search-group">
+          <div class="search-input-wrap">
+            <input
+              class="search-input"
+              type="search"
+              placeholder="이름 및 태그(#)으로 검색"
+              x-model="search"
+              @input="onSearch()"
+            >
+            <button
+              class="search-clear-btn"
+              x-show="search.length > 0"
+              @click="search = ''; onSearch()"
+              tabindex="-1"
+            >
+              <img src="/images/ui/search_clear.png" alt="지우기">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="controls-row controls-row-2">
+        <div class="personality-filter-row">
+          {{ range $egoCats }}
+          <button
+            class="filter-btn"
+            :class="{ active: activeEgoTypes.includes('{{ .id }}') }"
+            @click="toggleEgoType('{{ .id }}')"
+          ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt="">{{ .name }}</button>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 수감자 목록 ── */}}
+    <div class="personality-category-list">
+      {{ range $prisoners }}
+      {{ $pid := .id }}
+      {{ $pIcon := .icon }}
+      {{ $pName := .name }}
+      {{ $pData := index $.Site.Data.personality.info (printf "personality-%s" $pid) }}
+      {{ $charId := int (strings.TrimLeft "0" $pid) }}
+      {{ $fullList := slice }}
+      {{ if $pData }}{{ range $pData.list }}{{ $fullList = $fullList | append . }}{{ end }}{{ end }}
+      {{ range $extraDataList }}
+        {{ if eq (int .characterId) $charId }}{{ $fullList = $fullList | append . }}{{ end }}
+      {{ end }}
+      {{ $rowData := slice }}
+      {{ range sort (sort $fullList "updatedDate") "rank" }}
+        {{ $rTitle := index $nameMap (string .id) }}
+        {{ $rKws := slice }}
+        {{ range .unitKeywordList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
+        {{ range .associationList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
+        {{ range .unitKeywordListByUnlockCode }}{{ $l := index $keywordMap .id }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
+        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws) }}
+      {{ end }}
+      <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
+        x-show="isRowVisible({{ $rowData | jsonify }})">
+        <div class="category-label personality-category-label">
+          <img class="cat-icon" src="/images/category/{{ .icon }}.png" alt="{{ .name }}">
+          <span class="cat-name">{{ .name }}</span>
+        </div>
+        <div class="personality-row">
+          {{ range sort (sort $fullList "updatedDate") "rank" }}
+          {{ $title := index $nameMap (string .id) }}
+          {{ $d := printf "%d" (int .updatedDate) }}
+          {{ $seasonId := int .season }}
+          {{ if eq $seasonId 0 }}
+            {{ $udDate := int .updatedDate }}
+            {{ range $.Site.Data.season.dataList }}
+              {{ if and (ge $udDate (int .startDate)) (or (eq (int .endDate) -1) (lt $udDate (int .endDate))) }}
+                {{ $seasonId = int .id }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ $season := index $seasonMap (string $seasonId) }}
+          {{ $seasonName := cond (eq (int .season) 0) "상시" $season.name }}
+          {{ $keywords := slice }}
+          {{ range .unitKeywordList }}
+            {{ $label := index $keywordMap . }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+          {{ end }}
+          {{ range .associationList }}
+            {{ $label := index $keywordMap . }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+          {{ end }}
+          {{ range .unitKeywordListByUnlockCode }}
+            {{ $label := index $keywordMap .id }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+          {{ end }}
+          {{ $skills := slice }}
+          {{ range .attributeList }}
+            {{ $si := index $skillMap (string .skillId) }}
+            {{ $nl := index $skillNameMap (string .skillId) }}
+            {{ if and $si $nl }}{{ $skills = $skills | append (dict "id" .skillId "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn) }}{{ end }}
+          {{ end }}
+          {{ $defSkills := slice }}
+          {{ range .defenseSkillIDList }}
+            {{ $si := index $skillMap (string .) }}
+            {{ $nl := index $skillNameMap (string .) }}
+            {{ if and $si $nl }}{{ $defSkills = $defSkills | append (dict "id" . "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn) }}{{ end }}
+          {{ end }}
+          {{ $ppData := index $ppMap (string .id) }}
+          {{ $passiveBp := slice }}
+          {{ $passiveSp := slice }}
+          {{ if $ppData }}{{ $passiveBp = $ppData.bp }}{{ $passiveSp = $ppData.sp }}{{ end }}
+          <div class="personality-card"
+            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }} })"
+            @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
+            <img class="personality-card-rank"
+              src="/images/ui/personality_frame_0{{ .rank }}.png"
+              alt="">
+            <img class="personality-card-img"
+              :src="gacksungIds[{{ .id }}] ? '/images/personality/{{ $pid }}/{{ .id }}_gacksung_info.webp' : '/images/personality/{{ $pid }}/{{ .id }}_normal_info.webp'"
+              alt="{{ .id }}"
+              loading="lazy">
+            <img class="personality-card-rank-icon"
+              src="/images/ui/personality_rank_0{{ .rank }}.png"
+              alt="rank {{ .rank }}">
+            {{ if $title }}
+            <span class="personality-card-name">{{ replace $title "\n" "<br>" | safeHTML }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+
+  {{/* ── 인격 상세 모달 ── */}}
+  <div class="modal-overlay" :class="{ open: personalityDetail }" @click.self="closePersonalityDetail()" @contextmenu.prevent="closePersonalityDetail()">
+    <div class="modal-box personality-detail-box" @contextmenu.prevent
+      :style="personalityDetail ? `border-image: url('/images/ui/modal_frame_personality_0${personalityDetail.rank}.png') 50 fill stretch` : ''">
+      <div class="modal-header">
+        <div class="personality-detail-title-row">
+          <img class="personality-detail-rank-icon" :src="`/images/ui/personality_rank_0${personalityDetail?.rank}.png`" alt="">
+          <img class="personality-detail-icon" :src="`/images/category/${personalityDetail?.icon}.png`" alt="">
+          <span class="modal-title" x-text="personalityDetail ? personalityDetail.name : ''"></span>
+        </div>
+        <button class="personality-detail-change-btn"
+          x-show="personalityDetail && !noNormalIds[personalityDetail.id]"
+          @click.stop="togglePersonalityView()">
+          <img src="/images/ui/personality_change.png" alt="">
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="personality-detail-img"
+          :src="personalityDetail ? ((noNormalIds[personalityDetail.id] || gacksungIds[personalityDetail.id]) ? `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_gacksung_profile_support_personality.webp` : `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_normal_profile_support_personality.webp`) : ''"
+          @error="onProfileImgError($el)"
+          alt="">
+        <div class="personality-detail-info-col">
+          {{/* ── sync 버튼 ── */}}
+          <div class="personality-detail-sync-btns">
+            <button class="sync-btn" :class="{ active: personalitySync === 1 }" @click.stop="personalitySync = 1"><img src="/images/ui/sync_01.png" alt="sync 1"></button>
+            <button class="sync-btn" :class="{ active: personalitySync === 2 }" @click.stop="personalitySync = 2"><img src="/images/ui/sync_02.png" alt="sync 2"></button>
+            <button class="sync-btn" :class="{ active: personalitySync === 3 }" @click.stop="personalitySync = 3"><img src="/images/ui/sync_03.png" alt="sync 3"></button>
+            <button class="sync-btn" :class="{ active: personalitySync === 4 }" @click.stop="personalitySync = 4"><img src="/images/ui/sync_04.png" alt="sync 4"></button>
+          </div>
+
+          {{/* ── 탭 버튼 ── */}}
+          <div class="personality-detail-tabs">
+            <button class="tab-btn" :class="{ active: personalityTab === 'info' }"    @click.stop="personalityTab = 'info'">프로필</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'skill' }"   @click.stop="personalityTab = 'skill'">스킬</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'passive' }" @click.stop="personalityTab = 'passive'">패시브</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'support' }" @click.stop="personalityTab = 'support'">서포트</button>
+          </div>
+
+          {{/* ── 기본 정보 ── */}}
+          <div x-show="personalityTab === 'info'">
+            <div class="personality-detail-season">
+              <span class="season-date" x-text="personalityDetail?.updatedDate ?? ''"></span>
+              <span class="season-title" x-html="personalityDetail?.seasonTitle ?? ''"></span>
+              <span class="season-name" x-show="personalityDetail?.seasonName" x-html="personalityDetail?.seasonName ?? ''"></span>
+              <div class="season-skill-icons">
+                <template x-for="kw in (personalityDetail?.skillKeywordList ?? [])">
+                  <img class="season-skill-icon" :src="`/images/category/${kw.toLowerCase()}.png`" :alt="kw">
+                </template>
+              </div>
+            </div>
+            <template x-if="personalityDetail?.keywords?.length">
+              <div class="personality-detail-keywords">
+                <template x-for="kw in personalityDetail.keywords" :key="kw">
+                  <span class="keyword-chip" x-html="kw"></span>
+                </template>
+              </div>
+            </template>
+            <div class="personality-detail-level">
+              <span class="level-label">Lv.</span>
+              <input class="level-input" type="number" min="1" max="{{ .Site.Data.config.personalityMaxLevel }}" x-model="personalityLevel">
+            </div>
+            <div class="personality-detail-grid">
+              <div class="personality-stat-line">
+                {{/* 방어 */}}
+                <div class="stat-row">
+                  <img class="stat-icon" src="/images/ui/personality_def.png" alt="방어레벨">
+                  <span class="stat-value" x-text="personalityDetail ? `${Number(personalityLevel) + personalityDetail.defCorrection} (Lv ${personalityDetail.defCorrection >= 0 ? '+' : '-'} ${Math.abs(personalityDetail.defCorrection)})` : ''"></span>
+                </div>
+                {{/* HP */}}
+                <div class="personality-detail-hp">
+                  <div class="hp-label-row">
+                    <img class="hp-icon" src="/images/ui/personality_hp.png" alt="HP">
+                    <span class="hp-total" x-text="personalityDetail ? Math.round(personalityDetail.hp.defaultStat + personalityDetail.hp.incrementByLevel * personalityLevel) : ''"></span>
+                  </div>
+                  <div class="hp-bar-outer">
+                    <div class="hp-bar-track">
+                      <div class="hp-bar-fill"></div>
+                      <template x-for="section in (personalityDetail?.breakSections ?? [])">
+                        <div class="hp-break-marker" :style="`left: ${section}%`">
+                          <span class="hp-break-value"
+                            x-text="personalityDetail ? Math.round((personalityDetail.hp.defaultStat + personalityDetail.hp.incrementByLevel * personalityLevel) * section / 100) : ''">
+                          </span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="personality-stat-line">
+                {{/* 속도 */}}
+                <div class="stat-row">
+                  <img class="stat-icon" src="/images/ui/personality_speed.png" alt="속도">
+                  <span class="stat-value" x-text="personalityDetail ? `${personalityDetail.minSpeedList[personalitySync-1]} - ${personalityDetail.maxSpeedList[personalitySync-1]}` : ''"></span>
+                </div>
+                {{/* 내성 */}}
+                <div class="personality-detail-resist">
+                  <template x-for="res in (personalityDetail?.resistList ?? [])">
+                    <div class="res-item">
+                      <img class="stat-icon" :src="`/images/ui/personality_res${res.type.charAt(0)+res.type.slice(1).toLowerCase()}.png`" alt="">
+                      <div class="res-text">
+                        <span class="res-label" x-text="res.value === 0.5 ? '내성' : res.value === 2 ? '취약' : '보통'" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
+                        <span class="stat-value res-value" x-text="`[X${res.value}]`" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{/* ── 스킬 정보 ── */}}
+          <div class="skill-tab-content" x-show="personalityTab === 'skill'">
+            <div class="personality-detail-skill-btns">
+              <button class="skill-btn" :class="{'active': activeSkillTier === 1}" @click="activeSkillTier = 1">스킬1</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 2}" @click="activeSkillTier = 2">스킬2</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 3}" @click="activeSkillTier = 3">스킬3</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 'defense'}" @click="activeSkillTier = 'defense'">수비</button>
+            </div>
+            <div class="skill-frame-scroll-wrap" x-data="scrollWrap('.skill-frame-scroll-area')">
+              <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+              <div class="skill-frame-scroll-area"
+                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+            <div class="skill-frame-display">
+              <template x-for="skill in skillsForTab()" :key="skill.id">
+                <div class="skill-frame-item">
+                  <div class="skill-frame-top-row">
+                    <div class="skill-display">
+                      <img class="skill-icon-img" :src="skillIconSrc(skill)">
+                      <img class="skill-frame-img" :src="skillFrameSrc(skill)" :style="'filter: url(#tint-' + skillAttr(skill) + ')'">
+                    </div>
+                    <div class="skill-frame-info">
+                      <div class="skill-level-row">
+                        <img class="skill-atk-icon" :src="skillAtkIconSrc(skill)">
+                        <span class="skill-level-sum" x-text="skillLevelValueText(skill)"></span>
+                        <span class="skill-level-correction" x-text="skillLevelCoinText(skill)"></span>
+                        <template x-for="n in targetNums(skill)" :key="n">
+                          <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
+                        </template>
+                        <span class="skill-target-num-text" x-show="skill.tn" x-text="`[${skill.tn}]`"></span>
+                      </div>
+                      <div class="skill-frame-name-row">
+                        <span class="skill-frame-name" x-text="skillName(skill)"></span>
+                      </div>
+                      <div class="skill-power-row">
+                        <template x-for="icon in skillTypeIcons(skill)" :key="icon">
+                          <img class="skill-power-atk-icon" :src="icon">
+                        </template>
+                        <span class="skill-power-text" x-text="skillDefaultValue(skill)"></span>
+                        <span class="skill-power-text" x-text="skillCoinOperator(skill)"></span>
+                        <span class="skill-power-text" x-text="skillCoinScale(skill)"></span>
+                        <template x-for="(ct, idx) in skillCoinTypes(skill)" :key="idx">
+                          <img class="skill-coin-icon" :src="ct === 'S' ? '/images/skill/skill_coin/coin_super_normal.png' : '/images/skill/skill_coin/coin_default_normal.png'">
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <template x-if="skillDesc(skill)">
+                    <div class="skill-desc-area">
+                      <div class="skill-desc" x-show="skillDesc(skill).desc" x-html="formatPassiveDesc(skillDesc(skill).desc)" @click="handlePassiveDescClick($event)"></div>
+                      <template x-for="coin in (skillDesc(skill).coins ?? [])" :key="coin.idx">
+                        <div class="skill-coin-desc-item">
+                          <div class="skill-coin-number-wrap">
+                            <img class="skill-coin-number-frame" src="/images/skill/skill_coin/coinNumber_frame.png" alt="">
+                            <img class="skill-coin-number-img" :src="`/images/skill/skill_coin/coinNumber_${String(coin.idx).padStart(2,'0')}.png`" alt="">
+                          </div>
+                          <div class="skill-coin-descs">
+                            <template x-for="(d, i) in coin.descs" :key="i">
+                              <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                            </template>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+              </div>
+              <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+            </div>
+          </div>
+
+          {{/* ── 패시브 ── */}}
+          <div class="passive-tab-content" x-show="personalityTab === 'passive'">
+            <div class="passive-scroll-wrap" x-data="scrollWrap('.passive-scroll-area')">
+              <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+              <div class="passive-scroll-area"
+                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+                <div class="passive-list">
+                  <template x-for="passiveId in passivesForType('battle')" :key="passiveId">
+                    <div class="passive-item">
+                      <div class="passive-name" x-text="passiveInfo(passiveId).name"></div>
+                      <template x-if="passiveInfo(passiveId).stock?.length || passiveInfo(passiveId).res?.length">
+                        <div class="passive-condition">
+                          <template x-for="c in (passiveInfo(passiveId).stock ?? [])" :key="c.t + 'stock'">
+                            <span class="passive-cond-item">
+                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <span x-text="`X ${c.v}`"></span>
+                            </span>
+                          </template>
+                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
+                          <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
+                            <span class="passive-cond-item">
+                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <span x-text="`X ${c.v} 공명`"></span>
+                            </span>
+                          </template>
+                        </div>
+                      </template>
+                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handlePassiveDescClick($event)"></div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+            </div>
+          </div>
+
+          {{/* ── 서포트 ── */}}
+          <div class="passive-tab-content" x-show="personalityTab === 'support'">
+            <div class="passive-scroll-wrap" x-data="scrollWrap('.support-scroll-area')">
+              <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+              <div class="support-scroll-area"
+                   @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+                <div class="passive-list">
+                  <template x-for="passiveId in passivesForType('support')" :key="passiveId">
+                    <div class="passive-item">
+                      <div class="passive-name" x-text="passiveInfo(passiveId).name"></div>
+                      <template x-if="passiveInfo(passiveId).stock?.length || passiveInfo(passiveId).res?.length">
+                        <div class="passive-condition">
+                          <template x-for="c in (passiveInfo(passiveId).stock ?? [])" :key="c.t + 'stock'">
+                            <span class="passive-cond-item">
+                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <span x-text="`X ${c.v}`"></span>
+                            </span>
+                          </template>
+                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
+                          <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
+                            <span class="passive-cond-item">
+                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <span x-text="`X ${c.v} 공명`"></span>
+                            </span>
+                          </template>
+                        </div>
+                      </template>
+                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handlePassiveDescClick($event)"></div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 패시브 키워드 툴팁 ── */}}
+  <div class="buff-tooltip-overlay" x-show="passiveKeywordTooltip" @click.self="closePassiveKeywordTooltip()" @contextmenu.prevent="closePassiveKeywordTooltip()" style="display:none;">
+    <div class="buff-tooltip-box"
+         :style="`top:${passiveKeywordTooltip?.anchorTop ?? 0}px; left:${passiveKeywordTooltip?.anchorLeft ?? 0}px;`"
+         @click.stop @contextmenu.prevent="closePassiveKeywordTooltip()">
+      <div class="buff-tooltip-header">
+        <img x-show="passiveKeywordTooltip?.id" class="buff-tooltip-icon"
+             :src="`/images/buff/${passiveKeywordTooltip?.id}.png`"
+             :onerror="passiveKeywordTooltip?.iconId ? `this.src='/images/buff/${passiveKeywordTooltip.iconId}.png';this.onerror=null;` : `this.style.display='none';`"
+             alt="">
+        <span class="buff-tooltip-name" x-text="passiveKeywordTooltip?.name"></span>
+      </div>
+      <div class="buff-tooltip-desc" x-html="passiveKeywordTooltip?.descHtml"></div>
+    </div>
+  </div>
+
+</div>
+
+{{ partial "site-footer.html" . }}
+
+<script>
+function personalityPage() {
+  return {
+    search: '',
+    activeEgoTypes: [],
+    sponsorModal: false,
+    personalityDetail: null,
+    personalityTab: 'info',
+    personalitySync: 4,
+    passiveKeywordTooltip: null,
+    activeSkillTier: 1,
+    personalityLevel: {{ .Site.Data.config.personalityMaxLevel }},
+    gacksungIds: {},
+    noNormalIds: {},
+
+    toggleEgoType(type) {
+      const idx = this.activeEgoTypes.indexOf(type);
+      if (idx === -1) this.activeEgoTypes.push(type);
+      else this.activeEgoTypes.splice(idx, 1);
+    },
+
+    isPersonalityVisible(card) {
+      if (this.activeEgoTypes.length > 0 && !this.activeEgoTypes.every(t => card.skills.includes(t))) return false;
+      if (this.search) {
+        const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
+        for (const term of terms) {
+          if (term.startsWith('#')) {
+            const tag = term.slice(1).trim();
+            if (tag && !card.keywords.some(k => k.toLowerCase().includes(tag.toLowerCase()))) return false;
+          } else {
+            if (!card.name.toLowerCase().includes(term.toLowerCase())) return false;
+          }
+        }
+      }
+      return true;
+    },
+
+    isRowVisible(cards) {
+      return cards.some(card => this.isPersonalityVisible(card));
+    },
+
+    init() {
+      const saved = localStorage.getItem('personality-gacksung');
+      if (saved) this.gacksungIds = JSON.parse(saved);
+      this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
+    },
+
+    openPersonalityDetail(data) { this.personalityDetail = data; this.personalitySync = 4; },
+
+    skillsForTab() {
+      if (!this.personalityDetail) return [];
+      if (this.activeSkillTier === 'defense') return this.personalityDetail.defenseSkills ?? [];
+      return this.personalityDetail.skills?.filter(s => s.tier === this.activeSkillTier) ?? [];
+    },
+    skillIconSrc(skill) {
+      let iconId = String(skill.id);
+      if (skill.ic?.length) {
+        for (const e of skill.ic) {
+          if (e.g <= this.personalitySync) iconId = String(e.i);
+          else break;
+        }
+      }
+      return `/images/skill/skill_icon/${iconId}.png`;
+    },
+    skillTypeIcons(skill) {
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
+      const atkIcon = atkMap[skill.at] ?? null;
+      const defIcon = defMap[skill.dt] ?? null;
+      if (atkIcon && defIcon) return [defIcon, atkIcon];
+      if (atkIcon) return [atkIcon];
+      if (defIcon) return [defIcon];
+      return [];
+    },
+    skillName(skill) {
+      if (!skill?.nl?.length) return '';
+      let name = skill.nl[0].n;
+      for (const e of skill.nl) {
+        if (e.g <= this.personalitySync) name = e.n;
+        else break;
+      }
+      return name;
+    },
+    skillAttr(skill) {
+      if (!skill?.sd?.length) return 'NEUTRAL';
+      let attr = skill.sd[0].a;
+      for (const e of skill.sd) {
+        if (e.g <= this.personalitySync) attr = e.a;
+        else break;
+      }
+      return attr;
+    },
+    skillFrameSrc(skill) {
+      if (!skill) return '';
+      const attr = this.skillAttr(skill);
+      if (attr === 'NEUTRAL') return '/images/skill/skill_frame/skillFrame_NEUTRAL.png';
+      return `/images/skill/skill_frame/skillFrame_${attr}_0${skill.tier}.png`;
+    },
+    skillLevelCorrection(skill) {
+      let c = 0;
+      if (skill.lc?.length) {
+        for (const e of skill.lc) {
+          if (e.g <= this.personalitySync) c = e.v;
+          else break;
+        }
+      }
+      return c;
+    },
+    skillCoinCount(skill) {
+      let n = 0;
+      if (skill.cc?.length) {
+        for (const e of skill.cc) {
+          if (e.g <= this.personalitySync) n = e.v;
+          else break;
+        }
+      }
+      return n;
+    },
+    skillDefaultValue(skill) {
+      let v = 0;
+      if (skill.dv?.length) {
+        for (const e of skill.dv) {
+          if (e.g <= this.personalitySync) v = e.v;
+          else break;
+        }
+      }
+      return v;
+    },
+    skillCoinScale(skill) {
+      let cs = 0;
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.personalitySync) cs = e.cs;
+          else break;
+        }
+      }
+      return cs;
+    },
+    skillCoinOperator(skill) {
+      let op = 'ADD';
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.personalitySync) op = e.op;
+          else break;
+        }
+      }
+      return op === 'SUB' ? '-' : '+';
+    },
+    skillCoinTypes(skill) {
+      let ct = [];
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.personalitySync) ct = e.ct;
+          else break;
+        }
+      }
+      return ct;
+    },
+    skillAtkIconSrc(skill) {
+      return (skill.dt === 'EVADE' || skill.dt === 'GUARD')
+        ? '/images/ui/personality_skillDef.png'
+        : '/images/ui/personality_atk.png';
+    },
+    skillLevelValueText(skill) {
+      return String(60 + this.skillLevelCorrection(skill));
+    },
+    skillLevelCoinText(skill) {
+      const c = this.skillLevelCorrection(skill);
+      if (c >= 0) return `(Lv + ${c})`;
+      return `(Lv - ${Math.abs(c)})`;
+    },
+    skillDesc(skill) {
+      const dl = skillDescMap?.[String(skill.id)];
+      if (!dl?.length) return null;
+      let entry = null;
+      for (const d of dl) {
+        if (d.level <= this.personalitySync) entry = d;
+        else break;
+      }
+      return entry;
+    },
+    passivesForType(type) {
+      if (!this.personalityDetail?.passives) return [];
+      const src = type === 'battle'
+        ? this.personalityDetail.passives.bp
+        : this.personalityDetail.passives.sp;
+      if (!src?.length) return [];
+      let ids = [];
+      for (const entry of src) {
+        if (entry.level <= this.personalitySync) ids = entry.ids;
+        else break;
+      }
+      return ids.slice().sort((a, b) => {
+        const ai = passiveMap?.[String(a)];
+        const bi = passiveMap?.[String(b)];
+        const aHas = (ai?.stock?.length || ai?.res?.length) ? 1 : 0;
+        const bHas = (bi?.stock?.length || bi?.res?.length) ? 1 : 0;
+        return bHas - aHas;
+      });
+    },
+    targetNums(skill) {
+      return Array.from({ length: skill.tn ?? 0 }, (_, i) => i);
+    },
+    passiveInfo(id) {
+      return passiveMap?.[String(id)] ?? { name: '', desc: '', res: [], stock: [] };
+    },
+    formatPassiveDesc(desc) {
+      if (!desc) return '';
+      return desc
+        .replace(/<style="highlight">([\s\S]*?)<\/style>/g, '<span class="passive-highlight">$1</span>')
+        .replace(/<color=(#[0-9a-fA-F]+)>([\s\S]*?)<\/color>/g, '<span style="color:$1">$2</span>')
+        .replace(/<sprite[^>]*>/g, '')
+        .replace(/<\/?u>/g, '')
+        .replace(/<link[^>]*>|<\/link>/g, '')
+        .replace(/<noparse>|<\/noparse>/g, '')
+        .replace(/<([^a-zA-Z/!][^>]*)>/g, '&lt;$1&gt;')
+        .replace(/<[^>]*>/g, '')
+        .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
+          const b = passiveKeywordMap?.[kw];
+          if (!b) return match;
+          const fallback = b.iconId ? `this.src='/images/buff/${b.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
+          const iconHtml = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${fallback}" alt="">`;
+          if (b.skillTag) {
+            const hasColor = /<color=/.test(b.name);
+            const nameHtml = b.name.replace(/<color=(#[0-9a-fA-F]+)>([\s\S]*?)<\/color>/g, '<span style="color:$1">$2</span>');
+            const spanStyle = hasColor ? '' : ' style="color:#93f13e"';
+            return `<span class="buff-keyword no-click"${spanStyle}>${iconHtml}${nameHtml}</span>`;
+          }
+          return `<span class="buff-keyword" data-buff-id="${kw}">${iconHtml}${b.name}</span>`;
+        })
+        .replace(/\n/g, '<br>');
+    },
+    handlePassiveDescClick(event) {
+      const kw = event.target.closest('.buff-keyword:not(.no-click)');
+      if (!kw) { this.passiveKeywordTooltip = null; return; }
+      event.stopPropagation();
+      this.openPassiveKeywordTooltip(kw.dataset.buffId, event.clientX, event.clientY);
+    },
+    openPassiveKeywordTooltip(kwId, clientX, clientY) {
+      const b = passiveKeywordMap?.[kwId];
+      if (!b) return;
+      const descHtml = (b.desc || '')
+        .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
+          const inner = passiveKeywordMap?.[kw];
+          if (!inner) return match;
+          const icFallback = inner.iconId ? `this.src='/images/buff/${inner.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
+          const ic = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${icFallback}" alt="">`;
+          return `<span class="buff-keyword no-click">${ic}${inner.name}</span>`;
+        })
+        .replace(/\n/g, '<br>');
+      const TW = 320, TH_APPROX = 160;
+      const vw = window.innerWidth, vh = window.innerHeight;
+      let left = clientX;
+      if (left + TW > vw - 8) left = Math.max(8, vw - TW - 8);
+      const top = (clientY + TH_APPROX < vh - 8) ? clientY + 8 : clientY - TH_APPROX - 8;
+      this.passiveKeywordTooltip = { id: kwId, name: b.name, iconId: b.iconId, descHtml, anchorTop: top, anchorLeft: left };
+    },
+    closePassiveKeywordTooltip() { this.passiveKeywordTooltip = null; },
+    closePersonalityDetail() { this.personalityDetail = null; },
+    togglePersonalityView() {
+      const id = this.personalityDetail.id;
+      this.gacksungIds = { ...this.gacksungIds, [id]: !this.gacksungIds[id] };
+    },
+    onProfileImgError(el) {
+      const id = this.personalityDetail?.id;
+      if (!id || this.noNormalIds[id]) return;
+      this.noNormalIds = { ...this.noNormalIds, [id]: true };
+    },
+
+    onSearch() {
+      // 추후 구현
+    }
+  }
+}
+
+function scrollWrap(selector) {
+  return {
+    up: false, down: false,
+    check(el) {
+      this.up = el.scrollTop > 0;
+      this.down = el.scrollTop + el.clientHeight < el.scrollHeight - 1;
+    },
+    init() {
+      this.$nextTick(() => {
+        const el = this.$el.querySelector(selector);
+        if (!el) return;
+        this.check(el);
+        new ResizeObserver(() => this.check(el)).observe(el);
+      });
+    }
+  };
+}
+</script>
+{{ end }}

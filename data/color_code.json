@@ -1,0 +1,44 @@
+{
+  "list": [
+    {
+      "id": "CRIMSON",
+      "color": "#fe0101"
+    },
+    {
+      "id": "SCARLET",
+      "color": "#ff6000"
+    },
+    {
+      "id": "AMBER",
+      "color": "#feca00"
+    },
+    {
+      "id": "SHAMROCK",
+      "color": "#4afe00"
+    },
+    {
+      "id": "AZURE",
+      "color": "#1ac5ef"
+    },
+    {
+      "id": "INDIGO",
+      "color": "#0021fa"
+    },
+    {
+      "id": "VIOLET",
+      "color": "#9800de"
+    },
+    {
+      "id": "WHITE",
+      "color": "#ffffff"
+    },
+    {
+      "id": "BLACK",
+      "color": "#444444"
+    },
+    {
+      "id": "NEUTRAL",
+      "color": "#9f6b3a"
+    }
+  ]
+}

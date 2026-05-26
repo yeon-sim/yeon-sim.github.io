@@ -1,0 +1,82 @@
+{
+  "dataList": [
+    {
+        "id": 0,
+        "name": "상시"
+    },
+    {
+        "id": 1,
+        "title": "<color=#970000>SEASON 1</color>",
+        "name": "<color=#970000>Orientation</color>"
+    },
+    {
+        "id": 2,
+        "title": "<color=#d7e7ef>SEASON 2</color>",
+        "name": "<color=#d7e7ef>Reminiscence</color>"
+    },
+    {
+        "id": 3,
+        "title": "<color=#26bec3>SEASON 3</color>",
+        "name": "<color=#26bec3>Bon Voyage</color>"
+    },
+    {
+        "id": 4,
+        "title": "<color=#7e57a8>SEASON 4</color>",
+        "name": "<color=#7e57a8>Clear All Cathy</color>"
+    },
+    {
+        "id": 5,
+        "title": "<color=#fded23>SEASON 5</color>",
+        "name": "<color=#fded23>Oblivion</color>"
+    },
+    {
+        "id": 6,
+        "title": "<color=#5bfddb>SEASON 6</color>",
+        "name": "<color=#5bfddb>Zang Hua Yin</color>"
+    },
+    {
+        "id": 7,
+        "title": "<color=#cb1c16>SEASON 7</color>",
+        "name": "<color=#fefefe>Kumo no ito •</color> <color=#cb1c16>oti on akA</color>"
+    },
+    {
+        "id": 9101,
+        "title": "<color=#88ef01>Walpurgisnacht I</color>"
+    },
+    {
+        "id": 9102,
+        "title": "<color=#88ef01>Walpurgisnacht II</color>",
+        "name": "<color=#7ba462>녹빛 여명의 시련</color>"
+    },
+    {
+        "id": 9103,
+        "title": "<color=#88ef01>Walpurgisnacht III</color>",
+        "name": "<color=#eae2cb>어느 도서관의 어떤 책 속으로</color>"
+    },
+    {
+        "id": 9104,
+        "title": "<color=#88ef01>Walpurgisnacht IV</color>",
+        "name": "<color=#8871c1>자색 정오의 시련</color>"
+    },
+    {
+        "id": 9105,
+        "title": "<color=#88ef01>Walpurgisnacht V</color>",
+        "name": "<color=#c8b796>탄환이 찍은 마침표</color>"
+    },
+    {
+        "id": 9106,
+        "title": "<color=#88ef01>Walpurgisnacht VI</color>",
+        "name": "<color=#f04b93>증오와</color> <color=#0163c4>절망</color>"
+    },
+    {
+        "id": 9107,
+        "title": "<color=#88ef01>Walpurgisnacht VII</color>",
+        "name": "<color=#eec6a6>어느 도서관의 일반적인 초대 1</color>"
+    },
+    {
+        "id": 9108,
+        "title": "<color=#88ef01>Walpurgisnacht VIII</color>",
+        "name": "<color=#e29417>호박색 어스름의 시련</color>"
+    }
+  ]
+}

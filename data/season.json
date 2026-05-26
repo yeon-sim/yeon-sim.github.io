@@ -1,0 +1,39 @@
+{
+  "dataList": [
+    {
+        "id": 1,
+        "startDate": 20230227,
+        "endDate": 20230601
+    },
+    {
+        "id": 2,
+        "startDate": 20230601,
+        "endDate": 20231116
+    },
+    {
+        "id": 3,
+        "startDate": 20231116,
+        "endDate": 20240328
+    },
+    {
+        "id": 4,
+        "startDate": 20240328,
+        "endDate": 20241010
+    },
+    {
+        "id": 5,
+        "startDate": 20241010,
+        "endDate": 20250515
+    },
+    {
+        "id": 6,
+        "startDate": 20250515,
+        "endDate": 20251231
+    },
+    {
+        "id": 7,
+        "startDate": 20251231,
+        "endDate": -1
+    }
+  ]
+}

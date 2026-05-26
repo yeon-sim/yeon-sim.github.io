@@ -10,11 +10,16 @@
   {{ $fusionIds = $fusionIds | append (string .result) }}
 {{ end }}
 
-<div x-data="checklist()" x-init="init()">
+<div x-data="checklist()">
 
   {{/* ── 헤더 ── */}}
   <header class="site-header">
-    <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
+    <div class="site-title-wrap">
+      <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
+      <button class="sponsor-btn" @click="sponsorModal = true">
+        <img src="/images/sponsor/sponsor.png" alt="후원하기">
+      </button>
+    </div>
     <div class="site-header-btns">
       <div class="site-header-btns-row">
         <button class="guide-btn filter-btn" @click="guideModal = true; guidePage = 1">
@@ -37,9 +42,11 @@
         </button>
       </div>
     </div>
-    <button class="sponsor-btn" @click="sponsorModal = true">
-      <img src="/images/sponsor/sponsor.png" alt="후원하기">
-    </button>
+    <nav class="site-nav">
+      <a class="site-nav-link site-nav-link--active" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
+      <span class="site-nav-sep"></span>
+      <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
+    </nav>
   </header>
 
   {{/* ── 본문 (가운데 정렬) ── */}}
@@ -86,7 +93,7 @@
     </div>
     <div class="controls-row controls-row-2">
       <div class="controls-left">
-        <div class="preset-mode-bar" x-show="panelMode !== 'default'" :class="{ 'preset-mode-bar--edit': panelMode === 'preset-edit' }">
+        <div class="preset-mode-bar" x-cloak x-show="panelMode !== 'default'" :class="{ 'preset-mode-bar--edit': panelMode === 'preset-edit' }">
           <div class="preset-mode-label-wrap" x-ref="presetModeLabelWrap">
             <span class="preset-mode-label" x-ref="presetModeLabel">
               <template x-if="panelMode === 'preset'">
@@ -103,10 +110,10 @@
           x-show="panelMode === 'default'"
           @click="showPresetModal = true"
         ><img class="filter-btn-icon" src="/images/ui/preset.png" alt="">이상 관측</button>
-        <div class="preset-mode-actions" x-show="panelMode === 'preset'">
+        <div class="preset-mode-actions" x-cloak x-show="panelMode === 'preset'">
           <button class="filter-btn preset-panel-btn" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">관측 종료</button>
         </div>
-        <div class="preset-edit-actions" x-show="panelMode === 'preset-edit'">
+        <div class="preset-edit-actions" x-cloak x-show="panelMode === 'preset-edit'">
           <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">나가기</button>
           <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt="">완료</button>
         </div>
@@ -141,7 +148,7 @@
 
   {{/* ── 태그 패널 ── */}}
   {{ $tagCategories := .Site.Data.tag_categories.dataList }}
-  <div class="tag-panel" x-show="showTagPanel" x-transition>
+  <div class="tag-panel" x-cloak x-show="showTagPanel" x-transition>
     <div class="search-input-wrap">
       <input
         class="tag-filter-input"
@@ -173,7 +180,7 @@
   </div>
 
   {{/* ── 팩 패널 ── */}}
-  <div class="pack-panel" x-show="showPackPanel" x-transition>
+  <div class="pack-panel" x-cloak x-show="showPackPanel" x-transition>
     <div class="pack-panel-search-row">
       <div class="search-input-wrap">
         <input
@@ -259,7 +266,7 @@
   </div>
 
   {{/* ── 프리셋 팩 패널 (이상 관측 모드) ── */}}
-  <div class="pack-panel preset-pack-panel" x-show="panelMode === 'preset'" x-transition>
+  <div class="pack-panel preset-pack-panel" x-cloak x-show="panelMode === 'preset'" x-transition>
     <div class="pack-group">
       <div class="pack-group-label">테마팩</div>
       <div class="pack-group-items">
@@ -351,16 +358,8 @@
         <div
           class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
           data-id="{{ .id }}"
-          data-name="{{ .name }}"
-          data-category="{{ .category }}"
           :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
-          @click="toggle('{{ .id }}')"
-          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
-          @pointerdown="startLongPress('{{ .id }}', $event)"
-          @pointerup="cancelLongPress($event)"
-          @pointermove="cancelLongPress($event)"
-          @pointercancel="cancelLongPress($event)"
         >
           <div class="gift-icon-wrap">
             <img
@@ -371,15 +370,16 @@
               onerror="this.style.opacity='0.2'"
             >
           </div>
-          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="">
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          <span class="gift-name-label">{{ .name }}</span>
           {{ $badgeCat := or .category_origin .category }}{{ if ne $badgeCat "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCat }}.png"
             alt="{{ $badgeCat }}"
+            loading="lazy"
           >{{ end }}
         </div>
         {{ end }}{{ end }}
@@ -405,16 +405,8 @@
         <div
           class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
           data-id="{{ .id }}"
-          data-name="{{ .name }}"
-          data-category="None"
           :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
-          @click="toggle('{{ .id }}')"
-          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
-          @pointerdown="startLongPress('{{ .id }}', $event)"
-          @pointerup="cancelLongPress($event)"
-          @pointermove="cancelLongPress($event)"
-          @pointercancel="cancelLongPress($event)"
         >
           <div class="gift-icon-wrap">
             <img
@@ -425,15 +417,16 @@
               onerror="this.style.opacity='0.2'"
             >
           </div>
-          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="">
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          <span class="gift-name-label">{{ .name }}</span>
           {{ $badgeCat2 := or .category_origin .category }}{{ if ne $badgeCat2 "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCat2 }}.png"
             alt="{{ $badgeCat2 }}"
+            loading="lazy"
           >{{ end }}
         </div>
         {{ end }}{{ end }}
@@ -460,16 +453,8 @@
         <div
           class="gift-card{{ if $isFusionBg }} fusion{{ end }}"
           data-id="{{ .id }}"
-          data-name="{{ .name }}"
-          data-category="{{ .category }}"
           :style="{ display: isGiftVisible('{{ .id }}') ? 'flex' : 'none', order: sortMode === 'grade' ? gradeOrder('{{ .grade }}') : 0 }"
           :class="{ checked: isChecked('{{ .id }}'), disabled: isDisabled('{{ .id }}') }"
-          @click="toggle('{{ .id }}')"
-          @contextmenu.prevent="openGiftPopup('{{ .id }}')"
-          @pointerdown="startLongPress('{{ .id }}', $event)"
-          @pointerup="cancelLongPress($event)"
-          @pointermove="cancelLongPress($event)"
-          @pointercancel="cancelLongPress($event)"
         >
           <div class="gift-icon-wrap">
             <img
@@ -480,14 +465,15 @@
               onerror="this.style.opacity='0.2'"
             >
           </div>
-          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="" x-show="!showName">
+          <img class="gift-frame" src="/images/egogift/{{ if $isSpecial }}gift_frame_special{{ else }}gift_frame{{ end }}.png" alt="">
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label" x-show="showName">{{ .name }}</span>
+          <span class="gift-name-label">{{ .name }}</span>
           {{ $badgeCatEgg := or .category_origin .category }}{{ if ne $badgeCatEgg "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCatEgg }}.png"
+            loading="lazy"
             alt="{{ $badgeCatEgg }}"
           >{{ end }}
         </div>
@@ -810,20 +796,7 @@
   </div>
 
   {{/* ── 후원하기 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: sponsorModal }" @click.self="sponsorModal = false" @contextmenu.prevent="sponsorModal = false">
-    <div class="modal-box modal-box--sponsor" @contextmenu.prevent>
-      <div class="modal-header">
-        <span class="modal-title">후원하기</span>
-      </div>
-      <div class="modal-body sponsor-modal-body">
-        <div class="sponsor-modal-logos">
-          <img src="/images/sponsor/01_kakao_logo.jpg" alt="카카오페이">
-          <img src="/images/sponsor/02_toss_logo.jpg" alt="토스">
-        </div>
-        <p class="sponsor-modal-desc">거울이 흐려지지 않도록 꾸준히 노력하겠습니다.<br>감사합니다.</p>
-      </div>
-    </div>
-  </div>
+  {{ partial "sponsor-modal.html" . }}
 
   {{/* ── 초기화 확인 모달 ── */}}
   <div id="reset-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
@@ -1074,78 +1047,9 @@
 
 {{ $eggJs := resources.Get "js/easteregg-config.js" | fingerprint }}
 <script src="{{ $eggJs.RelPermalink }}"></script>
-{{ $sheepJs := resources.Get "js/sheep-config.js" | fingerprint }}
-<script src="{{ $sheepJs.RelPermalink }}"></script>
 {{ $defaultPresetsJs := resources.Get "js/default-presets-config.js" | fingerprint }}
 <script src="{{ $defaultPresetsJs.RelPermalink }}"></script>
-<div class="easter-sheep-wrap">
-  <div class="easter-sheep-mover">
-    <img class="easter-sheep" src="/images/easteregg/sheep.gif" alt="">
-  </div>
-</div>
-<footer class="site-footer">
-  <p class="footer-note">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
-  <p class="footer-note">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
-  <p class="footer-note">건의사항은 <a class="footer-link" href="https://forms.gle/B12biKYANkaLxoJL7" target="_blank" rel="noopener noreferrer">Google Forms</a>를 이용해주세요.</p>
-  <p class="footer-note">&nbsp;</p>
-  <p class="footer-note">연심(連心)은 <a class="footer-link" href="#" onclick="event.preventDefault();document.getElementById('analytics-modal').classList.add('open')">서비스 개선</a>을 위해 Google Analytics를 사용합니다.</p>
-  <p class="footer-version">
-    {{ with last 1 .Site.Data.changelog.versions }}{{ $v := index . 0 }}
-    Site <button class="version-btn" onclick="document.getElementById('changelog-modal').classList.add('open')">v.{{ $v.version }}</button>
-    &nbsp;|&nbsp; Game v.{{ $v.target_game_version }} ({{ $v.target_game_date }})
-    {{ end }}
-  </p>
-  <p class="footer-copy">&copy; 2026 연심(連心)</p>
-</footer>
-
-{{/* ── 체인지로그 모달 ── */}}
-<div id="changelog-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal-box modal-box--changelog">
-    <div class="modal-header">
-      <span class="modal-title">업데이트 로그</span>
-      <button class="modal-close" onclick="document.getElementById('changelog-modal').classList.remove('open')">&times;</button>
-    </div>
-    <div class="changelog-body-wrap">
-      <div class="modal-body changelog-scroll-area">
-        {{ $versions := .Site.Data.changelog.versions }}
-        {{ $len := len $versions }}
-        {{ range $i, $_ := $versions }}
-          {{ $v := index $versions (sub (sub $len 1) $i) }}
-          <div class="changelog-entry">
-            <div class="changelog-version">v{{ $v.version }} <span class="changelog-date">{{ $v.date }}</span></div>
-            <ul class="changelog-list">
-              {{ range $v.changes }}<li>{{ . | markdownify | safeHTML }}</li>{{ end }}
-            </ul>
-          </div>
-        {{ end }}
-      </div>
-      <div class="changelog-scrollbar">
-        <div class="changelog-scrollbar-track">
-          <div class="changelog-scrollbar-thumb"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="analytics-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal-box modal-box--analytics">
-    <div class="modal-header">
-      <span class="modal-title">정보 수집 안내</span>
-      <button class="modal-close" onclick="document.getElementById('analytics-modal').classList.remove('open')">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p class="analytics-section-title">수집하는 항목</p>
-      <ul class="analytics-info-list">
-        <li><strong>방문 통계</strong> : 페이지 뷰, 세션 수, 접속 시간</li>
-        <li><strong>유입 경로</strong> : 직접 접속, 검색, 외부 링크 등</li>
-        <li><strong>환경 정보</strong> : 기기 유형, OS, 브라우저, 해상도</li>
-        <li><strong>지역 정보</strong> : 국가 및 도시</li>
-      </ul>
-      <p class="analytics-info-note">수집 과정에서 개인을 식별할 수 있는 정보 (IP 등의 개인정보)는 일절 수집하지 않습니다. 수집된 데이터는 서비스 개선 외의 목적으로 사용되지 않습니다.</p>
-    </div>
-  </div>
-</div>
+{{ partial "site-footer.html" . }}
 
 {{/* 조합 맵 */}}
 <script>
@@ -1294,11 +1198,29 @@ function scrollWrap(selector) {
   };
 }
 
-const buffDetailMap = {
-  {{ range .Site.Data.buffs.dataList }}
-  "{{ .id }}": { name: {{ jsonify (dict "noHTMLEscape" true) .name }}, desc: {{ jsonify (dict "noHTMLEscape" true) .desc }}, iconId: "{{ .iconId }}" },
+{{ $buffIconLookup := dict }}
+{{ range $.Site.Data.buff }}
+  {{ range .list }}
+    {{ if and .id .iconId }}
+      {{ $buffIconLookup = merge $buffIconLookup (dict (string .id) (string .iconId)) }}
+    {{ end }}
   {{ end }}
-};
+{{ end }}
+{{ $kwMap := dict }}
+{{ range $.Site.Data.lang.kr.parsingdata }}
+  {{ range .dataList }}
+    {{ $iconId := "" }}
+    {{ if .iconId }}{{ $iconId = .iconId }}
+    {{ else }}
+      {{ $lu := index $buffIconLookup (string .id) }}
+      {{ if $lu }}{{ $iconId = $lu }}{{ end }}
+    {{ end }}
+    {{ if not (isset $kwMap (string .id)) }}
+      {{ $kwMap = merge $kwMap (dict (string .id) (dict "name" (.name | default "") "desc" (.desc | default "") "iconId" $iconId)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+const buffDetailMap = {{ $kwMap | jsonify | safeJS }};
 
 function parseDesc(raw) {
   const text = (typeof raw === 'string' ? raw : String(raw))
@@ -1451,6 +1373,30 @@ function checklist() {
       this.$watch('activePanelPresetIdx', () => {
         this.$nextTick(() => this.checkPresetLabelOverflow());
       });
+
+      // ── gift-card 이벤트 위임 ──
+      // @click / @contextmenu / @pointer* 를 카드 하나하나에 붙이는 대신
+      // 루트 요소 하나에서 위임 처리하여 Alpine 바인딩 수를 대폭 감소시킵니다.
+      // (guard: init()이 중복 실행되더라도 리스너가 두 번 붙지 않도록 방어)
+      const root = this.$el;
+      if (!root._giftDelegationAttached) {
+        root._giftDelegationAttached = true;
+        root.addEventListener('click', (e) => {
+          const card = e.target.closest('.gift-card');
+          if (card) this.toggle(card.dataset.id);
+        });
+        root.addEventListener('contextmenu', (e) => {
+          const card = e.target.closest('.gift-card');
+          if (card) { e.preventDefault(); this.openGiftPopup(card.dataset.id); }
+        });
+        root.addEventListener('pointerdown', (e) => {
+          const card = e.target.closest('.gift-card');
+          if (card) this.startLongPress(card.dataset.id, e);
+        });
+        root.addEventListener('pointerup',     (e) => this.cancelLongPress(e));
+        root.addEventListener('pointermove',   (e) => this.cancelLongPress(e));
+        root.addEventListener('pointercancel', (e) => this.cancelLongPress(e));
+      }
     },
 
     refreshPresetListScroll() {
@@ -2161,187 +2107,4 @@ function checklist() {
 }
 </script>
 
-<script>
-(function() {
-  const THUMB_H = 55; // scroll_bar.png를 38px 폭으로 표시했을 때의 높이
-
-  function initChangelogScrollbar() {
-    const scrollArea = document.querySelector('.changelog-scroll-area');
-    const thumb      = document.querySelector('.changelog-scrollbar-thumb');
-    const track      = document.querySelector('.changelog-scrollbar-track');
-    if (!scrollArea || !thumb || !track) return;
-
-    function getMaxScrollTop() {
-      return scrollArea.scrollHeight - scrollArea.clientHeight;
-    }
-
-    function updateThumb() {
-      const trackH   = track.clientHeight;
-      const maxTop   = trackH - THUMB_H;
-      const ratio    = getMaxScrollTop() > 0
-        ? scrollArea.scrollTop / getMaxScrollTop()
-        : 0;
-      thumb.style.top = (ratio * maxTop) + 'px';
-    }
-
-    scrollArea.addEventListener('scroll', updateThumb);
-    window.addEventListener('resize', updateThumb);
-
-    // 트랙 클릭 시 해당 위치로 이동
-    track.addEventListener('click', function(e) {
-      if (e.target === thumb) return;
-      const rect  = track.getBoundingClientRect();
-      const clickY = e.clientY - rect.top - THUMB_H / 2;
-      const maxTop = track.clientHeight - THUMB_H;
-      const ratio  = Math.max(0, Math.min(1, clickY / maxTop));
-      scrollArea.scrollTop = ratio * getMaxScrollTop();
-    });
-
-    // 드래그 (pointer events — PC·모바일 공통)
-    let startY = 0, startScrollTop = 0;
-
-    thumb.addEventListener('pointerdown', function(e) {
-      startY = e.clientY;
-      startScrollTop = scrollArea.scrollTop;
-      thumb.setPointerCapture(e.pointerId);
-      e.preventDefault();
-    });
-
-    thumb.addEventListener('pointermove', function(e) {
-      if (!thumb.hasPointerCapture(e.pointerId)) return;
-      const trackH = track.clientHeight;
-      const maxTop = trackH - THUMB_H;
-      const delta  = e.clientY - startY;
-      const ratio  = maxTop > 0 ? delta / maxTop : 0;
-      scrollArea.scrollTop = startScrollTop + ratio * getMaxScrollTop();
-    });
-
-    thumb.addEventListener('pointerup', function(e) { thumb.releasePointerCapture(e.pointerId); });
-    thumb.addEventListener('pointercancel', function(e) { thumb.releasePointerCapture(e.pointerId); });
-
-    updateThumb();
-  }
-
-  // 모달이 열릴 때 초기화
-  const versionBtn = document.querySelector('.version-btn');
-  if (versionBtn) {
-    versionBtn.addEventListener('click', function() {
-      setTimeout(initChangelogScrollbar, 50);
-    });
-  }
-})();
-
-// ── sheep |sin| 바운스 이동 + 클릭 포물선 발사 ──
-(function() {
-  const SPEED           = 150;   // px/s  수평 이동 속도
-  const WAVELENGTH      = 200;   // px    바운스 1회당 수평 이동 거리
-  const LAUNCH_SPEED    = 900;   // px/s  발사 속도 크기 (방향 무관)
-  const GRAVITY         = 1200;  // px/s² 중력 가속도 (아래 방향 양수)
-  const POST_EXIT_DELAY = 1000;  // ms    화면 이탈 후 재등장까지 대기 시간
-  const MAX_FLIGHT_TIME = 10;    // s     안전장치 (이탈 미감지 시 강제 종료)
-
-  function pickAmplitude() {
-    const table = (typeof SHEEP_AMPLITUDE_TABLE !== 'undefined') ? SHEEP_AMPLITUDE_TABLE : [{ value: 65, weight: 1 }];
-    const total = table.reduce(function(s, e) { return s + e.weight; }, 0);
-    let r = Math.random() * total;
-    for (var i = 0; i < table.length; i++) {
-      r -= table[i].weight;
-      if (r <= 0) return table[i].value;
-    }
-    return table[table.length - 1].value;
-  }
-
-  const mover = document.querySelector('.easter-sheep-mover');
-  if (!mover) return;
-
-  let x         = null;
-  let lastTime  = null;
-  let amplitude = pickAmplitude();
-  let flying    = false;
-
-  function startX() { return window.innerWidth + 80; }
-  function endX()   { return -((mover.offsetWidth || 120) + 20); }
-
-  function reset() {
-    x         = startX();
-    lastTime  = null;
-    amplitude = pickAmplitude();
-  }
-
-  // 바운스 이동 루프
-  function tick(timestamp) {
-    if (flying) return;  // 비행 중 정지
-    if (lastTime === null) lastTime = timestamp;
-    const dt = (timestamp - lastTime) / 1000;
-    lastTime = timestamp;
-
-    x -= SPEED * dt;
-    if (x < endX()) reset();
-
-    const traveled = startX() - x;
-    const y = amplitude * Math.abs(Math.sin(Math.PI * traveled / WAVELENGTH));
-
-    mover.style.transform = 'translateX(' + x + 'px) translateY(' + (-y) + 'px)';
-    requestAnimationFrame(tick);
-  }
-
-  // 포물선 비행 루프
-  mover.addEventListener('click', function() {
-    if (flying) return;
-    flying = true;
-
-    // 0~180° 무작위 발사 각도 (0°=우, 90°=상, 180°=좌)
-    const angle     = Math.random() * Math.PI;
-    const vx        =  LAUNCH_SPEED * Math.cos(angle);  // 우 = 양수
-    const vy_screen = -LAUNCH_SPEED * Math.sin(angle);  // 위 = 음수 (화면 좌표)
-
-    // 클릭 시점의 translateY 캡처
-    const traveled0 = startX() - x;
-    const startTY   = -(amplitude * Math.abs(Math.sin(Math.PI * traveled0 / WAVELENGTH)));
-
-    let t0     = null;
-    let exited = false;
-
-    function flightTick(timestamp) {
-      if (!t0) t0 = timestamp;
-      const elapsed = (timestamp - t0) / 1000;  // 경과 시간 (s)
-
-      // 포물선 공식: Δx = vₓt,  Δy = vᵧt + ½gt²
-      const dx = vx * elapsed;
-      const dy = vy_screen * elapsed + 0.5 * GRAVITY * elapsed * elapsed;
-
-      mover.style.transform =
-        'translateX(' + (x + dx) + 'px) ' +
-        'translateY(' + (startTY + dy) + 'px)';
-
-      // 화면 완전 이탈 감지
-      if (!exited) {
-        const r  = mover.getBoundingClientRect();
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const isOffScreen =
-          r.right < 0 || r.left > vw ||
-          r.bottom < 0 || r.top > vh;
-
-        if (isOffScreen || elapsed > MAX_FLIGHT_TIME) {
-          exited = true;
-          setTimeout(function() {
-            flying = false;
-            reset();
-            requestAnimationFrame(tick);
-          }, POST_EXIT_DELAY);
-          return;
-        }
-      }
-
-      requestAnimationFrame(flightTick);
-    }
-
-    requestAnimationFrame(flightTick);
-  });
-
-  reset();
-  requestAnimationFrame(tick);
-})();
-</script>
 {{ end }}

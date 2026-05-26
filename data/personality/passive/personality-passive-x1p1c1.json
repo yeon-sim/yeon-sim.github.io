@@ -1,0 +1,232 @@
+{
+  "list": [
+    {
+      "personalityID": 400025,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002501
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002502
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400026,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002601
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002602
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400027,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002701
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002702
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400028,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002801
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002802
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400029,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002901
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40002902
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400030,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003001
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003002
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400031,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003101
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003102
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400032,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003201
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003202
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400033,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003301
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003302
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400034,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003401
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003402
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400035,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003501
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003502
+          ]
+        }
+      ]
+    },
+    {
+      "personalityID": 400036,
+      "battlePassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003601
+          ]
+        }
+      ],
+      "supporterPassiveList": [
+        {
+          "level": 1,
+          "passiveIDList": [
+            40003602
+          ]
+        }
+      ]
+    }
+  ]
+}
