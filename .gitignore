@@ -12,3 +12,6 @@ gift_update/
 
 # 임시 파일
 temp/
+
+# Node.js 의존성
+node_modules/
