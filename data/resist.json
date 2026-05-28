@@ -1,0 +1,32 @@
+{
+  "dataList": [
+    {
+      "id": "resist_weak",
+      "value": 2.0,
+      "color": "#fa4141"
+    },
+    {
+      "id": "resist_vulnerable",
+      "value": 1.5
+    },
+    {
+      "id": "resist_normal",
+      "value": 1.0,
+      "color": "#e3c290"
+    },
+    {
+      "id": "resist_endure",
+      "value": 0.75,
+      "color": "#cbcbcb"
+    },
+    {
+      "id": "resist_resist",
+      "value": 0.5,
+      "color": "#808080"
+    },
+    {
+      "id": "resist_immune",
+      "value": 0.0
+    }
+  ]
+}

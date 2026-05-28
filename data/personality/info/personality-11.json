@@ -1350,6 +1350,146 @@
           "number": 1
         }
       ]
+    },
+    {
+      "id": 11115,
+      "updatedDate": 20260528,
+      "appearance": "11115_Outis_Middle_FatherAppearance",
+      "unitKeywordList": [ "SMALL", "FINGER", "BIG_SISTER_PAST", "SPIDER_HOUSE_FATHER" ],
+      "associationList": [ "SPIDER_HOUSE", "MIDDLE_FINGER" ],
+      "skillKeywordList": [ "Combustion", "Laceration" ],
+      "characterId": 11,
+      "unitScriptID": 11115,
+      "panicType": 9999,
+      "season": 7,
+      "initBuffList": [
+        {
+          "level": 1,
+          "list": [
+            {
+              "buff": "MiddleFatherSwordOneOutis",
+              "stack": 1
+            }
+          ]
+        }
+      ],
+      "defenseSkillIDList": [
+        1111504
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 91,
+        "incrementByLevel": 3.24
+      },
+      "defCorrection": 5,
+      "minSpeedList": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        6,
+        7,
+        7
+      ],
+      "uniqueAttribute": "SCARLET",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyMp10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAlly5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          75
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 1
+          },
+          {
+            "type": "PENETRATE",
+            "value": 2
+          },
+          {
+            "type": "HIT",
+            "value": 0.5
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1111501,
+          "number": 3
+        },
+        {
+          "skillId": 1111502,
+          "number": 2
+        },
+        {
+          "skillId": 1111503,
+          "number": 1
+        },
+        {
+          "skillId": 1111505,
+          "number": 0
+        },
+        {
+          "skillId": 1111506,
+          "number": 0
+        },
+        {
+          "skillId": 1111507,
+          "number": 0
+        },
+        {
+          "skillId": 1111508,
+          "number": 0
+        },
+        {
+          "skillId": 1111509,
+          "number": 0
+        },
+        {
+          "skillId": 1111510,
+          "number": 0
+        },
+        {
+          "skillId": 1111511,
+          "number": 0
+        }
+      ]
     }
   ]
 }
