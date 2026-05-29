@@ -1515,7 +1515,7 @@
       "additionalAttachment": "EVENT",
       "unitScriptID": "10715",
       "defenseSkillIDList": [
-        
+        1071504
       ],
       "panicSkillOnErosion": 1000104,
       "slotWeightConditionList": [
