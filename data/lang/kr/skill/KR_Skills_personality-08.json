@@ -11,14 +11,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 3 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 침잠 횟수 2 증가"
+                  "desc": "[OnSucceedAttackHead] [Sinking] 횟수 2 증가"
                 }
               ]
             }
@@ -27,19 +27,19 @@
         {
           "level": 2,
           "name": "파쇄 준비",
-          "desc": "[WhenUse] 자신의 진동 횟수 3 증가",
+          "desc": "[WhenUse] 자신의 [Vibration] 횟수 3 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 3 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 침잠 횟수 2 증가"
+                  "desc": "[OnSucceedAttackHead] [Sinking] 횟수 2 증가"
                 }
               ]
             }
@@ -48,19 +48,19 @@
         {
           "level": 4,
           "name": "파쇄 준비",
-          "desc": "[WhenUse] 자신의 진동 횟수 3 증가",
+          "desc": "[WhenUse] 자신의 [Vibration] 횟수 3 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 3 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] [Sinking] 횟수 2 증가"
                 }
               ]
             }
@@ -79,17 +79,17 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 6 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 감소 2 부여"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [DefenseDown] 2 부여"
                 }
               ]
             }
@@ -98,25 +98,25 @@
         {
           "level": 2,
           "name": "작렬",
-          "desc": "자신의 진동 횟수가 5 이상이면, 코인 위력 +1",
+          "desc": "자신의 [Vibration] 횟수가 5 이상이면, 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 3 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 6 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 3 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 3 부여"
                 }
               ]
             }
@@ -125,25 +125,25 @@
         {
           "level": 4,
           "name": "작렬",
-          "desc": "자신의 진동 횟수가 5 이상이면, 코인 위력 +1",
+          "desc": "자신의 [Vibration] 횟수가 5 이상이면, 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 3 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 6 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 4 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 4 부여"
                 }
               ]
             }
@@ -157,32 +157,32 @@
         {
           "level": 3,
           "name": "과격한 판단",
-          "desc": "자신의 진동 횟수가 5 이상이면, 코인 위력 +1\n대상의 침잠이 6 이상이면, 피해량 +20%",
+          "desc": "자신의 [Vibration] 횟수가 5 이상이면, 코인 위력 +1\n대상의 [Sinking]이 6 이상이면, 피해량 +20%",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 횟수 5 증가"
+                  "desc": "[OnSucceedAttack] [Sinking] 횟수 5 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 3 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 5를 소모하여 다음 턴에 취약 1 부여"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 5를 소모하여 다음 턴에 [Vulnerable] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 3 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 5를 소모하여 다음 턴에 취약 2 부여"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 5를 소모하여 다음 턴에 [Vulnerable] 2 부여"
                 }
               ]
             }
@@ -191,32 +191,32 @@
         {
           "level": 4,
           "name": "과격한 판단",
-          "desc": "자신의 진동 횟수가 5 당, 코인 위력 +1(최대 2)\n대상의 침잠이 6 이상이면, 피해량 +40%",
+          "desc": "자신의 [Vibration] 횟수가 5 당, 코인 위력 +1(최대 2)\n대상의 [Sinking]이 6 이상이면, 피해량 +40%",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 횟수 5 증가"
+                  "desc": "[OnSucceedAttack] [Sinking] 횟수 5 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 3 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 5를 소모하여 다음 턴에 취약 1 부여"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 5를 소모하여 다음 턴에 [Vulnerable] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 침잠 3 부여"
+                  "desc": "[OnSucceedAttack] [Sinking] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 자신의 진동 횟수 5를 소모하여 다음 턴에 취약 2 부여"
+                  "desc": "[OnSucceedAttack] 자신의 [Vibration] 횟수 5를 소모하여 다음 턴에 [Vulnerable] 2 부여"
                 }
               ]
             }
@@ -230,7 +230,7 @@
         {
           "level": 1,
           "name": "신속 보법",
-          "desc": "[WhenUse] 파열 보호 2를 얻음 (턴 당 최대 6)",
+          "desc": "[WhenUse] [BurstProtection] 2를 얻음 (턴 당 최대 6)",
           "coinlist": [
             {
               "coindescs": [
@@ -255,7 +255,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 2 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 2 부여"
                 }
               ]
             }
@@ -264,13 +264,13 @@
         {
           "level": 2,
           "name": "내 주위에 서라!",
-          "desc": "[WhenUse] 다음 턴에 자신을 제외하고 최대 체력이 가장 높은 아군 1명의 가장 왼쪽 슬롯의 [Aggro]가 (가장 높은 공명 수) 만큼 증가 (턴 당 1회)\n- 가장 높은 완전 공명의 합이 4 이상이면, 효과 발동 시 다음 턴에 보호 1 부여 (턴 당 1회)",
+          "desc": "[WhenUse] 다음 턴에 자신을 제외하고 최대 체력이 가장 높은 아군 1명의 가장 왼쪽 슬롯의 [Aggro]가 (가장 높은 공명 수) 만큼 증가 (턴 당 1회)\n- 가장 높은 완전 공명의 합이 4 이상이면, 효과 발동 시 다음 턴에 [Protection] 1 부여 (턴 당 1회)",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -279,13 +279,13 @@
         {
           "level": 4,
           "name": "내 주위에 서라!",
-          "desc": "<style=\"highlight\">[StartBattle] 조작 패널에서 자신의 양 옆의 아군에게 방어 레벨 증가 2 부여</style>\n[WhenUse] 다음 턴에 자신을 제외하고 최대 체력이 가장 높은 아군 1명의 가장 왼쪽 슬롯의 [Aggro]가 (가장 높은 공명 수) 만큼 증가 (턴 당 1회)\n- 가장 높은 완전 공명의 합이 4 이상이면, 효과 발동 시 다음 턴에 보호 1 부여 (턴 당 1회)",
+          "desc": "<style=\"highlight\">[StartBattle] 조작 패널에서 자신의 양 옆의 아군에게 [DefenseUp] 2 부여</style>\n[WhenUse] 다음 턴에 자신을 제외하고 최대 체력이 가장 높은 아군 1명의 가장 왼쪽 슬롯의 [Aggro]가 (가장 높은 공명 수) 만큼 증가 (턴 당 1회)\n- 가장 높은 완전 공명의 합이 4 이상이면, 효과 발동 시 다음 턴에 [Protection] 1 부여 (턴 당 1회)",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -305,14 +305,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 화상 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Combustion] 1 부여"
                 }
               ]
             }
@@ -321,20 +321,20 @@
         {
           "level": 2,
           "name": "끝까지 추적한다!",
-          "desc": "[WhenUse] 가장 높은 공명의 공명 당 15% 확률로 조작 패널에서 자신의 우측에 위치한 아군에게 이번 턴에 [CoverAttack]을 명령함.\n- 가장 높은 완전 공명의 합이 4 이상이면, 대상에게 피해량 증가 1 부여\n- 오만 완전 공명의 합이 4 이상이면, 오만 위력 증가 1 추가 부여",
+          "desc": "[WhenUse] 가장 높은 공명의 공명 당 15% 확률로 조작 패널에서 자신의 우측에 위치한 아군에게 이번 턴에 [CoverAttack]을 명령함.\n- 가장 높은 완전 공명의 합이 4 이상이면, 대상에게 [AttackDmgUp] 1 부여\n- 오만 완전 공명의 합이 4 이상이면, [IndigoResultUp] 1 추가 부여",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 1 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 화상 1 부여"
+                  "desc": "[OnSucceedAttack] [Combustion] 1 부여"
                 }
               ]
             }
@@ -343,20 +343,20 @@
         {
           "level": 4,
           "name": "끝까지 추적한다!",
-          "desc": "[StartBattle] 조작 패널에서 자신의 양 옆의 아군에게 공격 레벨 증가 3 부여\n[WhenUse] 가장 높은 공명의 공명 당 20% 확률로 조작 패널에서 자신의 우측에 위치한 아군에게 이번 턴에 [CoverAttack]을 명령함.\n- 가장 높은 완전 공명의 합이 4 이상이면, 대상에게 피해량 증가 2 부여\n- 오만 완전 공명의 합이 4 이상이면, 오만 위력 증가 2 추가 부여",
+          "desc": "[StartBattle] 조작 패널에서 자신의 양 옆의 아군에게 [AttackUp] 3 부여\n[WhenUse] 가장 높은 공명의 공명 당 20% 확률로 조작 패널에서 자신의 우측에 위치한 아군에게 이번 턴에 [CoverAttack]을 명령함.\n- 가장 높은 완전 공명의 합이 4 이상이면, 대상에게 [AttackDmgUp] 2 부여\n- 오만 완전 공명의 합이 4 이상이면, [IndigoResultUp] 2 추가 부여",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 화상 1 부여"
+                  "desc": "[OnSucceedAttack] [Combustion] 1 부여"
                 }
               ]
             }
@@ -370,27 +370,27 @@
         {
           "level": 3,
           "name": "집착의 작살",
-          "desc": "대상의 잃은 체력 1% 당 피해량 +0.2% (최대 20%)\n[EndSkill] 적이 흐트러짐 상태가 되거나 사망하면, 정신력이 가장 낮은 아군 1 + (가장 높은 완전 공명 수/2)명의 정신력 10 회복, 호흡 2 호흡 횟수 4 부여 (최대 2회. 최대 회복 인원 수: 4명)",
+          "desc": "대상의 잃은 체력 1% 당 피해량 +0.2% (최대 20%)\n[EndSkill] 적이 흐트러짐 상태가 되거나 사망하면, 정신력이 가장 낮은 아군 1 + (가장 높은 완전 공명 수/2)명의 정신력 10 회복, [Breath] 2 [Breath] 횟수 4 부여 (최대 2회. 최대 회복 인원 수: 4명)",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 화상 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] [Combustion] 횟수 1 증가"
                 }
               ]
             }
@@ -399,27 +399,27 @@
         {
           "level": 4,
           "name": "집착의 작살",
-          "desc": "대상의 잃은 체력 1% 당 피해량 +0.3% (최대 30%)\n대상의 [Laceration] 5 당 코인 위력 +1 (최대 2)\n[EndSkill] 적이 흐트러짐 상태가 되거나 사망하면, 정신력이 가장 낮은 아군 1 + (가장 높은 완전 공명 수/2)명의 정신력 10 회복, 호흡 2 호흡 횟수 4 부여 (최대 4회. 최대 회복 인원 수: 4명)",
+          "desc": "대상의 잃은 체력 1% 당 피해량 +0.3% (최대 30%)\n대상의 [Laceration] 5 당 코인 위력 +1 (최대 2)\n[EndSkill] 적이 흐트러짐 상태가 되거나 사망하면, 정신력이 가장 낮은 아군 1 + (가장 높은 완전 공명 수/2)명의 정신력 10 회복, [Breath] 2 [Breath] 횟수 4 부여 (최대 4회. 최대 회복 인원 수: 4명)",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 화상 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] [Combustion] 횟수 1 증가"
                 }
               ]
             }
@@ -1181,7 +1181,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 출혈 횟수 3 감소"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 [Laceration] 횟수 3 감소"
                 }
               ]
             }
@@ -1212,7 +1212,7 @@
                   "desc": "<style=\"highlight\">대상이 보유한 부정적인 효과 1개당 피해량 +10% (최대 100%)</style>"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 출혈 횟수 3 감소<style=\"highlight\"></style>"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 [Laceration] 횟수 3 감소<style=\"highlight\"></style>"
                 }
               ]
             }
@@ -1932,7 +1932,7 @@
         {
           "level": 1,
           "name": "코오쟌[光斬]",
-          "desc": "[CantDuel]\n이 스킬은 수비 스킬을 발동시키지 않으며, 외부 효과로 재사용이 불가능함\n\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 미만이면, 스킬이 취소되고 다음 턴에 [Enhancement] 2 얻음\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 이상이면, 위력당 아래 효과 적용\n- 1당 이 스킬 피해량 +10%\n- 4 이상이면, 기본 위력 +1\n- 5면, 마지막 재사용 코인 적중시 [VibrationExplosion] 2회. 대상의 [Vibration] 횟수 1 감소\n[EndSkillAll] 자신의 [HanafudaCombo] 소멸\n[EndSkillAll] 다음 턴에 ‘짝패’를 자신이 보유한 기본 공격 스킬에 대응되는 무작위 ‘짝패’로 변경 (턴당 1회)\n[EndSkillAll] 사용하지 못한 코인 갯수만큼 다음 턴에 [HanafudaCombo] 위력 얻음",
+          "desc": "[CantDuel]\n이 스킬은 수비 스킬을 발동시키지 않으며, 외부 효과로 재사용이 불가능함\n\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 미만이면, 스킬이 취소되고 다음 턴에 [Enhancement] 2 얻음\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 이상이면, 위력당 아래 효과 적용\n- 1당 이 스킬 피해량 +10%\n- 4 이상이면, 기본 위력 +1\n- 5면, 마지막 재사용 코인 적중시 [VibrationExplosion] 2회. 대상의 [Vibration] 횟수 1 감소\n[EndSkillAll] 자신의 [HanafudaCombo] 소멸\n[EndSkillAll] 다음 턴에 ‘짝패’를 자신이 보유한 기본 공격 스킬에 대응되는 무작위 ‘짝패’로 변경 (턴당 1회)\n[EndSkillAll] 사용하지 [NailPersonality]한 코인 갯수만큼 다음 턴에 [HanafudaCombo] 위력 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -1952,7 +1952,7 @@
         {
           "level": 4,
           "name": "코오쟌[光斬]",
-          "desc": "[CantDuel]\n이 스킬은 수비 스킬을 발동시키지 않으며, 외부 효과로 재사용이 불가능함\n\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 미만이면, 스킬이 취소되고 다음 턴에 [Enhancement] 2 얻음\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 이상이면, 위력당 아래 효과 적용\n- 1당 이 스킬 피해량 +10%\n- 4 이상이면, 기본 위력 +1\n- 5면, 마지막 재사용 코인 적중시 [VibrationExplosion] 2회. 대상의 [Vibration] 횟수 1 감소\n[EndSkillAll] 자신의 [HanafudaCombo] 소멸\n[EndSkillAll] 다음 턴에 ‘짝패’를 자신이 보유한 기본 공격 스킬에 대응되는 무작위 ‘짝패’로 변경 (턴당 1회)\n[EndSkillAll] 사용하지 못한 코인 갯수만큼 다음 턴에 [HanafudaCombo] 위력 얻음<style=\"highlight\"></style>",
+          "desc": "[CantDuel]\n이 스킬은 수비 스킬을 발동시키지 않으며, 외부 효과로 재사용이 불가능함\n\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 미만이면, 스킬이 취소되고 다음 턴에 [Enhancement] 2 얻음\n[WhenUse] 자신의 [HanafudaCombo] 위력이 3 이상이면, 위력당 아래 효과 적용\n- 1당 이 스킬 피해량 +10%\n- 4 이상이면, 기본 위력 +1\n- 5면, 마지막 재사용 코인 적중시 [VibrationExplosion] 2회. 대상의 [Vibration] 횟수 1 감소\n[EndSkillAll] 자신의 [HanafudaCombo] 소멸\n[EndSkillAll] 다음 턴에 ‘짝패’를 자신이 보유한 기본 공격 스킬에 대응되는 무작위 ‘짝패’로 변경 (턴당 1회)\n[EndSkillAll] 사용하지 [NailPersonality]한 코인 갯수만큼 다음 턴에 [HanafudaCombo] 위력 얻음<style=\"highlight\"></style>",
           "coinlist": [
             {
               "coindescs": [
@@ -2204,7 +2204,7 @@
         {
           "level": 1,
           "name": "가만 안둬요",
-          "desc": "[StartBattle] 잃은 체력의 25%만큼 보호막을 얻음 (턴당 1회)",
+          "desc": "[StartBattle] 잃은 체력의 25%만큼 [Protection]막을 얻음 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [
@@ -2225,7 +2225,7 @@
         {
           "level": 4,
           "name": "가만 안둬요",
-          "desc": "<style=\"highlight\">[StartBattle] 질투 완전 공명 수의 합이 6 이상이면, 반격 시 ‘바이올렛 브레이크 슬램’ 사용함\n(조작 패널의 왼쪽 슬롯부터 발동. 턴당 최대 2회 발동)</style>\n[StartBattle] 잃은 체력의 25%만큼 보호막을 얻음 (턴당 1회)",
+          "desc": "<style=\"highlight\">[StartBattle] 질투 완전 공명 수의 합이 6 이상이면, 반격 시 ‘바이올렛 브레이크 슬램’ 사용함\n(조작 패널의 왼쪽 슬롯부터 발동. 턴당 최대 2회 발동)</style>\n[StartBattle] 잃은 체력의 25%만큼 [Protection]막을 얻음 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [

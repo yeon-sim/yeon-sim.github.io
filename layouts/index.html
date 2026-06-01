@@ -13,41 +13,7 @@
 <div x-data="checklist()">
 
   {{/* ── 헤더 ── */}}
-  <header class="site-header">
-    <div class="site-title-wrap">
-      <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
-      <button class="sponsor-btn" @click="sponsorModal = true">
-        <img src="/images/sponsor/sponsor.png" alt="후원하기">
-      </button>
-    </div>
-    <div class="site-header-btns">
-      <div class="site-header-btns-row">
-        <button class="guide-btn filter-btn" @click="guideModal = true; guidePage = 1">
-          <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
-          <span>가이드</span>
-        </button>
-        <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
-          <img class="filter-btn-icon" src="/images/ui/clear.png" alt="">
-          <span>초기화</span>
-        </button>
-      </div>
-      <div class="site-header-btns-row">
-        <button class="sort-btn filter-btn" @click="toggleSort()">
-          <img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;">
-          <span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span>
-        </button>
-        <button class="toggle-name-btn" @click="toggleNameDisplay()">
-          <img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt="">
-          <span x-text="showName ? '이름' : '이미지'"></span>
-        </button>
-      </div>
-    </div>
-    <nav class="site-nav">
-      <a class="site-nav-link site-nav-link--active" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
-      <span class="site-nav-sep"></span>
-      <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
-    </nav>
-  </header>
+  {{ partial "site-header.html" "gift" }}
 
   {{/* ── 본문 (가운데 정렬) ── */}}
   <div class="main-content">

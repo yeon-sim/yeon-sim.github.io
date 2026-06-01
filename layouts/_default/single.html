@@ -67,8 +67,11 @@
           {{ $coinIdx = add $coinIdx 1 }}
           {{ if .coindescs }}
             {{ $descs := slice }}
-            {{ range .coindescs }}{{ $descs = $descs | append .desc }}{{ end }}
-            {{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}
+            {{ $hasContent := false }}
+            {{ range .coindescs }}{{ $descs = $descs | append .desc }}{{ if ne (.desc | default "") "" }}{{ $hasContent = true }}{{ end }}{{ end }}
+            {{ if $hasContent }}
+              {{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}
+            {{ end }}
           {{ end }}
         {{ end }}
         {{ $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) }}
@@ -83,6 +86,21 @@
 {{ range .Site.Data.lang.kr.KR_Personalities.dataList }}
   {{ $nameMap = merge $nameMap (dict (string .id) .title) }}
 {{ end }}
+{{/* 내성 텍스트 맵 (value → text) */}}
+{{ $resistIdMap := dict }}
+{{ range .Site.Data.resist.dataList }}
+  {{ $resistIdMap = merge $resistIdMap (dict (printf "%.2f" .value) .id) }}
+{{ end }}
+{{ $resistTextMap := dict }}
+{{ range .Site.Data.lang.kr.KR_ResistText.dataList }}
+  {{ $resistTextMap = merge $resistTextMap (dict .id .content) }}
+{{ end }}
+{{ $resistLabelMap := dict }}
+{{ range .Site.Data.resist.dataList }}
+  {{ $label := index $resistTextMap .id | default "" }}
+  {{ $color := .color | default "" }}
+  {{ $resistLabelMap = merge $resistLabelMap (dict (printf "%.2f" .value) (dict "text" $label "color" $color)) }}
+{{ end }}
 {{/* 시즌 맵 (id → {title, name}), color 태그를 빌드 타임에 span으로 변환 */}}
 {{ $colorRE := `<color=(#[0-9a-fA-F]{3,8})>(.*?)</color>` }}
 {{ $seasonMap := dict }}
@@ -94,10 +112,14 @@
 {{ end }}
 {{/* 키워드 맵 (suffix → content), color 태그 빌드 타임 변환 */}}
 {{ $keywordMap := dict }}
-{{ range .Site.Data.lang.kr.unitkeyword.KR_UnitKeyword.dataList }}
-  {{ $suffix := strings.TrimPrefix "UnitKeyword_" .id }}
-  {{ $content := .content | replaceRE $colorRE "<span style=\"color:$1\">$2</span>" }}
-  {{ $keywordMap = merge $keywordMap (dict $suffix $content) }}
+{{ range $.Site.Data.lang.kr.unitkeyword }}
+  {{ range .dataList }}
+    {{ $suffix := strings.TrimPrefix "UnitKeyword_" .id }}
+    {{ $content := .content | replaceRE $colorRE "<span style=\"color:$1\">$2</span>" }}
+    {{ if not (isset $keywordMap $suffix) }}
+      {{ $keywordMap = merge $keywordMap (dict $suffix $content) }}
+    {{ end }}
+  {{ end }}
 {{ end }}
 {{ $prisoners := slice
   (dict "id" "01" "name" "이상"      "icon" "01_yisang")
@@ -184,8 +206,107 @@
     {{ end }}
   {{ end }}
 {{ end }}
+{{/* 스킬 키워드 허용 목록 (id → "1") */}}
+{{ $skillKwAllowSet := dict }}
+{{ range $.Site.Data.skill_keyword.dataList }}
+  {{ $skillKwAllowSet = merge $skillKwAllowSet (dict .id "1") }}
+{{ end }}
+{{/* EGO 스킬 이름/설명 맵 (skillId → nl:[{g,n}], skillId → dl:[{level,desc,coins}]) */}}
+{{ $egoSkillAbNameMap := dict }}
+{{ $egoSkillNameMap := dict }}
+{{ $egoSkillDescMap := dict }}
+{{ range $.Site.Data.lang.kr.egoskill }}
+  {{ if .dataList }}
+    {{ range .dataList }}
+      {{ if .levelList }}
+        {{ $abName := (index .levelList 0).abName | default "" }}
+        {{ $egoSkillAbNameMap = merge $egoSkillAbNameMap (dict (printf "%d" (int .id)) $abName) }}
+        {{ $nl := slice }}
+        {{ $dl := slice }}
+        {{ range .levelList }}
+          {{ $nl = $nl | append (dict "g" .level "n" .name) }}
+          {{ $coins := slice }}
+          {{ $coinIdx := 0 }}
+          {{ range .coinlist }}
+            {{ $coinIdx = add $coinIdx 1 }}
+            {{ if .coindescs }}
+              {{ $descs := slice }}
+              {{ range .coindescs }}{{ $descs = $descs | append .desc }}{{ end }}
+              {{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}
+            {{ end }}
+          {{ end }}
+          {{ $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) }}
+        {{ end }}
+        {{ $egoSkillNameMap = merge $egoSkillNameMap (dict (printf "%d" (int .id)) $nl) }}
+        {{ $egoSkillDescMap = merge $egoSkillDescMap (dict (printf "%d" (int .id)) $dl) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* EGO 스킬 데이터 맵 (skillId → {tier, sd, at, dt, lc, dv, ci, tn}) */}}
+{{ $egoSkillAttrMap := dict }}
+{{ $egoSkillMap := dict }}
+{{ range $.Site.Data.egoskill }}
+  {{ range .list }}
+    {{ if .skillData }}
+      {{ $idStr := printf "%d" (int .id) }}
+      {{ $attr := (index .skillData 0).attributeType }}
+      {{ $egoSkillAttrMap = merge $egoSkillAttrMap (dict $idStr $attr) }}
+      {{ $sd := slice }}
+      {{ $lc := slice }}
+      {{ $dv := slice }}
+      {{ $ci := slice }}
+      {{ $at := "" }}
+      {{ $dt := "" }}
+      {{ $tn := 0 }}
+      {{ $mp := 0 }}
+      {{ with index .skillData 0 }}{{ if isset . "mpUsage" }}{{ $mp = .mpUsage }}{{ end }}{{ end }}
+      {{ $bkDict := dict }}
+      {{ range .skillData }}
+        {{ if .attributeType }}
+          {{ $sd = $sd | append (dict "g" .gaksungLevel "a" .attributeType) }}
+        {{ end }}
+        {{ if isset . "skillLevelCorrection" }}
+          {{ $lc = $lc | append (dict "g" .gaksungLevel "v" .skillLevelCorrection) }}
+        {{ end }}
+        {{ if isset . "defaultValue" }}
+          {{ $dv = $dv | append (dict "g" .gaksungLevel "v" .defaultValue) }}
+        {{ end }}
+        {{ if .coinList }}
+          {{ $cs := 0 }}
+          {{ $op := "ADD" }}
+          {{ with index .coinList 0 }}{{ $cs = .scale }}{{ $op = .operatorType }}{{ end }}
+          {{ $ct := slice }}
+          {{ range .coinList }}
+            {{ $isSuperCoin := false }}
+            {{ range .abilityScriptList }}
+              {{ if eq .scriptName "SuperCoin" }}{{ $isSuperCoin = true }}{{ end }}
+            {{ end }}
+            {{ if $isSuperCoin }}{{ $ct = $ct | append "S" }}
+            {{ else }}{{ $ct = $ct | append "D" }}{{ end }}
+          {{ end }}
+          {{ $ci = $ci | append (dict "g" .gaksungLevel "cs" $cs "ct" $ct "op" $op) }}
+        {{ end }}
+        {{ if and (eq $at "") .atkType }}{{ $at = .atkType }}{{ end }}
+        {{ if and (eq $dt "") .defType }}{{ $dt = .defType }}{{ end }}
+        {{ if and (eq $tn 0) (isset . "targetNum") }}{{ $tn = .targetNum }}{{ end }}
+        {{ range .abilityScriptList }}
+          {{ if .buffData.buffKeyword }}{{ $bkDict = merge $bkDict (dict .buffData.buffKeyword "1") }}{{ end }}
+        {{ end }}
+        {{ range .coinList }}
+          {{ range .abilityScriptList }}
+            {{ if .buffData.buffKeyword }}{{ $bkDict = merge $bkDict (dict .buffData.buffKeyword "1") }}{{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $bk := slice }}
+      {{ range $bkKey, $_ := $bkDict }}{{ $bk = $bk | append $bkKey }}{{ end }}
+      {{ $egoSkillMap = merge $egoSkillMap (dict $idStr (dict "tier" .skillTier "sd" $sd "at" $at "dt" $dt "lc" $lc "dv" $dv "ci" $ci "tn" $tn "bk" $bk "mp" $mp)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
-<div class="personality-page" x-data="personalityPage()">
+<div class="personality-page" x-data="personalityPage()" :class="'detail-mode-' + detailMode">
 
   {{/* ── SVG 색상 필터 정의 ── */}}
   <svg id="skill-color-filters-svg" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
@@ -212,25 +333,81 @@
   var passiveMap = {{ $passiveMap | jsonify | safeJS }};
   var passiveKeywordMap = {{ $kwMap | jsonify | safeJS }};
   var skillDescMap = {{ $skillDescMap | jsonify | safeJS }};
+  var resistLabelMap = {{ $resistLabelMap | jsonify | safeJS }};
+  var egoSkillMap = {{ $egoSkillMap | jsonify | safeJS }};
+  var egoSkillNameMap = {{ $egoSkillNameMap | jsonify | safeJS }};
+  var egoSkillDescMap = {{ $egoSkillDescMap | jsonify | safeJS }};
   </script>
 
   {{/* ── 헤더 ── */}}
-  <header class="site-header">
-    <div class="site-title-wrap">
-      <h1 class="site-title">연심<br><span class="site-title-hanja">連心</span></h1>
-      <button class="sponsor-btn" @click="sponsorModal = true">
-        <img src="/images/sponsor/sponsor.png" alt="후원하기">
-      </button>
-    </div>
-    <nav class="site-nav">
-      <a class="site-nav-link" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
-      <span class="site-nav-sep"></span>
-      <a class="site-nav-link site-nav-link--active" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
-    </nav>
-  </header>
+  {{ partial "site-header.html" "personality" }}
 
   {{/* ── 후원하기 모달 ── */}}
   {{ partial "sponsor-modal.html" . }}
+
+  {{/* ── 상세 검색 모달 ── */}}
+  {{ $sinIconMap := dict "CRIMSON" "Crimson" "SCARLET" "Scarlet" "AMBER" "Amber" "SHAMROCK" "Shamrock" "AZURE" "Azure" "INDIGO" "Indigo" "VIOLET" "Violet" }}
+  {{ $atkResistTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "Slash") (dict "id" "HIT" "name" "타격" "icon" "Hit") (dict "id" "PENETRATE" "name" "관통" "icon" "Penetrate") }}
+  {{ $atkResistLevels := slice (dict "v" "2" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "t" "보통" "c" "") (dict "v" "0.5" "t" "내성" "c" "#808080") }}
+  {{ $attrResistLevels := slice (dict "v" "2" "n" "200" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "n" "100" "t" "보통" "c" "") (dict "v" "0.75" "n" "075" "t" "견딤" "c" "#cbcbcb") (dict "v" "0.5" "n" "050" "t" "내성" "c" "#808080") }}
+  <div class="modal-overlay" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
+    <div class="modal-box advanced-search-box" @click.stop>
+      <div class="modal-header">
+        <span class="modal-title">상세 검색</span>
+        <button type="button" class="modal-btn adv-search-reset-btn" @click="resetAdvancedFilter()">초기화</button>
+      </div>
+      <div class="modal-body adv-search-body">
+        {{/* 물리내성 — 인격 탭 적용 */}}
+        <div class="adv-resist-section" x-show="pageMode === 'personality'" style="display:none">
+          <div class="adv-resist-section-title">물리내성</div>
+          {{ range $atkResistTypes }}
+          {{ $type := .id }}{{ $ticon := .icon }}{{ $tname := .name }}
+          <div class="adv-resist-row">
+            <div class="adv-resist-head">
+              <img class="adv-resist-head-icon" src="/images/ui/personality_res{{ $ticon }}.png" alt="">
+              <span>{{ $tname }}</span>
+            </div>
+            <div class="adv-resist-cells">
+              {{ range $atkResistLevels }}
+              <button type="button" class="adv-resist-cell"
+                :class="{ active: atkResistFilter['{{ $type }}'].includes({{ .v }}) }"
+                @click="toggleAtkResist('{{ $type }}', {{ .v }})">
+                <img class="adv-resist-cell-icon" src="/images/ui/personality_res{{ $ticon }}.png" alt="">
+                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }}>{{ .t }}</span>
+                <span class="adv-resist-cell-mult"{{ with .c }} style="color:{{ . }}"{{ end }}>[X{{ .v }}]</span>
+              </button>
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        {{/* 속성내성 — EGO 탭 적용 */}}
+        <div class="adv-resist-section" x-show="pageMode === 'ego'" style="display:none">
+          <div class="adv-resist-section-title">속성내성</div>
+          {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+          {{ $type := .id }}{{ $tname := .name }}{{ $sicon := index $sinIconMap .id }}
+          <div class="adv-resist-row">
+            <div class="adv-resist-head">
+              <img class="adv-resist-head-icon" src="/images/sin/{{ $sicon }}.png" alt="">
+              <span>{{ $tname }}</span>
+            </div>
+            <div class="adv-resist-cells">
+              {{ range $attrResistLevels }}
+              <button type="button" class="adv-resist-cell"
+                :class="{ active: attrResistFilter['{{ $type }}'].includes({{ .v }}) }"
+                @click="toggleAttrResist('{{ $type }}', {{ .v }})">
+                <img class="adv-resist-cell-icon" src="/images/sin/{{ $sicon }}_resist_{{ .n }}.png" alt="">
+                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }}>{{ .t }}</span>
+                <span class="adv-resist-cell-mult"{{ with .c }} style="color:{{ . }}"{{ end }}>[X{{ .v }}]</span>
+              </button>
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
 
   {{/* ── 본문 ── */}}
   <div class="main-content">
@@ -239,6 +416,22 @@
     <div class="controls personality-controls">
       <div class="controls-row controls-row-1">
         <div class="search-group">
+          <div class="prisoner-dropdown-wrap" @click.away="prisonerDropdownOpen = false">
+            <button class="filter-btn prisoner-filter-btn" @click="prisonerDropdownOpen = !prisonerDropdownOpen">
+                <img class="filter-btn-icon" :class="{ 'prisoner-filter-btn-icon': selectedPrisoner }" :src="selectedPrisoner ? `/images/category/${selectedPrisoner.icon}_02.png` : '/images/ui/personality.png'" alt="">
+                <span x-text="selectedPrisoner ? selectedPrisoner.name : '수감자'"></span>
+              </button>
+            <div class="prisoner-dropdown-panel" x-show="prisonerDropdownOpen" style="display:none">
+              <button class="prisoner-dropdown-item" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; prisonerDropdownOpen = false">
+                <img class="prisoner-dropdown-icon" src="/images/ui/personality.png" alt="">전체
+              </button>
+              {{ range $prisoners }}
+              <button class="prisoner-dropdown-item" :class="{ active: selectedPrisoner?.id === '{{ .id }}' }" @click="selectedPrisoner = { id: '{{ .id }}', name: {{ .name | jsonify }}, icon: '{{ .icon }}' }; prisonerDropdownOpen = false">
+                <img class="prisoner-dropdown-icon" src="/images/category/{{ .icon }}_02.png" alt="">{{ .name }}
+              </button>
+              {{ end }}
+            </div>
+          </div>
           <div class="search-input-wrap">
             <input
               class="search-input"
@@ -256,6 +449,7 @@
               <img src="/images/ui/search_clear.png" alt="지우기">
             </button>
           </div>
+          <button class="filter-btn advanced-search-btn" :class="{ active: Object.values(atkResistFilter).some(a => a.length) || Object.values(attrResistFilter).some(a => a.length) }" @click="advancedSearchModal = true"><img class="filter-btn-icon" src="/images/ui/search_detail.png" alt="">상세 검색</button>
         </div>
       </div>
       <div class="controls-row controls-row-2">
@@ -269,7 +463,92 @@
           {{ end }}
         </div>
       </div>
+      <div class="controls-row controls-row-2">
+        <div class="personality-filter-row">
+          {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+          <button
+            class="filter-btn"
+            :class="{ active: activeColorTypes.includes('{{ .id }}') }"
+            @click="toggleColorType('{{ .id }}')"
+          ><img class="filter-btn-icon" src="/images/sin/{{ .id | title }}.png" alt="">{{ .name }}</button>
+          {{ end }}
+        </div>
+        <div class="controls-right">
+          <button class="filter-btn detail-toggle-btn" @click="detailMode = pageMode === 'ego' ? (detailMode === 'simple' ? 'detail2' : 'simple') : (detailMode === 'simple' ? 'detail1' : detailMode === 'detail1' ? 'detail2' : 'simple')">
+            <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
+            <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? '간단히' : '자세히') : (detailMode === 'simple' ? '간단히' : detailMode === 'detail1' ? '자세히 1' : '자세히 2')"></span>
+          </button>
+        </div>
+      </div>
     </div>
+
+    {{/* ── EGO 맵 빌드 ── */}}
+    {{ $egoTypeRank := dict "ZAYIN" 1 "TETH" 2 "HE" 3 "WAW" 4 "ALEPH" 5 }}
+    {{ $attrColorMap := dict }}
+    {{ range $.Site.Data.color_code.list }}
+      {{ $attrColorMap = merge $attrColorMap (dict .id .color) }}
+    {{ end }}
+    {{ $egoNameMap := dict }}
+    {{ range $.Site.Data.lang.kr.egoskill.KR_Egos.dataList }}
+      {{ $egoNameMap = merge $egoNameMap (dict (printf "%d" (int .id)) .name) }}
+    {{ end }}
+    {{ $egoPassiveMap := dict }}
+    {{ range $.Site.Data.lang.kr.egoskill.KR_Passive_Ego.dataList }}
+      {{ $egoPassiveMap = merge $egoPassiveMap (dict (printf "%d" (int .id)) (dict "name" .name "desc" .desc)) }}
+    {{ end }}
+    {{ $egoMap := dict }}
+    {{ range $.Site.Data.egoskill }}
+      {{ range .list }}
+        {{ if .hidden }}{{ continue }}{{ end }}
+        {{ if not .characterId }}{{ continue }}{{ end }}
+        {{ $cid := printf "%d" (int .characterId) }}
+        {{ $idStr := printf "%d" (int .id) }}
+        {{ $num := strings.SliceString $idStr 1 3 }}
+        {{ $img := printf "/images/egoskill/%s/%s_cg.webp" $num $idStr }}
+        {{ $rank := index $egoTypeRank .egoType | default 99 }}
+        {{ $awakeId := printf "%d" (int .awakeningSkillId) }}
+        {{ $attr := index $egoSkillAttrMap $awakeId | default "" }}
+        {{ $maxSyncLevel := .maxEgoSyncLevel | default 4 | int }}
+        {{ $abName := index $egoSkillAbNameMap $awakeId | default "" }}
+        {{ $attrColor := index $attrColorMap $attr | default "#ffffff" }}
+        {{ $name := index $egoNameMap $idStr | default "" }}
+        {{ $passives := slice }}
+        {{ range .awakeningPassiveList }}
+          {{ $p := index $egoPassiveMap (printf "%d" (int .)) }}
+          {{ if $p }}{{ $passives = $passives | append $p }}{{ end }}
+        {{ end }}
+        {{ $d := printf "%d" (int .updatedDate) }}
+        {{ $egoSeasonId := int .season }}
+        {{ if eq $egoSeasonId 0 }}
+          {{ $udDate := int .updatedDate }}
+          {{ range $.Site.Data.season.dataList }}
+            {{ if and (ge $udDate (int .startDate)) (or (eq (int .endDate) -1) (lt $udDate (int .endDate))) }}
+              {{ $egoSeasonId = int .id }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $egoSeason := index $seasonMap (string $egoSeasonId) }}
+        {{ $egoSeasonName := cond (eq (int .season) 0) "상시" $egoSeason.name }}
+        {{ $egoUpdatedDate := printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}
+        {{ $corrosionId := printf "%d" (int .corrosionSkillId) }}
+        {{ $awakeIconImg := printf "/images/egoskill/%s/%s_awaken_profile.webp" $num $idStr }}
+        {{ $corrosionIconImg := printf "/images/egoskill/%s/%s_erosion_profile.webp" $num $idStr }}
+        {{ $eCgImg := printf "/images/egoskill/%s/%s_e_cg.webp" $num $idStr }}
+        {{ $skKwDict := dict }}
+        {{ $awakeEntry := index $egoSkillMap $awakeId | default dict }}
+        {{ range ($awakeEntry.bk | default slice) }}{{ $skKwDict = merge $skKwDict (dict . "1") }}{{ end }}
+        {{ if ne $corrosionId "0" }}
+          {{ $corEntry := index $egoSkillMap $corrosionId | default dict }}
+          {{ range ($corEntry.bk | default slice) }}{{ $skKwDict = merge $skKwDict (dict . "1") }}{{ end }}
+        {{ end }}
+        {{ $egoSkillKws := slice }}
+        {{ range $skKwKey, $_ := $skKwDict }}
+          {{ if index $skillKwAllowSet $skKwKey }}{{ $egoSkillKws = $egoSkillKws | append $skKwKey }}{{ end }}
+        {{ end }}
+        {{ $existing := index $egoMap $cid | default slice }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws))) }}
+      {{ end }}
+    {{ end }}
 
     {{/* ── 수감자 목록 ── */}}
     <div class="personality-category-list">
@@ -279,6 +558,7 @@
       {{ $pName := .name }}
       {{ $pData := index $.Site.Data.personality.info (printf "personality-%s" $pid) }}
       {{ $charId := int (strings.TrimLeft "0" $pid) }}
+      {{ $egoList := index $egoMap (printf "%d" $charId) | default slice }}
       {{ $fullList := slice }}
       {{ if $pData }}{{ range $pData.list }}{{ $fullList = $fullList | append . }}{{ end }}{{ end }}
       {{ range $extraDataList }}
@@ -291,15 +571,21 @@
         {{ range .unitKeywordList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
         {{ range .associationList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
         {{ range .unitKeywordListByUnlockCode }}{{ $l := index $keywordMap .id }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
-        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws) }}
+        {{ $rColors := slice }}
+        {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ if $si }}{{ with index $si.sd 0 }}{{ $rColors = $rColors | append .a }}{{ end }}{{ end }}{{ end }}
+        {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
+        {{ range .defenseSkillIDList }}{{ $si := index $skillMap (string .) }}{{ if $si }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rColors = $rColors | append $da }}{{ end }}{{ end }}{{ end }}
+        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList) }}
       {{ end }}
+      {{ $egoRowData := slice }}
+      {{ range $egoList }}{{ $egoRowData = $egoRowData | append (dict "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList) }}{{ end }}
       <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
-        x-show="isRowVisible({{ $rowData | jsonify }})">
+        x-show="(selectedPrisoner === null || selectedPrisoner.id === '{{ $pid }}') && (pageMode === 'ego' ? isEgoRowVisible({{ $egoRowData | jsonify }}) : isRowVisible({{ $rowData | jsonify }}))">
         <div class="category-label personality-category-label">
           <img class="cat-icon" src="/images/category/{{ .icon }}.png" alt="{{ .name }}">
           <span class="cat-name">{{ .name }}</span>
         </div>
-        <div class="personality-row">
+        <div class="personality-row" x-show="pageMode === 'personality'">
           {{ range sort (sort $fullList "updatedDate") "rank" }}
           {{ $title := index $nameMap (string .id) }}
           {{ $d := printf "%d" (int .updatedDate) }}
@@ -343,22 +629,131 @@
           {{ $passiveBp := slice }}
           {{ $passiveSp := slice }}
           {{ if $ppData }}{{ $passiveBp = $ppData.bp }}{{ $passiveSp = $ppData.sp }}{{ end }}
+          {{ $skillColors := slice }}
+          {{ range $skills }}{{ with index .sd 0 }}{{ $skillColors = $skillColors | append .a }}{{ end }}{{ end }}
+          {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
+          {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
           <div class="personality-card"
-            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }} })"
+            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }} })"
             @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
-            <img class="personality-card-rank"
-              src="/images/ui/personality_frame_0{{ .rank }}.png"
-              alt="">
-            <img class="personality-card-img"
-              :src="gacksungIds[{{ .id }}] ? '/images/personality/{{ $pid }}/{{ .id }}_gacksung_info.webp' : '/images/personality/{{ $pid }}/{{ .id }}_normal_info.webp'"
-              alt="{{ .id }}"
-              loading="lazy">
-            <img class="personality-card-rank-icon"
-              src="/images/ui/personality_rank_0{{ .rank }}.png"
-              alt="rank {{ .rank }}">
-            {{ if $title }}
-            <span class="personality-card-name">{{ replace $title "\n" "<br>" | safeHTML }}</span>
+            {{ $dt := "" }}
+            {{ with index $defSkills 0 }}{{ $dt = .dt }}{{ end }}
+            {{ $defTypeIcon := index (dict "COUNTER" "counter" "EVADE" "evade" "GUARD" "guard") $dt }}
+            {{ $colorMap := dict "CRIMSON" "Crimson" "SCARLET" "Scarlet" "AMBER" "Amber" "SHAMROCK" "Shamrock" "AZURE" "Azure" "INDIGO" "Indigo" "VIOLET" "Violet" }}
+            {{ $atkIconMap := dict "SLASH" "slash" "HIT" "hit" "PENETRATE" "penetrate" }}
+            {{ $s1attr := "" }}{{ $s1atk := "" }}
+            {{ $s2attr := "" }}{{ $s2atk := "" }}
+            {{ $s3attr := "" }}{{ $s3atk := "" }}
+            {{ $sDefAttr := "" }}
+            {{ range $skills }}
+              {{ $sk := . }}
+              {{ if and (eq (int $sk.tier) 1) (eq $s1attr "") }}
+                {{ with index $sk.sd 0 }}{{ $s1attr = .a }}{{ end }}
+                {{ $s1atk = $sk.at }}
+              {{ end }}
+              {{ if and (eq (int $sk.tier) 2) (eq $s2attr "") }}
+                {{ with index $sk.sd 0 }}{{ $s2attr = .a }}{{ end }}
+                {{ $s2atk = $sk.at }}
+              {{ end }}
+              {{ if and (eq (int $sk.tier) 3) (eq $s3attr "") }}
+                {{ with index $sk.sd 0 }}{{ $s3attr = .a }}{{ end }}
+                {{ $s3atk = $sk.at }}
+              {{ end }}
             {{ end }}
+            {{ with index $defSkills 0 }}
+              {{ range .sd }}{{ if le (int .g) 4 }}{{ $sDefAttr = .a }}{{ end }}{{ end }}
+            {{ end }}
+            <div class="personality-card-frame">
+              <img class="personality-card-rank"
+                src="/images/ui/personality_frame_0{{ .rank }}.png"
+                alt="">
+              <img class="personality-card-img"
+                :src="gacksungIds[{{ .id }}] ? '/images/personality/{{ $pid }}/{{ .id }}_gacksung_info.webp' : '/images/personality/{{ $pid }}/{{ .id }}_normal_info.webp'"
+                alt="{{ .id }}"
+                loading="lazy">
+              <img class="personality-card-rank-icon"
+                src="/images/ui/personality_rank_0{{ .rank }}.png"
+                alt="rank {{ .rank }}">
+              <div class="personality-card-info-rows">
+                {{ if or $defTypeIcon .skillKeywordList }}
+                <div class="personality-card-skill-icons">
+                  {{ range .skillKeywordList }}
+                  <img class="personality-card-skill-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
+                  {{ end }}
+                  {{ if $defTypeIcon }}
+                  <img class="personality-card-def-icon" src="/images/ui/{{ $defTypeIcon }}.png" alt="{{ $dt }}">
+                  {{ end }}
+                </div>
+                {{ end }}
+                {{ if or $s1attr $s2attr $s3attr }}
+                <div class="personality-card-attr-row">
+                  {{ range slice $s1attr $s2attr $s3attr }}
+                  {{ $icon := index $colorMap . }}
+                  {{ if $icon }}
+                  <img class="personality-card-attr-icon" src="/images/sin/{{ $icon }}.png" alt="{{ . }}">
+                  {{ end }}
+                  {{ end }}
+                </div>
+                {{ end }}
+                {{ if or $s1atk $s2atk $s3atk }}
+                <div class="personality-card-atk-row">
+                  {{ range slice $s1atk $s2atk $s3atk }}
+                  {{ $icon := index $atkIconMap . }}
+                  {{ if $icon }}
+                  <img class="personality-card-atk-icon" src="/images/ui/{{ $icon }}.png" alt="{{ . }}">
+                  {{ end }}
+                  {{ end }}
+                </div>
+                {{ end }}
+              </div>
+              {{ if $title }}
+              <span class="personality-card-name">{{ replace $title "\n" "<br>" | safeHTML }}</span>
+              {{ end }}
+            </div>
+            <div class="personality-card-detail2">
+              <div class="personality-card-detail2-row">
+                {{ range .skillKeywordList }}
+                <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
+                {{ end }}
+              </div>
+              <div class="personality-card-detail2-row">
+                {{ range slice $s1attr $s2attr $s3attr $sDefAttr }}
+                {{ $icon := index $colorMap . }}
+                {{ if $icon }}
+                <img class="personality-card-d2-attr-icon" src="/images/sin/{{ $icon }}.png" alt="{{ . }}">
+                {{ end }}
+                {{ end }}
+              </div>
+              <div class="personality-card-detail2-row">
+                {{ range slice $s1atk $s2atk $s3atk }}
+                {{ $icon := index $atkIconMap . }}
+                {{ if $icon }}
+                <img class="personality-card-d2-atk-icon" src="/images/ui/{{ $icon }}.png" alt="{{ . }}">
+                {{ end }}
+                {{ end }}
+                {{ if $defTypeIcon }}
+                <img class="personality-card-d2-def-icon" src="/images/ui/{{ $defTypeIcon }}.png" alt="{{ $dt }}">
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
+          {{ range sort (sort $egoList "updatedDate") "typeRank" }}
+          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }} })">
+            <div class="ego-card">
+              <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
+              <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
+              <img class="ego-frame-base" src="/images/ui/egoskill_frame_02.png" alt="" style="filter: url(#tint-{{ .attrType }})">
+              <img class="ego-tag-img" src="/images/ui/egoskill_tag_{{ .egoType }}.png" alt="">
+              <span class="ego-name">{{ .name }}</span>
+            </div>
+            <div class="ego-card-detail2">
+              {{ range .skillKeywords }}
+              <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
+              {{ end }}
+            </div>
           </div>
           {{ end }}
         </div>
@@ -366,6 +761,274 @@
       {{ end }}
     </div>
 
+  </div>
+
+  {{/* ── EGO 상세 모달 ── */}}
+  <div class="modal-overlay" :class="{ open: egoDetail }" @click.self="closeEgoDetail()" @contextmenu.prevent="closeEgoDetail()">
+    <div class="modal-box ego-detail-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <div class="personality-detail-title-row">
+          <img class="ego-detail-grade-icon" :src="egoDetail ? `/images/ui/egoskill_icon_${egoDetail.egoType}.png` : ''" alt="">
+          <img class="personality-detail-icon" :src="egoDetail ? `/images/category/${egoDetail.charIcon}.png` : ''" alt="">
+          <span class="modal-title" x-text="egoDetail ? egoDetail.name : ''"></span>
+        </div>
+      </div>
+      <div class="modal-body ego-detail-body">
+        <div class="ego-detail-row-1">
+          <div class="ego-detail-cg-col">
+            <img class="ego-detail-cg" :src="egoCgImg" @error="onEgoCgError($el)" alt="">
+            <div class="ego-detail-sync-btns" x-show="egoDetail">
+              <template x-if="egoDetail">
+                <template x-for="n in Array.from({ length: egoDetail.maxGaksung }, (_, i) => i + 1)" :key="n">
+                  <button class="sync-btn" :class="{ active: egoSync === n }" @click="egoSync = n">
+                    <img :src="`/images/ui/sync_0${n}.png`" alt="">
+                  </button>
+                </template>
+              </template>
+            </div>
+          </div>
+          <div class="ego-detail-info-col">
+            <span class="ego-detail-abname" x-text="egoDetail ? egoDetail.abName : ''" :style="egoDetail ? `color: ${egoDetail.attrColor}` : ''"></span>
+            <template x-if="egoCurrentPassive">
+              <div class="ego-detail-passives">
+                <div class="ego-detail-passive-item">
+                  <span class="passive-name" x-text="egoCurrentPassive.name"></span>
+                  <div class="ego-passive-scroll-wrap" x-data="scrollWrap('.ego-passive-scroll-area')">
+                    <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+                    <div class="passive-desc ego-passive-scroll-area"
+                         x-html="formatPassiveDesc(egoCurrentPassive.desc)"
+                         @click="handlePassiveDescClick($event)"
+                         @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;"></div>
+                    <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="personality-detail-tabs">
+          <button class="tab-btn" :class="{ active: egoTab === 'profile' }"  @click="egoTab = 'profile'">프로필</button>
+          <button class="tab-btn" :class="{ active: egoTab === 'awaken' }"   @click="egoTab = 'awaken'">각성 스킬</button>
+          <button class="tab-btn" :class="{ active: egoTab === 'corrode' }" :disabled="!egoDetail?.corrosionSkillId || egoDetail.corrosionSkillId === '0'" @click="egoTab = 'corrode'">침식 스킬</button>
+        </div>
+
+        {{/* ── 프로필 탭 ── */}}
+        <div class="ego-profile-tab-content" x-show="egoTab === 'profile'">
+          <div class="personality-detail-season">
+            <span class="season-date"  x-text="egoDetail?.formattedDate ?? ''"></span>
+            <span class="season-title" x-html="egoDetail?.seasonTitle ?? ''"></span>
+            <span class="season-name"  x-show="egoDetail?.seasonName" x-html="egoDetail?.seasonName ?? ''"></span>
+            <template x-if="egoDetail?.skillKeywords?.length">
+              <div class="season-skill-icons">
+                <template x-for="kw in egoDetail.skillKeywords" :key="kw">
+                  <img class="season-skill-icon"
+                       :src="`/images/buff/${kw}.png`"
+                       :onerror="egoKwIconFallback(kw)"
+                       :title="passiveKeywordMap?.[kw]?.name ?? kw"
+                       alt="">
+                </template>
+              </div>
+            </template>
+          </div>
+          <template x-if="egoDetail?.requirementList?.length || egoAwakeSkill?.mp">
+            <div>
+              <div class="ego-section-label-row">
+                <span class="ego-section-label">필요 자원</span>
+                <button type="button" class="ego-overclock-btn" :class="{ active: egoOverclock }" @click="egoOverclock = !egoOverclock">
+                  <img src="/images/ui/btn_overclock.png" alt="">
+                </button>
+              </div>
+              <div class="ego-requirement-list" style="padding-left: 0.5rem;">
+                <template x-for="r in (egoDetail?.requirementList ?? [])" :key="r.attributeType">
+                  <div class="ego-requirement-item">
+                    <img class="ego-req-icon" :src="`/images/sin/${r.attributeType.charAt(0) + r.attributeType.slice(1).toLowerCase()}_require.png`" alt="">
+                    <span class="ego-req-num"
+                          :style="egoOverclock ? 'color:#fd3f3f' : ''"
+                          x-text="egoOverclock ? Math.ceil(r.num * 1.5) : r.num"></span>
+                  </div>
+                </template>
+                <div class="ego-requirement-item" x-show="egoAwakeSkill?.mp">
+                  <img class="ego-req-icon" src="/images/ui/mental.png" alt="">
+                  <span class="ego-req-num">
+                    <span x-text="egoCorrosionSkill?.mp ? `${egoAwakeSkill?.mp}/` : `${egoAwakeSkill?.mp ?? ''}`"></span>
+                    <span x-show="egoCorrosionSkill?.mp" style="display:none"
+                          :style="egoOverclock ? 'color:#fd3f3f' : ''"
+                          x-text="egoOverclock ? Math.ceil(egoCorrosionSkill.mp * 1.5) : egoCorrosionSkill.mp"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template x-if="egoDetail?.resistList?.length">
+            <div>
+              <span class="ego-section-label">내성 정보</span>
+              <div class="personality-detail-resist" style="flex-wrap: wrap; gap: 0.7rem; padding-left: 0.5rem;">
+                <template x-for="res in egoDetail.resistList.filter(r => r.type !== 'WHITE' && r.type !== 'BLACK')" :key="res.type">
+                  <div class="res-item">
+                    <img class="stat-icon" :src="`/images/sin/${res.type.charAt(0) + res.type.slice(1).toLowerCase()}_resist_${String(Math.round(res.value * 100)).padStart(3, '0')}.png`" alt="">
+                    <div class="res-text">
+                      <span class="res-label"
+                            x-text="resistLabelMap[res.value.toFixed(2)]?.text ?? ''"
+                            :style="resistLabelMap[res.value.toFixed(2)]?.color ? `color:${resistLabelMap[res.value.toFixed(2)].color}` : ''"></span>
+                      <span class="res-label"
+                            x-text="`[X${res.value}]`"
+                            :style="resistLabelMap[res.value.toFixed(2)]?.color ? `color:${resistLabelMap[res.value.toFixed(2)].color}` : ''"></span>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        {{/* ── 각성 스킬 탭 ── */}}
+        <div class="skill-tab-content" x-show="egoTab === 'awaken'">
+          <div class="skill-frame-scroll-wrap" x-data="scrollWrap('.skill-frame-scroll-area')">
+            <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+            <div class="skill-frame-scroll-area"
+                 @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+              <div class="skill-frame-display">
+                <template x-if="egoAwakeSkill">
+                  <div class="skill-frame-item">
+                    <div class="skill-frame-top-row">
+                      <div class="skill-display">
+                        <img class="skill-icon-img" :src="egoAwakeSkill.iconImg">
+                        <img class="skill-frame-img" :src="egoSkillFrameSrc(egoAwakeSkill, false)" :style="'filter: url(#tint-' + egoSkillAttr(egoAwakeSkill) + ')'">
+                      </div>
+                      <div class="skill-frame-info">
+                        <div class="skill-level-row">
+                          <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(egoAwakeSkill)">
+                          <span class="skill-level-sum" x-text="egoSkillLevelValueText(egoAwakeSkill)"></span>
+                          <span class="skill-level-correction" x-text="egoSkillLevelCoinText(egoAwakeSkill)"></span>
+                          <template x-for="n in Array.from({length: egoAwakeSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                            <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
+                          </template>
+                          <span class="skill-target-num-text" x-show="egoAwakeSkill.tn" x-text="`[${egoAwakeSkill.tn}]`"></span>
+                        </div>
+                        <div class="skill-frame-name-row">
+                          <span class="skill-frame-name" x-text="egoSkillName(egoAwakeSkill)"></span>
+                        </div>
+                        <div class="skill-power-row">
+                          <template x-for="icon in egoSkillTypeIcons(egoAwakeSkill)" :key="icon">
+                            <img class="skill-power-atk-icon" :src="icon">
+                          </template>
+                          <span class="skill-power-text" x-text="egoSkillDefaultValue(egoAwakeSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinOperator(egoAwakeSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinScale(egoAwakeSkill)"></span>
+                          <template x-for="(ct, idx) in egoSkillCoinTypes(egoAwakeSkill)" :key="idx">
+                            <img class="skill-coin-icon" :src="ct === 'S' ? '/images/skill/skill_coin/coin_super_normal.png' : '/images/skill/skill_coin/coin_default_normal.png'">
+                          </template>
+                        </div>
+                      </div>
+                      <div class="skill-mp-col" x-show="egoAwakeSkill.mp">
+                        <div class="skill-mp-info">
+                          <img class="skill-mp-icon" src="/images/ui/mental.png" alt="">
+                          <span class="skill-mp-text" x-text="egoAwakeSkill.mp"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <template x-if="egoSkillDesc(egoAwakeSkill)">
+                      <div class="skill-desc-area">
+                        <div class="skill-desc" x-show="egoSkillDesc(egoAwakeSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoAwakeSkill).desc)" @click="handlePassiveDescClick($event)"></div>
+                        <template x-for="coin in (egoSkillDesc(egoAwakeSkill).coins ?? [])" :key="coin.idx">
+                          <div class="skill-coin-desc-item">
+                            <div class="skill-coin-number-wrap">
+                              <img class="skill-coin-number-frame" src="/images/skill/skill_coin/coinNumber_frame.png" alt="">
+                              <img class="skill-coin-number-img" :src="`/images/skill/skill_coin/coinNumber_${String(coin.idx).padStart(2,'0')}.png`" alt="">
+                            </div>
+                            <div class="skill-coin-descs">
+                              <template x-for="(d, i) in coin.descs" :key="i">
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+          </div>
+        </div>
+
+        {{/* ── 침식 스킬 탭 ── */}}
+        <div class="skill-tab-content" x-show="egoTab === 'corrode'">
+          <div class="skill-frame-scroll-wrap" x-data="scrollWrap('.skill-frame-scroll-area')">
+            <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+            <div class="skill-frame-scroll-area"
+                 @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+              <div class="skill-frame-display">
+                <template x-if="egoCorrosionSkill">
+                  <div class="skill-frame-item">
+                    <div class="skill-frame-top-row">
+                      <div class="skill-display">
+                        <img class="skill-icon-img" :src="egoCorrosionSkill.iconImg">
+                        <img class="skill-frame-img" :src="egoSkillFrameSrc(egoCorrosionSkill, true)" :style="'filter: url(#tint-' + egoSkillAttr(egoCorrosionSkill) + ')'">
+                      </div>
+                      <div class="skill-frame-info">
+                        <div class="skill-level-row">
+                          <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(egoCorrosionSkill)">
+                          <span class="skill-level-sum" x-text="egoSkillLevelValueText(egoCorrosionSkill)"></span>
+                          <span class="skill-level-correction" x-text="egoSkillLevelCoinText(egoCorrosionSkill)"></span>
+                          <template x-for="n in Array.from({length: egoCorrosionSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                            <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
+                          </template>
+                          <span class="skill-target-num-text" x-show="egoCorrosionSkill.tn" x-text="`[${egoCorrosionSkill.tn}]`"></span>
+                        </div>
+                        <div class="skill-frame-name-row">
+                          <span class="skill-frame-name" x-text="egoSkillName(egoCorrosionSkill)"></span>
+                        </div>
+                        <div class="skill-power-row">
+                          <template x-for="icon in egoSkillTypeIcons(egoCorrosionSkill)" :key="icon">
+                            <img class="skill-power-atk-icon" :src="icon">
+                          </template>
+                          <span class="skill-power-text" x-text="egoSkillDefaultValue(egoCorrosionSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinOperator(egoCorrosionSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinScale(egoCorrosionSkill)"></span>
+                          <template x-for="(ct, idx) in egoSkillCoinTypes(egoCorrosionSkill)" :key="idx">
+                            <img class="skill-coin-icon" :src="ct === 'S' ? '/images/skill/skill_coin/coin_super_normal.png' : '/images/skill/skill_coin/coin_default_normal.png'">
+                          </template>
+                        </div>
+                      </div>
+                      <div class="skill-mp-col" x-show="egoCorrosionSkill.mp">
+                        <div class="skill-mp-info">
+                          <img class="skill-mp-icon" src="/images/ui/mental.png" alt="">
+                          <span class="skill-mp-text"
+                                :style="egoOverclock ? 'color:#fd3f3f' : ''"
+                                x-text="egoOverclock ? Math.ceil(egoCorrosionSkill.mp * 1.5) : egoCorrosionSkill.mp"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <template x-if="egoSkillDesc(egoCorrosionSkill)">
+                      <div class="skill-desc-area">
+                        <div class="skill-desc" x-show="egoSkillDesc(egoCorrosionSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoCorrosionSkill).desc)" @click="handlePassiveDescClick($event)"></div>
+                        <template x-for="coin in (egoSkillDesc(egoCorrosionSkill).coins ?? [])" :key="coin.idx">
+                          <div class="skill-coin-desc-item">
+                            <div class="skill-coin-number-wrap">
+                              <img class="skill-coin-number-frame" src="/images/skill/skill_coin/coinNumber_frame.png" alt="">
+                              <img class="skill-coin-number-img" :src="`/images/skill/skill_coin/coinNumber_${String(coin.idx).padStart(2,'0')}.png`" alt="">
+                            </div>
+                            <div class="skill-coin-descs">
+                              <template x-for="(d, i) in coin.descs" :key="i">
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   {{/* ── 인격 상세 모달 ── */}}
@@ -481,10 +1144,10 @@
           {{/* ── 스킬 정보 ── */}}
           <div class="skill-tab-content" x-show="personalityTab === 'skill'">
             <div class="personality-detail-skill-btns">
-              <button class="skill-btn" :class="{'active': activeSkillTier === 1}" @click="activeSkillTier = 1">스킬1</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 2}" @click="activeSkillTier = 2">스킬2</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 3}" @click="activeSkillTier = 3">스킬3</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 'defense'}" @click="activeSkillTier = 'defense'">수비</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 1}" :style="tierAttrName(1) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(1)}.png')` : ''" @click="activeSkillTier = 1"><template x-for="src in tierTypeIcons(1)"><img :src="src" class="skill-btn-type-icon"></template>스킬1</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 2}" :style="tierAttrName(2) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(2)}.png')` : ''" @click="activeSkillTier = 2"><template x-for="src in tierTypeIcons(2)"><img :src="src" class="skill-btn-type-icon"></template>스킬2</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 3}" :style="tierAttrName(3) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(3)}.png')` : ''" @click="activeSkillTier = 3"><template x-for="src in tierTypeIcons(3)"><img :src="src" class="skill-btn-type-icon"></template>스킬3</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 'defense'}" :style="tierAttrName('defense') ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName('defense')}.png')` : ''" @click="activeSkillTier = 'defense'"><template x-for="src in tierTypeIcons('defense')"><img :src="src" class="skill-btn-type-icon"></template>수비</button>
             </div>
             <div class="skill-frame-scroll-wrap" x-data="scrollWrap('.skill-frame-scroll-area')">
               <div class="scroll-indicator" :class="{ visible: up }">▲</div>
@@ -642,6 +1305,22 @@
     </div>
   </div>
 
+  {{/* ── 플로팅 버튼 ── */}}
+  <div class="float-btns">
+    <div class="float-scroll-group">
+      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="맨 아래로">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 {{ partial "site-footer.html" . }}
@@ -650,9 +1329,49 @@
 function personalityPage() {
   return {
     search: '',
+    pageMode: 'personality',
     activeEgoTypes: [],
+    activeColorTypes: [],
+    atkResistFilter: { SLASH: [], HIT: [], PENETRATE: [] },
+    attrResistFilter: { CRIMSON: [], SCARLET: [], AMBER: [], SHAMROCK: [], AZURE: [], INDIGO: [], VIOLET: [] },
+    selectedPrisoner: null,
+    prisonerDropdownOpen: false,
+    advancedSearchModal: false,
+    detailMode: 'simple',
     sponsorModal: false,
     personalityDetail: null,
+    egoDetail: null,
+    egoSync: 4,
+    egoTab: 'profile',
+    egoOverclock: false,
+    egoNoECgIds: {},
+    get egoCgImg() {
+      if (!this.egoDetail) return '';
+      if (this.egoTab === 'corrode' && !this.egoNoECgIds[this.egoDetail.id]) {
+        return this.egoDetail.eCgImg;
+      }
+      return this.egoDetail.img;
+    },
+    get egoCurrentPassive() {
+      if (!this.egoDetail?.passives?.length) return null;
+      if (this.egoDetail.maxGaksung === 5 && this.egoSync === 5) return this.egoDetail.passives[1] ?? null;
+      return this.egoDetail.passives[0] ?? null;
+    },
+    get egoAwakeSkill() {
+      if (!this.egoDetail?.awakeSkillId) return null;
+      const sd = egoSkillMap?.[this.egoDetail.awakeSkillId];
+      if (!sd) return null;
+      const nl = egoSkillNameMap?.[this.egoDetail.awakeSkillId] ?? [];
+      return { ...sd, id: this.egoDetail.awakeSkillId, nl, iconImg: this.egoDetail.awakeIconImg };
+    },
+    get egoCorrosionSkill() {
+      const cid = this.egoDetail?.corrosionSkillId;
+      if (!cid || cid === '0') return null;
+      const sd = egoSkillMap?.[cid];
+      if (!sd) return null;
+      const nl = egoSkillNameMap?.[cid] ?? [];
+      return { ...sd, id: cid, nl, iconImg: this.egoDetail.corrosionIconImg };
+    },
     personalityTab: 'info',
     personalitySync: 4,
     passiveKeywordTooltip: null,
@@ -667,8 +1386,46 @@ function personalityPage() {
       else this.activeEgoTypes.splice(idx, 1);
     },
 
+    toggleColorType(type) {
+      const idx = this.activeColorTypes.indexOf(type);
+      if (idx === -1) this.activeColorTypes.push(type);
+      else this.activeColorTypes.splice(idx, 1);
+    },
+
+    toggleAtkResist(type, val) {
+      const arr = this.atkResistFilter[type];
+      const idx = arr.indexOf(val);
+      if (idx === -1) arr.push(val);
+      else arr.splice(idx, 1);
+    },
+
+    toggleAttrResist(type, val) {
+      const arr = this.attrResistFilter[type];
+      const idx = arr.indexOf(val);
+      if (idx === -1) arr.push(val);
+      else arr.splice(idx, 1);
+    },
+
+    resetAdvancedFilter() {
+      Object.keys(this.atkResistFilter).forEach(k => this.atkResistFilter[k] = []);
+      Object.keys(this.attrResistFilter).forEach(k => this.attrResistFilter[k] = []);
+    },
+
+    // 타입별 선택 단계는 OR, 타입 간은 AND. 선택 없는 타입은 무시.
+    matchResist(filterObj, list) {
+      for (const type in filterObj) {
+        const sel = filterObj[type];
+        if (!sel.length) continue;
+        const r = (list ?? []).find(x => x.type === type);
+        if (!r || !sel.includes(r.value)) return false;
+      }
+      return true;
+    },
+
     isPersonalityVisible(card) {
       if (this.activeEgoTypes.length > 0 && !this.activeEgoTypes.every(t => card.skills.includes(t))) return false;
+      if (this.activeColorTypes.length > 0 && !this.activeColorTypes.every(c => (card.colors ?? []).includes(c))) return false;
+      if (!this.matchResist(this.atkResistFilter, card.atkResist)) return false;
       if (this.search) {
         const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
         for (const term of terms) {
@@ -687,10 +1444,32 @@ function personalityPage() {
       return cards.some(card => this.isPersonalityVisible(card));
     },
 
+    isEgoVisible(ego) {
+      if (this.activeEgoTypes.length > 0 && !this.activeEgoTypes.every(t => (ego.skillKeywords ?? []).includes(t))) return false;
+      if (this.activeColorTypes.length > 0 && !this.activeColorTypes.every(c => c === ego.attrType)) return false;
+      if (!this.matchResist(this.attrResistFilter, ego.attrResist)) return false;
+      if (this.search) {
+        const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
+        for (const term of terms) {
+          if (term.startsWith('#')) continue;
+          if (!ego.name.toLowerCase().includes(term.toLowerCase())) return false;
+        }
+      }
+      return true;
+    },
+
+    isEgoRowVisible(egos) {
+      return egos.some(ego => this.isEgoVisible(ego));
+    },
+
     init() {
       const saved = localStorage.getItem('personality-gacksung');
       if (saved) this.gacksungIds = JSON.parse(saved);
       this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
+      if (window.location.hash === '#ego') {
+        this.pageMode = 'ego';
+        history.replaceState(null, '', window.location.pathname);
+      }
     },
 
     openPersonalityDetail(data) { this.personalityDetail = data; this.personalitySync = 4; },
@@ -737,6 +1516,29 @@ function personalityPage() {
         else break;
       }
       return attr;
+    },
+    tierTypeIcons(tier) {
+      const skills = tier === 'defense'
+        ? (this.personalityDetail?.defenseSkills ?? [])
+        : (this.personalityDetail?.skills?.filter(s => s.tier === tier) ?? []);
+      if (!skills.length) return [];
+      const skill = skills[0];
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
+      const defIcon = defMap[skill.dt] ?? null;
+      if (defIcon) return [defIcon];
+      const atkIcon = atkMap[skill.at] ?? null;
+      if (atkIcon) return [atkIcon];
+      return [];
+    },
+    tierAttrName(tier) {
+      const known = new Set(['CRIMSON','SCARLET','AMBER','SHAMROCK','AZURE','INDIGO','VIOLET']);
+      const skills = tier === 'defense'
+        ? (this.personalityDetail?.defenseSkills ?? [])
+        : (this.personalityDetail?.skills?.filter(s => s.tier === tier) ?? []);
+      if (!skills.length) return '';
+      const attr = this.skillAttr(skills[0]);
+      return known.has(attr) ? attr.toLowerCase() : '';
     },
     skillFrameSrc(skill) {
       if (!skill) return '';
@@ -905,6 +1707,128 @@ function personalityPage() {
     },
     closePassiveKeywordTooltip() { this.passiveKeywordTooltip = null; },
     closePersonalityDetail() { this.personalityDetail = null; },
+    openEgoDetail(data) { this.egoDetail = data; if (this.egoSync > data.maxGaksung) this.egoSync = data.maxGaksung; this.egoOverclock = false; },
+    closeEgoDetail() { this.egoDetail = null; },
+    onEgoCgError(el) {
+      const id = this.egoDetail?.id;
+      if (!id || this.egoNoECgIds[id]) return;
+      this.egoNoECgIds = { ...this.egoNoECgIds, [id]: true };
+    },
+    egoKwIconFallback(kw) {
+      const b = passiveKeywordMap?.[kw];
+      if (b?.iconId) return `this.src='/images/buff/${b.iconId}.png';this.onerror=null`;
+      return "this.style.display='none'";
+    },
+
+    egoSkillAttr(skill) {
+      if (!skill?.sd?.length) return 'NEUTRAL';
+      let attr = skill.sd[0].a;
+      for (const e of skill.sd) {
+        if (e.g <= this.egoSync) attr = e.a;
+        else break;
+      }
+      return attr;
+    },
+    egoSkillFrameSrc(skill, isCorrosion) {
+      if (!skill) return '';
+      const attr = this.egoSkillAttr(skill);
+      if (attr === 'NEUTRAL') return '/images/skill/skill_frame/skillFrame_NEUTRAL.png';
+      const suffix = isCorrosion ? '_03_invert' : '_03';
+      return `/images/skill/skill_frame/skillFrame_${attr}${suffix}.png`;
+    },
+    egoSkillName(skill) {
+      if (!skill?.nl?.length) return '';
+      let name = skill.nl[0].n;
+      for (const e of skill.nl) {
+        if (e.g <= this.egoSync) name = e.n;
+        else break;
+      }
+      return name;
+    },
+    egoSkillLevelCorrection(skill) {
+      let c = 0;
+      if (skill.lc?.length) {
+        for (const e of skill.lc) {
+          if (e.g <= this.egoSync) c = e.v;
+          else break;
+        }
+      }
+      return c;
+    },
+    egoSkillDefaultValue(skill) {
+      let v = 0;
+      if (skill.dv?.length) {
+        for (const e of skill.dv) {
+          if (e.g <= this.egoSync) v = e.v;
+          else break;
+        }
+      }
+      return v;
+    },
+    egoSkillCoinScale(skill) {
+      let cs = 0;
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.egoSync) cs = e.cs;
+          else break;
+        }
+      }
+      return cs;
+    },
+    egoSkillCoinOperator(skill) {
+      let op = 'ADD';
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.egoSync) op = e.op;
+          else break;
+        }
+      }
+      return op === 'SUB' ? '-' : '+';
+    },
+    egoSkillCoinTypes(skill) {
+      let ct = [];
+      if (skill.ci?.length) {
+        for (const e of skill.ci) {
+          if (e.g <= this.egoSync) ct = e.ct;
+          else break;
+        }
+      }
+      return ct;
+    },
+    egoSkillTypeIcons(skill) {
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
+      const atkIcon = atkMap[skill.at] ?? null;
+      const defIcon = defMap[skill.dt] ?? null;
+      if (atkIcon && defIcon) return [defIcon, atkIcon];
+      if (atkIcon) return [atkIcon];
+      if (defIcon) return [defIcon];
+      return [];
+    },
+    egoSkillAtkIconSrc(skill) {
+      return (skill.dt === 'EVADE' || skill.dt === 'GUARD')
+        ? '/images/ui/personality_skillDef.png'
+        : '/images/ui/personality_atk.png';
+    },
+    egoSkillLevelValueText(skill) {
+      return String(60 + this.egoSkillLevelCorrection(skill));
+    },
+    egoSkillLevelCoinText(skill) {
+      const c = this.egoSkillLevelCorrection(skill);
+      if (c >= 0) return `(Lv + ${c})`;
+      return `(Lv - ${Math.abs(c)})`;
+    },
+    egoSkillDesc(skill) {
+      if (!skill) return null;
+      const dl = egoSkillDescMap?.[String(skill.id)];
+      if (!dl?.length) return null;
+      let entry = null;
+      for (const d of dl) {
+        if (d.level <= this.egoSync) entry = d;
+        else break;
+      }
+      return entry;
+    },
     togglePersonalityView() {
       const id = this.personalityDetail.id;
       this.gacksungIds = { ...this.gacksungIds, [id]: !this.gacksungIds[id] };
@@ -938,5 +1862,16 @@ function scrollWrap(selector) {
     }
   };
 }
+</script>
+{{ $eggJs := resources.Get "js/easteregg-config.js" | fingerprint }}
+<script src="{{ $eggJs.RelPermalink }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (Math.random() < PRISONER_CATEGORY_CHANGE_PROB) {
+      document.querySelectorAll('.personality-category-label .cat-icon').forEach(function(img) {
+        img.src = img.src.replace('/images/category/', '/images/easteregg/');
+      });
+    }
+  });
 </script>
 {{ end }}

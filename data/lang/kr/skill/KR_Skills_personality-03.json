@@ -11,14 +11,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             }
@@ -32,14 +32,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 1 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -53,14 +53,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 1 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -84,10 +84,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttackHead] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -106,10 +106,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttackHead] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -128,10 +128,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -150,21 +150,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -185,21 +185,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -241,7 +241,7 @@
         {
           "level": 4,
           "name": "배로 갚기",
-          "desc": "[StartBattle] 질투 완전 공명 수의 합이 6 이상이면, 반격 시 '정의로운 앙갚음' 스킬을 사용함.\n변경 시 해당 스킬의 속성이 질투로 변경됨.\n(조작 패널의 왼쪽 슬롯 스킬부터 발동. 턴 당 최대 2회 발동)",
+          "desc": "[StartBattle] 질투 완전 공명 수의 합이 6 이상이면, 반격 시 '정의로운 [AaCePbBe]' 스킬을 사용함.\n변경 시 해당 스킬의 속성이 질투로 변경됨.\n(조작 패널의 왼쪽 슬롯 스킬부터 발동. 턴 당 최대 2회 발동)",
           "coinlist": [
             {
               "coindescs": [
@@ -272,21 +272,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -307,21 +307,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -545,7 +545,7 @@
         {
           "level": 1,
           "name": "들썩이는 이빨",
-          "desc": "[EndBattle] 남은 보호막 수치만큼 체력 회복 (턴 당 1회. 최대 회복량: 최대 체력의 10%)",
+          "desc": "[EndBattle] 남은 [Protection]막 수치만큼 체력 회복 (턴 당 1회. 최대 회복량: 최대 체력의 10%)",
           "coinlist": [
             {
               "coindescs": [
@@ -559,7 +559,7 @@
         {
           "level": 4,
           "name": "들썩이는 이빨",
-          "desc": "[WhenUse] 대상의 [Burst]이 6 이상이면 최종 위력 +3\n[EndBattle] 남은 보호막 수치만큼 체력 회복 (턴 당 1회. 최대 회복량: 최대 체력의 10%)",
+          "desc": "[WhenUse] 대상의 [Burst]이 6 이상이면 최종 위력 +3\n[EndBattle] 남은 [Protection]막 수치만큼 체력 회복 (턴 당 1회. 최대 회복량: 최대 체력의 10%)",
           "coinlist": [
             {
               "coindescs": [
@@ -700,7 +700,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] [Breath]이 없거나 [Breath] 위력을 가장 적게 보유한 아군 1명에게 [Breath] 2 부여\n<style=\"highlight\">대상이 검계 조직원이면 호흡 2 추가 부여</style>"
+                  "desc": "[CriticalOnSucceedAttack] [Breath]이 없거나 [Breath] 위력을 가장 적게 보유한 아군 1명에게 [Breath] 2 부여\n<style=\"highlight\">대상이 검계 조직원이면 [Breath] 2 추가 부여</style>"
                 }
               ]
             }
@@ -1044,7 +1044,7 @@
         {
           "level": 1,
           "name": "참는 것은 끝이다",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음",
           "coinlist": [
             {},
             {
@@ -1059,7 +1059,7 @@
         {
           "level": 2,
           "name": "참는 것은 끝이다",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 이상이면 코인 위력 +1</style>",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 이상이면 코인 위력 +1</style>",
           "coinlist": [
             {},
             {
@@ -1074,7 +1074,7 @@
         {
           "level": 4,
           "name": "참는 것은 끝이다",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">6 당</style> 코인 위력 +1 <style=\"highlight\">(최대 2)</style>",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 5 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">6 당</style> 코인 위력 +1 <style=\"highlight\">(최대 2)</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -1100,7 +1100,7 @@
         {
           "level": 1,
           "name": "원하는대로 펼쳐라",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n[BeforeAttack] [BloodArmorPersonalityFirst] 10 이상이면, 공격 가중치 +1",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n[BeforeAttack] [BloodArmorPersonalityFirst] 10 이상이면, 공격 가중치 +1",
           "coinlist": [
             {
               "coindescs": [
@@ -1124,7 +1124,7 @@
         {
           "level": 2,
           "name": "원하는대로 펼쳐라",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 이상이면, 코인 위력 +1</style>\n[BeforeAttack] [BloodArmorPersonalityFirst] <style=\"highlight\">10 당</style> 공격 가중치 1 증가 <style=\"highlight\">(최대 2)</style>",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 이상이면, 코인 위력 +1</style>\n[BeforeAttack] [BloodArmorPersonalityFirst] <style=\"highlight\">10 당</style> 공격 가중치 1 증가 <style=\"highlight\">(최대 2)</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -1148,7 +1148,7 @@
         {
           "level": 4,
           "name": "원하는대로 펼쳐라",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">6 당</style> 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[BeforeAttack] [BloodArmorPersonalityFirst] 10 당 공격 가중치 1 증가 (최대 2)",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 30%만큼 체력 회복 (최대 10 회복)\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">6 당</style> 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[BeforeAttack] [BloodArmorPersonalityFirst] 10 당 공격 가중치 1 증가 (최대 2)",
           "coinlist": [
             {
               "coindescs": [
@@ -1177,7 +1177,7 @@
         {
           "level": 3,
           "name": "꿰뚫겠습니다",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 50%만큼 체력 회복 (최대 10 회복)\n[WhenUse] 자신의 [BloodArmorPersonalityFirst] 10 당, 합 위력 +1 (최대 2)\n[WhenUse] 대상의 [Laceration] 10 이상이면, 코인 위력 +1\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1 얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 10 얻음\n대상의 [Laceration]당 피해량 +5% (최대 50%)\n자신의 [BloodDinner_Accumulation] 100 당 피해량 +10% (최대 50%)\n[EndSkill] 대상이 사망한 경우 [BloodDinner] 30 증가. [BloodArmorPersonalityFirst] 10 얻음 (턴 당 1회)",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 50%만큼 체력 회복 (최대 10 회복)\n[WhenUse] 자신의 [BloodArmorPersonalityFirst] 10 당, 합 위력 +1 (최대 2)\n[WhenUse] 대상의 [Laceration] 10 이상이면, 코인 위력 +1\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1 얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 10 얻음\n대상의 [Laceration]당 피해량 +5% (최대 50%)\n자신의 [BloodDinner_Accumulation] 100 당 피해량 +10% (최대 50%)\n[EndSkill] 대상이 사망한 경우 [BloodDinner] 30 증가. [BloodArmorPersonalityFirst] 10 얻음 (턴 당 1회)",
           "coinlist": [
             {},
             {},
@@ -1193,7 +1193,7 @@
         {
           "level": 4,
           "name": "꿰뚫겠습니다",
-          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 50%만큼 체력 회복 (최대 10 회복)\n[WhenUse] 자신의 [BloodArmorPersonalityFirst] 10 당, 합 위력 +1 (최대 2)\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">5 당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1 얻음\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 10 얻음\n대상의 [Laceration]당 피해량 +5% (최대 50%)\n자신의 [BloodDinner_Accumulation] 100 당 피해량 +<style=\"highlight\">20</style>% (최대 <style=\"highlight\">100</style>%)\n[EndSkill] 대상이 사망한 경우 [BloodDinner] <style=\"highlight\">60</style> 증가. [BloodArmorPersonalityFirst] 10 얻음 (턴 당 1회)",
+          "desc": "이 스킬에서 적중 시, 입힌 체력 피해량의 50%만큼 체력 회복 (최대 10 회복)\n[WhenUse] 자신의 [BloodArmorPersonalityFirst] 10 당, 합 위력 +1 (최대 2)\n[WhenUse] 대상의 [Laceration] <style=\"highlight\">5 당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] [BloodDinner]을 최대 50 소모하여, 소모한 [BloodDinner] 10 당, [BloodArmorPersonalityFirst] 1 얻음\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 10 얻음\n대상의 [Laceration]당 피해량 +5% (최대 50%)\n자신의 [BloodDinner_Accumulation] 100 당 피해량 +<style=\"highlight\">20</style>% (최대 <style=\"highlight\">100</style>%)\n[EndSkill] 대상이 사망한 경우 [BloodDinner] <style=\"highlight\">60</style> 증가. [BloodArmorPersonalityFirst] 10 얻음 (턴 당 1회)",
           "coinlist": [
             {},
             {},
@@ -1214,7 +1214,7 @@
         {
           "level": 1,
           "name": "웃음소리는 사그라들 것이다",
-          "desc": "[DuelCounter]\n[StartBattle] [BloodDinner]을 최대 50 소모하여 [BloodDinner] 10 당 [BloodArmorPersonalityFirst] 1얻음.\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 10 얻음\n[StartBattle] [BloodDinner_Common_Accumulation] 50 당 체력이 가장 적은 아군 1명에게 [SwirlingBloodPersonality] 1 부여 (최대 10, 턴 당 1회)",
+          "desc": "[DuelCounter]\n[StartBattle] [BloodDinner]을 최대 50 소모하여 [BloodDinner] 10 당 [BloodArmorPersonalityFirst] 1얻음.\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 10 얻음\n[StartBattle] [BloodDinner_Common_Accumulation] 50 당 체력이 가장 적은 아군 1명에게 [SwirlingBloodPersonality] 1 부여 (최대 10, 턴 당 1회)",
           "coinlist": [
             {},
             {
@@ -1229,7 +1229,7 @@
         {
           "level": 4,
           "name": "웃음소리는 사그라들 것이다",
-          "desc": "[DuelCounter]\n[StartBattle] [BloodDinner]을 최대 50 소모하여 [BloodDinner] 10 당 [BloodArmorPersonalityFirst] 1얻음.\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 10 얻음\n[StartBattle] [BloodDinner_Common_Accumulation] 50 당 체력이 가장 적은 아군 1명에게 [SwirlingBloodPersonality] 1 부여 (최대 <style=\"highlight\">15</style>, 턴 당 1회)",
+          "desc": "[DuelCounter]\n[StartBattle] [BloodDinner]을 최대 50 소모하여 [BloodDinner] 10 당 [BloodArmorPersonalityFirst] 1얻음.\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 10 얻음\n[StartBattle] [BloodDinner_Common_Accumulation] 50 당 체력이 가장 적은 아군 1명에게 [SwirlingBloodPersonality] 1 부여 (최대 <style=\"highlight\">15</style>, 턴 당 1회)",
           "coinlist": [
             {},
             {
@@ -1524,7 +1524,7 @@
                   "desc": "[SuperCoin]"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] <style=\"highlight\">8</style> 부여, 출혈 횟수 4 증가"
+                  "desc": "[OnSucceedAttack] [Laceration] <style=\"highlight\">8</style> 부여, [Laceration] 횟수 4 증가"
                 },
                 {
                   "desc": "[EndSkill] 대상이 사망했으면, 모든 적에게 [Laceration] 5 부여, [Laceration] 횟수 1 증가"
@@ -2867,7 +2867,7 @@
         {
           "level": 1,
           "name": "지령이 하사한 지령으로 만들어진 천",
-          "desc": "[UnlockBuff_Base] 단계 1당, 최종 위력 +1 (최대 3)\n[StartBattle] 자신의 최대 체력의 10%만큼 보호막 얻음 (턴당 1회)\n- [KarmaOfIndexAlly] 5당 이 효과로 얻는 보호막 수치가 1%씩 감소하여, [KarmaOfIndexAlly] 수치가 50 이상이면 보호막 얻지 않음\n[WhenUse] 자신의 [Breath] 횟수 2 증가\n[EndBattle] [UnlockBuff_Base]이 없으면, [UnlockBuffAlly_1] 얻음 (턴당 1회)\n- [BlessingOfIndexPrescriptAlly]가 3으로 변경됨\n- 증가한 [BlessingOfIndexPrescriptAlly] 1당 다음 턴 시작 시 [KarmaOfIndexAlly] 5 얻음",
+          "desc": "[UnlockBuff_Base] 단계 1당, 최종 위력 +1 (최대 3)\n[StartBattle] 자신의 최대 체력의 10%만큼 [Protection]막 얻음 (턴당 1회)\n- [KarmaOfIndexAlly] 5당 이 효과로 얻는 [Protection]막 수치가 1%씩 감소하여, [KarmaOfIndexAlly] 수치가 50 이상이면 [Protection]막 얻지 않음\n[WhenUse] 자신의 [Breath] 횟수 2 증가\n[EndBattle] [UnlockBuff_Base]이 없으면, [UnlockBuffAlly_1] 얻음 (턴당 1회)\n- [BlessingOfIndexPrescriptAlly]가 3으로 변경됨\n- 증가한 [BlessingOfIndexPrescriptAlly] 1당 다음 턴 시작 시 [KarmaOfIndexAlly] 5 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -2889,7 +2889,7 @@
         {
           "level": 4,
           "name": "지령이 하사한 지령으로 만들어진 천",
-          "desc": "[UnlockBuff_Base] 단계 1당, 최종 위력 +1, <style=\"highlight\">피해량 +15%</style> (각각 최대 3, <style=\"highlight\">최대 45%</style>)\n[StartBattle] 자신의 최대 체력의 <style=\"highlight\">15%</style>만큼 보호막 얻음 (턴당 1회)\n- [KarmaOfIndexAlly] 5당 이 효과로 얻는 보호막 수치가 <style=\"highlight\">1.5%</style>씩 감소하여, [KarmaOfIndexAlly] 수치가 50 이상이면 보호막 얻지 않음\n[WhenUse] 자신의 [Breath] 횟수 2 증가\n[EndBattle] [UnlockBuff_Base]이 없으면, [UnlockBuffAlly_1] 얻음 (턴당 1회)\n- [BlessingOfIndexPrescriptAlly]가 3으로 변경됨\n- 증가한 [BlessingOfIndexPrescriptAlly] 1당 다음 턴 시작 시 [KarmaOfIndexAlly] 5 얻음",
+          "desc": "[UnlockBuff_Base] 단계 1당, 최종 위력 +1, <style=\"highlight\">피해량 +15%</style> (각각 최대 3, <style=\"highlight\">최대 45%</style>)\n[StartBattle] 자신의 최대 체력의 <style=\"highlight\">15%</style>만큼 [Protection]막 얻음 (턴당 1회)\n- [KarmaOfIndexAlly] 5당 이 효과로 얻는 [Protection]막 수치가 <style=\"highlight\">1.5%</style>씩 감소하여, [KarmaOfIndexAlly] 수치가 50 이상이면 [Protection]막 얻지 않음\n[WhenUse] 자신의 [Breath] 횟수 2 증가\n[EndBattle] [UnlockBuff_Base]이 없으면, [UnlockBuffAlly_1] 얻음 (턴당 1회)\n- [BlessingOfIndexPrescriptAlly]가 3으로 변경됨\n- 증가한 [BlessingOfIndexPrescriptAlly] 1당 다음 턴 시작 시 [KarmaOfIndexAlly] 5 얻음",
           "coinlist": [
             {
               "coindescs": [

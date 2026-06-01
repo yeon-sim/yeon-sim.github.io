@@ -1,6 +1,6 @@
 // ── 연심(連心) Service Worker ──
 // CACHE_VERSION: 게임 데이터 대규모 업데이트 시 올려서 이미지 캐시를 초기화합니다.
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v5';
 const STATIC_CACHE  = `yeon-sim-static-${CACHE_VERSION}`;
 const IMAGE_CACHE   = `yeon-sim-images-${CACHE_VERSION}`;
 
@@ -55,7 +55,7 @@ async function cacheFirst(cacheName, request) {
   if (cached) return cached;
 
   try {
-    const response = await fetch(request);
+    const response = await fetch(new Request(request, { cache: 'reload' }));
     if (response.ok) cache.put(request, response.clone());
     return response;
   } catch (err) {

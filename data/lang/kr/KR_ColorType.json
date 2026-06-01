@@ -1,0 +1,32 @@
+{
+  "list": [
+    {
+      "id": "CRIMSON",
+      "name": "분노"
+    },
+    {
+      "id": "SCARLET",
+      "name": "색욕"
+    },
+    {
+      "id": "AMBER",
+      "name": "나태"
+    },
+    {
+      "id": "SHAMROCK",
+      "name": "탐식"
+    },
+    {
+      "id": "AZURE",
+      "name": "우울"
+    },
+    {
+      "id": "INDIGO",
+      "name": "오만"
+    },
+    {
+      "id": "VIOLET",
+      "name": "질투"
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 // 선의의 순례 에고 기프트 등장 확률
 const PILGRIMAGE_APPEAR_PROB = 0.1;
+// 선의의 순례 카테고리 숨김 요구 클릭 횟수
 const PILGRIMAGE_HIDE_CLICK_COUNT = 5;
+
+// 수감자 카테고리 아이콘 변경 확률
+const PRISONER_CATEGORY_CHANGE_PROB = 0.1;
 
 // 프리셋 이름 Placeholder 목록
 const PRESET_PLACEHOLDER = [
