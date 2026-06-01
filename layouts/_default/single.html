@@ -1227,14 +1227,14 @@
                         <div class="passive-condition">
                           <template x-for="c in (passiveInfo(passiveId).stock ?? [])" :key="c.t + 'stock'">
                             <span class="passive-cond-item">
-                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
                               <span x-text="`X ${c.v}`"></span>
                             </span>
                           </template>
                           <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
                           <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
                             <span class="passive-cond-item">
-                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
                               <span x-text="`X ${c.v} 공명`"></span>
                             </span>
                           </template>
@@ -1263,14 +1263,14 @@
                         <div class="passive-condition">
                           <template x-for="c in (passiveInfo(passiveId).stock ?? [])" :key="c.t + 'stock'">
                             <span class="passive-cond-item">
-                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
                               <span x-text="`X ${c.v}`"></span>
                             </span>
                           </template>
                           <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
                           <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
                             <span class="passive-cond-item">
-                              <img class="passive-cond-icon" :src="`/images/sin/BattleUI_Choice 1_${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
+                              <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
                               <span x-text="`X ${c.v} 공명`"></span>
                             </span>
                           </template>
