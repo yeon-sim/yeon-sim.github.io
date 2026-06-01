@@ -470,7 +470,7 @@
             class="filter-btn"
             :class="{ active: activeColorTypes.includes('{{ .id }}') }"
             @click="toggleColorType('{{ .id }}')"
-          ><img class="filter-btn-icon" src="/images/sin/{{ .id | title }}.png" alt="">{{ .name }}</button>
+          ><img class="filter-btn-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt="">{{ .name }}</button>
           {{ end }}
         </div>
         <div class="controls-right">
