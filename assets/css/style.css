@@ -3965,6 +3965,49 @@ button.site-nav-link.site-nav-link--active {
   gap: 0.3rem;
   width: calc(10 * 100px + 9 * (0.25rem + 2px) - 28px);
 }
+.personality-card-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.personality-support-panel {
+  position: absolute;
+  left: 100%;
+  margin-left: 4px;
+  top: 6px;
+  bottom: 6px; /* 간단히·자세히1 기준 (자세히2는 아래 규칙에서 0) */
+  width: 200px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  border: 10px solid transparent;
+  padding: 4px 0 0 0; /* 상단 텍스트가 border-image에 가려지지 않도록 여백 */
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+/* 자세히2: 카드 하단(detail2)까지 맞추기 위해 bottom 0 */
+.personality-page.detail-mode-detail2 .personality-support-panel {
+  bottom: 0;
+}
+.personality-support-panel::-webkit-scrollbar {
+  display: none;
+}
+.support-passive-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.support-passive-name {
+  font-size: 0.72rem;
+  color: #edd0ac;
+  font-weight: bold;
+  line-height: 1.3;
+}
+/* 서포트 패널 본문 텍스트 (공용 .passive-desc 0.9rem 오버라이드) */
+.personality-support-panel .passive-desc {
+  font-size: 0.75rem;
+}
 .ego-row {
   display: flex;
   flex-wrap: wrap;
@@ -4147,7 +4190,8 @@ button.site-nav-link.site-nav-link--active {
   pointer-events: none;
 }
 /* 자세히/간단히 토글 */
-.detail-toggle-btn {
+.detail-toggle-btn,
+.support-toggle-btn {
   width: 102px;
 }
 /* 간단히: 1안·2안 모두 숨김 */
@@ -4171,7 +4215,6 @@ button.site-nav-link.site-nav-link--active {
   padding: 0px 0px;
   background: none;
   border: 10px solid transparent;
-  border-image: url('/images/ui/personality_detail.png') 20 fill stretch;
 }
 .personality-card-detail2-row {
   display: grid;
@@ -4229,4 +4272,56 @@ button.site-nav-link.site-nav-link--active {
   height: 156px;
   width: auto;
   z-index: 0;
+}
+
+/* ── 콘텐츠 페이지 (사이트 소개·개인정보처리방침 등) ── */
+.content-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem 1.2rem 3rem;
+}
+.content-article {
+  color: #d8c6a8;
+  line-height: 1.75;
+  font-size: 0.95rem;
+  word-break: keep-all;
+}
+.content-title {
+  font-size: 1.6rem;
+  color: #edd0ac;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #4a3d2e;
+}
+.content-article h2 {
+  font-size: 1.15rem;
+  color: #fbc502;
+  margin: 1.8rem 0 0.7rem;
+}
+.content-article p {
+  margin: 0.7rem 0;
+}
+.content-article ul {
+  margin: 0.7rem 0;
+  padding-left: 1.3rem;
+  list-style: disc;
+}
+.content-article li {
+  margin: 0.35rem 0;
+}
+.content-article a {
+  color: #7fb2ff;
+  text-decoration: underline;
+}
+.content-article a:hover {
+  color: #a9ccff;
+}
+.content-article hr {
+  border: none;
+  border-top: 1px solid #4a3d2e;
+  margin: 1.6rem 0;
+}
+.content-article strong {
+  color: #edd0ac;
 }

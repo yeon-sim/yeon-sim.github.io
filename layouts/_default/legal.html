@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="content-page" x-data="{ sponsorModal: false }">
+  {{ partial "site-header.html" "page" }}
+  {{ partial "sponsor-modal.html" . }}
+  <main class="content-main">
+    <article class="content-article">
+      <h1 class="content-title">{{ .Title }}</h1>
+      {{ .Content }}
+    </article>
+  </main>
+  {{ partial "site-footer.html" . }}
+</div>
+{{ end }}

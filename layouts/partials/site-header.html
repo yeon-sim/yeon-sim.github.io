@@ -33,14 +33,14 @@
   <nav class="site-nav">
     <a class="site-nav-link{{ if eq $page "gift" }} site-nav-link--active{{ end }}" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
     <span class="site-nav-sep"></span>
-    {{ if eq $page "gift" }}
-    <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
-    <span class="site-nav-sep"></span>
-    <a class="site-nav-link" href="/personality/#ego"><img src="/images/ui/page_egoskill.png" alt="">E.G.O</a>
-    {{ else }}
+    {{ if eq $page "personality" }}
     <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'personality' }" @click="pageMode = 'personality'"><img src="/images/ui/page_prisoner.png" alt="">수감자</button>
     <span class="site-nav-sep"></span>
     <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'ego' }" @click="pageMode = 'ego'"><img src="/images/ui/page_egoskill.png" alt="">E.G.O</button>
+    {{ else }}
+    <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
+    <span class="site-nav-sep"></span>
+    <a class="site-nav-link" href="/personality/#ego"><img src="/images/ui/page_egoskill.png" alt="">E.G.O</a>
     {{ end }}
   </nav>
 </header>

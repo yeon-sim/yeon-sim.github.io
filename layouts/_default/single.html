@@ -306,7 +306,7 @@
   {{ end }}
 {{ end }}
 
-<div class="personality-page" x-data="personalityPage()" :class="'detail-mode-' + detailMode">
+<div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, { 'show-support': showSupport }]">
 
   {{/* ── SVG 색상 필터 정의 ── */}}
   <svg id="skill-color-filters-svg" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
@@ -474,6 +474,7 @@
           {{ end }}
         </div>
         <div class="controls-right">
+          <button class="filter-btn support-toggle-btn" x-show="pageMode === 'personality'" style="display:none" :class="{ active: showSupport }" @click="showSupport = !showSupport"><img class="filter-btn-icon" src="/images/ui/support.png" alt="">서포트</button>
           <button class="filter-btn detail-toggle-btn" @click="detailMode = pageMode === 'ego' ? (detailMode === 'simple' ? 'detail2' : 'simple') : (detailMode === 'simple' ? 'detail1' : detailMode === 'detail1' ? 'detail2' : 'simple')">
             <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
             <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? '간단히' : '자세히') : (detailMode === 'simple' ? '간단히' : detailMode === 'detail1' ? '자세히 1' : '자세히 2')"></span>
@@ -633,8 +634,10 @@
           {{ range $skills }}{{ with index .sd 0 }}{{ $skillColors = $skillColors | append .a }}{{ end }}{{ end }}
           {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
           {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
-          <div class="personality-card"
+          <div class="personality-card-wrap"
             x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }} })"
+            :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
+          <div class="personality-card"
             @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
             {{ $dt := "" }}
             {{ with index $defSkills 0 }}{{ $dt = .dt }}{{ end }}
@@ -711,7 +714,7 @@
               <span class="personality-card-name">{{ replace $title "\n" "<br>" | safeHTML }}</span>
               {{ end }}
             </div>
-            <div class="personality-card-detail2">
+            <div class="personality-card-detail2" style="border-image: url('/images/ui/personality_detail_{{ printf "%02d" (int .rank) }}.png') 20 fill stretch;">
               <div class="personality-card-detail2-row">
                 {{ range .skillKeywordList }}
                 <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
@@ -737,6 +740,30 @@
                 {{ end }}
               </div>
             </div>
+            <div class="personality-support-panel" x-show="showSupport" @contextmenu.stop style="display:none; border-image: url('/images/ui/support_panel_backgruond_{{ printf "%02d" (int .rank) }}.png') 40 fill stretch;">
+            {{ $spLen := len $passiveSp }}
+            {{ if gt $spLen 0 }}
+            {{ $spEntry := index $passiveSp (sub $spLen 1) }}
+            {{ range $spEntry.ids }}
+            {{ $p := index $passiveMap (string .) }}
+            {{ if $p }}
+            <div class="support-passive-item">
+              <span class="support-passive-name">{{ $p.name | default "" }}</span>
+              {{ $spRes := $p.res | default slice }}{{ $spStock := $p.stock | default slice }}
+              {{ if or (gt (len $spRes) 0) (gt (len $spStock) 0) }}
+              <div class="passive-condition">
+                {{ range $spStock }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt="">X {{ .v }}</span>{{ end }}
+                {{ if gt (len $spStock) 0 }}<span class="passive-cond-item">보유</span>{{ end }}
+                {{ range $spRes }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt="">X {{ .v }} 공명</span>{{ end }}
+              </div>
+              {{ end }}
+              <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo('{{ string . }}').desc)" @click="handlePassiveDescClick($event)"></div>
+            </div>
+            {{ end }}
+            {{ end }}
+            {{ end }}
+          </div>
+          </div>
           </div>
           {{ end }}
         </div>
@@ -1349,6 +1376,7 @@ function personalityPage() {
     egoDetail: null,
     egoSync: 4,
     egoTab: 'profile',
+    showSupport: false,
     egoOverclock: false,
     egoNoECgIds: {},
     get egoCgImg() {

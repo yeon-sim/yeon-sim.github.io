@@ -2,6 +2,10 @@ baseURL = 'https://yeon-sim.github.io/'
 ignoreFiles = ['[/\\\\]temp[/\\\\]']
 languageCode = 'ko'
 title = '연심(連心)'
+enableRobotsTXT = true
+
+[params]
+  description = '연심(連心)은 Limbus Company의 인격·E.G.O·기프트 정보를 정리한 비공식 팬 레퍼런스 사이트입니다.'
 
 [markup]
   [markup.goldmark]
