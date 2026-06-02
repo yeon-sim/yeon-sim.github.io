@@ -224,6 +224,7 @@
                   </template>
                 </span>
               </div>
+              <button class="card-save-btn" @click.stop="copyPackPanelCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
           </template>
         </div>
@@ -347,6 +348,7 @@
             alt="{{ $badgeCat }}"
             loading="lazy"
           >{{ end }}
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -394,6 +396,7 @@
             alt="{{ $badgeCat2 }}"
             loading="lazy"
           >{{ end }}
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -442,6 +445,7 @@
             loading="lazy"
             alt="{{ $badgeCatEgg }}"
           >{{ end }}
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -816,6 +820,7 @@
                 :src="`/images/category/${(popup.categoryOrigin || popup.category || '').toLowerCase()}.png`"
                 :alt="popup.categoryOrigin || popup.category"
               >
+              <button class="card-save-btn" @click.stop="copyGiftPopupIcon($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
             <div class="upgrade-btns" x-show="popup.upgrades && popup.upgrades.length" :class="{ 'upgrade-btns--left': popup.upgrades.length < 2 }">
               <button class="upgrade-btn" :class="{ selected: popup.upgradeLevel === 0 }" @click="popup.upgradeLevel = 0">
@@ -975,6 +980,7 @@
                 <span :style="{ color: part.color }" x-text="part.text"></span>
               </template>
             </span>
+            <button class="card-save-btn" @click.stop="copyPackSprite($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
           </div>
           <div class="pack-popup-info">
             <div class="pack-popup-conditions">
@@ -1843,6 +1849,141 @@ function checklist() {
         }
       };
       setTimeout(fitPackName, 0);
+    },
+
+    async composeGiftBlob(wrap) {
+      const root = wrap.getBoundingClientRect();
+      const size = 100;
+      const scale = 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = size * scale;
+      canvas.height = size * scale;
+      const ctx = canvas.getContext('2d');
+      const loadDraw = (src, dx, dy, dw, dh) => new Promise(resolve => {
+        if (!src) return resolve();
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, Math.round(dx * scale), Math.round(dy * scale), Math.round(dw * scale), Math.round(dh * scale));
+          resolve();
+        };
+        img.onerror = resolve;
+        img.src = src;
+      });
+      // 배경: checked 상태 무시하고 항상 기본 배경 사용
+      const bgSrc = wrap.classList.contains('fusion')
+        ? '/images/egogift/gift_background_fusion.png'
+        : '/images/egogift/gift_background.png';
+      await loadDraw(bgSrc, 0, 0, size, size);
+      // 이미지 레이어: 새 Image()로 로드해 lazy 로딩 문제 회피
+      for (const sel of ['.gift-frame', '.gift-icon', '.gift-grade', '.gift-difficulty', '.cat-badge']) {
+        for (const img of wrap.querySelectorAll(sel)) {
+          const r = img.getBoundingClientRect();
+          if (!r.width || !r.height) continue;
+          await loadDraw(img.currentSrc || img.src, r.left - root.left, r.top - root.top, r.width, r.height);
+        }
+      }
+      return await new Promise(res => canvas.toBlob(res, 'image/png'));
+    },
+    async _copyBlob(btn, blobPromise, filename) {
+      try {
+        if (!navigator.clipboard || !window.ClipboardItem) throw new Error('미지원');
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })]);
+        btn._iconHtml ??= btn.innerHTML;
+        clearTimeout(btn._copyTimer);
+        btn.textContent = '복사됨';
+        btn._copyTimer = setTimeout(() => { btn.innerHTML = btn._iconHtml; }, 1200);
+      } catch(e) {
+        console.warn('복사 실패:', e);
+        const blob = await blobPromise;
+        if (!blob) return;
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename + '.png';
+        document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(a.href);
+      }
+    },
+    async copyGiftCard(ev) {
+      const btn = ev.currentTarget;
+      const wrap = btn.closest('.gift-card');
+      if (!wrap) return;
+      await this._copyBlob(btn, this.composeGiftBlob(wrap), wrap.dataset.id || 'gift');
+    },
+    async copyGiftPopupIcon(ev) {
+      const btn = ev.currentTarget;
+      const wrap = btn.closest('.gift-popup-icon-wrap');
+      if (!wrap) return;
+      const name = this.giftPopupStack[this.giftPopupStack.length - 1]?.name ?? 'gift';
+      await this._copyBlob(btn, this.composeGiftBlob(wrap), name);
+    },
+    async _composePackBlob(container, nameEl) {
+      const root = container.getBoundingClientRect();
+      const targetW = 120; // 팝업 스프라이트 너비 기준으로 정규화
+      const scale = 2;
+      const spriteEl = container.querySelector('.pack-popup-sprite, .pack-panel-sprite');
+      const spriteW = spriteEl ? spriteEl.getBoundingClientRect().width : root.width;
+      const factor = spriteW > 0 ? targetW / spriteW : 1;
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(root.width * factor * scale);
+      canvas.height = Math.round(root.height * factor * scale);
+      const ctx = canvas.getContext('2d');
+      const fs = factor * scale;
+      for (const img of container.querySelectorAll('img:not(.card-save-icon)')) {
+        const r = img.getBoundingClientRect();
+        if (!r.width || !r.height) continue;
+        await new Promise(resolve => {
+          const i = new Image();
+          i.onload = () => {
+            const cf = getComputedStyle(img).filter;
+            ctx.filter = (cf && cf !== 'none') ? cf : 'none';
+            ctx.drawImage(i,
+              Math.round((r.left - root.left) * fs),
+              Math.round((r.top - root.top) * fs),
+              Math.round(r.width * fs),
+              Math.round(r.height * fs)
+            );
+            ctx.filter = 'none';
+            resolve();
+          };
+          i.onerror = resolve;
+          i.src = img.currentSrc || img.src;
+        });
+      }
+      if (nameEl && nameEl.offsetParent !== null) {
+        const cs = getComputedStyle(nameEl);
+        ctx.font = `${cs.fontWeight} ${parseFloat(cs.fontSize) * fs}px ${cs.fontFamily}`;
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0,0,0,0.9)';
+        ctx.shadowBlur = 3 * fs;
+        const nr = nameEl.getBoundingClientRect();
+        const cy = Math.round((nr.top + nr.height / 2 - root.top) * fs);
+        const spans = [...nameEl.querySelectorAll('span')];
+        let totalW = 0;
+        spans.forEach(s => { totalW += ctx.measureText(s.textContent).width; });
+        let x = Math.round((nr.left + nr.width / 2 - root.left) * fs) - totalW / 2;
+        spans.forEach(s => {
+          ctx.fillStyle = s.style.color || cs.color;
+          ctx.fillText(s.textContent, x, cy);
+          x += ctx.measureText(s.textContent).width;
+        });
+        ctx.shadowBlur = 0;
+      }
+      return await new Promise(res => canvas.toBlob(res, 'image/png'));
+    },
+    async copyPackSprite(ev) {
+      const btn = ev.currentTarget;
+      const wrap = btn.closest('.pack-popup-sprite-wrap');
+      if (!wrap) return;
+      const nameEl = wrap.querySelector('.pack-popup-name');
+      await this._copyBlob(btn, this._composePackBlob(wrap, nameEl), this.packPopup?.name ?? 'pack');
+    },
+    async copyPackPanelCard(ev) {
+      const btn = ev.currentTarget;
+      const card = btn.closest('.pack-panel-item')?.querySelector('.pack-panel-card');
+      if (!card) return;
+      const nameEl = card.querySelector('.pack-panel-name');
+      const name = btn.closest('.pack-panel-item')?.title || 'pack';
+      await this._copyBlob(btn, this._composePackBlob(card, nameEl), name);
     },
 
     toggleNameDisplay() {

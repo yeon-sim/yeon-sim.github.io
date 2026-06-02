@@ -607,6 +607,9 @@ body {
 .pack-panel-item:hover {
   opacity: 0.8;
 }
+.pack-panel-item:hover .card-save-btn {
+  opacity: 1;
+}
 .pack-panel-item.is-selected {
   opacity: 0.5;
 }
@@ -834,6 +837,15 @@ body {
   transition: opacity 0.15s;
   user-select: none;
   -webkit-touch-callout: none;
+}
+.gift-card:hover .card-save-btn {
+  opacity: 1;
+}
+.gift-popup-icon-wrap:hover .card-save-btn {
+  opacity: 1;
+}
+.pack-popup-sprite-wrap:hover .card-save-btn {
+  opacity: 1;
 }
 
 .gift-card.fusion {
@@ -2068,9 +2080,17 @@ button.site-nav-link.site-nav-link--active {
   height: 100%;
   object-fit: contain;
 }
+.personality-detail-img-wrap {
+  position: relative;
+  width: 16%;
+  flex-shrink: 0;
+}
+.personality-detail-img-wrap:hover .card-save-btn {
+  opacity: 1;
+}
 .personality-detail-img {
   display: block;
-  width: 16%;
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -2245,12 +2265,16 @@ button.site-nav-link.site-nav-link--active {
   filter: brightness(0.6);  /* ← 낮출수록 어두워짐 (0.0~1.0) */
 }
 .ego-detail-cg-col {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
   width: 130px;    /* ← 1열 고정 너비 */
   flex-shrink: 0;
+}
+.ego-detail-cg-col:hover .card-save-btn {
+  opacity: 1;
 }
 .ego-detail-cg {
   width: 130px;   /* ← CG 이미지 너비 */
@@ -4017,10 +4041,14 @@ button.site-nav-link.site-nav-link--active {
 
 /* EGO 카드 래퍼: 비주얼 + 2안(skill keyword) 표기 세로 배치 */
 .ego-card-wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 120px;
+}
+.ego-card-wrap:hover .card-save-btn {
+  opacity: 1;
 }
 /* EGO skill keyword 표기 (자세히 1·2에서 표시, 키워드 없어도 테두리 유지) */
 .ego-card-detail2 { display: none; }
@@ -4044,6 +4072,44 @@ button.site-nav-link.site-nav-link--active {
   flex-shrink: 0;
 }
 
+/* 카드 PNG 저장 버튼 (hover 시 표시) */
+.card-save-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 4px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #5a4a36;
+  border-radius: 4px;
+  color: #edd0ac;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.card-save-icon {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+.personality-card:hover .card-save-btn {
+  opacity: 1;
+}
+.personality-detail-img-wrap .card-save-btn{
+  top: 1px;
+  right: 1px;
+}
+.card-save-btn:hover {
+  border-color: #fbc502;
+  color: #fbc502;
+}
+
 /* 테두리가 컨테이너 크기를 결정 (170px 기준) */
 .personality-card-rank {
   display: block;
@@ -4058,7 +4124,8 @@ button.site-nav-link.site-nav-link--active {
 .personality-card-name {
   position: absolute;
   bottom: 0.8rem;
-  right: 1rem;
+  left: 0.8rem;
+  right: 0.9rem;
   z-index: 2;
   font-size: 0.75rem;
   color: rgb(251, 197, 2);
@@ -4066,6 +4133,7 @@ button.site-nav-link.site-nav-link--active {
   line-height: 1.3;
   text-shadow: 0 1px 3px #000, 0 0 6px #000;
   pointer-events: none;
+  word-break: keep-all;
 }
 
 /* 등급 아이콘 — 좌상단 고정 */
