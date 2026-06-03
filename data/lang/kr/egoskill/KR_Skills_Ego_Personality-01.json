@@ -138,7 +138,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음"
                 },
                 {
                   "desc": "[BoseProjektil]당 크리티컬 피해량 +2% (최대 14%)"
@@ -178,7 +178,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
                 },
                 {
                   "desc": "[BoseProjektil]당 크리티컬 피해량 <style=\"highlight\">+5% (최대 35%)</style>"
@@ -218,7 +218,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
                 },
                 {
                   "desc": "[BoseProjektil]당 크리티컬 피해량 <style=\"highlight\">+9% (최대 63%)</style>"
@@ -269,7 +269,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음"
                 },
                 {
                   "desc": "[BoseProjektil]당 크리티컬 피해량 +2% (최대 14%)"
@@ -315,7 +315,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
                 },
                 {
                   "desc": "[BoseProjektil]당 크리티컬 피해량 <style=\"highlight\">+3% (최대 21%)</style>"
@@ -364,7 +364,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 [NailPersonality]했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
+                  "desc": "이 코인에는 서브 타겟만 피해를 입음\n- 첫번째 코인에서 아군을 처치하지 못했다면, 서브 타겟 중 무작위 1명이 피해를 입음<style=\"highlight\"></style>"
                 },
                 {
                   "desc": "<style=\"highlight\">[BoseProjektil]당 크리티컬 피해량 +4% (최대 28%)</style>"

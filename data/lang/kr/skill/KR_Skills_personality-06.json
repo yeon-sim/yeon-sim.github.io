@@ -6,19 +6,19 @@
         {
           "level": 1,
           "name": "에너지 순환",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 2 증가",
+          "desc": "[WhenUse] 자신의 충전 횟수 2 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             }
@@ -27,19 +27,19 @@
         {
           "level": 2,
           "name": "에너지 순환",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 3 증가",
+          "desc": "[WhenUse] 자신의 충전 횟수 3 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             }
@@ -48,19 +48,19 @@
         {
           "level": 4,
           "name": "에너지 순환",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 4 증가",
+          "desc": "[WhenUse] 자신의 충전 횟수 4 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 1 증가"
                 }
               ]
             }
@@ -74,13 +74,13 @@
         {
           "level": 1,
           "name": "정리 지원",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 2 증가\n자신에게 [Protection]막이 있을 때 합 위력 +1",
+          "desc": "[WhenUse] 자신의 충전 횟수 2 증가\n자신에게 보호막이 있을 때 합 위력 +1",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 자신의 [Charge] 횟수가 10 이상이면, 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 2를 얻음"
+                  "desc": "[OnSucceedAttackHead] 자신의 충전 횟수가 10 이상이면, 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 2를 얻음"
                 }
               ]
             }
@@ -89,19 +89,19 @@
         {
           "level": 2,
           "name": "정리 지원",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 3 증가\n자신에게 [Protection]막이 있을 때 합 위력 +2",
+          "desc": "[WhenUse] 자신의 충전 횟수 3 증가\n자신에게 보호막이 있을 때 합 위력 +2",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 3 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수가 10 이상이면, 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 2를 얻음"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수가 10 이상이면, 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 2를 얻음"
                 }
               ]
             }
@@ -110,19 +110,19 @@
         {
           "level": 4,
           "name": "정리 지원",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 3 증가\n자신에게 [Protection]막이 있을 때 합 위력 +2",
+          "desc": "[WhenUse] 자신의 충전 횟수 3 증가\n자신에게 보호막이 있을 때 합 위력 +2",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 3 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수가 5 이상이면, 다음 턴에 [Charge] 횟수 5 당 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 1을 얻음 (최대 4)"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수가 5 이상이면, 다음 턴에 충전 횟수 5 당 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 1을 얻음 (최대 4)"
                 }
               ]
             }
@@ -136,17 +136,17 @@
         {
           "level": 3,
           "name": "충전 역장 전개",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수가 10 이상이면, [Charge] 횟수를 전부 소모하여 자신을 포함하여 현재 체력 비율이 낮은 아군 2명에게 (소모한 [Charge] 횟수/2)만큼 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 부여 (소수점 버림)",
+          "desc": "[WhenUse] 자신의 충전 횟수가 10 이상이면, 충전 횟수를 전부 소모하여 자신을 포함하여 현재 체력 비율이 낮은 아군 2명에게 (소모한 충전 횟수/2)만큼 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 부여 (소수점 버림)",
           "coinlist": [
             {},
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 3 부여"
+                  "desc": "[OnSucceedAttack] 파열 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 2를 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 2를 얻음"
                 }
               ]
             }
@@ -155,17 +155,17 @@
         {
           "level": 4,
           "name": "충전 역장 전개",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수가 10 이상이면, [Charge] 횟수를 전부 소모하여 자신을 포함하여 현재 체력 비율이 낮은 아군 2명에게 (소모한 [Charge] 횟수/2)만큼 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 부여 (소수점 버림)",
+          "desc": "[WhenUse] 자신의 충전 횟수가 10 이상이면, 충전 횟수를 전부 소모하여 자신을 포함하여 현재 체력 비율이 낮은 아군 2명에게 (소모한 충전 횟수/2)만큼 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 부여 (소수점 버림)",
           "coinlist": [
             {},
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 5 부여"
+                  "desc": "[OnSucceedAttack] 파열 5 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 2를 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 2를 얻음"
                 }
               ]
             }
@@ -179,7 +179,7 @@
         {
           "level": 1,
           "name": "가드",
-          "desc": "[WhenUse] <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 2를 얻음 (턴 당 최대 3회)",
+          "desc": "[WhenUse] <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 2를 얻음 (턴 당 최대 3회)",
           "coinlist": [
             {}
           ]
@@ -187,7 +187,7 @@
         {
           "level": 4,
           "name": "가드",
-          "desc": "[WhenUse] <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> <style=\"highlight\">3</style>을 얻음 (턴 당 최대 3회)",
+          "desc": "[WhenUse] <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> <style=\"highlight\">3</style>을 얻음 (턴 당 최대 3회)",
           "coinlist": [
             {}
           ]
@@ -206,10 +206,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+                  "desc": "[OnSucceedAttackHead] 출혈 횟수 1 증가"
                 }
               ]
             }
@@ -224,10 +224,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttack] 출혈 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+                  "desc": "[OnSucceedAttackHead] 출혈 횟수 1 증가"
                 }
               ]
             }
@@ -236,16 +236,16 @@
         {
           "level": 4,
           "name": "추적",
-          "desc": "자신의 [Agility] 이 2 이상이면, 최종 위력 +1",
+          "desc": "자신의 신속 이 2 이상이면, 최종 위력 +1",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttack] 출혈 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+                  "desc": "[OnSucceedAttackHead] 출혈 횟수 1 증가"
                 }
               ]
             }
@@ -259,26 +259,26 @@
         {
           "level": 1,
           "name": "먼저 간다",
-          "desc": "[WhenUse] 다음 턴에 [Agility] 1을 얻음",
+          "desc": "[WhenUse] 다음 턴에 신속 1을 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 [Laceration] 횟수 증가 (최대 2)"
+                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 출혈 횟수 증가 (최대 2)"
                 }
               ]
             }
@@ -287,26 +287,26 @@
         {
           "level": 2,
           "name": "먼저 간다",
-          "desc": "[WhenUse] 다음 턴에 [Agility] 2를 얻음",
+          "desc": "[WhenUse] 다음 턴에 신속 2를 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 [Laceration] 횟수 증가 (최대 3)"
+                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 출혈 횟수 증가 (최대 3)"
                 }
               ]
             }
@@ -315,26 +315,26 @@
         {
           "level": 4,
           "name": "먼저 간다",
-          "desc": "자신의 속도가 6 이상이면, 코인 위력 +1\n[WhenUse] 다음 턴에 [Agility] 2를 얻음",
+          "desc": "자신의 속도가 6 이상이면, 코인 위력 +1\n[WhenUse] 다음 턴에 신속 2를 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 [Laceration] 횟수 증가 (최대 4)"
+                  "desc": "[OnSucceedAttack] 자신이 대상보다 속도가 높은 경우, 자신과 대상의 속도 차이만큼 출혈 횟수 증가 (최대 4)"
                 }
               ]
             }
@@ -353,7 +353,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 대상의 [Laceration] 1당 정신력 1 회복 (최대 5)"
+                  "desc": "[OnSucceedAttackHead] 대상의 출혈 1당 정신력 1 회복 (최대 5)"
                 }
               ]
             },
@@ -361,14 +361,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Laceration] 2 부여"
+                  "desc": "[OnSucceedAttackHead] 출혈 2 부여"
                 }
               ]
             }
@@ -382,7 +382,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 대상의 [Laceration] 1당 정신력 1 회복 (최대 10)"
+                  "desc": "[OnSucceedAttackHead] 대상의 출혈 1당 정신력 1 회복 (최대 10)"
                 }
               ]
             },
@@ -390,14 +390,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
+                  "desc": "[OnSucceedAttack] 출혈 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
+                  "desc": "[OnSucceedAttack] 출혈 2 부여"
                 }
               ]
             }
@@ -411,7 +411,7 @@
         {
           "level": 1,
           "name": "재빠름",
-          "desc": "[OnSucceedEvade] 다음 턴에 [Agility] 1을 얻음 (턴 당 최대 3회)",
+          "desc": "[OnSucceedEvade] 다음 턴에 신속 1을 얻음 (턴 당 최대 3회)",
           "coinlist": [
             {}
           ]
@@ -419,7 +419,7 @@
         {
           "level": 4,
           "name": "재빠름",
-          "desc": "대상의 [Laceration] 이 7 이상이면 코인 위력 +2\n[OnSucceedEvade] 다음 턴에 [Agility] 1을 얻음 (턴 당 최대 3회)",
+          "desc": "대상의 출혈 이 7 이상이면 코인 위력 +2\n[OnSucceedEvade] 다음 턴에 신속 1을 얻음 (턴 당 최대 3회)",
           "coinlist": [
             {}
           ]
@@ -780,7 +780,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 사용시 [Vibration] 횟수를 소모하지 [NailPersonality]했다면, 위 효과 발동 후 자신에게 [VibrationExplosion]"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 사용시 [Vibration] 횟수를 소모하지 못했다면, 위 효과 발동 후 자신에게 [VibrationExplosion]"
                 }
               ]
             }
@@ -829,7 +829,7 @@
         {
           "level": 1,
           "name": "잠깐만요?!",
-          "desc": "[WhenUse] 대상의 [Vibration] 횟수의 2배만큼 [Protection]막 체력을 얻음 (최대 7)",
+          "desc": "[WhenUse] 대상의 [Vibration] 횟수의 2배만큼 보호막 체력을 얻음 (최대 7)",
           "coinlist": [
             {}
           ]
@@ -837,7 +837,7 @@
         {
           "level": 4,
           "name": "잠깐만요?!",
-          "desc": "[WhenUse] 대상의 [Vibration] 횟수의 2배만큼 [Protection]막 체력을 얻음 (최대 <style=\"highlight\">13</style>)",
+          "desc": "[WhenUse] 대상의 [Vibration] 횟수의 2배만큼 보호막 체력을 얻음 (최대 <style=\"highlight\">13</style>)",
           "coinlist": [
             {}
           ]
@@ -969,7 +969,7 @@
             {
               "level": 4,
               "name": "뼈 부수기",
-              "desc": "대상의 [Burst]이 6 이상일 때, 코인 위력 +1\n[WhenUse] 대상의 [Burst]이 15, [Burst] 횟수가 3 이상이면, 이 스킬에서 [Burst]과 [Burst] 횟수를 부여하지 않는 대신 코인 위력 +1\n- 대상이 <혈귀>, <[BloodPocket]>면, 추가로 코인 위력 +1\n[WinDuel] [Burst] 횟수 1 증가",
+              "desc": "대상의 [Burst]이 6 이상일 때, 코인 위력 +1\n[WhenUse] 대상의 [Burst]이 15, [Burst] 횟수가 3 이상이면, 이 스킬에서 [Burst]과 [Burst] 횟수를 부여하지 않는 대신 코인 위력 +1\n- 대상이 <혈귀>, <피주머니>면, 추가로 코인 위력 +1\n[WinDuel] [Burst] 횟수 1 증가",
               "coinlist": [
                 {
                   "coindescs": [
@@ -1023,7 +1023,7 @@
             {
               "level": 4,
               "name": "상쾌한 사냥 마무리",
-              "desc": "대상의 [Burst]이 6 이상일 때, 코인 위력 +1\n[WhenUse] 대상의 [Burst]이 15, [Burst] 횟수가 3 이상이면, 이 스킬에서 [Burst]과 [Burst] 횟수를 부여하지 않는 대신 코인 위력 +1\n- 대상이 <혈귀>, <[BloodPocket]>면, 추가로 코인 위력 +1\n[WinDuel] [Burst] 횟수 2 증가",
+              "desc": "대상의 [Burst]이 6 이상일 때, 코인 위력 +1\n[WhenUse] 대상의 [Burst]이 15, [Burst] 횟수가 3 이상이면, 이 스킬에서 [Burst]과 [Burst] 횟수를 부여하지 않는 대신 코인 위력 +1\n- 대상이 <혈귀>, <피주머니>면, 추가로 코인 위력 +1\n[WinDuel] [Burst] 횟수 2 증가",
               "coinlist": [
                 {
                   "coindescs": [
@@ -1070,7 +1070,7 @@
             {
               "level": 4,
               "name": "긴급 지혈",
-              "desc": "[StartBattle] 자신의 [Laceration] 위력 2 감소 (턴 당 3회. [Laceration]이 감소하여 0 이하가 되면, [Laceration] 소멸)",
+              "desc": "[StartBattle] 자신의 [Laceration] 위력 2 감소 (턴 당 3회. [Laceration]이 감소하여 0 이하가 되면, 출혈 소멸)",
               "coinlist": [
                 {
                   "coindescs": [
@@ -1211,7 +1211,7 @@
                         "desc": "[Bullet] 최대 3 소모"
                       },
                       {
-                        "desc": "피해량 +(소모한 [Bullet] x 10)%"
+                        "desc": "피해량 +(소모한 탄환 x 10)%"
                       }
                     ]
                   },
@@ -1242,7 +1242,7 @@
                         "desc": "[Bullet] 최대 3 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 +(소모한 [Bullet] x 10)%<style=\"highlight\"></style>"
+                        "desc": "피해량 +(소모한 탄환 x 10)%<style=\"highlight\"></style>"
                       }
                     ]
                   },
@@ -1276,10 +1276,10 @@
                         "desc": "[Bullet] 최대 3 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 +(소모한 [Bullet] x 10)%<style=\"highlight\"></style>"
+                        "desc": "피해량 +(소모한 탄환 x 10)%<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "<style=\"highlight\">크리티컬 피해량 +(소모한 [Bullet] x 10)%</style>"
+                        "desc": "<style=\"highlight\">크리티컬 피해량 +(소모한 탄환 x 10)%</style>"
                       }
                     ]
                   },
@@ -1314,7 +1314,7 @@
                         "desc": "[Bullet] 1 소모"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x 10)%"
+                        "desc": "피해량 + (소모한 탄환 x 10)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 10%만큼 흐트러짐 손상"
@@ -1327,7 +1327,7 @@
                         "desc": "[Bullet] 최대 2 소모"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x 10)%"
+                        "desc": "피해량 + (소모한 탄환 x 10)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 10%만큼 흐트러짐 손상"
@@ -1360,7 +1360,7 @@
                         "desc": "[Bullet] 1 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x <style=\"highlight\">15</style>)%"
+                        "desc": "피해량 + (소모한 탄환 x <style=\"highlight\">15</style>)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 <style=\"highlight\">15</style>%만큼 흐트러짐 손상"
@@ -1373,7 +1373,7 @@
                         "desc": "[Bullet] 최대 2 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x <style=\"highlight\">15</style>)%"
+                        "desc": "피해량 + (소모한 탄환 x <style=\"highlight\">15</style>)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 <style=\"highlight\">15</style>%만큼 흐트러짐 손상"
@@ -1451,7 +1451,7 @@
                         "desc": "[Bullet] 최대 3 소모"
                       },
                       {
-                        "desc": "피해량 +(소모한 [Bullet] x 10)%"
+                        "desc": "피해량 +(소모한 탄환 x 10)%"
                       }
                     ]
                   },
@@ -1495,10 +1495,10 @@
                         "desc": "[Bullet] 최대 3 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 +(소모한 [Bullet] x 10)%<style=\"highlight\"></style>"
+                        "desc": "피해량 +(소모한 탄환 x 10)%<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "<style=\"highlight\">크리티컬 피해량 +(소모한 [Bullet] x 10)%</style>"
+                        "desc": "<style=\"highlight\">크리티컬 피해량 +(소모한 탄환 x 10)%</style>"
                       }
                     ]
                   },
@@ -1543,7 +1543,7 @@
                         "desc": "[Bullet] 1 소모"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x 10)%"
+                        "desc": "피해량 + (소모한 탄환 x 10)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 10%만큼 흐트러짐 손상"
@@ -1556,7 +1556,7 @@
                         "desc": "[Bullet] 최대 2 소모"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x 10)%"
+                        "desc": "피해량 + (소모한 탄환 x 10)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 10%만큼 흐트러짐 손상"
@@ -1602,7 +1602,7 @@
                         "desc": "[Bullet] 1 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x <style=\"highlight\">15</style>)%"
+                        "desc": "피해량 + (소모한 탄환 x <style=\"highlight\">15</style>)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 <style=\"highlight\">15</style>%만큼 흐트러짐 손상"
@@ -1615,7 +1615,7 @@
                         "desc": "[Bullet] 최대 2 소모<style=\"highlight\"></style>"
                       },
                       {
-                        "desc": "피해량 + (소모한 [Bullet] x <style=\"highlight\">15</style>)%"
+                        "desc": "피해량 + (소모한 탄환 x <style=\"highlight\">15</style>)%"
                       },
                       {
                         "desc": "[OnSucceedAttack] 피해량의 <style=\"highlight\">15</style>%만큼 흐트러짐 손상"
@@ -2018,7 +2018,7 @@
         {
           "level": 1,
           "name": "길을 열고 싶군",
-          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 [SupportProtect][TabExplain] 포함)",
+          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 원호 방어[TabExplain] 포함)",
           "coinlist": [
             {
               "coindescs": [
@@ -2039,7 +2039,7 @@
         {
           "level": 2,
           "name": "길을 열고 싶군",
-          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 [SupportProtect][TabExplain] 포함)\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1</style>",
+          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 원호 방어[TabExplain] 포함)\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -2060,7 +2060,7 @@
         {
           "level": 4,
           "name": "길을 열고 싶군",
-          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 [SupportProtect][TabExplain] 포함)\n[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과가 3개 이상이면, 합 위력 +1</style>",
+          "desc": "[StartBattle] 본인을 제외한 아군 1 + (최대 공명 수 / 3)명에게 [Endurance] 1 부여. (턴 당 1회, 최대 3. [SupportProtect]를 보유한 대상에게 우선 부여. 특수 원호 방어[TabExplain] 포함)\n[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과가 3개 이상이면, 합 위력 +1</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -2298,7 +2298,7 @@
         {
           "level": 1,
           "name": "군주의 길을 열겠다",
-          "desc": "[WhenUse] 흑수 필두 인격과 연계했으면, 기본 위력 +1, 코인 위력 +1\n\n[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 +5%\n[EndSkill] [HeishouCombo]을 발동한 흑수 인격에 따라 [HeishouComboCountHonglu] 얻음",
+          "desc": "[WhenUse] 흑수 필두 인격과 연계했으면, 기본 위력 +1, 코인 위력 +1\n\n[WhenUse] 대상의 [Burst]과 자신의 호흡 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 +5%\n[EndSkill] [HeishouCombo]을 발동한 흑수 인격에 따라 [HeishouComboCountHonglu] 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -2322,7 +2322,7 @@
         {
           "level": 4,
           "name": "군주의 길을 열겠다",
-          "desc": "[WhenUse] 흑수 필두 인격과 연계했으면, 기본 위력 +1, 코인 위력 +1\n\n<style=\"highlight\">대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)</style>\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합 6 당, 코인 위력 +1 (최대 3)</style>\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과 2개 당 피해량 +10% (최대 30%)</style>\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 <style=\"highlight\">+10%</style>\n[EndSkill] [HeishouCombo]을 발동한 흑수 인격에 따라 [HeishouComboCountHonglu] 얻음",
+          "desc": "[WhenUse] 흑수 필두 인격과 연계했으면, 기본 위력 +1, 코인 위력 +1\n\n<style=\"highlight\">대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)</style>\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 호흡 합 6 당, 코인 위력 +1 (최대 3)</style>\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과 2개 당 피해량 +10% (최대 30%)</style>\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 <style=\"highlight\">+10%</style>\n[EndSkill] [HeishouCombo]을 발동한 흑수 인격에 따라 [HeishouComboCountHonglu] 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -2357,7 +2357,7 @@
         {
           "level": 1,
           "name": "혈혈단신, 사생취원[孑孑單身, 捨生取园]",
-          "desc": "자신의 [HeishouDeathCount] 당 피해량 +10%\n대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)\n[WhenUse] [HeishouDeathCount]이 3 이상이면, 이 스킬 가중치 +1\n[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 +5%",
+          "desc": "자신의 [HeishouDeathCount] 당 피해량 +10%\n대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)\n[WhenUse] [HeishouDeathCount]이 3 이상이면, 이 스킬 가중치 +1\n[WhenUse] 대상의 [Burst]과 자신의 호흡 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 +5%",
           "coinlist": [
             {
               "coindescs": [
@@ -2394,7 +2394,7 @@
         {
           "level": 4,
           "name": "혈혈단신, 사생취원[孑孑單身, 捨生取园]",
-          "desc": "자신의 [HeishouDeathCount] 당 피해량 +10%\n대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)\n[WhenUse] [HeishouDeathCount]이 3 이상이면, 이 스킬 가중치 +1\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 [Breath] 합 6 당, 코인 위력 +1 (최대 3)</style>\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과 2개 당 피해량 +10% (최대 30%)</style>\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 <style=\"highlight\">+10%</style>",
+          "desc": "자신의 [HeishouDeathCount] 당 피해량 +10%\n대상과 자신의 잃은 체력 합 1% 당 피해량 +1% (최대 50%)\n[WhenUse] [HeishouDeathCount]이 3 이상이면, 이 스킬 가중치 +1\n<style=\"highlight\">[WhenUse] 대상의 [Burst]과 자신의 호흡 합 6 당, 코인 위력 +1 (최대 3)</style>\n<style=\"highlight\">[WhenUse] 대상의 부정적인 효과 2개 당 피해량 +10% (최대 30%)</style>\n[WhenUse] [HeishouComboCountHonglu] 1 당 피해량 <style=\"highlight\">+10%</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -2436,7 +2436,7 @@
         {
           "level": 1,
           "name": "호위",
-          "desc": "[CanDuelGuard]\n이 스킬은 해당 스킬을 사용하는 캐릭터의 [SupportProtect]로만 취급되며,\n[SupportProtect] 효과 발동을 체크하는 다른 캐릭터의 효과를 발동시키지 않음.\n[WhenUse] 대상의 부정적인 효과가 3개 이상이면, 합 위력 +1",
+          "desc": "[CanDuelGuard]\n이 스킬은 해당 스킬을 사용하는 캐릭터의 원호 방어로만 취급되며,\n[SupportProtect] 효과 발동을 체크하는 다른 캐릭터의 효과를 발동시키지 않음.\n[WhenUse] 대상의 부정적인 효과가 3개 이상이면, 합 위력 +1",
           "coinlist": [
             {
               "coindescs": [

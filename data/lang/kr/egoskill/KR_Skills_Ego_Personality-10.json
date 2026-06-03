@@ -12,7 +12,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Burst] 3 부여"
+                  "desc": "[OnSucceedAttackHead] 파열 3 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] 현재 체력 비율이 가장 낮은 아군 2명의 체력을 최대 체력의 10%만큼 회복."
@@ -30,7 +30,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Burst] 3 부여"
+                  "desc": "[OnSucceedAttackHead] 파열 3 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] 현재 체력 비율이 가장 낮은 아군 2명의 체력을 최대 체력의 12%만큼 회복."
@@ -48,7 +48,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 3 부여"
+                  "desc": "[OnSucceedAttack] 파열 3 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] 현재 체력 비율이 가장 낮은 아군 2명의 체력을 최대 체력의 15%만큼 회복."
@@ -71,7 +71,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackTail] [Burst] 횟수 2 증가"
+                  "desc": "[OnSucceedAttackTail] 파열 횟수 2 증가"
                 },
                 {
                   "desc": "[OnSucceedAttack] 자신의 체력을 피해량의 30%만큼 회복"
@@ -89,10 +89,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackTail] [Burst] 횟수 3 증가"
+                  "desc": "[OnSucceedAttackTail] 파열 횟수 3 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [DefenseDown] 3 부여"
+                  "desc": "[OnSucceedAttack] 방어 레벨 감소 3 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] 자신의 체력을 피해량의 50%만큼 회복"
@@ -110,10 +110,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 횟수 3 증가"
+                  "desc": "[OnSucceedAttack] 파열 횟수 3 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [DefenseDown] 5 부여"
+                  "desc": "[OnSucceedAttack] 방어 레벨 감소 5 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] 자신의 체력을 피해량의 50%만큼 회복"
@@ -136,10 +136,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 }
               ]
             }
@@ -154,10 +154,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 }
               ]
             }
@@ -172,13 +172,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [Reduction] 1, [Disarming] 1 부여"
+                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 공격 위력 감소 1, 수비 위력 감소 1 부여"
                 }
               ]
             }
@@ -198,10 +198,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 }
               ]
             }
@@ -216,13 +216,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [ScarletTakeDamageUp] 1 부여"
+                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 색욕 취약 1 부여"
                 }
               ]
             }
@@ -237,13 +237,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+                  "desc": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Combustion] 4 부여"
+                  "desc": "[OnSucceedAttack] 화상 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [ScarletTakeDamageUp] 2 부여"
+                  "desc": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 색욕 취약 2 부여"
                 }
               ]
             }
@@ -263,7 +263,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 1명에게 자신의 최대 체력 10%만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여"
+                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 1명에게 자신의 최대 체력 10%만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여"
                 },
                 {
                   "desc": "- 최대 공명 수가 4 이상이면, 부여 대상 수 +1"
@@ -287,7 +287,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 <style=\"highlight\">1+(최대 공명 수-2)</style>명에게 자신의 최대 체력 <style=\"highlight\">14%</style>만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여 <style=\"highlight\">(자신 제외 최대 부여 대상 수: 3)</style>"
+                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 <style=\"highlight\">1+(최대 공명 수-2)</style>명에게 자신의 최대 체력 <style=\"highlight\">14%</style>만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여 <style=\"highlight\">(자신 제외 최대 부여 대상 수: 3)</style>"
                 },
                 {
                   "desc": "- 대상에게 이미 [ShieldManagerCryingToad]이 있으면, [ShieldManagerCryingToad] 수치를 2로 변경<style=\"highlight\"></style>"
@@ -308,7 +308,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 1+(최대 공명 수-2)명에게 자신의 최대 체력 <style=\"highlight\">20%</style>만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여 (자신 제외 최대 부여 대상 수: 3)"
+                  "desc": "[EndSkill] 자신과 현재 체력이 가장 적은 아군 1+(최대 공명 수-2)명에게 자신의 최대 체력 <style=\"highlight\">20%</style>만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여 (자신 제외 최대 부여 대상 수: 3)"
                 },
                 {
                   "desc": "- 대상에게 이미 [ShieldManagerCryingToad]이 있으면, [ShieldManagerCryingToad] 수치를 2로 변경<style=\"highlight\"></style>"
@@ -337,7 +337,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 [Sinking] 2 부여"
                 },
                 {
-                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (15+최대 공명 수x2.5)% 만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 25%)"
+                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (15+최대 공명 수x2.5)% 만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 25%)"
                 },
                 {
                   "desc": "- 자신에게 이미 [ShieldManagerCryingToad]이 있으면, [ShieldManagerCryingToad] 수치를 2로 변경"
@@ -361,7 +361,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 [Sinking] 2 부여<style=\"highlight\"></style>"
                 },
                 {
-                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (<style=\"highlight\">18</style>+최대 공명 수x<style=\"highlight\">3</style>)% 만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 <style=\"highlight\">30%</style>)"
+                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (<style=\"highlight\">18</style>+최대 공명 수x<style=\"highlight\">3</style>)% 만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 <style=\"highlight\">30%</style>)"
                 },
                 {
                   "desc": "- 자신에게 이미 [ShieldManagerCryingToad]이 있으면, [ShieldManagerCryingToad] 수치를 2로 변경<style=\"highlight\"></style>"
@@ -385,7 +385,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 [Sinking] 2, <style=\"highlight\">[Sinking] 횟수 3</style> 부여"
                 },
                 {
-                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (<style=\"highlight\">20</style>+최대 공명 수x<style=\"highlight\">5</style>)% 만큼 [Protection]막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 <style=\"highlight\">40%</style>)"
+                  "desc": "[EndSkill] 자신에게 자신의 최대 체력 (<style=\"highlight\">20</style>+최대 공명 수x<style=\"highlight\">5</style>)% 만큼 보호막을 부여하고, [ShieldManagerCryingToad] 2 부여. (최대 <style=\"highlight\">40%</style>)"
                 },
                 {
                   "desc": "- 자신에게 이미 [ShieldManagerCryingToad]이 있으면, [ShieldManagerCryingToad] 수치를 2로 변경<style=\"highlight\"></style>"
@@ -394,7 +394,7 @@
                   "desc": "- 최대 우울 완전 공명 수가 4 이상이면, 이 스킬의 [ShieldManagerCryingToad] 수치가 3으로 부여, 적용됨<style=\"highlight\"></style>"
                 },
                 {
-                  "desc": "<style=\"highlight\">- 우울 공명이 4 이상이면, 자신에게 자신의 최대 체력 10%만큼 [Protection]막 추가 부여</style>"
+                  "desc": "<style=\"highlight\">- 우울 공명이 4 이상이면, 자신에게 자신의 최대 체력 10%만큼 보호막 추가 부여</style>"
                 }
               ]
             }
@@ -774,7 +774,7 @@
           "level": 1,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 6)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 10%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 8 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
+          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 6)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 10%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 8 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
           "coinlist": [
             {
               "coindescs": [
@@ -813,7 +813,7 @@
           "level": 3,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">8</style>)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 <style=\"highlight\">15</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 <style=\"highlight\">10</style> 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
+          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">8</style>)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 <style=\"highlight\">15</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 <style=\"highlight\">10</style> 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
           "coinlist": [
             {
               "coindescs": [
@@ -852,7 +852,7 @@
           "level": 4,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">10</style>)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 <style=\"highlight\">20</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 <style=\"highlight\">12</style> 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
+          "desc": "메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">10</style>)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 <style=\"highlight\">20</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[TargetKill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2 얻음 (스킬당 1회)\n[EndSkill] 자신을 제외한 정신력이 가장 낮은 아군 (1 + 최대 공명 수)명의 정신력 <style=\"highlight\">12</style> 회복 (최대 4명)\n[EndSkill] 2턴 동안 전투 종료 시 정신력 8 감소",
           "coinlist": [
             {
               "coindescs": [
@@ -896,7 +896,7 @@
           "level": 1,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 6)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 10%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 10 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 6)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 10%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 10 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
           "coinlist": [
             {
               "coindescs": [
@@ -944,7 +944,7 @@
           "level": 3,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">8</style>)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 <style=\"highlight\">15</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 <style=\"highlight\">12</style> 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">8</style>)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 <style=\"highlight\">15</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 <style=\"highlight\">12</style> 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
           "coinlist": [
             {
               "coindescs": [
@@ -992,7 +992,7 @@
           "level": 4,
           "name": "하모니",
           "abName": "노래하는 기계",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">10</style>)\n자신의 잃은 체력 비율만큼 <noparse>[AttackDmgUp]</noparse> (최대 <style=\"highlight\">20</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 <style=\"highlight\">15</style> 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n메인 타겟의 [Laceration]과 [Combustion]의 합 2당, 합 위력 +1 (최대 <style=\"highlight\">10</style>)\n자신의 잃은 체력 비율만큼 <noparse>피해량 증가</noparse> (최대 <style=\"highlight\">20</style>%)\n서브 타겟에게 가하는 피해량 -50%\n[BeforeAttack] (최대 공명 수 / 2)만큼 공격 가중치 증가 (최대 2, 소수점 버림)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -2 (최대 -6)\n[EndSkill] 정신력이 가장 낮은 아군 4명의 정신력 <style=\"highlight\">15</style> 회복\n[EndSkill] 모든 아군이 다음 턴에 [ThatIsRhythm] 2, [CrimsonDamageUp] 1, [ScarletDamageUp] 1, [VioletDamageUp] 1, [Vulnerable] 1 얻음\n- 대상을 처치했으면, 이 효과 한 번 더 발동",
           "coinlist": [
             {
               "coindescs": [

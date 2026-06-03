@@ -11,14 +11,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             }
@@ -27,19 +27,19 @@
         {
           "level": 2,
           "name": "에.순",
-          "desc": "[Charge] 횟수가 10 이상이면, 피해량 +10%",
+          "desc": "충전 횟수가 10 이상이면, 피해량 +10%",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             }
@@ -48,19 +48,19 @@
         {
           "level": 4,
           "name": "에.순",
-          "desc": "[Charge] 횟수가 10 이상이면, 피해량 +10%\n[Charge] 횟수가 15 이상이면, 추가로 피해량 +10%",
+          "desc": "충전 횟수가 10 이상이면, 피해량 +10%\n충전 횟수가 15 이상이면, 추가로 피해량 +10%",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 자신의 충전 횟수 2 증가"
                 }
               ]
             }
@@ -74,12 +74,12 @@
         {
           "level": 1,
           "name": "도약",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 5 증가",
+          "desc": "[WhenUse] 자신의 충전 횟수 5 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Charge] 횟수가 10 이상이면, [SlashTakeDamageUp] 1 부여"
+                  "desc": "[OnSucceedAttackHead] 충전 횟수가 10 이상이면, 참격 취약 1 부여"
                 }
               ]
             },
@@ -96,12 +96,12 @@
         {
           "level": 2,
           "name": "도약",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 6 증가\n[Charge] 횟수가 10 이상이면, 코인 위력 +1",
+          "desc": "[WhenUse] 자신의 충전 횟수 6 증가\n충전 횟수가 10 이상이면, 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Charge] 횟수가 10 이상이면, [SlashTakeDamageUp] 1 부여"
+                  "desc": "[OnSucceedAttack] 충전 횟수가 10 이상이면, 참격 취약 1 부여"
                 }
               ]
             },
@@ -112,7 +112,7 @@
                   "desc": "[OnSucceedAttack] 대상의 체력이 30% 미만이면, 피해량 20% 증가"
                 },
                 {
-                  "desc": "[EnemyKill] 다음 턴에 [Agility] 1을 얻음"
+                  "desc": "[EnemyKill] 다음 턴에 신속 1을 얻음"
                 }
               ]
             }
@@ -121,12 +121,12 @@
         {
           "level": 4,
           "name": "도약",
-          "desc": "[WhenUse] 자신의 [Charge] 횟수 7 증가\n[Charge] 횟수가 10 이상이면, 코인 위력 +1\n[Charge] 횟수가 15 이상이면, 추가로 코인 위력 +1",
+          "desc": "[WhenUse] 자신의 충전 횟수 7 증가\n충전 횟수가 10 이상이면, 코인 위력 +1\n충전 횟수가 15 이상이면, 추가로 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Charge] 횟수가 10 이상이면, [SlashTakeDamageUp] 2 부여"
+                  "desc": "[OnSucceedAttack] 충전 횟수가 10 이상이면, 참격 취약 2 부여"
                 }
               ]
             },
@@ -137,7 +137,7 @@
                   "desc": "[OnSucceedAttack] 대상의 체력이 30% 미만이면, 피해량 30% 증가"
                 },
                 {
-                  "desc": "[EnemyKill] 다음 턴에 [Agility] 3을 얻음"
+                  "desc": "[EnemyKill] 다음 턴에 신속 3을 얻음"
                 }
               ]
             }
@@ -151,7 +151,7 @@
         {
           "level": 3,
           "name": "차.마.공.절",
-          "desc": "[WhenUse] [Charge] 횟수가 7 이상, 15 미만이면,\n보유한 [Charge] 횟수를 전부 소모하고,\n최대 체력의 3 x (15 - 소모한 [Charge] 횟수)%만큼 체력을 소모하여 코인 위력 +3\n[WhenUse] [Charge] 횟수를 15 소모하여 코인 위력 +3",
+          "desc": "[WhenUse] 충전 횟수가 7 이상, 15 미만이면,\n보유한 충전 횟수를 전부 소모하고,\n최대 체력의 3 x (15 - 소모한 충전 횟수)%만큼 체력을 소모하여 코인 위력 +3\n[WhenUse] 충전 횟수를 15 소모하여 코인 위력 +3",
           "coinlist": [
             {
               "coindescs": [
@@ -177,7 +177,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[EnemyKill] 스킬 사용시 [Charge] 횟수를 15 소모했다면, 자신과 자신을 제외한 무작위 아군 1명에게 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 5 부여"
+                  "desc": "[EnemyKill] 스킬 사용시 충전 횟수를 15 소모했다면, 자신과 자신을 제외한 무작위 아군 1명에게 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 5 부여"
                 }
               ]
             }
@@ -186,7 +186,7 @@
         {
           "level": 4,
           "name": "차.마.공.절",
-          "desc": "[WhenUse] [Charge] 횟수가 7 이상, 15 미만이면,\n보유한 [Charge] 횟수를 전부 소모하고,\n최대 체력의 3 x (15 - 소모한 [Charge] 횟수)%만큼 체력을 소모하여 코인 위력 +5\n[WhenUse] [Charge] 횟수를 15 소모하여 코인 위력 +5",
+          "desc": "[WhenUse] 충전 횟수가 7 이상, 15 미만이면,\n보유한 충전 횟수를 전부 소모하고,\n최대 체력의 3 x (15 - 소모한 충전 횟수)%만큼 체력을 소모하여 코인 위력 +5\n[WhenUse] 충전 횟수를 15 소모하여 코인 위력 +5",
           "coinlist": [
             {
               "coindescs": [
@@ -212,7 +212,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[EnemyKill] 스킬 사용시 [Charge] 횟수를 15 소모했다면, 자신과 자신을 제외한 무작위 아군 1명에게 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">[ChargeForceField]</color></link></u> 7 부여"
+                  "desc": "[EnemyKill] 스킬 사용시 충전 횟수를 15 소모했다면, 자신과 자신을 제외한 무작위 아군 1명에게 <sprite name=\"ChargeForceField\"><color=#f8c200><u><link=\"ChargeForceField\">충전 역장</color></link></u> 7 부여"
                 }
               ]
             }
@@ -226,7 +226,7 @@
         {
           "level": 1,
           "name": "충전 회피",
-          "desc": "[Charge] 횟수 5당 기본 위력 +1 (최대 2)",
+          "desc": "충전 횟수 5당 기본 위력 +1 (최대 2)",
           "coinlist": [
             {}
           ]
@@ -234,7 +234,7 @@
         {
           "level": 4,
           "name": "충전 회피",
-          "desc": "[Charge] 횟수 5당 기본 위력 +1 (최대 3)",
+          "desc": "충전 횟수 5당 기본 위력 +1 (최대 3)",
           "coinlist": [
             {}
           ]
@@ -247,7 +247,7 @@
         {
           "level": 1,
           "name": "밀치기",
-          "desc": "[WhenUse] 자신의 [Breath] 횟수 2 증가",
+          "desc": "[WhenUse] 자신의 호흡 횟수 2 증가",
           "coinlist": [
             {
               "coindescs": [
@@ -261,7 +261,7 @@
         {
           "level": 2,
           "name": "밀치기",
-          "desc": "[WhenUse] 자신의 [Breath] 횟수 2 증가",
+          "desc": "[WhenUse] 자신의 호흡 횟수 2 증가",
           "coinlist": [
             {
               "coindescs": [
@@ -275,7 +275,7 @@
         {
           "level": 4,
           "name": "밀치기",
-          "desc": "[WhenUse] 자신의 [Breath] 횟수 2 증가\n<style=\"highlight\">자신의</style> <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></color></link></u><style=\"highlight\">이 7 이상이면, 코인 위력 +1</style>",
+          "desc": "[WhenUse] 자신의 호흡 횟수 2 증가\n<style=\"highlight\">자신의</style> <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></color></link></u><style=\"highlight\">이 7 이상이면, 코인 위력 +1</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -299,20 +299,20 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 1 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 1 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 1 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 1 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 1 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 1 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 1 부여"
                 }
               ]
             }
@@ -326,20 +326,20 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 2 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 2 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 1 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 1 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 1 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 1 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 1 부여"
                 }
               ]
             }
@@ -348,25 +348,25 @@
         {
           "level": 4,
           "name": "타.무",
-          "desc": "자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></link></u>이 7 이상이면 코인 위력 +1",
+          "desc": "자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></link></u>이 7 이상이면 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 2 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 2 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Breath] 1 얻음"
+                  "desc": "[OnSucceedAttack] 호흡 1 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [AttackDown] 1 부여"
+                  "desc": "[CriticalOnSucceedAttack] 공격 레벨 감소 1 부여"
                 }
               ]
             }
@@ -380,7 +380,7 @@
         {
           "level": 3,
           "name": "대.박",
-          "desc": "[WhenUse] [Breath] 4 얻음\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></link></u>이 10 이상이면 코인 위력 +1 ",
+          "desc": "[WhenUse] 호흡 4 얻음\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></link></u>이 10 이상이면 코인 위력 +1 ",
           "coinlist": [
             {
               "coindescs": [
@@ -395,19 +395,19 @@
             {
               "coindescs": [
                 {
-                  "desc": "[Bullet] 1 소모"
+                  "desc": "탄환 1 소모"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [Vibration], [Burst] 의 위력과 횟수가 2배로 부여됨"
+                  "desc": "[CriticalOnSucceedAttack] 진동, 파열 의 위력과 횟수가 2배로 부여됨"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Vibration] 3 부여, [Vibration] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 진동 3 부여, 진동 횟수 1 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 3 부여, [Burst] 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 파열 3 부여, 파열 횟수 1 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] [VibrationExplosion]"
+                  "desc": "[OnSucceedAttackHead] 진동 폭발"
                 }
               ]
             }
@@ -416,38 +416,38 @@
         {
           "level": 4,
           "name": "대.박",
-          "desc": "[WhenUse] [Breath] 4 얻음\n자신의 [Breath] 7당, 코인 위력 +1 (최대 2)",
+          "desc": "[WhenUse] 호흡 4 얻음\n자신의 호흡 7당, 코인 위력 +1 (최대 2)",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
+                  "desc": "[CriticalOnSucceedAttack] 자신의 호흡 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
+                  "desc": "[CriticalOnSucceedAttack] 자신의 호흡 횟수 1 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[Bullet] 1 소모"
+                  "desc": "탄환 1 소모"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] [Vibration], [Burst] 의 위력과 횟수가 2배로 부여됨"
+                  "desc": "[CriticalOnSucceedAttack] 진동, 파열 의 위력과 횟수가 2배로 부여됨"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Vibration] 4 부여, [Vibration] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 진동 4 부여, 진동 횟수 2 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Burst] 4 부여, [Burst] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 파열 4 부여, 파열 횟수 2 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
+                  "desc": "[OnSucceedAttack] 진동 폭발"
                 }
               ]
             }
@@ -1084,7 +1084,7 @@
         {
           "level": 4,
           "name": "압착 태엽 스패너",
-          "desc": "[WhenUse] 자신의 [Vibration] 횟수 2 증가\n<style=\"highlight\">[WhenUse] 자신의 [Vibration] 횟수가 4 이상이면, 합 위력 +1</style>\n자신의 [Vibration] 횟수 <style=\"highlight\">4</style> 이상이면, 코인 위력 +1",
+          "desc": "[WhenUse] 자신의 [Vibration] 횟수 2 증가\n<style=\"highlight\">[WhenUse] 자신의 진동 횟수가 4 이상이면, 합 위력 +1</style>\n자신의 [Vibration] 횟수 <style=\"highlight\">4</style> 이상이면, 코인 위력 +1",
           "coinlist": [
             {},
             {
@@ -1172,7 +1172,7 @@
         {
           "level": 1,
           "name": "가드",
-          "desc": "[WhenUse] 자신의 [Vibration] 횟수의 2배만큼 [Protection]막 체력을 얻음 (최대 5)",
+          "desc": "[WhenUse] 자신의 [Vibration] 횟수의 2배만큼 보호막 체력을 얻음 (최대 5)",
           "coinlist": [
             {}
           ]
@@ -1180,7 +1180,7 @@
         {
           "level": 4,
           "name": "가드",
-          "desc": "[WhenUse] 자신의 [Vibration] 횟수의 2배만큼 [Protection]막 체력을 얻음 (최대 <style=\"highlight\">10</style>)",
+          "desc": "[WhenUse] 자신의 [Vibration] 횟수의 2배만큼 보호막 체력을 얻음 (최대 <style=\"highlight\">10</style>)",
           "coinlist": [
             {}
           ]
@@ -1987,7 +1987,7 @@
         {
           "level": 3,
           "name": "경외, 경멸",
-          "desc": "대상에게 [GazeRyoshu]이 있으면, 이 스킬에서 부여하는 [Laceration], [Vibration] 위력 +2\n[BeforeUse] 모든 적에게 부여된 [GazeRyoshu]의 합이 7 이상 또는 [ContemptRyoshu]의 합이 1 이상이면, ‘<noparse>[ContemptRyoshu]</noparse> 밑으로 쏟아지는 경외의 [GazeRyoshu]’으로 발동됨\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합이 8 이상이면, 코인 위력 +1\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 1당, 피해량 +1% (최대 20%)",
+          "desc": "대상에게 [GazeRyoshu]이 있으면, 이 스킬에서 부여하는 [Laceration], [Vibration] 위력 +2\n[BeforeUse] 모든 적에게 부여된 [GazeRyoshu]의 합이 7 이상 또는 [ContemptRyoshu]의 합이 1 이상이면, ‘<noparse>경멸</noparse> 밑으로 쏟아지는 경외의 시선’으로 발동됨\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합이 8 이상이면, 코인 위력 +1\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 1당, 피해량 +1% (최대 20%)",
           "coinlist": [
             {
               "coindescs": [
@@ -2033,7 +2033,7 @@
         {
           "level": 4,
           "name": "경외, 경멸",
-          "desc": "대상에게 [GazeRyoshu]이 있으면, 이 스킬에서 부여하는 [Laceration], [Vibration] 위력 +2<style=\"highlight\"></style>\n[BeforeUse] 모든 적에게 부여된 [GazeRyoshu]의 합이 7 이상 또는 [ContemptRyoshu]의 합이 1 이상이면, ‘<noparse>[ContemptRyoshu]</noparse> 밑으로 쏟아지는 경외의 [GazeRyoshu]’으로 발동됨\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 8<style=\"highlight\">당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 1당, 피해량 +1% (최대 <style=\"highlight\">40</style>%)",
+          "desc": "대상에게 [GazeRyoshu]이 있으면, 이 스킬에서 부여하는 [Laceration], [Vibration] 위력 +2<style=\"highlight\"></style>\n[BeforeUse] 모든 적에게 부여된 [GazeRyoshu]의 합이 7 이상 또는 [ContemptRyoshu]의 합이 1 이상이면, ‘<noparse>경멸</noparse> 밑으로 쏟아지는 경외의 시선’으로 발동됨\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 8<style=\"highlight\">당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 대상의 [Laceration]과 [Vibration]의 합 1당, 피해량 +1% (최대 <style=\"highlight\">40</style>%)",
           "coinlist": [
             {
               "coindescs": [
@@ -2168,7 +2168,7 @@
         {
           "level": 3,
           "name": "쏘아내겠소 / 언제든지",
-          "desc": "[StartBattle] N사 E.G.O::<noparse>[ContemptRyoshu]</noparse>, 경외 료슈 우선 공격\n[StartBattle] 자신의 [BoseProjektil] 3당, 공격 가중치 +1 (최대 2)\n[WhenUse] 자신의 [Breath]이 5 이상이면, 코인 위력 +1\n[WhenUse] 자신의 [Breath] 횟수 3 이상이면, 기본 위력 +1\n[WhenUse] 자신의 [BoseProjektil]당, [Breath] 1 얻음 (최대 7)\n[EndSkill] 자신의 ([BoseProjektil] X 2) 만큼 정신력 감소 (최대 14 감소)\n[EndSkill] 전투 시작 시 자신의 [BoseProjektil]이 7이면, 전부 소모하고 자신의 정신력 20 회복",
+          "desc": "[StartBattle] N사 E.G.O::<noparse>경멸</noparse>, 경외 료슈 우선 공격\n[StartBattle] 자신의 [BoseProjektil] 3당, 공격 가중치 +1 (최대 2)\n[WhenUse] 자신의 [Breath]이 5 이상이면, 코인 위력 +1\n[WhenUse] 자신의 [Breath] 횟수 3 이상이면, 기본 위력 +1\n[WhenUse] 자신의 [BoseProjektil]당, [Breath] 1 얻음 (최대 7)\n[EndSkill] 자신의 ([BoseProjektil] X 2) 만큼 정신력 감소 (최대 14 감소)\n[EndSkill] 전투 시작 시 자신의 [BoseProjektil]이 7이면, 전부 소모하고 자신의 정신력 20 회복",
           "coinlist": [
             {
               "coindescs": [
@@ -2189,7 +2189,7 @@
                   "desc": "이 코인에는 서브 타겟만 피해를 입음"
                 },
                 {
-                  "desc": "- 첫번째 코인 피해가 크리티컬이 아니고, N사 E.G.O::<noparse>[ContemptRyoshu]</noparse>, 경외 료슈가 생존했다면, 서브 타겟 중 무작위 1명이 피해를 입음\n"
+                  "desc": "- 첫번째 코인 피해가 크리티컬이 아니고, N사 E.G.O::<noparse>경멸</noparse>, 경외 료슈가 생존했다면, 서브 타겟 중 무작위 1명이 피해를 입음\n"
                 },
                 {
                   "desc": "자신의 [BoseProjektil]당 피해량 +30% (최대 210%)"
@@ -2213,7 +2213,7 @@
         {
           "level": 4,
           "name": "쏘아내겠소 / 언제든지",
-          "desc": "[StartBattle] N사 E.G.O::<noparse>[ContemptRyoshu]</noparse>, 경외 료슈 우선 공격\n[StartBattle] 자신의 [BoseProjektil] 3당, 공격 가중치 +1 (최대 2)\n[WhenUse] 자신의 [Breath]이 5 <style=\"highlight\">당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 자신의 [Breath] 횟수 3 <style=\"highlight\">당</style>, 기본 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 자신의 [BoseProjektil]당, [Breath] 1 얻음 (최대 7)\n[EndSkill] 자신의 ([BoseProjektil] X 2) 만큼 정신력 감소 (최대 14 감소)\n[EndSkill] 전투 시작 시 자신의 [BoseProjektil]이 7이면, 전부 소모하고 자신의 정신력 20 회복",
+          "desc": "[StartBattle] N사 E.G.O::<noparse>경멸</noparse>, 경외 료슈 우선 공격\n[StartBattle] 자신의 [BoseProjektil] 3당, 공격 가중치 +1 (최대 2)\n[WhenUse] 자신의 [Breath]이 5 <style=\"highlight\">당</style>, 코인 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 자신의 [Breath] 횟수 3 <style=\"highlight\">당</style>, 기본 위력 +1 <style=\"highlight\">(최대 2)</style>\n[WhenUse] 자신의 [BoseProjektil]당, [Breath] 1 얻음 (최대 7)\n[EndSkill] 자신의 ([BoseProjektil] X 2) 만큼 정신력 감소 (최대 14 감소)\n[EndSkill] 전투 시작 시 자신의 [BoseProjektil]이 7이면, 전부 소모하고 자신의 정신력 20 회복",
           "coinlist": [
             {
               "coindescs": [
@@ -2234,7 +2234,7 @@
                   "desc": "이 코인에는 서브 타겟만 피해를 입음"
                 },
                 {
-                  "desc": "- 첫번째 코인 피해가 크리티컬이 아니고, N사 E.G.O::<noparse>[ContemptRyoshu]</noparse>, 경외 료슈가 생존했다면, 서브 타겟 중 무작위 1명이 피해를 입음\n"
+                  "desc": "- 첫번째 코인 피해가 크리티컬이 아니고, N사 E.G.O::<noparse>경멸</noparse>, 경외 료슈가 생존했다면, 서브 타겟 중 무작위 1명이 피해를 입음\n"
                 },
                 {
                   "desc": "자신의 [BoseProjektil]당 피해량 +<style=\"highlight\">40</style>% (최대 <style=\"highlight\">280</style>%)"

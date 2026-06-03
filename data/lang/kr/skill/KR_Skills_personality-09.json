@@ -6,7 +6,7 @@
         {
           "level": 1,
           "name": "무지를 밝히리",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 3%)만큼 [Protection]막을 얻음",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 3%)만큼 보호막을 얻음",
           "coinlist": [
             {},
             {},
@@ -22,7 +22,7 @@
         {
           "level": 2,
           "name": "무지를 밝히리",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 4%)만큼 [Protection]막을 얻음\n[WhenUse] [KnowledgeExplored] 이 2 이상이면, ([KnowledgeExplored] - 1)만큼 코인 위력이 증가",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 4%)만큼 보호막을 얻음\n[WhenUse] 탐구한 지식 이 2 이상이면, (탐구한 지식 - 1)만큼 코인 위력이 증가",
           "coinlist": [
             {},
             {},
@@ -38,7 +38,7 @@
         {
           "level": 4,
           "name": "무지를 밝히리",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 5%)만큼 [Protection]막을 얻음\n[WhenUse] [KnowledgeExplored] 이 2 이상이면, ([KnowledgeExplored] - 1)만큼 코인 위력이 증가",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 5%)만큼 보호막을 얻음\n[WhenUse] 탐구한 지식 이 2 이상이면, (탐구한 지식 - 1)만큼 코인 위력이 증가",
           "coinlist": [
             {},
             {},
@@ -59,7 +59,7 @@
         {
           "level": 1,
           "name": "지식의 무게",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 5%)만큼 [Protection]막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 2를 얻음",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 5%)만큼 보호막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 2를 얻음",
           "coinlist": [
             {},
             {},
@@ -67,7 +67,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 2 부여"
+                  "desc": "[OnSucceedAttack] 침잠 2 부여"
                 }
               ]
             }
@@ -76,7 +76,7 @@
         {
           "level": 2,
           "name": "지식의 무게",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 8%)만큼 [Protection]막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 3을 얻음",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 8%)만큼 보호막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 3을 얻음",
           "coinlist": [
             {},
             {},
@@ -84,7 +84,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 3 부여"
+                  "desc": "[OnSucceedAttack] 침잠 3 부여"
                 }
               ]
             }
@@ -93,7 +93,7 @@
         {
           "level": 4,
           "name": "지식의 무게",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 10%)만큼 [Protection]막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 5를 얻음\n[WhenUse] 대상의 [Sinking]이 5 이상이면, 합 위력 +2",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 10%)만큼 보호막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 5를 얻음\n[WhenUse] 대상의 [Sinking]이 5 이상이면, 합 위력 +2",
           "coinlist": [
             {},
             {},
@@ -101,7 +101,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 5 부여"
+                  "desc": "[OnSucceedAttack] 침잠 5 부여"
                 }
               ]
             }
@@ -115,12 +115,12 @@
         {
           "level": 3,
           "name": "고통스러운 계몽",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 15%)만큼 [Protection]막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 2개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 3을 얻음",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 15%)만큼 보호막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 2개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 3을 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] [Sinking] 횟수 4 증가"
+                  "desc": "[OnSucceedAttackHead] 침잠 횟수 4 증가"
                 }
               ]
             },
@@ -129,7 +129,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 침잠 횟수 2 증가"
                 }
               ]
             }
@@ -138,12 +138,12 @@
         {
           "level": 4,
           "name": "고통스러운 계몽",
-          "desc": "이 스킬이 버려지면 ([KnowledgeExplored] x 최대 체력의 20%)만큼 [Protection]막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 2개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 5를 얻음\n[WhenUse] 대상의 [Sinking]이 7 이상이면, 코인 위력 +1",
+          "desc": "이 스킬이 버려지면 (탐구한 지식 x 최대 체력의 20%)만큼 보호막을 얻음.\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 2개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 5를 얻음\n[WhenUse] 대상의 [Sinking]이 7 이상이면, 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 횟수 4 증가"
+                  "desc": "[OnSucceedAttack] 침잠 횟수 4 증가"
                 }
               ]
             },
@@ -152,7 +152,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [Sinking] 횟수 2 증가"
+                  "desc": "[OnSucceedAttack] 침잠 횟수 2 증가"
                 }
               ]
             }
@@ -166,7 +166,7 @@
         {
           "level": 3,
           "name": "탐구 몰입",
-          "desc": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 2를 얻음",
+          "desc": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 2를 얻음",
           "coinlist": [
             {}
           ]
@@ -174,7 +174,7 @@
         {
           "level": 4,
           "name": "탐구 몰입",
-          "desc": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 5를 얻음",
+          "desc": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 5를 얻음",
           "coinlist": [
             {}
           ]
@@ -602,7 +602,7 @@
         {
           "level": 3,
           "name": "징수 집행",
-          "desc": "[WhenUse] 대상의 [Vibration]이 8 이상이면, 합 위력 +1\n[WhenUse] 자신의 [Vibration] 횟수를 8 소모하여 코인 위력 +1",
+          "desc": "[WhenUse] 대상의 [Vibration]이 8 이상이면, 합 위력 +1\n[WhenUse] 자신의 진동 횟수를 8 소모하여 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
@@ -934,7 +934,7 @@
         {
           "level": 1,
           "name": "배달 보조 및 통제 시퀀스",
-          "desc": "[StartBattle] [DevyatDimensionalSack]가 15 이상이면, ‘이건... 잠시 전략적 휴식이야!’로 발동함 (턴 당 1회)\n[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 ([DevyatDimensionalSack]/2)%만큼 [Protection]막을 얻음 (최대 15%, 턴 당 1회)\n[WhenUse] [DevyatDimensionalSack] 2 얻음 (턴 당 1회)\n- [DevyatDimensionalSack]가 15 미만이면, [DevyatDimensionalSack] 1 추가로 얻음",
+          "desc": "[StartBattle] [DevyatDimensionalSack]가 15 이상이면, ‘이건... 잠시 전략적 휴식이야!’로 발동함 (턴 당 1회)\n[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 ([DevyatDimensionalSack]/2)%만큼 보호막을 얻음 (최대 15%, 턴 당 1회)\n[WhenUse] [DevyatDimensionalSack] 2 얻음 (턴 당 1회)\n- [DevyatDimensionalSack]가 15 미만이면, [DevyatDimensionalSack] 1 추가로 얻음",
           "coinlist": [
             {}
           ]
@@ -942,7 +942,7 @@
         {
           "level": 4,
           "name": "배달 보조 및 통제 시퀀스",
-          "desc": "[StartBattle] [DevyatDimensionalSack]가 15 이상이면, ‘이건... 잠시 전략적 휴식이야!’로 발동함 (턴 당 1회)\n[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 <style=\"highlight\">([DevyatDimensionalSack])%</style>만큼 [Protection]막을 얻음 (최대 <style=\"highlight\">25%</style>, 턴 당 1회)\n[WhenUse] [DevyatDimensionalSack] 2 얻음 (턴 당 1회)\n- [DevyatDimensionalSack]가 15 미만이면, [DevyatDimensionalSack] 1 추가로 얻음",
+          "desc": "[StartBattle] [DevyatDimensionalSack]가 15 이상이면, ‘이건... 잠시 전략적 휴식이야!’로 발동함 (턴 당 1회)\n[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 <style=\"highlight\">([DevyatDimensionalSack])%</style>만큼 보호막을 얻음 (최대 <style=\"highlight\">25%</style>, 턴 당 1회)\n[WhenUse] [DevyatDimensionalSack] 2 얻음 (턴 당 1회)\n- [DevyatDimensionalSack]가 15 미만이면, [DevyatDimensionalSack] 1 추가로 얻음",
           "coinlist": [
             {}
           ]
@@ -955,7 +955,7 @@
         {
           "level": 1,
           "name": "이건... 잠시 전략적 휴식이야!",
-          "desc": "[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 ([DevyatDimensionalSack]/2)%만큼 [Protection]막을 얻음 (최대 15%, 턴 당 1회)\n[EndBattle] [Retreat] 발동",
+          "desc": "[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 ([DevyatDimensionalSack]/2)%만큼 보호막을 얻음 (최대 15%, 턴 당 1회)\n[EndBattle] [Retreat] 발동",
           "coinlist": [
             {}
           ]
@@ -963,7 +963,7 @@
         {
           "level": 4,
           "name": "이건... 잠시 전략적 휴식이야!",
-          "desc": "[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 <style=\"highlight\">([DevyatDimensionalSack])%</style>만큼 [Protection]막을 얻음 (최대 <style=\"highlight\">25%</style>, 턴 당 1회)\n[EndBattle] [Retreat] 발동",
+          "desc": "[StartBattle] 이 스킬로 발동 예정인 경우, 자신의 최대 체력의 <style=\"highlight\">([DevyatDimensionalSack])%</style>만큼 보호막을 얻음 (최대 <style=\"highlight\">25%</style>, 턴 당 1회)\n[EndBattle] [Retreat] 발동",
           "coinlist": [
             {}
           ]
@@ -976,7 +976,7 @@
         {
           "level": 1,
           "name": "물러가도록...",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음",
           "coinlist": [
             {
             },
@@ -995,7 +995,7 @@
         {
           "level": 2,
           "name": "물러가도록...",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>",
           "coinlist": [
             {
             },
@@ -1014,7 +1014,7 @@
         {
           "level": 4,
           "name": "물러가도록...",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 당 코인 위력 +1 (최대 2)</style>",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 높은 아군 1명에게 [BloodDinner]을 최대 20 소모하여, [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [BloomingThornsRodionFirst] 1 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 당 코인 위력 +1 (최대 2)</style>",
           "coinlist": [
             {
             },
@@ -1038,7 +1038,7 @@
         {
           "level": 1,
           "name": "흩뿌리며 갈려나가라",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -1067,7 +1067,7 @@
         {
           "level": 2,
           "name": "흩뿌리며 갈려나가라",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1을 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1을 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -1096,7 +1096,7 @@
         {
           "level": 4,
           "name": "흩뿌리며 갈려나가라",
-          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 [NailPersonality]했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 당, 코인 위력 +1 (최대 2)</style>",
+          "desc": "[StartBattle] 자신과 최대 체력이 가장 낮은 아군 1명에게 [Enhancement] 1 부여, [BloodDinner]을 최대 30 소모하여 [BloodDinner] 10당 [BloomingThornsRodionFirst] 1 부여 (턴 당 최대 2회)\n- <혈귀>인 아군에게 우선 부여\n- 부여한 아군이 <혈귀>면, [Enhancement] 1, [BloomingThornsRodionFirst] 2 추가 부여\n- [BloodDinner]을 소모하지 못했으면, [Laceration] 5 얻음\n<style=\"highlight\">[WhenUse] 대상의 [Laceration] 6 당, 코인 위력 +1 (최대 2)</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -1130,7 +1130,7 @@
         {
           "level": 3,
           "name": "축제는 끝날거야",
-          "desc": "[BeforeUse] 자신의 [BloomingThornsRodionFirst]가 25 이상이면, '돈키호테류 [BloodArmorPersonalityFirst][TabExplain] 오의 피날레'로 발동됨\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 이번 턴과 다음 턴에 [FestivalFeverRodion] 3 + (자신의 [BloodDinner_Accumulation] 50 당 1) 부여 (최대 10)\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 [BloomingThornsRodionFirst] 3 부여",
+          "desc": "[BeforeUse] 자신의 [BloomingThornsRodionFirst]가 25 이상이면, '돈키호테류 경혈[TabExplain] 오의 피날레'로 발동됨\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 이번 턴과 다음 턴에 [FestivalFeverRodion] 3 + (자신의 [BloodDinner_Accumulation] 50 당 1) 부여 (최대 10)\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 [BloomingThornsRodionFirst] 3 부여",
           "coinlist": [
             {
               "coindescs": [
@@ -1167,7 +1167,7 @@
         {
           "level": 4,
           "name": "축제는 끝날거야",
-          "desc": "[BeforeUse] 자신의 [BloomingThornsRodionFirst]가 25 이상이면, '돈키호테류 [BloodArmorPersonalityFirst][TabExplain] 오의 피날레'로 발동됨\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 이번 턴과 다음 턴에 [FestivalFeverRodion] 3 + (자신의 [BloodDinner_Accumulation] 50 당 1) 부여 (최대 10)\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 [BloomingThornsRodionFirst] 3 부여",
+          "desc": "[BeforeUse] 자신의 [BloomingThornsRodionFirst]가 25 이상이면, '돈키호테류 경혈[TabExplain] 오의 피날레'로 발동됨\n<style=\"highlight\">[WhenUse] 대상의 [Laceration]이 6 이상이면, 코인 위력 +1</style>\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 이번 턴과 다음 턴에 [FestivalFeverRodion] 3 + (자신의 [BloodDinner_Accumulation] 50 당 1) 부여 (최대 10)\n[WhenUse] 자신과 아군 (최대 공명 수)명에게 [BloomingThornsRodionFirst] 3 부여",
           "coinlist": [
             {
               "coindescs": [
@@ -1804,7 +1804,7 @@
         {
           "level": 1,
           "name": "기사의 믿음",
-          "desc": "[CanDuelGuard]\n[StartBattle] 최대 체력의 (정신력 / 5)%만큼 [Protection]막 얻음 (턴당 1회)\n[WhenUse] [BlackTearsAlly] 3 얻음 (턴당 2회)\n[EndBattle] [SwordCutwithTear]가 3 미만이면, 정신력 15 감소하고 [SwordCutwithTear] 1 얻음 (턴당 1회)\n- [SwordCutwithTear]를 보유한 경우, (보유한 수치 x 15)만큼 정신력 추가로 감소",
+          "desc": "[CanDuelGuard]\n[StartBattle] 최대 체력의 (정신력 / 5)%만큼 보호막 얻음 (턴당 1회)\n[WhenUse] [BlackTearsAlly] 3 얻음 (턴당 2회)\n[EndBattle] [SwordCutwithTear]가 3 미만이면, 정신력 15 감소하고 [SwordCutwithTear] 1 얻음 (턴당 1회)\n- [SwordCutwithTear]를 보유한 경우, (보유한 수치 x 15)만큼 정신력 추가로 감소",
           "coinlist": [
             {
               "coindescs": [
@@ -1818,7 +1818,7 @@
         {
           "level": 4,
           "name": "기사의 믿음",
-          "desc": "[CanDuelGuard]\n<style=\"highlight\">[StartBattle] [ProtectiveSword] 2당, 코인 위력 +1 (최대 2)</style>\n[StartBattle] 최대 체력의 (정신력 / <style=\"highlight\">3</style>)%만큼 [Protection]막 얻음 (턴당 1회)\n[WhenUse] [BlackTearsAlly] <style=\"highlight\">5</style> 얻음 (턴당 2회)\n[EndBattle] [SwordCutwithTear]가 3 미만이면, 정신력 15 감소하고 [SwordCutwithTear] 1 얻음 (턴당 1회)\n- [SwordCutwithTear]를 보유한 경우, (보유한 수치 x 15)만큼 정신력 추가로 감소",
+          "desc": "[CanDuelGuard]\n<style=\"highlight\">[StartBattle] [ProtectiveSword] 2당, 코인 위력 +1 (최대 2)</style>\n[StartBattle] 최대 체력의 (정신력 / <style=\"highlight\">3</style>)%만큼 보호막 얻음 (턴당 1회)\n[WhenUse] [BlackTearsAlly] <style=\"highlight\">5</style> 얻음 (턴당 2회)\n[EndBattle] [SwordCutwithTear]가 3 미만이면, 정신력 15 감소하고 [SwordCutwithTear] 1 얻음 (턴당 1회)\n- [SwordCutwithTear]를 보유한 경우, (보유한 수치 x 15)만큼 정신력 추가로 감소",
           "coinlist": [
             {
               "coindescs": [

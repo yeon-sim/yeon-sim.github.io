@@ -1,0 +1,21 @@
+<div class="buff-tooltip-overlay" x-show="kwTooltip" @click.self="closeKwTooltip()" @contextmenu.prevent="closeKwTooltip()" style="display:none;">
+  <div class="buff-tooltip-wrap"
+       x-data="{ up: false, down: false, checkScroll() { const s = this.$el.querySelector('.buff-tooltip-box'); if (!s) return; this.up = s.scrollTop > 0; this.down = s.scrollTop + s.clientHeight < s.scrollHeight - 1; } }"
+       x-effect="kwTooltip && $nextTick(() => checkScroll())"
+       :style="`top:${kwTooltip?.anchorTop ?? 0}px; left:${kwTooltip?.anchorLeft ?? 0}px;`"
+       @click.stop @contextmenu.prevent="closeKwTooltip()">
+    <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+    <div class="buff-tooltip-box"
+         @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+      <div class="buff-tooltip-header">
+        <img x-show="kwTooltip?.id" class="buff-tooltip-icon"
+             :src="`/images/buff/${kwTooltip?.id}.png`"
+             :onerror="kwTooltip?.iconId ? `this.src='/images/buff/${kwTooltip.iconId}.png';this.onerror=null;` : `this.style.display='none';`"
+             alt="">
+        <span class="buff-tooltip-name" x-html="kwTooltip?.name"></span>
+      </div>
+      <div class="buff-tooltip-desc" x-html="kwTooltip?.descHtml"></div>
+    </div>
+    <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+  </div>
+</div>

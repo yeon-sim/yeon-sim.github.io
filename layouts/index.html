@@ -866,7 +866,7 @@
               <div class="scroll-indicator" :class="{ visible: up }">▲</div>
               <div class="gift-popup-scroll-area"
                    @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;"
-                   @click="handleDescClick($event)">
+                   @click="handleKwClick($event)">
                 <div class="gift-popup-related" x-show="popup.curse">
                   <span class="gift-popup-related-label">관련 축복 기프트 :</span>
                   <div class="fusion-recipe-card" :class="{ fusion: popup.curse?.isFusionBg }" @click.stop="openGiftPopup(popup.curse?.id)">
@@ -942,17 +942,7 @@
   </template>
 
   {{/* ── 버프 툴팁 ── */}}
-  <div class="buff-tooltip-overlay" x-show="buffTooltip" @click.self="closeBuffTooltip()" @contextmenu.prevent="closeBuffTooltip()" style="display:none;">
-    <div class="buff-tooltip-box"
-         :style="`top:${buffTooltip?.anchorTop ?? 0}px; left:${buffTooltip?.anchorLeft ?? 0}px;`"
-         @click.stop @contextmenu.prevent="closeBuffTooltip()">
-      <div class="buff-tooltip-header">
-        <img x-show="buffTooltip?.id" class="buff-tooltip-icon" :src="`/images/buff/${buffTooltip?.id}.png`" :onerror="buffTooltip?.iconId ? `this.src='/images/buff/${buffTooltip.iconId}.png';this.onerror=null;` : `this.style.display='none';`" alt="">
-        <span class="buff-tooltip-name" x-text="buffTooltip?.name"></span>
-      </div>
-      <div class="buff-tooltip-desc" x-html="buffTooltip?.descHtml"></div>
-    </div>
-  </div>
+  {{ partial "keyword-tooltip.html" . }}
 
   {{/* ── 팩 팝업 ── */}}
   <div class="modal-overlay" :class="{ open: packPopup }" @click.self="packPopup = null" @contextmenu.prevent="packPopup = null" :style="`z-index: ${packPopupZIndex}`">
@@ -1014,9 +1004,12 @@
       </div>
     </div>
   </div>
+  </div>
 
 </div>
 
+{{ $kwTooltipJs := resources.Get "js/keyword-tooltip.js" | fingerprint }}
+<script src="{{ $kwTooltipJs.RelPermalink }}"></script>
 {{ $eggJs := resources.Get "js/easteregg-config.js" | fingerprint }}
 <script src="{{ $eggJs.RelPermalink }}"></script>
 {{ $defaultPresetsJs := resources.Get "js/default-presets-config.js" | fingerprint }}
@@ -1193,6 +1186,7 @@ function scrollWrap(selector) {
   {{ end }}
 {{ end }}
 const buffDetailMap = {{ $kwMap | jsonify | safeJS }};
+const kwMap = buffDetailMap;
 
 function parseDesc(raw) {
   const text = (typeof raw === 'string' ? raw : String(raw))
@@ -1263,6 +1257,7 @@ const giftMap = {
 <script>
 function checklist() {
   return {
+    ...kwTooltipMixin(),
     search: '',
     activeCategory: '',
     checked: {},
@@ -1283,7 +1278,6 @@ function checklist() {
     presetGuidePage: 1,
     presetGuidePages: [{{ range .Site.Data.guide_preset.pages }}`{{ . }}`,{{ end }}],
     showToc: false,
-    buffTooltip: null,
     showPackPanel: false,
     packFilter: '',
     packDungeonMode: 'normal',
@@ -1752,52 +1746,6 @@ function checklist() {
         curse: g.curse ? (() => { const r = giftMap[g.curse] || {}; return { id: g.curse, grade: r.grade || '1', isSpecial: r.isSpecial || false, isFusionBg: r.isFusionBg || false, category: r.category || 'None' }; })() : null,
         bless: g.bless ? (() => { const r = giftMap[g.bless] || {}; return { id: g.bless, grade: r.grade || '1', isSpecial: r.isSpecial || false, isFusionBg: r.isFusionBg || false, category: r.category || 'None' }; })() : null,
       });
-    },
-
-    openBuffTooltip(buffId, clientX, clientY) {
-      const b = buffDetailMap[buffId];
-      if (!b) return;
-      const rawDesc = (b.desc || '').replace(/^"|"$/g, '');
-      const descHtml = rawDesc
-        .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
-          const inner = buffDetailMap[kw];
-          if (!inner) return match;
-          const icFallback = inner.iconId ? `this.src='/images/buff/${inner.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
-          const ic = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${icFallback}" alt="">`;
-          return `<span class="buff-keyword no-click">${ic}${inner.name.replace(/^"|"$/g, '')}</span>`;
-        })
-        .replace(/\n/g, '<br>').replace(/\\n/g, '<br>');
-
-      // 클릭 좌표 기준 (fixed overlay이므로 viewport 좌표 직접 사용)
-      const TW = 320;
-      const TH_APPROX = 160;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      let left = clientX;
-      if (left + TW > vw - 8) left = Math.max(8, vw - TW - 8);
-      const top = (clientY + TH_APPROX < vh - 8)
-        ? clientY + 8
-        : clientY - TH_APPROX - 8;
-
-      this.buffTooltip = {
-        id: buffId,
-        name: b.name.replace(/^"|"$/g, ''),
-        iconId: b.iconId,
-        descHtml,
-        anchorTop: top,
-        anchorLeft: left,
-      };
-    },
-
-    closeBuffTooltip() {
-      this.buffTooltip = null;
-    },
-
-    handleDescClick(event) {
-      const kw = event.target.closest('.buff-keyword:not(.no-click)');
-      if (!kw) { this.buffTooltip = null; return; }
-      event.stopPropagation();
-      this.openBuffTooltip(kw.dataset.buffId, event.clientX, event.clientY);
     },
 
     openPackPopup(packId) {

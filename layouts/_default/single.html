@@ -231,8 +231,8 @@
             {{ $coinIdx = add $coinIdx 1 }}
             {{ if .coindescs }}
               {{ $descs := slice }}
-              {{ range .coindescs }}{{ $descs = $descs | append .desc }}{{ end }}
-              {{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}
+              {{ range .coindescs }}{{ if .desc }}{{ $descs = $descs | append .desc }}{{ end }}{{ end }}
+              {{ if $descs }}{{ $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) }}{{ end }}
             {{ end }}
           {{ end }}
           {{ $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) }}
@@ -332,6 +332,7 @@
   <script>
   var passiveMap = {{ $passiveMap | jsonify | safeJS }};
   var passiveKeywordMap = {{ $kwMap | jsonify | safeJS }};
+  var kwMap = passiveKeywordMap;
   var skillDescMap = {{ $skillDescMap | jsonify | safeJS }};
   var resistLabelMap = {{ $resistLabelMap | jsonify | safeJS }};
   var egoSkillMap = {{ $egoSkillMap | jsonify | safeJS }};
@@ -546,8 +547,15 @@
         {{ range $skKwKey, $_ := $skKwDict }}
           {{ if index $skillKwAllowSet $skKwKey }}{{ $egoSkillKws = $egoSkillKws | append $skKwKey }}{{ end }}
         {{ end }}
+        {{ $addSkills := slice }}
+        {{ range .additionalList }}
+          {{ $addLevel := .level }}
+          {{ range .additionalList }}
+            {{ $addSkills = $addSkills | append (dict "level" $addLevel "awakeId" (printf "%d" (int .awakeningSkillId)) "corrosionId" (printf "%d" (int .corrosionSkillId))) }}
+          {{ end }}
+        {{ end }}
         {{ $existing := index $egoMap $cid | default slice }}
-        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws))) }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills))) }}
       {{ end }}
     {{ end }}
 
@@ -757,7 +765,7 @@
                 {{ range $spRes }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt="">X {{ .v }} 공명</span>{{ end }}
               </div>
               {{ end }}
-              <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo('{{ string . }}').desc)" @click="handlePassiveDescClick($event)"></div>
+              <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo('{{ string . }}').desc)" @click="handleKwClick($event)"></div>
             </div>
             {{ end }}
             {{ end }}
@@ -769,7 +777,7 @@
         </div>
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
-          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }} })">
+          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             <div class="ego-card">
               <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
               <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
@@ -827,7 +835,7 @@
                     <div class="scroll-indicator" :class="{ visible: up }">▲</div>
                     <div class="passive-desc ego-passive-scroll-area"
                          x-html="formatPassiveDesc(egoCurrentPassive.desc)"
-                         @click="handlePassiveDescClick($event)"
+                         @click="handleKwClick($event)"
                          @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;"></div>
                     <div class="scroll-indicator" :class="{ visible: down }">▼</div>
                   </div>
@@ -936,7 +944,7 @@
                           <span class="skill-target-num-text" x-show="egoAwakeSkill.tn" x-text="`[${egoAwakeSkill.tn}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
-                          <span class="skill-frame-name" x-text="egoSkillName(egoAwakeSkill)"></span>
+                          <span class="skill-frame-name" x-html="egoSkillName(egoAwakeSkill)"></span>
                         </div>
                         <div class="skill-power-row">
                           <template x-for="icon in egoSkillTypeIcons(egoAwakeSkill)" :key="icon">
@@ -959,7 +967,7 @@
                     </div>
                     <template x-if="egoSkillDesc(egoAwakeSkill)">
                       <div class="skill-desc-area">
-                        <div class="skill-desc" x-show="egoSkillDesc(egoAwakeSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoAwakeSkill).desc)" @click="handlePassiveDescClick($event)"></div>
+                        <div class="skill-desc" x-show="egoSkillDesc(egoAwakeSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoAwakeSkill).desc)" @click="handleKwClick($event)"></div>
                         <template x-for="coin in (egoSkillDesc(egoAwakeSkill).coins ?? [])" :key="coin.idx">
                           <div class="skill-coin-desc-item">
                             <div class="skill-coin-number-wrap">
@@ -968,13 +976,75 @@
                             </div>
                             <div class="skill-coin-descs">
                               <template x-for="(d, i) in coin.descs" :key="i">
-                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handleKwClick($event)"></div>
                               </template>
                             </div>
                           </div>
                         </template>
                       </div>
                     </template>
+                  </div>
+                </template>
+                <template x-for="addSkill in egoAdditionalAwakeSkills" :key="addSkill.id">
+                  <div>
+                  <hr class="skill-additional-divider">
+                  <div class="skill-frame-item">
+                    <div class="skill-frame-top-row">
+                      <div class="skill-display">
+                        <img class="skill-icon-img" :src="addSkill.iconImg">
+                        <img class="skill-frame-img" :src="egoSkillFrameSrc(addSkill, false)" :style="'filter: url(#tint-' + egoSkillAttr(addSkill) + ')'">
+                      </div>
+                      <div class="skill-frame-info">
+                        <div class="skill-level-row">
+                          <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(addSkill)">
+                          <span class="skill-level-sum" x-text="egoSkillLevelValueText(addSkill)"></span>
+                          <span class="skill-level-correction" x-text="egoSkillLevelCoinText(addSkill)"></span>
+                          <template x-for="n in Array.from({length: addSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                            <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
+                          </template>
+                          <span class="skill-target-num-text" x-show="addSkill.tn" x-text="`[${addSkill.tn}]`"></span>
+                        </div>
+                        <div class="skill-frame-name-row">
+                          <span class="skill-frame-name" x-html="egoSkillName(addSkill)"></span>
+                        </div>
+                        <div class="skill-power-row">
+                          <template x-for="icon in egoSkillTypeIcons(addSkill)" :key="icon">
+                            <img class="skill-power-atk-icon" :src="icon">
+                          </template>
+                          <span class="skill-power-text" x-text="egoSkillDefaultValue(addSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinOperator(addSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinScale(addSkill)"></span>
+                          <template x-for="(ct, idx) in egoSkillCoinTypes(addSkill)" :key="idx">
+                            <img class="skill-coin-icon" :src="ct === 'S' ? '/images/skill/skill_coin/coin_super_normal.png' : '/images/skill/skill_coin/coin_default_normal.png'">
+                          </template>
+                        </div>
+                      </div>
+                      <div class="skill-mp-col" x-show="addSkill.mp">
+                        <div class="skill-mp-info">
+                          <img class="skill-mp-icon" src="/images/ui/mental.png" alt="">
+                          <span class="skill-mp-text" x-text="addSkill.mp"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <template x-if="egoSkillDesc(addSkill)">
+                      <div class="skill-desc-area">
+                        <div class="skill-desc" x-show="egoSkillDesc(addSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(addSkill).desc)" @click="handleKwClick($event)"></div>
+                        <template x-for="coin in (egoSkillDesc(addSkill).coins ?? [])" :key="coin.idx">
+                          <div class="skill-coin-desc-item">
+                            <div class="skill-coin-number-wrap">
+                              <img class="skill-coin-number-frame" src="/images/skill/skill_coin/coinNumber_frame.png" alt="">
+                              <img class="skill-coin-number-img" :src="`/images/skill/skill_coin/coinNumber_${String(coin.idx).padStart(2,'0')}.png`" alt="">
+                            </div>
+                            <div class="skill-coin-descs">
+                              <template x-for="(d, i) in coin.descs" :key="i">
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handleKwClick($event)"></div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                  </div>
                   </div>
                 </template>
               </div>
@@ -1008,7 +1078,7 @@
                           <span class="skill-target-num-text" x-show="egoCorrosionSkill.tn" x-text="`[${egoCorrosionSkill.tn}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
-                          <span class="skill-frame-name" x-text="egoSkillName(egoCorrosionSkill)"></span>
+                          <span class="skill-frame-name" x-html="egoSkillName(egoCorrosionSkill)"></span>
                         </div>
                         <div class="skill-power-row">
                           <template x-for="icon in egoSkillTypeIcons(egoCorrosionSkill)" :key="icon">
@@ -1033,7 +1103,7 @@
                     </div>
                     <template x-if="egoSkillDesc(egoCorrosionSkill)">
                       <div class="skill-desc-area">
-                        <div class="skill-desc" x-show="egoSkillDesc(egoCorrosionSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoCorrosionSkill).desc)" @click="handlePassiveDescClick($event)"></div>
+                        <div class="skill-desc" x-show="egoSkillDesc(egoCorrosionSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(egoCorrosionSkill).desc)" @click="handleKwClick($event)"></div>
                         <template x-for="coin in (egoSkillDesc(egoCorrosionSkill).coins ?? [])" :key="coin.idx">
                           <div class="skill-coin-desc-item">
                             <div class="skill-coin-number-wrap">
@@ -1042,13 +1112,77 @@
                             </div>
                             <div class="skill-coin-descs">
                               <template x-for="(d, i) in coin.descs" :key="i">
-                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handleKwClick($event)"></div>
                               </template>
                             </div>
                           </div>
                         </template>
                       </div>
                     </template>
+                  </div>
+                </template>
+                <template x-for="addSkill in egoAdditionalCorrosionSkills" :key="addSkill.id">
+                  <div>
+                  <hr class="skill-additional-divider">
+                  <div class="skill-frame-item">
+                    <div class="skill-frame-top-row">
+                      <div class="skill-display">
+                        <img class="skill-icon-img" :src="addSkill.iconImg">
+                        <img class="skill-frame-img" :src="egoSkillFrameSrc(addSkill, true)" :style="'filter: url(#tint-' + egoSkillAttr(addSkill) + ')'">
+                      </div>
+                      <div class="skill-frame-info">
+                        <div class="skill-level-row">
+                          <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(addSkill)">
+                          <span class="skill-level-sum" x-text="egoSkillLevelValueText(addSkill)"></span>
+                          <span class="skill-level-correction" x-text="egoSkillLevelCoinText(addSkill)"></span>
+                          <template x-for="n in Array.from({length: addSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                            <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
+                          </template>
+                          <span class="skill-target-num-text" x-show="addSkill.tn" x-text="`[${addSkill.tn}]`"></span>
+                        </div>
+                        <div class="skill-frame-name-row">
+                          <span class="skill-frame-name" x-html="egoSkillName(addSkill)"></span>
+                        </div>
+                        <div class="skill-power-row">
+                          <template x-for="icon in egoSkillTypeIcons(addSkill)" :key="icon">
+                            <img class="skill-power-atk-icon" :src="icon">
+                          </template>
+                          <span class="skill-power-text" x-text="egoSkillDefaultValue(addSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinOperator(addSkill)"></span>
+                          <span class="skill-power-text" x-text="egoSkillCoinScale(addSkill)"></span>
+                          <template x-for="(ct, idx) in egoSkillCoinTypes(addSkill)" :key="idx">
+                            <img class="skill-coin-icon" :src="ct === 'S' ? '/images/skill/skill_coin/coin_super_normal.png' : '/images/skill/skill_coin/coin_default_normal.png'">
+                          </template>
+                        </div>
+                      </div>
+                      <div class="skill-mp-col" x-show="addSkill.mp">
+                        <div class="skill-mp-info">
+                          <img class="skill-mp-icon" src="/images/ui/mental.png" alt="">
+                          <span class="skill-mp-text"
+                                :style="egoOverclock ? 'color:#fd3f3f' : ''"
+                                x-text="egoOverclock ? Math.ceil(addSkill.mp * 1.5) : addSkill.mp"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <template x-if="egoSkillDesc(addSkill)">
+                      <div class="skill-desc-area">
+                        <div class="skill-desc" x-show="egoSkillDesc(addSkill).desc" x-html="formatPassiveDesc(egoSkillDesc(addSkill).desc)" @click="handleKwClick($event)"></div>
+                        <template x-for="coin in (egoSkillDesc(addSkill).coins ?? [])" :key="coin.idx">
+                          <div class="skill-coin-desc-item">
+                            <div class="skill-coin-number-wrap">
+                              <img class="skill-coin-number-frame" src="/images/skill/skill_coin/coinNumber_frame.png" alt="">
+                              <img class="skill-coin-number-img" :src="`/images/skill/skill_coin/coinNumber_${String(coin.idx).padStart(2,'0')}.png`" alt="">
+                            </div>
+                            <div class="skill-coin-descs">
+                              <template x-for="(d, i) in coin.descs" :key="i">
+                                <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handleKwClick($event)"></div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                  </div>
                   </div>
                 </template>
               </div>
@@ -1222,7 +1356,7 @@
                   </div>
                   <template x-if="skillDesc(skill)">
                     <div class="skill-desc-area">
-                      <div class="skill-desc" x-show="skillDesc(skill).desc" x-html="formatPassiveDesc(skillDesc(skill).desc)" @click="handlePassiveDescClick($event)"></div>
+                      <div class="skill-desc" x-show="skillDesc(skill).desc" x-html="formatPassiveDesc(skillDesc(skill).desc)" @click="handleKwClick($event)"></div>
                       <template x-for="coin in (skillDesc(skill).coins ?? [])" :key="coin.idx">
                         <div class="skill-coin-desc-item">
                           <div class="skill-coin-number-wrap">
@@ -1231,7 +1365,7 @@
                           </div>
                           <div class="skill-coin-descs">
                             <template x-for="(d, i) in coin.descs" :key="i">
-                              <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handlePassiveDescClick($event)"></div>
+                              <div class="skill-coin-desc" x-html="formatPassiveDesc(d)" @click="handleKwClick($event)"></div>
                             </template>
                           </div>
                         </div>
@@ -1273,7 +1407,7 @@
                           </template>
                         </div>
                       </template>
-                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handlePassiveDescClick($event)"></div>
+                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handleKwClick($event)"></div>
                     </div>
                   </template>
                 </div>
@@ -1309,7 +1443,7 @@
                           </template>
                         </div>
                       </template>
-                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handlePassiveDescClick($event)"></div>
+                      <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo(passiveId).desc)" @click="handleKwClick($event)"></div>
                     </div>
                   </template>
                 </div>
@@ -1323,20 +1457,7 @@
   </div>
 
   {{/* ── 패시브 키워드 툴팁 ── */}}
-  <div class="buff-tooltip-overlay" x-show="passiveKeywordTooltip" @click.self="closePassiveKeywordTooltip()" @contextmenu.prevent="closePassiveKeywordTooltip()" style="display:none;">
-    <div class="buff-tooltip-box"
-         :style="`top:${passiveKeywordTooltip?.anchorTop ?? 0}px; left:${passiveKeywordTooltip?.anchorLeft ?? 0}px;`"
-         @click.stop @contextmenu.prevent="closePassiveKeywordTooltip()">
-      <div class="buff-tooltip-header">
-        <img x-show="passiveKeywordTooltip?.id" class="buff-tooltip-icon"
-             :src="`/images/buff/${passiveKeywordTooltip?.id}.png`"
-             :onerror="passiveKeywordTooltip?.iconId ? `this.src='/images/buff/${passiveKeywordTooltip.iconId}.png';this.onerror=null;` : `this.style.display='none';`"
-             alt="">
-        <span class="buff-tooltip-name" x-text="passiveKeywordTooltip?.name"></span>
-      </div>
-      <div class="buff-tooltip-desc" x-html="passiveKeywordTooltip?.descHtml"></div>
-    </div>
-  </div>
+  {{ partial "keyword-tooltip.html" . }}
 
   {{/* ── 플로팅 버튼 ── */}}
   <div class="float-btns">
@@ -1361,6 +1482,7 @@
 <script>
 function personalityPage() {
   return {
+    ...kwTooltipMixin(),
     search: '',
     pageMode: 'personality',
     activeEgoTypes: [],
@@ -1406,9 +1528,32 @@ function personalityPage() {
       const nl = egoSkillNameMap?.[cid] ?? [];
       return { ...sd, id: cid, nl, iconImg: this.egoDetail.corrosionIconImg };
     },
+    get egoAdditionalAwakeSkills() {
+      const addSkills = this.egoDetail?.additionalSkills ?? [];
+      return addSkills
+        .filter(s => this.egoSync >= s.level)
+        .map(s => {
+          const sd = egoSkillMap?.[s.awakeId];
+          if (!sd) return null;
+          const nl = egoSkillNameMap?.[s.awakeId] ?? [];
+          return { ...sd, id: s.awakeId, nl, iconImg: this.egoDetail.awakeIconImg };
+        })
+        .filter(Boolean);
+    },
+    get egoAdditionalCorrosionSkills() {
+      const addSkills = this.egoDetail?.additionalSkills ?? [];
+      return addSkills
+        .filter(s => this.egoSync >= s.level && s.corrosionId && s.corrosionId !== '0')
+        .map(s => {
+          const sd = egoSkillMap?.[s.corrosionId];
+          if (!sd) return null;
+          const nl = egoSkillNameMap?.[s.corrosionId] ?? [];
+          return { ...sd, id: s.corrosionId, nl, iconImg: this.egoDetail.corrosionIconImg };
+        })
+        .filter(Boolean);
+    },
     personalityTab: 'info',
     personalitySync: 4,
-    passiveKeywordTooltip: null,
     activeSkillTier: 1,
     personalityLevel: {{ .Site.Data.config.personalityMaxLevel }},
     gacksungIds: {},
@@ -1926,32 +2071,6 @@ function personalityPage() {
         })
         .replace(/\n/g, '<br>');
     },
-    handlePassiveDescClick(event) {
-      const kw = event.target.closest('.buff-keyword:not(.no-click)');
-      if (!kw) { this.passiveKeywordTooltip = null; return; }
-      event.stopPropagation();
-      this.openPassiveKeywordTooltip(kw.dataset.buffId, event.clientX, event.clientY);
-    },
-    openPassiveKeywordTooltip(kwId, clientX, clientY) {
-      const b = passiveKeywordMap?.[kwId];
-      if (!b) return;
-      const descHtml = (b.desc || '')
-        .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
-          const inner = passiveKeywordMap?.[kw];
-          if (!inner) return match;
-          const icFallback = inner.iconId ? `this.src='/images/buff/${inner.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
-          const ic = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${icFallback}" alt="">`;
-          return `<span class="buff-keyword no-click">${ic}${inner.name}</span>`;
-        })
-        .replace(/\n/g, '<br>');
-      const TW = 320, TH_APPROX = 160;
-      const vw = window.innerWidth, vh = window.innerHeight;
-      let left = clientX;
-      if (left + TW > vw - 8) left = Math.max(8, vw - TW - 8);
-      const top = (clientY + TH_APPROX < vh - 8) ? clientY + 8 : clientY - TH_APPROX - 8;
-      this.passiveKeywordTooltip = { id: kwId, name: b.name, iconId: b.iconId, descHtml, anchorTop: top, anchorLeft: left };
-    },
-    closePassiveKeywordTooltip() { this.passiveKeywordTooltip = null; },
     closePersonalityDetail() { this.personalityDetail = null; },
     openEgoDetail(data) { this.egoDetail = data; if (this.egoSync > data.maxGaksung) this.egoSync = data.maxGaksung; this.egoOverclock = false; },
     closeEgoDetail() { this.egoDetail = null; },
@@ -2109,6 +2228,8 @@ function scrollWrap(selector) {
   };
 }
 </script>
+{{ $kwTooltipJs := resources.Get "js/keyword-tooltip.js" | fingerprint }}
+<script src="{{ $kwTooltipJs.RelPermalink }}"></script>
 {{ $eggJs := resources.Get "js/easteregg-config.js" | fingerprint }}
 <script src="{{ $eggJs.RelPermalink }}"></script>
 <script>

@@ -1721,6 +1721,11 @@ button.site-nav-link.site-nav-link--active {
   border-top: 2px solid #3a3530;
   padding-top: 0.5rem;
 }
+.skill-additional-divider {
+  border: none;
+  border-top: 2px solid #3a3530;
+  margin: 0.5rem 0;
+}
 .skill-frame-top-row {
   display: flex;
   flex-direction: row;
@@ -3338,18 +3343,26 @@ button.site-nav-link.site-nav-link--active {
   inset: 0;
   z-index: 9000;
 }
-.buff-tooltip-box {
+.buff-tooltip-wrap {
   position: fixed;
   min-width: 220px;
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+}
+.buff-tooltip-box {
+  max-height: 40vh;
+  overflow-y: auto;
+  scrollbar-width: none;
   border: 5px solid transparent;
   border-image: url('/images/ui/tooltip_box.png') 15 fill stretch;
   padding: 8px 10px 12px;
   color: #ddd;
   font-size: 0.85rem;
-  pointer-events: auto;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));
 }
+.buff-tooltip-box::-webkit-scrollbar { display: none; }
 .buff-tooltip-header {
   display: flex;
   align-items: center;
