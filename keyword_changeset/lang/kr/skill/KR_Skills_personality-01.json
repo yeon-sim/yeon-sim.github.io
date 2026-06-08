@@ -1,0 +1,482 @@
+[
+  {
+    "loc": "1010501 Lv1 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 3 증가",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 3 증가"
+  },
+  {
+    "loc": "1010501 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1010501 Lv2 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 진동 횟수 2 증가",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1010501 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1010501 Lv4 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 진동 횟수 2 증가\n자신의 진동 횟수가 5 이상일 때 코인 위력 +1",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 [Vibration] 횟수 2 증가\n자신의 [Vibration] 횟수가 5 이상일 때 코인 위력 +1"
+  },
+  {
+    "loc": "1010501 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1010502 Lv1 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 3 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 3 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010502 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 5 이상일 때, 진동 폭발. 대상의 진동 횟수 2 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 5 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 2 감소"
+  },
+  {
+    "loc": "1010502 Lv2 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1010502 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 5 이상일 때, 진동 폭발. 대상의 진동 횟수 2 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 5 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 2 감소"
+  },
+  {
+    "loc": "1010502 Lv4 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 3 증가"
+  },
+  {
+    "loc": "1010502 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 5 이상일 때, 진동 폭발. 대상의 진동 횟수 2 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 5 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 2 감소"
+  },
+  {
+    "loc": "1010503 Lv3 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림.\n[WhenUse] 자신의 진동 횟수 10을 소모하여 코인 위력 +1",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard].\n[WhenUse] 자신의 [Vibration] 횟수 10을 소모하여 코인 위력 +1"
+  },
+  {
+    "loc": "1010503 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 4 부여",
+    "after": "[OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1010503 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 폭발",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [VibrationExplosion]"
+  },
+  {
+    "loc": "1010503 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1010503 Lv3 coin3.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 폭발",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [VibrationExplosion]"
+  },
+  {
+    "loc": "1010503 Lv4 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림.\n[WhenUse] 자신의 진동 횟수 10을 소모하여 코인 위력 +2",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard].\n[WhenUse] 자신의 [Vibration] 횟수 10을 소모하여 코인 위력 +2"
+  },
+  {
+    "loc": "1010503 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 4 부여",
+    "after": "[OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1010503 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 폭발",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [VibrationExplosion]"
+  },
+  {
+    "loc": "1010503 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1010503 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 폭발",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [VibrationExplosion]"
+  },
+  {
+    "loc": "1010504 Lv1 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010504 Lv4 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010601 Lv1 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1010601 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1010601 Lv2 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1010601 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1010601 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1010601 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가\n충전 횟수가 10 이상이면, 코인 위력 +2",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가\n[Charge] 횟수가 10 이상이면, 코인 위력 +2"
+  },
+  {
+    "loc": "1010601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1010601 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1010602 Lv1 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 5 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 5 증가"
+  },
+  {
+    "loc": "1010602 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1010602 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1010602 Lv2 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 6 증가\n충전 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 6 증가\n[Charge] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1010602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1010602 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1010602 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수가 10 이상이면, 파열 3 부여",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수가 10 이상이면, [Burst] 3 부여"
+  },
+  {
+    "loc": "1010602 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 7 증가\n충전 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 7 증가\n[Charge] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1010602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1010602 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1010602 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수가 10 이상이면,  파열 3 부여, 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수가 10 이상이면,  [Burst] 3 부여, [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1010603 Lv3 desc",
+    "before": "[WhenUse] 충전 횟수가 15 미만이면, 충전 횟수를 10 소모하여 코인 위력 +1\n[WhenUse] 충전 횟수를 15 소모하여 코인 위력 +2",
+    "after": "[WhenUse] [Charge] 횟수가 15 미만이면, [Charge] 횟수를 10 소모하여 코인 위력 +1\n[WhenUse] [Charge] 횟수를 15 소모하여 코인 위력 +2"
+  },
+  {
+    "loc": "1010603 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010603 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010603 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 스킬 사용시 소모한 충전 횟수 5 당 파열 2 부여 (최대 6)",
+    "after": "[OnSucceedAttack] 스킬 사용시 소모한 [Charge] 횟수 5 당 [Burst] 2 부여 (최대 6)"
+  },
+  {
+    "loc": "1010603 Lv3 coin3.2",
+    "before": "[OnSucceedAttack] 스킬 사용시 충전 횟수를 15 소모하였으면, 차원 균열 2 부여",
+    "after": "[OnSucceedAttack] 스킬 사용시 [Charge] 횟수를 15 소모하였으면, [DimensionRift] 2 부여"
+  },
+  {
+    "loc": "1010603 Lv3 coin3.3",
+    "before": "[EnemyKill] 충전 역장 3 얻음",
+    "after": "[EnemyKill] [ChargeForceField] 3 얻음"
+  },
+  {
+    "loc": "1010603 Lv4 desc",
+    "before": "[WhenUse] 충전 횟수가 15 미만이면, 충전 횟수를 10 소모하여 코인 위력 +1\n[WhenUse] 충전 횟수를 15 소모하여 코인 위력 +2\n[BeforeAttack] 충전 횟수를 15 소모했다면, 파열 횟수 3 증가",
+    "after": "[WhenUse] [Charge] 횟수가 15 미만이면, [Charge] 횟수를 10 소모하여 코인 위력 +1\n[WhenUse] [Charge] 횟수를 15 소모하여 코인 위력 +2\n[BeforeAttack] [Charge] 횟수를 15 소모했다면, [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1010603 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010603 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010603 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 스킬 사용시 소모한 충전 횟수 5 당 파열 3 부여 (최대 9)",
+    "after": "[OnSucceedAttack] 스킬 사용시 소모한 [Charge] 횟수 5 당 [Burst] 3 부여 (최대 9)"
+  },
+  {
+    "loc": "1010603 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 스킬 사용시 충전 횟수를 15 소모하였으면, 차원 균열 2 부여",
+    "after": "[OnSucceedAttack] 스킬 사용시 [Charge] 횟수를 15 소모하였으면, [DimensionRift] 2 부여"
+  },
+  {
+    "loc": "1010603 Lv4 coin3.3",
+    "before": "[EnemyKill] 충전 역장 5 얻음",
+    "after": "[EnemyKill] [ChargeForceField] 5 얻음"
+  },
+  {
+    "loc": "1010604 Lv1 desc",
+    "before": "충전 횟수 5당 기본 위력 +1 (최대 2)",
+    "after": "[Charge] 횟수 5당 기본 위력 +1 (최대 2)"
+  },
+  {
+    "loc": "1010604 Lv4 desc",
+    "before": "충전 횟수 5당 기본 위력 +1 (최대 2)\n[OnSucceedEvade] 다음 턴에 처음으로 스킬로 부여하는 파열 +1 (턴 당 최대 증가량 : 3)",
+    "after": "[Charge] 횟수 5당 기본 위력 +1 (최대 2)\n[OnSucceedEvade] 다음 턴에 처음으로 스킬로 부여하는 [Burst] +1 (턴 당 최대 증가량 : 3)"
+  },
+  {
+    "loc": "1010701 Lv1 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010701 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1010701 Lv2 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010701 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1010701 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1010701 Lv4 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010701 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1010701 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1010702 Lv1 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가\n자신의 호흡 이 5 이상이면, 합 위력 +2",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가\n자신의 [Breath] 이 5 이상이면, 합 위력 +2"
+  },
+  {
+    "loc": "1010702 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1010702 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1010702 Lv2 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가\n자신의 호흡 이 5 이상이면, 합 위력 +2",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가\n자신의 [Breath] 이 5 이상이면, 합 위력 +2"
+  },
+  {
+    "loc": "1010702 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1010702 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1010702 Lv4 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가\n자신의 호흡 이 5 이상이면, 합 위력 +3",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가\n자신의 [Breath] 이 5 이상이면, 합 위력 +3"
+  },
+  {
+    "loc": "1010702 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1010702 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1010703 Lv3 desc",
+    "before": "[WhenUse] 호흡 5 얻음",
+    "after": "[WhenUse] [Breath] 5 얻음"
+  },
+  {
+    "loc": "1010703 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010703 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 4 부여",
+    "after": "[OnSucceedAttack] [Laceration] 4 부여"
+  },
+  {
+    "loc": "1010703 Lv3 coin2.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 횟수 4 증가",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 횟수 4 증가"
+  },
+  {
+    "loc": "1010703 Lv4 desc",
+    "before": "[WhenUse] 호흡 5 얻음\n자신의 호흡 이 7 이상이면, 코인 위력 +1",
+    "after": "[WhenUse] [Breath] 5 얻음\n자신의 [Breath] 이 7 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1010703 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010703 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 4 부여",
+    "after": "[OnSucceedAttack] [Laceration] 4 부여"
+  },
+  {
+    "loc": "1010703 Lv4 coin2.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 횟수 6 증가",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 횟수 6 증가"
+  },
+  {
+    "loc": "1010801 Lv1 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 2%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 2%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010801 Lv2 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 3%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 3%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010801 Lv4 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 3%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 대상의 [Sinking]이 5 이상이면 코인 위력 +1",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 3%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]\n[WhenUse] 대상의 [Sinking]이 5 이상이면 코인 위력 +1"
+  },
+  {
+    "loc": "1010802 Lv1 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 4%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 4%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1010802 Lv2 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 5%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 3 얻음",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 5%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 3 얻음"
+  },
+  {
+    "loc": "1010802 Lv4 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 6%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 버림\n[WhenUse] 대상의 [Sinking]이 5 이상이면 코인 위력 +1\n[WhenUse] 다음 턴에 이 슬롯이 도발치 3 얻음",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 6%)만큼 보호막을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 높은 스킬 1개를 [Discard]\n[WhenUse] 대상의 [Sinking]이 5 이상이면 코인 위력 +1\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 3 얻음"
+  },
+  {
+    "loc": "1010803 Lv3 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 9%)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 슬롯이 도발치 8 얻음",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 9%)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 8 얻음"
+  },
+  {
+    "loc": "1010803 Lv4 desc",
+    "before": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 12%)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 슬롯이 도발치 10 얻음\n[WhenUse] 자신의 체력이 50% 미만이면 코인 위력 +1",
+    "after": "이 스킬이 버려지면 ([KnowledgeExplored] × 최대 체력의 12%)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 10 얻음\n[WhenUse] 자신의 체력이 50% 미만이면 코인 위력 +1"
+  },
+  {
+    "loc": "1010804 Lv1 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 무작위 스킬 2개를 등급이 낮은 순으로 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 3 얻음",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 무작위 스킬 2개를 등급이 낮은 순으로 [Discard]\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 3 얻음"
+  },
+  {
+    "loc": "1010804 Lv4 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 무작위 스킬 2개를 등급이 낮은 순으로 버림\n[WhenUse] 다음 턴에 이 슬롯이 도발치 5 얻음",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 무작위 스킬 2개를 등급이 낮은 순으로 [Discard]\n[WhenUse] 다음 턴에 이 슬롯이 [Aggro] 5 얻음"
+  },
+  {
+    "loc": "1011505 Lv3 coin9.2",
+    "before": "[UnBrokenCoinOnSucceedAttack] 침잠 횟수 3 증가",
+    "after": "[UnBrokenCoinOnSucceedAttack] [Sinking] 횟수 3 증가"
+  },
+  {
+    "loc": "1011505 Lv4 coin9.3",
+    "before": "[UnBrokenCoinOnSucceedAttack] 침잠 횟수 3 증가<style=\"highlight\"></style>",
+    "after": "[UnBrokenCoinOnSucceedAttack] [Sinking] 횟수 3 증가<style=\"highlight\"></style>"
+  }
+]

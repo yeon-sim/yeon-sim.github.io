@@ -1,0 +1,102 @@
+[
+  {
+    "loc": "2060421 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "2060421 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "2060421 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "2060421 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 진동 4 부여",
+    "after": "[OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "2060421 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "2060421 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 5 부여",
+    "after": "[OnSucceedAttack] [Vibration] 5 부여"
+  },
+  {
+    "loc": "2060511 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여",
+    "after": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
+  },
+  {
+    "loc": "2060511 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2060511 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여",
+    "after": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
+  },
+  {
+    "loc": "2060511 Lv3 coin1.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 탐식 취약 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [ShamrockTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "2060511 Lv3 coin1.3",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여<style=\"highlight\"></style>",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여<style=\"highlight\"></style>"
+  },
+  {
+    "loc": "2060511 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여",
+    "after": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
+  },
+  {
+    "loc": "2060511 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 다음 턴에 탐식 취약 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [ShamrockTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "2060511 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여<style=\"highlight\"></style>",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여<style=\"highlight\"></style>"
+  },
+  {
+    "loc": "2060521 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가",
+    "after": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
+  },
+  {
+    "loc": "2060521 Lv1 coin1.3",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2060521 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가",
+    "after": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
+  },
+  {
+    "loc": "2060521 Lv3 coin1.3",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2060521 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가",
+    "after": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
+  },
+  {
+    "loc": "2060521 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
+  }
+]

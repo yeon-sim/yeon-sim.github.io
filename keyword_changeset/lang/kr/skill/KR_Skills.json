@@ -1,0 +1,5052 @@
+[
+  {
+    "loc": "1010101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 1 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1010101 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010101 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010102 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010102 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여. 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여. [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010102 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여. 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여. [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010103 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 정신력이 0미만이면 다음 턴에 취약 1 부여",
+    "after": "[OnSucceedAttack] 대상의 정신력이 0미만이면 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1010103 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010103 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1010103 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 정신력이 0미만이면 다음 턴에 취약 1 부여",
+    "after": "[OnSucceedAttack] 대상의 정신력이 0미만이면 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1010201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010201 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1010202 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 관통 취약 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [PenetrateTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1010202 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 관통 취약 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [PenetrateTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1010202 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010203 Lv1 desc",
+    "before": "[WinDuel] 다음 턴에 마비 3 부여",
+    "after": "[WinDuel] 다음 턴에 [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1010203 Lv2 desc",
+    "before": "[WinDuel] 다음 턴에 마비 3 부여",
+    "after": "[WinDuel] 다음 턴에 [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1010203 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 취약 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1010203 Lv4 desc",
+    "before": "[WinDuel] 다음 턴에 마비 3 부여\n[WinDuel] 파열 횟수 1 부여",
+    "after": "[WinDuel] 다음 턴에 [Paralysis] 3 부여\n[WinDuel] [Burst] 횟수 1 부여"
+  },
+  {
+    "loc": "1010203 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 취약 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1010203 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1010301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1010301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 3 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 3 얻음"
+  },
+  {
+    "loc": "1010301 Lv4 desc",
+    "before": "[WhenUse] 호흡 횟수 2 얻음",
+    "after": "[WhenUse] [Breath] 횟수 2 얻음"
+  },
+  {
+    "loc": "1010301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 3 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 3 얻음"
+  },
+  {
+    "loc": "1010302 Lv1 desc",
+    "before": "[WinDuel] 다음 턴에 자신의 호흡 횟수 1 증가",
+    "after": "[WinDuel] 다음 턴에 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1010302 Lv2 desc",
+    "before": "[WinDuel] 다음 턴에 자신의 호흡 횟수 2 증가",
+    "after": "[WinDuel] 다음 턴에 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010302 Lv4 desc",
+    "before": "[WinDuel] 다음 턴에 자신의 호흡 횟수 2 증가",
+    "after": "[WinDuel] 다음 턴에 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1010303 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1010303 Lv4 desc",
+    "before": "[WhenUse] 호흡 2 얻음",
+    "after": "[WhenUse] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1010303 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1020101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 1 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1020101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1020102 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 공격 레벨 감소 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [AttackDown] 2 부여"
+  },
+  {
+    "loc": "1020102 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 공격 레벨 감소 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDown] 3 부여"
+  },
+  {
+    "loc": "1020103 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1020103 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1020201 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 1 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가 "
+  },
+  {
+    "loc": "1020201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가 "
+  },
+  {
+    "loc": "1020201 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1020201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가 "
+  },
+  {
+    "loc": "1020202 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 충전 횟수를 3 소모하여 다음 턴에 속박 4 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수를 3 소모하여 다음 턴에 [Binding] 4 부여"
+  },
+  {
+    "loc": "1020202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 충전 횟수를 3 소모하여 다음 턴에 속박 4 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수를 3 소모하여 다음 턴에 [Binding] 4 부여"
+  },
+  {
+    "loc": "1020202 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 3 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1020202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 3 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1020202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 충전 횟수를 3 소모하여 다음 턴에 속박 4 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수를 3 소모하여 다음 턴에 [Binding] 4 부여"
+  },
+  {
+    "loc": "1020203 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 충전 횟수를 5 소모하여 다음 턴에 공격 위력 감소 2 부여. 마비 3 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수를 5 소모하여 다음 턴에 [Reduction] 2 부여. [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1020203 Lv4 desc",
+    "before": "충전 횟수가 5 이상이면, 합 위력 +2",
+    "after": "[Charge] 횟수가 5 이상이면, 합 위력 +2"
+  },
+  {
+    "loc": "1020203 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 충전 횟수를 5 소모하여 다음 턴에 공격 위력 감소 2 부여. 마비 3 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수를 5 소모하여 다음 턴에 [Reduction] 2 부여. [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1020301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1020301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1020301 Lv4 desc",
+    "before": "[WhenUse] 호흡 횟수 2 증가",
+    "after": "[WhenUse] [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1020301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1020302 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 신속 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1020302 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 4 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 4 얻음"
+  },
+  {
+    "loc": "1020302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020302 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 4 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 4 얻음"
+  },
+  {
+    "loc": "1020302 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1020303 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 5 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 5 부여"
+  },
+  {
+    "loc": "1030101 Lv1 desc",
+    "before": "[WinDuel] 다음 턴에 신속 1 얻음",
+    "after": "[WinDuel] 다음 턴에 [Agility] 1 얻음"
+  },
+  {
+    "loc": "1030101 Lv2 desc",
+    "before": "[WinDuel] 다음 턴에 신속 2 얻음",
+    "after": "[WinDuel] 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1030102 Lv1 desc",
+    "before": "[WinDuel] 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "[WinDuel] 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1030102 Lv2 desc",
+    "before": "[WinDuel] 다음 턴에 공격 위력 증가 2 얻음",
+    "after": "[WinDuel] 다음 턴에 [Enhancement] 2 얻음"
+  },
+  {
+    "loc": "1030102 Lv4 desc",
+    "before": "[WinDuel] 다음 턴에 공격 위력 증가 2 얻음",
+    "after": "[WinDuel] 다음 턴에 [Enhancement] 2 얻음"
+  },
+  {
+    "loc": "1030102 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1030103 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1030103 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1030103 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 2 부여"
+  },
+  {
+    "loc": "1030201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1030201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1030201 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1030201 Lv4 desc",
+    "before": "충전 횟수가 5 이상이면, 코인 위력 +2",
+    "after": "[Charge] 횟수가 5 이상이면, 코인 위력 +2"
+  },
+  {
+    "loc": "1030201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1030201 Lv4 coin1.2",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1030202 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 취약 1 부여",
+    "after": "[OnSucceedAttackHead] [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1030202 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1030202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1030202 Lv2 coin3.1",
+    "before": "[OnSucceedAttackHead] 취약 2 부여",
+    "after": "[OnSucceedAttackHead] [Vulnerable] 2 부여"
+  },
+  {
+    "loc": "1030202 Lv4 desc",
+    "before": "충전 횟수가 7 이상이면, 코인 위력 +1",
+    "after": "[Charge] 횟수가 7 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1030202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1030202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1030202 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 취약 2 부여",
+    "after": "[OnSucceedAttackHead] [Vulnerable] 2 부여"
+  },
+  {
+    "loc": "1030203 Lv3 desc",
+    "before": "[WhenUse] 충전 횟수 10을 소모하여 코인 위력 +4\n충전 횟수가 10미만인 경우 체력 20% 감소",
+    "after": "[WhenUse] [Charge] 횟수 10을 소모하여 코인 위력 +4\n[Charge] 횟수가 10미만인 경우 체력 20% 감소"
+  },
+  {
+    "loc": "1030203 Lv3 coin5.1",
+    "before": "[OnSucceedAttackHead] 파열 5 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 5 부여"
+  },
+  {
+    "loc": "1030301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1030301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1030301 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 신속 2 얻음",
+    "after": "[WhenUse] 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1030301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 3 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 3 얻음"
+  },
+  {
+    "loc": "1030302 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1030302 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1030302 Lv2 desc",
+    "before": "[WhenUse] 자신의 체력이 최대 체력의 50%미만일 때 다음 턴에 신속 2 얻음",
+    "after": "[WhenUse] 자신의 체력이 최대 체력의 50%미만일 때 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1030302 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1030302 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 2 얻음"
+  },
+  {
+    "loc": "1030302 Lv4 desc",
+    "before": "[WhenUse] 자신의 체력이 최대 체력의 50%미만일 때 다음 턴에 신속 4 얻음",
+    "after": "[WhenUse] 자신의 체력이 최대 체력의 50%미만일 때 다음 턴에 [Agility] 4 얻음"
+  },
+  {
+    "loc": "1030302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1030302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 3 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 3 얻음"
+  },
+  {
+    "loc": "1040101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Breath] 1 얻음"
+  },
+  {
+    "loc": "1040101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1040103 Lv3 desc",
+    "before": "[StartBattle] 참격 피해량 증가 2를 얻음",
+    "after": "[StartBattle] [SlashDamageUp] 2를 얻음"
+  },
+  {
+    "loc": "1040103 Lv4 desc",
+    "before": "[StartBattle] 참격 피해량 증가 2를 얻음",
+    "after": "[StartBattle] [SlashDamageUp] 2를 얻음"
+  },
+  {
+    "loc": "1040103 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 호흡 2 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Breath] 2 얻음"
+  },
+  {
+    "loc": "1040201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1040201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1040202 Lv1 desc",
+    "before": "[WinDuel] 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "[WinDuel] 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1040202 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1040202 Lv2 desc",
+    "before": "대상에게 참격 취약 이 있으면 스킬 위력 +2\n[WinDuel] 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "대상에게 [SlashTakeDamageUp] 이 있으면 스킬 위력 +2\n[WinDuel] 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1040202 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1040203 Lv3 desc",
+    "before": "[WinDuel] 이 스킬에서 부여하는 참격 취약 2 추가 부여",
+    "after": "[WinDuel] 이 스킬에서 부여하는 [SlashTakeDamageUp] 2 추가 부여"
+  },
+  {
+    "loc": "1040203 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 참격 취약 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [SlashTakeDamageUp] 3 부여"
+  },
+  {
+    "loc": "1040204 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 참격 취약 1 부여",
+    "after": "[OnSucceedAttack] [SlashTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1040301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 1 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1040301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 마비 3 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1040301 Lv4 desc",
+    "before": "대상의 출혈 횟수가 2 이상이면, 피해량 +20%",
+    "after": "대상의 [Laceration] 횟수가 2 이상이면, 피해량 +20%"
+  },
+  {
+    "loc": "1040301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 마비 3 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1040302 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040302 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가 ",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가 "
+  },
+  {
+    "loc": "1040302 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040302 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가 ",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가 "
+  },
+  {
+    "loc": "1040302 Lv2 coin2.2",
+    "before": "[OnSucceedAttackHead] 피해량 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [AttackDmgDown] 2 부여"
+  },
+  {
+    "loc": "1040302 Lv4 desc",
+    "before": "대상의 출혈 횟수가 5 이상이면, 피해량 +20%",
+    "after": "대상의 [Laceration] 횟수가 5 이상이면, 피해량 +20%"
+  },
+  {
+    "loc": "1040302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 3 증가 ",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 3 증가 "
+  },
+  {
+    "loc": "1040302 Lv4 coin2.2",
+    "before": "[OnSucceedAttackHead] 피해량 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [AttackDmgDown] 2 부여"
+  },
+  {
+    "loc": "1040303 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040303 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 3 증가"
+  },
+  {
+    "loc": "1040303 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 5 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 5 부여"
+  },
+  {
+    "loc": "1040303 Lv4 desc",
+    "before": "대상의 출혈 횟수가 9 이상이면, 피해량 +40%",
+    "after": "대상의 [Laceration] 횟수가 9 이상이면, 피해량 +40%"
+  },
+  {
+    "loc": "1040303 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040303 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 3 증가"
+  },
+  {
+    "loc": "1040303 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 5 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 5 부여"
+  },
+  {
+    "loc": "1050101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050101 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050101 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050102 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1050102 Lv2 desc",
+    "before": "[WhenUse] 다음 턴에 수비 위력 증가 3 얻음",
+    "after": "[WhenUse] 다음 턴에 [Endurance] 3 얻음"
+  },
+  {
+    "loc": "1050102 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1050103 Lv3 desc",
+    "before": "[WhenUse] 다음 턴에 보호 3 얻음",
+    "after": "[WhenUse] 다음 턴에 [Protection] 3 얻음"
+  },
+  {
+    "loc": "1050103 Lv3 coin4.1",
+    "before": "[OnSucceedAttackHead] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1050103 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 보호 3 얻음",
+    "after": "[WhenUse] 다음 턴에 [Protection] 3 얻음"
+  },
+  {
+    "loc": "1050103 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050103 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050103 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050103 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1050201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050201 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050201 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050201 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 2 부여",
+    "after": "[OnSucceedAttack] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1050202 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 화상 2 부여",
+    "after": "[OnSucceedAttack] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1050202 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050202 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 화상 2 부여",
+    "after": "[OnSucceedAttack] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1050202 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 화상 2 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 [Combustion] 2 부여"
+  },
+  {
+    "loc": "1050202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 2 부여",
+    "after": "[OnSucceedAttack] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1050202 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 화상 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 [Combustion] 3 부여"
+  },
+  {
+    "loc": "1050202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1050203 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 3 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1050203 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 화상 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Combustion] 횟수 3 증가"
+  },
+  {
+    "loc": "1050203 Lv3 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 화상 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 [Combustion] 3 부여"
+  },
+  {
+    "loc": "1050203 Lv4 desc",
+    "before": "대상의 화상 위력이 5 이상이면, 코인 위력 +1",
+    "after": "대상의 [Combustion] 위력이 5 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1050203 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 3 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1050203 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 화상 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Combustion] 횟수 3 증가"
+  },
+  {
+    "loc": "1050203 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 화상 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 무작위 적 2명에게 [Combustion] 3 부여"
+  },
+  {
+    "loc": "1050301 Lv1 desc",
+    "before": "[WhenUse] 참격 보호 1 얻음",
+    "after": "[WhenUse] [SlashTakeDamageDown] 1 얻음"
+  },
+  {
+    "loc": "1050301 Lv2 desc",
+    "before": "[WhenUse] 참격 보호 2 얻음",
+    "after": "[WhenUse] [SlashTakeDamageDown] 2 얻음"
+  },
+  {
+    "loc": "1050301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 3 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가 "
+  },
+  {
+    "loc": "1050301 Lv4 desc",
+    "before": "[WhenUse] 참격 보호 2 얻음\n자신의 충전 횟수 3 증가",
+    "after": "[WhenUse] [SlashTakeDamageDown] 2 얻음\n자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1050301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 3 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가 "
+  },
+  {
+    "loc": "1050302 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1050302 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1050302 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1050302 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1050302 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1050302 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1050302 Lv2 coin3.2",
+    "before": "[OnSucceedAttack] 충전 횟수 3을 소모하여 참격 취약 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3을 소모하여 [SlashTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "1050302 Lv4 desc",
+    "before": "자신의 충전 횟수가 5 이상이면, 코인 위력 +1",
+    "after": "자신의 [Charge] 횟수가 5 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1050302 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1050302 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1050302 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1050302 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 충전 횟수 3을 소모하여 참격 취약 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3을 소모하여 [SlashTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv3 coin4.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv4 desc",
+    "before": "자신의 충전 횟수가 5 이상이면, 코인 위력 +1",
+    "after": "자신의 [Charge] 횟수가 5 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1050303 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050303 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2를 소모하여 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2를 소모하여 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1050304 Lv4 desc",
+    "before": "[StartBattle] 자신의 충전 횟수 2 증가",
+    "after": "[StartBattle] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1060101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1060101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1060102 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 1 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1060102 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1060102 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1060102 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1060102 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1060102 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1060103 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 공격 위력 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [Reduction] 2 부여"
+  },
+  {
+    "loc": "1060103 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 공격 위력 감소 2 부여",
+    "after": "[OnSucceedAttackHead] [Reduction] 2 부여"
+  },
+  {
+    "loc": "1060103 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1060103 Lv4 coin2.3",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1060201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1060202 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060202 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1060202 Lv2 desc",
+    "before": "[BeforeAttack] 대상의 출혈 횟수가 4미만이면 스킬의 1, 2코인이 추가됨",
+    "after": "[BeforeAttack] 대상의 [Laceration] 횟수가 4미만이면 스킬의 1, 2코인이 추가됨"
+  },
+  {
+    "loc": "1060202 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1060202 Lv4 desc",
+    "before": "[BeforeAttack] 대상의 출혈 횟수가 4미만이면 스킬의 1, 2코인이 추가됨",
+    "after": "[BeforeAttack] 대상의 [Laceration] 횟수가 4미만이면 스킬의 1, 2코인이 추가됨"
+  },
+  {
+    "loc": "1060202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1060203 Lv3 desc",
+    "before": "[StartBattle] 이 스킬에서 부여하는 출혈, 마비 1 추가 부여",
+    "after": "[StartBattle] 이 스킬에서 부여하는 [Laceration], [Paralysis] 1 추가 부여"
+  },
+  {
+    "loc": "1060203 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060203 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060203 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 마비 5 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 5 부여"
+  },
+  {
+    "loc": "1060301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1060301 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 4 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 4 부여"
+  },
+  {
+    "loc": "1070101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 3 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1070101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1070102 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "[WhenUse] 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1070102 Lv2 desc",
+    "before": "[WhenUse] 다음 턴에 공격 위력 증가, 피해량 증가 1 얻음",
+    "after": "[WhenUse] 다음 턴에 [Enhancement], [AttackDmgUp] 1 얻음"
+  },
+  {
+    "loc": "1070102 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 공격 위력 증가, 피해량 증가 1 얻음",
+    "after": "[WhenUse] 다음 턴에 [Enhancement], [AttackDmgUp] 1 얻음"
+  },
+  {
+    "loc": "1070102 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1070103 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1070201 Lv4 desc",
+    "before": "자신의 체력이 50%미만일 때 스킬 위력 +2\n[WhenUse] 호흡 횟수 3 얻음",
+    "after": "자신의 체력이 50%미만일 때 스킬 위력 +2\n[WhenUse] [Breath] 횟수 3 얻음"
+  },
+  {
+    "loc": "1070202 Lv4 desc",
+    "before": "자신의 체력이 50%미만일 때 스킬 위력 +2\n[WhenUse] 호흡 3 얻음",
+    "after": "자신의 체력이 50%미만일 때 스킬 위력 +2\n[WhenUse] [Breath] 3 얻음"
+  },
+  {
+    "loc": "1070203 Lv4 desc",
+    "before": "자신의 호흡 횟수가 10 이상이면, 스킬 위력 +2\n자신의 체력이 50%미만일 때, 공격 가중치 +1",
+    "after": "자신의 [Breath] 횟수가 10 이상이면, 스킬 위력 +2\n자신의 체력이 50%미만일 때, 공격 가중치 +1"
+  },
+  {
+    "loc": "1070204 Lv4 desc",
+    "before": "[WhenUse] 자신의 체력 5 감소\n자신의 호흡 횟수가 3 이상이면, 피해량 +50%",
+    "after": "[WhenUse] 자신의 체력 5 감소\n자신의 [Breath] 횟수가 3 이상이면, 피해량 +50%"
+  },
+  {
+    "loc": "1070301 Lv1 coin1.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1070301 Lv1 coin2.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1070301 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 1 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 1 증가"
+  },
+  {
+    "loc": "1070301 Lv2 coin1.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1070301 Lv2 coin2.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1070301 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 3 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1070302 Lv1 coin1.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070302 Lv1 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070302 Lv1 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070302 Lv2 coin1.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070302 Lv2 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070302 Lv2 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 출혈 1 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070303 Lv1 coin1.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 취약 2 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vulnerable] 2 부여"
+  },
+  {
+    "loc": "1070303 Lv1 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 취약 2 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vulnerable] 2 부여"
+  },
+  {
+    "loc": "1070303 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070303 Lv1 coin4.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1070303 Lv1 coin5.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1070304 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 1 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 1 증가"
+  },
+  {
+    "loc": "1080101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1080101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1080102 Lv1 desc",
+    "before": "[WinDuel] 수비 위력 감소 1 부여",
+    "after": "[WinDuel] [Disarming] 1 부여"
+  },
+  {
+    "loc": "1080102 Lv2 desc",
+    "before": "[WinDuel] 수비 위력 감소 3 부여",
+    "after": "[WinDuel] [Disarming] 3 부여"
+  },
+  {
+    "loc": "1080102 Lv4 desc",
+    "before": "[WinDuel] 수비 위력 감소 3 부여",
+    "after": "[WinDuel] [Disarming] 3 부여"
+  },
+  {
+    "loc": "1080102 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1080103 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 타격 취약 1 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. [HitTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 1 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 침잠 1 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1080201 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv2 coin2.2",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1080201 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1080201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1080201 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080201 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1080202 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 횟수 3 증가",
+    "after": "[OnSucceedAttackHead] [Sinking] 횟수 3 증가"
+  },
+  {
+    "loc": "1080202 Lv2 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 5 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 5 증가"
+  },
+  {
+    "loc": "1080202 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 횟수 3 증가",
+    "after": "[OnSucceedAttackHead] [Sinking] 횟수 3 증가"
+  },
+  {
+    "loc": "1080202 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 7 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 7 증가"
+  },
+  {
+    "loc": "1080202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 3 증가"
+  },
+  {
+    "loc": "1080203 Lv3 desc",
+    "before": "[StartBattle] 충전 횟수 전부 소모.\n전투 시작 시 충전 횟수가 10 미만이면 무작위 대상 일방 공격",
+    "after": "[StartBattle] [Charge] 횟수 전부 소모.\n전투 시작 시 [Charge] 횟수가 10 미만이면 무작위 대상 일방 공격"
+  },
+  {
+    "loc": "1080203 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv3 coin4.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv4 desc",
+    "before": "[StartBattle] 충전 횟수 8 소모.\n전투 시작 시 충전 횟수가 8 미만이면 무작위 대상 일방 공격",
+    "after": "[StartBattle] [Charge] 횟수 8 소모.\n전투 시작 시 [Charge] 횟수가 8 미만이면 무작위 대상 일방 공격"
+  },
+  {
+    "loc": "1080203 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080203 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080204 Lv4 desc",
+    "before": "[OnSucceedEvade] 자신의 충전 횟수 1 증가",
+    "after": "[OnSucceedEvade] 자신의 [Charge] 횟수 1 증가"
+  },
+  {
+    "loc": "1080301 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1080301 Lv2 desc",
+    "before": "자신의 체력이 50%미만일 때 이 스킬로 얻는 호흡 +1",
+    "after": "자신의 체력이 50%미만일 때 이 스킬로 얻는 [Breath] +1"
+  },
+  {
+    "loc": "1080301 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1080301 Lv4 desc",
+    "before": "자신의 체력이 50%미만일 때 이 스킬로 얻는 호흡 +3",
+    "after": "자신의 체력이 50%미만일 때 이 스킬로 얻는 [Breath] +3"
+  },
+  {
+    "loc": "1080301 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1080302 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가 ",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가 "
+  },
+  {
+    "loc": "1080302 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가 ",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가 "
+  },
+  {
+    "loc": "1080302 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가 "
+  },
+  {
+    "loc": "1080302 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가 "
+  },
+  {
+    "loc": "1080302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 2 증가 "
+  },
+  {
+    "loc": "1080302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 2 증가 "
+  },
+  {
+    "loc": "1080303 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1080303 Lv4 desc",
+    "before": "자신의 호흡 횟수가 5 이상이면, 크리티컬 피해량 +50%",
+    "after": "자신의 [Breath] 횟수가 5 이상이면, 크리티컬 피해량 +50%"
+  },
+  {
+    "loc": "1080303 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1080304 Lv4 desc",
+    "before": "자신의 호흡 횟수가 5 이상이면, 크리티컬 피해량 +50%",
+    "after": "자신의 [Breath] 횟수가 5 이상이면, 크리티컬 피해량 +50%"
+  },
+  {
+    "loc": "1080304 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1080401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 1 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1080401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 마비 3 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1080401 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n대상의 [Vibration]이 8 이상이면, 스킬 위력 +2",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n대상의 [Vibration]이 8 이상이면, 스킬 위력 +2"
+  },
+  {
+    "loc": "1080401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 마비 3 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1080402 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttackHead] [Reduction] 1 부여"
+  },
+  {
+    "loc": "1080402 Lv1 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 진동 4 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1080402 Lv1 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 진동 4 부여",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1080402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] [Reduction] 1 부여"
+  },
+  {
+    "loc": "1080402 Lv2 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 진동 8 부여. 진동 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vibration] 8 부여. [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1080402 Lv2 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 진동 8 부여. 진동 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vibration] 8 부여. [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1080403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1080403 Lv3 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 파열 4 부여. 파열 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Burst] 4 부여. [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1080403 Lv3 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 파열 4 부여. 파열 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Burst] 4 부여. [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1080403 Lv3 coin4.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 취약 5 부여.",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vulnerable] 5 부여."
+  },
+  {
+    "loc": "1080403 Lv4 desc",
+    "before": "대상의 진동 횟수가 5 이상이면, 코인 위력 +1",
+    "after": "대상의 [Vibration] 횟수가 5 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1080403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1080403 Lv4 coin2.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 파열 4 부여. 파열 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Burst] 4 부여. [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1080403 Lv4 coin3.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 파열 4 부여. 파열 횟수 2 증가",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Burst] 4 부여. [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1080403 Lv4 coin4.1",
+    "before": "탄환 1 소모. [OnSucceedAttack] 취약 5 부여.",
+    "after": "[Bullet] 1 소모. [OnSucceedAttack] [Vulnerable] 5 부여."
+  },
+  {
+    "loc": "1080404 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n탄환이 0일 때, 도발치 추가 2 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[Bullet]이 0일 때, [Aggro] 추가 2 증가"
+  },
+  {
+    "loc": "1090101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090102 Lv4 coin2.2",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090103 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090103 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090103 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1090201 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 4 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1090201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 4 얻음",
+    "after": "[OnSucceedAttack] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1090202 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1090202 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090202 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1090202 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090202 Lv2 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 1 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090202 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1090202 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 3 얻음",
+    "after": "[OnSucceedAttack] [Breath] 3 얻음"
+  },
+  {
+    "loc": "1090202 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1090202 Lv4 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가\n[Breath]이 5이상이면, 코인 위력 +2",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가\n[Breath]이 5이상이면, 코인 위력 +2"
+  },
+  {
+    "loc": "1090202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1090202 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 3 얻음",
+    "after": "[OnSucceedAttack] [Breath] 3 얻음"
+  },
+  {
+    "loc": "1090202 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1090203 Lv3 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 10 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 10 부여"
+  },
+  {
+    "loc": "1090203 Lv4 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 10 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 10 부여"
+  },
+  {
+    "loc": "1090204 Lv1 desc",
+    "before": "[WhenUse] 보호 1 얻음",
+    "after": "[WhenUse] [Protection] 1 얻음"
+  },
+  {
+    "loc": "1090204 Lv4 desc",
+    "before": "[WhenUse] 보호 1 얻음\n[WhenUse] 자신의 호흡 횟수 2 증가",
+    "after": "[WhenUse] [Protection] 1 얻음\n[WhenUse] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090205 Lv2 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 10 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 10 부여"
+  },
+  {
+    "loc": "1090205 Lv4 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 10 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 10 부여"
+  },
+  {
+    "loc": "1090301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 1 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1090301 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 3 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1090301 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 3 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1090302 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 수비 위력 감소 2 부여",
+    "after": "[OnSucceedAttack] [Disarming] 2 부여"
+  },
+  {
+    "loc": "1090302 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 수비 위력 감소 4 부여",
+    "after": "[OnSucceedAttack] [Disarming] 4 부여"
+  },
+  {
+    "loc": "1090302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 수비 위력 감소 4 부여",
+    "after": "[OnSucceedAttack] [Disarming] 4 부여"
+  },
+  {
+    "loc": "1090303 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 수비 위력 감소 4 부여",
+    "after": "[OnSucceedAttackHead] [Disarming] 4 부여"
+  },
+  {
+    "loc": "1090303 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 4 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 4 부여"
+  },
+  {
+    "loc": "1090303 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 마비 3 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1090303 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 수비 위력 감소 4 부여",
+    "after": "[OnSucceedAttackHead] [Disarming] 4 부여"
+  },
+  {
+    "loc": "1090303 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 4 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 4 부여"
+  },
+  {
+    "loc": "1090303 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 마비 3 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 3 부여"
+  },
+  {
+    "loc": "1100101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1100101 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1100103 Lv3 desc",
+    "before": "[WinDuel] 공격 위력 증가 1 얻음",
+    "after": "[WinDuel] [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1100103 Lv4 desc",
+    "before": "[WinDuel] 공격 위력 증가 1 얻음",
+    "after": "[WinDuel] [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1100103 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1100103 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1100103 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1100201 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1100201 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 2 증가 "
+  },
+  {
+    "loc": "1100201 Lv4 desc",
+    "before": "자신의 호흡 횟수가 3 이상이면, 코인 위력 +1",
+    "after": "자신의 [Breath] 횟수가 3 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1100201 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 2 증가 ",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 2 증가 "
+  },
+  {
+    "loc": "1100202 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100202 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100202 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 호흡 1 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100202 Lv2 desc",
+    "before": "[DefeatDuel] 다음 턴에 공격 위력 증가 2 얻음",
+    "after": "[DefeatDuel] 다음 턴에 [Enhancement] 2 얻음"
+  },
+  {
+    "loc": "1100202 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100202 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 1 얻음",
+    "after": "[OnSucceedAttack] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100202 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 호흡 1 얻음",
+    "after": "[OnSucceedAttack] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100202 Lv4 desc",
+    "before": "[DefeatDuel] 다음 턴에 공격 위력 증가 2 얻음\n[WinDuel] 이번 스킬의 크리티컬 공격으로 호흡 횟수를 소모하지 않음",
+    "after": "[DefeatDuel] 다음 턴에 [Enhancement] 2 얻음\n[WinDuel] 이번 스킬의 크리티컬 공격으로 [Breath] 횟수를 소모하지 않음"
+  },
+  {
+    "loc": "1100202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 1 얻음",
+    "after": "[OnSucceedAttack] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100202 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 호흡 1 얻음",
+    "after": "[OnSucceedAttack] [Breath] 1 얻음"
+  },
+  {
+    "loc": "1100203 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 마비 5 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 5 부여"
+  },
+  {
+    "loc": "1100203 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1100203 Lv4 desc",
+    "before": "자신의 호흡 횟수가 10 이상이면, 크리티컬 피해량 +150%",
+    "after": "자신의 [Breath] 횟수가 10 이상이면, 크리티컬 피해량 +150%"
+  },
+  {
+    "loc": "1100203 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 마비 5 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 5 부여"
+  },
+  {
+    "loc": "1100203 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1100204 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 피해량 증가 1 얻음",
+    "after": "[WhenUse] 다음 턴에 [AttackDmgUp] 1 얻음"
+  },
+  {
+    "loc": "1100204 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 피해량 증가 1 얻음\n[WhenUse] 호흡 횟수 3 증가",
+    "after": "[WhenUse] 다음 턴에 [AttackDmgUp] 1 얻음\n[WhenUse] [Breath] 횟수 3 증가"
+  },
+  {
+    "loc": "1100301 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1100301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1100301 Lv4 desc",
+    "before": "[DefeatDuel] 보호 2를 얻음",
+    "after": "[DefeatDuel] [Protection] 2를 얻음"
+  },
+  {
+    "loc": "1100301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1100302 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 3 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1100302 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 다음 턴에 피해량 감소 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDmgDown] 1 부여"
+  },
+  {
+    "loc": "1100302 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 6 부여",
+    "after": "[OnSucceedAttack] [Vibration] 6 부여"
+  },
+  {
+    "loc": "1100302 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 다음 턴에 피해량 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDmgDown] 2 부여"
+  },
+  {
+    "loc": "1100302 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n[DefeatDuel] 진동 6 부여",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[DefeatDuel] [Vibration] 6 부여"
+  },
+  {
+    "loc": "1100302 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 6 부여",
+    "after": "[OnSucceedAttack] [Vibration] 6 부여"
+  },
+  {
+    "loc": "1100302 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 다음 턴에 피해량 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDmgDown] 2 부여"
+  },
+  {
+    "loc": "1100303 Lv3 desc",
+    "before": "[WhenUse] 다음 턴에 현재 체력이 가장 낮은 아군에게 보호 1 부여",
+    "after": "[WhenUse] 다음 턴에 현재 체력이 가장 낮은 아군에게 [Protection] 1 부여"
+  },
+  {
+    "loc": "1100303 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1100303 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 타격 취약 2 부여",
+    "after": "[OnSucceedAttack] [HitTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "1100303 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 현재 체력이 가장 낮은 아군에게 보호 1 부여\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 10 증가",
+    "after": "[WhenUse] 다음 턴에 현재 체력이 가장 낮은 아군에게 [Protection] 1 부여\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 10 증가"
+  },
+  {
+    "loc": "1100303 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1100303 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] [VibrationExplosion] 시 대상의 진동 이 5 이상이면, 다음 턴에 보호 2 얻음",
+    "after": "[OnSucceedAttack] [VibrationExplosion] 시 대상의 [Vibration] 이 5 이상이면, 다음 턴에 [Protection] 2 얻음"
+  },
+  {
+    "loc": "1100303 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 타격 취약 2 부여",
+    "after": "[OnSucceedAttack] [HitTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "1100304 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가"
+  },
+  {
+    "loc": "1100401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1100401 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 침잠 4 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 4 부여"
+  },
+  {
+    "loc": "1100401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 4 부여",
+    "after": "[OnSucceedAttack] [Sinking] 4 부여"
+  },
+  {
+    "loc": "1100402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100402 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1100402 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1100402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100402 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1100402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1100402 Lv2 coin2.2",
+    "before": "[OnSucceedAttackHead] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1100402 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1100402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 2 얻음",
+    "after": "[OnSucceedAttack] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1100402 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1100402 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1100402 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1100402 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1100403 Lv4 desc",
+    "before": "대상의 정신력이 0미만이면 대상의 정신력에 비례하여 크리티컬 발동 확률 증가\n자신의 호흡 횟수가 5 이상이면, 크리티컬 피해량 +30%",
+    "after": "대상의 정신력이 0미만이면 대상의 정신력에 비례하여 크리티컬 발동 확률 증가\n자신의 [Breath] 횟수가 5 이상이면, 크리티컬 피해량 +30%"
+  },
+  {
+    "loc": "1100404 Lv4 desc",
+    "before": "[OnSucceedEvade] 호흡 횟수 1 증가",
+    "after": "[OnSucceedEvade] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1110101 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1110101 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1110101 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1110101 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1110103 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 2 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1110201 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 4 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1110201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 4 얻음",
+    "after": "[OnSucceedAttack] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1110202 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 참격 피해량 증가 1 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [SlashDamageUp] 1 얻음"
+  },
+  {
+    "loc": "1110202 Lv2 desc",
+    "before": "[WinDuel] 자신의 호흡 횟수 1 증가",
+    "after": "[WinDuel] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1110202 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 참격 피해량 증가 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [SlashDamageUp] 2 얻음"
+  },
+  {
+    "loc": "1110202 Lv4 desc",
+    "before": "[WinDuel] 자신의 호흡 횟수 2 증가",
+    "after": "[WinDuel] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1110202 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 참격 피해량 증가 2 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [SlashDamageUp] 2 얻음"
+  },
+  {
+    "loc": "1110301 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 보호 1 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 [Protection] 1 부여"
+  },
+  {
+    "loc": "1110301 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 보호 2 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 [Protection] 2 부여"
+  },
+  {
+    "loc": "1110301 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 보호 2 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 [Protection] 2 부여"
+  },
+  {
+    "loc": "1110302 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 속도가 가장 낮은 아군에게 피해량 증가 1 부여",
+    "after": "[OnSucceedAttackHead] 속도가 가장 낮은 아군에게 [AttackDmgUp] 1 부여"
+  },
+  {
+    "loc": "1110302 Lv2 desc",
+    "before": "[WhenUse] 속도가 가장 낮은 아군에게 공격 위력 증가 1 부여",
+    "after": "[WhenUse] 속도가 가장 낮은 아군에게 [Enhancement] 1 부여"
+  },
+  {
+    "loc": "1110302 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 속도가 가장 낮은 아군에게 피해량 증가 2 부여",
+    "after": "[OnSucceedAttackHead] 속도가 가장 낮은 아군에게 [AttackDmgUp] 2 부여"
+  },
+  {
+    "loc": "1110302 Lv4 desc",
+    "before": "[WhenUse] 속도가 가장 낮은 아군에게 공격 위력 증가 1 부여",
+    "after": "[WhenUse] 속도가 가장 낮은 아군에게 [Enhancement] 1 부여"
+  },
+  {
+    "loc": "1110302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 피해량 증가 2 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 낮은 아군에게 [AttackDmgUp] 2 부여"
+  },
+  {
+    "loc": "1110303 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 5 부여",
+    "after": "[OnSucceedAttack] [Sinking] 5 부여"
+  },
+  {
+    "loc": "1110303 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 공격 위력 감소 2 부여",
+    "after": "[OnSucceedAttack] [Reduction] 2 부여"
+  },
+  {
+    "loc": "1110303 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 5 부여",
+    "after": "[OnSucceedAttack] [Sinking] 5 부여"
+  },
+  {
+    "loc": "1110303 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 공격 위력 감소 2 부여",
+    "after": "[OnSucceedAttack] [Reduction] 2 부여"
+  },
+  {
+    "loc": "1110303 Lv4 coin1.3",
+    "before": "[OnSucceedAttackHead] 침잠 4 부여",
+    "after": "[OnSucceedAttackHead] [Sinking] 4 부여"
+  },
+  {
+    "loc": "1120101 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1120101 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 4 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 4 부여"
+  },
+  {
+    "loc": "1120102 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1120102 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가 ",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가 "
+  },
+  {
+    "loc": "1120102 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 관통 취약 1 부여",
+    "after": "[OnSucceedAttackHead] [PenetrateTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1120102 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가 ",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가 "
+  },
+  {
+    "loc": "1120102 Lv4 coin1.2",
+    "before": "[OnSucceedAttackHead] 관통 취약 1 부여",
+    "after": "[OnSucceedAttackHead] [PenetrateTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "1120102 Lv4 coin1.3",
+    "before": "[OnSucceedAttackHead] 파열 2 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 2 부여"
+  },
+  {
+    "loc": "1120201 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv4 coin1.2",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120201 Lv4 coin2.2",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120202 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1120202 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120202 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120202 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1120202 Lv2 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1120202 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120202 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120202 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1120202 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 다음 턴에 공격 위력 증가 1 얻음",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 다음 턴에 [Enhancement] 1 얻음"
+  },
+  {
+    "loc": "1120203 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 화상 1 부여",
+    "after": "[OnSucceedAttackHead] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv3 coin4.1",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1120203 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1120203 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1120302 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1120302 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1120302 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1050401 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n자신의 체력이 50%미만일 때, 코인 위력 +2",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n자신의 체력이 50%미만일 때, 코인 위력 +2"
+  },
+  {
+    "loc": "1050402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 대상에게 못이 5 이상 있으면, 다음 턴에 속박 2, 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [NailPersonality]이 5 이상 있으면, 다음 턴에 [Binding] 2, [Reduction] 1 부여"
+  },
+  {
+    "loc": "1050402 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 6 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 6 증가"
+  },
+  {
+    "loc": "1050402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 3 부여"
+  },
+  {
+    "loc": "1050402 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상에게 못이 5 이상 있으면, 다음 턴에 속박 2, 공격 위력 감소 2 부여",
+    "after": "[OnSucceedAttack] 대상에게 [NailPersonality]이 5 이상 있으면, 다음 턴에 [Binding] 2, [Reduction] 2 부여"
+  },
+  {
+    "loc": "1050403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 못 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1050403 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 6 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 6 증가"
+  },
+  {
+    "loc": "1050403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 못 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1050403 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 피해량의 50%만큼 체력 회복\n 대상의 못 1당 체력 회복량 +3%",
+    "after": "[OnSucceedAttack] 피해량의 50%만큼 체력 회복\n 대상의 [NailPersonality] 1당 체력 회복량 +3%"
+  },
+  {
+    "loc": "1050404 Lv1 desc",
+    "before": "[StartBattle] 보호 1을 얻음\n체력이 50% 미만이면 최종 위력 + 2",
+    "after": "[StartBattle] [Protection] 1을 얻음\n체력이 50% 미만이면 최종 위력 + 2"
+  },
+  {
+    "loc": "1090401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상에게 못이 있을 때, 못 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [NailPersonality]이 있을 때, [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090401 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상에게 못이 있을 때, 못 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [NailPersonality]이 있을 때, [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1090402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 못 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1090402 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1090402 Lv2 desc",
+    "before": "[WinDuel] 다음 턴에 광신 1 얻음",
+    "after": "[WinDuel] 다음 턴에 [Assemble] 1 얻음"
+  },
+  {
+    "loc": "1090402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 못 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1090402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1090403 Lv3 desc",
+    "before": "자신에게 광신이 있으면 피해량 +15%",
+    "after": "자신에게 [Assemble]이 있으면 피해량 +15%"
+  },
+  {
+    "loc": "1090403 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090403 Lv3 coin4.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090403 Lv4 desc",
+    "before": "자신에게 광신이 있으면 피해량 +15%\n파티의 생존한 N사 광신도 수당 피해량 +5%",
+    "after": "자신에게 [Assemble]이 있으면 피해량 +15%\n파티의 생존한 N사 광신도 수당 피해량 +5%"
+  },
+  {
+    "loc": "1090403 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1090403 Lv4 coin4.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1090404 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 못 1 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1020401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 못 1 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1020401 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1020401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 못 1 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1020401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1020402 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1020402 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 주시 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [MarkOfHeresy] 부여"
+  },
+  {
+    "loc": "1020402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1020402 Lv2 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1020402 Lv2 coin3.2",
+    "before": "[OnSucceedAttack] 다음 턴에 주시 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [MarkOfHeresy] 부여"
+  },
+  {
+    "loc": "1020402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 못 2 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1020402 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 못 3 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 3 부여"
+  },
+  {
+    "loc": "1020402 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1020402 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 다음 턴에 주시 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [MarkOfHeresy] 부여"
+  },
+  {
+    "loc": "1020403 Lv3 desc",
+    "before": "이 스킬로 적 처치 시 모든 아군의 정신력을 10 회복시키고, 모든 아군에게 관통 피해량 증가, 타격 피해량 증가 1 부여",
+    "after": "이 스킬로 적 처치 시 모든 아군의 정신력을 10 회복시키고, 모든 아군에게 [PenetrateDamageUp], [HitDamageUp] 1 부여"
+  },
+  {
+    "loc": "1020403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 못 2 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1020403 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 못 2 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1020403 Lv3 coin3.1",
+    "before": "대상에게 못이 5 이상 있으면, 피해량 +50%",
+    "after": "대상에게 [NailPersonality]이 5 이상 있으면, 피해량 +50%"
+  },
+  {
+    "loc": "1020403 Lv4 desc",
+    "before": "이 스킬로 적 처치 시 모든 아군의 정신력을 10 회복시키고, 모든 아군에게 관통 피해량 증가, 타격 피해량 증가 1 부여",
+    "after": "이 스킬로 적 처치 시 모든 아군의 정신력을 10 회복시키고, 모든 아군에게 [PenetrateDamageUp], [HitDamageUp] 1 부여"
+  },
+  {
+    "loc": "1020403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 못 2 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1020403 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 못 2 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1020403 Lv4 coin3.1",
+    "before": "대상에게 못이 5 이상 있으면, 피해량 +70%",
+    "after": "대상에게 [NailPersonality]이 5 이상 있으면, 피해량 +70%"
+  },
+  {
+    "loc": "1070401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackTail] 출혈 1 부여",
+    "after": "[OnSucceedAttackTail] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 못 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv2 coin1.2",
+    "before": "[OnSucceedAttackTail] 출혈 1 부여",
+    "after": "[OnSucceedAttackTail] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 못 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv4 coin1.2",
+    "before": "[OnSucceedAttackTail] 출혈 1 부여",
+    "after": "[OnSucceedAttackTail] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1070401 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 못 1 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1070402 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 더하기 코인 약화 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [PlusCoinValueDown] 1 부여"
+  },
+  {
+    "loc": "1070402 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 더하기 코인 약화 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [PlusCoinValueDown] 2 부여"
+  },
+  {
+    "loc": "1110401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1110401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1110401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1110401 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1110402 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110402 Lv1 coin1.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110402 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110402 Lv1 coin2.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110402 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110402 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1110402 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110402 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1110402 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 2 부여"
+  },
+  {
+    "loc": "1110403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 공격 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDown] 2 부여"
+  },
+  {
+    "loc": "1110403 Lv3 coin3.2",
+    "before": "[OnSucceedAttack] 다음 턴에 약점 분석 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [WeaknessAnalysis] 부여"
+  },
+  {
+    "loc": "1110403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 공격 레벨 감소 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AttackDown] 2 부여"
+  },
+  {
+    "loc": "1110403 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 다음 턴에 약점 분석 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [WeaknessAnalysis] 부여"
+  },
+  {
+    "loc": "1110404 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 신속 1, 수비 위력 증가 1을 얻음",
+    "after": "[WhenUse] 다음 턴에 [Agility] 1, [Endurance] 1을 얻음"
+  },
+  {
+    "loc": "1060401 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1060401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1040401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1040401 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 갈증 1 얻음",
+    "after": "[OnSucceedAttack] [Thirst] 1 얻음"
+  },
+  {
+    "loc": "1040401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1040401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 갈증 1 얻음",
+    "after": "[OnSucceedAttack] [Thirst] 1 얻음"
+  },
+  {
+    "loc": "1040401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1040401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 갈증 2 얻음",
+    "after": "[OnSucceedAttack] [Thirst] 2 얻음"
+  },
+  {
+    "loc": "1040402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1040402 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1040402 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 출혈 또는 마비 가 있으면 다음 턴에 체력 회복 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Laceration] 또는 [Paralysis] 가 있으면 다음 턴에 [TakeHpHealReduce] 1 부여"
+  },
+  {
+    "loc": "1040402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1040402 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 2 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1040402 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 출혈 또는 마비 가 있으면 다음 턴에 체력 회복 감소 3 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Laceration] 또는 [Paralysis] 가 있으면 다음 턴에 [TakeHpHealReduce] 3 부여"
+  },
+  {
+    "loc": "1040402 Lv4 desc",
+    "before": "[WhenUse] 갈증 1 얻음",
+    "after": "[WhenUse] [Thirst] 1 얻음"
+  },
+  {
+    "loc": "1040402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1040402 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 3 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1040402 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 출혈 또는 마비 가 있으면 다음 턴에 체력 회복 감소 4 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Laceration] 또는 [Paralysis] 가 있으면 다음 턴에 [TakeHpHealReduce] 4 부여"
+  },
+  {
+    "loc": "1040404 Lv1 desc",
+    "before": "[OnSucceedEvade] 다음 턴에 신속 1 얻음",
+    "after": "[OnSucceedEvade] 다음 턴에 [Agility] 1 얻음"
+  },
+  {
+    "loc": "1120401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 마비 1 부여",
+    "after": "[OnSucceedAttackHead] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120401 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 1 부여",
+    "after": "[OnSucceedAttackHead] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1120401 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 마비 1 부여. 대상에게 [Laceration]이 있으면 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여. 대상에게 [Laceration]이 있으면 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1120401 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 마비 1 부여. 대상에게 [Laceration]이 있으면 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여. 대상에게 [Laceration]이 있으면 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1120402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가, 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가, 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1120402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 2 증가, 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 2 증가, 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "1120402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 2 증가, 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 2 증가, 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "1120403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1120403 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120403 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120403 Lv4 desc",
+    "before": "대상의 출혈 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "대상의 [Laceration] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1120403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1120403 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1120403 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 마비 1 부여",
+    "after": "[OnSucceedAttack] [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1100501 Lv1 coin2.1",
+    "before": "[OnSucceedAttackTail] 화상 2 부여",
+    "after": "[OnSucceedAttackTail] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1100501 Lv2 coin2.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 광신 1을 얻음",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Assemble] 1을 얻음"
+  },
+  {
+    "loc": "1100501 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 화상 2 부여",
+    "after": "[OnSucceedAttack] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1100501 Lv4 coin2.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 광신 1을 얻음",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Assemble] 1을 얻음"
+  },
+  {
+    "loc": "1100501 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 화상 3 부여",
+    "after": "[OnSucceedAttack] [Combustion] 3 부여"
+  },
+  {
+    "loc": "1100502 Lv1 desc",
+    "before": "- [WhenUse] 정신력 10 감소\n- 자신에게 광신 이 있을 때 피해량 +5%",
+    "after": "- [WhenUse] 정신력 10 감소\n- 자신에게 [Assemble] 이 있을 때 피해량 +5%"
+  },
+  {
+    "loc": "1100502 Lv1 coin2.1",
+    "before": "[OnSucceedAttackTail] 화상 1 부여",
+    "after": "[OnSucceedAttackTail] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1100502 Lv1 coin3.1",
+    "before": "[OnSucceedAttackTail] 화상 1 부여",
+    "after": "[OnSucceedAttackTail] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1100502 Lv1 coin4.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1100502 Lv2 desc",
+    "before": "- [WhenUse] 정신력 10 감소\n- 자신에게 광신 이 있을 때 피해량 +10%",
+    "after": "- [WhenUse] 정신력 10 감소\n- 자신에게 [Assemble] 이 있을 때 피해량 +10%"
+  },
+  {
+    "loc": "1100502 Lv2 coin2.1",
+    "before": "[OnSucceedAttackTail] 화상 2 부여",
+    "after": "[OnSucceedAttackTail] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1100502 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1100502 Lv2 coin3.1",
+    "before": "[OnSucceedAttackTail] 화상 2 부여",
+    "after": "[OnSucceedAttackTail] [Combustion] 2 부여"
+  },
+  {
+    "loc": "1100502 Lv2 coin3.2",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1100502 Lv2 coin4.1",
+    "before": "[OnSucceedAttackTail] 화상 횟수 1 증가",
+    "after": "[OnSucceedAttackTail] [Combustion] 횟수 1 증가"
+  },
+  {
+    "loc": "1100502 Lv2 coin4.2",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1100503 Lv3 desc",
+    "before": "- [WhenUse] 정신력 15 감소\n- 자신에게 광신 이 있을 때 피해량 +15%\n- 대상이 <기계 융화 생명체>면 피해량 +10%",
+    "after": "- [WhenUse] 정신력 15 감소\n- 자신에게 [Assemble] 이 있을 때 피해량 +15%\n- 대상이 <기계 융화 생명체>면 피해량 +10%"
+  },
+  {
+    "loc": "1100503 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 출혈 이 5 이상 있으면, 화상 5 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Laceration] 이 5 이상 있으면, [Combustion] 5 부여"
+  },
+  {
+    "loc": "1100503 Lv3 coin3.2",
+    "before": "[EnemyKill] 다음 턴에 타격 위력 증가 1을 얻음",
+    "after": "[EnemyKill] 다음 턴에 [HitResultUp] 1을 얻음"
+  },
+  {
+    "loc": "1100503 Lv4 desc",
+    "before": "- [WhenUse] 정신력 15 감소\n- 자신에게 광신 이 있을 때 피해량 +15%\n- 대상이 <기계 융화 생명체>면 피해량 +10%",
+    "after": "- [WhenUse] 정신력 15 감소\n- 자신에게 [Assemble] 이 있을 때 피해량 +15%\n- 대상이 <기계 융화 생명체>면 피해량 +10%"
+  },
+  {
+    "loc": "1100503 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 출혈 이 5 이상 있으면, 화상 7 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Laceration] 이 5 이상 있으면, [Combustion] 7 부여"
+  },
+  {
+    "loc": "1100503 Lv4 coin3.2",
+    "before": "[EnemyKill] 다음 턴에 타격 위력 증가 1을 얻음",
+    "after": "[EnemyKill] 다음 턴에 [HitResultUp] 1을 얻음"
+  },
+  {
+    "loc": "1030401 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 못 1 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv1 coin1.2",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 못 1 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 못 2 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1030401 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1030401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1030402 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1030402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1030402 Lv2 coin1.2",
+    "before": "대상에게 못 이 5 이상 있으면, 피해량 +20%",
+    "after": "대상에게 [NailPersonality] 이 5 이상 있으면, 피해량 +20%"
+  },
+  {
+    "loc": "1030402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "1030402 Lv4 coin1.2",
+    "before": "대상에게 못 이 5 이상 있으면, 피해량 +30%",
+    "after": "대상에게 [NailPersonality] 이 5 이상 있으면, 피해량 +30%"
+  },
+  {
+    "loc": "1030403 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 못 1 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1030403 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 못 1 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 1 부여"
+  },
+  {
+    "loc": "1030403 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1030403 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 대상에게 못 이 5 이상 있으면, 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttackHead] 대상에게 [NailPersonality] 이 5 이상 있으면, 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1030403 Lv3 coin3.2",
+    "before": "[OnSucceedAttackHead] 대상에게 못 이 5 이상 있으면, 다음 턴에 마비 2 부여",
+    "after": "[OnSucceedAttackHead] 대상에게 [NailPersonality] 이 5 이상 있으면, 다음 턴에 [Paralysis] 2 부여"
+  },
+  {
+    "loc": "1030403 Lv3 coin3.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1030403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 못 2 부여",
+    "after": "[OnSucceedAttack] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1030403 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 못 2 부여",
+    "after": "[OnSucceedAttackHead] [NailPersonality] 2 부여"
+  },
+  {
+    "loc": "1030403 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1030403 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 대상에게 못 이 5 이상 있으면, 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttackHead] 대상에게 [NailPersonality] 이 5 이상 있으면, 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1030403 Lv4 coin3.2",
+    "before": "[OnSucceedAttackHead] 대상에게 못 이 5 이상 있으면, 다음 턴에 마비 2 부여",
+    "after": "[OnSucceedAttackHead] 대상에게 [NailPersonality] 이 5 이상 있으면, 다음 턴에 [Paralysis] 2 부여"
+  },
+  {
+    "loc": "1030403 Lv4 coin3.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090501 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1090501 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1090501 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090501 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1090501 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1090501 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090501 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1090501 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1090501 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 자신의 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1090501 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090502 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090502 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여\n자신의 충전 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n이 코인이 2회 재사용된 경우, 진동 부여 후 진동 폭발\n진동 폭발 시 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여\n자신의 [Charge] 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n이 코인이 2회 재사용된 경우, [Vibration] 부여 후 [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1090502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090502 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여\n자신의 충전 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n재사용 시마다 부여하는 진동 + 2\n이 코인이 2회 재사용된 경우, 진동 부여 후 진동 폭발\n진동 폭발 시 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여\n자신의 [Charge] 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n재사용 시마다 부여하는 [Vibration] + 2\n이 코인이 2회 재사용된 경우, [Vibration] 부여 후 [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1090502 Lv4 desc",
+    "before": "대상의 진동 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "대상의 [Vibration] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1090502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1090502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여\n자신의 충전 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n재사용 시마다 부여하는 진동 + 2\n이 코인이 2회 재사용된 경우, 진동 부여 후 진동 폭발\n진동 폭발 시 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여\n자신의 [Charge] 횟수가 3 이상이면, 앞면이 나올 때마다 이 코인 재사용 (최대 2회)\n재사용 시마다 부여하는 [Vibration] + 2\n이 코인이 2회 재사용된 경우, [Vibration] 부여 후 [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1090503 Lv3 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 6 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 6 증가"
+  },
+  {
+    "loc": "1090503 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1090503 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1090503 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] 진동 폭발.\n진동 폭발 시 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [VibrationExplosion].\n[VibrationExplosion] 시 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1090503 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 진동 폭발.\n진동 폭발 시 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [VibrationExplosion].\n[VibrationExplosion] 시 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1090504 Lv1 desc",
+    "before": "[StartBattle] 자신의 충전 횟수 2 증가",
+    "after": "[StartBattle] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050501 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050501 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050501 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050501 Lv4 desc",
+    "before": "대상의 진동 횟수가 5 이상이면, 코인 위력 +2",
+    "after": "대상의 [Vibration] 횟수가 5 이상이면, 코인 위력 +2"
+  },
+  {
+    "loc": "1050501 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050501 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050502 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1050502 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1050502 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050502 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1050502 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1050502 Lv4 desc",
+    "before": "대상의 진동 횟수가 7 이상이면, 최종 위력 +1",
+    "after": "대상의 [Vibration] 횟수가 7 이상이면, 최종 위력 +1"
+  },
+  {
+    "loc": "1050502 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050502 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1050502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Vibration]이 5 이상 있을 때 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1050503 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 1 증가"
+  },
+  {
+    "loc": "1050503 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050503 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050503 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050503 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050503 Lv3 coin3.2",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1050503 Lv3 coin4.1",
+    "before": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 진동 횟수 3 감소, 충전 횟수를 전부 소모하여 (소모한 충전 횟수 X 5)% 만큼 [VibrationExplosion]의 흐트러짐 피해량이 증가함 (최대 50%)",
+    "after": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 3 감소, [Charge] 횟수를 전부 소모하여 (소모한 [Charge] 횟수 X 5)% 만큼 [VibrationExplosion]의 흐트러짐 피해량이 증가함 (최대 50%)"
+  },
+  {
+    "loc": "1050503 Lv4 desc",
+    "before": "대상의 진동 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "대상의 [Vibration] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1050503 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 1 증가"
+  },
+  {
+    "loc": "1050503 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1050503 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050503 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1050503 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 자신의 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050503 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 진동 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3 부여"
+  },
+  {
+    "loc": "1050503 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 진동 횟수 3 감소, 충전 횟수를 전부 소모하여 (소모한 충전 횟수 X 5)% 만큼 [VibrationExplosion]의 흐트러짐 피해량이 증가함 (최대 50%)",
+    "after": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 3 감소, [Charge] 횟수를 전부 소모하여 (소모한 [Charge] 횟수 X 5)% 만큼 [VibrationExplosion]의 흐트러짐 피해량이 증가함 (최대 50%)"
+  },
+  {
+    "loc": "1120501 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1120501 Lv2 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1120501 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1120501 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1120501 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1120501 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 진동 횟수가 5 이상이면, 파열 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Vibration] 횟수가 5 이상이면, [Burst] 3 부여"
+  },
+  {
+    "loc": "1120502 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1120502 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1120502 Lv2 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 3 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1120502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1120502 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1120502 Lv4 desc",
+    "before": "[WhenUse] 자신의 충전 횟수 3 증가",
+    "after": "[WhenUse] 자신의 [Charge] 횟수 3 증가"
+  },
+  {
+    "loc": "1120502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 2 증가"
+  },
+  {
+    "loc": "1120502 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1120503 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 진동 폭발 시 진동 횟수가 2 감소하고,\n충전 횟수를 최대 4 소모하여 소모한 충전 횟수만큼 파열 횟수 증가",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. [VibrationExplosion] 시 [Vibration] 횟수가 2 감소하고,\n[Charge] 횟수를 최대 4 소모하여 소모한 [Charge] 횟수만큼 [Burst] 횟수 증가"
+  },
+  {
+    "loc": "1120503 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1120503 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1120503 Lv4 desc",
+    "before": "대상의 진동 횟수가 5 이상이면, 코인 위력 +1",
+    "after": "대상의 [Vibration] 횟수가 5 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1120503 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 진동 폭발 시 진동 횟수가 2 감소하고,\n충전 횟수를 최대 4 소모하여 소모한 충전 횟수만큼 파열 횟수 증가",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. [VibrationExplosion] 시 [Vibration] 횟수가 2 감소하고,\n[Charge] 횟수를 최대 4 소모하여 소모한 [Charge] 횟수만큼 [Burst] 횟수 증가"
+  },
+  {
+    "loc": "1120503 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1120503 Lv4 coin2.3",
+    "before": "[OnSucceedAttack] 대상의 진동 횟수가 5 이상이면, 파열 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Vibration] 횟수가 5 이상이면, [Burst] 3 부여"
+  },
+  {
+    "loc": "1120503 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1120503 Lv4 coin3.3",
+    "before": "[OnSucceedAttack] 대상의 진동 횟수가 5 이상이면, 파열 3 부여",
+    "after": "[OnSucceedAttack] 대상의 [Vibration] 횟수가 5 이상이면, [Burst] 3 부여"
+  },
+  {
+    "loc": "1070501 Lv1 desc",
+    "before": "[WhenUse] 자신의 침잠 횟수 1 증가",
+    "after": "[WhenUse] 자신의 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1070501 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 1 부여",
+    "after": "[OnSucceedAttack] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1070501 Lv1 coin3.2",
+    "before": "[OnSucceedAttackTail] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttackTail] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1070501 Lv2 desc",
+    "before": "[WhenUse] 자신의 침잠 횟수 1 증가",
+    "after": "[WhenUse] 자신의 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1070501 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1070501 Lv2 coin3.2",
+    "before": "[OnSucceedAttackTail] 침잠 횟수 2 증가",
+    "after": "[OnSucceedAttackTail] [Sinking] 횟수 2 증가"
+  },
+  {
+    "loc": "1070501 Lv4 desc",
+    "before": "[WhenUse] 자신의 침잠 횟수 1 증가\n[DefeatDuel] 침잠 3 얻음",
+    "after": "[WhenUse] 자신의 [Sinking] 횟수 1 증가\n[DefeatDuel] [Sinking] 3 얻음"
+  },
+  {
+    "loc": "1070501 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1070501 Lv4 coin3.2",
+    "before": "[OnSucceedAttackTail] 침잠 횟수 2 증가",
+    "after": "[OnSucceedAttackTail] [Sinking] 횟수 2 증가"
+  },
+  {
+    "loc": "1070502 Lv1 coin2.1",
+    "before": "[OnSucceedAttackTail] 파열 2 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 2 부여"
+  },
+  {
+    "loc": "1070502 Lv1 coin3.1",
+    "before": "[OnSucceedAttackTail] 파열 2 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 2 부여"
+  },
+  {
+    "loc": "1070502 Lv1 coin4.1",
+    "before": "[OnSucceedAttackTail] 진동 폭발",
+    "after": "[OnSucceedAttackTail] [VibrationExplosion]"
+  },
+  {
+    "loc": "1070502 Lv2 coin2.1",
+    "before": "[OnSucceedAttackTail] 파열 3 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 3 부여"
+  },
+  {
+    "loc": "1070502 Lv2 coin3.1",
+    "before": "[OnSucceedAttackTail] 파열 3 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 3 부여"
+  },
+  {
+    "loc": "1070502 Lv2 coin4.1",
+    "before": "자신의 침잠 5를 소모하여 피해량 +20%",
+    "after": "자신의 [Sinking] 5를 소모하여 피해량 +20%"
+  },
+  {
+    "loc": "1070502 Lv2 coin4.2",
+    "before": "[OnSucceedAttackTail] 진동 폭발",
+    "after": "[OnSucceedAttackTail] [VibrationExplosion]"
+  },
+  {
+    "loc": "1070502 Lv4 coin2.1",
+    "before": "[OnSucceedAttackTail] 파열 3 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 3 부여"
+  },
+  {
+    "loc": "1070502 Lv4 coin3.1",
+    "before": "[OnSucceedAttackTail] 파열 3 부여",
+    "after": "[OnSucceedAttackTail] [Burst] 3 부여"
+  },
+  {
+    "loc": "1070502 Lv4 coin4.1",
+    "before": "자신의 침잠 5를 소모하여 피해량 +20%",
+    "after": "자신의 [Sinking] 5를 소모하여 피해량 +20%"
+  },
+  {
+    "loc": "1070502 Lv4 coin4.2",
+    "before": "[OnSucceedAttackTail] 진동 폭발",
+    "after": "[OnSucceedAttackTail] [VibrationExplosion]"
+  },
+  {
+    "loc": "1070503 Lv1 desc",
+    "before": "[WhenUse] 침잠 6을 얻고, 자신의 침잠 횟수 3 증가",
+    "after": "[WhenUse] [Sinking] 6을 얻고, 자신의 [Sinking] 횟수 3 증가"
+  },
+  {
+    "loc": "1070503 Lv1 coin1.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 마비 1 부여",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Paralysis] 1 부여"
+  },
+  {
+    "loc": "1070503 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1070503 Lv1 coin3.2",
+    "before": "[OnSucceedAttackTail] 다음 턴에 취약 1 부여",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1070504 Lv1 desc",
+    "before": "[WhenUse] 침잠 3 얻음",
+    "after": "[WhenUse] [Sinking] 3 얻음"
+  },
+  {
+    "loc": "1070504 Lv1 coin1.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 마비 1을 얻음",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Paralysis] 1을 얻음"
+  },
+  {
+    "loc": "1070504 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 5 부여",
+    "after": "[OnSucceedAttack] [Sinking] 5 부여"
+  },
+  {
+    "loc": "1070504 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1070504 Lv4 desc",
+    "before": "[WhenUse] 침잠 5 얻음",
+    "after": "[WhenUse] [Sinking] 5 얻음"
+  },
+  {
+    "loc": "1070504 Lv4 coin1.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 마비 1을 얻음",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Paralysis] 1을 얻음"
+  },
+  {
+    "loc": "1070504 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 5 부여",
+    "after": "[OnSucceedAttack] [Sinking] 5 부여"
+  },
+  {
+    "loc": "1070504 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 파열 5 부여",
+    "after": "[OnSucceedAttack] [Burst] 5 부여"
+  },
+  {
+    "loc": "1010401 Lv1 desc",
+    "before": "[WhenUse] 진동 횟수 2를 얻음",
+    "after": "[WhenUse] [Vibration] 횟수 2를 얻음"
+  },
+  {
+    "loc": "1010401 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010401 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010401 Lv2 desc",
+    "before": "[WhenUse] 진동 횟수 3을 얻음",
+    "after": "[WhenUse] [Vibration] 횟수 3을 얻음"
+  },
+  {
+    "loc": "1010401 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010401 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010401 Lv4 desc",
+    "before": "[WhenUse] 진동 횟수 3을 얻음",
+    "after": "[WhenUse] [Vibration] 횟수 3을 얻음"
+  },
+  {
+    "loc": "1010401 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010401 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 횟수 2 증가",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 횟수 2 증가"
+  },
+  {
+    "loc": "1010402 Lv1 desc",
+    "before": "[StartBattle] 자신의 진동 횟수를 6 소모하여 공격 가중치 3 스킬로 변경",
+    "after": "[StartBattle] 자신의 [Vibration] 횟수를 6 소모하여 공격 가중치 3 스킬로 변경"
+  },
+  {
+    "loc": "1010402 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv1 coin3.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv2 desc",
+    "before": "[StartBattle] 자신의 진동 횟수를 6 소모하여 공격 가중치 3 스킬로 변경",
+    "after": "[StartBattle] 자신의 [Vibration] 횟수를 6 소모하여 공격 가중치 3 스킬로 변경"
+  },
+  {
+    "loc": "1010402 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv4 desc",
+    "before": "[StartBattle] 자신의 진동 횟수를 6 소모하여 공격 가중치 3 스킬로 변경\n메인 타겟의 침잠 횟수가 6 이상이면, 코인 위력 +1",
+    "after": "[StartBattle] 자신의 [Vibration] 횟수를 6 소모하여 공격 가중치 3 스킬로 변경\n메인 타겟의 [Sinking] 횟수가 6 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1010402 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010402 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 침잠 2 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Sinking] 2 부여"
+  },
+  {
+    "loc": "1010403 Lv1 desc",
+    "before": "[DefeatDuel] 정신력 20 감소\n[WhenUse] 진동 횟수 6을 얻음",
+    "after": "[DefeatDuel] 정신력 20 감소\n[WhenUse] [Vibration] 횟수 6을 얻음"
+  },
+  {
+    "loc": "1010403 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010403 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010403 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Sinking]이 6 이상이면, 침잠쇄도",
+    "after": "[OnSucceedAttack] 대상의 [Sinking]이 6 이상이면, [SinkingSurge]"
+  },
+  {
+    "loc": "1010403 Lv1 coin3.2",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 10 이상이면, 피해량의 30%만큼 추가 피해",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 10 이상이면, 피해량의 30%만큼 추가 피해"
+  },
+  {
+    "loc": "1010403 Lv4 desc",
+    "before": "[DefeatDuel] 정신력 20 감소\n[WhenUse] 진동 횟수 6을 얻음",
+    "after": "[DefeatDuel] 정신력 20 감소\n[WhenUse] [Vibration] 횟수 6을 얻음"
+  },
+  {
+    "loc": "1010403 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010403 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 1 증가"
+  },
+  {
+    "loc": "1010403 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Sinking]이 6 이상이면, 침잠쇄도",
+    "after": "[OnSucceedAttack] 대상의 [Sinking]이 6 이상이면, [SinkingSurge]"
+  },
+  {
+    "loc": "1010403 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 10 이상이면, 피해량의 40%만큼 추가 피해",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 10 이상이면, 피해량의 40%만큼 추가 피해"
+  },
+  {
+    "loc": "1010404 Lv1 desc",
+    "before": "[OnSucceedEvade] 침잠 1 부여",
+    "after": "[OnSucceedEvade] [Sinking] 1 부여"
+  },
+  {
+    "loc": "1080501 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1080501 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1080501 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1080501 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n[DefeatDuel] 진동 2, 파열 2 부여",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[DefeatDuel] [Vibration] 2, [Burst] 2 부여"
+  },
+  {
+    "loc": "1080501 Lv4 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1080501 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1080502 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1080502 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 2 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1080502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1080502 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1080502 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n[DefeatDuel] 진동 3, 파열 3 부여",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[DefeatDuel] [Vibration] 3, [Burst] 3 부여"
+  },
+  {
+    "loc": "1080502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1080502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1080503 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발\n진동 폭발 시 진동 횟수 4 감소. 파열 5 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 4 감소. [Burst] 5 부여"
+  },
+  {
+    "loc": "1080503 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n[DefeatDuel] 진동 5, 파열 5 부여",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[DefeatDuel] [Vibration] 5, [Burst] 5 부여"
+  },
+  {
+    "loc": "1080503 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발\n진동 폭발 시 진동 횟수 4 감소. 파열 5 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 [Vibration] 횟수 4 감소. [Burst] 5 부여"
+  },
+  {
+    "loc": "1080504 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가"
+  },
+  {
+    "loc": "1060501 Lv4 desc",
+    "before": "대상에게 [Burst]이 5 이상 있으면 코인 위력 +3\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+    "after": "대상에게 [Burst]이 5 이상 있으면 코인 위력 +3\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가"
+  },
+  {
+    "loc": "1060502 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 20%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 20%만큼 체력 회복"
+  },
+  {
+    "loc": "1060502 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 20%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 20%만큼 체력 회복"
+  },
+  {
+    "loc": "1060502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복"
+  },
+  {
+    "loc": "1060502 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복"
+  },
+  {
+    "loc": "1060502 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가"
+  },
+  {
+    "loc": "1060502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복"
+  },
+  {
+    "loc": "1060502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복",
+    "after": "[OnSucceedAttack] [Burst] 2 부여\n대상에게 [Burst]이 10 이상 있으면 피해량의 50%만큼 체력 회복"
+  },
+  {
+    "loc": "1060503 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 파열 4 부여",
+    "after": "[OnSucceedAttack] [Burst] 4 부여"
+  },
+  {
+    "loc": "1060503 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] K사 앰플 만큼 파열 횟수 증가. (K사 앰플 x 5)% 만큼 피해량이 증가함",
+    "after": "[OnSucceedAttack] [KCorpSerum] 만큼 [Burst] 횟수 증가. ([KCorpSerum] x 5)% 만큼 피해량이 증가함"
+  },
+  {
+    "loc": "1060503 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 4 부여",
+    "after": "[OnSucceedAttack] [Burst] 4 부여"
+  },
+  {
+    "loc": "1060503 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] K사 앰플 만큼 파열 횟수 증가. (K사 앰플 x 5)% 만큼 피해량이 증가함",
+    "after": "[OnSucceedAttack] [KCorpSerum] 만큼 [Burst] 횟수 증가. ([KCorpSerum] x 5)% 만큼 피해량이 증가함"
+  },
+  {
+    "loc": "1060504 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 K사 앰플 1 얻음",
+    "after": "[WhenUse] 다음 턴에 [KCorpSerum] 1 얻음"
+  },
+  {
+    "loc": "1060504 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 K사 앰플 1 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+    "after": "[WhenUse] 다음 턴에 [KCorpSerum] 1 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가"
+  },
+  {
+    "loc": "1100601 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1100601 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1100601 Lv2 coin1.2",
+    "before": "[OnSucceedAttackHead] 대상의 [Burst]이 5 이상이면, 부적 1 얻음",
+    "after": "[OnSucceedAttackHead] 대상의 [Burst]이 5 이상이면, [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 2 부여",
+    "after": "[OnSucceedAttack] [Burst] 2 부여"
+  },
+  {
+    "loc": "1100601 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Burst]이 5 이상이면, 부적 1 얻음",
+    "after": "[OnSucceedAttack] 대상의 [Burst]이 5 이상이면, [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 부적 1 얻음",
+    "after": "[OnSucceedAttackHead] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 부적 1 얻음",
+    "after": "[OnSucceedAttackHead] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv2 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Burst]이 3 이상이면, 부적 1 얻음",
+    "after": "[OnSucceedAttack] 대상의 [Burst]이 3 이상이면, [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 부적 1 얻음",
+    "after": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 부적 1 얻음",
+    "after": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 부적 1 얻음",
+    "after": "[OnSucceedAttack] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100602 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 부적 1 얻음",
+    "after": "[OnSucceedAttack] 대상에게 [Burst]이 있으면 [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1100603 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 부적 5 소모. 부적 5 부여",
+    "after": "[OnSucceedAttack] 자신의 [Talisman] 5 소모. [Talisman] 5 부여"
+  },
+  {
+    "loc": "1100603 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 대상에게 [Talisman]이 있으면 파열 횟수 1 증가",
+    "after": "[OnSucceedAttack] 대상에게 [Talisman]이 있으면 [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1100603 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 부적 5 소모. 부적 5 부여",
+    "after": "[OnSucceedAttack] 자신의 [Talisman] 5 소모. [Talisman] 5 부여"
+  },
+  {
+    "loc": "1100603 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 대상에게 [Talisman]이 있으면 파열 횟수 3 증가",
+    "after": "[OnSucceedAttack] 대상에게 [Talisman]이 있으면 [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1100604 Lv1 desc",
+    "before": "[WhenUse] 부적 1 얻음",
+    "after": "[WhenUse] [Talisman] 1 얻음"
+  },
+  {
+    "loc": "1080601 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080601 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080601 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080601 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080601 Lv4 desc",
+    "before": "대상의 화상 3당, 코인 위력 +1 (최대 2)",
+    "after": "대상의 [Combustion] 3당, 코인 위력 +1 (최대 2)"
+  },
+  {
+    "loc": "1080601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080601 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 화상 횟수 2 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, [Combustion] 횟수 2 부여"
+  },
+  {
+    "loc": "1080602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 화상 횟수 2 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, [Combustion] 횟수 2 부여"
+  },
+  {
+    "loc": "1080602 Lv4 desc",
+    "before": "대상의 화상 6 당, 코인 위력 +1 (최대 2)",
+    "after": "대상의 [Combustion] 6 당, 코인 위력 +1 (최대 2)"
+  },
+  {
+    "loc": "1080602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080602 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, 화상 횟수 2 부여",
+    "after": "[OnSucceedAttack] 대상의 [Combustion]이 6 이상이면, [Combustion] 횟수 2 부여"
+  },
+  {
+    "loc": "1080603 Lv1 desc",
+    "before": "대상의 화상과 화상 횟수가 6 이상이면, 피해량 +30%",
+    "after": "대상의 [Combustion]과 [Combustion] 횟수가 6 이상이면, 피해량 +30%"
+  },
+  {
+    "loc": "1080603 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080603 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080603 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 화상 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Combustion] 횟수 2 증가"
+  },
+  {
+    "loc": "1080603 Lv1 coin4.1",
+    "before": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 더하기 코인 강화 1을 얻음",
+    "after": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 [PlusCoinValueUp] 1을 얻음"
+  },
+  {
+    "loc": "1080603 Lv4 desc",
+    "before": "대상의 화상과 화상 횟수가 6 이상이면, 피해량 +50%",
+    "after": "대상의 [Combustion]과 [Combustion] 횟수가 6 이상이면, 피해량 +50%"
+  },
+  {
+    "loc": "1080603 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080603 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 화상 1 부여",
+    "after": "[OnSucceedAttack] [Combustion] 1 부여"
+  },
+  {
+    "loc": "1080603 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 화상 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Combustion] 횟수 2 증가"
+  },
+  {
+    "loc": "1080603 Lv4 coin4.1",
+    "before": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 더하기 코인 강화 1을 얻음",
+    "after": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 [PlusCoinValueUp] 1을 얻음"
+  },
+  {
+    "loc": "1080604 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 화상 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Combustion] 횟수 1 증가"
+  },
+  {
+    "loc": "1050601 Lv1 desc",
+    "before": "충전 횟수가 10 이상이면, 최종 위력 + 1",
+    "after": "[Charge] 횟수가 10 이상이면, 최종 위력 + 1"
+  },
+  {
+    "loc": "1050601 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 충전 횟수 2 증가",
+    "after": "[OnSucceedAttackHead] [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050601 Lv2 desc",
+    "before": "충전 횟수가 10 이상이면, 최종 위력 + 1\n속도가 7 이상이면, 피해량 +25%",
+    "after": "[Charge] 횟수가 10 이상이면, 최종 위력 + 1\n속도가 7 이상이면, 피해량 +25%"
+  },
+  {
+    "loc": "1050601 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050601 Lv4 desc",
+    "before": "충전 횟수가 10 이상이면, 최종 위력 + 2\n속도가 7 이상이면, 피해량 +25%\n[WhenUse] 자신의 충전 횟수 2 증가",
+    "after": "[Charge] 횟수가 10 이상이면, 최종 위력 + 2\n속도가 7 이상이면, 피해량 +25%\n[WhenUse] 자신의 [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 증가"
+  },
+  {
+    "loc": "1050602 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1050602 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050602 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050602 Lv2 desc",
+    "before": "속도가 7 이상이면, 이 스킬에서 증가시키는 출혈 횟수 +1",
+    "after": "속도가 7 이상이면, 이 스킬에서 증가시키는 [Laceration] 횟수 +1"
+  },
+  {
+    "loc": "1050602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1050602 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050602 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050602 Lv4 desc",
+    "before": "속도가 7 이상이면, 이 스킬에서 증가시키는 출혈 횟수 +1\n[WhenUse] 자신의 충전 횟수 4 증가",
+    "after": "속도가 7 이상이면, 이 스킬에서 증가시키는 [Laceration] 횟수 +1\n[WhenUse] 자신의 [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1050602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 충전 횟수 4 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 4 증가"
+  },
+  {
+    "loc": "1050602 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050602 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 desc",
+    "before": "[WhenUse] 충전 횟수가 10 이상이면, 코인 위력 +1",
+    "after": "[WhenUse] [Charge] 횟수가 10 이상이면, 코인 위력 +1"
+  },
+  {
+    "loc": "1050603 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 충전 횟수 2 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 coin1.3",
+    "before": "[OnSucceedAttack] 충전 횟수 3 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 충전 횟수 2 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv1 coin2.3",
+    "before": "[OnSucceedAttack] 충전 횟수 3 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 desc",
+    "before": "[WhenUse] 충전 횟수가 10 이상이면, 코인 위력 +2",
+    "after": "[WhenUse] [Charge] 횟수가 10 이상이면, 코인 위력 +2"
+  },
+  {
+    "loc": "1050603 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 충전 횟수 2 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 충전 횟수 3 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 충전 횟수 2 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 2 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050603 Lv4 coin2.3",
+    "before": "[OnSucceedAttack] 충전 횟수 3 소모. 출혈 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Charge] 횟수 3 소모. [Laceration] 횟수 1 증가"
+  },
+  {
+    "loc": "1050604 Lv1 desc",
+    "before": "[WhenUse] 보호막이 있는동안 피격 시 충전 횟수 1 증가 (턴 당 최대 10)",
+    "after": "[WhenUse] 보호막이 있는동안 피격 시 [Charge] 횟수 1 증가 (턴 당 최대 10)"
+  },
+  {
+    "loc": "1050604 Lv4 desc",
+    "before": "[WhenUse] 보호막이 있는동안 피격 시 충전 횟수 2 증가 (턴 당 최대 10)",
+    "after": "[WhenUse] 보호막이 있는동안 피격 시 [Charge] 횟수 2 증가 (턴 당 최대 10)"
+  },
+  {
+    "loc": "1090601 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090601 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090601 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090601 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090601 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 2 증가\n[DefeatDuel] 호흡 횟수 2 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 2 증가\n[DefeatDuel] [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090601 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1090602 Lv1 desc",
+    "before": "[WhenUse] 자신의 보호막이 15 이상이면, 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 보호막이 15 이상이면, [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090602 Lv2 desc",
+    "before": "[WhenUse] 자신의 보호막이 15 이상이면, 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 보호막이 15 이상이면, [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090602 Lv4 desc",
+    "before": "[WhenUse] 자신의 보호막이 15 이상이면, 호흡 횟수 2 증가\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 4 증가\n[WhenUse] 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 보호막이 15 이상이면, [Breath] 횟수 2 증가\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 4 증가\n[WhenUse] [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1090603 Lv1 coin3.1",
+    "before": "[CriticalOnSucceedAttack] 다음 턴에 취약 1 부여",
+    "after": "[CriticalOnSucceedAttack] 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1090603 Lv4 coin3.1",
+    "before": "[CriticalOnSucceedAttack] 다음 턴에 취약 1 부여",
+    "after": "[CriticalOnSucceedAttack] 다음 턴에 [Vulnerable] 1 부여"
+  },
+  {
+    "loc": "1090604 Lv4 coin1.1",
+    "before": "[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+    "after": "[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가"
+  },
+  {
+    "loc": "1030501 Lv1 coin2.1",
+    "before": "[WinDuelAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[WinDuelAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030501 Lv2 desc",
+    "before": "자신의 속도가 7 이상이면, 코인 위력 +1\n[WinDuel] 다음 턴에 신속 1을 얻음",
+    "after": "자신의 속도가 7 이상이면, 코인 위력 +1\n[WinDuel] 다음 턴에 [Agility] 1을 얻음"
+  },
+  {
+    "loc": "1030501 Lv2 coin2.1",
+    "before": "[WinDuelAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[WinDuelAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030501 Lv4 desc",
+    "before": "자신의 속도가 7 이상이면, 코인 위력 +2\n[WinDuel] 다음 턴에 신속 1을 얻음",
+    "after": "자신의 속도가 7 이상이면, 코인 위력 +2\n[WinDuel] 다음 턴에 [Agility] 1을 얻음"
+  },
+  {
+    "loc": "1030501 Lv4 coin2.1",
+    "before": "[WinDuelAttack] 다음 턴에 속박 1 부여",
+    "after": "[WinDuelAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030502 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 신속 1을 얻음",
+    "after": "[WhenUse] 다음 턴에 [Agility] 1을 얻음"
+  },
+  {
+    "loc": "1030502 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030502 Lv2 desc",
+    "before": "[WhenUse] 다음 턴에 신속 2를 얻음",
+    "after": "[WhenUse] 다음 턴에 [Agility] 2를 얻음"
+  },
+  {
+    "loc": "1030502 Lv2 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030502 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 신속 2를 얻음\n[WinDuel] 합 횟수에 비례하여 피해량 증가(합 횟수 1 당 +5%. 최대 50%)",
+    "after": "[WhenUse] 다음 턴에 [Agility] 2를 얻음\n[WinDuel] 합 횟수에 비례하여 [AttackDmgUp](합 횟수 1 당 +5%. 최대 50%)"
+  },
+  {
+    "loc": "1030502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 속박 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
+  },
+  {
+    "loc": "1030503 Lv3 desc",
+    "before": "자신의 속도가 10 이상이면, 코인 위력 +2\n[WinDuel] 합 횟수에 비례하여 피해량 증가(합 횟수 1 당 +5%. 최대 50%)",
+    "after": "자신의 속도가 10 이상이면, 코인 위력 +2\n[WinDuel] 합 횟수에 비례하여 [AttackDmgUp](합 횟수 1 당 +5%. 최대 50%)"
+  },
+  {
+    "loc": "1030503 Lv4 desc",
+    "before": "자신의 속도가 10 이상이면, 코인 위력 +3\n[WinDuel] 합 횟수에 비례하여 피해량 증가(합 횟수 1 당 +10%. 최대 100%)",
+    "after": "자신의 속도가 10 이상이면, 코인 위력 +3\n[WinDuel] 합 횟수에 비례하여 [AttackDmgUp](합 횟수 1 당 +10%. 최대 100%)"
+  },
+  {
+    "loc": "1070601 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv4 desc",
+    "before": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6  이상일 때 코인 위력 +1",
+    "after": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6  이상일 때 코인 위력 +1"
+  },
+  {
+    "loc": "1070601 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv4 coin1.2",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 1 부여",
+    "after": "[OnSucceedAttack] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070601 Lv4 coin2.2",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070602 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1070602 Lv2 desc",
+    "before": "[WinDuel] 파열 횟수 1 증가",
+    "after": "[WinDuel] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1070602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 1 부여"
+  },
+  {
+    "loc": "1070602 Lv2 coin1.2",
+    "before": "[OnSucceedAttack] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1070602 Lv4 desc",
+    "before": "[WinDuel] 파열 횟수 1 증가",
+    "after": "[WinDuel] [Burst] 횟수 1 증가"
+  },
+  {
+    "loc": "1070602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 감소 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseDown] 3 부여"
+  },
+  {
+    "loc": "1070602 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1070603 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1070603 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv3 coin4.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv3 coin4.2",
+    "before": "[EnemyKill] 현재 파열 횟수가 가장 낮은 적 1명의 파열 횟수 2 증가",
+    "after": "[EnemyKill] 현재 [Burst] 횟수가 가장 낮은 적 1명의 [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1070603 Lv4 desc",
+    "before": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6 이상일 때 코인 위력 +1",
+    "after": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6 이상일 때 코인 위력 +1"
+  },
+  {
+    "loc": "1070603 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1070603 Lv4 coin2.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv4 coin3.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv4 coin4.1",
+    "before": "[OnSucceedAttackHead] 파열 1 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 1 부여"
+  },
+  {
+    "loc": "1070603 Lv4 coin4.2",
+    "before": "[EnemyKill] 현재 파열 횟수가 가장 낮은 적 1명의 파열 횟수 2 증가",
+    "after": "[EnemyKill] 현재 [Burst] 횟수가 가장 낮은 적 1명의 [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1020601 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020601 Lv2 desc",
+    "before": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 3 이상이면 코인 위력 +1",
+    "after": "대상의 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 3 이상이면 코인 위력 +1"
+  },
+  {
+    "loc": "1020601 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020601 Lv4 desc",
+    "before": "대상의 파열 3 당 코인 위력 +1 (최대 2)",
+    "after": "대상의 [Burst] 3 당 코인 위력 +1 (최대 2)"
+  },
+  {
+    "loc": "1020601 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020602 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 3 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020602 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6 이상 있으면, 다음 턴에 약점 분석 부여",
+    "after": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6 이상 있으면, 다음 턴에 [WeaknessAnalysis] 부여"
+  },
+  {
+    "loc": "1020602 Lv2 desc",
+    "before": "대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6 이상 있으면 코인 위력 +1\n[WinDuel] 파열 횟수 3 증가",
+    "after": "대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6 이상 있으면 코인 위력 +1\n[WinDuel] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1020602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020602 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6 이상 있으면, 다음 턴에 약점 분석 부여",
+    "after": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6 이상 있으면, 다음 턴에 [WeaknessAnalysis] 부여"
+  },
+  {
+    "loc": "1020602 Lv4 desc",
+    "before": "대상의 파열 6 당 코인 위력 +1 (최대 2)\n[WinDuel] 파열 횟수 3 증가",
+    "after": "대상의 [Burst] 6 당 코인 위력 +1 (최대 2)\n[WinDuel] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "1020602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020602 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">파열</color></link></u>이 6 이상 있으면, 다음 턴에 약점 분석 부여",
+    "after": "[OnSucceedAttack] 대상에게 <sprite name=\"Burst\"><color=#e30000><u><link=\"Burst\">[Burst]</color></link></u>이 6 이상 있으면, 다음 턴에 [WeaknessAnalysis] 부여"
+  },
+  {
+    "loc": "1020603 Lv3 desc",
+    "before": "대상의 파열 3 당 피해량 +10% (최대 20%)",
+    "after": "대상의 [Burst] 3 당 피해량 +10% (최대 20%)"
+  },
+  {
+    "loc": "1020603 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020603 Lv3 coin3.1",
+    "before": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 신속 1, 참격 위력 증가 1을 얻음",
+    "after": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 [Agility] 1, [SlashResultUp] 1을 얻음"
+  },
+  {
+    "loc": "1020603 Lv4 desc",
+    "before": "대상의 파열 3 당 피해량 +10% (최대 50%)\n[WinDuel] 파열 횟수 2 증가",
+    "after": "대상의 [Burst] 3 당 피해량 +10% (최대 50%)\n[WinDuel] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "1020603 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "1020603 Lv4 coin3.1",
+    "before": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 신속 1, 참격 위력 증가 1을 얻음",
+    "after": "[EndSkill] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 [Agility] 1, [SlashResultUp] 1을 얻음"
+  },
+  {
+    "loc": "1020604 Lv1 desc",
+    "before": "[WhenUse] 다음 턴에 신속 1을 얻음 (턴 당 최대 3)",
+    "after": "[WhenUse] 다음 턴에 [Agility] 1을 얻음 (턴 당 최대 3)"
+  },
+  {
+    "loc": "1020604 Lv4 desc",
+    "before": "[WhenUse] 다음 턴에 신속 1을 얻음 (턴 당 최대 3)",
+    "after": "[WhenUse] 다음 턴에 [Agility] 1을 얻음 (턴 당 최대 3)"
+  },
+  {
+    "loc": "999901 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999902 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999903 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999904 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999906 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999907 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999908 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  },
+  {
+    "loc": "999909 Lv1 desc",
+    "before": "관측 불가",
+    "after": "[Unobservable]"
+  }
+]

@@ -6,13 +6,13 @@
         {
           "level": 1,
           "name": "맞서기",
-          "desc": "[WhenUse] 방어 레벨 증가 2를 얻음",
+          "desc": "[WhenUse] [DefenseUp] 2를 얻음",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 신속 1을 얻음"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [Agility] 1을 얻음"
                 }
               ]
             }
@@ -21,13 +21,13 @@
         {
           "level": 2,
           "name": "맞서기",
-          "desc": "[WhenUse] 방어 레벨 증가 2를 얻음\n[DefeatDuel] (자신의 방어 레벨 증가 X 3)만큼 보호막을 얻음. 다음 턴에 방어 레벨 증가 1을 얻음.",
+          "desc": "[WhenUse] [DefenseUp] 2를 얻음\n[DefeatDuel] (자신의 [DefenseUp] X 3)만큼 보호막을 얻음. 다음 턴에 [DefenseUp] 1을 얻음.",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 신속 1을 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Agility] 1을 얻음"
                 }
               ]
             }
@@ -36,13 +36,13 @@
         {
           "level": 4,
           "name": "맞서기",
-          "desc": "[WhenUse] 방어 레벨 증가 2를 얻음\n[DefeatDuel] (자신의 방어 레벨 증가 X 5)만큼 보호막을 얻음. 다음 턴에 방어 레벨 증가 2를 얻음.",
+          "desc": "[WhenUse] [DefenseUp] 2를 얻음\n[DefeatDuel] (자신의 [DefenseUp] X 5)만큼 보호막을 얻음. 다음 턴에 [DefenseUp] 2를 얻음.",
           "coinlist": [
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 신속 2를 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Agility] 2를 얻음"
                 }
               ]
             }
@@ -56,19 +56,19 @@
         {
           "level": 1,
           "name": "유연한 제압",
-          "desc": "[WhenUse] 방어 레벨 증가 2를 얻음",
+          "desc": "[WhenUse] [DefenseUp] 2를 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
@@ -76,7 +76,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +20%"
+                  "desc": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +20%"
                 }
               ]
             }
@@ -85,19 +85,19 @@
         {
           "level": 2,
           "name": "유연한 제압",
-          "desc": "[WhenUse] 방어 레벨 증가 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 2 증가",
+          "desc": "[WhenUse] [DefenseUp] 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 2 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
@@ -105,7 +105,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +30%"
+                  "desc": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +30%"
                 }
               ]
             }
@@ -114,19 +114,19 @@
         {
           "level": 4,
           "name": "유연한 제압",
-          "desc": "[WhenUse] 방어 레벨 증가 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 3 증가\n자신의 방어 레벨 증가 가 6 이상이면, 합 위력 +1",
+          "desc": "[WhenUse] [DefenseUp] 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 3 증가\n자신의 [DefenseUp] 가 6 이상이면, 합 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
                 }
               ]
             },
@@ -134,7 +134,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +40%"
+                  "desc": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +40%"
                 }
               ]
             }
@@ -148,14 +148,14 @@
         {
           "level": 3,
           "name": "수호자",
-          "desc": "[WhenUse] 모든 아군에게 수비 위력 증가 2, 방어 레벨 증가 3 부여.\n자신의 방어 레벨 증가 가 6 이상이면, 코인 위력 +1\n자신의 방어 레벨 증가 가 10 이상이면, 피해량 +30%",
+          "desc": "[WhenUse] 모든 아군에게 [Endurance] 2, [DefenseUp] 3 부여.\n자신의 [DefenseUp] 가 6 이상이면, 코인 위력 +1\n자신의 [DefenseUp] 가 10 이상이면, 피해량 +30%",
           "coinlist": [
             {},
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 모든 아군에게 방어 레벨 증가 3 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 모든 아군에게 [DefenseUp] 3 부여"
                 }
               ]
             }
@@ -164,14 +164,14 @@
         {
           "level": 4,
           "name": "수호자",
-          "desc": "[WhenUse] 모든 아군에게 수비 위력 증가 2, 방어 레벨 증가 3 부여.\n자신의 방어 레벨 증가 6 당 코인 위력 +1 (최대 3)\n자신의 방어 레벨 증가 가 10 이상이면, 피해량 +50%",
+          "desc": "[WhenUse] 모든 아군에게 [Endurance] 2, [DefenseUp] 3 부여.\n자신의 [DefenseUp] 6 당 코인 위력 +1 (최대 3)\n자신의 [DefenseUp] 가 10 이상이면, 피해량 +50%",
           "coinlist": [
             {},
             {},
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 모든 아군에게 방어 레벨 증가 3 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 모든 아군에게 [DefenseUp] 3 부여"
                 }
               ]
             }
@@ -185,7 +185,7 @@
         {
           "level": 1,
           "name": "최선의 방어",
-          "desc": "[StartBattle] (자신의 방어 레벨 증가 X 2)만큼 보호막을 얻음",
+          "desc": "[StartBattle] (자신의 [DefenseUp] X 2)만큼 보호막을 얻음",
           "coinlist": [
             {}
           ]
@@ -193,7 +193,7 @@
         {
           "level": 4,
           "name": "최선의 방어",
-          "desc": "[StartBattle] (자신의 방어 레벨 증가 X 2)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+          "desc": "[StartBattle] (자신의 [DefenseUp] X 2)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가",
           "coinlist": [
             {}
           ]
@@ -206,7 +206,7 @@
         {
           "level": 1,
           "name": "협상 시작",
-          "desc": "[WhenUse] 호흡 2 얻음",
+          "desc": "[WhenUse] [Breath] 2 얻음",
           "coinlist": [
             {
               "coindescs": [
@@ -216,7 +216,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가"
+                  "desc": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가"
                 }
               ]
             }
@@ -225,22 +225,22 @@
         {
           "level": 2,
           "name": "협상 시작",
-          "desc": "[WhenUse] 호흡 3 얻음",
+          "desc": "[WhenUse] [Breath] 3 얻음",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -249,22 +249,22 @@
         {
           "level": 4,
           "name": "협상 시작",
-          "desc": "[WhenUse] 호흡 3 얻음\n대상의 <sprite name=\"Laceration\"><color=#e30000><u><link=\"Laceration\">출혈</color></link></u>이 7 이상이면 코인 위력 +1",
+          "desc": "[WhenUse] [Breath] 3 얻음\n대상의 <sprite name=\"Laceration\"><color=#e30000><u><link=\"Laceration\">[Laceration]</color></link></u>이 7 이상이면 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가"
+                  "desc": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -278,22 +278,22 @@
         {
           "level": 1,
           "name": "일방적 비즈니스",
-          "desc": "[WhenUse] 자신의 호흡 횟수 2 증가",
+          "desc": "[WhenUse] 자신의 [Breath] 횟수 2 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 호흡 3 얻음"
+                  "desc": "[OnSucceedAttackHead] [Breath] 3 얻음"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -302,25 +302,25 @@
         {
           "level": 2,
           "name": "일방적 비즈니스",
-          "desc": "[WhenUse] 자신의 호흡 횟수 3 증가",
+          "desc": "[WhenUse] 자신의 [Breath] 횟수 3 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 호흡 4 얻음"
+                  "desc": "[OnSucceedAttackHead] [Breath] 4 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 },
                 {
                   "desc": "크리티컬 피해량 +30%"
@@ -332,25 +332,25 @@
         {
           "level": 4,
           "name": "일방적 비즈니스",
-          "desc": "대상의 출혈 7당 코인 위력 +1 (최대 2)\n[WhenUse] 자신의 호흡 횟수 3 증가",
+          "desc": "대상의 [Laceration] 7당 코인 위력 +1 (최대 2)\n[WhenUse] 자신의 [Breath] 횟수 3 증가",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 호흡 4 얻음"
+                  "desc": "[OnSucceedAttack] [Breath] 4 얻음"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 2 부여"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
                 },
                 {
                   "desc": "크리티컬 피해량 +50%"
@@ -367,19 +367,19 @@
         {
           "level": 3,
           "name": "예정된 결렬",
-          "desc": "[WhenUse] 대상의 출혈 3당 호흡 1을 얻음 (최대 5)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></color></link></u>이 7 이상이면 코인 위력 +1",
+          "desc": "[WhenUse] 대상의 [Laceration] 3당 [Breath] 1을 얻음 (최대 5)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></color></link></u>이 7 이상이면 코인 위력 +1",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 횟수 2 증가"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "탄환 1 소모"
+                  "desc": "[Bullet] 1 소모"
                 },
                 {
                   "desc": "크리티컬 피해량 +50%"
@@ -391,25 +391,25 @@
         {
           "level": 4,
           "name": "예정된 결렬",
-          "desc": "[WhenUse] 대상의 출혈 3당 호흡 1을 얻음 (최대 10)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></color></link></u> 7 당 코인 위력 +1 (최대 3)",
+          "desc": "[WhenUse] 대상의 [Laceration] 3당 [Breath] 1을 얻음 (최대 10)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></color></link></u> 7 당 코인 위력 +1 (최대 3)",
           "coinlist": [
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] 출혈 횟수 2 증가"
+                  "desc": "[CriticalOnSucceedAttack] [Laceration] 횟수 2 증가"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "탄환 1 소모"
+                  "desc": "[Bullet] 1 소모"
                 },
                 {
                   "desc": "크리티컬 피해량 +100%"
                 },
                 {
-                  "desc": "[EnemyKill] 다음 턴에 더하기 코인 강화 1을 얻음"
+                  "desc": "[EnemyKill] 다음 턴에 [PlusCoinValueUp] 1을 얻음"
                 }
               ]
             }
@@ -423,7 +423,7 @@
         {
           "level": 1,
           "name": "한 숨 돌릴까",
-          "desc": "[OnSucceedEvade] 호흡 1 얻음 (턴 당 최대 3)",
+          "desc": "[OnSucceedEvade] [Breath] 1 얻음 (턴 당 최대 3)",
           "coinlist": [
             {}
           ]
@@ -431,7 +431,7 @@
         {
           "level": 4,
           "name": "한 숨 돌릴까",
-          "desc": "[OnSucceedEvade] 호흡 1 얻음 (턴 당 최대 5)",
+          "desc": "[OnSucceedEvade] [Breath] 1 얻음 (턴 당 최대 5)",
           "coinlist": [
             {}
           ]
@@ -517,10 +517,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 공격 위력 감소 1 부여"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [Reduction] 1 부여"
                 }
               ]
             }
@@ -541,10 +541,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 공격 위력 감소 1 부여"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [Reduction] 1 부여"
                 }
               ]
             }
@@ -565,10 +565,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면, 다음 턴에 공격 위력 감소 1 부여"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면, 다음 턴에 [Reduction] 1 부여"
                 }
               ]
             }
@@ -587,27 +587,27 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 "
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 "
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 더하기 코인 약화 1 부여"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [PlusCoinValueDown] 1 부여"
                 }
               ]
             }
@@ -621,20 +621,20 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 "
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 공격 레벨 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDown] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 "
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
                 }
               ]
             },
@@ -644,7 +644,7 @@
                   "desc": "[OnSucceedAttackHead] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 <style=\"highlight\">7</style> 이상이면, 다음 턴에 더하기 코인 약화 1 부여"
+                  "desc": "[OnSucceedAttack] 대상의 [Laceration]이 <style=\"highlight\">7</style> 이상이면, 다음 턴에 [PlusCoinValueDown] 1 부여"
                 }
               ]
             }
@@ -1194,7 +1194,7 @@
         {
           "level": 4,
           "name": "화염방사",
-          "desc": "대상의 화상 <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)",
+          "desc": "대상의 [Combustion] <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)",
           "coinlist": [
             {
               "coindescs": [

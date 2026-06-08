@@ -11,14 +11,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             }
@@ -32,14 +32,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 1 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -53,14 +53,14 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 1 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 2 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 2 부여"
                 }
               ]
             }
@@ -84,10 +84,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttackHead] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -106,10 +106,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttackHead] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -128,10 +128,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 출혈 3 부여"
+                  "desc": "[OnSucceedAttack] [Laceration] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 피해량 감소 1 부여"
+                  "desc": "[OnSucceedAttack] [AttackDmgDown] 1 부여"
                 }
               ]
             }
@@ -150,21 +150,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -185,21 +185,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -272,21 +272,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -307,21 +307,21 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 출혈 1 부여"
+                  "desc": "[OnSucceedAttackHead] [Laceration] 1 부여"
                 }
               ]
             },
@@ -700,7 +700,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[CriticalOnSucceedAttack] [Breath]이 없거나 [Breath] 위력을 가장 적게 보유한 아군 1명에게 [Breath] 2 부여\n<style=\"highlight\">대상이 검계 조직원이면 호흡 2 추가 부여</style>"
+                  "desc": "[CriticalOnSucceedAttack] [Breath]이 없거나 [Breath] 위력을 가장 적게 보유한 아군 1명에게 [Breath] 2 부여\n<style=\"highlight\">대상이 검계 조직원이면 [Breath] 2 추가 부여</style>"
                 }
               ]
             }
@@ -1524,7 +1524,7 @@
                   "desc": "[SuperCoin]"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [Laceration] <style=\"highlight\">8</style> 부여, 출혈 횟수 4 증가"
+                  "desc": "[OnSucceedAttack] [Laceration] <style=\"highlight\">8</style> 부여, [Laceration] 횟수 4 증가"
                 },
                 {
                   "desc": "[EndSkill] 대상이 사망했으면, 모든 적에게 [Laceration] 5 부여, [Laceration] 횟수 1 증가"

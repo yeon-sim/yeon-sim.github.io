@@ -12,7 +12,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[EndSkill] 현재 정신력이 가장 낮은 아군 2명에게 가장 높은 공명 속성의 피해량 증가를 1 부여"
@@ -33,7 +33,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[EndSkill] 현재 정신력이 가장 낮은 아군 3명에게 가장 높은 공명 속성의 피해량 증가를 1 부여"
@@ -54,7 +54,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[EndSkill] 현재 정신력이 가장 낮은 아군 4명에게 가장 높은 공명 속성의 피해량 증가를 1 부여"
@@ -83,7 +83,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 정신력 10 피해"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[OnSucceedAttackTail] 가장 높은 공명 속성의 취약을 1 부여"
@@ -104,7 +104,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 정신력 10 피해"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[OnSucceedAttackTail] 가장 높은 공명 속성의 취약을 2 부여"
@@ -128,7 +128,7 @@
                   "desc": "[OnSucceedAttack] 대상에게 정신력 10 피해"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 },
                 {
                   "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약을 2 부여"

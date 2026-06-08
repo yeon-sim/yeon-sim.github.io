@@ -15,3 +15,7 @@ temp/
 
 # Node.js 의존성
 node_modules/
+
+# 전처리 dry-run 리포트 (스크래치 — data_override/·keyword_changeset/ 는 커밋)
+/scripts/keyword-parse-report.txt
+/scripts/apply-overrides-report.txt

@@ -646,6 +646,7 @@
             x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
           <div class="personality-card"
+            @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)"
             @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
             {{ $dt := "" }}
             {{ with index $defSkills 0 }}{{ $dt = .dt }}{{ end }}
@@ -777,7 +778,7 @@
         </div>
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
-          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             <div class="ego-card">
               <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
               <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
@@ -1864,6 +1865,32 @@ function personalityPage() {
     },
 
     openPersonalityDetail(data) { this.personalityDetail = data; this.personalitySync = 4; },
+
+    // ── 카드 길게 누르기(좌클릭/터치) → 우클릭과 동일 동작 ──
+    // 타이머 만료 시 카드에 contextmenu 를 합성 디스패치해 기존 @contextmenu 핸들러(상세 모달)를 재사용.
+    _cardLP: { timer: null, fired: false, x: 0, y: 0 },
+    startCardLongPress(event) {
+      if (event.button !== undefined && event.button !== 0) return; // 좌클릭/터치만 (우클릭 제외)
+      if (event.target.closest('.card-save-btn')) return;           // 저장 버튼 위 long-press 제외
+      const card = event.currentTarget;
+      this._cardLP.fired = false;
+      this._cardLP.x = event.clientX;
+      this._cardLP.y = event.clientY;
+      this._cardLP.timer = setTimeout(() => {
+        this._cardLP.fired = true;
+        this._cardLP.timer = null;
+        card.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
+        const block = (e) => { e.preventDefault(); document.removeEventListener('contextmenu', block, true); };
+        document.addEventListener('contextmenu', block, true); // 직후 실제 contextmenu(롱터치) 한 번 무시
+      }, 300);
+    },
+    cancelCardLongPress(event) {
+      if (event && event.type === 'pointermove') {
+        if (Math.abs(event.clientX - this._cardLP.x) < 10 && Math.abs(event.clientY - this._cardLP.y) < 10) return;
+      }
+      if (this._cardLP.timer) { clearTimeout(this._cardLP.timer); this._cardLP.timer = null; }
+      if (this._cardLP.fired && event) { event.preventDefault(); this._cardLP.fired = false; }
+    },
 
     skillsForTab() {
       if (!this.personalityDetail) return [];

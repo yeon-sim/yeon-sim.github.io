@@ -1,0 +1,7 @@
+[
+  {
+    "loc": "2060112 Lv4 desc",
+    "before": "[EndSkill] 본인과 아군의 정신력 15 회복\n[EndSkill] 본인과 아군의 화상 제거",
+    "after": "[EndSkill] 본인과 아군의 정신력 15 회복\n[EndSkill] 본인과 아군의 [Combustion] 제거"
+  }
+]

@@ -77,10 +77,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 3 부여"
+                  "desc": "[OnSucceedAttack] [Vibration] 3 부여"
                 }
               ]
             }
@@ -95,10 +95,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 속박 1 부여"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [Binding] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 4 부여"
+                  "desc": "[OnSucceedAttack] [Vibration] 4 부여"
                 }
               ]
             }
@@ -113,10 +113,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 1 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 1 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 5 부여"
+                  "desc": "[OnSucceedAttack] [Vibration] 5 부여"
                 }
               ]
             }
@@ -136,10 +136,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
                 }
               ]
             }
@@ -154,13 +154,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttackHead] 다음 턴에 탐식 취약 2 부여"
+                  "desc": "[OnSucceedAttackHead] 다음 턴에 [ShamrockTakeDamageUp] 2 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여<style=\"highlight\"></style>"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여<style=\"highlight\"></style>"
                 }
               ]
             }
@@ -175,13 +175,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 파열 부여"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/2)만큼 [Burst] 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 탐식 취약 2 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [ShamrockTakeDamageUp] 2 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여<style=\"highlight\"></style>"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여<style=\"highlight\"></style>"
                 }
               ]
             }
@@ -201,13 +201,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
                 },
                 {
                   "desc": "[OnSucceedAttack] 피해량의 20%만큼 자신의 체력 회복"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
                 }
               ]
             }
@@ -222,13 +222,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
                 },
                 {
                   "desc": "[OnSucceedAttack] 피해량의 30%만큼 자신의 체력 회복"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
                 }
               ]
             }
@@ -243,13 +243,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 파열 횟수 증가"
+                  "desc": "[OnSucceedAttack] (탐식 공명 수/3)만큼 [Burst] 횟수 증가"
                 },
                 {
                   "desc": "[OnSucceedAttack] 피해량의 50%만큼 자신의 체력 회복"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttack] 다음 턴에 [Binding] 2 부여"
                 }
               ]
             }

@@ -12,7 +12,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }
@@ -30,7 +30,7 @@
                   "desc": "[OnSucceedAttackHead] [Combustion] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }
@@ -48,7 +48,7 @@
                   "desc": "[OnSucceedAttack] [Combustion] 3 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }
@@ -71,7 +71,7 @@
                   "desc": "[OnSucceedAttackTail] [Combustion] 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }
@@ -86,13 +86,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackTail] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttackTail] 다음 턴에 [Binding] 2 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] [Combustion] 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }
@@ -107,13 +107,13 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttackTail] 다음 턴에 속박 2 부여"
+                  "desc": "[OnSucceedAttackTail] 다음 턴에 [Binding] 2 부여"
                 },
                 {
                   "desc": "[OnSucceedAttack] [Combustion] 4 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)"
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
                 }
               ]
             }

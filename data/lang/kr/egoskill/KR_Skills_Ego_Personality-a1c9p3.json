@@ -88,7 +88,7 @@
           "level": 4,
           "name": "허환경",
           "abName": "홍루",
-          "desc": "[EndSkill] 본인과 아군의 정신력 15 회복\n[EndSkill] 본인과 아군의 화상 제거",
+          "desc": "[EndSkill] 본인과 아군의 정신력 15 회복\n[EndSkill] 본인과 아군의 [Combustion] 제거",
           "coinlist": [
             {
               "coindescs": [

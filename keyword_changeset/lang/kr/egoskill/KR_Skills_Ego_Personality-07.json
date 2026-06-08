@@ -1,0 +1,102 @@
+[
+  {
+    "loc": "2070511 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 5)",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 5)"
+  },
+  {
+    "loc": "2070511 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 5)",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 5)"
+  },
+  {
+    "loc": "2070511 Lv3 coin1.2",
+    "before": "[EnemyKill] 무작위 아군 2명에게 다음 턴에 호흡 횟수 1, 충전 횟수 1, 신속 1, 공격 레벨 증가 1, 방어 레벨 증가 1 중 무작위 1개 효과를 부여",
+    "after": "[EnemyKill] 무작위 아군 2명에게 다음 턴에 [Breath] 횟수 1, [Charge] 횟수 1, [Agility] 1, [AttackUp] 1, [DefenseUp] 1 중 무작위 1개 효과를 부여"
+  },
+  {
+    "loc": "2070511 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)",
+    "after": "[OnSucceedAttack] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)"
+  },
+  {
+    "loc": "2070511 Lv4 coin1.2",
+    "before": "[EnemyKill] 무작위 아군 2명에게 다음 턴에 호흡 횟수 2, 충전 횟수 2, 신속 2, 공격 레벨 증가 2, 방어 레벨 증가 2 중 무작위 1개 효과를 부여",
+    "after": "[EnemyKill] 무작위 아군 2명에게 다음 턴에 [Breath] 횟수 2, [Charge] 횟수 2, [Agility] 2, [AttackUp] 2, [DefenseUp] 2 중 무작위 1개 효과를 부여"
+  },
+  {
+    "loc": "2070521 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)",
+    "after": "[OnSucceedAttack] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)"
+  },
+  {
+    "loc": "2070521 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)",
+    "after": "[OnSucceedAttack] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)"
+  },
+  {
+    "loc": "2070521 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 화상, 출혈, 진동, 파열, 침잠 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)",
+    "after": "[OnSucceedAttack] 다음 턴에 [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 1개 효과의 위력을 2 + (최대 탐식 완전 공명의 수)회 부여 (최대 7)"
+  },
+  {
+    "loc": "2070721 Lv1 desc",
+    "before": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 호흡 1 얻음 (최대 3)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +3% (최대 15%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모",
+    "after": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 [Breath] 1 얻음 (최대 3)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +3% (최대 15%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모"
+  },
+  {
+    "loc": "2070721 Lv3 desc",
+    "before": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n<style=\"highlight\">[BeforeAttack] [BoseProjektil]이 3 이상이면, 공격 가중치 1 증가</style>\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 호흡 1 얻음 (최대 <style=\"highlight\">4</style>)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +<style=\"highlight\">4</style>% (최대 <style=\"highlight\">20</style>%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모",
+    "after": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n<style=\"highlight\">[BeforeAttack] [BoseProjektil]이 3 이상이면, 공격 가중치 1 증가</style>\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 [Breath] 1 얻음 (최대 <style=\"highlight\">4</style>)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +<style=\"highlight\">4</style>% (최대 <style=\"highlight\">20</style>%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모"
+  },
+  {
+    "loc": "2070721 Lv4 desc",
+    "before": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil] <style=\"highlight\">3당</style> 공격 가중치 1 증가 <style=\"highlight\">(최대 2)</style>\n[BeforeAttack] [BoseProjektil]당 피해량 +<style=\"highlight\">3</style>% (최대 <style=\"highlight\">21</style>%)\n[BeforeAttack] [BoseProjektil]당 호흡 1 얻음 (최대 <style=\"highlight\">7</style>)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +<style=\"highlight\">5</style>% (최대 <style=\"highlight\">25</style>%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모",
+    "after": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil] <style=\"highlight\">3당</style> 공격 가중치 1 증가 <style=\"highlight\">(최대 2)</style>\n[BeforeAttack] [BoseProjektil]당 피해량 +<style=\"highlight\">3</style>% (최대 <style=\"highlight\">21</style>%)\n[BeforeAttack] [BoseProjektil]당 [Breath] 1 얻음 (최대 <style=\"highlight\">7</style>)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +<style=\"highlight\">5</style>% (최대 <style=\"highlight\">25</style>%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모"
+  },
+  {
+    "loc": "2070811 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 나태 완전 공명 4 이상이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 나태 완전 공명 4 이상이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2070811 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 <style=\"highlight\">나태 완전 공명</style>이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 <style=\"highlight\">나태 완전 공명</style>이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2070811 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 <style=\"highlight\">나태 공명 3 이상</style>이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 1 부여\n- 최대 공명이 <style=\"highlight\">나태 공명 3 이상</style>이면, 다음 턴에도 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2070821 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 나태 완전 공명 4 이상이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 나태 완전 공명 4 이상이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "2070821 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 <style=\"highlight\">나태 완전 공명</style>이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 <style=\"highlight\">나태 완전 공명</style>이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "2070821 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- 진동 폭발 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 <style=\"highlight\">나태 공명 3 이상</style>이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소.\n- [VibrationExplosion] 시 이번 턴에 [AmberTakeDamageUp] 2 부여\n- 최대 공명이 <style=\"highlight\">나태 공명 3 이상</style>이면, 다음 턴에도 [AmberTakeDamageUp] 2 부여"
+  },
+  {
+    "loc": "2070911 Lv1 desc",
+    "before": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +2% (최대 30%)",
+    "after": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +2% (최대 30%)"
+  },
+  {
+    "loc": "2070911 Lv3 desc",
+    "before": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +3% (최대 45%)\n<style=\"highlight\">- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1</style>",
+    "after": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +3% (최대 45%)\n<style=\"highlight\">- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1</style>"
+  },
+  {
+    "loc": "2070911 Lv4 desc",
+    "before": "<style=\"highlight\">메인 타겟의 [Combustion] 6당, 코인 위력 +1 (최대 3)</style>\n[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +3% (최대 45%)\n- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1",
+    "after": "<style=\"highlight\">메인 타겟의 [Combustion] 6당, 코인 위력 +1 (최대 3)</style>\n[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +3% (최대 45%)\n- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1"
+  }
+]

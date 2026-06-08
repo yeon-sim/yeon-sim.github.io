@@ -12,10 +12,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 2 증가, (분노 완전 공명 수)/3만큼 추가 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 2 증가, (분노 완전 공명 수)/3만큼 추가 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]"
                 }
               ]
             }
@@ -30,10 +30,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 2 증가, (분노 완전 공명 수)/3만큼 추가 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 2 증가, (분노 완전 공명 수)/3만큼 추가 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발\n진동 폭발 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (6 + 2x(분노 완전 공명 수))%만큼 분노 피해를 줌"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (6 + 2x(분노 완전 공명 수))%만큼 분노 피해를 줌"
                 }
               ]
             }
@@ -48,10 +48,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 횟수 3 증가, (분노 완전 공명 수)/3만큼 추가 증가"
+                  "desc": "[OnSucceedAttack] [Vibration] 횟수 3 증가, (분노 완전 공명 수)/3만큼 추가 증가"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발\n진동 폭발 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (12 + 3x(분노 완전 공명 수))%만큼 분노 피해를 줌."
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]\n[VibrationExplosion] 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (12 + 3x(분노 완전 공명 수))%만큼 분노 피해를 줌."
                 }
               ]
             }
@@ -71,10 +71,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발.\n진동 폭발 시 진동 수치의 30%만큼 흐트러짐 손상 증가.\n진동 횟수 1 감소"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion].\n[VibrationExplosion] 시 [Vibration] 수치의 30%만큼 흐트러짐 손상 증가.\n[Vibration] 횟수 1 감소"
                 },
                 {
-                  "desc": "[EndSkill] 다음 턴에 속박 3, 타격 위력 증가 1을 얻음."
+                  "desc": "[EndSkill] 다음 턴에 [Binding] 3, [HitResultUp] 1을 얻음."
                 }
               ]
             }
@@ -89,10 +89,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발.\n진동 폭발 시 진동 수치의 40%만큼 흐트러짐 손상 증가.\n진동 폭발 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (6 + 2x(분노 완전 공명 수))%만큼 분노 피해를 줌.\n진동 횟수 1 감소"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion].\n[VibrationExplosion] 시 [Vibration] 수치의 40%만큼 흐트러짐 손상 증가.\n[VibrationExplosion] 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (6 + 2x(분노 완전 공명 수))%만큼 분노 피해를 줌.\n[Vibration] 횟수 1 감소"
                 },
                 {
-                  "desc": "[EndSkill] 다음 턴에 속박 3, 타격 위력 증가 1을 얻음."
+                  "desc": "[EndSkill] 다음 턴에 [Binding] 3, [HitResultUp] 1을 얻음."
                 }
               ]
             }
@@ -107,10 +107,10 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] 진동 폭발.\n진동 폭발 시 진동 수치의 50%만큼 흐트러짐 손상 증가.\n진동 폭발 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (12 + 3x(분노 완전 공명 수))%만큼 분노 피해를 줌.\n진동 횟수 1 감소"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion].\n[VibrationExplosion] 시 [Vibration] 수치의 50%만큼 흐트러짐 손상 증가.\n[VibrationExplosion] 시 대상에게 흐트러짐 구간이 없는 경우,\n최종 흐트러짐 손상의 (12 + 3x(분노 완전 공명 수))%만큼 분노 피해를 줌.\n[Vibration] 횟수 1 감소"
                 },
                 {
-                  "desc": "[EndSkill] 다음 턴에 속박 3, 타격 위력 증가 1을 얻음."
+                  "desc": "[EndSkill] 다음 턴에 [Binding] 3, [HitResultUp] 1을 얻음."
                 }
               ]
             }
@@ -211,7 +211,7 @@
           "level": 4,
           "name": "전기울음",
           "abName": "꿈꾸는 전기양",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 질투 공명 수 - 2)만큼 공격 가중치 증가 (최대 3)\n<style=\"highlight\">[BeforeAttack] 자신의 충전 횟수가 10 이상이면, 적중시 효과로 부여하는 효과가 2회 부여됨</style>\n[BeforeAttack] 자신의 [Charge] 횟수가 10이상이면, [Charge] 횟수를 최대 20 소모하여 소모한 [Charge] 횟수 1 당 피해량 +<style=\"highlight\">3</style>% (최대 <style=\"highlight\">60</style>%)",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 질투 공명 수 - 2)만큼 공격 가중치 증가 (최대 3)\n<style=\"highlight\">[BeforeAttack] 자신의 [Charge] 횟수가 10 이상이면, 적중시 효과로 부여하는 효과가 2회 부여됨</style>\n[BeforeAttack] 자신의 [Charge] 횟수가 10이상이면, [Charge] 횟수를 최대 20 소모하여 소모한 [Charge] 횟수 1 당 피해량 +<style=\"highlight\">3</style>% (최대 <style=\"highlight\">60</style>%)",
           "coinlist": [
             {
               "coindescs": [
@@ -645,7 +645,7 @@
           "level": 4,
           "name": "분쇄될 과거",
           "abName": "증기 운반 기계",
-          "desc": "[BeforeAttack] 메인 타겟의 ([Vibration] 위력 + [Vibration] 횟수)가 30 이상이면, 가중치 +1\n<style=\"highlight\">- 100 이상이면, 대신 가중치 +3</style>\n<style=\"highlight\">[BeforeAttack] 최대 공명 수 2 당, 공격하는 모든 대상에게 진동 1 부여 (최대 3)</style>\n[EndSkill] 3턴 동안 턴 종료 시 정신력 10 감소\n<style=\"highlight\">[EndSkill] 자신의 최대 체력의 ([AccumulatedPastSinner] x 2)% 만큼 체력 회복</style>\n[EndSkill] 홀수 턴에 (나태 공명 수)가 홀수거나, 짝수 턴에 (나태 공명 수)가 짝수면 정신력 10 회복",
+          "desc": "[BeforeAttack] 메인 타겟의 ([Vibration] 위력 + [Vibration] 횟수)가 30 이상이면, 가중치 +1\n<style=\"highlight\">- 100 이상이면, 대신 가중치 +3</style>\n<style=\"highlight\">[BeforeAttack] 최대 공명 수 2 당, 공격하는 모든 대상에게 [Vibration] 1 부여 (최대 3)</style>\n[EndSkill] 3턴 동안 턴 종료 시 정신력 10 감소\n<style=\"highlight\">[EndSkill] 자신의 최대 체력의 ([AccumulatedPastSinner] x 2)% 만큼 체력 회복</style>\n[EndSkill] 홀수 턴에 (나태 공명 수)가 홀수거나, 짝수 턴에 (나태 공명 수)가 짝수면 정신력 10 회복",
           "coinlist": [
             {
               "coindescs": [

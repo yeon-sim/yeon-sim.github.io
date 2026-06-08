@@ -7,7 +7,7 @@
           "level": 1,
           "name": "가시 화원",
           "abName": "장미 표지판",
-          "desc": "[BeforeAttack] 가장 높은 공명이 3 이상이면, 공격 가중치 +1\n[WhenUse] 아군 1 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 피해량 증가를 1 추가 부여",
+          "desc": "[BeforeAttack] 가장 높은 공명이 3 이상이면, 공격 가중치 +1\n[WhenUse] 아군 1 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [AttackDmgUp]를 1 추가 부여",
           "coinlist": [
             {
               "coindescs": [
@@ -22,7 +22,7 @@
           "level": 3,
           "name": "가시 화원",
           "abName": "장미 표지판",
-          "desc": "[BeforeAttack] (가장 높은 공명 수 - 2)만큼 공격 가중치 증가 (최대 2)\n[WhenUse] 아군 2 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 피해량 증가를 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 위력 증가를 1 추가 부여",
+          "desc": "[BeforeAttack] (가장 높은 공명 수 - 2)만큼 공격 가중치 증가 (최대 2)\n[WhenUse] 아군 2 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [AttackDmgUp]를 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 [ResultEnhancement]를 1 추가 부여",
           "coinlist": [
             {
               "coindescs": [
@@ -37,7 +37,7 @@
           "level": 4,
           "name": "가시 화원",
           "abName": "장미 표지판",
-          "desc": "[BeforeAttack] (가장 높은 공명 수 - 2)만큼 공격 가중치 증가 (최대 3)\n[WhenUse] 아군 4 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 피해량 증가를 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 위력 증가를 1 추가 부여\n- 해당 공명이 완전 공명 6 이상이면, 다음 턴에도 동일한 효과 부여",
+          "desc": "[BeforeAttack] (가장 높은 공명 수 - 2)만큼 공격 가중치 증가 (최대 3)\n[WhenUse] 아군 4 + (가장 높은 공명 수)명에게 해당 공명 속성의 피해량 증가와 위력 증가를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [AttackDmgUp]를 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 [ResultEnhancement]를 1 추가 부여\n- 해당 공명이 완전 공명 6 이상이면, 다음 턴에도 동일한 효과 부여",
           "coinlist": [
             {
               "coindescs": [
@@ -65,7 +65,7 @@
                   "desc": "[OnSucceedAttack] [AttackDmgDown] 1 부여. 다음 턴에 [Binding] 2 부여."
                 },
                 {
-                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 취약을 1 추가 부여"
+                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [Vulnerable]을 1 추가 부여"
                 }
               ]
             }
@@ -83,7 +83,7 @@
                   "desc": "[OnSucceedAttack] [AttackDmgDown] 1 부여. 다음 턴에 [Binding] 2 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 취약을 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 위력 감소를 1 추가 부여"
+                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [Vulnerable]을 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 [ResultReduction]를 1 추가 부여"
                 }
               ]
             }
@@ -101,7 +101,7 @@
                   "desc": "[OnSucceedAttack] [AttackDmgDown] 1 부여. 다음 턴에 [Binding] 2 부여"
                 },
                 {
-                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 취약을 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 위력 감소를 1 추가 부여\n- 해당 공명이 완전 공명 6 이상이면, 다음 턴에도 동일한 효과 부여"
+                  "desc": "[OnSucceedAttack] 가장 높은 공명 속성의 취약과 위력 감소를 1 부여\n- 해당 공명이 4 이상이면, 해당 속성 [Vulnerable]을 1 추가 부여\n- 해당 공명이 5 이상이면, 해당 속성 [ResultReduction]를 1 추가 부여\n- 해당 공명이 완전 공명 6 이상이면, 다음 턴에도 동일한 효과 부여"
                 }
               ]
             }
@@ -793,7 +793,7 @@
           "level": 3,
           "name": "눈부시지 않은 영광 - 유수(流水)",
           "abName": "무에나",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n<style=\"highlight\">공격 대상이 3명 이상일 때, 1~3코인이 파괴되지 않고 적중시 마지막 코인의 피해량 +25% (코인당 1회 발동, 집중 전투인 경우, 부위를 대상 1명으로 취급)</style>\n[WhenUse] [MlynarWaiting]이 40이면, 기본 위력 +1\n\n[BeforeAttack] [MlynarWaiting]을 전부 소모하고 아래 효과 적용 (모든 수치는 소수점 버림)\n- (소모한 수치 / 10) 만큼 [DefenseUp] 얻음 (턴당 1회)\n- 40 소모했다면, 마지막 코인의 피해량 +<style=\"highlight\">130</style>%, 보호 2 얻음 (턴당 1회)\n\n[BeforeAttack] 메인 타겟의 [Combustion]과 [Vibration]의 합 6 당 피해량 +3% (최대 15%)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -4 (최대 -16)\n[EndSkill] [MlynarWaiting] 1 얻음\n[EndBattle] 이 스킬로 [MlynarWaiting]을 40 소모했다면, 다음 턴에 조작 패널에서 가장 왼쪽의 스킬 슬롯 [Aggro] 8 증가 (턴당 1회)",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n<style=\"highlight\">공격 대상이 3명 이상일 때, 1~3코인이 파괴되지 않고 적중시 마지막 코인의 피해량 +25% (코인당 1회 발동, 집중 전투인 경우, 부위를 대상 1명으로 취급)</style>\n[WhenUse] [MlynarWaiting]이 40이면, 기본 위력 +1\n\n[BeforeAttack] [MlynarWaiting]을 전부 소모하고 아래 효과 적용 (모든 수치는 소수점 버림)\n- (소모한 수치 / 10) 만큼 [DefenseUp] 얻음 (턴당 1회)\n- 40 소모했다면, 마지막 코인의 피해량 +<style=\"highlight\">130</style>%, [Protection] 2 얻음 (턴당 1회)\n\n[BeforeAttack] 메인 타겟의 [Combustion]과 [Vibration]의 합 6 당 피해량 +3% (최대 15%)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -4 (최대 -16)\n[EndSkill] [MlynarWaiting] 1 얻음\n[EndBattle] 이 스킬로 [MlynarWaiting]을 40 소모했다면, 다음 턴에 조작 패널에서 가장 왼쪽의 스킬 슬롯 [Aggro] 8 증가 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [
@@ -838,7 +838,7 @@
           "level": 4,
           "name": "눈부시지 않은 영광 - 유수(流水)",
           "abName": "무에나",
-          "desc": "[CantIdentify]\n무작위 대상 공격\n공격 대상이 3명 이상일 때, 1~3코인이 파괴되지 않고 적중시 마지막 코인의 피해량 +<style=\"highlight\">30</style>% (코인당 1회 발동, 집중 전투인 경우, 부위를 대상 1명으로 취급)\n[WhenUse] [MlynarWaiting]이 40이면, 기본 위력 +1\n\n[BeforeAttack] [MlynarWaiting]을 전부 소모하고 아래 효과 적용 (모든 수치는 소수점 버림)\n- (소모한 수치 / 10) 만큼 [DefenseUp] 얻음 (턴당 1회)\n- 40 소모했다면, 마지막 코인의 피해량 +<style=\"highlight\">160</style>%, 보호 2 얻음 (턴당 1회)\n\n[BeforeAttack] 메인 타겟의 [Combustion]과 [Vibration]의 합 6 당 피해량 +3% (최대 15%)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -4 (최대 -16)\n[EndSkill] [MlynarWaiting] 1 얻음\n[EndBattle] 이 스킬로 [MlynarWaiting]을 40 소모했다면, 다음 턴에 조작 패널에서 가장 왼쪽의 스킬 슬롯 [Aggro] 8 증가 (턴당 1회)",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n공격 대상이 3명 이상일 때, 1~3코인이 파괴되지 않고 적중시 마지막 코인의 피해량 +<style=\"highlight\">30</style>% (코인당 1회 발동, 집중 전투인 경우, 부위를 대상 1명으로 취급)\n[WhenUse] [MlynarWaiting]이 40이면, 기본 위력 +1\n\n[BeforeAttack] [MlynarWaiting]을 전부 소모하고 아래 효과 적용 (모든 수치는 소수점 버림)\n- (소모한 수치 / 10) 만큼 [DefenseUp] 얻음 (턴당 1회)\n- 40 소모했다면, 마지막 코인의 피해량 +<style=\"highlight\">160</style>%, [Protection] 2 얻음 (턴당 1회)\n\n[BeforeAttack] 메인 타겟의 [Combustion]과 [Vibration]의 합 6 당 피해량 +3% (최대 15%)\n[BeforeAttack] 파괴된 코인 수당 기본 위력 -4 (최대 -16)\n[EndSkill] [MlynarWaiting] 1 얻음\n[EndBattle] 이 스킬로 [MlynarWaiting]을 40 소모했다면, 다음 턴에 조작 패널에서 가장 왼쪽의 스킬 슬롯 [Aggro] 8 증가 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [
