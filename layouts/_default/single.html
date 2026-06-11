@@ -14,7 +14,7 @@
     {{ $ci := slice }}
     {{ $at := "" }}
     {{ $dt := "" }}
-    {{ $tn := 0 }}
+    {{ $tn := slice }}
     {{ range .skillData }}
       {{ if .attributeType }}
         {{ $sd = $sd | append (dict "g" .gaksungLevel "a" .attributeType) }}
@@ -46,7 +46,7 @@
       {{ end }}
       {{ if and (eq $at "") .atkType }}{{ $at = .atkType }}{{ end }}
       {{ if and (eq $dt "") .defType }}{{ $dt = .defType }}{{ end }}
-      {{ if and (eq $tn 0) (isset . "targetNum") }}{{ $tn = .targetNum }}{{ end }}
+      {{ if isset . "targetNum" }}{{ $tn = $tn | append (dict "g" .gaksungLevel "v" .targetNum) }}{{ end }}
     {{ end }}
     {{ $skillMap = merge $skillMap (dict (string .id) (dict "tier" .skillTier "sd" $sd "ic" $ic "at" $at "dt" $dt "lc" $lc "cc" $cc "dv" $dv "ci" $ci "tn" $tn)) }}
   {{ end }}
@@ -258,7 +258,7 @@
       {{ $ci := slice }}
       {{ $at := "" }}
       {{ $dt := "" }}
-      {{ $tn := 0 }}
+      {{ $tn := slice }}
       {{ $mp := 0 }}
       {{ with index .skillData 0 }}{{ if isset . "mpUsage" }}{{ $mp = .mpUsage }}{{ end }}{{ end }}
       {{ $bkDict := dict }}
@@ -289,7 +289,7 @@
         {{ end }}
         {{ if and (eq $at "") .atkType }}{{ $at = .atkType }}{{ end }}
         {{ if and (eq $dt "") .defType }}{{ $dt = .defType }}{{ end }}
-        {{ if and (eq $tn 0) (isset . "targetNum") }}{{ $tn = .targetNum }}{{ end }}
+        {{ if isset . "targetNum" }}{{ $tn = $tn | append (dict "g" .gaksungLevel "v" .targetNum) }}{{ end }}
         {{ range .abilityScriptList }}
           {{ if .buffData.buffKeyword }}{{ $bkDict = merge $bkDict (dict .buffData.buffKeyword "1") }}{{ end }}
         {{ end }}
@@ -939,10 +939,10 @@
                           <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(egoAwakeSkill)">
                           <span class="skill-level-sum" x-text="egoSkillLevelValueText(egoAwakeSkill)"></span>
                           <span class="skill-level-correction" x-text="egoSkillLevelCoinText(egoAwakeSkill)"></span>
-                          <template x-for="n in Array.from({length: egoAwakeSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                          <template x-for="n in Array.from({length: egoSkillTargetNum(egoAwakeSkill)}, (_, i) => i)" :key="n">
                             <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
                           </template>
-                          <span class="skill-target-num-text" x-show="egoAwakeSkill.tn" x-text="`[${egoAwakeSkill.tn}]`"></span>
+                          <span class="skill-target-num-text" x-show="egoSkillTargetNum(egoAwakeSkill)" x-text="`[${egoSkillTargetNum(egoAwakeSkill)}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
                           <span class="skill-frame-name" x-html="egoSkillName(egoAwakeSkill)"></span>
@@ -1000,10 +1000,10 @@
                           <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(addSkill)">
                           <span class="skill-level-sum" x-text="egoSkillLevelValueText(addSkill)"></span>
                           <span class="skill-level-correction" x-text="egoSkillLevelCoinText(addSkill)"></span>
-                          <template x-for="n in Array.from({length: addSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                          <template x-for="n in Array.from({length: egoSkillTargetNum(addSkill)}, (_, i) => i)" :key="n">
                             <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
                           </template>
-                          <span class="skill-target-num-text" x-show="addSkill.tn" x-text="`[${addSkill.tn}]`"></span>
+                          <span class="skill-target-num-text" x-show="egoSkillTargetNum(addSkill)" x-text="`[${egoSkillTargetNum(addSkill)}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
                           <span class="skill-frame-name" x-html="egoSkillName(addSkill)"></span>
@@ -1073,10 +1073,10 @@
                           <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(egoCorrosionSkill)">
                           <span class="skill-level-sum" x-text="egoSkillLevelValueText(egoCorrosionSkill)"></span>
                           <span class="skill-level-correction" x-text="egoSkillLevelCoinText(egoCorrosionSkill)"></span>
-                          <template x-for="n in Array.from({length: egoCorrosionSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                          <template x-for="n in Array.from({length: egoSkillTargetNum(egoCorrosionSkill)}, (_, i) => i)" :key="n">
                             <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
                           </template>
-                          <span class="skill-target-num-text" x-show="egoCorrosionSkill.tn" x-text="`[${egoCorrosionSkill.tn}]`"></span>
+                          <span class="skill-target-num-text" x-show="egoSkillTargetNum(egoCorrosionSkill)" x-text="`[${egoSkillTargetNum(egoCorrosionSkill)}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
                           <span class="skill-frame-name" x-html="egoSkillName(egoCorrosionSkill)"></span>
@@ -1136,10 +1136,10 @@
                           <img class="skill-atk-icon" :src="egoSkillAtkIconSrc(addSkill)">
                           <span class="skill-level-sum" x-text="egoSkillLevelValueText(addSkill)"></span>
                           <span class="skill-level-correction" x-text="egoSkillLevelCoinText(addSkill)"></span>
-                          <template x-for="n in Array.from({length: addSkill.tn ?? 0}, (_, i) => i)" :key="n">
+                          <template x-for="n in Array.from({length: egoSkillTargetNum(addSkill)}, (_, i) => i)" :key="n">
                             <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
                           </template>
-                          <span class="skill-target-num-text" x-show="addSkill.tn" x-text="`[${addSkill.tn}]`"></span>
+                          <span class="skill-target-num-text" x-show="egoSkillTargetNum(addSkill)" x-text="`[${egoSkillTargetNum(addSkill)}]`"></span>
                         </div>
                         <div class="skill-frame-name-row">
                           <span class="skill-frame-name" x-html="egoSkillName(addSkill)"></span>
@@ -1337,7 +1337,7 @@
                         <template x-for="n in targetNums(skill)" :key="n">
                           <img class="skill-target-num-icon" src="/images/ui/skill_target_num_on.png" alt="">
                         </template>
-                        <span class="skill-target-num-text" x-show="skill.tn" x-text="`[${skill.tn}]`"></span>
+                        <span class="skill-target-num-text" x-show="skillTargetNum(skill)" x-text="`[${skillTargetNum(skill)}]`"></span>
                       </div>
                       <div class="skill-frame-name-row">
                         <span class="skill-frame-name" x-text="skillName(skill)"></span>
@@ -2066,8 +2066,26 @@ function personalityPage() {
         return bHas - aHas;
       });
     },
+    skillTargetNum(skill) {
+      if (!skill?.tn?.length) return 0;
+      let v = 0;
+      for (const e of skill.tn) {
+        if (e.g <= this.personalitySync) v = e.v;
+        else break;
+      }
+      return v;
+    },
+    egoSkillTargetNum(skill) {
+      if (!skill?.tn?.length) return 0;
+      let v = 0;
+      for (const e of skill.tn) {
+        if (e.g <= this.egoSync) v = e.v;
+        else break;
+      }
+      return v;
+    },
     targetNums(skill) {
-      return Array.from({ length: skill.tn ?? 0 }, (_, i) => i);
+      return Array.from({ length: this.skillTargetNum(skill) }, (_, i) => i);
     },
     passiveInfo(id) {
       return passiveMap?.[String(id)] ?? { name: '', desc: '', res: [], stock: [] };
