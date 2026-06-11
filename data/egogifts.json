@@ -794,7 +794,7 @@
       "id": 9037,
       "name": "플라스크 속의 아이",
       "category": "None",
-      "desc": "스테이지 시작 시, 모든 속성의 E.G.O 자원 +1.",
+      "desc": "스테이지 시작 시, 모든 속성의 E.G.O 자원 +1\n전투 승리시 가장 적게 보유한 E.G.O 자원 2종을 2개씩 얻음",
       "grade": "2",
       "tags": [
         "스테이지",
@@ -2010,7 +2010,7 @@
       "id": 9088,
       "name": "진혼",
       "category": "Combustion",
-      "desc": "턴 시작 시, [Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Combustion] 횟수 3을 부여하고 [Combustion] 위력 15를 무작위로 나누어 부여. (웨이브 당 최대 1회)\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 더하기 코인 스킬의 최종 위력 +1, 코인 위력 +1, [Combustion] 위력 부여 값 +1, [Combustion] 횟수 부여 값 +1.\n- 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)\n\n[Combustion] 위력, 횟수, 특수 화상을 부여하는 스킬로 합 승리 시, (남은 코인 수 + 1)만큼 대상 적에게 [Combustion] 위력을 부여",
+      "desc": "턴 시작 시, [Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작 시, 모든 적(환상체일 경우, 모든 부위)의 [Combustion] 횟수가 6 증가하고 [Combustion] 위력 15를 무작위로 나누어 부여. (웨이브 당 최대 1회)\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 더하기 코인 스킬의 최종 위력 +1, 코인 위력 +1, [Combustion] 위력 부여 값 +1, [Combustion] 횟수 부여 값 +1.\n- 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)\n\n[Combustion] 위력, 횟수, 특수 화상을 부여하는 스킬로 합 승리 시, (남은 코인 수 + 1)만큼 대상 적에게 [Combustion] 위력을 부여",
       "grade": "4",
       "tags": [
         "조합",
@@ -6871,7 +6871,7 @@
       "id": 9720,
       "name": "낡은 도포",
       "category": "Slash",
-      "desc": "턴 시작 시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n아군이 가하는 참격 피해량 +50%\n\n검계 소속일 경우 스킬 1의 코인 위력 +1, 해당 스킬이 단일 코인인 경우에는 코인 위력 +3.\n\n[검계 우두머리 뫼르소 전용 효과] '육참' 스킬 합 최종 위력 -36, '골단' 스킬의 가하는 피해량 +50%.",
+      "desc": "턴 시작 시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n아군이 가하는 참격 피해량 +50%\n\n검계 소속일 경우 스킬 1의 코인 위력 +1, 해당 스킬이 단일 코인인 경우에는 코인 위력 +3.\n\n[검계 우두머리 뫼르소 전용 효과] '육참' 스킬을 장착한 턴 동안 흐트러지지 않음. '육참' 스킬 합 최종 위력 -36, '골단' 스킬의 가하는 피해량 +50%.",
       "grade": "4",
       "tags": [
         "참격",
@@ -7814,7 +7814,7 @@
       "id": 9758,
       "name": "왕의 잔재",
       "category": "None",
-      "desc": "연속 전투에서 7번째 편성 순서부터 대기 해제된 턴 시작 시 정신력 10 회복, [ParryingResultUp] 2 얻음, 자신의 스킬 1, 2, 3 속성의 E.G.O 자원을 1개씩 얻음.",
+      "desc": "턴 시작 시 대기 해제된 인격이 있으면, 해당 인격이 정신력 10 회복, [Enhancement] 2, [ParryingResultUp] 2 얻음, 자신의 스킬 1, 2, 3 속성의 E.G.O 자원을 1개씩 얻음.",
       "grade": "4",
       "tags": [
         "연속 전투",
@@ -9950,12 +9950,15 @@
       "id": 9267,
       "name": "달궈진 놋쇠",
       "category": "Combustion",
-      "desc": "[Combustion] 위력 최댓값 +11\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)",
+      "desc": "[Combustion] 위력 최댓값 +11\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 +20%",
       "grade": "4",
       "tags": [
         "화상",
         "화상 위력",
-        "화상 위력 부여"
+        "화상 횟수",
+        "화상 위력 부여",
+        "분노 피해",
+        "가하는 피해량 증가"
       ],
       "difficulty": "hard",
       "packs": [
@@ -9966,13 +9969,13 @@
         {
           "name": "달궈진 놋쇠+",
           "category": "Combustion",
-          "desc": "[Combustion] 위력 최댓값 +<style=\"upgradeHighlight\">21</style>\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)",
+          "desc": "[Combustion] 위력 최댓값 <style=\"upgradeHighlight\">+21</style>\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+25%</style>",
           "tags": []
         },
         {
           "name": "달궈진 놋쇠++",
           "category": "Combustion",
-          "desc": "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n<style=\"upgradeHighlight\">[Combustion] 발동 시, (분노 공명 수 x 10)%의 확률로 ([Combustion] 위력 x [Combustion] 횟수 / 11) 만큼 분노 피해, 대상의 [Combustion] 횟수 1 감소 (최대 발동 확률 50%, 턴당 최대 1회)</style>",
+          "desc": "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, ([Combustion] 위력 x <style=\"upgradeHighlight\">1.5</style>)만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+30%</style>",
           "tags": []
         }
       ]
@@ -10013,14 +10016,16 @@
     {
       "id": 9251,
       "name": "불타는 운명",
-      "desc": "[Combustion]을 보유한 대상과 합 승리시 20+(분노 공명 수 x 10)% 확률로 [Combustion] 발동 1회. 대상의 [Combustion] 횟수 1 감소 (턴당 최대 4회 발동)\n- 대상의 [Combustion] 위력이 90 이상이면, 확률을 100%로 고정함 (집중 전투일 경우, 부위로 판정)",
+      "desc": "[Combustion] 위력 최댓값 +30\n\n[Combustion]을 보유한 대상과 합 승리시, 대상의 [Combustion] 1회 발동, 대상의 [Combustion] 횟수 1 감소 (인격당 1회)\n\n[Combustion]을 보유한 적에게 스킬 사용시, 메인 타겟의 ([Combustion] 위력 / 10) 만큼 해당 스킬의 공격 레벨이 증가 (최대 8)",
       "category": "Combustion",
       "grade": "4",
       "tags": [
         "화상",
+        "화상 위력",
         "합 승리 시",
         "화상 발동",
-        "화상 횟수 감소"
+        "화상 횟수 감소",
+        "공격 레벨 증가"
       ],
       "difficulty": "hard",
       "packs": [
@@ -10235,6 +10240,99 @@
         1025,
         1026,
         1027
+      ]
+    },
+    {      
+      "id": 9274,
+      "name": "오랏줄",
+      "desc": "적에게 크리티컬 적중시 다음 턴에 [Binding] 1 부여 (턴당 2회)\n[Binding]을 보유한 적에게 스킬 적중시, [Breath] 1 얻음. (인격당 턴당 2회)\n\n턴 시작 시 [Laceration]을 보유한 모든 적이 자신의 [Binding] 수치만큼 [AttackDown] 얻음 (최대 5)\n\n턴 시작 시 모든 적(집중 전투면 부위로 판정)에게 [Binding]이 부여되어있다면, 모든 아군이 [Breath] 3 얻음",
+      "category": "Breath",
+      "grade": "3",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9275,
+      "name": "N사 고정팀 가방",
+      "desc": "[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬로 적에게 적중 시 [NailPersonality] 1 부여 (스킬당 1회)\n[NailPersonality]을 보유한 적에게 [VibrationExplosion]을 적용했으면 다음 턴에 [Binding] 1 부여 (턴당 3회)",
+      "category": "Laceration",
+      "grade": "2",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9276,
+      "name": "백자연적",
+      "desc": "아군 인격이 [SupportProtect]를 얻을 때 [AttackDmgUp] 2, [Protection] 2 얻음\n\n[편성 1번 전용 효과]\n턴 종료시 다음 턴에 [Agility] 2 얻음\n인격의 속도가 적보다 빠르면, 속도 차이당 피해량 +3% (최대 30%)",
+      "category": "None",
+      "grade": "3",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9277,
+      "name": "창포검",
+      "desc": "아군이 이번 턴에 적에게 피격당하지 않았으면, 다음 턴에 [SlashDamageUp] 1 얻음\n아군이 적에게 피격 시, [Breath]을 4 얻고 이번 턴과 다음 턴에 [CriticalDamageUp] 1 얻음 (인격당 턴당 1회)\n- 검계 소속 인격이면, 이 기프트의 효과를 2배로 받음",
+      "category": "Slash",
+      "grade": "2",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9278,
+      "name": "바스라진 목제 형구",
+      "desc": "참격 스킬을 사용하여 적에게 적중 시 다음 턴에 [DefenseDown] 1 부여 (스킬당 2회)\n아군이 공격하는 적보다 속도가 빠르면, 속도 차이 1당 기본 공격 스킬 피해량 +3% (최대 12%)\n- 적이 [Binding] 상태면, 피해량 증가량과 최대치가 2배로 적용됨",
+      "category": "Slash",
+      "grade": "2",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9279,
+      "name": "민무늬 코등이",
+      "desc": "[Breath] 1당, 참격 스킬의 피해량 +1% (최대 15%)",
+      "category": "Slash",
+      "grade": "1",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1128
+      ]
+    },
+    {      
+      "id": 9280,
+      "name": "본국검보[本國劍譜]",
+      "desc": "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여",
+      "category": "Slash",
+      "grade": "4",
+      "tags": [
+      ],
+      "difficulty": "normal",
+      "packs": [
+        1104,
+        1116,
+        1128
       ]
     },
     {

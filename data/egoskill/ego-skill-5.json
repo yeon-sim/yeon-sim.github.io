@@ -2765,6 +2765,597 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2050911,
+      "skillType": "EGO_AWAKEN",
+      "skillTier": 3,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "INDIGO",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 20,
+          "skillLevelCorrection": 3,
+          "defaultValue": 12,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "Default",
+          "viewType": "SKILL",
+          "parryingCloseType": "NEAR",
+          "isManyCoinSkill" : true,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 4
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit12",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_60_120"
+            },
+            {
+              "scriptName": "TargetNumAdder1BBDevideByRCWithMax2_NONE2"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050911",
+              "value": 3,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 4,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 6
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit24",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_80_160"
+            },
+            {
+              "scriptName": "TargetNumAdder1BBDevideByRCWithMax2_NONE2"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050911",
+              "value": 3,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 8
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit30",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_100_200"
+            },
+            {
+              "scriptName": "TargetNumAdder1BBDevideByRCWithMax2_NONE2"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050911",
+              "value": 3,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2050921,
+      "skillType": "EGO_EROSION",
+      "skillTier": 3,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "INDIGO",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "RANDOM",
+          "targetNum": 3,
+          "mpUsage": 25,
+          "skillLevelCorrection": 4,
+          "defaultValue": 13,
+          "canTeamKill": true,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "Default",
+          "viewType": "SKILL",
+          "parryingCloseType": "NEAR",
+          "isManyCoinSkill" : true,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 2,
+                "limit": 8
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit12",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_60_120"
+            },
+            {
+              "scriptName": "SkillPowerReducerBB2ByBrokenCoinWithLimit8"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashTakeDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "SUB",
+              "scale": 2,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "LastCoinResultAdder2050921",
+                  "value": 2
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "SUB",
+              "scale": 2,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "LastCoinResultAdder2050921",
+                  "value": 2
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "SUB",
+              "scale": 2,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "LastCoinResultAdder2050921",
+                  "value": 2
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "SUB",
+              "scale": 2,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Laceration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 2,
+                "limit": 12
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit24",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_80_160"
+            },
+            {
+              "scriptName": "SkillPowerReducerBB2ByBrokenCoinWithLimit8"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashTakeDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderSelfViaBuffDevide",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 2,
+                "limit": 16
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit30",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 4,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "DmgUpToMainTarget20509_100_200"
+            },
+            {
+              "scriptName": "SkillPowerReducerBB2ByBrokenCoinWithLimit8"
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Custom",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffBeforeAttack2050921",
+              "buffData": {
+                "buffKeyword": "SlashTakeDamageUp",
+                "target": "Custom",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "MpHealOnEndAttack20509_4_10"
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "AlcoholKimPersonal",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "ReadyForTransformation20509"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1462,6 +1462,120 @@
           "number": 1
         }
       ]
+    },
+    {
+      "id": 10815,
+      "updatedDate": 20260611,
+      "appearance": "10815_Ishmael_LCD_AengduAppearance",
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCD", "BLADE_LINEAGE" ],
+      "skillKeywordList": [ "Laceration", "Breath" ],
+      "characterId": 8,
+      "panicType": 9999,
+      "unitScriptID": "10815",
+      "season": 7,
+      "additionalAttachment": "EVENT",
+      "rank": 3,
+      "hp": {
+        "defaultStat": 85,
+        "incrementByLevel": 2.96
+      },
+      "defCorrection": 3,
+      "minSpeedList": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        6,
+        6,
+        6
+      ],
+      "defenseSkillIDList": [
+        1081504,
+        1081507
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "uniqueAttribute": "CRIMSON",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyAsLevelRatioMultiply10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAllyAsLevelRatioMultiply5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          40
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 1
+          },
+          {
+            "type": "HIT",
+            "value": 2
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1081501,
+          "number": 3
+        },
+        {
+          "skillId": 1081502,
+          "number": 2
+        },
+        {
+          "skillId": 1081503,
+          "number": 1
+        },
+        {
+          "skillId": 1081505,
+          "number": 0
+        },
+        {
+          "skillId": 1081506,
+          "number": 0
+        }
+      ]
     }
   ]
 }

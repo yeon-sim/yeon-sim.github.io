@@ -1515,6 +1515,112 @@
           "number": 0
         }
       ]
+    },
+    {
+      "id": 10615,
+      "updatedDate": 20260611,
+      "appearance": "10615_Honglu_Scorp_SlaveHunterAppearance",
+      "associationList": [
+        "S_CORP"
+      ],
+      "unitKeywordList": [ "SMALL", "FIXER" ],
+      "skillKeywordList": [ "Laceration", "Breath" ],
+      "characterId": 6,
+      "panicType": 9999,
+      "season": 7,
+      "additionalAttachment": "EVENT",
+      "defenseSkillIDList": [
+        1061504
+      ],
+      "initBuffList": [
+       
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 84,
+        "incrementByLevel": 2.9
+      },
+      "defCorrection": 2,
+      "minSpeedList": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        5,
+        6,
+        6
+      ],
+      "uniqueAttribute": "SHAMROCK",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyAsLevelRatioMultiply10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAllyAsLevelRatioMultiply5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          55, 20
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 2
+          },
+          {
+            "type": "HIT",
+            "value": 1
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1061501,
+          "number": 3
+        },
+        {
+          "skillId": 1061502,
+          "number": 2
+        },
+        {
+          "skillId": 1061503,
+          "number": 1
+        }
+      ]
     }
   ]
 }
