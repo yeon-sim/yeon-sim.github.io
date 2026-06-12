@@ -145,6 +145,30 @@
 {{ if $ef2 }}{{ range $ef2.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
 {{ if $ef3 }}{{ range $ef3.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
 {{ if $ef4 }}{{ range $ef4.list }}{{ $extraDataList = $extraDataList | append . }}{{ end }}{{ end }}
+{{/* 편성 메타: 인격 id → {rank, name} (전용 카드 렌더용. pid 는 슬롯에서 직접 사용) */}}
+{{ $formationMeta := dict }}
+{{ range $prisoners }}
+  {{ $mp := index $.Site.Data.personality.info (printf "personality-%s" .id) }}
+  {{ if $mp }}{{ range $mp.list }}
+    {{/* 물리 속성: 카드와 동일하게 스킬1·2·3(tier 1·2·3) 각 1개만 (sync별 중복 제거) */}}
+    {{ $a1 := "" }}{{ $a2 := "" }}{{ $a3 := "" }}{{ $f1 := false }}{{ $f2 := false }}{{ $f3 := false }}
+    {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ $nl := index $skillNameMap (string .skillId) }}{{ if and $si $nl }}{{ if and (eq (int $si.tier) 1) (not $f1) }}{{ $a1 = $si.at }}{{ $f1 = true }}{{ end }}{{ if and (eq (int $si.tier) 2) (not $f2) }}{{ $a2 = $si.at }}{{ $f2 = true }}{{ end }}{{ if and (eq (int $si.tier) 3) (not $f3) }}{{ $a3 = $si.at }}{{ $f3 = true }}{{ end }}{{ end }}{{ end }}
+    {{ $atk := slice }}{{ if ne $a1 "" }}{{ $atk = $atk | append $a1 }}{{ end }}{{ if ne $a2 "" }}{{ $atk = $atk | append $a2 }}{{ end }}{{ if ne $a3 "" }}{{ $atk = $atk | append $a3 }}{{ end }}
+    {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk)) }}
+  {{ end }}{{ end }}
+{{ end }}
+{{ range $extraDataList }}
+  {{ $a1 := "" }}{{ $a2 := "" }}{{ $a3 := "" }}{{ $f1 := false }}{{ $f2 := false }}{{ $f3 := false }}
+  {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ $nl := index $skillNameMap (string .skillId) }}{{ if and $si $nl }}{{ if and (eq (int $si.tier) 1) (not $f1) }}{{ $a1 = $si.at }}{{ $f1 = true }}{{ end }}{{ if and (eq (int $si.tier) 2) (not $f2) }}{{ $a2 = $si.at }}{{ $f2 = true }}{{ end }}{{ if and (eq (int $si.tier) 3) (not $f3) }}{{ $a3 = $si.at }}{{ $f3 = true }}{{ end }}{{ end }}{{ end }}
+  {{ $atk := slice }}{{ if ne $a1 "" }}{{ $atk = $atk | append $a1 }}{{ end }}{{ if ne $a2 "" }}{{ $atk = $atk | append $a2 }}{{ end }}{{ if ne $a3 "" }}{{ $atk = $atk | append $a3 }}{{ end }}
+  {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk)) }}
+{{ end }}
+{{/* 일러스트 피벗(unitinfo): "{id}_{form}" → {x,y,s,r} (풀 CG 위치 보정, Assetripper illust-pivots-unitinfo 원본) */}}
+{{ $illustPivots := dict }}
+{{ $pivData := index $.Site.Data.personality "illust-pivots-unitinfo" }}
+{{ if $pivData }}{{ range $pivData.list }}
+  {{ $illustPivots = merge $illustPivots (dict .id (dict "x" .offsetX "y" .offsetY "s" .scaleFactor "r" .rotateZ)) }}
+{{ end }}{{ end }}
 {{/* 패시브 조건+텍스트 맵 (passiveID → {name, desc, res:[{t,v}], stock:[{t,v}]}) */}}
 {{ $passiveMap := dict }}
 {{ range $.Site.Data.personality.passive }}
@@ -306,7 +330,7 @@
   {{ end }}
 {{ end }}
 
-<div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, { 'show-support': showSupport }]">
+<div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, 'formation-detail-mode-' + formationDetailMode, { 'show-support': showSupport }]">
 
   {{/* ── SVG 색상 필터 정의 ── */}}
   <svg id="skill-color-filters-svg" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
@@ -423,7 +447,7 @@
                 <span x-text="selectedPrisoner ? selectedPrisoner.name : '수감자'"></span>
               </button>
             <div class="prisoner-dropdown-panel" x-show="prisonerDropdownOpen" style="display:none">
-              <button class="prisoner-dropdown-item" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; prisonerDropdownOpen = false">
+              <button class="prisoner-dropdown-item prisoner-dropdown-item--all" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; prisonerDropdownOpen = false">
                 <img class="prisoner-dropdown-icon" src="/images/ui/personality.png" alt="">전체
               </button>
               {{ range $prisoners }}
@@ -465,6 +489,10 @@
         </div>
       </div>
       <div class="controls-row controls-row-2">
+        <div class="controls-left">
+          <button class="filter-btn formation-toggle-btn" :class="{ active: showFormation }" @click="toggleFormation()"><img class="filter-btn-icon" src="/images/ui/formation.png" alt="">편성</button>
+          <button class="filter-btn formation-code-btn" @click="openFormationCode()"><img class="filter-btn-icon" src="/images/ui/copy.png" alt="">프리셋</button>
+        </div>
         <div class="personality-filter-row">
           {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
           <button
@@ -480,6 +508,225 @@
             <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
             <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? '간단히' : '자세히') : (detailMode === 'simple' ? '간단히' : detailMode === 'detail1' ? '자세히 1' : '자세히 2')"></span>
           </button>
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 편성 패널 (인격/EGO 목록 상단) ── */}}
+    <div class="formation-panel" x-show="showFormation" style="display:none">
+      <div class="formation-bar">
+        <div class="formation-bar-left">
+          <div class="formation-title-block">
+            <div class="formation-title-wrap">
+              <span class="formation-title" x-show="!editingFormationName" x-text="formationName"></span>
+              <input class="formation-title-input" x-show="editingFormationName" style="display:none"
+                x-ref="formationNameInput" x-model="formationName" maxlength="20"
+                @input="sizeFormationInput($event.target)"
+                @blur="stopEditFormationName()" @keydown.enter="stopEditFormationName()" @keydown.escape="stopEditFormationName()">
+              <button class="formation-name-edit-btn" :class="{ editing: editingFormationName }" @click="toggleEditFormationName()" title="편성 이름 편집"><img src="/images/ui/edit.png" alt="편집"></button>
+              <button class="formation-name-edit-btn" @click="openFormationCodeModal()" title="편성 코드"><img src="/images/ui/foramtion_code.png" alt="편성 코드"></button>
+              <button class="filter-btn formation-ego-btn" :class="{ active: showEgoLoadout }" @click="toggleEgoLoadout()"><img class="filter-btn-icon" src="/images/ui/egoskill.png" alt="">E.G.O</button>
+              <button class="filter-btn formation-detail-btn" @click="formationDetailMode = formationDetailMode === 'simple' ? 'detail1' : formationDetailMode === 'detail1' ? 'detail2' : 'simple'">
+                <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
+                <span x-text="formationDetailMode === 'simple' ? '간단히' : formationDetailMode === 'detail1' ? '자세히 1' : '자세히 2'"></span>
+              </button>
+            </div>
+            <template x-for="row in [{ label: '출전', scope: 'deploy' }, { label: '전체', scope: 'all' }]" :key="row.scope">
+              <div class="formation-kw-row">
+                <span class="formation-kw-label" x-text="row.label"></span>
+                <div class="formation-kw-summary">
+                  <template x-for="kw in formationKeywordSummary(row.scope)" :key="kw.id">
+                    <span class="formation-kw-summary-item">
+                      <img class="formation-kw-summary-icon" :src="`/images/category/${kw.id.toLowerCase()}.png`" :alt="kw.id">
+                      <span class="formation-kw-summary-count" x-text="kw.count"></span>
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="formation-bar-right">
+          <button class="reset-btn filter-btn formation-reset-all-btn" @click="showFormationReset = true"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span>초기화</span></button>
+          <button class="filter-btn formation-reset-btn" @click="resetDeployOrder()"><img class="filter-btn-icon" src="/images/ui/formation_clear.png" alt="">선택 초기화</button>
+        </div>
+      </div>
+      <div class="formation-grid">
+        {{ range $prisoners }}
+        {{ $pid := .id }}
+        <div class="formation-slot" data-pid="{{ .id }}"
+          @click="toggleDeployOrder('{{ .id }}')"
+          @contextmenu.prevent="formationContext($event)"
+          @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)">
+          <template x-if="showFormation">
+            <div class="formation-slot-inner">
+            <div class="formation-card">
+              <div class="formation-card-imgwrap">
+                <img class="formation-card-img" :src="slotImg('{{ .id }}')" :style="slotImgStyle('{{ .id }}')" @error="onFormationImgError($el, slotId('{{ .id }}'))" alt="">
+              </div>
+              <img class="formation-card-frame" :class="'formation-card-frame--r' + slotMeta('{{ .id }}').rank" :src="`/images/ui/personality_formation_0${slotMeta('{{ .id }}').rank}.png`" alt="">
+              <div class="formation-card-keywords">
+                <div class="formation-card-icon-row">
+                  <template x-for="(kw, i) in (slotMeta('{{ .id }}').kw || [])" :key="i">
+                    <img class="formation-card-kw-icon" :src="`/images/category/${kw.toLowerCase()}.png`" :alt="kw">
+                  </template>
+                </div>
+                <div class="formation-card-icon-row formation-card-atk-row">
+                  <template x-for="(at, i) in (slotMeta('{{ .id }}').atk || [])" :key="i">
+                    <img class="formation-card-atk-icon" :src="`/images/ui/${at.toLowerCase()}.png`" :alt="at">
+                  </template>
+                </div>
+              </div>
+              <span class="formation-card-name" x-html="slotName('{{ .id }}')"></span>
+              <span class="formation-card-order" x-show="deployNum('{{ .id }}') > 0"
+                :class="deployNum('{{ .id }}') <= 7 ? 'formation-card-order--front' : 'formation-card-order--back'"
+                x-text="deployNum('{{ .id }}')"></span>
+            </div>
+            <div class="formation-ego-list" x-show="showEgoLoadout" style="display:none">
+              {{ range $g := slice "zayin" "teth" "he" "waw" "aleph" }}
+              <div class="formation-ego-row"
+                @click.stop=""
+                @contextmenu.prevent.stop="egoContext('{{ $pid }}', '{{ $g }}')"
+                @pointerdown.stop="startCardLongPress($event)" @pointerup.stop="cancelCardLongPress($event)" @pointermove.stop="cancelCardLongPress($event)" @pointercancel.stop="cancelCardLongPress($event)">
+                <img class="formation-ego-grade-icon" :src="egoGradeIcon('{{ $pid }}', '{{ $g }}')" alt="{{ $g }}">
+                <div class="formation-ego-illust">
+                  <template x-if="!egoSlot('{{ $pid }}', '{{ $g }}')">
+                    <img class="formation-ego-tag" src="/images/ui/egoskill_tag_{{ $g }}.png" alt="{{ $g }}">
+                  </template>
+                  <template x-if="egoSlot('{{ $pid }}', '{{ $g }}')">
+                    <div class="formation-ego-equipped">
+                      <img class="formation-ego-img" :src="egoImg(egoSlot('{{ $pid }}', '{{ $g }}'))" alt="">
+                      <img class="formation-ego-frame-overlay" src="/images/ui/formation_ego_frame.png" alt="">
+                      <span class="formation-ego-name" :style="{ color: egoSlotColor('{{ $pid }}', '{{ $g }}') }" x-text="egoSlotName('{{ $pid }}', '{{ $g }}')" x-effect="egoSlotName('{{ $pid }}', '{{ $g }}'); showEgoLoadout; $nextTick(() => fitEgoName($el))"></span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              {{ end }}
+            </div>
+            </div>
+          </template>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    {{/* ── 편성/EGO 초기화 확인 모달 ── */}}
+    <div class="modal-overlay" :class="{ open: showFormationReset }" @click.self="showFormationReset = false" @contextmenu.prevent="showFormationReset = false">
+      <div class="modal-box modal-box--sm" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title">편성 초기화</span>
+        </div>
+        <div class="modal-body delete-confirm-modal-body">
+          <p class="delete-confirm-text">인격·E.G.O 편성이 기본값으로 되돌아갑니다.</p>
+          <div class="delete-confirm-actions">
+            <button class="modal-btn preset-action-btn" @click="showFormationReset = false">취소</button>
+            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetFormationAndEgo()">초기화</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 편성 코드 리스트 모달 (로컬 저장 편성 목록) ── */}}
+    <div class="modal-overlay" :class="{ open: showFormationCode }" @click.self="showFormationCode = false" @contextmenu.prevent="showFormationCode = false">
+      <div class="modal-box preset-modal-box" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title">프리셋</span>
+          <button class="modal-btn preset-add-btn" @click="openFormationAdd()">추가</button>
+        </div>
+        <div class="modal-body preset-modal-body">
+          <div class="preset-list-scroll-wrap" x-data="scrollWrap('.formation-preset-scroll-area')">
+            <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+            <div class="preset-list-scroll-area formation-preset-scroll-area"
+                 @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+              <template x-for="(p, idx) in formationPresets" :key="idx">
+                <div class="preset-item formation-preset-item" @click="applyFormationPreset(idx)">
+                  <div class="formation-preset-info">
+                    <span class="preset-item-name" x-text="p.name"></span>
+                    <div class="formation-kw-row">
+                      <span class="formation-kw-label">출전</span>
+                      <div class="preset-item-cat-summary">
+                        <template x-for="kw in (p.summaryDeploy || [])" :key="kw.id">
+                          <span class="preset-item-cat">
+                            <img class="preset-item-cat-icon" :src="`/images/category/${kw.id.toLowerCase()}.png`" :alt="kw.id">
+                            <span class="preset-item-cat-count" x-text="kw.count"></span>
+                          </span>
+                        </template>
+                      </div>
+                    </div>
+                    <div class="formation-kw-row">
+                      <span class="formation-kw-label">전체</span>
+                      <div class="preset-item-cat-summary">
+                        <template x-for="kw in (p.summaryAll || p.summary || [])" :key="kw.id">
+                          <span class="preset-item-cat">
+                            <img class="preset-item-cat-icon" :src="`/images/category/${kw.id.toLowerCase()}.png`" :alt="kw.id">
+                            <span class="preset-item-cat-count" x-text="kw.count"></span>
+                          </span>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="formation-preset-del" @click.stop="askDeleteFormationPreset(idx)" title="삭제"><img src="/images/ui/modal_clear.png" alt="삭제"></button>
+                </div>
+              </template>
+              <span class="preset-empty" x-show="!formationPresets.length">저장된 편성이 없습니다.</span>
+            </div>
+            <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 편성 추가 모달 (이름 + 코드) ── */}}
+    <div class="modal-overlay" :class="{ open: showFormationAdd }" @click.self="showFormationAdd = false" @contextmenu.prevent="showFormationAdd = false">
+      <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title">편성 추가</span>
+          <button class="modal-btn preset-confirm-btn" @click="confirmFormationAdd()">완료</button>
+        </div>
+        <div class="modal-body preset-add-modal-body">
+          <div class="formation-code-section">
+            <span class="formation-code-label">이름</span>
+            <input class="preset-add-input" type="text" x-model="formationAddName" maxlength="20" placeholder="편성 이름">
+          </div>
+          <div class="formation-code-section">
+            <span class="formation-code-label">편성 코드</span>
+            <textarea class="preset-add-input formation-code-textarea" x-model="formationAddCode" placeholder="편성 코드" @focus="$event.target.select()"></textarea>
+          </div>
+          <p class="formation-code-error" x-show="formationAddError" x-text="formationAddError" style="display:none"></p>
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 편성 삭제 확인 모달 ── */}}
+    <div class="modal-overlay" :class="{ open: showFormationDelete }" @click.self="showFormationDelete = false" @contextmenu.prevent="showFormationDelete = false">
+      <div class="modal-box modal-box--sm" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title">편성 삭제</span>
+        </div>
+        <div class="modal-body delete-confirm-modal-body">
+          <p class="delete-confirm-text">'<span x-text="formationPresets[formationDeleteIdx]?.name ?? ''"></span>'을(를) 삭제합니다.</p>
+          <div class="delete-confirm-actions">
+            <button class="modal-btn preset-action-btn" @click="showFormationDelete = false">취소</button>
+            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deleteFormationPreset()">삭제</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/* ── 편성 코드 입출력 모달 (편성 패널에서 직접 호출) ── */}}
+    <div class="modal-overlay" :class="{ open: showFormationCodeModal }" @click.self="showFormationCodeModal = false" @contextmenu.prevent="showFormationCodeModal = false">
+      <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title">편성 코드</span>
+          <div class="formation-codeio-actions">
+            <button class="modal-btn preset-action-btn" @click="copyFormationCodeText($event)">복사</button>
+            <button class="modal-btn preset-action-btn" @click="applyFormationCodeText()">적용</button>
+          </div>
+        </div>
+        <div class="modal-body preset-add-modal-body">
+          <textarea class="preset-add-input formation-code-textarea" x-model="formationCodeText" placeholder="편성 코드" @focus="$event.target.select()"></textarea>
+          <p class="formation-code-error" x-show="formationCodeIoError" x-text="formationCodeIoError" style="display:none"></p>
         </div>
       </div>
     </div>
@@ -557,6 +804,16 @@
         {{ $existing := index $egoMap $cid | default slice }}
         {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills))) }}
       {{ end }}
+    {{ end }}
+
+    {{/* EGO 편성: egoMeta(id→{name,type}) + 기본 로드아웃(zayin=2{pid}01, 나머지 빈칸) */}}
+    {{ $egoMeta := dict }}
+    {{ range $cid, $elist := $egoMap }}{{ range $elist }}
+      {{ $egoMeta = merge $egoMeta (dict .id (dict "name" .name "type" .egoType "color" .attrColor)) }}
+    {{ end }}{{ end }}
+    {{ $egoLoadoutDefaults := dict }}
+    {{ range $prisoners }}
+      {{ $egoLoadoutDefaults = merge $egoLoadoutDefaults (dict .id (dict "zayin" (printf "2%s01" .id) "teth" "" "he" "" "waw" "" "aleph" "")) }}
     {{ end }}
 
     {{/* ── 수감자 목록 ── */}}
@@ -645,7 +902,8 @@
           <div class="personality-card-wrap"
             x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
-          <div class="personality-card"
+          <div class="personality-card" data-pkey="{{ .id }}"
+            @click="assignFormation('{{ $pid }}', '{{ .id }}')"
             @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)"
             @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
             {{ $dt := "" }}
@@ -778,7 +1036,11 @@
         </div>
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
-          <div class="ego-card-wrap" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+            <div class="ego-cat">
+              <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
+              {{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}
+            </div>
             <div class="ego-card">
               <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
               <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
@@ -1462,6 +1724,27 @@
 
   {{/* ── 플로팅 버튼 ── */}}
   <div class="float-btns">
+    {{/* 수감자 필터 */}}
+    <div class="float-toc-wrap" @click.away="showPrisonerFloat = false">
+      <div class="float-toc-panel float-prisoner-panel" x-show="showPrisonerFloat" x-transition style="display:none">
+        <button class="float-toc-item float-prisoner-all" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; showPrisonerFloat = false">
+          <img src="/images/ui/personality.png" alt="전체" class="float-toc-icon">
+          <span>전체</span>
+        </button>
+        {{ range $prisoners }}
+        <button class="float-toc-item" :class="{ active: selectedPrisoner?.id === '{{ .id }}' }" @click="selectedPrisoner = { id: '{{ .id }}', name: {{ .name | jsonify }}, icon: '{{ .icon }}' }; showPrisonerFloat = false">
+          <img src="/images/category/{{ .icon }}_02.png" alt="{{ .name }}" class="float-toc-icon">
+          <span>{{ .name }}</span>
+        </button>
+        {{ end }}
+      </div>
+      <button class="float-btn" @click="showPrisonerFloat = !showPrisonerFloat" title="수감자">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+          <circle cx="3" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+    </div>
     <div class="float-scroll-group">
       <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1492,14 +1775,41 @@ function personalityPage() {
     attrResistFilter: { CRIMSON: [], SCARLET: [], AMBER: [], SHAMROCK: [], AZURE: [], INDIGO: [], VIOLET: [] },
     selectedPrisoner: null,
     prisonerDropdownOpen: false,
+    showPrisonerFloat: false,
     advancedSearchModal: false,
     detailMode: 'simple',
+    formationDetailMode: 'simple',
     sponsorModal: false,
     personalityDetail: null,
     egoDetail: null,
     egoSync: 4,
     egoTab: 'profile',
     showSupport: false,
+    showFormation: false,
+    formationName: '편성',
+    editingFormationName: false,
+    showFormationReset: false,
+    showFormationCode: false,
+    showFormationAdd: false,
+    showFormationCodeModal: false,
+    formationCodeText: '',
+    formationCodeIoError: '',
+    showFormationDelete: false,
+    formationDeleteIdx: null,
+    formationPresets: [],
+    formationAddName: '',
+    formationAddCode: '',
+    formationAddError: '',
+    formation: {},
+    deployOrder: [],          // 출전 순서 (pid 배열, 인덱스+1 = 출전 번호)
+    formationDefaults: { {{ range $prisoners }}'{{ .id }}': '1{{ .id }}01', {{ end }} },
+    formationMeta: {{ $formationMeta | jsonify | safeJS }},
+    illustPivots: {{ $illustPivots | jsonify | safeJS }},
+    noGacksungCgIds: {},
+    showEgoLoadout: false,
+    egoLoadout: {},
+    egoMeta: {{ $egoMeta | jsonify | safeJS }},
+    egoLoadoutDefaults: {{ $egoLoadoutDefaults | jsonify | safeJS }},
     egoOverclock: false,
     egoNoECgIds: {},
     get egoCgImg() {
@@ -1858,6 +2168,17 @@ function personalityPage() {
       const saved = localStorage.getItem('personality-gacksung');
       if (saved) this.gacksungIds = JSON.parse(saved);
       this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
+      const savedF = localStorage.getItem('personality-formation');
+      this.formation = savedF ? { ...this.formationDefaults, ...JSON.parse(savedF) } : { ...this.formationDefaults };
+      const savedO = localStorage.getItem('personality-deploy-order');
+      if (savedO) this.deployOrder = JSON.parse(savedO);
+      this.egoLoadout = JSON.parse(JSON.stringify(this.egoLoadoutDefaults));
+      const savedE = localStorage.getItem('personality-ego-loadout');
+      if (savedE) { const s = JSON.parse(savedE); for (const k in s) this.egoLoadout[k] = { ...this.egoLoadout[k], ...s[k] }; }
+      const savedN = localStorage.getItem('personality-formation-name');
+      if (savedN) this.formationName = savedN;
+      const savedP = localStorage.getItem('personality-formation-presets');
+      if (savedP) { try { this.formationPresets = JSON.parse(savedP); } catch (e) {} }
       if (window.location.hash === '#ego') {
         this.pageMode = 'ego';
         history.replaceState(null, '', window.location.pathname);
@@ -1866,30 +2187,288 @@ function personalityPage() {
 
     openPersonalityDetail(data) { this.personalityDetail = data; this.personalitySync = 4; },
 
+    // ── 편성 ── 각 수감자가 사용할 인격을 정하는 기능. (전용 카드 레이아웃 / gacksungIds 에 반응)
+    toggleFormation() { this.showFormation = !this.showFormation; },
+    assignFormation(pid, id) {        // 인격 카드 좌클릭/탭 → 해당 수감자 슬롯 지정 (항상 동작)
+      this.formation = { ...this.formation, [pid]: String(id) };
+      this.saveFormation();
+    },
+    resetFormation() { this.formation = { ...this.formationDefaults }; this.saveFormation(); }, // LCB(01번) 기본
+    resetFormationAndEgo() {              // 인격·EGO 편성 + 출전 순서 모두 기본값으로 (확인 모달에서 호출)
+      this.formation = { ...this.formationDefaults };
+      this.egoLoadout = JSON.parse(JSON.stringify(this.egoLoadoutDefaults));
+      this.deployOrder = [];
+      this.saveFormation();
+      this.saveEgoLoadout();
+      this.saveDeployOrder();
+      this.showFormationReset = false;
+    },
+    // ── 편성 코드 (게임 호환 코덱) ── payload bytes → b64 → gzip → b64. 1명당 46비트(빅엔디안 4비트 필드).
+    _formationBits() {                  // 12블록×46비트 + 8비트 패딩 = 560비트
+      const EGO = { zayin: 15, teth: 22, he: 29, waw: 36 };   // 블록 내 0-based 비트 시작
+      const G = ['zayin', 'teth', 'he', 'waw'];
+      const seq = id => id ? (parseInt(String(id).slice(3, 5), 10) || 0) : 0;   // ID 끝 2자리 = 순번
+      let bits = '';
+      for (let i = 0; i < 12; i++) {
+        const pid = String(i + 1).padStart(2, '0');
+        const blk = new Array(46).fill(0);
+        const put = (s, v) => { for (let b = 0; b < 4; b++) blk[s + b] = (v >> (3 - b)) & 1; };
+        put(4, seq(this.formation[pid] || this.formationDefaults[pid]));         // 인격 5-8
+        put(8, this.deployNum(pid));                                              // 편성순서 9-12
+        const lo = this.egoLoadout[pid] || {};
+        for (const g of G) put(EGO[g], seq(lo[g]));                               // 자인/테스/헤/바브
+        bits += blk.join('');
+      }
+      return bits + '00000000';
+    },
+    async exportFormationCode() {
+      const bits = this._formationBits();
+      const payload = new Uint8Array(bits.length / 8);
+      for (let i = 0; i < payload.length; i++) payload[i] = parseInt(bits.substr(i * 8, 8), 2);
+      const inner = this._b64enc(payload);                          // payload → b64
+      const gz = await this._gzip(new TextEncoder().encode(inner)); // → gzip
+      return this._b64enc(gz);                                      // → b64
+    },
+    async _decodeFormationCode(code) {    // 코드 → { formation, egoLoadout, deployOrder } (적용 안 함)
+      const inner = new TextDecoder().decode(await this._gunzip(this._b64dec(code.trim())));
+      const payload = this._b64dec(inner);
+      if (payload.length < 69) throw new Error('형식 오류');
+      let bits = ''; for (const b of payload) bits += b.toString(2).padStart(8, '0');
+      const EGO = { zayin: 15, teth: 22, he: 29, waw: 36 };
+      const G = ['zayin', 'teth', 'he', 'waw'];
+      const f = {}, lo = {}, dep = [];
+      for (let i = 0; i < 12; i++) {
+        const pid = String(i + 1).padStart(2, '0');
+        const blk = bits.slice(i * 46, i * 46 + 46);
+        const get = s => parseInt(blk.substr(s, 4), 2);
+        f[pid] = '1' + pid + String(get(4)).padStart(2, '0');
+        const d = get(8); if (d > 0) dep.push({ pid, d });
+        const e = { zayin: '', teth: '', he: '', waw: '', aleph: '' };
+        for (const g of G) { const v = get(EGO[g]); e[g] = v > 0 ? ('2' + pid + String(v).padStart(2, '0')) : ''; }
+        if (!e.zayin) e.zayin = this.egoLoadoutDefaults[pid].zayin;   // 자인은 비울 수 없음
+        lo[pid] = e;
+      }
+      dep.sort((a, b) => a.d - b.d);
+      return { formation: f, egoLoadout: lo, deployOrder: dep.map(x => x.pid) };
+    },
+    async applyFormationCode(code) {
+      const d = await this._decodeFormationCode(code);
+      this.formation = d.formation; this.egoLoadout = d.egoLoadout; this.deployOrder = d.deployOrder;
+      this.saveFormation(); this.saveEgoLoadout(); this.saveDeployOrder();
+    },
+    // ── 편성 코드 입출력 (편성 패널 직접 호출, 현재 코드 기본값) ──
+    async openFormationCodeModal() {
+      this.formationCodeIoError = '';
+      if (!window.CompressionStream) { this.formationCodeText = ''; this.formationCodeIoError = '이 브라우저는 코드 기능을 지원하지 않습니다.'; this.showFormationCodeModal = true; return; }
+      try { this.formationCodeText = await this.exportFormationCode(); }
+      catch (e) { this.formationCodeText = ''; this.formationCodeIoError = '코드 생성 실패'; }
+      this.showFormationCodeModal = true;
+    },
+    copyFormationCodeText(ev) {
+      const b = ev.currentTarget;
+      if (!this.formationCodeText) return;
+      navigator.clipboard?.writeText(this.formationCodeText).catch(() => {});
+      const t = b.textContent; b.textContent = '복사됨'; clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = t; }, 1200);
+    },
+    async applyFormationCodeText() {
+      this.formationCodeIoError = '';
+      try { await this.applyFormationCode(this.formationCodeText); this.showFormationCodeModal = false; }
+      catch (e) { this.formationCodeIoError = '잘못된 코드입니다.'; }
+    },
+    // ── 편성 코드 프리셋 (이상 관측 유사, 로컬 저장) ──
+    openFormationCode() { this.showFormationCode = true; },
+    async openFormationAdd() {            // 추가 모달: 이름·코드 기본값 = 현재 편성
+      this.formationAddError = '';
+      this.formationAddName = this.formationName || '편성';
+      if (!window.CompressionStream) { this.formationAddCode = ''; this.formationAddError = '이 브라우저는 코드 기능을 지원하지 않습니다.'; this.showFormationAdd = true; return; }
+      try { this.formationAddCode = await this.exportFormationCode(); }
+      catch (e) { this.formationAddCode = ''; this.formationAddError = '코드 생성 실패'; }
+      this.showFormationAdd = true;
+    },
+    async confirmFormationAdd() {         // 이름+코드 검증 → 키워드 요약 계산 → 리스트에 저장
+      this.formationAddError = '';
+      const name = (this.formationAddName || '').trim();
+      const code = (this.formationAddCode || '').trim();
+      if (!name) { this.formationAddError = '이름을 입력해주세요.'; return; }
+      let summaryDeploy, summaryAll;
+      try {
+        const d = await this._decodeFormationCode(code);
+        summaryAll = this._keywordSummaryOf(d.formation, Object.keys(this.formationDefaults));
+        summaryDeploy = this._keywordSummaryOf(d.formation, d.deployOrder);
+      }
+      catch (e) { this.formationAddError = '잘못된 편성 코드입니다.'; return; }
+      this.formationPresets = [...this.formationPresets, { name, code, summaryDeploy, summaryAll }];
+      this.saveFormationPresets();
+      this.showFormationAdd = false;
+    },
+    async applyFormationPreset(idx) {     // 리스트 항목 클릭 → 즉시 적용
+      const p = this.formationPresets[idx]; if (!p) return;
+      try {
+        await this.applyFormationCode(p.code);
+        this.formationName = p.name; localStorage.setItem('personality-formation-name', this.formationName);
+        this.showFormationCode = false;
+      } catch (e) { /* 손상된 코드는 무시 */ }
+    },
+    askDeleteFormationPreset(idx) { this.formationDeleteIdx = idx; this.showFormationDelete = true; },
+    deleteFormationPreset() {
+      if (this.formationDeleteIdx === null) return;
+      this.formationPresets = this.formationPresets.filter((_, i) => i !== this.formationDeleteIdx);
+      this.saveFormationPresets();
+      this.showFormationDelete = false; this.formationDeleteIdx = null;
+    },
+    saveFormationPresets() { localStorage.setItem('personality-formation-presets', JSON.stringify(this.formationPresets)); },
+    _gzip(u8) { const cs = new CompressionStream('gzip'); const w = cs.writable.getWriter(); w.write(u8); w.close(); return new Response(cs.readable).arrayBuffer().then(b => new Uint8Array(b)); },
+    _gunzip(u8) { const ds = new DecompressionStream('gzip'); const w = ds.writable.getWriter(); w.write(u8); w.close(); return new Response(ds.readable).arrayBuffer().then(b => new Uint8Array(b)); },
+    _b64enc(u8) { let s = ''; for (let i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]); return btoa(s); },
+    _b64dec(str) { const s = atob(str); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; },
+    saveFormation() { localStorage.setItem('personality-formation', JSON.stringify(this.formation)); },
+    // ── 편성 이름 편집 ── 제목("편성") 인라인 수정
+    toggleEditFormationName() {
+      this.editingFormationName = true;
+      this.$nextTick(() => { const el = this.$refs.formationNameInput; if (el) { el.focus(); el.select(); this.sizeFormationInput(el); } });
+    },
+    sizeFormationInput(el) {              // 입력 텍스트 폭만큼 너비 조정 (상한은 CSS max-width)
+      if (!el) return;
+      const cs = getComputedStyle(el);
+      const ctx = (this._nameMeasureCtx ||= document.createElement('canvas').getContext('2d'));
+      ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const w = ctx.measureText(el.value || el.placeholder || '').width;
+      el.style.width = (Math.ceil(w) + 4) + 'px';   // 캐럿 여유 4px
+    },
+    stopEditFormationName() {
+      if (!this.editingFormationName) return;
+      this.editingFormationName = false;
+      if (!this.formationName.trim()) this.formationName = '편성';
+      localStorage.setItem('personality-formation-name', this.formationName);
+    },
+    // ── 키워드 요약 ── 지정 pid 목록의 스킬 키워드를 {아이콘, 개수}로 집계 (개수 내림차순)
+    _keywordSummaryOf(formationMap, pids) {
+      const counts = {};
+      for (const pid of pids) {
+        const fid = formationMap[pid];
+        const id = (fid && this.formationMeta[fid]) ? fid : this.formationDefaults[pid];   // 무효 ID는 기본값
+        for (const kw of (this.formationMeta[id]?.kw || [])) counts[kw] = (counts[kw] || 0) + 1;
+      }
+      return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([id, count]) => ({ id, count }));
+    },
+    // 라이브 요약: scope 'deploy'=출전 멤버만 / 'all'=편성 12명 전체
+    formationKeywordSummary(scope) {
+      const pids = scope === 'deploy' ? this.deployOrder : Object.keys(this.formationDefaults);
+      return this._keywordSummaryOf(this.formation, pids);
+    },
+    // ── 출전 순서 ── 편성 카드 클릭 → 출전 번호 부여/해제 (해제 시 뒷번호 자동 당김)
+    deployNum(pid) { return this.deployOrder.indexOf(pid) + 1; },  // 0 = 미지정
+    toggleDeployOrder(pid) {
+      if (this.deployOrder.includes(pid)) this.deployOrder = this.deployOrder.filter(p => p !== pid); // 해제 + 당김
+      else if (this.deployOrder.length < 12) this.deployOrder = [...this.deployOrder, pid];            // 다음 번호 부여
+      this.saveDeployOrder();
+    },
+    resetDeployOrder() { this.deployOrder = []; this.saveDeployOrder(); }, // 인격 선택은 유지, 순서만 초기화
+    saveDeployOrder() { localStorage.setItem('personality-deploy-order', JSON.stringify(this.deployOrder)); },
+    // 슬롯 헬퍼 (pid = 수감자 id = 인격 소속 수감자)
+    slotId(pid) { const id = this.formation[pid]; return (id && this.formationMeta[id]) ? id : this.formationDefaults[pid]; },
+    slotMeta(pid) { return this.formationMeta[this.slotId(pid)] || {}; },
+    slotForm(pid) { const id = this.slotId(pid); return (this.gacksungIds[id] && !this.noGacksungCgIds[id]) ? 'gacksung' : 'normal'; },
+    slotImg(pid) { const id = this.slotId(pid); return `/images/personality/${pid}/${id}_${this.slotForm(pid)}.webp`; }, // 풀 CG
+    slotImgStyle(pid) {              // illust-pivots(unitinfo) 보정: CG(1920x1080) offset → 카드 비례 transform
+      const p = this.illustPivots[`${this.slotId(pid)}_${this.slotForm(pid)}`];
+      if (!p) return '';
+      // ── 보정 상수 (직접 조정) ──────────────────────────────
+      const SCALE = 1.5;          // 전체 확대 배율(순수 줌). normal/gacksung 정렬엔 영향 없음(수식상 상쇄)
+      const OFFSET_K = 0.8;       // ★ offset 강도 = normal/gacksung 정렬 보정. 두 상태 얼굴이 어긋나면 이 값만 조정
+      const BASE_X = 0;           // 전체 가로 이동(%) — 모든 인격을 같은 방향으로 함께 이동
+      const BASE_Y = 15;           // 전체 세로 이동(%) — 모든 인격을 같은 방향으로 함께 이동
+      const kx = 100 / 1920 * OFFSET_K; // 인격별 X offset 계수 (게임 표시크기 차이를 OFFSET_K 로 흡수)
+      const ky = 100 / 1080 * OFFSET_K; // 인격별 Y offset 계수
+      // OFFSET_K↑: 두 상태가 원본처럼 벌어져 있으면(보정 부족) 키움 / 반대로 넘치면(과보정) 줄임.
+      // Y는 게임(상+)↔CSS(하+) 반전. translate %는 요소 너비/높이 기준. 전체 동일 이동은 BASE_X/Y.
+      // ───────────────────────────────────────────────────────
+      const tx = BASE_X + p.x * kx * SCALE;
+      const ty = BASE_Y - p.y * ky * SCALE;
+      return `transform: translate(${tx.toFixed(3)}%, ${ty.toFixed(3)}%) scale(${p.s * SCALE}) rotate(${p.r}deg);`;
+    },
+    slotName(pid) { return (this.slotMeta(pid).name || '').replace(/\n/g, '<br>'); },
+    onFormationImgError(el, id) {     // gacksung CG 없는 인격(LCB 등) → normal CG 폴백
+      if (!id || this.noGacksungCgIds[id]) return;
+      this.noGacksungCgIds = { ...this.noGacksungCgIds, [id]: true };
+    },
+    // 편성 슬롯 우클릭/롱프레스 → 해당 인격의 원본 카드에 contextmenu 합성 → 기존 상세 모달 재사용
+    formationContext(e) {
+      const slot = e.currentTarget.closest('.formation-slot');
+      if (!slot) return;
+      const src = document.querySelector(`.personality-category-list [data-pkey="${this.slotId(slot.dataset.pid)}"]`);
+      if (src) src.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
+    },
+
+    // ── EGO 편성 ── 수감자별 등급(zayin~aleph) 1개씩 장비
+    toggleEgoLoadout() { this.showEgoLoadout = !this.showEgoLoadout; },
+    egoSlot(pid, grade) { return (this.egoLoadout[pid] && this.egoLoadout[pid][grade]) || ""; },
+    egoSlotName(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.name || "") : ""; },
+    egoSlotColor(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.color || "") : ""; },
+    fitEgoName(el) {                  // 지정 공간(부모=일러스트 높이) 안에 들어갈 때까지 폰트 축소 (2줄 줄바꿈 허용)
+      if (!el || el.offsetParent === null) return;
+      const maxH = (el.parentElement && el.parentElement.clientHeight) || 9999;
+      el.style.fontSize = '';
+      let f = parseFloat(getComputedStyle(el).fontSize) || 11, guard = 24;
+      while (guard-- > 0 && f > 6 && el.scrollHeight > maxH) { f -= 1; el.style.fontSize = f + 'px'; }
+    },
+    egoImg(id) { return `/images/egoskill/${id.slice(1, 3)}/${id}_profile_summary.webp`; },
+    egoGradeIcon(pid, grade) { return `/images/ui/egoskill_icon_${grade}${this.egoSlot(pid, grade) ? "" : "_inactive"}.png`; },
+    equipEgo(pid, grade, id) {        // ego 탭 카드 좌클릭/탭 → 장비. zayin 은 해제 불가(스왑만), 나머지는 토글.
+      const cur = { ...(this.egoLoadout[pid] || {}) };
+      if (grade === "zayin") cur.zayin = id;
+      else cur[grade] = (cur[grade] === id) ? "" : id;
+      this.egoLoadout = { ...this.egoLoadout, [pid]: cur };
+      this.saveEgoLoadout();
+    },
+    saveEgoLoadout() { localStorage.setItem("personality-ego-loadout", JSON.stringify(this.egoLoadout)); },
+    egoContext(pid, grade) {          // 편성 ego 우클릭/롱프레스 → 원본 ego 카드에 contextmenu 합성 → ego 모달
+      const id = this.egoSlot(pid, grade); if (!id) return;
+      const src = document.querySelector(`.personality-category-list [data-egokey="${id}"]`);
+      if (src) src.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
+    },
+
     // ── 카드 길게 누르기(좌클릭/터치) → 우클릭과 동일 동작 ──
     // 타이머 만료 시 카드에 contextmenu 를 합성 디스패치해 기존 @contextmenu 핸들러(상세 모달)를 재사용.
-    _cardLP: { timer: null, fired: false, x: 0, y: 0 },
+    _cardLP: { timer: null, x: 0, y: 0 },
     startCardLongPress(event) {
       if (event.button !== undefined && event.button !== 0) return; // 좌클릭/터치만 (우클릭 제외)
       if (event.target.closest('.card-save-btn')) return;           // 저장 버튼 위 long-press 제외
       const card = event.currentTarget;
-      this._cardLP.fired = false;
       this._cardLP.x = event.clientX;
       this._cardLP.y = event.clientY;
+      clearTimeout(this._cardLP.timer);
       this._cardLP.timer = setTimeout(() => {
-        this._cardLP.fired = true;
         this._cardLP.timer = null;
-        card.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
-        const block = (e) => { e.preventDefault(); document.removeEventListener('contextmenu', block, true); };
-        document.addEventListener('contextmenu', block, true); // 직후 실제 contextmenu(롱터치) 한 번 무시
+        card.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true })); // 우클릭과 동일 동작
+
+        // 제스처 수명(오픈 ~ 릴리스+400ms) 동안, 닫힘을 유발하는 contextmenu/click 이
+        // 오버레이 닫기 핸들러로 전파되는 것을 차단. (둘 다 릴리스 시점에 모달 내부를 target 으로 발생)
+        const block = (e) => { e.preventDefault(); e.stopPropagation(); };
+        const cleanup = () => {
+          document.removeEventListener('contextmenu', block, true);
+          document.removeEventListener('click', block, true);
+          document.removeEventListener('pointerup', onEnd, true);
+          document.removeEventListener('pointercancel', onEnd, true);
+          clearTimeout(safety);
+        };
+        const onEnd = () => setTimeout(cleanup, 400);
+        document.addEventListener('contextmenu', block, true);
+        document.addEventListener('click', block, true);
+        document.addEventListener('pointerup', onEnd, true);     // document 레벨: 오버레이가 카드를 덮어도 감지
+        document.addEventListener('pointercancel', onEnd, true);
+        const safety = setTimeout(cleanup, 10000);               // onEnd 미발생 대비 안전 해제
       }, 300);
     },
+    // 발동 전에만 의미: 이동 허용오차(10px) 초과(스크롤/드래그)·떼기 → 대기 중 long-press 취소.
+    // 발동 후엔 타이머가 null 이라 무시(릴리스 처리는 startCardLongPress 의 document 리스너가 담당).
     cancelCardLongPress(event) {
-      if (event && event.type === 'pointermove') {
-        if (Math.abs(event.clientX - this._cardLP.x) < 10 && Math.abs(event.clientY - this._cardLP.y) < 10) return;
-      }
-      if (this._cardLP.timer) { clearTimeout(this._cardLP.timer); this._cardLP.timer = null; }
-      if (this._cardLP.fired && event) { event.preventDefault(); this._cardLP.fired = false; }
+      if (!this._cardLP.timer) return;
+      if (event && event.type === 'pointermove' &&
+          Math.abs(event.clientX - this._cardLP.x) < 10 &&
+          Math.abs(event.clientY - this._cardLP.y) < 10) return; // 미세 이동은 유지
+      clearTimeout(this._cardLP.timer);
+      this._cardLP.timer = null;
     },
 
     skillsForTab() {

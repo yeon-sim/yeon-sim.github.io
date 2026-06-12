@@ -1451,11 +1451,22 @@ function checklist() {
         this._longPressTimer = null;
         this._lastPopupOpenTime = Date.now();
         this.openGiftPopup(id);
-        const blockContextMenu = (e) => {
-          e.preventDefault();
-          document.removeEventListener('contextmenu', blockContextMenu, true);
+        // 제스처 수명(오픈 ~ 릴리스+400ms) 동안, 닫힘을 유발하는 contextmenu/click 이
+        // 팝업 닫기 핸들러로 전파되는 것을 차단. (릴리스 시점에 팝업 내부를 target 으로 발생)
+        const block = (e) => { e.preventDefault(); e.stopPropagation(); };
+        const cleanup = () => {
+          document.removeEventListener('contextmenu', block, true);
+          document.removeEventListener('click', block, true);
+          document.removeEventListener('pointerup', onEnd, true);
+          document.removeEventListener('pointercancel', onEnd, true);
+          clearTimeout(safety);
         };
-        document.addEventListener('contextmenu', blockContextMenu, true);
+        const onEnd = () => setTimeout(cleanup, 400);
+        document.addEventListener('contextmenu', block, true);
+        document.addEventListener('click', block, true);
+        document.addEventListener('pointerup', onEnd, true);     // document 레벨: 팝업이 카드를 덮어도 감지
+        document.addEventListener('pointercancel', onEnd, true);
+        const safety = setTimeout(cleanup, 10000);               // onEnd 미발생 대비 안전 해제
       }, 300);
     },
 
