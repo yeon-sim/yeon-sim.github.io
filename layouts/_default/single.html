@@ -567,7 +567,7 @@
               <img class="formation-card-frame" :class="'formation-card-frame--r' + slotMeta('{{ .id }}').rank" :src="`/images/ui/personality_formation_0${slotMeta('{{ .id }}').rank}.png`" alt="">
               <div class="formation-card-keywords">
                 <div class="formation-card-icon-row">
-                  <template x-for="(kw, i) in (slotMeta('{{ .id }}').kw || [])" :key="i">
+                  <template x-for="(kw, i) in _effectiveKw('{{ .id }}')" :key="i">
                     <img class="formation-card-kw-icon" :src="`/images/category/${kw.toLowerCase()}.png`" :alt="kw">
                   </template>
                 </div>
@@ -1810,6 +1810,7 @@ function personalityPage() {
     egoLoadout: {},
     egoMeta: {{ $egoMeta | jsonify | safeJS }},
     egoLoadoutDefaults: {{ $egoLoadoutDefaults | jsonify | safeJS }},
+    egoKwAdd: { '20509': { '10508': ['Laceration'] } },   // EGO 장착 시 특정 인격 키워드 추가(구조화 데이터 없음 → 수동). { egoId: { 인격id: [키워드] } }
     egoOverclock: false,
     egoNoECgIds: {},
     get egoCgImg() {
@@ -2293,8 +2294,8 @@ function personalityPage() {
       let summaryDeploy, summaryAll;
       try {
         const d = await this._decodeFormationCode(code);
-        summaryAll = this._keywordSummaryOf(d.formation, Object.keys(this.formationDefaults));
-        summaryDeploy = this._keywordSummaryOf(d.formation, d.deployOrder);
+        summaryAll = this._keywordSummaryOf(d.formation, Object.keys(this.formationDefaults), d.egoLoadout);
+        summaryDeploy = this._keywordSummaryOf(d.formation, d.deployOrder, d.egoLoadout);
       }
       catch (e) { this.formationAddError = '잘못된 편성 코드입니다.'; return; }
       this.formationPresets = [...this.formationPresets, { name, code, summaryDeploy, summaryAll }];
@@ -2341,20 +2342,29 @@ function personalityPage() {
       if (!this.formationName.trim()) this.formationName = '편성';
       localStorage.setItem('personality-formation-name', this.formationName);
     },
-    // ── 키워드 요약 ── 지정 pid 목록의 스킬 키워드를 {아이콘, 개수}로 집계 (개수 내림차순)
-    _keywordSummaryOf(formationMap, pids) {
+    // ── 키워드 요약 ── 지정 pid 목록의 (EGO 특수효과 추가분 포함) 스킬 키워드를 {아이콘, 개수}로 집계
+    _effKwOf(id, loadout) {                 // 인격 id 의 유효 키워드(Set) = 기본 ∪ EGO 추가분 (egoKwAdd[egoId][인격id])
+      const kws = new Set(this.formationMeta[id]?.kw || []);
+      for (const g of ['zayin', 'teth', 'he', 'waw', 'aleph']) {
+        const add = this.egoKwAdd[loadout?.[g]]?.[id];
+        if (add) for (const k of add) kws.add(k);
+      }
+      return kws;
+    },
+    _keywordSummaryOf(formationMap, pids, egoLoadoutMap) {
       const counts = {};
       for (const pid of pids) {
         const fid = formationMap[pid];
         const id = (fid && this.formationMeta[fid]) ? fid : this.formationDefaults[pid];   // 무효 ID는 기본값
-        for (const kw of (this.formationMeta[id]?.kw || [])) counts[kw] = (counts[kw] || 0) + 1;
+        for (const kw of this._effKwOf(id, egoLoadoutMap?.[pid])) counts[kw] = (counts[kw] || 0) + 1;
       }
       return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([id, count]) => ({ id, count }));
     },
+    _effectiveKw(pid) { return [...this._effKwOf(this.slotId(pid), this.egoLoadout[pid])]; },   // 편성 카드 키워드 아이콘용
     // 라이브 요약: scope 'deploy'=출전 멤버만 / 'all'=편성 12명 전체
     formationKeywordSummary(scope) {
       const pids = scope === 'deploy' ? this.deployOrder : Object.keys(this.formationDefaults);
-      return this._keywordSummaryOf(this.formation, pids);
+      return this._keywordSummaryOf(this.formation, pids, this.egoLoadout);
     },
     // ── 출전 순서 ── 편성 카드 클릭 → 출전 번호 부여/해제 (해제 시 뒷번호 자동 당김)
     deployNum(pid) { return this.deployOrder.indexOf(pid) + 1; },  // 0 = 미지정
