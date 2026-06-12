@@ -99,7 +99,7 @@
 {{ range .Site.Data.resist.dataList }}
   {{ $label := index $resistTextMap .id | default "" }}
   {{ $color := .color | default "" }}
-  {{ $resistLabelMap = merge $resistLabelMap (dict (printf "%.2f" .value) (dict "text" $label "color" $color)) }}
+  {{ $resistLabelMap = merge $resistLabelMap (dict (printf "%v" .value) (dict "text" $label "color" $color)) }}
 {{ end }}
 {{/* 시즌 맵 (id → {title, name}), color 태그를 빌드 타임에 span으로 변환 */}}
 {{ $colorRE := `<color=(#[0-9a-fA-F]{3,8})>(.*?)</color>` }}
@@ -1169,11 +1169,11 @@
                     <img class="stat-icon" :src="`/images/sin/${res.type.charAt(0) + res.type.slice(1).toLowerCase()}_resist_${String(Math.round(res.value * 100)).padStart(3, '0')}.png`" alt="">
                     <div class="res-text">
                       <span class="res-label"
-                            x-text="resistLabelMap[res.value.toFixed(2)]?.text ?? ''"
-                            :style="resistLabelMap[res.value.toFixed(2)]?.color ? `color:${resistLabelMap[res.value.toFixed(2)].color}` : ''"></span>
+                            x-text="resistLabelMap[res.value]?.text ?? ''"
+                            :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
                       <span class="res-label"
                             x-text="`[X${res.value}]`"
-                            :style="resistLabelMap[res.value.toFixed(2)]?.color ? `color:${resistLabelMap[res.value.toFixed(2)].color}` : ''"></span>
+                            :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
                     </div>
                   </div>
                 </template>
