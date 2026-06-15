@@ -1,0 +1,12 @@
+{{/* 기프트 상세 페이지를 data/egogifts.json 에서 생성 (/gift/{id}).
+     사이트 기프트 페이지와 동일하게 hide != true 만. pilgrimage 는 사이트 미사용이라 제외. */}}
+{{ range where site.Data.egogifts.dataList "hide" "ne" true }}
+  {{ $.AddPage (dict
+    "path" (printf "%d" (int .id))
+    "title" .name
+    "params" (dict
+      "gift" .
+      "description" (printf "%s — Limbus Company 거울 던전 E.G.O 기프트 효과·등급·태그 정보." .name)
+    )
+  ) }}
+{{ end }}

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main class="detail-page">
+  <nav class="detail-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="detail-desc">{{ .Description }}</p>
+  <ul class="detail-index-list">
+  {{ range .Pages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</main>
+{{ end }}

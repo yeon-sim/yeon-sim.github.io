@@ -1,0 +1,11 @@
+{{/* 키워드 id → 이름 맵 (parsingdata 전체). 빌드당 1회만 계산하도록 partialCached 로 호출할 것.
+     예: {{ $kw := partialCached "kwmap.html" "kw" }} */}}
+{{- $kwMap := dict -}}
+{{- range site.Data.lang.kr.parsingdata -}}
+  {{- range .dataList -}}
+    {{- if not (isset $kwMap (string .id)) -}}
+      {{- $kwMap = merge $kwMap (dict (string .id) (.name | default "")) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $kwMap -}}

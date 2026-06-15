@@ -1,0 +1,89 @@
+{{/* 인격 상세 페이지 생성 (/personality/{id}). 텍스트(이름·스킬·패시브)만.
+     어댑터는 1회 실행 → 맵을 여기서 한 번만 빌드. desc 토큰 정리는 layout 에서. */}}
+
+{{/* 인격 이름: id → {name(수감자), title(인격명)} */}}
+{{ $nameMap := dict }}
+{{ range site.Data.lang.kr.KR_Personalities.dataList }}
+  {{ $nameMap = merge $nameMap (dict (string .id) (dict "name" (.name | default "") "title" (.title | default ""))) }}
+{{ end }}
+
+{{/* 스킬 이름·설명 (최종 동기화 단계 기준) */}}
+{{ $skillName := dict }}
+{{ $skillDesc := dict }}
+{{ range site.Data.lang.kr.skill }}
+  {{ range .dataList }}
+    {{ if .levelList }}
+      {{ $last := index .levelList (sub (len .levelList) 1) }}
+      {{ $coins := slice }}
+      {{ range $last.coinlist }}
+        {{ range .coindescs }}{{ if ne (.desc | default "") "" }}{{ $coins = $coins | append .desc }}{{ end }}{{ end }}
+      {{ end }}
+      {{ $skillName = merge $skillName (dict (string .id) ($last.name | default "")) }}
+      {{ $skillDesc = merge $skillDesc (dict (string .id) (dict "desc" ($last.desc | default "") "coins" $coins)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* 패시브 이름·설명 */}}
+{{ $passiveText := dict }}
+{{ range (slice site.Data.lang.kr.passive.KR_Passives.dataList site.Data.lang.kr.passive.KR_Passives_check4.dataList) }}
+  {{ range . }}
+    {{ if not (isset $passiveText (string .id)) }}
+      {{ $passiveText = merge $passiveText (dict (string .id) (dict "name" (.name | default "") "desc" (.desc | default ""))) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* 인격 → 패시브 id (전투 + 서포트) */}}
+{{ $ppMap := dict }}
+{{ range site.Data.personality.passive }}
+  {{ range .list }}
+    {{ if .personalityID }}
+      {{ $ids := slice }}
+      {{ range .battlePassiveList }}{{ range .passiveIDList }}{{ $ids = $ids | append (string .) }}{{ end }}{{ end }}
+      {{ range .supporterPassiveList }}{{ range .passiveIDList }}{{ $ids = $ids | append (string .) }}{{ end }}{{ end }}
+      {{ $ppMap = merge $ppMap (dict (string .personalityID) $ids) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* ---- 페이지 생성 ---- */}}
+{{ range site.Data.personality.info }}
+  {{ range .list }}
+    {{ $pid := string .id }}
+    {{ $nm := index $nameMap $pid }}
+    {{ if $nm }}
+      {{ $pageTitle := printf "%s - %s" $nm.name (replace $nm.title "\n" " ") }}
+      {{/* 스킬 id 수집(공격+수비), 중복 제거 */}}
+      {{ $sids := slice }}
+      {{ range .attributeList }}{{ $sids = $sids | append (string .skillId) }}{{ end }}
+      {{ range .defenseSkillIDList }}{{ $sids = $sids | append (string .) }}{{ end }}
+      {{ $seen := dict }}
+      {{ $skills := slice }}
+      {{ range $sids }}
+        {{ if not (isset $seen .) }}
+          {{ $seen = merge $seen (dict . true) }}
+          {{ $n := index $skillName . }}
+          {{ if $n }}
+            {{ $desc := "" }}{{ $coins := slice }}
+            {{ with index $skillDesc . }}{{ $desc = .desc }}{{ $coins = .coins }}{{ end }}
+            {{ $skills = $skills | append (dict "name" $n "desc" $desc "coins" $coins) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $passives := slice }}
+      {{ range (index $ppMap $pid | default slice) }}
+        {{ with index $passiveText . }}{{ $passives = $passives | append . }}{{ end }}
+      {{ end }}
+      {{ $.AddPage (dict
+        "path" $pid
+        "title" $pageTitle
+        "params" (dict
+          "skills" $skills
+          "passives" $passives
+          "description" (printf "%s — Limbus Company 인격 스킬·패시브 정보." $pageTitle)
+        )
+      ) }}
+    {{ end }}
+  {{ end }}
+{{ end }}

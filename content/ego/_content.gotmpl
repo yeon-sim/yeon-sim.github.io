@@ -1,0 +1,63 @@
+{{/* EGO 상세 페이지 생성 (/ego/{id}). 텍스트(이름·각성/침식 스킬·패시브)만.
+     egoskill 의 EGO 장비 레코드(characterId 보유)만 — skill 레코드(ego-skill-*)는 characterId 없어 제외. */}}
+
+{{/* EGO 이름 */}}
+{{ $egoName := dict }}
+{{ range site.Data.lang.kr.egoskill.KR_Egos.dataList }}
+  {{ $egoName = merge $egoName (dict (string .id) .name) }}
+{{ end }}
+
+{{/* EGO 스킬 이름·설명 (최종 단계). KR_Egos/KR_Passive_Ego 는 levelList 없어 자동 제외 */}}
+{{ $egoSkill := dict }}
+{{ range site.Data.lang.kr.egoskill }}
+  {{ if .dataList }}
+    {{ range .dataList }}
+      {{ if .levelList }}
+        {{ $last := index .levelList (sub (len .levelList) 1) }}
+        {{ $coins := slice }}
+        {{ range $last.coinlist }}
+          {{ range .coindescs }}{{ if ne (.desc | default "") "" }}{{ $coins = $coins | append .desc }}{{ end }}{{ end }}
+        {{ end }}
+        {{ $egoSkill = merge $egoSkill (dict (string .id) (dict "name" ($last.name | default "") "desc" ($last.desc | default "") "coins" $coins)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* EGO 패시브 */}}
+{{ $egoPassive := dict }}
+{{ range site.Data.lang.kr.egoskill.KR_Passive_Ego.dataList }}
+  {{ $egoPassive = merge $egoPassive (dict (string .id) (dict "name" (.name | default "") "desc" (.desc | default ""))) }}
+{{ end }}
+
+{{/* ---- 페이지 생성 ---- */}}
+{{ range site.Data.egoskill }}
+  {{ range .list }}
+    {{ if and (not .hidden) .characterId }}
+      {{ $id := string .id }}
+      {{ $name := index $egoName $id | default "" }}
+      {{ if $name }}
+        {{ $skills := slice }}
+        {{ with .awakeningSkillId }}
+          {{ with index $egoSkill (string .) }}{{ $skills = $skills | append (merge . (dict "kind" "각성")) }}{{ end }}
+        {{ end }}
+        {{ with .corrosionSkillId }}
+          {{ with index $egoSkill (string .) }}{{ $skills = $skills | append (merge . (dict "kind" "침식")) }}{{ end }}
+        {{ end }}
+        {{ $passives := slice }}
+        {{ range .awakeningPassiveList }}
+          {{ with index $egoPassive (string .) }}{{ $passives = $passives | append . }}{{ end }}
+        {{ end }}
+        {{ $.AddPage (dict
+          "path" $id
+          "title" $name
+          "params" (dict
+            "skills" $skills
+            "passives" $passives
+            "description" (printf "%s — Limbus Company E.G.O 각성·침식 스킬·패시브 정보." $name)
+          )
+        ) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

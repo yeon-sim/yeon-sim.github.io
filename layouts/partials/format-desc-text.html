@@ -1,0 +1,15 @@
+{{/* 출력 텍스트를 크롤러용 평문으로 정리.
+     - HTML/게임 태그(<style>, <color> 등) 제거(안쪽 텍스트는 보존)
+     - 키워드 토큰 [Id] → 한글 키워드명 치환 (kwMap)
+     - 개행 → 공백
+     인자: (dict "desc" <문자열> "kw" <id→이름 맵>)
+     예: {{ partial "format-desc-text.html" (dict "desc" $g.desc "kw" $kw) }} */}}
+{{- $t := .desc | default "" -}}
+{{- $t = replaceRE "<[^>]+>" "" $t -}}
+{{- range $id, $name := .kw -}}
+  {{- if and (ne $name "") (in $t (printf "[%s]" $id)) -}}
+    {{- $t = replace $t (printf "[%s]" $id) $name -}}
+  {{- end -}}
+{{- end -}}
+{{- $t = replace $t "\n" " " -}}
+{{- return $t -}}

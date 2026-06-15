@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ $kw := partialCached "kwmap.html" "kw" }}
+<main class="detail-page">
+  <nav class="detail-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
+  <article class="detail-article">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.skills }}
+    <h2>스킬</h2>
+    {{ range . }}
+    <h3>{{ .name }}</h3>
+    {{ with .desc }}<p class="detail-desc">{{ partial "format-desc-text.html" (dict "desc" . "kw" $kw) }}</p>{{ end }}
+    {{ range .coins }}<p class="detail-desc">{{ partial "format-desc-text.html" (dict "desc" . "kw" $kw) }}</p>{{ end }}
+    {{ end }}
+    {{ end }}
+    {{ with .Params.passives }}
+    <h2>패시브</h2>
+    {{ range . }}
+    <h3>{{ .name }}</h3>
+    {{ with .desc }}<p class="detail-desc">{{ partial "format-desc-text.html" (dict "desc" . "kw" $kw) }}</p>{{ end }}
+    {{ end }}
+    {{ end }}
+  </article>
+</main>
+{{ end }}

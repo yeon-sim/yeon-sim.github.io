@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ $g := .Params.gift }}
+{{ $kw := partialCached "kwmap.html" "kw" }}
+{{ $catName := "" }}
+{{ range site.Data.categories.dataList }}{{ if eq .id $g.category }}{{ $catName = .name }}{{ end }}{{ end }}
+<main class="detail-page">
+  <nav class="detail-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
+  <article class="detail-article">
+    <h1>{{ $g.name }}</h1>
+    <p class="detail-meta">등급 {{ $g.grade }}{{ with $catName }} · {{ . }}{{ end }}</p>
+    <p class="detail-desc">{{ partial "format-desc-text.html" (dict "desc" $g.desc "kw" $kw) }}</p>
+    {{ with $g.upgrade }}
+    <h2>강화</h2>
+    {{ range . }}
+    <h3>{{ .name }}</h3>
+    <p class="detail-desc">{{ partial "format-desc-text.html" (dict "desc" .desc "kw" $kw) }}</p>
+    {{ end }}
+    {{ end }}
+    {{ with $g.tags }}
+    <p class="detail-tags">태그: {{ delimit . ", " }}</p>
+    {{ end }}
+  </article>
+</main>
+{{ end }}
