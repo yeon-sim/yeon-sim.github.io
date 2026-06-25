@@ -5,10 +5,16 @@
       "updatedDate": 20230227,
       "appearance": "11201_Gregor_BaseAppearance",
       "unitKeywordList": [
-                "BASE_APPEARANCE", "SMALL"
-            ],
-            "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Burst" ],
+        "BASE_APPEARANCE",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 0,
@@ -107,9 +113,16 @@
       "id": 11202,
       "updatedDate": 20230227,
       "appearance": "11202_Gregor_LiuAssoAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 0,
@@ -209,9 +222,15 @@
       "id": 11203,
       "updatedDate": 20230227,
       "appearance": "11203_Gregor_TommyAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "G_CORP" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "G_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 1,
@@ -311,9 +330,17 @@
       "id": 11204,
       "updatedDate": 20230420,
       "appearance": "11204_Gregor_JackAppearance",
-      "unitKeywordList": [ "CLAN", "BACK_STREET", "SMALL" ],
-      "associationList": [ "BACKSTREET_COOK" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "BACK_STREET",
+        "SMALL"
+      ],
+      "associationList": [
+        "BACKSTREET_COOK"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 1,
@@ -413,9 +440,18 @@
       "id": 11205,
       "updatedDate": 20230608,
       "appearance": "11205_Gregor_ChainsawFixerAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "TROUBLE_SHOOTER" ],
-      "skillKeywordList": [ "Charge", "Vibration", "Burst" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "TROUBLE_SHOOTER"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Vibration",
+        "Burst"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 2,
@@ -515,9 +551,14 @@
       "id": 11206,
       "updatedDate": 20230810,
       "appearance": "11206_Gregor_ZweiAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "ZWEI" ],
-      "skillKeywordList": [  ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "ZWEI"
+      ],
+      "skillKeywordList": [],
       "characterId": 12,
       "panicType": 9999,
       "season": 0,
@@ -615,9 +656,18 @@
       "id": 11207,
       "updatedDate": 20231116,
       "appearance": "11207_Gregor_SmeeAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "DUAL_HOOK_PIRATE" ],
-      "skillKeywordList": [ "Breath", "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "DUAL_HOOK_PIRATE"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Laceration",
+        "Bullet"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 3,
@@ -728,9 +778,16 @@
       "id": 11208,
       "updatedDate": 20240222,
       "appearance": "11208_Gregor_KurokumoAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 3,
@@ -831,9 +888,15 @@
       "id": 11209,
       "updatedDate": 20240404,
       "appearance": "11209_Gregor_LintonAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "LINTON" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "LINTON"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 4,
@@ -936,9 +999,16 @@
       "associationList": [
         "LA_MANCHA_LAND"
       ],
-      "unitKeywordList": [ "SMALL", "BLOODFIEND", "THIRD_DEPENDENT" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLOODFIEND",
+        "THIRD_DEPENDENT"
+      ],
       "unitScriptID": "BloodWraithTier3",
-      "skillKeywordList": [ "Laceration", "Burst" ],
+      "skillKeywordList": [
+        "Laceration",
+        "Burst"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 5,
@@ -1047,9 +1117,16 @@
       "id": 11211,
       "updatedDate": 20250306,
       "appearance": "11211_Gregor_FirePunchAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "FIREPUNCH_OFFICE" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "FIREPUNCH_OFFICE"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 5,
@@ -1160,9 +1237,17 @@
       "updatedDate": 20251106,
       "appearance": "11213_Gregor_AllenAppearance",
       "unitScriptID": "11213",
-      "associationList": [ "NIGHTSTILETTO" ],
-      "unitKeywordList": [ "SMALL", "CLAN" ],
-      "skillKeywordList": [ "Vibration", "Laceration" ],
+      "associationList": [
+        "NIGHTSTILETTO"
+      ],
+      "unitKeywordList": [
+        "SMALL",
+        "CLAN"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Laceration"
+      ],
       "characterId": 12,
       "panicType": 9999,
       "season": 9107,
@@ -1272,9 +1357,18 @@
       "id": 11214,
       "updatedDate": 20260205,
       "appearance": "11214_Gregor_BigBird_LampAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCE" ],
-      "skillKeywordList": [ "Sinking", "Combustion" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCE"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Combustion"
+      ],
       "characterId": 12,
       "unitScriptID": "11214",
       "panicType": 9999,
@@ -1373,9 +1467,18 @@
       "id": 11215,
       "updatedDate": 20260319,
       "appearance": "11215_Gregor_ElectricCentipedeAppearacne",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCE" ],
-      "skillKeywordList": [ "Charge", "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCE"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Burst"
+      ],
       "characterId": 12,
       "unitScriptID": "11215",
       "panicType": 9999,
@@ -1437,7 +1540,8 @@
       },
       "breakSection": {
         "sectionList": [
-          60, 30
+          60,
+          30
         ]
       },
       "resistInfo": {

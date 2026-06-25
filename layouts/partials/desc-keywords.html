@@ -1,0 +1,15 @@
+{{/* desc 문자열들에서 파싱 키워드 토큰([Id])을 뽑아 키워드 '이름'을 공백제거·소문자로 정리해
+     "|" 로 이어 반환. #키워드 검색용 인덱스 문자열. 인자: (dict "descs" <[]string> "kw" <kwMap id→{name}>) */}}
+{{- $kw := .kw -}}
+{{- $names := slice -}}
+{{- range .descs -}}
+  {{- range findRE `\[[^\]]+\]` . -}}
+    {{- $id := trim . "[]" -}}
+    {{- $e := index $kw $id -}}
+    {{- if and $e $e.name -}}
+      {{- $clean := lower (replace $e.name " " "") -}}
+      {{- if not (in $names $clean) -}}{{- $names = $names | append $clean -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return (delimit $names "|") -}}

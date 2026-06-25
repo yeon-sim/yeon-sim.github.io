@@ -1,0 +1,206 @@
+{
+  "dataList": [
+    {
+      "category": "죄악 속성",
+      "tags": [
+        "wrathResistance",
+        "lustResistance",
+        "slothResistance",
+        "gluttonyResistance",
+        "gloomResistance",
+        "envyResistance",
+        "prideResistance"
+      ]
+    },
+    {
+      "category": "공격 속성",
+      "tags": [
+        "attackResistance",
+        "fixedDamage",
+        "slashResistance",
+        "slashSkill",
+        "slashPowerUp",
+        "penetrateResistance",
+        "penetrateSkill",
+        "penetratePowerUp",
+        "hitResistance",
+        "hitSkill",
+        "hitPowerUp",
+        "ammoGain",
+        "activateCombustion",
+        "inflictCombustionPotency",
+        "combustionCount",
+        "loseCombustionCount",
+        "inflictCombustionCount",
+        "activateLaceration",
+        "lacerationPotency",
+        "loseLacerationPotency",
+        "inflictLacerationPotency",
+        "lacerationCount",
+        "loseLacerationCount",
+        "inflictLacerationCount",
+        "inflictVibrationPotency",
+        "vibrationCount",
+        "loseVibrationCount",
+        "inflictVibrationCount",
+        "vibrationHemorrhage",
+        "vibrationEverlasting",
+        "vibrationDistribution",
+        "vibrationDecay",
+        "vibrationChain",
+        "vibrationScorch",
+        "vibrationSuperposition",
+        "loseBurstPotency",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "sinkingPotency",
+        "inflictSinkingPotency",
+        "sinkingCount",
+        "inflictSinkingCount",
+        "loseBreathPotency",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "inflictChargeBarrier",
+        "chargePotency",
+        "inflictChargePotency",
+        "loseChargeCount",
+        "inflictChargeCount",
+        "useChargeCount"
+      ]
+    },
+    {
+      "category": "피해량",
+      "tags": [
+        "dealDamageUp",
+        "dealDamageDown",
+        "takeDamageDown",
+        "takeDamageUp",
+        "inflictDamageUp",
+        "inflictSlashDamageUp",
+        "inflictPenetrateDamageUp",
+        "inflictHitDamageUp",
+        "dealCriticalDamageUp",
+        "inflictCriticalDamageUp"
+      ]
+    },
+    {
+      "category": "위력",
+      "tags": [
+        "inflictAttackPowerUp",
+        "coinPowerDown",
+        "coinPowerUp",
+        "plusCoinPowerUp",
+        "basePowerUp",
+        "clashPowerDown",
+        "clashPowerUp",
+        "inflictPowerUp",
+        "inflictPowerDown",
+        "powerUp",
+        "finalPowerDown",
+        "finalPowerUp"
+      ]
+    },
+    {
+      "category": "버프",
+      "tags": [
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "maxSpeedUp",
+        "minSpeedUp",
+        "healSp",
+        "healHp",
+        "healHpUp",
+        "inflictHaste",
+        "recoverStagger",
+        "removeNegativeEffect",
+        "inflictProtection",
+        "inflictShield",
+        "maxHpUp",
+        "bless"
+      ]
+    },
+    {
+      "category": "디버프",
+      "tags": [
+        "offenseLevelDown",
+        "defenseLevelDown",
+        "loseSpeed",
+        "inflictBind",
+        "maxSpeedDown",
+        "minSpeedDown",
+        "maxHpDown",
+        "inflictFragile",
+        "inflictParalyze",
+        "stagger",
+        "curse"
+      ]
+    },
+    {
+      "category": "소속",
+      "tags": [
+        "indexFinger",
+        "sameFaction",
+        "pinkyFinger",
+        "ringFinger",
+        "thumb",
+        "middleFinger"
+      ]
+    },
+    {
+      "category": "타이밍",
+      "tags": [
+        "substitute",
+        "allyKilled",
+        "regularEncounters",
+        "focusedEncounters",
+        "enemyKilled",
+        "enemyDefeated",
+        "onHit",
+        "combatStart",
+        "critical",
+        "turnStart",
+        "turnEnd",
+        "takeHit",
+        "winClash"
+      ]
+    },
+    {
+      "category": "편성",
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "teamNumber4",
+        "teamNumber5",
+        "teamNumber6",
+        "teamNumber7",
+        "teamNumber8",
+        "4Faction"
+      ]
+    },
+    {
+      "category": "기타",
+      "tags": [
+        "egoResource",
+        "egoSkill",
+        "egoPassive",
+        "EX",
+        "shop",
+        "refresh",
+        "liquor",
+        "skill1",
+        "skill2",
+        "skill3",
+        "additionalSkill",
+        "fusion",
+        "coffee",
+        "cost",
+        "gainCost",
+        "themePackExclusive",
+        "keywordTrigger",
+        "deployLevelUp",
+        "hidden"
+      ]
+    }
+  ]
+}

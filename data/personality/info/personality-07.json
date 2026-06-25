@@ -5,11 +5,17 @@
       "updatedDate": 20230227,
       "appearance": "10701_Heathclif_BaseAppearance",
       "unitKeywordList": [
-        "BASE_APPEARANCE", "SMALL"
+        "BASE_APPEARANCE",
+        "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "unitScriptID" : "10701",
-      "skillKeywordList": [ "Vibration" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "unitScriptID": "10701",
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 0,
@@ -109,9 +115,16 @@
       "id": 10702,
       "updatedDate": 20230227,
       "appearance": "10702_Heathclif_4Appearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "SHI" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "SHI"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 0,
@@ -210,9 +223,18 @@
       "id": 10703,
       "updatedDate": 20230227,
       "appearance": "10703_Heathclif_RCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "R_CORP" ],
-      "skillKeywordList": [ "Charge", "Laceration", "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "R_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Laceration",
+        "Burst",
+        "Bullet"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 0,
@@ -332,9 +354,16 @@
       "id": 10704,
       "updatedDate": 20230323,
       "appearance": "10704_Heathclif_NCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "N_CORP", "N_CORP_FNATIC" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "N_CORP",
+        "N_CORP_FNATIC"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 1,
@@ -434,13 +463,21 @@
       "id": 10705,
       "updatedDate": 20230608,
       "appearance": "10705_Heathclif_WolfoxAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "ATL" ],
-      "skillKeywordList": [ "Sinking", "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "ATL"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Burst"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 2,
-      "isPlusCoinUnit" : false,
+      "isPlusCoinUnit": false,
       "defenseSkillIDList": [
         1070504
       ],
@@ -539,9 +576,16 @@
       "id": 10706,
       "updatedDate": 20230907,
       "appearance": "10706_Heathclif_SevenAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "SEVEN" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "SEVEN"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 0,
@@ -641,9 +685,16 @@
       "id": 10707,
       "updatedDate": 20231207,
       "appearance": "10707_Heathclif_QueequegAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "PEQUOD_CREW" ],
-      "skillKeywordList": [ "Breath", "Laceration" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "PEQUOD_CREW"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Laceration"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 3,
@@ -741,9 +792,16 @@
       "id": 10708,
       "updatedDate": 20240321,
       "appearance": "10708_Heathcliff_OufiAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "OUFI" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "OUFI"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "defenseSkillIDList": [
@@ -841,9 +899,17 @@
       "id": 10709,
       "updatedDate": 20240808,
       "appearance": "10709_Heathclif_CyborgFixerAppearance",
-      "unitKeywordList": [ "FIXER", "MACHINE_BOUND_ORGANISM", "SMALL" ],
-      "associationList": [ "MULTI_CRACK" ],
-      "skillKeywordList": [ "Charge" ],
+      "unitKeywordList": [
+        "FIXER",
+        "MACHINE_BOUND_ORGANISM",
+        "SMALL"
+      ],
+      "associationList": [
+        "MULTI_CRACK"
+      ],
+      "skillKeywordList": [
+        "Charge"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 4,
@@ -945,9 +1011,17 @@
       "id": 10710,
       "updatedDate": 20240822,
       "appearance": "10710_Heathclif_WHuntAppearance",
-      "unitKeywordList": [ "SMALL", "WILD_HUNT_HEATH" ],
-      "associationList": [ "WILD_HUNT", "WUTHERING_HEIGHTS" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "SMALL",
+        "WILD_HUNT_HEATH"
+      ],
+      "associationList": [
+        "WILD_HUNT",
+        "WUTHERING_HEIGHTS"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 4,
@@ -1053,10 +1127,18 @@
       "id": 10711,
       "updatedDate": 20250109,
       "appearance": "10711_Heathcliff_TamakiAppearance",
-      "unitKeywordList": [ "SMALL", "FIXER" ],
-      "associationList": [ "FULL_STOP" ],
-      "unitScriptID" : "10711",
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FIXER"
+      ],
+      "associationList": [
+        "FULL_STOP"
+      ],
+      "unitScriptID": "10711",
+      "skillKeywordList": [
+        "Breath",
+        "Bullet"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 9105,
@@ -1194,10 +1276,17 @@
       "id": 10712,
       "updatedDate": 20250206,
       "appearance": "10712_Heathclif_KurokumoAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
       "unitScriptID": "10712",
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration" ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 5,
@@ -1301,9 +1390,16 @@
       "id": 10713,
       "updatedDate": 20251023,
       "appearance": "10713_Heathclif_WCorpAppearance",
-      "associationList": [ "W_CORP" ],
-      "unitKeywordList": [ "SMALL" ],
-      "skillKeywordList": [ "Charge", "Burst" ],
+      "associationList": [
+        "W_CORP"
+      ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Burst"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 6,
@@ -1402,9 +1498,19 @@
       "id": 10714,
       "updatedDate": 20251120,
       "appearance": "10714_Heathcliff_Heishou_YouAppearance",
-      "associationList": [ "H_CORP", "BLACK_BEAST_CHICKEN" ],
-      "unitKeywordList": [ "SMALL", "BLACK_BEAST", "BLACK_BEAST_CHIEF" ],
-      "skillKeywordList": [ "Burst", "Combustion" ],
+      "associationList": [
+        "H_CORP",
+        "BLACK_BEAST_CHICKEN"
+      ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLACK_BEAST",
+        "BLACK_BEAST_CHIEF"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Combustion"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 6,
@@ -1506,9 +1612,17 @@
       "id": 10715,
       "updatedDate": 20260430,
       "appearance": "10715_Heathcliff_MiddleFinger_RicardoAppearance",
-      "associationList": [ "MIDDLE_FINGER" ],
-      "unitKeywordList": [ "SMALL", "FINGER" ],
-      "skillKeywordList": [ "Laceration", "Combustion" ],
+      "associationList": [
+        "MIDDLE_FINGER"
+      ],
+      "unitKeywordList": [
+        "SMALL",
+        "FINGER"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Combustion"
+      ],
       "characterId": 7,
       "panicType": 9999,
       "season": 7,
@@ -1612,6 +1726,122 @@
         },
         {
           "skillId": 1071507,
+          "number": 0
+        }
+      ]
+    },
+    {
+      "id": 10716,
+      "updatedDate": 20260625,
+      "appearance": "10716_Heathcliff_Thumb_DiscipleAppearance",
+      "associationList": [
+        "THUMB_FINGER",
+        "SPIDER_HOUSE"
+      ],
+      "unitKeywordList": [
+        "SMALL",
+        "FINGER"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Combustion"
+      ],
+      "characterId": 7,
+      "panicType": 9999,
+      "season": 7,
+      "unitScriptID": "10716",
+      "defenseSkillIDList": [
+        1071604,
+        1071605
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 83,
+        "incrementByLevel": 2.95
+      },
+      "defCorrection": 2,
+      "minSpeedList": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        6,
+        7,
+        7
+      ],
+      "uniqueAttribute": "CRIMSON",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyAsLevelRatioMultiply10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAllyAsLevelRatioMultiply5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          55,
+          20
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 1
+          },
+          {
+            "type": "HIT",
+            "value": 2
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1071601,
+          "number": 3
+        },
+        {
+          "skillId": 1071602,
+          "number": 2
+        },
+        {
+          "skillId": 1071603,
+          "number": 1
+        },
+        {
+          "skillId": 1071606,
           "number": 0
         }
       ]

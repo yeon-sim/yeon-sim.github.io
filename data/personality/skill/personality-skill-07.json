@@ -11326,6 +11326,1219 @@
           ]
         }
       ]
+    },
+    {
+      "id": 1071601,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "SCARLET",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 2,
+          "defaultValue": 3,
+          "range" : 8,
+          "arearange" : 1.5,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S1",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071602,
+      "skillType": "SKILL",
+      "skillTier": 2,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "AMBER",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 3,
+          "defaultValue": 4,
+          "range" : 8,
+          "arearange" : 1.5,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S2",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10716",
+                  "value": 1,
+                  "buffData": {
+                    "buffKeyword": "DuelEdgeAlly",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10716",
+                  "value": 1,
+                  "buffData": {
+                    "buffKeyword": "DuelEdgeAlly",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnWinDuelIfHasStack_DuelEdgeAlly1",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "target": "Target",
+                "buffOwner": "Target",
+                "stack": 0,
+                "turn": 1,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10716",
+                  "value": 1,
+                  "buffData": {
+                    "buffKeyword": "DuelEdgeAlly",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071603,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "specialDuelIndex" : 0,
+          "skillLevelCorrection": 4,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S3",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "ChangeToSpecialSkillOnBeforeTurn1071606",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "DuelEdgeAlly",
+                "buffOwner": "Target",
+                "stack": 5,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "GiveAdditionalBuffOnStartTurn10716_DuelEdgeAlly"
+            },
+            {
+              "scriptName": "ChangeAllCoinToSuperCoinOnStartTurn10716_DuelEdgeAlly_EvolvingManual",
+              "value": 3
+            },
+            {
+              "scriptName": "SkillTier3EffectOnSetTarget10716"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack1071603_1_1_1_1",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack1071603_1_1_1_1",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "DmgUpByBuffStackWithLimit30",
+                  "buffData": {
+                    "buffKeyword": "EvolvingManual",
+                    "buffOwner": "Self",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0,
+                    "value": 0.1
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1"
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10716",
+                  "value": 1,
+                  "buffData": {
+                    "buffKeyword": "DuelEdgeAlly",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 0,
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "ChangeToSpecialSkillOnBeforeTurn1071606",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "DuelEdgeAlly",
+                "buffOwner": "Target",
+                "stack": 5,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "AttackDmgUpByRatioOnUseViaBuffCheckDevideByStackWithLimit30",
+              "buffData": {
+                "buffKeyword": "DuelEdgeAlly",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.06
+              }
+            },
+            {
+              "scriptName": "GiveAdditionalBuffOnStartTurn10716_DuelEdgeAlly"
+            },
+            {
+              "scriptName": "ChangeAllCoinToSuperCoinOnStartTurn10716_DuelEdgeAlly_EvolvingManual",
+              "value": 3
+            },
+            {
+              "scriptName": "SkillTier3EffectOnSetTarget10716"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack1071603_1_1_1_1",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack1071603_1_1_1_1",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "DmgUpByBuffStackWithLimit75",
+                  "buffData": {
+                    "buffKeyword": "EvolvingManual",
+                    "buffOwner": "Self",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0,
+                    "value": 0.25
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1"
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10716",
+                  "value": 2,
+                  "buffData": {
+                    "buffKeyword": "DuelEdgeAlly",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 0,
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071604,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "COUNTER",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "skillLevelCorrection": 1,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S5",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit50",
+              "buffData": {
+                "buffKeyword": "DuelEdgeAlly",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.1
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [            
+            {
+              "scriptName": "AttackDmgUpByRatioViaBuffCheckDevideByStackWithLimit100",
+              "buffData": {
+                "buffKeyword": "DuelEdgeAlly",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.2
+              }
+            },
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071605,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "NEUTRAL",
+          "atkType": "NONE",
+          "defType": "GUARD",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "specialDuelIndex" : 0,
+          "skillLevelCorrection": 0,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S6",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "SupportiveDefense10716"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 8,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "attributeType": "AZURE",
+          "iconID": "1071605_4",
+          "abilityScriptList": [
+            {
+              "scriptName": "SupportiveDefenseAndHealTargetMp10716",
+              "value": 5
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Protection",
+                "target": "Self",
+                "stack": 2,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 10,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071606,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "specialDuelIndex" : 0,
+          "skillLevelCorrection": 5,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S4",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "TargetNumAdderOnStartTurnDivideByBuffStack10716",
+              "buffData": {
+                "buffKeyword": "EvolvingManual",
+                "stack": 1,
+                "value": -1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "AttackDmgMultiplierOnUseByLessThenTargetNumWithSingleBonus_1_15",
+              "value": 0.15
+            },
+            {
+              "scriptName": "GiveBuffAndUseBuffAllStackOnEndAttack10716_DuelEdgeAlly",
+              "buffData": {
+                "buffKeyword": "EvolvingManual",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "CoinScaleAdderOnStartCoinDivideByBuff",
+                  "buffData": {
+                    "buffKeyword": "EvolvingManual",
+                    "target": "Self",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 1,
+                    "limit": 3
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "TargetNumAdderOnStartTurnDivideByBuffStack10716",
+              "buffData": {
+                "buffKeyword": "EvolvingManual",
+                "stack": 1,
+                "value": -1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 3
+              }
+            },            
+            {
+              "scriptName": "AttackDmgMultiplierOnUseByLessThenTargetNumWithSingleBonus_1_25",
+              "value": 0.25
+            },
+            {
+              "scriptName": "GiveBuffAndUseBuffAllStackOnEndAttack10716_DuelEdgeAlly",
+              "buffData": {
+                "buffKeyword": "EvolvingManual",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 4,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 4,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 3,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "CoinScaleAdderOnStartCoinDivideByBuff",
+                  "buffData": {
+                    "buffKeyword": "EvolvingManual",
+                    "target": "Self",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 1,
+                    "limit": 3
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

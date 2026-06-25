@@ -10648,6 +10648,1742 @@
           ]
         }
       ]
+    },
+    {
+      "id": 1091601,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "INDIGO",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "skillLevelCorrection": 2,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S1",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 10
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 10
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 10
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091602,
+      "skillType": "SKILL",
+      "skillTier": 2,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "AMBER",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "skillLevelCorrection": 3,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S2",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "defaultValue": 4
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091603,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "specialDuelIndex" : 0,
+          "skillLevelCorrection": 4,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S3",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseFutureEye1091603",
+              "turnLimit": 1,
+              "value": 10,
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "LoseFutureEye1091603",
+              "turnLimit": 1,
+              "value": 10,
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:1]"
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosion1091603",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091604,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "INDIGO",
+          "atkType": "SLASH",
+          "defType": "COUNTER",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "skillLevelCorrection": 2,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S4",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "additionalSkillKeywordList": [
+            "CommonReload"
+          ],
+          "abilityScriptList": [
+            {
+              "scriptName": "LoseFutureEyeOnStartTurn10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "Reload1091604",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "AccelBullet",
+                "target": "Self",
+                "stack": -1,
+                "turn": 0,
+                "activeRound": 0,
+                "limit": 5
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnStartTurn10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "Reload1091604",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "AccelBullet",
+                "target": "Self",
+                "stack": -1,
+                "turn": 0,
+                "activeRound": 0,
+                "limit": 5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091605,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "SCARLET",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "range" : 8,
+          "arearange" : 1.5,
+          "skillLevelCorrection": 2,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": false,
+          "canChangeTarget": true,
+          "skillMotion": "S5",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "IgnoreDefenseSkill"
+            },
+            {
+              "scriptName": "CannotReusedSkill"
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "IgnoreDefenseSkill"
+            },
+            {
+              "scriptName": "CannotReusedSkill"
+            },
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "IgnoreDefenseSkill"
+            },
+            {
+              "scriptName": "CannotReusedSkill"
+            },
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheck",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "buffOwner": "Self",
+                "stack": 6,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "SkillPowerAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091606,
+      "skillType": "SKILL",
+      "skillTier": 2,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "AMBER",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 3,
+          "defaultValue": 4,
+          "range" : 8,
+          "arearange" : 1.5,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S6",
+          "specialDuelIndex" : 1,
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "SuperCoinFutureEye1091606"
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+               {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Breath",
+                    "target": "Self",
+                    "stack": 5,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "SuperCoinFutureEye1091606",
+              "value": 2
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SuperCoinFutureEye1091606",
+              "value": 2
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "stack": 0,
+                "turn": 4,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnWinDuel10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 0.05,
+                "limit": 15
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+               {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Breath",
+                    "target": "Self",
+                    "stack": 5,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 2,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackAndLoseTargetVibrationTurn1",
+                  "value": 1
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackViaBuffCheckAndLoseTargetVibrationTurn1",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "buffOwner": "Target",
+                    "stack": 10,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091607,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 5,
+          "defaultValue": 5,
+          "range" : 8,
+          "arearange" : 1.5,
+          "specialDuelIndex" : 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S7",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackDmgUpByRatio50IfMainTargetHpRatioNotMoreThan50"
+            },
+            {
+              "scriptName": "CoinScaleAdderViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "TeachersPreyRodion",
+                "target": "",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "AccelBullet",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CreateSpecialSkill1091607"
+            },
+            {
+              "scriptName": "ReloadOnKill1091607",
+              "turnLimit": 1
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "UseBullet[optional:AccelBullet:::ThumbFatherRodionFive1]"
+                },
+                {
+                  "scriptName": "VibrationExplosion1091607",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackDmgUpByRatio50IfMainTargetHpRatioNotMoreThan50"
+            },
+            {
+              "scriptName": "CoinScaleAdderViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "TeachersPreyRodion",
+                "target": "",
+                "buffOwner": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "AccelBullet",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 5
+              }
+            },
+            {
+              "scriptName": "CreateSpecialSkill1091607"
+            },
+            {
+              "scriptName": "ReloadOnKill1091607",
+              "turnLimit": 1
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "buffOwner": "",
+                    "stack": 0,
+                    "turn": 3,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "grade": 2,
+              "color": "GREY",
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "DmgUpByBullet1091607_50[optional:AccelBullet:::ThumbFatherRodionFive1]",
+                  "value": 0.1
+                },
+                {
+                  "scriptName": "VibrationExplosion1091607",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1091608,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "NEUTRAL",
+          "atkType": "NONE",
+          "defType": "EVADE",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 2,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "Default",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackAfterEvade1091608",
+              "value": 1
+            },
+            {
+              "scriptName": "CoinScaleAdderViaBuffCheckDevideByStackWithLimit4",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 2,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "SkillPowerAdder1091608",
+              "value": 10,
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 2,
+                "turn": 0,
+                "value": 1,
+                "limit" : 4
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnSucceedEvade",
+              "turnLimit": 2,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "buffOwner": "",
+                "stack": 2,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseFutureEyeOnEndTurn10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "target": "Self",
+                "stack": 2,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 7
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "attributeType": "AZURE",
+          "iconID": "1091608_4",
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackAfterEvade1091608",
+              "value": 1
+            },
+            {
+              "scriptName": "CoinScaleAdderViaBuffCheckDevideByStackWithLimit4",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 2,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "SkillPowerAdder1091608",
+              "value": 10,
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "buffOwner": "Self",
+                "stack": 2,
+                "turn": 0,
+                "value": 1,
+                "limit" : 4
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnSucceedEvade",
+              "turnLimit": 2,
+              "buffData": {
+                "buffKeyword": "Breath",
+                "target": "Self",
+                "buffOwner": "",
+                "stack": 2,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "HealMpOnSucceedEvadeSelf3",
+              "turnLimit": 2
+            },
+            {
+              "scriptName": "LoseFutureEyeOnEndTurn10916",
+              "buffData": {
+                "buffKeyword": "FutureEyeOnRodion",
+                "target": "Self",
+                "stack": 2,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

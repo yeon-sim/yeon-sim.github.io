@@ -1,0 +1,610 @@
+[
+  {
+    "id": "wrathResistance",
+    "name": "분노 내성"
+  },
+  {
+    "id": "lustResistance",
+    "name": "색욕 내성"
+  },
+  {
+    "id": "slothResistance",
+    "name": "나태 내성"
+  },
+  {
+    "id": "gluttonyResistance",
+    "name": "탐식 내성"
+  },
+  {
+    "id": "gloomResistance",
+    "name": "우울 내성"
+  },
+  {
+    "id": "prideResistance",
+    "name": "오만 내성"
+  },
+  {
+    "id": "envyResistance",
+    "name": "질투 내성"
+  },
+  {
+    "id": "attackResistance",
+    "name": "물리 내성"
+  },
+  {
+    "id": "fixedDamage",
+    "name": "고정 피해"
+  },
+  {
+    "id": "slashResistance",
+    "name": "참격 내성"
+  },
+  {
+    "id": "slashSkill",
+    "name": "참격 스킬"
+  },
+  {
+    "id": "slashPowerUp",
+    "name": "참격 위력 증가"
+  },
+  {
+    "id": "penetrateResistance",
+    "name": "관통 내성"
+  },
+  {
+    "id": "penetrateSkill",
+    "name": "관통 스킬"
+  },
+  {
+    "id": "penetratePowerUp",
+    "name": "관통 위력 증가"
+  },
+  {
+    "id": "hitResistance",
+    "name": "타격 내성"
+  },
+  {
+    "id": "hitSkill",
+    "name": "타격 스킬"
+  },
+  {
+    "id": "hitPowerUp",
+    "name": "타격 위력 증가"
+  },
+  {
+    "id": "ammoGain",
+    "name": "탄환 부여"
+  },
+  {
+    "id": "activateCombustion",
+    "name": "화상 발동"
+  },
+  {
+    "id": "inflictCombustionPotency",
+    "name": "화상 위력 부여"
+  },
+  {
+    "id": "combustionCount",
+    "name": "화상 횟수"
+  },
+  {
+    "id": "loseCombustionCount",
+    "name": "화상 횟수 감소"
+  },
+  {
+    "id": "inflictCombustionCount",
+    "name": "화상 횟수 부여"
+  },
+  {
+    "id": "activateLaceration",
+    "name": "출혈 발동"
+  },
+  {
+    "id": "lacerationPotency",
+    "name": "출혈 위력"
+  },
+  {
+    "id": "loseLacerationPotency",
+    "name": "출혈 위력 감소"
+  },
+  {
+    "id": "inflictLacerationPotency",
+    "name": "출혈 위력 부여"
+  },
+  {
+    "id": "lacerationCount",
+    "name": "출혈 횟수"
+  },
+  {
+    "id": "loseLacerationCount",
+    "name": "출혈 횟수 감소"
+  },
+  {
+    "id": "inflictLacerationCount",
+    "name": "출혈 횟수 부여"
+  },
+  {
+    "id": "inflictVibrationPotency",
+    "name": "진동 위력 부여"
+  },
+  {
+    "id": "vibrationCount",
+    "name": "진동 횟수"
+  },
+  {
+    "id": "loseVibrationCount",
+    "name": "진동 횟수 감소"
+  },
+  {
+    "id": "inflictVibrationCount",
+    "name": "진동 횟수 부여"
+  },
+  {
+    "id": "vibrationHemorrhage",
+    "name": "진동-과다출혈"
+  },
+  {
+    "id": "vibrationEverlasting",
+    "name": "진동-반향"
+  },
+  {
+    "id": "vibrationDistribution",
+    "name": "진동-분배"
+  },
+  {
+    "id": "vibrationDecay",
+    "name": "진동-붕괴"
+  },
+  {
+    "id": "vibrationChain",
+    "name": "진동-사슬"
+  },
+  {
+    "id": "vibrationScorch",
+    "name": "진동-작열"
+  },
+  {
+    "id": "vibrationSuperposition",
+    "name": "진동-중첩"
+  },
+  {
+    "id": "loseBurstPotency",
+    "name": "파열 위력 감소"
+  },
+  {
+    "id": "inflictBurstPotency",
+    "name": "파열 위력 부여"
+  },
+  {
+    "id": "inflictBurstCount",
+    "name": "파열 횟수 부여"
+  },
+  {
+    "id": "sinkingPotency",
+    "name": "침잠 위력"
+  },
+  {
+    "id": "inflictSinkingPotency",
+    "name": "침잠 위력 부여"
+  },
+  {
+    "id": "sinkingCount",
+    "name": "침잠 횟수"
+  },
+  {
+    "id": "inflictSinkingCount",
+    "name": "침잠 횟수 부여"
+  },
+  {
+    "id": "loseBreathPotency",
+    "name": "호흡 위력 감소"
+  },
+  {
+    "id": "inflictBreathPotency",
+    "name": "호흡 위력 부여"
+  },
+  {
+    "id": "inflictBreathCount",
+    "name": "호흡 횟수 부여"
+  },
+  {
+    "id": "inflictChargeBarrier",
+    "name": "충전 역장 부여"
+  },
+  {
+    "id": "chargePotency",
+    "name": "충전 위력"
+  },
+  {
+    "id": "inflictChargePotency",
+    "name": "충전 위력 부여"
+  },
+  {
+    "id": "loseChargeCount",
+    "name": "충전 횟수 감소"
+  },
+  {
+    "id": "inflictChargeCount",
+    "name": "충전 횟수 부여"
+  },
+  {
+    "id": "useChargeCount",
+    "name": "충전 횟수 소모"
+  },
+  {
+    "id": "dealDamageUp",
+    "name": "가하는 피해량 감소"
+  },
+  {
+    "id": "dealDamageDown",
+    "name": "가하는 피해량 증가"
+  },
+  {
+    "id": "takeDamageDown",
+    "name": "받는 피해량 감소"
+  },
+  {
+    "id": "takeDamageUp",
+    "name": "받는 피해량 증가"
+  },
+  {
+    "id": "inflictDamageUp",
+    "name": "피해량 증가 부여"
+  },
+  {
+    "id": "inflictSlashDamageUp",
+    "name": "참격 피해량 증가 부여"
+  },
+  {
+    "id": "inflictPenetrateDamageUp",
+    "name": "관통 피해량 증가 부여"
+  },
+  {
+    "id": "inflictHitDamageUp",
+    "name": "타격 피해량 증가 부여"
+  },
+  {
+    "id": "dealCriticalDamageUp",
+    "name": "크리티컬 피해량 증가"
+  },
+  {
+    "id": "inflictCriticalDamageUp",
+    "name": "크리티컬 피해량 증가 부여"
+  },
+  {
+    "id": "inflictAttackPowerUp",
+    "name": "공격 위력 증가 부여"
+  },
+  {
+    "id": "coinPowerDown",
+    "name": "코인 위력 감소"
+  },
+  {
+    "id": "coinPowerUp",
+    "name": "코인 위력 증가"
+  },
+  {
+    "id": "plusCoinPowerUp",
+    "name": "더하기 코인 강화"
+  },
+  {
+    "id": "basePowerUp",
+    "name": "기본 위력 증가"
+  },
+  {
+    "id": "clashPowerDown",
+    "name": "합 위력 감소"
+  },
+  {
+    "id": "clashPowerUp",
+    "name": "합 위력 증가"
+  },
+  {
+    "id": "inflictPowerUp",
+    "name": "위력 증가 부여"
+  },
+  {
+    "id": "inflictPowerDown",
+    "name": "위력 감소 부여"
+  },
+  {
+    "id": "powerUp",
+    "name": "위력 증가"
+  },
+  {
+    "id": "finalPowerDown",
+    "name": "최종 위력 감소"
+  },
+  {
+    "id": "finalPowerUp",
+    "name": "최종 위력 증가"
+  },
+  {
+    "id": "offenseLevelUp",
+    "name": "공격 레벨 증가"
+  },
+  {
+    "id": "defenseLevelUp",
+    "name": "방어 레벨 증가"
+  },
+  {
+    "id": "maxSpeedUp",
+    "name": "속도 최댓값 증가"
+  },
+  {
+    "id": "minSpeedUp",
+    "name": "속도 최솟값 증가"
+  },
+  {
+    "id": "healSp",
+    "name": "정신력 회복"
+  },
+  {
+    "id": "healHp",
+    "name": "체력 회복"
+  },
+  {
+    "id": "healHpUp",
+    "name": "체력 회복 증가"
+  },
+  {
+    "id": "inflictHaste",
+    "name": "신속 부여"
+  },
+  {
+    "id": "recoverStagger",
+    "name": "흐트러짐 해제"
+  },
+  {
+    "id": "removeNegativeEffect",
+    "name": "부정적인 효과 해제"
+  },
+  {
+    "id": "inflictProtection",
+    "name": "보호 부여"
+  },
+  {
+    "id": "inflictShield",
+    "name": "보호막 부여"
+  },
+  {
+    "id": "maxHpUp",
+    "name": "최대 체력 증가"
+  },
+  {
+    "id": "bless",
+    "name": "축복"
+  },
+  {
+    "id": "offenseLevelDown",
+    "name": "공격 레벨 감소"
+  },
+  {
+    "id": "defenseLevelDown",
+    "name": "방어 레벨 감소"
+  },
+  {
+    "id": "loseSpeed",
+    "name": "속도 감소"
+  },
+  {
+    "id": "inflictBind",
+    "name": "속박 부여"
+  },
+  {
+    "id": "maxSpeedDown",
+    "name": "속도 최댓값 감소"
+  },
+  {
+    "id": "minSpeedDown",
+    "name": "속도 최솟값 감소"
+  },
+  {
+    "id": "maxHpDown",
+    "name": "최대 체력 감소"
+  },
+  {
+    "id": "inflictFragile",
+    "name": "취약 부여"
+  },
+  {
+    "id": "inflictParalyze",
+    "name": "마비 부여"
+  },
+  {
+    "id": "stagger",
+    "name": "흐트러짐"
+  },
+  {
+    "id": "curse",
+    "name": "저주"
+  },
+  {
+    "id": "indexFinger",
+    "name": "검지"
+  },
+  {
+    "id": "sameFaction",
+    "name": "동일 소속"
+  },
+  {
+    "id": "pinkyFinger",
+    "name": "소지"
+  },
+  {
+    "id": "ringFinger",
+    "name": "약지"
+  },
+  {
+    "id": "thumb",
+    "name": "엄지"
+  },
+  {
+    "id": "middleFinger",
+    "name": "중지"
+  },
+  {
+    "id": "substitute",
+    "name": "대기 해제"
+  },
+  {
+    "id": "allyKilled",
+    "name": "아군 사망 시"
+  },
+  {
+    "id": "regularEncounters",
+    "name": "일반 전투"
+  },
+  {
+    "id": "focusedEncounters",
+    "name": "일방 공격"
+  },
+  {
+    "id": "enemyKilled",
+    "name": "적 사망 시"
+  },
+  {
+    "id": "enemyDefeated",
+    "name": "적 처치 시"
+  },
+  {
+    "id": "onHit",
+    "name": "적중 시"
+  },
+  {
+    "id": "combatStart",
+    "name": "전투 시작 시"
+  },
+  {
+    "id": "critical",
+    "name": "크리티컬"
+  },
+  {
+    "id": "turnStart",
+    "name": "턴 시작 시"
+  },
+  {
+    "id": "turnEnd",
+    "name": "턴 종료 시"
+  },
+  {
+    "id": "takeHit",
+    "name": "피격 시"
+  },
+  {
+    "id": "winClash",
+    "name": "합 승리 시"
+  },
+  {
+    "id": "teamNumber1",
+    "name": "편성 1번"
+  },
+  {
+    "id": "teamNumber2",
+    "name": "편성 2번"
+  },
+  {
+    "id": "teamNumber3",
+    "name": "편성 3번"
+  },
+  {
+    "id": "teamNumber4",
+    "name": "편성 4번"
+  },
+  {
+    "id": "teamNumber5",
+    "name": "편성 5번"
+  },
+  {
+    "id": "teamNumber6",
+    "name": "편성 6번"
+  },
+  {
+    "id": "teamNumber7",
+    "name": "편성 7번"
+  },
+  {
+    "id": "teamNumber8",
+    "name": "편성 8번"
+  },
+  {
+    "id": "4Faction",
+    "name": "4인"
+  },
+  {
+    "id": "egoResource",
+    "name": "EGO 자원"
+  },
+  {
+    "id": "egoSkill",
+    "name": "EGO 스킬"
+  },
+  {
+    "id": "egoPassive",
+    "name": "EGO 패시브"
+  },
+  {
+    "id": "EX",
+    "name": "EX"
+  },
+  {
+    "id": "shop",
+    "name": "상점"
+  },
+  {
+    "id": "refresh",
+    "name": "새로고침"
+  },
+  {
+    "id": "liquor",
+    "name": "술"
+  },
+  {
+    "id": "skill1",
+    "name": "스킬 1"
+  },
+  {
+    "id": "skill2",
+    "name": "스킬 2"
+  },
+  {
+    "id": "skill3",
+    "name": "스킬 3"
+  },
+  {
+    "id": "additionalSkill",
+    "name": "스킬 추가"
+  },
+  {
+    "id": "fusion",
+    "name": "조합"
+  },
+  {
+    "id": "coffee",
+    "name": "커피"
+  },
+  {
+    "id": "cost",
+    "name": "코스트"
+  },
+  {
+    "id": "gainCost",
+    "name": "코스트 획득"
+  },
+  {
+    "id": "themePackExclusive",
+    "name": "테마팩 한정"
+  },
+  {
+    "id": "keywordTrigger",
+    "name": "트리거"
+  },
+  {
+    "id": "deployLevelUp",
+    "name": "편성 레벨 증가"
+  },
+  {
+    "id": "hidden",
+    "name": "히든"
+  }
+]

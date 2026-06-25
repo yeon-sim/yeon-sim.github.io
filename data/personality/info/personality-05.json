@@ -5,10 +5,16 @@
       "updatedDate": 20230227,
       "appearance": "10501_Meursault_BaseAppearance",
       "unitKeywordList": [
-        "BASE_APPEARANCE", "SMALL"
+        "BASE_APPEARANCE",
+        "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Vibration" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 0,
@@ -107,9 +113,16 @@
       "id": 10502,
       "updatedDate": 20230227,
       "appearance": "10502_Meursault_LiuAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 0,
@@ -209,9 +222,16 @@
       "id": 10503,
       "updatedDate": 20230227,
       "appearance": "10503_Meursault_WCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "W_CORP" ],
-      "skillKeywordList": [ "Charge", "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "W_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Burst"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 0,
@@ -310,9 +330,16 @@
       "id": 10504,
       "updatedDate": 20230309,
       "appearance": "10504_Meursault_NCorpGuidoAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "N_CORP", "N_CORP_FNATIC" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "N_CORP",
+        "N_CORP_FNATIC"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 1,
@@ -410,9 +437,17 @@
       "id": 10505,
       "updatedDate": 20230601,
       "appearance": "10505_Meursault_HammerFixerAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "TROUBLE_SHOOTER" ],
-      "skillKeywordList": [ "Vibration", "Charge" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "TROUBLE_SHOOTER"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Charge"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 2,
@@ -511,9 +546,16 @@
       "id": 10506,
       "updatedDate": 20230713,
       "appearance": "10506_Meursault_RCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "R_CORP" ],
-      "skillKeywordList": [ "Charge", "Laceration" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "R_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Laceration"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 0,
@@ -611,9 +653,16 @@
       "id": 10507,
       "updatedDate": 20231123,
       "appearance": "10507_Meursault_MiddleFingerAppearance",
-      "unitKeywordList": [ "FINGER", "SMALL" ],
-      "associationList": [ "MIDDLE_FINGER" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "FINGER",
+        "SMALL"
+      ],
+      "associationList": [
+        "MIDDLE_FINGER"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 3,
@@ -712,9 +761,16 @@
       "id": 10508,
       "updatedDate": 20240222,
       "appearance": "10508_Meursault_KimSatGatAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLADE_LINEAGE" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLADE_LINEAGE"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 3,
@@ -818,9 +874,16 @@
       "id": 10509,
       "updatedDate": 20240328,
       "appearance": "10509_Meursault_DeadrabbitsAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "DEAD_RABBITS" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "DEAD_RABBITS"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 4,
@@ -919,9 +982,16 @@
       "id": 10510,
       "updatedDate": 20240711,
       "appearance": "10510_Meursault_DieciAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DIECI" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DIECI"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 0,
@@ -1031,9 +1101,17 @@
       "id": 10511,
       "updatedDate": 20241010,
       "appearance": "10511_Meursault_CinqAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "CINQ" ],
-      "skillKeywordList": [ "Burst", "Breath" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "CINQ"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Breath"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 5,
@@ -1132,10 +1210,20 @@
       "id": 10512,
       "updatedDate": 20250619,
       "appearance": "10512_Meursault_LeiHengAppearance",
-      "unitKeywordList": [ "FINGER", "SMALL", "THUMB_LEVEL_CAPO_FOUR" ],
-      "associationList": [ "THUMB_FINGER" ],
+      "unitKeywordList": [
+        "FINGER",
+        "SMALL",
+        "THUMB_LEVEL_CAPO_FOUR"
+      ],
+      "associationList": [
+        "THUMB_FINGER"
+      ],
       "unitScriptID": 10512,
-      "skillKeywordList": [ "Combustion", "Vibration" ],
+      "skillKeywordList": [
+        "Combustion",
+        "Vibration",
+        "Bullet"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 6,
@@ -1251,9 +1339,16 @@
       "associationList": [
         "LA_MANCHA_LAND"
       ],
-      "unitKeywordList": [ "SMALL", "BLOODFIEND", "THIRD_DEPENDENT" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLOODFIEND",
+        "THIRD_DEPENDENT"
+      ],
       "unitScriptID": "10513",
-      "skillKeywordList": [ "Laceration", "Burst" ],
+      "skillKeywordList": [
+        "Laceration",
+        "Burst"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 6,
@@ -1357,10 +1452,20 @@
       "id": 10514,
       "updatedDate": 20260305,
       "appearance": "10514_Meursault_HornetAppearance",
-      "unitKeywordList": [ "LOBOTOMY_HEAD", "EGO_EQUIPMENT", "SMALL" ],
-      "associationList": [ "L_CORP" ],
+      "unitKeywordList": [
+        "LOBOTOMY_HEAD",
+        "EGO_EQUIPMENT",
+        "SMALL"
+      ],
+      "associationList": [
+        "L_CORP"
+      ],
       "unitScriptID": 10514,
-      "skillKeywordList": [ "Combustion", "Laceration" ],
+      "skillKeywordList": [
+        "Combustion",
+        "Laceration",
+        "Bullet"
+      ],
       "characterId": 5,
       "panicType": 9999,
       "season": 9108,
@@ -1436,7 +1541,8 @@
       },
       "breakSection": {
         "sectionList": [
-          65, 35
+          65,
+          35
         ]
       },
       "resistInfo": {
@@ -1475,12 +1581,12 @@
       "updatedDate": 20260416,
       "appearance": "10515_Meursault_RingFinger_Fauvism_BearAppearance",
       "unitKeywordList": [
-         "SMALL",
-         "FINGER",
-         "RING_FINGER_STUDENT"
-        ],
+        "SMALL",
+        "FINGER",
+        "RING_FINGER_STUDENT"
+      ],
       "associationList": [
-        "RING_FINGER", 
+        "RING_FINGER",
         "RING_FINGER_FAUVISM"
       ],
       "skillKeywordList": [
@@ -1495,8 +1601,7 @@
       "defenseSkillIDList": [
         1051504
       ],
-      "initBuffList": [
-      ],
+      "initBuffList": [],
       "panicSkillOnErosion": 1000104,
       "slotWeightConditionList": [
         "Default1"
@@ -1550,7 +1655,8 @@
       },
       "breakSection": {
         "sectionList": [
-          70, 40
+          70,
+          40
         ]
       },
       "resistInfo": {

@@ -1,0 +1,4179 @@
+{
+  "dataList": [
+    {
+      "id": 9001,
+      "tags": [
+        "inflictCombustionPotency",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9002,
+      "tags": [
+        "egoResource",
+        "enemyDefeated"
+      ]
+    },
+    {
+      "id": 9003,
+      "tags": [
+        "combatStart",
+        "inflictCombustionPotency"
+      ]
+    },
+    {
+      "id": 9004,
+      "tags": [
+        "onHit",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9005,
+      "tags": [
+        "inflictLacerationCount",
+        "lacerationPotency",
+        "inflictLacerationPotency",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9006,
+      "tags": [
+        "turnStart",
+        "egoResource"
+      ]
+    },
+    {
+      "id": 9007,
+      "tags": [
+        "turnStart",
+        "fixedDamage"
+      ]
+    },
+    {
+      "id": 9008,
+      "tags": [
+        "inflictLacerationPotency",
+        "defenseLevelDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9009,
+      "tags": [
+        "onHit",
+        "inflictCombustionPotency",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9010,
+      "tags": [
+        "turnStart",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9011,
+      "tags": [
+        "powerUp",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9012,
+      "tags": [
+        "enemyKilled",
+        "hitPowerUp"
+      ]
+    },
+    {
+      "id": 9013,
+      "tags": [
+        "onHit",
+        "inflictBurstPotency"
+      ]
+    },
+    {
+      "id": 9014,
+      "tags": [
+        "combatStart",
+        "powerUp",
+        "enemyDefeated"
+      ]
+    },
+    {
+      "id": 9015,
+      "tags": [
+        "stagger",
+        "dealDamageDown",
+        "vibrationCount",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9016,
+      "tags": [
+        "stagger",
+        "onHit",
+        "inflictVibrationPotency",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9017,
+      "tags": [
+        "stagger",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9018,
+      "tags": [
+        "turnStart",
+        "inflictBurstPotency",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9019,
+      "tags": [
+        "onHit",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9020,
+      "tags": [
+        "turnStart",
+        "stagger",
+        "recoverStagger",
+        "inflictLacerationPotency",
+        "offenseLevelDown",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9021,
+      "tags": [
+        "egoResource",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9022,
+      "tags": [
+        "dealDamageDown",
+        "offenseLevelUp",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9023,
+      "tags": [
+        "inflictBurstPotency",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9024,
+      "tags": [
+        "offenseLevelDown",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9025,
+      "tags": [
+        "onHit",
+        "dealDamageDown",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9026,
+      "tags": [
+        "onHit",
+        "offenseLevelUp",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9027,
+      "tags": [
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9028,
+      "tags": [
+        "healHp",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9029,
+      "tags": [
+        "dealDamageDown",
+        "takeDamageDown",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9030,
+      "tags": [
+        "enemyKilled",
+        "penetratePowerUp"
+      ]
+    },
+    {
+      "id": 9031,
+      "tags": [
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9032,
+      "tags": [
+        "slashPowerUp",
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "combatStart",
+        "enemyKilled"
+      ]
+    },
+    {
+      "id": 9033,
+      "tags": [
+        "onHit",
+        "inflictBurstPotency"
+      ]
+    },
+    {
+      "id": 9034,
+      "tags": [
+        "inflictCombustionPotency",
+        "egoPassive",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9035,
+      "tags": [
+        "turnStart",
+        "inflictPowerDown"
+      ]
+    },
+    {
+      "id": 9036,
+      "tags": [
+        "regularEncounters",
+        "fixedDamage"
+      ]
+    },
+    {
+      "id": 9037,
+      "tags": [
+        "egoResource"
+      ]
+    },
+    {
+      "id": 9038,
+      "tags": [
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9039,
+      "tags": [
+        "healHp"
+      ]
+    },
+    {
+      "id": 9041,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9042,
+      "tags": [
+        "inflictLacerationPotency",
+        "turnEnd",
+        "loseSpeed"
+      ]
+    },
+    {
+      "id": 9043,
+      "tags": [
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9044,
+      "tags": [
+        "onHit",
+        "inflictVibrationPotency"
+      ]
+    },
+    {
+      "id": 9045,
+      "tags": [
+        "turnEnd",
+        "defenseLevelDown",
+        "loseCombustionCount"
+      ]
+    },
+    {
+      "id": 9046,
+      "tags": [
+        "turnStart",
+        "inflictPowerUp"
+      ]
+    },
+    {
+      "id": 9047,
+      "tags": [
+        "turnEnd",
+        "inflictBurstPotency",
+        "combatStart",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9048,
+      "tags": [
+        "lacerationPotency",
+        "inflictLacerationPotency",
+        "inflictLacerationCount"
+      ]
+    },
+    {
+      "id": 9049,
+      "tags": [
+        "sinkingPotency",
+        "onHit",
+        "inflictSinkingPotency",
+        "inflictSinkingCount",
+        "combatStart",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9050,
+      "tags": [
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "turnStart",
+        "offenseLevelDown",
+        "defenseLevelDown",
+        "lacerationPotency"
+      ]
+    },
+    {
+      "id": 9051,
+      "tags": [
+        "enemyDefeated",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9052,
+      "tags": [
+        "turnStart",
+        "inflictChargeCount",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9053,
+      "tags": [
+        "keywordTrigger",
+        "inflictCombustionPotency",
+        "inflictCombustionCount",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9054,
+      "tags": [
+        "turnStart",
+        "offenseLevelDown",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9055,
+      "tags": [
+        "turnStart",
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "turnEnd",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9056,
+      "tags": [
+        "critical",
+        "onHit",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9057,
+      "tags": [
+        "turnStart",
+        "useChargeCount",
+        "offenseLevelUp",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9058,
+      "tags": [
+        "turnStart",
+        "egoResource",
+        "egoSkill"
+      ]
+    },
+    {
+      "id": 9059,
+      "tags": [
+        "onHit",
+        "inflictSinkingPotency"
+      ]
+    },
+    {
+      "id": 9060,
+      "tags": [
+        "keywordTrigger",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "turnStart",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9061,
+      "tags": [
+        "dealDamageDown",
+        "takeDamageDown",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9062,
+      "tags": [
+        "turnEnd",
+        "inflictHaste",
+        "inflictPowerUp"
+      ]
+    },
+    {
+      "id": 9063,
+      "tags": [
+        "combatStart",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9064,
+      "tags": [
+        "turnStart",
+        "offenseLevelDown",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9065,
+      "tags": [
+        "dealDamageDown",
+        "sinkingPotency",
+        "sinkingCount"
+      ]
+    },
+    {
+      "id": 9066,
+      "tags": [
+        "keywordTrigger",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "egoPassive",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9067,
+      "tags": [
+        "stagger",
+        "fixedDamage",
+        "inflictFragile"
+      ]
+    },
+    {
+      "id": 9068,
+      "tags": [
+        "egoResource",
+        "enemyKilled"
+      ]
+    },
+    {
+      "id": 9069,
+      "tags": [
+        "turnStart",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9070,
+      "tags": [
+        "critical",
+        "dealDamageDown",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9071,
+      "tags": [
+        "enemyKilled",
+        "inflictCombustionPotency",
+        "offenseLevelDown",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9072,
+      "tags": [
+        "keywordTrigger",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9073,
+      "tags": [
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9074,
+      "tags": [
+        "combatStart",
+        "inflictSinkingPotency",
+        "inflictSinkingCount"
+      ]
+    },
+    {
+      "id": 9075,
+      "tags": [
+        "keywordTrigger",
+        "turnStart",
+        "inflictChargeCount",
+        "teamNumber1"
+      ]
+    },
+    {
+      "id": 9076,
+      "tags": [
+        "turnStart",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9077,
+      "tags": [
+        "turnStart",
+        "stagger",
+        "healHp",
+        "inflictProtection"
+      ]
+    },
+    {
+      "id": 9078,
+      "tags": [
+        "gainCost"
+      ]
+    },
+    {
+      "id": 9079,
+      "tags": [
+        "gainCost"
+      ]
+    },
+    {
+      "id": 9080,
+      "tags": [
+        "gainCost"
+      ]
+    },
+    {
+      "id": 9081,
+      "tags": [
+        "healSp"
+      ]
+    },
+    {
+      "id": 9082,
+      "tags": [
+        "deployLevelUp"
+      ]
+    },
+    {
+      "id": 9083,
+      "tags": [
+        "fusion",
+        "attackResistance",
+        "slashResistance",
+        "penetrateResistance",
+        "hitResistance",
+        "wrathResistance",
+        "lustResistance",
+        "slothResistance",
+        "gluttonyResistance",
+        "gloomResistance",
+        "prideResistance",
+        "envyResistance"
+      ]
+    },
+    {
+      "id": 9084,
+      "tags": [
+        "turnStart",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9085,
+      "tags": [
+        "turnStart",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9086,
+      "tags": [
+        "turnEnd",
+        "inflictBind",
+        "inflictParalyze",
+        "defenseLevelDown",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9087,
+      "tags": [
+        "enemyDefeated",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9088,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "inflictCombustionCount",
+        "combustionCount",
+        "coinPowerUp",
+        "finalPowerUp",
+        "basePowerUp",
+        "winClash",
+        "inflictCombustionPotency"
+      ]
+    },
+    {
+      "id": 9089,
+      "tags": [
+        "onHit",
+        "inflictLacerationPotency"
+      ]
+    },
+    {
+      "id": 9090,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "lacerationPotency",
+        "lacerationCount",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "enemyKilled"
+      ]
+    },
+    {
+      "id": 9091,
+      "tags": [
+        "inflictFragile"
+      ]
+    },
+    {
+      "id": 9092,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "inflictFragile",
+        "stagger"
+      ]
+    },
+    {
+      "id": 9093,
+      "tags": [
+        "turnEnd",
+        "inflictDamageUp",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9094,
+      "tags": [
+        "fusion",
+        "onHit",
+        "inflictBurstPotency",
+        "loseBurstPotency",
+        "inflictBurstCount",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9095,
+      "tags": [
+        "keywordTrigger",
+        "inflictSinkingCount"
+      ]
+    },
+    {
+      "id": 9096,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "sinkingPotency",
+        "sinkingCount",
+        "onHit",
+        "inflictSinkingPotency",
+        "inflictSinkingCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9097,
+      "tags": [
+        "turnStart",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9098,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "combatStart",
+        "critical",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "coinPowerUp",
+        "finalPowerUp",
+        "dealDamageDown",
+        "skill3"
+      ]
+    },
+    {
+      "id": 9099,
+      "tags": [
+        "inflictChargeBarrier"
+      ]
+    },
+    {
+      "id": 9100,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "inflictChargeBarrier",
+        "inflictDamageUp",
+        "offenseLevelUp",
+        "inflictChargePotency",
+        "inflictAttackPowerUp"
+      ]
+    },
+    {
+      "id": 9101,
+      "tags": [
+        "combustionCount",
+        "inflictCombustionPotency",
+        "winClash"
+      ]
+    },
+    {
+      "id": 9102,
+      "tags": [
+        "combustionCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9103,
+      "tags": [
+        "combustionCount",
+        "inflictHaste",
+        "offenseLevelUp",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9104,
+      "tags": [
+        "combustionCount",
+        "clashPowerUp",
+        "teamNumber1",
+        "teamNumber2",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9105,
+      "tags": [
+        "combustionCount",
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictCombustionCount"
+      ]
+    },
+    {
+      "id": 9106,
+      "tags": [
+        "combatStart",
+        "inflictHaste",
+        "inflictDamageUp",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9107,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9108,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "lacerationPotency",
+        "lacerationCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9109,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "winClash",
+        "inflictLacerationCount",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9110,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictLacerationCount"
+      ]
+    },
+    {
+      "id": 9111,
+      "tags": [
+        "enemyKilled",
+        "vibrationCount"
+      ]
+    },
+    {
+      "id": 9112,
+      "tags": [
+        "vibrationCount",
+        "winClash",
+        "inflictVibrationPotency",
+        "inflictVibrationCount"
+      ]
+    },
+    {
+      "id": 9113,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "vibrationCount",
+        "offenseLevelUp",
+        "stagger",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9114,
+      "tags": [
+        "vibrationCount",
+        "stagger",
+        "inflictVibrationPotency"
+      ]
+    },
+    {
+      "id": 9115,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "vibrationCount",
+        "clashPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9116,
+      "tags": [
+        "vibrationCount",
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictVibrationCount"
+      ]
+    },
+    {
+      "id": 9117,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "turnEnd",
+        "inflictHaste",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9118,
+      "tags": [
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9119,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "winClash",
+        "inflictBurstPotency",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9120,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "clashPowerUp",
+        "offenseLevelUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9121,
+      "tags": [
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9122,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "dealDamageDown",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9123,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "winClash",
+        "healSp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9124,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictSinkingPotency",
+        "inflictSinkingCount"
+      ]
+    },
+    {
+      "id": 9125,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "onHit",
+        "healSp",
+        "inflictSinkingCount",
+        "turnStart",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9126,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictSinkingCount"
+      ]
+    },
+    {
+      "id": 9127,
+      "tags": [
+        "turnEnd",
+        "inflictHaste",
+        "offenseLevelUp",
+        "inflictDamageUp",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9128,
+      "tags": [
+        "turnStart",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9129,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "critical",
+        "defenseLevelDown",
+        "egoPassive"
+      ]
+    },
+    {
+      "id": 9130,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "clashPowerUp",
+        "inflictDamageUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9131,
+      "tags": [
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9132,
+      "tags": [
+        "turnEnd",
+        "inflictChargeCount",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9133,
+      "tags": [
+        "turnEnd",
+        "healHp",
+        "healSp"
+      ]
+    },
+    {
+      "id": 9134,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "turnStart",
+        "skill1",
+        "clashPowerUp",
+        "dealDamageDown",
+        "turnEnd",
+        "inflictChargeBarrier"
+      ]
+    },
+    {
+      "id": 9135,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "turnStart",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9136,
+      "tags": [
+        "egoSkill",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9137,
+      "tags": [
+        "teamNumber4",
+        "teamNumber5",
+        "turnEnd",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9138,
+      "tags": [
+        "teamNumber5",
+        "teamNumber6",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9139,
+      "tags": [
+        "teamNumber4",
+        "teamNumber6",
+        "clashPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9140,
+      "tags": [
+        "slashSkill",
+        "clashPowerUp",
+        "inflictHaste",
+        "finalPowerUp",
+        "takeDamageDown",
+        "slashPowerUp",
+        "inflictSlashDamageUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9141,
+      "tags": [
+        "teamNumber3",
+        "teamNumber4",
+        "teamNumber5",
+        "teamNumber6",
+        "focusedEncounters",
+        "dealDamageDown",
+        "winClash"
+      ]
+    },
+    {
+      "id": 9142,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "basePowerUp",
+        "coinPowerUp",
+        "coinPowerDown",
+        "winClash",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9143,
+      "tags": [
+        "teamNumber4",
+        "teamNumber5",
+        "penetrateSkill",
+        "inflictPenetrateDamageUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9144,
+      "tags": [
+        "teamNumber5",
+        "teamNumber6",
+        "onHit",
+        "inflictHaste",
+        "inflictPenetrateDamageUp",
+        "enemyDefeated"
+      ]
+    },
+    {
+      "id": 9145,
+      "tags": [
+        "clashPowerUp",
+        "dealDamageDown",
+        "ammoGain"
+      ]
+    },
+    {
+      "id": 9146,
+      "tags": [
+        "teamNumber3",
+        "teamNumber4",
+        "teamNumber5",
+        "teamNumber6",
+        "clashPowerUp",
+        "dealDamageDown",
+        "focusedEncounters"
+      ]
+    },
+    {
+      "id": 9147,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "basePowerUp",
+        "coinPowerUp",
+        "coinPowerDown",
+        "winClash",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9148,
+      "tags": [
+        "teamNumber4",
+        "teamNumber6",
+        "winClash",
+        "inflictHaste",
+        "inflictHitDamageUp",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9149,
+      "tags": [
+        "teamNumber5",
+        "teamNumber6",
+        "onHit",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9150,
+      "tags": [
+        "turnStart",
+        "hitSkill",
+        "offenseLevelUp",
+        "inflictHitDamageUp"
+      ]
+    },
+    {
+      "id": 9151,
+      "tags": [
+        "teamNumber3",
+        "teamNumber4",
+        "teamNumber5",
+        "teamNumber6",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9152,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "basePowerUp",
+        "coinPowerUp",
+        "coinPowerDown",
+        "winClash",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9153,
+      "tags": [
+        "egoResource",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9154,
+      "tags": [
+        "turnEnd",
+        "inflictAttackPowerUp"
+      ]
+    },
+    {
+      "id": 9155,
+      "tags": [
+        "combustionCount",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9156,
+      "tags": [
+        "turnEnd",
+        "combustionCount",
+        "activateCombustion"
+      ]
+    },
+    {
+      "id": 9157,
+      "tags": [
+        "turnStart",
+        "combustionCount",
+        "finalPowerUp",
+        "winClash",
+        "inflictCombustionPotency"
+      ]
+    },
+    {
+      "id": 9158,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "combustionCount",
+        "activateCombustion",
+        "inflictCombustionPotency",
+        "offenseLevelDown",
+        "inflictDamageUp",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9159,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9160,
+      "tags": [
+        "winClash",
+        "activateLaceration",
+        "lacerationCount"
+      ]
+    },
+    {
+      "id": 9161,
+      "tags": [
+        "turnStart",
+        "lacerationPotency",
+        "lacerationCount",
+        "coinPowerUp",
+        "dealDamageDown",
+        "basePowerUp",
+        "finalPowerUp"
+      ]
+    },
+    {
+      "id": 9162,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "lacerationPotency",
+        "lacerationCount",
+        "winClash",
+        "activateLaceration",
+        "stagger",
+        "defenseLevelDown",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9163,
+      "tags": [
+        "vibrationCount",
+        "winClash",
+        "inflictVibrationCount"
+      ]
+    },
+    {
+      "id": 9164,
+      "tags": [
+        "turnStart",
+        "vibrationCount",
+        "clashPowerUp",
+        "enemyDefeated",
+        "stagger",
+        "inflictVibrationCount",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9165,
+      "tags": [
+        "turnStart",
+        "vibrationCount",
+        "stagger",
+        "inflictFragile"
+      ]
+    },
+    {
+      "id": 9166,
+      "tags": [
+        "turnStart",
+        "vibrationCount",
+        "inflictVibrationCount",
+        "clashPowerUp",
+        "stagger"
+      ]
+    },
+    {
+      "id": 9167,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "winClash",
+        "inflictVibrationCount",
+        "inflictVibrationPotency",
+        "clashPowerUp",
+        "stagger",
+        "dealDamageDown",
+        "vibrationSuperposition",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9168,
+      "tags": [
+        "inflictBurstPotency"
+      ]
+    },
+    {
+      "id": 9169,
+      "tags": [
+        "turnStart",
+        "loseBurstPotency",
+        "inflictBurstCount",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9170,
+      "tags": [
+        "turnStart",
+        "dealDamageDown",
+        "inflictBurstPotency",
+        "coinPowerUp",
+        "basePowerUp"
+      ]
+    },
+    {
+      "id": 9171,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "dealDamageDown",
+        "offenseLevelDown",
+        "defenseLevelDown",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "coinPowerUp",
+        "basePowerUp"
+      ]
+    },
+    {
+      "id": 9172,
+      "tags": [
+        "sinkingPotency",
+        "healSp"
+      ]
+    },
+    {
+      "id": 9173,
+      "tags": [
+        "turnEnd",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9174,
+      "tags": [
+        "turnStart",
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictSinkingCount",
+        "gloomResistance"
+      ]
+    },
+    {
+      "id": 9175,
+      "tags": [
+        "turnStart",
+        "sinkingPotency",
+        "sinkingCount",
+        "healSp",
+        "offenseLevelUp",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9176,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictSinkingPotency",
+        "inflictSinkingCount",
+        "healSp",
+        "defenseLevelDown",
+        "offenseLevelUp",
+        "coinPowerUp",
+        "basePowerUp",
+        "onHit",
+        "combatStart",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9177,
+      "tags": [
+        "skill3",
+        "finalPowerUp"
+      ]
+    },
+    {
+      "id": 9178,
+      "tags": [
+        "turnEnd",
+        "inflictBreathCount",
+        "loseBreathPotency",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9179,
+      "tags": [
+        "turnStart",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9180,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "inflictBreathCount",
+        "loseBreathPotency",
+        "inflictHaste",
+        "offenseLevelUp",
+        "inflictBreathPotency",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9181,
+      "tags": [
+        "enemyKilled",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9182,
+      "tags": [
+        "turnStart",
+        "inflictDamageUp",
+        "inflictChargeBarrier",
+        "inflictChargePotency",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9183,
+      "tags": [
+        "turnStart",
+        "enemyKilled",
+        "inflictChargeCount",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9184,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "inflictChargeCount",
+        "minSpeedUp",
+        "maxSpeedUp",
+        "inflictAttackPowerUp",
+        "inflictDamageUp",
+        "skill3",
+        "chargePotency",
+        "enemyKilled",
+        "additionalSkill"
+      ]
+    },
+    {
+      "id": 9185,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9186,
+      "tags": [
+        "shop",
+        "refresh",
+        "cost"
+      ]
+    },
+    {
+      "id": 9188,
+      "tags": [
+        "shop",
+        "refresh",
+        "cost"
+      ]
+    },
+    {
+      "id": 9189,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9190,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9191,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9192,
+      "tags": [
+        "healHp",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9193,
+      "tags": [
+        "teamNumber3",
+        "offenseLevelUp",
+        "slashSkill",
+        "slashResistance",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9194,
+      "tags": [
+        "winClash",
+        "defenseLevelDown",
+        "turnStart",
+        "clashPowerUp",
+        "dealDamageDown",
+        "clashPowerDown"
+      ]
+    },
+    {
+      "id": 9195,
+      "tags": [
+        "skill1",
+        "clashPowerUp",
+        "offenseLevelDown",
+        "inflictPowerUp",
+        "lacerationPotency",
+        "lacerationCount",
+        "inflictBreathPotency",
+        "onHit",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9196,
+      "tags": [
+        "clashPowerUp",
+        "combatStart",
+        "offenseLevelUp",
+        "slashSkill",
+        "inflictSlashDamageUp",
+        "inflictProtection",
+        "defenseLevelUp",
+        "inflictAttackPowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9197,
+      "tags": [
+        "teamNumber3",
+        "offenseLevelUp",
+        "penetrateSkill",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9198,
+      "tags": [
+        "winClash",
+        "onHit",
+        "inflictBind",
+        "inflictHaste",
+        "inflictBreathPotency"
+      ]
+    },
+    {
+      "id": 9199,
+      "tags": [
+        "offenseLevelUp",
+        "skill2",
+        "clashPowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9200,
+      "tags": [
+        "clashPowerUp",
+        "combatStart",
+        "penetrateSkill",
+        "inflictPenetrateDamageUp",
+        "powerUp",
+        "inflictDamageUp",
+        "inflictHaste",
+        "onHit",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9201,
+      "tags": [
+        "teamNumber3",
+        "hitSkill",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9202,
+      "tags": [
+        "winClash",
+        "defenseLevelDown",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9203,
+      "tags": [
+        "skill1",
+        "skill2",
+        "offenseLevelUp",
+        "hitSkill",
+        "inflictDamageUp",
+        "inflictHitDamageUp"
+      ]
+    },
+    {
+      "id": 9204,
+      "tags": [
+        "clashPowerUp",
+        "combatStart",
+        "offenseLevelUp",
+        "hitSkill",
+        "inflictHitDamageUp",
+        "inflictShield",
+        "dealDamageDown",
+        "stagger",
+        "middleFinger",
+        "hitPowerUp",
+        "turnStart",
+        "takeHit"
+      ]
+    },
+    {
+      "id": 9205,
+      "tags": [
+        "enemyDefeated",
+        "inflictAttackPowerUp",
+        "allyKilled",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9206,
+      "tags": [
+        "healHp",
+        "clashPowerUp",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9207,
+      "tags": [
+        "egoSkill",
+        "dealDamageDown",
+        "dealDamageUp"
+      ]
+    },
+    {
+      "id": 9208,
+      "tags": [
+        "finalPowerUp",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9209,
+      "tags": [
+        "healHp",
+        "offenseLevelUp",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9210,
+      "tags": [
+        "teamNumber4",
+        "teamNumber5",
+        "hitSkill",
+        "clashPowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9211,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "finalPowerUp",
+        "dealDamageDown",
+        "coinPowerUp",
+        "basePowerUp"
+      ]
+    },
+    {
+      "id": 9212,
+      "tags": [
+        "fusion",
+        "inflictBreathCount",
+        "inflictBreathPotency",
+        "critical",
+        "penetratePowerUp",
+        "plusCoinPowerUp",
+        "allyKilled",
+        "inflictProtection",
+        "inflictCriticalDamageUp",
+        "onHit",
+        "healSp",
+        "enemyDefeated",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9213,
+      "tags": [
+        "fusion",
+        "coinPowerUp",
+        "dealDamageDown",
+        "turnEnd",
+        "healHp",
+        "enemyDefeated",
+        "allyKilled",
+        "inflictAttackPowerUp",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "activateLaceration",
+        "loseLacerationCount",
+        "combatStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9214,
+      "tags": [
+        "vibrationScorch",
+        "inflictCombustionPotency",
+        "inflictCombustionCount",
+        "stagger",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9215,
+      "tags": [
+        "combustionCount",
+        "skill3",
+        "clashPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9216,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "combustionCount",
+        "coinPowerUp",
+        "basePowerUp",
+        "skill3",
+        "dealDamageDown",
+        "healSp",
+        "sameFaction",
+        "turnEnd",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9217,
+      "tags": [
+        "enemyKilled",
+        "inflictSinkingCount",
+        "indexFinger",
+        "inflictAttackPowerUp",
+        "inflictPowerUp",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9218,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "dealCriticalDamageUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9219,
+      "tags": [
+        "attackResistance",
+        "slashResistance",
+        "hitResistance",
+        "penetrateResistance"
+      ]
+    },
+    {
+      "id": 9220,
+      "tags": [
+        "turnStart",
+        "hitPowerUp",
+        "combatStart",
+        "inflictHitDamageUp",
+        "middleFinger",
+        "4Faction"
+      ]
+    },
+    {
+      "id": 9221,
+      "tags": [
+        "onHit",
+        "inflictLacerationCount",
+        "inflictCombustionCount",
+        "loseCombustionCount",
+        "combustionCount"
+      ]
+    },
+    {
+      "id": 9222,
+      "tags": [
+        "lacerationPotency",
+        "healSp",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9223,
+      "tags": [
+        "ringFinger",
+        "enemyDefeated",
+        "plusCoinPowerUp"
+      ]
+    },
+    {
+      "id": 9224,
+      "tags": [
+        "fusion",
+        "ringFinger",
+        "enemyDefeated",
+        "plusCoinPowerUp",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9225,
+      "tags": [
+        "skill3",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9226,
+      "tags": [
+        "combatStart",
+        "inflictCriticalDamageUp",
+        "onHit",
+        "inflictShield"
+      ]
+    },
+    {
+      "id": 9227,
+      "tags": [
+        "curse",
+        "takeDamageUp",
+        "clashPowerDown"
+      ]
+    },
+    {
+      "id": 9228,
+      "tags": [
+        "bless",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9229,
+      "tags": [
+        "curse",
+        "minSpeedDown",
+        "maxSpeedDown"
+      ]
+    },
+    {
+      "id": 9230,
+      "tags": [
+        "bless",
+        "minSpeedUp",
+        "maxSpeedUp",
+        "finalPowerUp",
+        "inflictBind",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9231,
+      "tags": [
+        "curse",
+        "stagger",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9232,
+      "tags": [
+        "bless",
+        "recoverStagger",
+        "inflictShield",
+        "removeNegativeEffect",
+        "inflictBreathPotency"
+      ]
+    },
+    {
+      "id": 9233,
+      "tags": [
+        "inflictHaste",
+        "offenseLevelUp",
+        "sinkingPotency",
+        "sinkingCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9234,
+      "tags": [
+        "inflictHaste",
+        "inflictAttackPowerUp",
+        "lacerationPotency",
+        "lacerationCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9235,
+      "tags": [
+        "fusion",
+        "inflictHaste",
+        "offenseLevelUp",
+        "clashPowerUp",
+        "dealDamageDown",
+        "ammoGain",
+        "turnStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9236,
+      "tags": [
+        "enemyKilled",
+        "allyKilled",
+        "inflictFragile",
+        "winClash",
+        "inflictLacerationPotency",
+        "inflictLacerationCount"
+      ]
+    },
+    {
+      "id": 9237,
+      "tags": [
+        "teamNumber3",
+        "teamNumber4",
+        "onHit",
+        "dealDamageDown",
+        "stagger",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9238,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9239,
+      "tags": [
+        "fusion",
+        "penetrateSkill",
+        "onHit",
+        "inflictHaste",
+        "inflictPenetrateDamageUp",
+        "enemyDefeated",
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictBind",
+        "defenseLevelDown",
+        "inflictParalyze",
+        "inflictAttackPowerUp",
+        "turnEnd",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9240,
+      "tags": [
+        "teamNumber6",
+        "takeDamageDown",
+        "turnEnd",
+        "inflictCombustionPotency",
+        "takeDamageUp"
+      ]
+    },
+    {
+      "id": 9241,
+      "tags": [
+        "coffee",
+        "teamNumber1",
+        "turnEnd",
+        "healSp",
+        "plusCoinPowerUp"
+      ]
+    },
+    {
+      "id": 9242,
+      "tags": [
+        "cost",
+        "shop",
+        "hidden",
+        "dealDamageDown",
+        "inflictAttackPowerUp"
+      ]
+    },
+    {
+      "id": 9243,
+      "tags": [
+        "combustionCount",
+        "dealDamageDown",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9244,
+      "tags": [
+        "dealDamageDown",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9245,
+      "tags": [
+        "offenseLevelUp",
+        "inflictChargePotency"
+      ]
+    },
+    {
+      "id": 9246,
+      "tags": [
+        "clashPowerUp",
+        "dealDamageDown",
+        "allyKilled",
+        "egoResource",
+        "plusCoinPowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9248,
+      "tags": [
+        "fusion",
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "winClash",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "finalPowerUp",
+        "dealDamageDown",
+        "offenseLevelUp",
+        "offenseLevelDown",
+        "skill1",
+        "skill2",
+        "skill3",
+        "inflictHaste",
+        "basePowerUp",
+        "turnStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9249,
+      "tags": [
+        "fusion",
+        "teamNumber5",
+        "teamNumber6",
+        "healHp",
+        "winClash",
+        "offenseLevelUp",
+        "healHpUp",
+        "dealDamageDown",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9250,
+      "tags": [
+        "teamNumber1"
+      ]
+    },
+    {
+      "id": 9251,
+      "tags": [
+        "winClash",
+        "activateCombustion",
+        "loseCombustionCount",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9252,
+      "tags": [
+        "basePowerUp",
+        "finalPowerUp",
+        "inflictLacerationPotency",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9253,
+      "tags": [
+        "turnStart",
+        "finalPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9254,
+      "tags": [
+        "vibrationCount",
+        "dealDamageDown",
+        "inflictVibrationCount",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9255,
+      "tags": [
+        "vibrationCount",
+        "winClash",
+        "vibrationScorch",
+        "vibrationHemorrhage",
+        "vibrationEverlasting",
+        "vibrationDecay",
+        "vibrationChain"
+      ]
+    },
+    {
+      "id": 9256,
+      "tags": [
+        "hidden",
+        "coinPowerUp",
+        "finalPowerUp",
+        "teamNumber1",
+        "clashPowerUp",
+        "inflictVibrationPotency",
+        "inflictCombustionPotency",
+        "vibrationScorch",
+        "loseVibrationCount",
+        "stagger",
+        "dealDamageDown",
+        "critical"
+      ]
+    },
+    {
+      "id": 9257,
+      "tags": [
+        "hidden",
+        "coinPowerUp",
+        "finalPowerUp",
+        "clashPowerUp",
+        "dealDamageDown",
+        "takeDamageDown",
+        "indexFinger"
+      ]
+    },
+    {
+      "id": 9258,
+      "tags": [
+        "hidden",
+        "coinPowerUp",
+        "finalPowerUp",
+        "middleFinger",
+        "inflictShield",
+        "healHp",
+        "combatStart",
+        "offenseLevelUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9259,
+      "tags": [
+        "hidden",
+        "coinPowerUp",
+        "finalPowerUp",
+        "ringFinger",
+        "clashPowerUp",
+        "dealDamageDown",
+        "basePowerUp"
+      ]
+    },
+    {
+      "id": 9260,
+      "tags": [
+        "ringFinger",
+        "dealDamageDown",
+        "lacerationPotency",
+        "lacerationCount"
+      ]
+    },
+    {
+      "id": 9261,
+      "tags": [
+        "ringFinger",
+        "sinkingPotency",
+        "dealDamageDown",
+        "lacerationPotency",
+        "lacerationCount",
+        "inflictAttackPowerUp"
+      ]
+    },
+    {
+      "id": 9262,
+      "tags": [
+        "ringFinger",
+        "attackResistance",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9263,
+      "tags": [
+        "ringFinger",
+        "turnStart",
+        "dealDamageDown",
+        "lacerationPotency",
+        "coinPowerUp"
+      ]
+    },
+    {
+      "id": 9264,
+      "tags": [
+        "ringFinger",
+        "turnStart",
+        "dealDamageDown",
+        "lacerationPotency",
+        "coinPowerUp",
+        "sinkingPotency",
+        "hitPowerUp"
+      ]
+    },
+    {
+      "id": 9265,
+      "tags": [
+        "middleFinger",
+        "hitResistance"
+      ]
+    },
+    {
+      "id": 9266,
+      "tags": [
+        "egoResource",
+        "critical"
+      ]
+    },
+    {
+      "id": 9267,
+      "tags": [
+        "combustionCount",
+        "inflictCombustionPotency",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9268,
+      "tags": [
+        "turnEnd",
+        "ringFinger",
+        "inflictDamageUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9269,
+      "tags": [
+        "middleFinger",
+        "onHit",
+        "healHp",
+        "healSp"
+      ]
+    },
+    {
+      "id": 9270,
+      "tags": [
+        "middleFinger",
+        "takeHit",
+        "inflictLacerationCount",
+        "offenseLevelUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "onHit",
+        "healHp",
+        "healSp",
+        "plusCoinPowerUp"
+      ]
+    },
+    {
+      "id": 9271,
+      "tags": [
+        "minSpeedUp",
+        "clashPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9272,
+      "tags": [
+        "minSpeedUp",
+        "clashPowerUp",
+        "dealDamageDown",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "inflictHaste",
+        "focusedEncounters",
+        "takeDamageDown"
+      ]
+    },
+    {
+      "id": 9273,
+      "tags": [
+        "allyKilled",
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "thumb",
+        "indexFinger",
+        "middleFinger",
+        "ringFinger",
+        "pinkyFinger",
+        "teamNumber1",
+        "recoverStagger",
+        "inflictShield",
+        "finalPowerUp",
+        "coinPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9403,
+      "tags": [
+        "keywordTrigger",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "turnEnd",
+        "inflictBind"
+      ]
+    },
+    {
+      "id": 9404,
+      "tags": [
+        "onHit",
+        "lacerationPotency",
+        "lacerationCount",
+        "inflictLacerationCount"
+      ]
+    },
+    {
+      "id": 9407,
+      "tags": [
+        "teamNumber3",
+        "inflictVibrationCount",
+        "turnStart",
+        "inflictProtection",
+        "inflictDamageUp",
+        "inflictPowerUp"
+      ]
+    },
+    {
+      "id": 9408,
+      "tags": [
+        "teamNumber2",
+        "inflictSinkingCount",
+        "turnStart",
+        "inflictProtection",
+        "inflictDamageUp",
+        "inflictPowerUp"
+      ]
+    },
+    {
+      "id": 9409,
+      "tags": [
+        "turnStart",
+        "inflictSinkingPotency",
+        "winClash",
+        "takeHit"
+      ]
+    },
+    {
+      "id": 9410,
+      "tags": [
+        "fusion",
+        "keywordTrigger",
+        "inflictSinkingPotency",
+        "inflictSinkingCount",
+        "clashPowerDown",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9413,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "winClash",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "finalPowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9414,
+      "tags": [
+        "turnEnd",
+        "inflictHaste",
+        "inflictBind",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9415,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9416,
+      "tags": [
+        "fusion",
+        "lacerationPotency",
+        "lacerationCount",
+        "winClash",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "finalPowerUp",
+        "dealDamageDown",
+        "inflictDamageUp",
+        "coinPowerUp",
+        "coinPowerDown",
+        "turnStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9419,
+      "tags": [
+        "skill1",
+        "skill2",
+        "skill3",
+        "inflictHaste",
+        "basePowerUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9420,
+      "tags": [
+        "turnStart",
+        "sameFaction",
+        "offenseLevelUp",
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9423,
+      "tags": [
+        "clashPowerUp",
+        "winClash",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9424,
+      "tags": [
+        "fusion",
+        "teamNumber1",
+        "teamNumber2",
+        "winClash",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "finalPowerUp",
+        "dealDamageDown",
+        "offenseLevelUp",
+        "offenseLevelDown",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9427,
+      "tags": [
+        "teamNumber6",
+        "turnEnd",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9428,
+      "tags": [
+        "inflictBreathPotency",
+        "critical",
+        "penetratePowerUp",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9429,
+      "tags": [
+        "turnEnd",
+        "inflictHaste",
+        "offenseLevelUp",
+        "inflictDamageUp",
+        "maxSpeedUp"
+      ]
+    },
+    {
+      "id": 9430,
+      "tags": [
+        "fusion",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "turnEnd",
+        "inflictHaste",
+        "offenseLevelUp",
+        "inflictDamageUp",
+        "powerUp",
+        "maxSpeedUp",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9431,
+      "tags": [
+        "teamNumber5",
+        "teamNumber6",
+        "winClash",
+        "offenseLevelUp",
+        "healHpUp"
+      ]
+    },
+    {
+      "id": 9432,
+      "tags": [
+        "stagger",
+        "recoverStagger",
+        "inflictSinkingPotency",
+        "inflictSinkingCount",
+        "enemyDefeated"
+      ]
+    },
+    {
+      "id": 9433,
+      "tags": [
+        "inflictBind",
+        "winClash",
+        "healSp",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9434,
+      "tags": [
+        "inflictBind",
+        "defenseLevelDown",
+        "stagger",
+        "vibrationCount",
+        "inflictVibrationPotency",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9435,
+      "tags": [
+        "turnStart",
+        "stagger",
+        "inflictBind",
+        "onHit",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9436,
+      "tags": [
+        "regularEncounters",
+        "sinkingPotency",
+        "sinkingCount"
+      ]
+    },
+    {
+      "id": 9437,
+      "tags": [
+        "onHit",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9438,
+      "tags": [
+        "enemyDefeated",
+        "healSp",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9439,
+      "tags": [
+        "allyKilled",
+        "skill1",
+        "skill2",
+        "egoResource",
+        "enemyKilled"
+      ]
+    },
+    {
+      "id": 9440,
+      "tags": [
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "activateLaceration",
+        "loseLacerationCount",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9701,
+      "tags": [
+        "inflictCombustionCount"
+      ]
+    },
+    {
+      "id": 9702,
+      "tags": [
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9703,
+      "tags": [
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9704,
+      "tags": [
+        "inflictLacerationPotency"
+      ]
+    },
+    {
+      "id": 9705,
+      "tags": [
+        "fixedDamage"
+      ]
+    },
+    {
+      "id": 9706,
+      "tags": [
+        "dealDamageDown",
+        "inflictVibrationPotency",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9707,
+      "tags": [
+        "takeHit",
+        "fixedDamage"
+      ]
+    },
+    {
+      "id": 9708,
+      "tags": [
+        "dealDamageDown",
+        "stagger",
+        "healHp",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9709,
+      "tags": [
+        "turnEnd",
+        "inflictBreathPotency"
+      ]
+    },
+    {
+      "id": 9710,
+      "tags": [
+        "turnStart",
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "inflictProtection"
+      ]
+    },
+    {
+      "id": 9711,
+      "tags": [
+        "dealDamageDown",
+        "healSp",
+        "inflictParalyze",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9712,
+      "tags": [
+        "egoResource",
+        "4Faction"
+      ]
+    },
+    {
+      "id": 9713,
+      "tags": [
+        "turnStart",
+        "slashPowerUp"
+      ]
+    },
+    {
+      "id": 9714,
+      "tags": [
+        "lacerationPotency",
+        "inflictLacerationCount",
+        "inflictLacerationPotency"
+      ]
+    },
+    {
+      "id": 9715,
+      "tags": [
+        "critical"
+      ]
+    },
+    {
+      "id": 9716,
+      "tags": [
+        "slashResistance"
+      ]
+    },
+    {
+      "id": 9717,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "slashPowerUp",
+        "dealDamageDown",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9718,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "slashPowerUp",
+        "dealDamageDown",
+        "critical",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9719,
+      "tags": [
+        "turnStart",
+        "dealDamageDown",
+        "critical",
+        "dealCriticalDamageUp"
+      ]
+    },
+    {
+      "id": 9720,
+      "tags": [
+        "turnStart",
+        "dealDamageDown",
+        "coinPowerUp",
+        "finalPowerDown"
+      ]
+    },
+    {
+      "id": 9721,
+      "tags": [
+        "vibrationCount",
+        "dealDamageDown",
+        "inflictVibrationCount"
+      ]
+    },
+    {
+      "id": 9722,
+      "tags": [
+        "clashPowerUp",
+        "inflictVibrationPotency",
+        "inflictVibrationCount"
+      ]
+    },
+    {
+      "id": 9723,
+      "tags": [
+        "turnEnd",
+        "inflictBind",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9724,
+      "tags": [
+        "inflictVibrationPotency",
+        "dealDamageDown",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9725,
+      "tags": [
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "takeDamageDown",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9726,
+      "tags": [
+        "vibrationCount",
+        "winClash",
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "clashPowerUp",
+        "dealDamageDown",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9727,
+      "tags": [
+        "dealDamageDown",
+        "turnEnd",
+        "inflictBind",
+        "inflictPowerDown"
+      ]
+    },
+    {
+      "id": 9728,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "defenseLevelDown",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9729,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "defenseLevelDown",
+        "inflictVibrationPotency",
+        "inflictVibrationCount",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9730,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "inflictVibrationCount",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9731,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "vibrationCount",
+        "skill3",
+        "coinPowerUp",
+        "basePowerUp",
+        "dealDamageDown",
+        "clashPowerUp",
+        "offenseLevelUp",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9732,
+      "tags": [
+        "turnEnd",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9733,
+      "tags": [
+        "healHp",
+        "egoSkill",
+        "healHpUp"
+      ]
+    },
+    {
+      "id": 9734,
+      "tags": [
+        "skill1",
+        "clashPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9735,
+      "tags": [
+        "skill1",
+        "clashPowerUp",
+        "inflictChargeBarrier",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9736,
+      "tags": [
+        "offenseLevelUp",
+        "turnEnd",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9737,
+      "tags": [
+        "inflictShield",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9738,
+      "tags": [
+        "inflictHaste",
+        "inflictChargeCount"
+      ]
+    },
+    {
+      "id": 9739,
+      "tags": [
+        "turnEnd",
+        "loseLacerationPotency",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9740,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "coinPowerUp",
+        "dealDamageDown",
+        "basePowerUp",
+        "turnEnd",
+        "inflictHaste",
+        "inflictDamageUp",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9741,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "coinPowerUp",
+        "dealDamageDown",
+        "basePowerUp",
+        "clashPowerUp",
+        "inflictChargeCount",
+        "loseChargeCount",
+        "winClash",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9742,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "coinPowerUp",
+        "dealDamageDown",
+        "basePowerUp",
+        "clashPowerUp",
+        "offenseLevelUp",
+        "healHp",
+        "inflictProtection",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9743,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "coinPowerUp",
+        "dealDamageDown",
+        "basePowerUp",
+        "skill3",
+        "useChargeCount",
+        "fixedDamage",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9744,
+      "tags": [
+        "lacerationPotency",
+        "inflictLacerationCount",
+        "dealDamageDown",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9745,
+      "tags": [
+        "useChargeCount",
+        "dealDamageDown",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9746,
+      "tags": [
+        "sinkingPotency",
+        "sinkingCount",
+        "inflictSinkingPotency",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9747,
+      "tags": [
+        "sinkingCount",
+        "inflictSinkingCount",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9748,
+      "tags": [
+        "winClash",
+        "healSp",
+        "offenseLevelUp",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9749,
+      "tags": [
+        "turnStart",
+        "healSp",
+        "clashPowerUp",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9750,
+      "tags": [
+        "dealDamageDown",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9751,
+      "tags": [
+        "turnStart",
+        "defenseLevelUp",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9752,
+      "tags": [
+        "onHit",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9753,
+      "tags": [
+        "inflictDamageUp",
+        "inflictProtection",
+        "offenseLevelUp",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9754,
+      "tags": [
+        "maxHpUp"
+      ]
+    },
+    {
+      "id": 9755,
+      "tags": [
+        "teamNumber1",
+        "teamNumber6",
+        "dealDamageDown",
+        "fixedDamage",
+        "combatStart"
+      ]
+    },
+    {
+      "id": 9756,
+      "tags": [
+        "healHp",
+        "allyKilled"
+      ]
+    },
+    {
+      "id": 9757,
+      "tags": [
+        "takeHit",
+        "inflictParalyze"
+      ]
+    },
+    {
+      "id": 9758,
+      "tags": [
+        "substitute",
+        "healSp",
+        "clashPowerUp",
+        "skill1",
+        "skill2",
+        "skill3",
+        "egoResource",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9759,
+      "tags": [
+        "teamNumber7",
+        "inflictVibrationCount",
+        "stagger"
+      ]
+    },
+    {
+      "id": 9760,
+      "tags": [
+        "teamNumber1",
+        "stagger",
+        "offenseLevelDown",
+        "defenseLevelDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9761,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber7",
+        "teamNumber8",
+        "inflictVibrationCount",
+        "stagger",
+        "offenseLevelDown",
+        "defenseLevelDown",
+        "onHit",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9762,
+      "tags": [
+        "onHit",
+        "inflictCombustionPotency",
+        "inflictLacerationPotency",
+        "inflictVibrationPotency",
+        "inflictBurstPotency",
+        "inflictSinkingPotency",
+        "enemyDefeated",
+        "inflictBreathCount",
+        "inflictChargeCount",
+        "inflictHaste",
+        "offenseLevelUp",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9763,
+      "tags": [
+        "turnStart",
+        "inflictDamageUp",
+        "inflictFragile"
+      ]
+    },
+    {
+      "id": 9764,
+      "tags": [
+        "fusion",
+        "onHit",
+        "inflictCombustionPotency",
+        "inflictLacerationPotency",
+        "inflictVibrationPotency",
+        "inflictBurstPotency",
+        "inflictSinkingPotency",
+        "enemyDefeated",
+        "inflictBreathCount",
+        "inflictChargeCount",
+        "inflictHaste",
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "turnStart",
+        "inflictDamageUp",
+        "inflictFragile",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9765,
+      "tags": [
+        "fusion",
+        "turnEnd",
+        "inflictBreathPotency",
+        "turnStart",
+        "inflictBreathCount",
+        "inflictProtection",
+        "dealDamageDown",
+        "stagger",
+        "healSp",
+        "inflictParalyze",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9766,
+      "tags": [
+        "attackResistance",
+        "slashResistance",
+        "penetrateResistance",
+        "hitResistance",
+        "healSp",
+        "egoResource"
+      ]
+    },
+    {
+      "id": 9767,
+      "tags": [
+        "teamNumber1",
+        "inflictAttackPowerUp",
+        "inflictFragile",
+        "defenseLevelDown",
+        "inflictBreathPotency",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9768,
+      "tags": [
+        "penetrateResistance"
+      ]
+    },
+    {
+      "id": 9769,
+      "tags": [
+        "turnEnd",
+        "turnStart",
+        "inflictDamageUp",
+        "substitute"
+      ]
+    },
+    {
+      "id": 9770,
+      "tags": [
+        "turnStart",
+        "defenseLevelUp",
+        "dealDamageDown",
+        "critical",
+        "dealCriticalDamageUp"
+      ]
+    },
+    {
+      "id": 9771,
+      "tags": [
+        "skill3",
+        "dealDamageDown",
+        "inflictBreathPotency",
+        "inflictBreathCount"
+      ]
+    },
+    {
+      "id": 9772,
+      "tags": [
+        "winClash",
+        "inflictCombustionPotency",
+        "combustionCount",
+        "inflictCombustionCount",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9773,
+      "tags": [
+        "winClash",
+        "inflictBurstCount",
+        "onHit",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9774,
+      "tags": [
+        "combustionCount",
+        "dealDamageDown",
+        "inflictCombustionCount",
+        "onHit",
+        "defenseLevelDown",
+        "turnStart",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9775,
+      "tags": [
+        "inflictBurstCount",
+        "clashPowerUp",
+        "dealDamageDown",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9776,
+      "tags": [
+        "keywordTrigger",
+        "turnStart",
+        "inflictCombustionCount",
+        "activateCombustion",
+        "loseCombustionCount"
+      ]
+    },
+    {
+      "id": 9777,
+      "tags": [
+        "offenseLevelDown",
+        "enemyDefeated",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9778,
+      "tags": [
+        "skill2",
+        "offenseLevelUp",
+        "dealDamageDown",
+        "skill3",
+        "4Faction",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9779,
+      "tags": [
+        "allyKilled",
+        "offenseLevelUp",
+        "turnStart",
+        "healSp"
+      ]
+    },
+    {
+      "id": 9780,
+      "tags": [
+        "fusion",
+        "skill2",
+        "offenseLevelUp",
+        "dealDamageDown",
+        "skill3",
+        "allyKilled",
+        "turnStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9781,
+      "tags": [
+        "inflictProtection",
+        "healSp",
+        "coinPowerUp",
+        "dealDamageDown",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9782,
+      "tags": [
+        "turnStart",
+        "powerUp",
+        "slashPowerUp"
+      ]
+    },
+    {
+      "id": 9783,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "slashPowerUp",
+        "coinPowerUp",
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "dealDamageDown",
+        "stagger",
+        "inflictProtection",
+        "inflictHaste",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9784,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "slashPowerUp",
+        "dealDamageDown",
+        "critical",
+        "turnEnd",
+        "inflictSlashDamageUp",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9785,
+      "tags": [
+        "turnStart",
+        "dealDamageDown",
+        "inflictSlashDamageUp",
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "allyKilled",
+        "inflictDamageUp",
+        "onHit",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9786,
+      "tags": [
+        "clashPowerUp",
+        "middleFinger",
+        "coinPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9787,
+      "tags": [
+        "enemyDefeated",
+        "inflictBurstPotency",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9788,
+      "tags": [
+        "inflictBurstPotency",
+        "inflictBurstCount"
+      ]
+    },
+    {
+      "id": 9789,
+      "tags": [
+        "sameFaction",
+        "takeHit",
+        "dealDamageDown",
+        "middleFinger",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9790,
+      "tags": [
+        "clashPowerUp",
+        "fixedDamage"
+      ]
+    },
+    {
+      "id": 9791,
+      "tags": [
+        "inflictHaste",
+        "focusedEncounters",
+        "dealDamageDown",
+        "takeDamageDown",
+        "turnEnd"
+      ]
+    },
+    {
+      "id": 9792,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "middleFinger",
+        "sameFaction",
+        "dealDamageDown",
+        "offenseLevelUp",
+        "basePowerUp",
+        "coinPowerUp",
+        "minSpeedUp",
+        "maxSpeedUp",
+        "takeHit",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9793,
+      "tags": [
+        "fusion",
+        "turnStart",
+        "enemyDefeated",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "clashPowerUp",
+        "coinPowerUp",
+        "fixedDamage",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9794,
+      "tags": [
+        "teamNumber2",
+        "teamNumber4",
+        "takeHit",
+        "healHp"
+      ]
+    },
+    {
+      "id": 9795,
+      "tags": [
+        "turnStart",
+        "combatStart",
+        "lacerationPotency",
+        "loseLacerationPotency",
+        "inflictPowerUp",
+        "inflictDamageUp"
+      ]
+    },
+    {
+      "id": 9796,
+      "tags": [
+        "teamNumber5",
+        "winClash",
+        "focusedEncounters",
+        "dealCriticalDamageUp"
+      ]
+    },
+    {
+      "id": 9797,
+      "tags": [
+        "turnStart",
+        "inflictDamageUp",
+        "inflictFragile"
+      ]
+    },
+    {
+      "id": 9798,
+      "tags": [
+        "inflictLacerationCount",
+        "defenseLevelDown",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9799,
+      "tags": [
+        "EX",
+        "shop"
+      ]
+    },
+    {
+      "id": 9800,
+      "tags": [
+        "EX",
+        "cost",
+        "shop",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9801,
+      "tags": [
+        "turnStart",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9802,
+      "tags": [
+        "inflictBurstPotency",
+        "inflictChargeCount",
+        "inflictBurstCount",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9803,
+      "tags": [
+        "keywordTrigger",
+        "turnStart",
+        "inflictBurstPotency",
+        "inflictBurstCount",
+        "inflictBreathCount",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9804,
+      "tags": [
+        "inflictBreathPotency",
+        "inflictBreathCount",
+        "dealCriticalDamageUp",
+        "removeNegativeEffect",
+        "onHit"
+      ]
+    },
+    {
+      "id": 9805,
+      "tags": [
+        "teamNumber1",
+        "inflictProtection",
+        "attackResistance",
+        "slashResistance",
+        "penetrateResistance",
+        "hitResistance",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9806,
+      "tags": [
+        "takeHit",
+        "inflictSinkingPotency",
+        "allyKilled",
+        "inflictAttackPowerUp",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9807,
+      "tags": [
+        "onHit",
+        "sinkingPotency",
+        "fixedDamage",
+        "sinkingCount",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9808,
+      "tags": [
+        "onHit",
+        "healSp",
+        "healHp",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9809,
+      "tags": [
+        "offenseLevelUp",
+        "inflictAttackPowerUp",
+        "inflictFragile",
+        "turnEnd",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9810,
+      "tags": [
+        "coffee"
+      ]
+    },
+    {
+      "id": 9811,
+      "tags": [
+        "allyKilled",
+        "egoResource",
+        "substitute",
+        "healSp",
+        "combatStart",
+        "coffee"
+      ]
+    },
+    {
+      "id": 9813,
+      "tags": [
+        "teamNumber1",
+        "teamNumber2",
+        "teamNumber3",
+        "healHp",
+        "recoverStagger",
+        "inflictFragile",
+        "dealDamageDown",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9814,
+      "tags": [
+        "vibrationCount",
+        "vibrationDistribution",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9816,
+      "tags": [
+        "teamNumber1",
+        "vibrationCount",
+        "maxSpeedUp",
+        "minSpeedUp",
+        "basePowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9817,
+      "tags": [
+        "finalPowerDown",
+        "sinkingPotency",
+        "sinkingCount",
+        "defenseLevelDown"
+      ]
+    },
+    {
+      "id": 9818,
+      "tags": [
+        "attackResistance",
+        "slashResistance",
+        "penetrateResistance",
+        "hitResistance"
+      ]
+    },
+    {
+      "id": 9819,
+      "tags": [
+        "inflictCombustionPotency",
+        "healSp",
+        "maxHpDown",
+        "takeDamageDown"
+      ]
+    },
+    {
+      "id": 9820,
+      "tags": [
+        "turnStart",
+        "inflictShield",
+        "winClash",
+        "inflictVibrationPotency",
+        "inflictHaste",
+        "defenseLevelUp"
+      ]
+    },
+    {
+      "id": 9821,
+      "tags": [
+        "teamNumber1",
+        "focusedEncounters",
+        "onHit",
+        "offenseLevelUp",
+        "slashPowerUp",
+        "inflictSlashDamageUp",
+        "inflictPowerUp"
+      ]
+    },
+    {
+      "id": 9822,
+      "tags": [
+        "teamNumber6",
+        "winClash",
+        "defenseLevelUp",
+        "inflictHaste"
+      ]
+    },
+    {
+      "id": 9823,
+      "tags": [
+        "teamNumber6",
+        "winClash",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9824,
+      "tags": [
+        "teamNumber6",
+        "winClash",
+        "healHp",
+        "inflictProtection"
+      ]
+    },
+    {
+      "id": 9825,
+      "tags": [
+        "fusion",
+        "teamNumber6",
+        "winClash",
+        "healHp",
+        "offenseLevelUp",
+        "defenseLevelUp",
+        "inflictHaste",
+        "inflictProtection",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9826,
+      "tags": [
+        "teamNumber2",
+        "teamNumber4",
+        "teamNumber6",
+        "dealDamageDown",
+        "liquor"
+      ]
+    },
+    {
+      "id": 9827,
+      "tags": [
+        "lacerationPotency",
+        "lacerationCount",
+        "healHp",
+        "inflictPowerUp",
+        "offenseLevelUp"
+      ]
+    },
+    {
+      "id": 9828,
+      "tags": [
+        "teamNumber1",
+        "inflictHaste",
+        "loseVibrationCount",
+        "winClash",
+        "coinPowerUp",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9829,
+      "tags": [
+        "coinPowerUp",
+        "middleFinger",
+        "takeHit",
+        "inflictAttackPowerUp",
+        "combatStart",
+        "inflictPowerUp",
+        "inflictProtection",
+        "takeDamageDown",
+        "inflictHitDamageUp"
+      ]
+    },
+    {
+      "id": 9830,
+      "tags": [
+        "substitute",
+        "healHp",
+        "healSp",
+        "maxHpUp",
+        "offenseLevelUp",
+        "inflictDamageUp",
+        "turnStart"
+      ]
+    },
+    {
+      "id": 9840,
+      "tags": [
+        "stagger",
+        "inflictChargeBarrier"
+      ]
+    },
+    {
+      "id": 9841,
+      "tags": [
+        "fusion",
+        "stagger",
+        "inflictChargeBarrier",
+        "dealDamageDown",
+        "skill1",
+        "clashPowerUp",
+        "inflictChargeCount",
+        "skill2",
+        "skill3",
+        "plusCoinPowerUp",
+        "turnStart",
+        "themePackExclusive"
+      ]
+    },
+    {
+      "id": 9842,
+      "tags": [
+        "inflictLacerationPotency",
+        "inflictLacerationCount",
+        "takeDamageDown",
+        "dealDamageDown"
+      ]
+    },
+    {
+      "id": 9843,
+      "tags": [
+        "clashPowerUp"
+      ]
+    },
+    {
+      "id": 9991,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9992,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9993,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9994,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    },
+    {
+      "id": 9995,
+      "tags": [
+        "shop",
+        "cost"
+      ]
+    }
+  ]
+}

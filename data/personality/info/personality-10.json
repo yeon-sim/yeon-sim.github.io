@@ -8,8 +8,13 @@
         "BASE_APPEARANCE",
         "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Burst" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -109,9 +114,17 @@
       "id": 11002,
       "updatedDate": 20230227,
       "appearance": "11002_Sinclair_SwordGroupAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLADE_LINEAGE" ],
-      "skillKeywordList": [ "Breath", "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLADE_LINEAGE"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Laceration"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -210,9 +223,16 @@
       "id": 11003,
       "updatedDate": 20230227,
       "appearance": "11003_Sinclair_ZweiAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "ZWEI" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "ZWEI"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -311,9 +331,18 @@
       "id": 11004,
       "updatedDate": 20230227,
       "appearance": "11004_Sinclair_MexicanAppearance",
-      "unitKeywordList": [ "CLAN", "BACK_STREET", "SMALL" ],
-      "associationList": [ "MARIACHI" ],
-      "skillKeywordList": [ "Breath", "Sinking" ],
+      "unitKeywordList": [
+        "CLAN",
+        "BACK_STREET",
+        "SMALL"
+      ],
+      "associationList": [
+        "MARIACHI"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Sinking"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 1,
@@ -411,9 +440,17 @@
       "id": 11005,
       "updatedDate": 20230504,
       "appearance": "11005_Sinclair_NCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "N_CORP", "N_CORP_FNATIC" ],
-      "skillKeywordList": [ "Laceration", "Combustion" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "N_CORP",
+        "N_CORP_FNATIC"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Combustion"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 1,
@@ -513,9 +550,16 @@
       "id": 11006,
       "updatedDate": 20230629,
       "appearance": "11006_Sinclair_TalismanAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "ATL" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "ATL"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 2,
@@ -614,9 +658,16 @@
       "id": 11007,
       "updatedDate": 20230727,
       "appearance": "11007_Sinclair_WorkshopWorkerAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "MOLAR" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "MOLAR"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 2,
@@ -717,9 +768,16 @@
       "id": 11008,
       "updatedDate": 20231221,
       "appearance": "11008_Sinclair_CinqAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "CINQ" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "CINQ"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -818,9 +876,16 @@
       "id": 11009,
       "updatedDate": 20240502,
       "appearance": "11009_Sinclair_PhilipAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DAWN" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DAWN"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "unitScriptID": "11009",
@@ -929,9 +994,16 @@
       "id": 11010,
       "updatedDate": 20241010,
       "appearance": "11010_Sinclair_Zwei_WestAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "ZWEI" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "ZWEI"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 5,
@@ -1029,10 +1101,17 @@
       "id": 11011,
       "updatedDate": 20241128,
       "appearance": "11011_Sinclair_DevyatAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DEVYAT" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DEVYAT"
+      ],
       "unitScriptID": 11011,
-      "skillKeywordList": [ "Burst" ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -1145,9 +1224,16 @@
       "updatedDate": 20250403,
       "appearance": "11012_Sinclair_MiddleAppearance",
       "unitScriptID": "11012",
-      "unitKeywordList": [ "FINGER", "SMALL" ],
-      "associationList": [ "MIDDLE_FINGER" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "FINGER",
+        "SMALL"
+      ],
+      "associationList": [
+        "MIDDLE_FINGER"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 0,
@@ -1259,9 +1345,19 @@
       "id": 11013,
       "updatedDate": 20250619,
       "appearance": "11013_Sinclair_Thumb_SoldatoAppearance",
-      "unitKeywordList": [ "SMALL", "FINGER", "THUMB_LEVEL_SOLDATO_TWO" ],
-      "associationList": [ "THUMB_FINGER" ],
-      "skillKeywordList": [ "Combustion", "Vibration" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FINGER",
+        "THUMB_LEVEL_SOLDATO_TWO"
+      ],
+      "associationList": [
+        "THUMB_FINGER"
+      ],
+      "skillKeywordList": [
+        "Combustion",
+        "Vibration",
+        "Bullet"
+      ],
       "characterId": 10,
       "unitScriptID": "11013",
       "panicType": 9999,
@@ -1373,9 +1469,18 @@
       "id": 11014,
       "updatedDate": 20250828,
       "appearance": "11014_Sinclair_Heishou_YouAppearance",
-      "unitKeywordList": [ "SMALL", "BLACK_BEAST" ],
-      "associationList": [ "BLACK_BEAST_CHICKEN","H_CORP" ],
-      "skillKeywordList": [ "Burst", "Combustion" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLACK_BEAST"
+      ],
+      "associationList": [
+        "BLACK_BEAST_CHICKEN",
+        "H_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Combustion"
+      ],
       "characterId": 10,
       "panicType": 9999,
       "season": 6,
@@ -1476,10 +1581,18 @@
       "id": 11015,
       "updatedDate": 20260205,
       "appearance": "11015_Sinclair_PinkyFinger_DiscipleAppearance",
-      "unitKeywordList": [ "SMALL", "SPIDER_HOUSE_DISCIPLE" ],
-      "associationList": [ "SPIDER_HOUSE" ],
-      "skillKeywordList": [ "Breath", "Laceration" ],
-      "unitScriptID" : "11015",
+      "unitKeywordList": [
+        "SMALL",
+        "SPIDER_HOUSE_DISCIPLE"
+      ],
+      "associationList": [
+        "SPIDER_HOUSE"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Laceration"
+      ],
+      "unitScriptID": "11015",
       "characterId": 10,
       "panicType": 9999,
       "season": 7,

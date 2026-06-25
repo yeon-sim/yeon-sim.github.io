@@ -1,0 +1,129 @@
+{{- /* egogifts.json 대체: 분산 소스(ego-gift 데이터·KR_EGOgift·tag·fusion·floor_data·override)를
+       빌드타임에 조립해 egogifts.json 동등 구조의 기프트 slice 를 반환.
+       검증 기준점: scripts/egogift-assembled-ref.json (node scripts/egogift-assemble-check.mjs). */ -}}
+
+{{- /* 1) 언어: localizeID(string) -> {name,desc} (KR_EGOgift* 만, base는 localizeID=id) */ -}}
+{{- $lang := newScratch -}}
+{{- range $f, $d := site.Data.lang.kr.egogift -}}
+  {{- if hasPrefix $f "KR_EGOgift" -}}
+    {{- range $d.dataList -}}
+      {{- $k := string .id -}}
+      {{- if not ($lang.Get $k) -}}{{- $lang.Set $k . -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 2) 태그 id -> 한글명 (KR_Tags) */ -}}
+{{- $tagName := newScratch -}}
+{{- range site.Data.lang.kr.egogift.KR_Tags -}}{{- $tagName.Set .id .name -}}{{- end -}}
+
+{{- /* 3) 기프트 id -> [태그명] (경량화 152종, id→name) */ -}}
+{{- $tags := newScratch -}}
+{{- range site.Data.egogift.tag.dataList -}}
+  {{- $ns := slice -}}
+  {{- range .tags -}}{{- with $tagName.Get . -}}{{- $ns = $ns | append . -}}{{- end -}}{{- end -}}
+  {{- $tags.Set (string .id) $ns -}}
+{{- end -}}
+
+{{- /* 4) base 레코드: id -> record (last-wins dedup; 원본 9754 중복 흡수) + 고유 id 목록 */ -}}
+{{- $rec := newScratch -}}
+{{- $ids := slice -}}
+{{- range $f, $d := site.Data.egogift -}}
+  {{- if hasPrefix $f "ego-gift" -}}
+    {{- range $d.list -}}{{- $rec.Set (string .id) . -}}{{- $ids = $ids | append .id -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $ids = $ids | uniq -}}
+
+{{- /* 5) fusion: result -> 평탄 재료, recipe 카운트, recipe 목록 */ -}}
+{{- $resultMats := newScratch -}}
+{{- $recipeCount := newScratch -}}
+{{- $recipes := slice -}}
+{{- range site.Data.egogift.fusion.dataList -}}
+  {{- $r := string .result -}}
+  {{- $recipeCount.Set $r (add (int ($recipeCount.Get $r | default 0)) 1) -}}
+  {{- $cur := $resultMats.Get $r | default slice -}}
+  {{- range .materials -}}{{- $cur = $cur | append . -}}{{- end -}}
+  {{- $resultMats.Set $r ($cur | uniq) -}}
+  {{- $recipes = $recipes | append (dict "result" .result "mats" .materials) -}}
+{{- end -}}
+
+{{- /* 6) specInv: 기프트 id -> [테마 id] (floor specificEgoGiftPool 역매핑; floor 오버라이드 반영됨) */ -}}
+{{- $specInv := newScratch -}}
+{{- range $f, $d := site.Data.floor_data -}}
+  {{- range $d.list -}}
+    {{- $t := .id -}}
+    {{- range .specificEgoGiftPool -}}
+      {{- $k := string . -}}
+      {{- $specInv.Set $k (($specInv.Get $k | default slice) | append $t) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 7) associated: 단일레시피 + 재료공유 + 서로 재료아님 (59/59 검증된 규칙) */ -}}
+{{- $assoc := newScratch -}}
+{{- range $x := $recipes -}}
+  {{- if eq (int ($recipeCount.Get (string $x.result))) 1 -}}
+    {{- $mine := $x.mats -}}
+    {{- $a := slice -}}
+    {{- range $y := $recipes -}}
+      {{- if and (ne $y.result $x.result) (eq (int ($recipeCount.Get (string $y.result))) 1) -}}
+        {{- if and (not (in $mine $y.result)) (not (in $y.mats $x.result)) -}}
+          {{- $shared := false -}}
+          {{- range $y.mats -}}{{- if in $mine . -}}{{- $shared = true -}}{{- end -}}{{- end -}}
+          {{- if $shared -}}{{- $a = $a | append $y.result -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $a -}}{{- $assoc.Set (string $x.result) ($a | uniq | sort) -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 7.5) bless 역매핑: convert 대상 -> 원본 id */ -}}
+{{- $blessOf := newScratch -}}
+{{- range $id := $ids -}}
+  {{- $r := $rec.Get (string $id) -}}
+  {{- with $r.convertDataList -}}{{- $blessOf.Set (string (index . 0)) $id -}}{{- end -}}
+{{- end -}}
+
+{{- /* 8) 조립: 9xxx(4자리) + 언어 name 보유 = 454 */ -}}
+{{- $gifts := slice -}}
+{{- range $id := $ids -}}
+  {{- $L := $lang.Get (string $id) -}}
+  {{- if and (ge $id 9000) (le $id 9999) $L $L.name -}}
+    {{- $r := $rec.Get (string $id) -}}
+    {{- $kw := $r.keyword | default "None" -}}
+    {{- $cat := $r.category | default $kw -}}
+    {{- /* grade: TIER_EX→ex, else TIER_N의 N */ -}}
+    {{- $grade := "" -}}
+    {{- if in $r.tag "TIER_EX" -}}{{- $grade = "ex" -}}
+    {{- else -}}
+      {{- range $r.tag -}}
+        {{- if hasPrefix . "TIER_" -}}{{- $n := strings.TrimPrefix "TIER_" . -}}{{- if findRE "^[0-9]$" $n -}}{{- $grade = $n -}}{{- end -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- /* difficulty: override(hard) ?? UNRECORDABLE→limited ?? normal */ -}}
+    {{- $diff := $r.difficulty -}}
+    {{- if not $diff -}}{{- if in $r.tag "UNRECORDABLE" -}}{{- $diff = "limited" -}}{{- else -}}{{- $diff = "normal" -}}{{- end -}}{{- end -}}
+    {{- /* packs (재귀) */ -}}
+    {{- $packs := partial "egogift/packs.html" (dict "id" $id "resultMats" $resultMats "specInv" $specInv) -}}
+    {{- /* upgrade (level>0): name/desc from lang, category=base, tags=[] */ -}}
+    {{- $ups := slice -}}
+    {{- range $r.upgradeDataList -}}
+      {{- if gt (int .upgradeLevel) 0 -}}
+        {{- $lu := $lang.Get (string .localizeID) -}}
+        {{- if $lu -}}{{- $ups = $ups | append (dict "name" $lu.name "desc" $lu.desc "category" $cat "tags" slice) -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- /* 기프트 dict 조립 */ -}}
+    {{- $g := dict "id" $id "name" $L.name "category" $cat "desc" $L.desc "grade" $grade "tags" ($tags.Get (string $id) | default slice) "difficulty" $diff "packs" $packs -}}
+    {{- if $ups -}}{{- $g = merge $g (dict "upgrade" $ups) -}}{{- end -}}
+    {{- with $r.convertDataList -}}{{- $g = merge $g (dict "curse" (index . 0)) -}}{{- end -}}
+    {{- with $blessOf.Get (string $id) -}}{{- $g = merge $g (dict "bless" .) -}}{{- end -}}
+    {{- with $assoc.Get (string $id) -}}{{- $g = merge $g (dict "associated" .) -}}{{- end -}}
+    {{- if ne $cat $kw -}}{{- $g = merge $g (dict "category_origin" $kw) -}}{{- end -}}
+    {{- $gifts = $gifts | append $g -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $gifts -}}

@@ -1,12 +1,16 @@
 {{ define "main" }}
 
-{{/* 데이터 로드 */}}
-{{ $gifts := where .Site.Data.egogifts.dataList "hide" "ne" true }}
-{{ $categories := where .Site.Data.categories.dataList "hide" "ne" true }}
+{{/* 데이터 로드 — egogifts.json 대신 분산 소스 조립 (partials/egogift/assemble.html) */}}
+{{ $gifts := partial "egogift/assemble.html" . }}
+{{/* 카테고리 — egogift/category.json(id·플래그) + KR_Categories(이름) 조인 */}}
+{{ $catNameMap := dict }}
+{{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ $catNameMap = merge $catNameMap (dict .id .name) }}{{ end }}
+{{ $categories := slice }}
+{{ range where site.Data.egogift.category.dataList "hide" "ne" true }}{{ $categories = $categories | append (merge . (dict "name" (index $catNameMap .id))) }}{{ end }}
 
 {{/* fusion 결과 ID 집합 */}}
 {{ $fusionIds := slice }}
-{{ range .Site.Data.fusion.dataList }}
+{{ range site.Data.egogift.fusion.dataList }}
   {{ $fusionIds = $fusionIds | append (string .result) }}
 {{ end }}
 
@@ -112,8 +116,10 @@
     </div>
   </div>
 
-  {{/* ── 태그 패널 ── */}}
-  {{ $tagCategories := .Site.Data.tag_categories.dataList }}
+  {{/* ── 태그 패널 ── (경량화 id 기반 egogift/tag_categories + KR_Tags 이름 조회) */}}
+  {{ $tagCategories := site.Data.egogift.tag_categories.dataList }}
+  {{ $tagNameMap := dict }}
+  {{ range site.Data.lang.kr.egogift.KR_Tags }}{{ $tagNameMap = merge $tagNameMap (dict .id .name) }}{{ end }}
   <div class="tag-panel" x-cloak x-show="showTagPanel" x-transition>
     <div class="search-input-wrap">
       <input
@@ -132,13 +138,13 @@
       </button>
     </div>
     {{ range $tagCategories }}
-    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ . }}',{{ end }}].some(t => t.startsWith(tagFilter))">
+    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ index $tagNameMap . }}',{{ end }}].some(t => t.startsWith(tagFilter))">
       <div class="tag-category-label">{{ .category }}</div>
       <div class="tag-category-tags">
-        {{ range .tags }}
+        {{ range .tags }}{{ $nm := index $tagNameMap . }}
         <button class="tag-btn"
-          x-show="!tagFilter || '{{ . }}'.startsWith(tagFilter)"
-          @click="search = (search ? search.trimEnd() + ', ' : '') + '#{{ . }}'; showTagPanel = false; tagFilter = ''; onSearch()">#{{ . }}</button>
+          x-show="!tagFilter || '{{ $nm }}'.startsWith(tagFilter)"
+          @click="search = (search ? search.trimEnd() + ', ' : '') + '#{{ $nm }}'; showTagPanel = false; tagFilter = ''; onSearch()">#{{ $nm }}</button>
         {{ end }}
       </div>
     </div>
@@ -1019,7 +1025,7 @@
 {{/* 조합 맵 */}}
 <script>
 const fusionEntries = [
-  {{ range .Site.Data.fusion.dataList }}{ result: "{{ .result }}", materials: [{{ range .materials }}"{{ . }}",{{ end }}] },
+  {{ range site.Data.egogift.fusion.dataList }}{ result: "{{ .result }}", materials: [{{ range .materials }}"{{ . }}",{{ end }}] },
   {{ end }}
 ];
 const comboMap = {};
@@ -1037,13 +1043,16 @@ for (const e of fusionEntries) {
   }
 }
 
+{{/* 테마 데이터 — floor_data 취합(구조·uiConfigs·specificEgoGiftPool). 테마 '이름'은 언어 파일 KR_MirrorDungeonTheme-1 */}}
+{{ $themeList := slice }}
+{{ range $f, $d := site.Data.floor_data }}{{ range $d.list }}{{ $themeList = $themeList | append . }}{{ end }}{{ end }}
 const themeMap = {
-  {{ range .Site.Data.theme.dataList }}"{{ .id }}": "{{ .name }}",
+  {{ range (index site.Data.lang.kr "KR_MirrorDungeonTheme-1").dataList }}"{{ .id }}": "{{ .name }}",
   {{ end }}
 };
 
 const floorMap = {
-  {{ range .Site.Data.theme_floor_data.list }}"{{ .id }}": [{{ range .exceptionConditions }}{ dungeonIdx: {{ .dungeonIdx }}, selectableFloors: [{{ range .selectableFloors }}{{ . }},{{ end }}] },{{ end }}],
+  {{ range $themeList }}"{{ .id }}": [{{ range .exceptionConditions }}{ dungeonIdx: {{ .dungeonIdx }}, selectableFloors: [{{ range .selectableFloors }}{{ . }},{{ end }}] },{{ end }}],
   {{ end }}
 };
 
@@ -1097,7 +1106,7 @@ const packGroups = [];
 }
 
 const spriteMap = {
-  {{ range .Site.Data.theme_floor_data.list }}"{{ .id }}": "{{ .uiConfigs.packSpriteId }}",
+  {{ range $themeList }}"{{ .id }}": "{{ .uiConfigs.packSpriteId }}",
   {{ end }}
 };
 
@@ -1107,32 +1116,32 @@ for (const [packId, spriteId] of Object.entries(spriteMap)) {
 }
 
 const warningMap = {
-  {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.isShowWarning }}"{{ .id }}": true,
+  {{ range $themeList }}{{ if .uiConfigs.isShowWarning }}"{{ .id }}": true,
   {{ end }}{{ end }}
 };
 
 const batonMap = {
-  {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.isShowBaton }}"{{ .id }}": true,
+  {{ range $themeList }}{{ if .uiConfigs.isShowBaton }}"{{ .id }}": true,
   {{ end }}{{ end }}
 };
 
 const bossMap = {
-  {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.bossSpriteId }}"{{ .id }}": "{{ .uiConfigs.bossSpriteId }}",
+  {{ range $themeList }}{{ if .uiConfigs.bossSpriteId }}"{{ .id }}": "{{ .uiConfigs.bossSpriteId }}",
   {{ end }}{{ end }}
 };
 
 const hideLogoMap = {
-  {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.isHideLogo }}"{{ .id }}": true,
+  {{ range $themeList }}{{ if .uiConfigs.isHideLogo }}"{{ .id }}": true,
   {{ end }}{{ end }}
 };
 
 const textColorMap = {
-  {{ range .Site.Data.theme_floor_data.list }}{{ if .uiConfigs.textColor }}"{{ .id }}": {{ if (reflect.IsSlice .uiConfigs.textColor) }}[{{ range .uiConfigs.textColor }}"{{ . }}",{{ end }}]{{ else }}"{{ .uiConfigs.textColor }}"{{ end }},
+  {{ range $themeList }}{{ if .uiConfigs.textColor }}"{{ .id }}": {{ if (reflect.IsSlice .uiConfigs.textColor) }}[{{ range .uiConfigs.textColor }}"{{ . }}",{{ end }}]{{ else }}"{{ .uiConfigs.textColor }}"{{ end }},
   {{ end }}{{ end }}
 };
 
 const specificGiftPoolMap = {
-  {{ range .Site.Data.theme_floor_data.list }}"{{ .id }}": [{{ range .specificEgoGiftPool }}{{ . }},{{ end }}],
+  {{ range $themeList }}"{{ .id }}": [{{ range .specificEgoGiftPool }}{{ . }},{{ end }}],
   {{ end }}
 };
 
@@ -1239,6 +1248,13 @@ const itemTagsMap = {
   {{ end }}
 };
 
+{{/* #검색용 desc 평문 맵 (토큰→한글명, 태그제거, 소문자, 공백제거) — 태그 검색이 desc도, 띄어쓰기 무시로 매칭 */}}
+{{ $kwSD := partialCached "kwmap.html" "kw" }}
+const searchDescMap = {
+  {{ range $gifts }}"{{ .id }}": {{ replace (partial "format-desc-text.html" (dict "desc" .desc "kw" $kwSD) | lower) " " "" | jsonify }},
+  {{ end }}
+};
+
 const itemNameMap = {
   {{ range $gifts }}"{{ .id }}": "{{ .name }}",
   {{ end }}
@@ -1273,10 +1289,10 @@ function checklist() {
     guideModal: false,
     guidePage: 1,
     sponsorModal: false,
-    guidePages: [{{ range .Site.Data.guide_default.pages }}`{{ . }}`,{{ end }}],
+    guidePages: [{{ range site.Data.guide.default.pages }}`{{ . }}`,{{ end }}],
     presetGuideModal: false,
     presetGuidePage: 1,
-    presetGuidePages: [{{ range .Site.Data.guide_preset.pages }}`{{ . }}`,{{ end }}],
+    presetGuidePages: [{{ range site.Data.guide.preset.pages }}`{{ . }}`,{{ end }}],
     showToc: false,
     showPackPanel: false,
     packFilter: '',
@@ -2115,7 +2131,9 @@ function checklist() {
       }
       if (tags.length > 0) {
         const giftTags = itemTagsMap[id] || [];
-        if (!tags.some(t => giftTags.some(gt => gt.startsWith(t)))) return false;
+        const sdesc = searchDescMap[id] || '';
+        if (!tags.some(t => { const ts = t.replace(/\s/g, '');
+          return giftTags.some(gt => gt.replace(/\s/g, '').startsWith(ts)) || sdesc.includes(ts.toLowerCase()); })) return false;
       }
       return true;
     },
@@ -2137,7 +2155,9 @@ function checklist() {
           if (names.length > 0 && !names.some(n => name.includes(n))) return false;
           if (tags.length > 0) {
             const giftTags = itemTagsMap[id] || [];
-            if (!tags.some(t => giftTags.some(gt => gt.startsWith(t)))) return false;
+            const sdesc = searchDescMap[id] || '';
+            if (!tags.some(t => { const ts = t.replace(/\s/g, '');
+              return giftTags.some(gt => gt.replace(/\s/g, '').startsWith(ts)) || sdesc.includes(ts.toLowerCase()); })) return false;
           }
           return true;
         });

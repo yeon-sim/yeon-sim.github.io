@@ -12,9 +12,9 @@
       "associationList": [
         "INDEX_FINGER"
       ],
-      "skillKeywordList": [ 
+      "skillKeywordList": [
         "Breath",
-        "Sinking" 
+        "Sinking"
       ],
       "initBuffList": [
         {
@@ -125,15 +125,19 @@
       "id": 11114,
       "updatedDate": 20251231,
       "appearance": "11114_Outis_LCAAppearance",
-      "unitScriptID" :"11114",
+      "unitScriptID": "11114",
       "unitKeywordList": [
         "SMALL"
       ],
       "associationList": [
-        "LIMBUS_COMPANY", 
+        "LIMBUS_COMPANY",
         "LIMBUS_COMPANY_LCA"
       ],
-      "skillKeywordList": [ "Vibration", "Sinking" ],
+      "skillKeywordList": [
+        "Vibration",
+        "Sinking",
+        "Bullet"
+      ],
       "characterId": 11,
       "panicType": 9999,
       "season": 7,

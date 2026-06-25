@@ -2761,7 +2761,7 @@
         {
           "level": 4,
           "name": "형세 읽기",
-          "desc": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse] [SupportProtect]로 보호[TabExplain]한 대상의 정신력 5 회복</style>\n[WhenUse] [Breath] 3 얻음",
+          "desc": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse] [SupportProtect]로 [Protection][TabExplain]한 대상의 정신력 5 회복</style>\n[WhenUse] [Breath] 3 얻음",
           "coinlist": [
             {
               "coindescs": [

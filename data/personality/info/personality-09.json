@@ -5,10 +5,16 @@
       "updatedDate": 20230227,
       "appearance": "10901_Rodion_BaseAppearance",
       "unitKeywordList": [
-        "BASE_APPEARANCE", "SMALL"
+        "BASE_APPEARANCE",
+        "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Laceration" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -108,9 +114,17 @@
       "id": 10902,
       "updatedDate": 20230227,
       "appearance": "10902_Rodion_BlackCloudAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration", "Breath" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Breath"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -210,9 +224,14 @@
       "id": 10903,
       "updatedDate": 20230227,
       "appearance": "10903_Rodion_EpiAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCC" ],
-      "skillKeywordList": [  ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCC"
+      ],
+      "skillKeywordList": [],
       "characterId": 9,
       "panicType": 9999,
       "season": 1,
@@ -312,9 +331,16 @@
       "id": 10904,
       "updatedDate": 20230309,
       "appearance": "10904_Rodion_NCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "N_CORP", "N_CORP_FNATIC" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "N_CORP",
+        "N_CORP_FNATIC"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 1,
@@ -414,9 +440,17 @@
       "id": 10905,
       "updatedDate": 20230601,
       "appearance": "10905_Rodion_EliteFixerAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "TROUBLE_SHOOTER" ],
-      "skillKeywordList": [ "Vibration", "Charge" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "TROUBLE_SHOOTER"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Charge"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 2,
@@ -516,9 +550,16 @@
       "id": 10906,
       "updatedDate": 20230713,
       "appearance": "10906_Rodion_ZweiAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "ZWEI" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "ZWEI"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -617,9 +658,16 @@
       "id": 10907,
       "updatedDate": 20230921,
       "appearance": "10907_Rodion_DieciAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DIECI" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DIECI"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -728,9 +776,16 @@
       "id": 10908,
       "updatedDate": 20240307,
       "appearance": "10908_Rodion_LiuAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -830,11 +885,15 @@
       "id": 10909,
       "updatedDate": 20240627,
       "appearance": "10909_Rodion_TCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
       "associationList": [
         "T_CORP"
       ],
-      "skillKeywordList": [ "Vibration" ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -934,10 +993,17 @@
       "id": 10910,
       "updatedDate": 20240919,
       "appearance": "10910_Rodion_DevyatAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DEVYAT" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DEVYAT"
+      ],
       "unitScriptID": "10910",
-      "skillKeywordList": [ "Burst" ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 0,
@@ -1051,9 +1117,16 @@
       "associationList": [
         "LA_MANCHA_LAND"
       ],
-      "unitKeywordList": [ "SMALL", "BLOODFIEND", "SECOND_DEPENDENT" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLOODFIEND",
+        "SECOND_DEPENDENT"
+      ],
       "unitScriptID": "BloodWraithTier2",
-      "skillKeywordList": [ "Laceration", "Burst" ],
+      "skillKeywordList": [
+        "Laceration",
+        "Burst"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 5,
@@ -1156,9 +1229,18 @@
       "id": 10913,
       "updatedDate": 20250717,
       "appearance": "10913_Rodion_KnightOfDespairAppearance",
-      "unitKeywordList": [ "LOBOTOMY_HEAD", "EGO_EQUIPMENT", "SMALL" ],
-      "associationList": [ "L_CORP" ],
-      "skillKeywordList": [ "Charge", "Sinking" ],
+      "unitKeywordList": [
+        "LOBOTOMY_HEAD",
+        "EGO_EQUIPMENT",
+        "SMALL"
+      ],
+      "associationList": [
+        "L_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Sinking"
+      ],
       "characterId": 9,
       "panicType": 9999,
       "season": 9106,
@@ -1281,7 +1363,8 @@
         "R_CORP"
       ],
       "skillKeywordList": [
-        "Charge", "Sinking"
+        "Charge",
+        "Sinking"
       ],
       "characterId": 9,
       "panicType": 9999,
@@ -1342,7 +1425,8 @@
       },
       "breakSection": {
         "sectionList": [
-          70, 35
+          70,
+          35
         ]
       },
       "resistInfo": {
@@ -1385,9 +1469,9 @@
         "SMALL",
         "RING_FINGER_DOCENT"
       ],
-      "associationList": [ 
-        "RING_FINGER", 
-        "RING_FINGER_FAUVISM" 
+      "associationList": [
+        "RING_FINGER",
+        "RING_FINGER_FAUVISM"
       ],
       "skillKeywordList": [
         "Laceration",
@@ -1490,6 +1574,151 @@
         },
         {
           "skillId": 1091505,
+          "number": 0
+        }
+      ]
+    },
+    {
+      "id": 10916,
+      "updatedDate": 20260625,
+      "appearance": "10916_Rodion_Thumb_FatherAppearance",
+      "unitKeywordList": [
+        "SMALL",
+        "UNDERBOSS_FIRED",
+        "FINGER",
+        "SMOKE_WAR",
+        "WAR_HERO",
+        "SPIDER_HOUSE_FATHER",
+        "THUMB_LEVEL_MIDDLE_CAPO_UNDERBOSS"
+      ],
+      "associationList": [
+        "THUMB_FINGER",
+        "SPIDER_HOUSE",
+        "SEVENFAMILIES_CANCELED"
+      ],
+      "skillKeywordList": [
+        "Combustion",
+        "Vibration",
+        "Bullet"
+      ],
+      "unitScriptID": "10916",
+      "characterId": 9,
+      "panicType": 9999,
+      "season": 7,
+      "defenseSkillIDList": [
+        1091604,
+        1091608
+      ],
+      "initBuffList": [
+        {
+          "level": 1,
+          "list": [
+            {
+              "buff": "AccelBullet",
+              "stack": 10
+            },
+            {
+              "buff": "FutureEyeOnRodion",
+              "stack": 30
+            }
+          ]
+        }
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 66,
+        "incrementByLevel": 3.03
+      },
+      "defCorrection": 0,
+      "minSpeedList": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        6,
+        7,
+        7
+      ],
+      "uniqueAttribute": "AMBER",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyMp10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAlly5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          60
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 1
+          },
+          {
+            "type": "HIT",
+            "value": 2
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1091601,
+          "number": 3
+        },
+        {
+          "skillId": 1091602,
+          "number": 2
+        },
+        {
+          "skillId": 1091603,
+          "number": 1
+        },
+        {
+          "skillId": 1091605,
+          "number": 0
+        },
+        {
+          "skillId": 1091606,
+          "number": 0
+        },
+        {
+          "skillId": 1091607,
           "number": 0
         }
       ]

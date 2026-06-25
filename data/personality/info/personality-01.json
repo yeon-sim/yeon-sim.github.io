@@ -5,10 +5,16 @@
       "updatedDate": 20230227,
       "appearance": "10101_YiSang_BaseAppearance",
       "unitKeywordList": [
-        "BASE_APPEARANCE", "SMALL"
+        "BASE_APPEARANCE",
+        "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Sinking" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -108,9 +114,16 @@
       "id": 10102,
       "updatedDate": 20230227,
       "appearance": "10102_YiSang_7Appearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "SEVEN" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "SEVEN"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -209,9 +222,16 @@
       "id": 10103,
       "updatedDate": 20230227,
       "appearance": "10103_Yisang_SwordGroupAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLADE_LINEAGE" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLADE_LINEAGE"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -311,9 +331,15 @@
       "id": 10104,
       "updatedDate": 20230615,
       "appearance": "10104_YiSang_SpicebushFlowerAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "ATL" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "ATL"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 2,
@@ -413,9 +439,16 @@
       "id": 10105,
       "updatedDate": 20230920,
       "appearance": "10105_Yisang_RainAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "MOLAR" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "MOLAR"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 2,
@@ -516,9 +549,16 @@
       "id": 10106,
       "updatedDate": 20231109,
       "appearance": "10106_Yisang_WCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "W_CORP" ],
-      "skillKeywordList": [ "Charge", "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "W_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Burst"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -617,9 +657,16 @@
       "id": 10107,
       "updatedDate": 20231207,
       "appearance": "10107_Yisang_StarbuckAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "PEQUOD_CREW" ],
-      "skillKeywordList": [ "Laceration", "Breath" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "PEQUOD_CREW"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Breath"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 3,
@@ -719,9 +766,16 @@
       "id": 10108,
       "updatedDate": 20240125,
       "appearance": "10108_YiSang_DieciAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "DIECI" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DIECI"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -831,9 +885,18 @@
       "id": 10109,
       "updatedDate": 20240516,
       "appearance": "10109_Yisang_RingFingerAppearance",
-      "unitKeywordList": [ "FINGER", "SMALL","RING_FINGER_STUDENT" ],
-      "associationList": [ "RING_FINGER_POINTILLISM", "RING_FINGER" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "FINGER",
+        "SMALL",
+        "RING_FINGER_STUDENT"
+      ],
+      "associationList": [
+        "RING_FINGER_POINTILLISM",
+        "RING_FINGER"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -933,9 +996,17 @@
       "id": 10110,
       "updatedDate": 20240905,
       "appearance": "10110_Yisang_DeadButterflyAppearance",
-      "unitKeywordList": [ "LOBOTOMY_HEAD", "EGO_EQUIPMENT" ],
-      "associationList": [ "L_CORP" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "LOBOTOMY_HEAD",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "L_CORP"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Bullet"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 9104,
@@ -1048,9 +1119,17 @@
       "id": 10111,
       "updatedDate": 20250123,
       "appearance": "10111_Yisang_FairyLanternAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCE" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCE"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 5,
@@ -1147,10 +1226,15 @@
       "updatedDate": 20250220,
       "appearance": "10112_Yisang_LiuAppearance",
       "unitKeywordList": [
-        "SMALL", "FIXER"
+        "SMALL",
+        "FIXER"
       ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 0,
@@ -1251,12 +1335,16 @@
       "updatedDate": 20250703,
       "appearance": "10113_YiSang_DerSchutzeAppearance",
       "unitKeywordList": [
-        "SMALL", "EGO_EQUIPMENT"
+        "SMALL",
+        "EGO_EQUIPMENT"
       ],
       "associationList": [
         "N_CORP"
       ],
-      "skillKeywordList": [ "Laceration", "Breath" ],
+      "skillKeywordList": [
+        "Laceration",
+        "Breath"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 6,
@@ -1356,9 +1444,20 @@
       "id": 10114,
       "updatedDate": 20250828,
       "appearance": "10114_Yisang_Heishou_WuAppearance",
-      "unitKeywordList": [ "SMALL", "BLACK_BEAST", "BLACK_BEAST_CHIEF" ],
-      "associationList": [ "FAMILY_GA","BLACK_BEAST_HORSE","H_CORP" ],
-      "skillKeywordList": [ "Burst", "Vibration" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLACK_BEAST",
+        "BLACK_BEAST_CHIEF"
+      ],
+      "associationList": [
+        "FAMILY_GA",
+        "BLACK_BEAST_HORSE",
+        "H_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Vibration"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 6,
@@ -1462,9 +1561,20 @@
       "id": 10115,
       "updatedDate": 20260219,
       "appearance": "10115_YiSang_Index_FatherAppearance",
-      "unitKeywordList": [ "SMALL", "FINGER", "TRUST_AGENT", "SPIDER_HOUSE_FATHER" ],
-      "associationList": [ "INDEX_FINGER","SPIDER_HOUSE" ],
-      "skillKeywordList": [ "Sinking", "Breath" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FINGER",
+        "TRUST_AGENT",
+        "SPIDER_HOUSE_FATHER"
+      ],
+      "associationList": [
+        "INDEX_FINGER",
+        "SPIDER_HOUSE"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Breath"
+      ],
       "characterId": 1,
       "panicType": 9999,
       "season": 7,

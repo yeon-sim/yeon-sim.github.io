@@ -6,16 +6,22 @@
       "appearance": "10401_Ryoshu_BaseAppearance",
       "unitScriptID": "10401",
       "unitKeywordList": [
-        "BASE_APPEARANCE", "SMALL"
+        "BASE_APPEARANCE",
+        "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
       "unitKeywordListByUnlockCode": [
         {
           "id": "HEAVENLY_KILLING_STAR",
           "openUnlockCode": 10950
         }
       ],
-      "skillKeywordList": [ "Breath" ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 0,
@@ -115,9 +121,16 @@
       "id": 10402,
       "updatedDate": 20230227,
       "appearance": "10402_Ryoshu_SevenAssoAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "SEVEN" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "SEVEN"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 0,
@@ -217,9 +230,16 @@
       "id": 10403,
       "updatedDate": 20230227,
       "appearance": "10403_Ryoshu_BlackCloudAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 0,
@@ -319,9 +339,17 @@
       "id": 10404,
       "updatedDate": 20230420,
       "appearance": "10404_Ryoshu_PierreAppearance",
-      "unitKeywordList": [ "CLAN", "BACK_STREET", "SMALL" ],
-      "associationList": [ "BACKSTREET_COOK" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "BACK_STREET",
+        "SMALL"
+      ],
+      "associationList": [
+        "BACKSTREET_COOK"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 1,
@@ -422,9 +450,15 @@
       "id": 10405,
       "updatedDate": 20230824,
       "appearance": "10405_Ryoshu_WCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "W_CORP" ],
-      "skillKeywordList": [ "Charge" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "W_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 0,
@@ -524,9 +558,19 @@
       "id": 10406,
       "updatedDate": 20231116,
       "appearance": "10406_Ryoshu_LCCBAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCC" ],
-      "skillKeywordList": [ "Breath", "Vibration", "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCC"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Vibration",
+        "Burst",
+        "Bullet"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 3,
@@ -636,9 +680,16 @@
       "id": 10407,
       "updatedDate": 20240307,
       "appearance": "10407_Ryoshu_LiuAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 0,
@@ -738,9 +789,17 @@
       "id": 10408,
       "updatedDate": 20240418,
       "appearance": "10408_Ryoshu_NellyAppearance",
-      "associationList": [ "LINTON" ],
-      "unitKeywordList": [  "FIXER", "BUTLER", "SMALL" ],
-      "skillKeywordList": [ "Breath" ],
+      "associationList": [
+        "LINTON"
+      ],
+      "unitKeywordList": [
+        "FIXER",
+        "BUTLER",
+        "SMALL"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 4,
@@ -840,9 +899,16 @@
       "id": 10409,
       "updatedDate": 20240613,
       "appearance": "10409_Ryoshu_YuroAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "YURODIVY" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "YURODIVY"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 4,
@@ -943,9 +1009,17 @@
       "id": 10410,
       "updatedDate": 20240905,
       "appearance": "10410_Ryoshu_SpiderBudAppearance",
-      "unitKeywordList": [ "LOBOTOMY_HEAD", "EGO_EQUIPMENT" ],
-      "associationList": [ "L_CORP" ],
-      "skillKeywordList": [ "Charge", "Laceration" ],
+      "unitKeywordList": [
+        "LOBOTOMY_HEAD",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "L_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Laceration"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 9104,
@@ -1050,9 +1124,17 @@
       "id": 10411,
       "updatedDate": 20250320,
       "appearance": "10411_Ryoshu_BlackHand_MaoAppearance",
-      "unitKeywordList": [ "SMALL", "BLACK_BEAST" ],
-      "associationList": [ "BLACK_BEAST_RABBIT", "H_CORP" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "BLACK_BEAST"
+      ],
+      "associationList": [
+        "BLACK_BEAST_RABBIT",
+        "H_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 5,
@@ -1152,9 +1234,17 @@
       "id": 10412,
       "updatedDate": 20250911,
       "appearance": "10412_Ryoshu_JiahuanAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "N_CORP" ],
-      "skillKeywordList": [ "Laceration", "Vibration" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "N_CORP"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Vibration"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 6,
@@ -1367,9 +1457,19 @@
       "id": 10414,
       "updatedDate": 20260305,
       "appearance": "10414_Ryoshu_AriuneAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT", "LOBOTOMY_HEAD" ],
-      "associationList": [ "L_CORP" ],
-      "skillKeywordList": [ "Sinking", "Vibration" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT",
+        "LOBOTOMY_HEAD"
+      ],
+      "associationList": [
+        "L_CORP"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Vibration",
+        "Bullet"
+      ],
       "characterId": 4,
       "panicType": 9999,
       "season": 9108,
@@ -1442,7 +1542,8 @@
       },
       "breakSection": {
         "sectionList": [
-          65, 35
+          65,
+          35
         ]
       },
       "resistInfo": {
@@ -1490,7 +1591,7 @@
       "appearance": "10415_Ryoshu_Pinky_FatherAppearance",
       "unitScriptID": "10415",
       "unitKeywordList": [
-        "FINGER", 
+        "FINGER",
         "LITTLE_FINGER_FATHER_ENEMY",
         "SPIDER_HOUSE_FATHER",
         "DIHUI_STAR",
@@ -1519,7 +1620,7 @@
           ]
         }
       ],
-      "skillKeywordList": [ 
+      "skillKeywordList": [
         "Combustion",
         "Laceration",
         "Breath"

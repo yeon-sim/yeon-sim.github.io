@@ -1,7 +1,11 @@
 {{ define "main" }}
 
 {{/* ── 데이터 ── */}}
-{{ $egoCats := first 7 .Site.Data.categories.dataList }}
+{{/* EGO 필터용 7속성 — egogift/category.json(id) + KR_Categories(이름) */}}
+{{ $catNameP := dict }}
+{{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ $catNameP = merge $catNameP (dict .id .name) }}{{ end }}
+{{ $egoCats := slice }}
+{{ range first 7 site.Data.egogift.category.dataList }}{{ $egoCats = $egoCats | append (merge . (dict "name" (index $catNameP .id))) }}{{ end }}
 {{/* 스킬 맵 (skillId → {tier, sd:[{g, a}], at, dt}) */}}
 {{ $skillMap := dict }}
 {{ range $.Site.Data.personality.skill }}
@@ -154,14 +158,17 @@
     {{ $a1 := "" }}{{ $a2 := "" }}{{ $a3 := "" }}{{ $f1 := false }}{{ $f2 := false }}{{ $f3 := false }}
     {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ $nl := index $skillNameMap (string .skillId) }}{{ if and $si $nl }}{{ if and (eq (int $si.tier) 1) (not $f1) }}{{ $a1 = $si.at }}{{ $f1 = true }}{{ end }}{{ if and (eq (int $si.tier) 2) (not $f2) }}{{ $a2 = $si.at }}{{ $f2 = true }}{{ end }}{{ if and (eq (int $si.tier) 3) (not $f3) }}{{ $a3 = $si.at }}{{ $f3 = true }}{{ end }}{{ end }}{{ end }}
     {{ $atk := slice }}{{ if ne $a1 "" }}{{ $atk = $atk | append $a1 }}{{ end }}{{ if ne $a2 "" }}{{ $atk = $atk | append $a2 }}{{ end }}{{ if ne $a3 "" }}{{ $atk = $atk | append $a3 }}{{ end }}
-    {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk)) }}
+    {{/* 수비 타입(defType) — 가장 앞 번호(최소 id) 수비 스킬 1개만 (편성 카드 자세히2 표시용) */}}
+    {{ $def := slice }}{{ with index (sort .defenseSkillIDList) 0 }}{{ $si := index $skillMap (string .) }}{{ if (and $si $si.dt) }}{{ $def = $def | append $si.dt }}{{ end }}{{ end }}
+    {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk "def" $def)) }}
   {{ end }}{{ end }}
 {{ end }}
 {{ range $extraDataList }}
   {{ $a1 := "" }}{{ $a2 := "" }}{{ $a3 := "" }}{{ $f1 := false }}{{ $f2 := false }}{{ $f3 := false }}
   {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ $nl := index $skillNameMap (string .skillId) }}{{ if and $si $nl }}{{ if and (eq (int $si.tier) 1) (not $f1) }}{{ $a1 = $si.at }}{{ $f1 = true }}{{ end }}{{ if and (eq (int $si.tier) 2) (not $f2) }}{{ $a2 = $si.at }}{{ $f2 = true }}{{ end }}{{ if and (eq (int $si.tier) 3) (not $f3) }}{{ $a3 = $si.at }}{{ $f3 = true }}{{ end }}{{ end }}{{ end }}
   {{ $atk := slice }}{{ if ne $a1 "" }}{{ $atk = $atk | append $a1 }}{{ end }}{{ if ne $a2 "" }}{{ $atk = $atk | append $a2 }}{{ end }}{{ if ne $a3 "" }}{{ $atk = $atk | append $a3 }}{{ end }}
-  {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk)) }}
+  {{ $def := slice }}{{ with index (sort .defenseSkillIDList) 0 }}{{ $si := index $skillMap (string .) }}{{ if (and $si $si.dt) }}{{ $def = $def | append $si.dt }}{{ end }}{{ end }}
+  {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk "def" $def)) }}
 {{ end }}
 {{/* 일러스트 피벗(unitinfo): "{id}_{form}" → {x,y,s,r} (풀 CG 위치 보정, Assetripper illust-pivots-unitinfo 원본) */}}
 {{ $illustPivots := dict }}
@@ -235,6 +242,17 @@
 {{ range $.Site.Data.skill_keyword.dataList }}
   {{ $skillKwAllowSet = merge $skillKwAllowSet (dict .id "1") }}
 {{ end }}
+{{/* #키워드 검색 인덱스: 스킬/패시브 desc 보유 파싱 키워드 이름(공백제거·소문자, "|" 연결) */}}
+{{ $skillKwMap := dict }}
+{{ range $sid, $dl := $skillDescMap }}
+  {{ $descs := slice }}
+  {{ range $dl }}{{ $descs = $descs | append (.desc | default "") }}{{ range .coins }}{{ range .descs }}{{ $descs = $descs | append . }}{{ end }}{{ end }}{{ end }}
+  {{ $skillKwMap = merge $skillKwMap (dict $sid (partial "desc-keywords.html" (dict "descs" $descs "kw" $kwMap))) }}
+{{ end }}
+{{ $passiveKwMap := dict }}
+{{ range $pid, $pe := $passiveMap }}
+  {{ $passiveKwMap = merge $passiveKwMap (dict $pid (partial "desc-keywords.html" (dict "descs" (slice ($pe.desc | default "")) "kw" $kwMap))) }}
+{{ end }}
 {{/* EGO 스킬 이름/설명 맵 (skillId → nl:[{g,n}], skillId → dl:[{level,desc,coins}]) */}}
 {{ $egoSkillAbNameMap := dict }}
 {{ $egoSkillNameMap := dict }}
@@ -266,6 +284,13 @@
       {{ end }}
     {{ end }}
   {{ end }}
+{{ end }}
+{{/* #키워드 검색 인덱스: EGO 스킬 desc 보유 파싱 키워드 이름 */}}
+{{ $egoSkillKwMap := dict }}
+{{ range $sid, $dl := $egoSkillDescMap }}
+  {{ $descs := slice }}
+  {{ range $dl }}{{ $descs = $descs | append (.desc | default "") }}{{ range .coins }}{{ range .descs }}{{ $descs = $descs | append . }}{{ end }}{{ end }}{{ end }}
+  {{ $egoSkillKwMap = merge $egoSkillKwMap (dict $sid (partial "desc-keywords.html" (dict "descs" $descs "kw" $kwMap))) }}
 {{ end }}
 {{/* EGO 스킬 데이터 맵 (skillId → {tier, sd, at, dt, lc, dv, ci, tn}) */}}
 {{ $egoSkillAttrMap := dict }}
@@ -575,6 +600,9 @@
                   <template x-for="(at, i) in (slotMeta('{{ .id }}').atk || [])" :key="i">
                     <img class="formation-card-atk-icon" :src="`/images/ui/${at.toLowerCase()}.png`" :alt="at">
                   </template>
+                  <template x-for="(dt, i) in (slotMeta('{{ .id }}').def || [])" :key="'d'+i">
+                    <img class="formation-card-def-icon" :src="`/images/ui/${dt.toLowerCase()}.png`" :alt="dt">
+                  </template>
                 </div>
               </div>
               <span class="formation-card-name" x-html="slotName('{{ .id }}')"></span>
@@ -745,6 +773,11 @@
     {{ range $.Site.Data.lang.kr.egoskill.KR_Passive_Ego.dataList }}
       {{ $egoPassiveMap = merge $egoPassiveMap (dict (printf "%d" (int .id)) (dict "name" .name "desc" .desc)) }}
     {{ end }}
+    {{/* #키워드 검색 인덱스: EGO 패시브 desc 보유 파싱 키워드 이름 */}}
+    {{ $egoPassiveKwMap := dict }}
+    {{ range $pid, $pe := $egoPassiveMap }}
+      {{ $egoPassiveKwMap = merge $egoPassiveKwMap (dict $pid (partial "desc-keywords.html" (dict "descs" (slice ($pe.desc | default "")) "kw" $kwMap))) }}
+    {{ end }}
     {{ $egoMap := dict }}
     {{ range $.Site.Data.egoskill }}
       {{ range .list }}
@@ -801,8 +834,16 @@
             {{ $addSkills = $addSkills | append (dict "level" $addLevel "awakeId" (printf "%d" (int .awakeningSkillId)) "corrosionId" (printf "%d" (int .corrosionSkillId))) }}
           {{ end }}
         {{ end }}
+        {{/* #키워드 검색: 스킬 타입 키워드(파싱 이름) + 각성/침식/추가 스킬 + 각성 패시브의 파싱 키워드 */}}
+        {{ $egoKwParts := slice }}
+        {{ range $egoSkillKws }}{{ $e := index $kwMap . }}{{ if $e }}{{ $egoKwParts = $egoKwParts | append (lower (replace $e.name " " "")) }}{{ end }}{{ end }}
+        {{ with index $egoSkillKwMap $awakeId }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}
+        {{ if ne $corrosionId "0" }}{{ with index $egoSkillKwMap $corrosionId }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}
+        {{ range $addSkills }}{{ with index $egoSkillKwMap .awakeId }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ if ne .corrosionId "0" }}{{ with index $egoSkillKwMap .corrosionId }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}{{ end }}
+        {{ range .awakeningPassiveList }}{{ with index $egoPassiveKwMap (printf "%d" (int .)) }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}
+        {{ $egoKw := delimit $egoKwParts "|" }}
         {{ $existing := index $egoMap $cid | default slice }}
-        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills))) }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
       {{ end }}
     {{ end }}
 
@@ -837,14 +878,23 @@
         {{ range .unitKeywordList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
         {{ range .associationList }}{{ $l := index $keywordMap . }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
         {{ range .unitKeywordListByUnlockCode }}{{ $l := index $keywordMap .id }}{{ if $l }}{{ $rKws = $rKws | append $l }}{{ end }}{{ end }}
+        {{/* #키워드 검색: 스킬/패시브 파싱 키워드 + 스킬 타입 키워드(파싱 이름) + 유닛 키워드 평문(공백제거·소문자) */}}
+        {{ $kwParts := slice }}
+        {{ range .skillKeywordList }}{{ $e := index $kwMap . }}{{ if $e }}{{ $kwParts = $kwParts | append (lower (replace $e.name " " "")) }}{{ end }}{{ end }}
+        {{ range .attributeList }}{{ $x := index $skillKwMap (string .skillId) }}{{ if $x }}{{ $kwParts = $kwParts | append $x }}{{ end }}{{ end }}
+        {{ range .defenseSkillIDList }}{{ $x := index $skillKwMap (string .) }}{{ if $x }}{{ $kwParts = $kwParts | append $x }}{{ end }}{{ end }}
+        {{ $ppd := index $ppMap (string .id) }}
+        {{ if $ppd }}{{ range $ppd.bp }}{{ range .ids }}{{ $x := index $passiveKwMap (string .) }}{{ if $x }}{{ $kwParts = $kwParts | append $x }}{{ end }}{{ end }}{{ end }}{{ range $ppd.sp }}{{ range .ids }}{{ $x := index $passiveKwMap (string .) }}{{ if $x }}{{ $kwParts = $kwParts | append $x }}{{ end }}{{ end }}{{ end }}{{ end }}
+        {{ range $rKws }}{{ $kwParts = $kwParts | append (lower (replace (replaceRE "<[^>]+>" "" .) " " "")) }}{{ end }}
+        {{ $rKw := delimit $kwParts "|" }}
         {{ $rColors := slice }}
         {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ if $si }}{{ with index $si.sd 0 }}{{ $rColors = $rColors | append .a }}{{ end }}{{ end }}{{ end }}
         {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
         {{ range .defenseSkillIDList }}{{ $si := index $skillMap (string .) }}{{ if $si }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rColors = $rColors | append $da }}{{ end }}{{ end }}{{ end }}
-        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList) }}
+        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
       {{ end }}
       {{ $egoRowData := slice }}
-      {{ range $egoList }}{{ $egoRowData = $egoRowData | append (dict "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList) }}{{ end }}
+      {{ range $egoList }}{{ $egoRowData = $egoRowData | append (dict "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList "kw" .kw) }}{{ end }}
       <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
         x-show="(selectedPrisoner === null || selectedPrisoner.id === '{{ $pid }}') && (pageMode === 'ego' ? isEgoRowVisible({{ $egoRowData | jsonify }}) : isRowVisible({{ $rowData | jsonify }}))">
         <div class="category-label personality-category-label">
@@ -879,6 +929,15 @@
             {{ $label := index $keywordMap .id }}
             {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
           {{ end }}
+          {{/* #키워드 검색: 스킬/패시브 파싱 키워드 + 스킬 타입 키워드(파싱 이름) + 유닛 키워드 평문(공백제거·소문자) */}}
+          {{ $cKwParts := slice }}
+          {{ range .skillKeywordList }}{{ $e := index $kwMap . }}{{ if $e }}{{ $cKwParts = $cKwParts | append (lower (replace $e.name " " "")) }}{{ end }}{{ end }}
+          {{ range .attributeList }}{{ $x := index $skillKwMap (string .skillId) }}{{ if $x }}{{ $cKwParts = $cKwParts | append $x }}{{ end }}{{ end }}
+          {{ range .defenseSkillIDList }}{{ $x := index $skillKwMap (string .) }}{{ if $x }}{{ $cKwParts = $cKwParts | append $x }}{{ end }}{{ end }}
+          {{ $cppd := index $ppMap (string .id) }}
+          {{ if $cppd }}{{ range $cppd.bp }}{{ range .ids }}{{ $x := index $passiveKwMap (string .) }}{{ if $x }}{{ $cKwParts = $cKwParts | append $x }}{{ end }}{{ end }}{{ end }}{{ range $cppd.sp }}{{ range .ids }}{{ $x := index $passiveKwMap (string .) }}{{ if $x }}{{ $cKwParts = $cKwParts | append $x }}{{ end }}{{ end }}{{ end }}{{ end }}
+          {{ range $keywords }}{{ $cKwParts = $cKwParts | append (lower (replace (replaceRE "<[^>]+>" "" .) " " "")) }}{{ end }}
+          {{ $cKw := delimit $cKwParts "|" }}
           {{ $skills := slice }}
           {{ range .attributeList }}
             {{ $si := index $skillMap (string .skillId) }}
@@ -900,7 +959,7 @@
           {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
           {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
           <div class="personality-card-wrap"
-            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }} })"
+            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
           <div class="personality-card" data-pkey="{{ .id }}"
             @click="assignFormation('{{ $pid }}', '{{ .id }}')"
@@ -2133,8 +2192,8 @@ function personalityPage() {
         const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
         for (const term of terms) {
           if (term.startsWith('#')) {
-            const tag = term.slice(1).trim();
-            if (tag && !card.keywords.some(k => k.toLowerCase().includes(tag.toLowerCase()))) return false;
+            const tag = term.slice(1).replace(/\s/g, '').toLowerCase();   // 띄어쓰기 무시
+            if (tag && !(card.kw || '').includes(tag)) return false;
           } else {
             if (!card.name.toLowerCase().includes(term.toLowerCase())) return false;
           }
@@ -2154,7 +2213,11 @@ function personalityPage() {
       if (this.search) {
         const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
         for (const term of terms) {
-          if (term.startsWith('#')) continue;
+          if (term.startsWith('#')) {
+            const tag = term.slice(1).replace(/\s/g, '').toLowerCase();   // 띄어쓰기 무시
+            if (tag && !(ego.kw || '').includes(tag)) return false;
+            continue;
+          }
           if (!ego.name.toLowerCase().includes(term.toLowerCase())) return false;
         }
       }

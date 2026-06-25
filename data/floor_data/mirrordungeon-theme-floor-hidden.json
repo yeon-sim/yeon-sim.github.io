@@ -1,0 +1,402 @@
+{
+  "list": [
+    {
+      "id": 3001,
+      "unlockCondition": {},
+      "desc": "뽕.황",
+      "hiddenThemeRate": 0.0002,
+      "fixedRewardEgoGifts": [
+        9242,
+        9083,
+        9082,
+        9081
+      ],
+      "exceptionConditions": [
+        {
+          "dungeonIdx": 1,
+          "selectableFloors": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "dungeonIdx": 2
+        }
+      ],
+      "mapGenOption": {
+        "bossPool": [
+          2070401
+        ],
+        "battlePool": [],
+        "abBattlePool": [],
+        "hardBattlePool": [],
+        "hardAbBattlePool": [],
+        "eventPool": []
+      },
+      "egoGiftPool": [
+        9003,
+        9087,
+        9101,
+        9102,
+        9001,
+        9009,
+        9034,
+        9103,
+        9155,
+        9156,
+        9053,
+        9071,
+        9104,
+        9045,
+        9105,
+        9008,
+        9089,
+        9106,
+        9107,
+        9192,
+        9005,
+        9020,
+        9029,
+        9108,
+        9159,
+        9042,
+        9048,
+        9109,
+        9160,
+        9050,
+        9110,
+        9205,
+        9206,
+        9016,
+        9031,
+        9112,
+        9163,
+        9039,
+        9044,
+        9086,
+        9113,
+        9114,
+        9164,
+        9165,
+        9024,
+        9091,
+        9111,
+        9115,
+        9055,
+        9116,
+        9013,
+        9018,
+        9064,
+        9118,
+        9047,
+        9093,
+        9117,
+        9119,
+        9168,
+        9169,
+        9023,
+        9033,
+        9120,
+        9060,
+        9121,
+        9049,
+        9074,
+        9122,
+        9123,
+        9172,
+        9041,
+        9054,
+        9061,
+        9124,
+        9173,
+        9174,
+        9059,
+        9095,
+        9125,
+        9065,
+        9126,
+        9817,
+        9063,
+        9097,
+        9127,
+        9128,
+        9046,
+        9051,
+        9066,
+        9129,
+        9177,
+        9178,
+        9056,
+        9073,
+        9130,
+        9070,
+        9131,
+        9062,
+        9069,
+        9132,
+        9133,
+        9043,
+        9052,
+        9057,
+        9134,
+        9181,
+        9182,
+        9072,
+        9099,
+        9135,
+        9075,
+        9136,
+        9137,
+        9138,
+        9193,
+        9032,
+        9139,
+        9140,
+        9194,
+        9141,
+        9195,
+        9142,
+        9196,
+        9019,
+        9143,
+        9197,
+        9030,
+        9144,
+        9145,
+        9198,
+        9146,
+        9199,
+        9147,
+        9200,
+        9027,
+        9148,
+        9201,
+        9210,
+        9012,
+        9149,
+        9150,
+        9202,
+        9151,
+        9203,
+        9152,
+        9204,
+        9002,
+        9004,
+        9010,
+        9017,
+        9021,
+        9028,
+        9035,
+        9040,
+        9006,
+        9007,
+        9015,
+        9025,
+        9026,
+        9036,
+        9037,
+        9077,
+        9078,
+        9079,
+        9080,
+        9153,
+        9185,
+        9186,
+        9187,
+        9011,
+        9014,
+        9022,
+        9038,
+        9058,
+        9067,
+        9068,
+        9076,
+        9154,
+        9188,
+        9189,
+        9190,
+        9191,
+        9081,
+        9082,
+        9084,
+        9085,
+        9083
+      ],
+      "specificEgoGiftPool": [
+        9242
+      ],
+      "mapGenSequence": [
+        {
+          "type": "CREATE_FIXED_FLOOR",
+          "numberList": [
+            3,
+            3,
+            1
+          ],
+          "nodeList": [
+            {
+              "sector": 0,
+              "idx": 0,
+              "encounterType": 0,
+              "encounterId": 0,
+              "connectedNextNodeIdxList": [
+                0
+              ]
+            },
+            {
+              "sector": 1,
+              "idx": 0,
+              "encounterType": 3,
+              "encounterId": 971089,
+              "connectedNextNodeIdxList": [
+                0
+              ]
+            },
+            {
+              "sector": 2,
+              "idx": 0,
+              "encounterType": 3,
+              "encounterId": 971055,
+              "connectedNextNodeIdxList": [
+                0
+              ]
+            },
+            {
+              "sector": 3,
+              "idx": 0,
+              "encounterType": 10,
+              "encounterId": 1,
+              "connectedNextNodeIdxList": [
+                0
+              ]
+            },
+            {
+              "sector": 4,
+              "idx": 0,
+              "encounterType": 6,
+              "encounterId": 2070401,
+              "connectedNextNodeIdxList": []
+            }
+          ]
+        }
+      ],
+      "uiConfigs": {
+        "uiRotation": -35,
+        "nodeSettings": {
+          "defaultHoverSprite": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_1]",
+          "warningHoverSprite": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_5]",
+          "bossHoverSprite": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_5]",
+          "backgroundPrefab": "MirrorDungeon/Background/MirrorDungeonBackground_x1p1c1.prefab",
+          "all": {
+            "status": {
+              "normal": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_0]"
+              },
+              "current": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_0]"
+              },
+              "passed": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_0]"
+              },
+              "notAvailable": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_3]"
+              },
+              "currentCleared": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_0]"
+              },
+              "nextPassable": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_0]"
+              }
+            }
+          },
+          "shop": {
+            "nodeIconScale": 1.3
+          },
+          "boss": {
+            "nodeIconScale": 1.8,
+            "icon": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_7]",
+            "status": {
+              "normal": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_4]"
+              },
+              "current": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_4]"
+              },
+              "passed": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_6]"
+              },
+              "notAvailable": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_6]"
+              },
+              "currentCleared": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_6]"
+              },
+              "nextPassable": {
+                "spriteId": "Sprites/MainUI_HiddenTheme_2.png[MainUI_HiddenTheme_2_4]"
+              }
+            }
+          }
+        },
+        "nextImageColor": "#990000",
+        "showBossIds": [
+          1365
+        ],
+        "packSpriteId": "HiddenTheme",
+        "mapOptions": [
+          {
+            "key": "SetColor_Basic",
+            "value": "ffffff"
+          },
+          {
+            "key": "SetColor_Cleared",
+            "value": "000000"
+          },
+          {
+            "key": "NormalLineColor",
+            "value": "e4bf04"
+          },
+          {
+            "key": "PassedLineColor",
+            "value": "302900"
+          },
+          {
+            "key": "GrayLineColor",
+            "value": "333333"
+          },
+          {
+            "key": "ShiningLineColor",
+            "value": "fff704"
+          },
+          {
+            "key": "NodeIconColor",
+            "value": "e4bf04"
+          },
+          {
+            "key": "NodeIconHighlightColor",
+            "value": "fff704"
+          },
+          {
+            "key": "NodeBackgroundColor_Boss",
+            "value": "ffffff"
+          },
+          {
+            "key": "PassedBackgroundColor",
+            "value": "AAAAAA"
+          },
+          {
+            "key": "PassedNodeIconColor",
+            "value": "302900"
+          },
+          {
+            "key": "EmptyFloorBackground"
+          },
+          {
+            "key": "MirrorDungeon4_Base"
+          }
+        ]
+      },
+      "isUnrecordable": true
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 {{ $g := .Params.gift }}
 {{ $kw := partialCached "kwmap.html" "kw" }}
 {{ $catName := "" }}
-{{ range site.Data.categories.dataList }}{{ if eq .id $g.category }}{{ $catName = .name }}{{ end }}{{ end }}
+{{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ if eq .id $g.category }}{{ $catName = .name }}{{ end }}{{ end }}
 <main class="detail-page">
   <nav class="detail-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
   <article class="detail-article">

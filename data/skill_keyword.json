@@ -1,32 +1,25 @@
 {
   "dataList": [
     {
-      "id": "Combustion",
-      "name": "화상"
+      "id": "Combustion"
     },
     {
-      "id": "Laceration",
-      "name": "출혈"
+      "id": "Laceration"
     },
     {
-      "id": "Vibration",
-      "name": "진동"
+      "id": "Vibration"
     },
     {
-      "id": "Burst",
-      "name": "파열"
+      "id": "Burst"
     },
     {
-      "id": "Sinking",
-      "name": "침잠"
+      "id": "Sinking"
     },
     {
-      "id": "Breath",
-      "name": "호흡"
+      "id": "Breath"
     },
     {
-      "id": "Charge",
-      "name": "충전"
+      "id": "Charge"
     }
   ]
 }

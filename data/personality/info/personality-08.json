@@ -8,8 +8,13 @@
         "BASE_APPEARANCE",
         "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Vibration" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 0,
@@ -108,9 +113,16 @@
       "id": 10802,
       "updatedDate": 20230227,
       "appearance": "10802_Ishmael_RCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "R_CORP" ],
-      "skillKeywordList": [ "Charge", "Sinking" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "R_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Sinking"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 0,
@@ -209,9 +221,16 @@
       "id": 10803,
       "updatedDate": 20230227,
       "appearance": "10803_Ishmael_ShiAssoAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "SHI" ],
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "SHI"
+      ],
+      "skillKeywordList": [
+        "Breath"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 0,
@@ -310,9 +329,18 @@
       "id": 10804,
       "updatedDate": 20230227,
       "appearance": "10804_Ishmael_LCCSodeAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCC" ],
-      "skillKeywordList": [ "Vibration", "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCC"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Burst",
+        "Bullet"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 1,
@@ -422,9 +450,17 @@
       "id": 10805,
       "updatedDate": 20230615,
       "appearance": "10805_Ishmeal_FairyAppearance",
-      "unitKeywordList": [ "SMALL", "EGO_EQUIPMENT" ],
-      "associationList": [ "ATL" ],
-      "skillKeywordList": [ "Vibration", "Burst" ],
+      "unitKeywordList": [
+        "SMALL",
+        "EGO_EQUIPMENT"
+      ],
+      "associationList": [
+        "ATL"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Burst"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 2,
@@ -523,9 +559,16 @@
       "id": 10806,
       "updatedDate": 20230706,
       "appearance": "10806_Ishmael_LiuAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 0,
@@ -625,9 +668,17 @@
       "id": 10807,
       "updatedDate": 20230727,
       "appearance": "10807_Ishmael_molarAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "MOLAR" ],
-      "skillKeywordList": [ "Sinking", "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "MOLAR"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Vibration"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 2,
@@ -728,9 +779,18 @@
       "id": 10808,
       "updatedDate": 20240208,
       "appearance": "10808_Ishmael_AhabAppearance",
-      "unitKeywordList": [ "PEQUOD_CAPTAIN", "SMALL" ],
-      "associationList": [ "PEQUOD_CREW" ],
-      "skillKeywordList": [ "Laceration", "Combustion", "Breath" ],
+      "unitKeywordList": [
+        "PEQUOD_CAPTAIN",
+        "SMALL"
+      ],
+      "associationList": [
+        "PEQUOD_CREW"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Combustion",
+        "Breath"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 3,
@@ -833,9 +893,18 @@
       "id": 10809,
       "updatedDate": 20240418,
       "appearance": "10809_Ishmael_MaidAppearance",
-      "associationList": [ "LINTON" ],
-      "unitKeywordList": [ "FIXER", "BUTLER", "SMALL" ],
-      "skillKeywordList": [ "Breath", "Sinking" ],
+      "associationList": [
+        "LINTON"
+      ],
+      "unitKeywordList": [
+        "FIXER",
+        "BUTLER",
+        "SMALL"
+      ],
+      "skillKeywordList": [
+        "Breath",
+        "Sinking"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 4,
@@ -935,9 +1004,16 @@
       "id": 10810,
       "updatedDate": 20241003,
       "appearance": "10810_Ishmael_ZweiAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "ZWEI" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "ZWEI"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "unitScriptID": "10810",
@@ -1036,9 +1112,16 @@
       "id": 10811,
       "updatedDate": 20250206,
       "appearance": "10811_Ishmael_kurokumoAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 8,
       "unitScriptID": "10811",
       "panicType": 9999,
@@ -1140,9 +1223,18 @@
       "id": 10812,
       "updatedDate": 20250605,
       "appearance": "10812_Ishmael_JiashichunAppearance",
-      "unitKeywordList": [ "SMALL", "FAMILY_GA_CANDIDATE" ],
-      "associationList": [ "FAMILY_GA", "H_CORP" ],
-      "skillKeywordList": [ "Burst", "Breath" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FAMILY_GA_CANDIDATE"
+      ],
+      "associationList": [
+        "FAMILY_GA",
+        "H_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Breath"
+      ],
       "characterId": 8,
       "unitScriptID": "10812",
       "panicType": 9999,
@@ -1258,9 +1350,18 @@
       "id": 10813,
       "updatedDate": 20251106,
       "appearance": "10813_Ishmael_HanafudaAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "JEONG_OFFICE", "OUFI_COOP" ],
-      "skillKeywordList": [ "Vibration", "Sinking" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "JEONG_OFFICE",
+        "OUFI_COOP"
+      ],
+      "skillKeywordList": [
+        "Vibration",
+        "Sinking"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "season": 9107,
@@ -1364,9 +1465,19 @@
       "id": 10814,
       "updatedDate": 20260122,
       "appearance": "10814_Ishmael_MiddleFinger_DiscipleAppearacne",
-      "unitKeywordList": [ "FINGER", "SMALL", "SPIDER_HOUSE_DISCIPLE" ],
-      "associationList": [ "MIDDLE_FINGER", "SPIDER_HOUSE" ],
-      "skillKeywordList": [ "Laceration", "Combustion" ],
+      "unitKeywordList": [
+        "FINGER",
+        "SMALL",
+        "SPIDER_HOUSE_DISCIPLE"
+      ],
+      "associationList": [
+        "MIDDLE_FINGER",
+        "SPIDER_HOUSE"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Combustion"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "unitScriptID": "10814",
@@ -1471,8 +1582,15 @@
         "CLAN",
         "SMALL"
       ],
-      "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCD", "BLADE_LINEAGE" ],
-      "skillKeywordList": [ "Laceration", "Breath" ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCD",
+        "BLADE_LINEAGE"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Breath"
+      ],
       "characterId": 8,
       "panicType": 9999,
       "unitScriptID": "10815",

@@ -1,0 +1,41 @@
+{
+  "dataList": [
+    {
+      "id": "Combustion"
+    },
+    {
+      "id": "Laceration"
+    },
+    {
+      "id": "Vibration"
+    },
+    {
+      "id": "Burst"
+    },
+    {
+      "id": "Sinking"
+    },
+    {
+      "id": "Breath"
+    },
+    {
+      "id": "Charge"
+    },
+    {
+      "id": "Slash"
+    },
+    {
+      "id": "Penetrate"
+    },
+    {
+      "id": "Hit"
+    },
+    {
+      "id": "None"
+    },
+    {
+      "id": "Pilgrimage",
+      "easterEgg": true
+    }
+  ]
+}

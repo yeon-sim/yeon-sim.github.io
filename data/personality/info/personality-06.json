@@ -5,10 +5,17 @@
       "updatedDate": 20230227,
       "appearance": "10601_Honglu_BaseAppearance",
       "unitKeywordList": [
-                "BASE_APPEARANCE", "SMALL"
-            ],
-            "associationList": [ "LIMBUS_COMPANY", "LIMBUS_COMPANY_LCB" ],
-      "skillKeywordList": [ "Sinking", "Burst" ],
+        "BASE_APPEARANCE",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIMBUS_COMPANY",
+        "LIMBUS_COMPANY_LCB"
+      ],
+      "skillKeywordList": [
+        "Sinking",
+        "Burst"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -108,9 +115,16 @@
       "id": 10602,
       "updatedDate": 20230227,
       "appearance": "10602_Honglu_BlackCloudAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "BLACK_CLOUD" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "BLACK_CLOUD"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -210,9 +224,17 @@
       "id": 10603,
       "updatedDate": 20230227,
       "appearance": "10603_Honglu_ConconAppearance",
-      "unitKeywordList": [ "CLAN", "BACK_STREET", "SMALL" ],
-      "associationList": [ "KONG_KONG" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "BACK_STREET",
+        "SMALL"
+      ],
+      "associationList": [
+        "KONG_KONG"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 1,
@@ -312,9 +334,16 @@
       "id": 10604,
       "updatedDate": 20230406,
       "appearance": "10604_Honglu_LiuAssoAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "LIU" ],
-      "skillKeywordList": [ "Combustion" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "LIU"
+      ],
+      "skillKeywordList": [
+        "Combustion"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -413,9 +442,15 @@
       "id": 10605,
       "updatedDate": 20230629,
       "appearance": "10605_Honglu_KsuitAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "K_CORP" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "K_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 2,
@@ -513,9 +548,16 @@
       "id": 10606,
       "updatedDate": 20230824,
       "appearance": "10606_Honglu_WCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "W_CORP" ],
-      "skillKeywordList": [ "Burst", "Charge" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "W_CORP"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Charge"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -614,9 +656,17 @@
       "id": 10607,
       "updatedDate": 20231026,
       "appearance": "10607_Honglu_TaeinAppearance",
-      "unitKeywordList": [ "FIXER", "BACK_STREET", "SMALL" ],
-      "associationList": [ "HOOK_OFFICE" ],
-      "skillKeywordList": [ "Laceration" ],
+      "unitKeywordList": [
+        "FIXER",
+        "BACK_STREET",
+        "SMALL"
+      ],
+      "associationList": [
+        "HOOK_OFFICE"
+      ],
+      "skillKeywordList": [
+        "Laceration"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 9101,
@@ -717,9 +767,16 @@
       "id": 10608,
       "updatedDate": 20240125,
       "appearance": "10608_Honglu_Dieci_Appearance",
-      "unitKeywordList": [ "FIXER", "SMALL"],
-      "associationList": [ "DIECI" ],
-      "skillKeywordList": [ "Sinking" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DIECI"
+      ],
+      "skillKeywordList": [
+        "Sinking"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -829,9 +886,16 @@
       "id": 10609,
       "updatedDate": 20240613,
       "appearance": "10609_Honglu_YurodivyAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
-      "associationList": [ "YURODIVY" ],
-      "skillKeywordList": [ "Vibration" ],
+      "unitKeywordList": [
+        "CLAN",
+        "SMALL"
+      ],
+      "associationList": [
+        "YURODIVY"
+      ],
+      "skillKeywordList": [
+        "Vibration"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 4,
@@ -932,9 +996,16 @@
       "id": 10610,
       "updatedDate": 20241017,
       "appearance": "10610_Honglu_BloodfiendHunterAppearance",
-      "unitKeywordList": [ "FIXER", "SMALL" ],
-      "associationList": [ "FANG_HUNT" ],
-      "skillKeywordList": [ "Burst" ],
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "FANG_HUNT"
+      ],
+      "skillKeywordList": [
+        "Burst"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 5,
@@ -1035,10 +1106,18 @@
       "id": 10611,
       "updatedDate": 20250109,
       "appearance": "10611_Honglu_FullStopAppearance",
-      "unitKeywordList": [ "SMALL", "FIXER" ],
-      "associationList": [ "FULL_STOP" ],
-      "unitScriptID" : "10611",
-      "skillKeywordList": [ "Breath" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FIXER"
+      ],
+      "associationList": [
+        "FULL_STOP"
+      ],
+      "unitScriptID": "10611",
+      "skillKeywordList": [
+        "Breath",
+        "Bullet"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 9105,
@@ -1163,9 +1242,16 @@
       "id": 10612,
       "updatedDate": 20250430,
       "appearance": "10612_Honglu_RCorpAppearance",
-      "unitKeywordList": [ "SMALL" ],
-      "associationList": [ "R_CORP" ],
-      "skillKeywordList": [ "Charge", "Sinking" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
+      "associationList": [
+        "R_CORP"
+      ],
+      "skillKeywordList": [
+        "Charge",
+        "Sinking"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 0,
@@ -1265,10 +1351,18 @@
       "id": 10613,
       "updatedDate": 20250814,
       "appearance": "10613_Honglu_JiaqiuAppearance",
-      "unitKeywordList": [ "SMALL" ],
+      "unitKeywordList": [
+        "SMALL"
+      ],
       "unitScriptID": "10613",
-      "associationList": [ "H_CORP", "FAMILY_GA_CANCELED" ],
-      "skillKeywordList": [ "Burst", "Breath" ],
+      "associationList": [
+        "H_CORP",
+        "FAMILY_GA_CANCELED"
+      ],
+      "skillKeywordList": [
+        "Burst",
+        "Breath"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 6,
@@ -1379,10 +1473,23 @@
       "id": 10614,
       "updatedDate": 20260402,
       "appearance": "10614_Honglu_RingFinger_FatherAppearance",
-      "unitKeywordList": [ "SMALL", "MACHINE_BOUND_ORGANISM", "FINGER", "MAESTRO_FORMER", "SPIDER_HOUSE_FATHER" ],
+      "unitKeywordList": [
+        "SMALL",
+        "MACHINE_BOUND_ORGANISM",
+        "FINGER",
+        "MAESTRO_FORMER",
+        "SPIDER_HOUSE_FATHER"
+      ],
       "unitScriptID": "10614",
-      "associationList": [ "RING_FINGER_PHYSICAL", "RING_FINGER", "SPIDER_HOUSE" ],
-      "skillKeywordList": [ "Laceration", "Charge" ],
+      "associationList": [
+        "RING_FINGER_PHYSICAL",
+        "RING_FINGER",
+        "SPIDER_HOUSE"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Charge"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 7,
@@ -1523,8 +1630,14 @@
       "associationList": [
         "S_CORP"
       ],
-      "unitKeywordList": [ "SMALL", "FIXER" ],
-      "skillKeywordList": [ "Laceration", "Breath" ],
+      "unitKeywordList": [
+        "SMALL",
+        "FIXER"
+      ],
+      "skillKeywordList": [
+        "Laceration",
+        "Breath"
+      ],
       "characterId": 6,
       "panicType": 9999,
       "season": 7,
@@ -1532,9 +1645,7 @@
       "defenseSkillIDList": [
         1061504
       ],
-      "initBuffList": [
-       
-      ],
+      "initBuffList": [],
       "panicSkillOnErosion": 1000104,
       "slotWeightConditionList": [
         "Default1"
@@ -1588,7 +1699,8 @@
       },
       "breakSection": {
         "sectionList": [
-          55, 20
+          55,
+          20
         ]
       },
       "resistInfo": {

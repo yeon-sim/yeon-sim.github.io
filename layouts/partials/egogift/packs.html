@@ -1,0 +1,16 @@
+{{- /* 기프트 packs 도출: 합성이면 재료들의 packs union(재귀), 비합성이면 specInv 조회.
+       인자 dict: id(number) · resultMats(newScratch: result→재료slice) · specInv(newScratch: giftId→테마slice) */ -}}
+{{- $id := .id -}}
+{{- $rm := .resultMats -}}
+{{- $si := .specInv -}}
+{{- $out := slice -}}
+{{- $mats := $rm.Get (string $id) -}}
+{{- if $mats -}}
+  {{- range $mats -}}
+    {{- $sub := partial "egogift/packs.html" (dict "id" . "resultMats" $rm "specInv" $si) -}}
+    {{- range $sub -}}{{- $out = $out | append . -}}{{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with $si.Get (string $id) -}}{{- range . -}}{{- $out = $out | append . -}}{{- end -}}{{- end -}}
+{{- end -}}
+{{- return ($out | uniq | sort) -}}

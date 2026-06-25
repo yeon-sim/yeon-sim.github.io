@@ -1,6 +1,6 @@
-{{/* 기프트 상세 페이지를 data/egogifts.json 에서 생성 (/gift/{id}).
-     사이트 기프트 페이지와 동일하게 hide != true 만. pilgrimage 는 사이트 미사용이라 제외. */}}
-{{ range where site.Data.egogifts.dataList "hide" "ne" true }}
+{{/* 기프트 상세 페이지를 분산 소스 조립(partials/egogift/assemble.html)에서 생성 (/gift/{id}).
+     기프트 페이지(index.html)와 동일한 454종(9xxx + 언어 보유). */}}
+{{ range partial "egogift/assemble.html" . }}
   {{ $.AddPage (dict
     "path" (printf "%d" (int .id))
     "title" .name

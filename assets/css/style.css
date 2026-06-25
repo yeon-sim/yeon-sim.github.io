@@ -4399,13 +4399,16 @@ button.site-nav-link.site-nav-link--active {
 .personality-page.formation-detail-mode-detail2 .formation-card-atk-row { display: flex; }
 /* 키워드·공격타입 아이콘 — 16px 통일(자세히1/2 동일) + 인격 카드와 동일 그림자 */
 .formation-card-kw-icon,
-.formation-card-atk-icon {
+.formation-card-atk-icon,
+.formation-card-def-icon {
   width: auto;
   height: 16px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 1px 2px #000) drop-shadow(0 1px 1px #000);
 }
+/* 수비 타입 아이콘 — 공격 타입 우측에, 약간 떨어뜨려 그룹 구분 */
+.formation-card-def-icon { margin-left: 4px; }
 /* 출전 번호 — 우측 상단. 위치/크기 조정용 */
 .formation-card-order {
   position: absolute;
