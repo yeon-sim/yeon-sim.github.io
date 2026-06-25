@@ -2308,7 +2308,11 @@ function personalityPage() {
         f[pid] = '1' + pid + String(get(4)).padStart(2, '0');
         const d = get(8); if (d > 0) dep.push({ pid, d });
         const e = { zayin: '', teth: '', he: '', waw: '', aleph: '' };
-        for (const g of G) { const v = get(EGO[g]); e[g] = v > 0 ? ('2' + pid + String(v).padStart(2, '0')) : ''; }
+        for (const g of G) {
+          const v = get(EGO[g]);
+          const id = v > 0 ? ('2' + pid + String(v).padStart(2, '0')) : '';
+          e[g] = (id && this.egoMeta[id]?.type === g) ? id : '';   // 등급 불일치·미존재 EGO → 미장착 (인게임 예외처리 동일)
+        }
         if (!e.zayin) e.zayin = this.egoLoadoutDefaults[pid].zayin;   // 자인은 비울 수 없음
         lo[pid] = e;
       }
@@ -2421,7 +2425,10 @@ function personalityPage() {
         const id = (fid && this.formationMeta[fid]) ? fid : this.formationDefaults[pid];   // 무효 ID는 기본값
         for (const kw of this._effKwOf(id, egoLoadoutMap?.[pid])) counts[kw] = (counts[kw] || 0) + 1;
       }
-      return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([id, count]) => ({ id, count }));
+      // 고정 출력 순서(개수 무관): 화상·출혈·진동·파열·침잠·호흡·충전·탄환. 목록 외 키워드는 뒤로(알파벳).
+      const order = ['Combustion', 'Laceration', 'Vibration', 'Burst', 'Sinking', 'Breath', 'Charge', 'Bullet'];
+      const rank = id => { const i = order.indexOf(id); return i < 0 ? order.length : i; };
+      return Object.entries(counts).sort((a, b) => rank(a[0]) - rank(b[0]) || a[0].localeCompare(b[0])).map(([id, count]) => ({ id, count }));
     },
     _effectiveKw(pid) { return [...this._effKwOf(this.slotId(pid), this.egoLoadout[pid])]; },   // 편성 카드 키워드 아이콘용
     // 라이브 요약: scope 'deploy'=출전 멤버만 / 'all'=편성 12명 전체
