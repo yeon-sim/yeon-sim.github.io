@@ -7,6 +7,12 @@
   {{ $egoName = merge $egoName (dict (string .id) .name) }}
 {{ end }}
 
+{{/* 수감자 이름 (characterId 1~12 → 이름). 인격 상세처럼 EGO 제목 앞에 붙임 */}}
+{{ $charName := dict
+  "1" "이상" "2" "파우스트" "3" "돈키호테" "4" "료슈" "5" "뫼르소" "6" "홍루"
+  "7" "히스클리프" "8" "이스마엘" "9" "로쟈" "10" "싱클레어" "11" "오티스" "12" "그레고르"
+}}
+
 {{/* EGO 스킬 이름·설명 (최종 단계). KR_Egos/KR_Passive_Ego 는 levelList 없어 자동 제외 */}}
 {{ $egoSkill := dict }}
 {{ range site.Data.lang.kr.egoskill }}
@@ -37,6 +43,8 @@
       {{ $id := string .id }}
       {{ $name := index $egoName $id | default "" }}
       {{ if $name }}
+        {{ $title := $name }}
+        {{ with index $charName (string (int .characterId)) }}{{ $title = printf "%s - %s" . $name }}{{ end }}
         {{ $skills := slice }}
         {{ with .awakeningSkillId }}
           {{ with index $egoSkill (string .) }}{{ $skills = $skills | append (merge . (dict "kind" "각성")) }}{{ end }}
@@ -50,11 +58,11 @@
         {{ end }}
         {{ $.AddPage (dict
           "path" $id
-          "title" $name
+          "title" $title
           "params" (dict
             "skills" $skills
             "passives" $passives
-            "description" (printf "%s — Limbus Company E.G.O 각성·침식 스킬·패시브 정보." $name)
+            "description" (printf "%s — Limbus Company E.G.O 각성·침식 스킬·패시브 정보." $title)
           )
         ) }}
       {{ end }}

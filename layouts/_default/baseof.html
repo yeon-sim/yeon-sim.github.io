@@ -6,6 +6,7 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   {{ $desc := .Description | default .Site.Params.description }}
   <meta name="description" content="{{ $desc }}">
+  {{ if .Params.noindex }}<meta name="robots" content="noindex, follow">{{ end }}
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
   <meta property="og:description" content="{{ $desc }}">
   <meta property="og:image" content="{{ .Site.BaseURL }}images/thumbnail.png">

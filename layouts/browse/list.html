@@ -1,0 +1,39 @@
+{{ define "main" }}
+{{ $sections := slice
+  (dict "label" "기프트" "path" "/gift")
+  (dict "label" "수감자 인격" "path" "/personality")
+  (dict "label" "E.G.O" "path" "/ego")
+}}
+<style>
+  .browse-page{max-width:1040px;margin:0 auto;padding:28px 18px 72px;line-height:1.5}
+  .browse-nav{font-size:.85rem;opacity:.7;margin:0 0 18px}
+  .browse-nav a{color:inherit}
+  .browse-page h1{font-size:1.7rem;margin:0 0 6px}
+  .browse-intro{opacity:.75;margin:0 0 28px;font-size:.95rem}
+  .browse-section{margin:0 0 34px}
+  .browse-section h2{font-size:1.15rem;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.15);display:flex;align-items:baseline;gap:8px}
+  .browse-section h2 .cnt{font-size:.8rem;opacity:.55;font-weight:400}
+  .browse-list{list-style:none;padding:0;margin:0;columns:4 190px;column-gap:24px}
+  .browse-list li{break-inside:avoid;margin:1px 0}
+  .browse-list a{display:block;padding:3px 6px;border-radius:5px;color:inherit;text-decoration:none;font-size:.9rem;opacity:.85}
+  .browse-list a:hover{background:rgba(255,255,255,.08);opacity:1}
+</style>
+<main class="browse-page">
+  <nav class="browse-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="browse-intro">{{ .Description }}</p>
+  {{ range $sections }}
+    {{ $label := .label }}
+    {{ with site.GetPage .path }}
+      <section class="browse-section">
+        <h2>{{ $label }} <span class="cnt">{{ len .Pages }}</span></h2>
+        <ul class="browse-list">
+        {{ range .Pages.ByTitle }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  {{ end }}
+</main>
+{{ end }}
