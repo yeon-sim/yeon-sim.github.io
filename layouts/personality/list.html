@@ -1095,7 +1095,7 @@
         </div>
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
               {{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}
@@ -2267,7 +2267,7 @@ function personalityPage() {
       this.saveDeployOrder();
       this.showFormationReset = false;
     },
-    // ── 편성 코드 (게임 호환 코덱) ── payload bytes → b64 → gzip → b64. 1명당 46비트(빅엔디안 4비트 필드).
+    // ── 편성 코드 (게임 호환 코덱) ── payload bytes → b64 → gzip → b64. 1명당 46비트(빅엔디안; 인격 seq 5비트[3-7]=16번째 인격 대응, 나머지 4비트 필드).
     _formationBits() {                  // 12블록×46비트 + 8비트 패딩 = 560비트
       const EGO = { zayin: 15, teth: 22, he: 29, waw: 36 };   // 블록 내 0-based 비트 시작
       const G = ['zayin', 'teth', 'he', 'waw'];
@@ -2277,7 +2277,8 @@ function personalityPage() {
         const pid = String(i + 1).padStart(2, '0');
         const blk = new Array(46).fill(0);
         const put = (s, v) => { for (let b = 0; b < 4; b++) blk[s + b] = (v >> (3 - b)) & 1; };
-        put(4, seq(this.formation[pid] || this.formationDefaults[pid]));         // 인격 5-8
+        const put5 = (s, v) => { for (let b = 0; b < 5; b++) blk[s + b] = (v >> (4 - b)) & 1; };
+        put5(3, seq(this.formation[pid] || this.formationDefaults[pid]));         // 인격 4-8 (5비트, 16번째 인격 대응)
         put(8, this.deployNum(pid));                                              // 편성순서 9-12
         const lo = this.egoLoadout[pid] || {};
         for (const g of G) put(EGO[g], seq(lo[g]));                               // 자인/테스/헤/바브
@@ -2305,7 +2306,7 @@ function personalityPage() {
         const pid = String(i + 1).padStart(2, '0');
         const blk = bits.slice(i * 46, i * 46 + 46);
         const get = s => parseInt(blk.substr(s, 4), 2);
-        f[pid] = '1' + pid + String(get(4)).padStart(2, '0');
+        f[pid] = '1' + pid + String(parseInt(blk.substr(3, 5), 2)).padStart(2, '0');   // 인격 seq = 5비트([3-7], 16번째 인격 대응)
         const d = get(8); if (d > 0) dep.push({ pid, d });
         const e = { zayin: '', teth: '', he: '', waw: '', aleph: '' };
         for (const g of G) {
