@@ -67,7 +67,9 @@ async function cacheFirst(cacheName, request) {
 async function networkFirst(cacheName, request) {
   const cache = await caches.open(cacheName);
   try {
-    const response = await fetch(request);
+    // cache:'reload' → 브라우저 HTTP 캐시를 우회해 항상 최신 HTML 을 받아온다.
+    // (이게 없으면 GitHub Pages 의 max-age 동안 옛 페이지가 반환되어, 배포해도 강력 새로고침 전까지 갱신 안 됨)
+    const response = await fetch(new Request(request, { cache: 'reload' }));
     if (response.ok) cache.put(request, response.clone());
     return response;
   } catch {
