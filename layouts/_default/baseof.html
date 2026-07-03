@@ -34,7 +34,91 @@
   </script>
 </head>
 <body>
+  {{/* PC버전 보기(데스크톱 모드) 안내 배너 — 감지 시에만 JS로 노출. 안내 전용(레이아웃 미개입) */}}
+  <div id="desktop-mode-banner" class="dm-banner" hidden>
+    <span class="dm-banner-text">브라우저의 <b>'PC 버전 보기'</b>가 켜져 있을 수 있습니다.<br>화면이 기기에 최적화되지 않을 수 있습니다.</span>
+    <span class="dm-banner-actions">
+      <button type="button" class="dm-banner-btn dm-banner-close">닫기</button>
+      <button type="button" class="dm-banner-btn dm-banner-dismiss">다시 알리지 않음</button>
+    </span>
+  </div>
   {{ block "main" . }}{{ end }}
+  <script>
+    /* 모바일 'PC버전 보기' 추정: 물리 화면은 작은데(screen.width≤600 또는 inner/screen>2)
+       레이아웃 폭이 넓음(innerWidth≥900). 실측(정상 inner=412 / PC모드 inner=1053, screen=412 동일). */
+    (function () {
+      try {
+        var KEY = 'dmBannerHidden';
+        if (localStorage.getItem(KEY) || sessionStorage.getItem(KEY)) return;
+        var sw = (window.screen && window.screen.width) || 0;
+        var iw = window.innerWidth || 0;
+        var wideLayout = iw >= 900;
+        var smallScreen = sw > 0 && (sw <= 600 || iw / sw > 2);
+        if (!(wideLayout && smallScreen)) return;
+        var b = document.getElementById('desktop-mode-banner');
+        if (!b) return;
+        b.hidden = false;
+        /* 데스크톱 모드에선 페이지가 뷰포트보다 넓게 overflow 될 수 있음(고정폭 레이아웃).
+           vw(뷰포트 기준)로는 다 못 덮으므로 배너 폭을 문서 전체폭에 맞춤. */
+        b.style.width = Math.max(document.documentElement.scrollWidth, window.innerWidth) + 'px';
+        b.querySelector('.dm-banner-close').addEventListener('click', function () {
+          try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+          b.hidden = true;
+        });
+        b.querySelector('.dm-banner-dismiss').addEventListener('click', function () {
+          try { localStorage.setItem(KEY, '1'); } catch (e) {}
+          b.hidden = true;
+        });
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    /* 모바일: 모달이 열려 있을 때 기기 '뒤로 가기'로 모달을 닫는다.
+       모든 모달은 .modal-overlay.open 으로 표시되고 배경(self) 클릭으로 닫히므로,
+       열린 개수만큼 history 항목을 쌓고 popstate 때 최상위 모달을 배경 클릭으로 닫는다.
+       개별 모달/Alpine 상태를 건드리지 않는 범용 처리. 터치 기기 한정(PC 미영향). */
+    (function () {
+      if (!(navigator.maxTouchPoints > 0)) return;
+      var pushed = 0, suppress = false;
+      function openCount() { return document.querySelectorAll('.modal-overlay.open').length; }
+      function openList() { return Array.prototype.slice.call(document.querySelectorAll('.modal-overlay.open')); }
+      function zOf(el) { var z = parseInt(getComputedStyle(el).zIndex, 10); return isNaN(z) ? 0 : z; }
+
+      function closeTop() {
+        var l = openList();
+        if (!l.length) return;
+        /* 가장 최근에 연 모달 = z-index 최대(공유 카운터라 연 순서 반영). 동률이면 DOM 뒤쪽(더 최근). */
+        var top = l[0], tz = zOf(l[0]);
+        for (var i = 1; i < l.length; i++) { var z = zOf(l[i]); if (z >= tz) { top = l[i]; tz = z; } }
+        top.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      }
+      /* 열린 모달 수에 맞춰 history 항목 조정 (증가분 push, 감소분 back으로 정리). 멱등. */
+      function sync() {
+        var open = openCount();
+        while (pushed < open) { pushed++; history.pushState({ ysModal: pushed }, ''); }
+        while (pushed > open) { pushed--; suppress = true; history.back(); }
+      }
+
+      window.addEventListener('popstate', function () {
+        if (suppress) { suppress = false; return; }
+        if (pushed > 0 && openCount()) { pushed--; closeTop(); }
+      });
+
+      /* 핵심: pushState는 '신뢰된 사용자 이벤트' 안에서 실행해야 사용자 활성화가 붙어
+         Chrome의 history 개입(활성화 없는 pushState 항목을 뒤로가기에서 건너뜀)을 피한다.
+         - 롱프레스 상세 모달: 손 뗄 때 오는 실제 pointerup/pointercancel 시점엔 모달이 이미 열려 있어
+           그 핸들러 안에서 동기 push (활성화 유지). 합성 contextmenu(isTrusted=false)는 무시.
+         - 클릭형 모달: 이벤트 직후 Alpine이 비동기로 여니 setTimeout(0)로 보정 push (클릭 활성화 유효). */
+      function onEv(e) {
+        if (!e.isTrusted) return; // 합성 이벤트는 활성화가 없어 push가 무효화됨 → 무시(실제 이벤트에 위임)
+        sync();
+        setTimeout(sync, 0);
+      }
+      ['click', 'contextmenu', 'pointerup', 'pointercancel'].forEach(function (t) {
+        document.addEventListener(t, onEv, true);
+      });
+    })();
+  </script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {

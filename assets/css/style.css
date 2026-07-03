@@ -1089,6 +1089,12 @@ body {
   overflow: hidden;
 }
 
+/* 기프트·인격·EGO 상세 모달의 공통 크기(폭)를 한 클래스로 관리
+   ↓ 이 값이 PC(>768px) 모달 폭. 모바일은 ≤768의 min(480px,96vw)로 별도. */
+.detail-modal-box {
+  width: 570px;
+}
+
 .modal-box--changelog {
   background: url('/images/ui/update_log.png') center / cover no-repeat;
   border: none;
@@ -1152,9 +1158,12 @@ body {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  width: 100%;
 }
 .sponsor-modal-logos img {
-  width: 170px;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 170px;
   height: auto;
 }
 .sponsor-modal-desc {
@@ -1468,8 +1477,8 @@ button.site-nav-link.site-nav-link--active {
 
 /* ── 인격 상세 팝업 ── */
 .personality-detail-box {
-  width: 460px;
-  height: 438px;
+  height: 550px;        /* ← PC 세로 크기 (모바일은 ≤768의 80svh로 별도) */
+  max-height: 90vh;     /* .modal-box 상속 70vh 상한을 올려 height가 반영되게 */
   background: none;
   border: 35px solid transparent;
   padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
@@ -1530,6 +1539,7 @@ button.site-nav-link.site-nav-link--active {
   font-size: 0.72rem;
   padding: 0.1rem 0.4rem;
   flex: 1;
+  min-width: 0;
   white-space: nowrap;
 }
 .tab-btn::before {
@@ -1584,6 +1594,7 @@ button.site-nav-link.site-nav-link--active {
 }
 .skill-btn {
   flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2112,18 +2123,17 @@ button.site-nav-link.site-nav-link--active {
 
 /* ── EGO 상세 모달 ── */
 .ego-detail-box {
-  width: 460px;
   max-height: none;
   height: 585px;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
-  padding: calc(0rem) calc(0.3rem) calc(0rem) calc(0rem);
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
+  padding: 0;
   position: relative;
 }
 .ego-detail-box .modal-header {
   border-bottom: none;
-  padding: calc(0rem) calc(0rem) calc(0rem) calc(0.3rem);
+  padding: 0;
 }
 .ego-detail-box .modal-title {
   font-size: 1.1rem;
@@ -2200,6 +2210,8 @@ button.site-nav-link.site-nav-link--active {
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 0.5rem;
+  padding-left: 0.2rem;    /* base .modal-body 의 좌우 1.2rem 를 덮음 */
+  padding-right: 0.2rem;
 }
 .ego-detail-row-1 {
   position: relative;    /* 2열 absolute 기준점 */
@@ -2296,10 +2308,9 @@ button.site-nav-link.site-nav-link--active {
 
 /* ── gift 정보 팝업 ── */
 .gift-popup-box {
-  width: 460px;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
   position: relative;
 }
@@ -2467,7 +2478,7 @@ button.site-nav-link.site-nav-link--active {
   height: 490px; /* ← 높이 조정 */
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
   position: relative;
   display: flex;
@@ -2571,7 +2582,7 @@ button.site-nav-link.site-nav-link--active {
   max-height: 70vh;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
   position: relative;
   display: flex;
@@ -2748,7 +2759,7 @@ button.site-nav-link.site-nav-link--active {
   width: 460px;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: calc(0rem) calc(0.3rem) calc(1.3rem) calc(0rem);
   position: relative;
   display: flex;
@@ -2834,7 +2845,7 @@ button.site-nav-link.site-nav-link--active {
   width: 460px;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: 0 0 0rem 0;
   position: relative;
   max-height: 90vh;
@@ -2920,7 +2931,7 @@ button.site-nav-link.site-nav-link--active {
   width: 460px;
   background: none;
   border: 35px solid transparent;
-  border-image: url('/images/ui/info_background.png') 50 fill stretch;
+  border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
   padding: calc(0rem) calc(0rem) calc(1.3rem) calc(0rem);
   position: relative;
 }
@@ -3603,6 +3614,10 @@ button.site-nav-link.site-nav-link--active {
     flex-wrap: wrap;
     justify-content: center;
   }
+  /* 검색 래퍼가 늘어나 노말 버튼을 오른쪽 끝으로 밀지 않도록 (범용 .search-input-wrap flex:1 무효화) → 가운데 정렬 */
+  .pack-panel-search-row .search-input-wrap {
+    flex: none;
+  }
   /* 검색창 너비: 기존의 65% (≈ 207px) */
   .pack-panel .tag-filter-input {
     width: calc((4 * 76px + 3 * 0.3rem) * 0.65);
@@ -3619,7 +3634,14 @@ button.site-nav-link.site-nav-link--active {
     white-space: normal; /* "노말\n1층" → "노말 1층" */
   }
   /* 팩 아이템 크기: 기존의 70% */
-  .pack-panel .pack-group-items         { gap: 10px; }
+  /* 인격/EGO 카드처럼: 전체 가운데 정렬 + 부족한 마지막 행 좌측 정렬 (grid auto-fill + justify-content:center) */
+  .pack-panel .pack-group-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 71px); /* 71px = 모바일 pack-panel-sprite 폭 */
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+  }
   .pack-panel .pack-panel-sprite        { width: 71px; }
   .pack-panel .pack-panel-boss          { height: 77px; bottom: 38px; }
   .pack-panel .pack-panel-warning       { bottom: 94px; width: 35px; }
@@ -3641,13 +3663,15 @@ button.site-nav-link.site-nav-link--active {
   .controls-row-1 {
     justify-content: center;
   }
-  /* 검색그룹 너비 = 카테고리 버튼 4열 너비 (4 * 76px + 3 * 0.3rem) */
+  /* 검색: 전체폭 (모바일 우선). 단 태블릿 등 넓은 화면에서 과도하게 커지지 않도록 입력창 상한을 PC 크기(260px)로 지정, 그룹은 가운데 정렬 */
   .search-group {
-    width: calc(4 * 76px + 3 * 0.3rem);
+    width: 100%;
+    justify-content: center;
   }
   .search-input-wrap {
     flex: 1;
     min-width: 0;
+    max-width: 260px;
   }
   .search-input {
     width: 100%;
@@ -3698,9 +3722,25 @@ button.site-nav-link.site-nav-link--active {
     width: auto;
     padding: 0 4px;
   }
+  /* 필터 버튼: 아이콘을 텍스트 위로(세로 배치) + 6열×2행 (수감자 페이지 필터와 동일 스타일) */
   .controls-row-2 .filter-buttons {
+    grid-template-columns: repeat(6, max-content);
     justify-content: center;
-    grid-template-columns: repeat(4, max-content);
+  }
+  .controls-row-2 .filter-buttons .filter-btn {
+    flex-direction: column;   /* 아이콘 위 / 텍스트 아래 */
+    height: 54px;
+    width: auto;
+    padding: 0 2px;
+    gap: 1px;
+  }
+  /* 세로형 필터 버튼: active 오버레이(::after)가 가로 버튼 기준 125%/152% 라 세로 버튼에서 비율 왜곡
+     → 버튼을 균일 여백(inset)으로 덮어 비율 보정 (기프트·수감자 공통) */
+  .controls-row-2 .filter-buttons .filter-btn.active::after,
+  .personality-filter-row .filter-btn.active::after {
+    width: auto;
+    height: auto;
+    inset: -6px;
   }
   .controls-row-2 .controls-right {
     position: relative;
@@ -3711,11 +3751,21 @@ button.site-nav-link.site-nav-link--active {
     justify-content: center;
     margin-top: 0.3rem; /* ← 카테고리 버튼과의 상단 여백은 여기서 */
   }
-  /* 모바일 버튼 순서: 등록순 → 이미지 → 가이드 → 초기화 */
-  .controls-row-2 .controls-right .sort-btn        { order: 1; }
-  .controls-row-2 .controls-right .toggle-name-btn { order: 2; }
-  .controls-row-2 .controls-right .guide-btn        { order: 3; }
-  .controls-row-2 .controls-right .reset-btn        { order: 4; }
+  /* 모바일: 2행 배치 [가이드, 초기화] / [등급순, 이미지] (한 줄에 2개, 가운데 정렬) */
+  .controls-row-2 .controls-right {
+    flex-wrap: wrap;
+    max-width: 216px;      /* 102px 버튼 2개 + gap(8px) → 한 줄에 2개, 3번째부터 다음 줄 */
+  }
+  .controls-row-2 .controls-right .guide-btn,
+  .controls-row-2 .controls-right .reset-btn,
+  .controls-row-2 .controls-right .sort-btn,
+  .controls-row-2 .controls-right .toggle-name-btn {
+    width: 102px;
+  }
+  .controls-row-2 .controls-right .guide-btn       { order: 1; }
+  .controls-row-2 .controls-right .reset-btn       { order: 2; }
+  .controls-row-2 .controls-right .sort-btn        { order: 3; }
+  .controls-row-2 .controls-right .toggle-name-btn { order: 4; }
   .controls-right-row {
     display: contents;
   }
@@ -3737,12 +3787,9 @@ button.site-nav-link.site-nav-link--active {
     height: 32px;
   }
 
-  /* 팝업 */
+  /* 팝업 (기프트·인격·EGO 상세 폭은 .detail-modal-box 로 공통 관리) */
   .modal-box {
-    width: min(480px, 92vw);
-  }
-  .gift-popup-box {
-    width: min(420px, 92vw);
+    width: min(520px, 96vw);
   }
   .modal-box--sm {
     width: min(360px, 90vw);
@@ -3814,9 +3861,9 @@ button.site-nav-link.site-nav-link--active {
     height: 42px;
     font-size: 0.9rem;
   }
-  /* 검색그룹 너비 = 카테고리 버튼 4열 너비 (4 * 66px + 3 * 0.3rem) */
+  /* 검색그룹: ≤768의 전체폭(100%) 유지 */
   .search-group {
-    width: calc(4 * 66px + 3 * 0.3rem);
+    width: 100%;
   }
   .tag-filter-input {
     width: calc(4 * 66px + 3 * 0.3rem);
@@ -3980,7 +4027,7 @@ button.site-nav-link.site-nav-link--active {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 0.3rem;
+  gap: 0.4rem;
   width: calc(10 * 100px + 9 * (0.25rem + 2px) - 28px);
 }
 .personality-card-wrap {
@@ -4030,13 +4077,13 @@ button.site-nav-link.site-nav-link--active {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 0.4rem;
   width: calc(10 * 100px + 9 * (0.25rem + 2px) - 28px);
 }
 .ego-card {
   position: relative;
   display: inline-flex;
-  width: 120px;
+  width: 119px;   /* 인격 카드 폭(프레임 170px×322/460≈119)과 동일하게 통일 */
   overflow: hidden;
   padding-bottom: 15px;
 }
@@ -4110,7 +4157,7 @@ button.site-nav-link.site-nav-link--active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120px;
+  width: 119px;   /* 인격 카드 폭과 동일하게 통일 */
   padding-top: 18px;     /* 배지가 프레임 위로 걸칠 공간 (.ego-cat top 과 동일하게 유지) */
 }
 .ego-card-wrap:hover .card-save-btn {
@@ -4581,6 +4628,10 @@ button.site-nav-link.site-nav-link--active {
   .ego-row {
     width: 100%;
   }
+  /* 인격 카드 가운데 정렬 */
+  .personality-row {
+    justify-content: center;
+  }
   /* 수감자 필터 버튼 줄: 좁은 화면에서 넘치지 않게 줄바꿈 허용 */
   .personality-filter-row {
     flex-wrap: wrap;
@@ -4588,17 +4639,176 @@ button.site-nav-link.site-nav-link--active {
 }
 
 @media (max-width: 768px) {
-  /* 모달 폭: 화면을 넘지 않게 캡 (PC·태블릿에선 min()이 기존 px값으로 해소되어 불변) */
-  .advanced-search-box {
-    width: min(520px, 92vw);
-  }
-  .ego-detail-box,
-  .personality-detail-box,
-  .gift-popup-box {
-    width: min(460px, 94vw);
-  }
-  .ego-detail-box {
+  /* 모달: 모바일에서 더 크게 (현재 크기를 최소로, 레이아웃 유지)
+     — 세로 상한 확대(내부 유동 영역이 늘어남) + 주요 모달 폭 확대. min()이라 태블릿↑에선 기존 px로 해소. */
+  .modal-box {
     max-height: 90vh;
+  }
+  .advanced-search-box {
+    width: min(560px, 96vw);
+  }
+  .detail-modal-box {
+    width: min(480px, 96vw);
+  }
+  /* 인격 모달: 모바일 세로 크기 (svh = 주소창 고려·고정, base 438px 덮음) */
+  .personality-detail-box {
+    height: 85svh;
+  }
+  /* EGO 모달: 모바일 세로 크기 (base 585px 덮음. 내부 info-col이 top:0 bottom:0 앵커라 높이에 맞춰 늘어남) */
+  .ego-detail-box {
+    height: 85svh;
+  }
+  /* 기프트 모달: 최대 높이 85svh (내용에 맞춰 커지되 상한. svh = 주소창 고려·고정. .modal-box 90vh 상속 덮음) */
+  .gift-popup-box {
+    max-height: 85svh;
+  }
+
+  /* 수감자 필터 버튼(속성·죄악 7개): 한 줄 유지 + 가운데 정렬.
+     아이콘을 텍스트 위에 세로 배치(column) → 버튼 폭이 텍스트 기준으로 좁아져 7개가 한 줄에 여유. */
+  .personality-filter-row {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+  .personality-filter-row .filter-btn {
+    width: auto;
+    flex-direction: column;   /* 아이콘을 텍스트 위에 */
+    height: 54px;             /* 세로 적층(아이콘+텍스트) 수용 (base 44px→54px) */
+    padding: 0 2px;
+    gap: 1px;
+  }
+
+  /* 편성 패널(임시 배치): 패널 폭 확장 + 그리드 화면폭에 맞춰 줄바꿈 + 상단 바 세로 스택 */
+  .formation-panel {
+    width: 100%;   /* main-content(내용폭)에서 전체폭으로 → 그리드 auto-fill 이 열 수 계산 가능 */
+  }
+  .formation-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));   /* 화면폭을 채우는 열 → 좌우 여백 최소화 */
+    overflow-x: visible;                                            /* 가로 스크롤(잘림) 해제 */
+  }
+  .formation-slot-inner {
+    width: 100%;   /* 슬롯이 트랙(열) 폭을 채워 카드가 채우도록 */
+  }
+  .formation-card {
+    width: 100%;   /* 열(1fr) 폭을 채움. aspect-ratio·%기반 transform이라 CG 정렬 유지 */
+  }
+  /* 편성 바 버튼 재배치(모바일 전용): 컨테이너를 display:contents로 평탄화 후 order로 정렬.
+     행1: 편성 ✏️ 📋 선택초기화 초기화 / 행2: 키워드 요약 / 행3: E.G.O 간단히 */
+  .formation-bar {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+  }
+  .formation-bar-left,
+  .formation-title-block,
+  .formation-title-wrap,
+  .formation-bar-right {
+    display: contents;   /* 박스 제거 → 자식들이 .formation-bar 의 직접 플렉스 항목이 됨 */
+  }
+  .formation-reset-btn { order: 1; margin-left: auto; }   /* 선택 초기화: 행1 우측 정렬 시작(좌측 auto) */
+  .formation-reset-all-btn { order: 2; }                  /* 초기화 */
+  .formation-kw-row { flex-basis: 100%; order: 3; }       /* 키워드 요약: 전체폭 → 앞뒤 줄 분리(행2) */
+  .formation-ego-btn { order: 4; margin-left: auto; }     /* E.G.O: 행3 가운데(좌측 auto) */
+  .formation-detail-btn { order: 5; margin-right: auto; } /* 간단히: 행3 가운데(우측 auto) */
+  /* 편성 바 버튼 폰트 크기 통일. .filter-btn 붙여 specificity(0,2,0)로 ≤480의
+     .reset-btn.filter-btn{0.9rem}·.filter-btn{0.9rem} 을 이김 (초기화만 커 보이던 원인). */
+  .formation-reset-btn.filter-btn,
+  .formation-reset-all-btn.filter-btn,
+  .formation-ego-btn.filter-btn,
+  .formation-detail-btn.filter-btn { font-size: 0.85rem; }
+
+  /* grid auto-fill 이 열 수를 계산하려면 조상에 확정 폭 필요
+     (main-content align-items:center 로 목록이 내용폭으로 줄어드는 것 방지). */
+  .personality-category-list {
+    width: 100%;
+  }
+  /* 수감자 카드: 전체 줄은 가운데(트랙 묶음 center) + 마지막 부족한 줄은 좌측 정렬.
+     flex의 justify-content:center는 마지막 줄도 가운데로 몰리므로 grid로 전환
+     (grid는 트랙 묶음만 가운데 두고, 항목은 좌→우로 채워 마지막 줄이 좌측 정렬됨). */
+  .personality-row,
+  .ego-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 105px);   /* 카드 폭 105px → 좁은 폰(~344px)까지 3열 */
+    justify-content: center;
+  }
+  /* 카드 폭 119→105px 축소 (모바일 3열). EGO: %기반 내부라 폭만; 인격: 프레임·초상 비례 축소(×0.882) */
+  .ego-card,
+  .ego-card-wrap {
+    width: 105px;
+  }
+  .personality-card-rank {
+    height: 150px;   /* 170→150 → 폭 105px (150 × 322/460) */
+  }
+  .personality-card-img {
+    height: 138px;   /* 156→138, 프레임과 동일 비율로 축소해 초상 오버플로 방지 */
+  }
+
+  /* 상세 모달 탭 버튼: 프레임(테두리 8px) 디자인은 유지하고, 내부 텍스트(폰트)·간격만 축소해 넘침 해소 */
+  .tab-btn {
+    padding-left: 0.15rem;
+    padding-right: 0.15rem;
+    font-size: 0.55rem;
+  }
+  /* 스킬 버튼(스킬1/2/3/수비): 프레임(테두리 5px) 유지, 내부 텍스트·아이콘·간격만 축소 */
+  .skill-btn {
+    padding-left: 0.15rem;
+    padding-right: 0.15rem;
+    font-size: 0.55rem;
+  }
+  .skill-btn-type-icon {
+    height: 0.55rem;      /* 0.7→0.55 아이콘 축소 */
+    margin-right: 0.15rem; /* 0.3→0.15 간격 축소 */
+  }
+
+  /* 카드/편성 이름 그림자: 일부 기기에서 text-shadow 가 안 보임(EGO 는 overflow:hidden 이 클리핑).
+     아이콘처럼 filter: drop-shadow 로 교체 → 확실히 표시. */
+  .personality-card-name,
+  .ego-name,
+  .formation-card-name {
+    text-shadow: none;
+    filter: drop-shadow(0 1px 2px #000) drop-shadow(0 0 3px #000);
+  }
+  /* 편성 EGO 이름: 기존 saturate(0.6) 유지 + drop-shadow 추가 (filter 는 덮어쓰기라 함께 명시) */
+  .formation-ego-name {
+    filter: saturate(0.6) drop-shadow(0 1px 2px #000) drop-shadow(0 0 3px #000);
+  }
+
+  /* 수감자 드롭다운: 6열 → 3열 (전체 + 3인×4행 = 5행). 모바일에서 6열이 잘리는 것 방지.
+     전체(--all)는 grid-column:1/-1 이라 자동으로 3열 전폭 유지. */
+  .prisoner-dropdown-panel {
+    grid-template-columns: repeat(3, max-content);
+  }
+  /* 서포트 켜짐: 카드마다 우측 패널이 붙음.
+     세로 1열로 쌓고(옆 카드와 겹칠 여지 없음), 인라인 padding-right(204px)를 제거해
+     패널이 카드 바로 오른쪽(left:100% = 카드폭 119px)에 오게 함(과대 오프셋 방지). */
+  .personality-page.show-support .personality-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* 카드 래퍼 폭=카드(119px), stretch 방지 */
+  }
+  .personality-page.show-support .personality-card-wrap {
+    padding-right: 0 !important;   /* 인라인 :style 의 204px 제거 (패널 오프셋 정상화) */
+  }
+
+  /* 수감자 카테고리 라벨: 84px 고정 → 전체폭 + 이름 한 줄 (파우스트 등 감김 방지) */
+  .personality-category-label {
+    width: 100%;
+  }
+  .personality-category-label .cat-name {
+    white-space: nowrap;
+  }
+
+  /* 헤더: 제목(+후원) 윗줄 / 네비 아랫줄 전체폭 2단 세로 스택 */
+  .site-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .site-nav {
+    margin-left: 0;         /* 우측 끝 밀기 해제 */
+    width: 100%;
+    align-self: stretch;
+    justify-content: center;   /* 페이지 버튼 가운데 정렬 */
   }
 }
 
@@ -4607,4 +4817,55 @@ button.site-nav-link.site-nav-link--active {
   .card-save-btn {
     opacity: 1;
   }
+}
+
+/* ── PC버전 보기(데스크톱 모드) 안내 배너 ──
+   JS 감지 시에만 노출(그 상태에선 화면이 축소되므로 폰트를 크게). 안내 전용. */
+.dm-banner {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  /* body 좌우 패딩을 벗어나 화면 전체폭으로 (full-bleed) */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  flex-direction: column;   /* 문구(위) → 버튼(아래) 세로 배치 */
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: #2a1f12;
+  border-bottom: 2px solid #c9a84c;
+  color: #edd0ac;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.dm-banner[hidden] { display: none; }   /* display:flex 가 hidden 속성을 이기므로 명시 */
+.dm-banner-text {
+  width: 100%;   /* 전체폭 사용 → 좁게 잘리지 않게 */
+}
+.dm-banner-text b { color: #f9bd68; }
+.dm-banner-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+.dm-banner-btn {
+  font-family: inherit;
+  font-size: 1.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+}
+.dm-banner-dismiss {
+  background: #c9a84c;
+  color: #1a140c;
+  font-weight: bold;
+}
+.dm-banner-close {
+  background: transparent;
+  color: #edd0ac;
+  border: 1px solid #6a5a3e;
 }

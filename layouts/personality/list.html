@@ -355,7 +355,7 @@
   {{ end }}
 {{ end }}
 
-<div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, 'formation-detail-mode-' + formationDetailMode, { 'show-support': showSupport }]">
+<div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, 'formation-detail-mode-' + formationDetailMode, showSupport ? 'show-support' : '']">
 
   {{/* ── SVG 색상 필터 정의 ── */}}
   <svg id="skill-color-filters-svg" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
@@ -1124,7 +1124,7 @@
 
   {{/* ── EGO 상세 모달 ── */}}
   <div class="modal-overlay" :class="{ open: egoDetail }" @click.self="closeEgoDetail()" @contextmenu.prevent="closeEgoDetail()">
-    <div class="modal-box ego-detail-box" @contextmenu.prevent>
+    <div class="modal-box ego-detail-box detail-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <div class="personality-detail-title-row">
           <img class="ego-detail-grade-icon" :src="egoDetail ? `/images/ui/egoskill_icon_${egoDetail.egoType}.png` : ''" alt="">
@@ -1519,7 +1519,7 @@
 
   {{/* ── 인격 상세 모달 ── */}}
   <div class="modal-overlay" :class="{ open: personalityDetail }" @click.self="closePersonalityDetail()" @contextmenu.prevent="closePersonalityDetail()">
-    <div class="modal-box personality-detail-box" @contextmenu.prevent
+    <div class="modal-box personality-detail-box detail-modal-box" @contextmenu.prevent
       :style="personalityDetail ? `border-image: url('/images/ui/modal_frame_personality_0${personalityDetail.rank}.png') 50 fill stretch` : ''">
       <div class="modal-header">
         <div class="personality-detail-title-row">

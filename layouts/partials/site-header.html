@@ -31,7 +31,17 @@
   </div>
   {{ end }}
   <nav class="site-nav">
-    <a class="site-nav-link{{ if eq $page "gift" }} site-nav-link--active{{ end }}" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
+    {{ if eq $page "gift" }}
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': !showPackPanel }" @click="showPackPanel = false; showTagPanel = false; tagFilter = ''; packFilter = ''"><img src="/images/ui/page_egogift.png" alt="">기프트</button>
+    {{ else }}
+    <a class="site-nav-link" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
+    {{ end }}
+    <span class="site-nav-sep"></span>
+    {{ if eq $page "gift" }}
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': showPackPanel }" @click="showPackPanel = !showPackPanel; showTagPanel = false; tagFilter = ''"><img src="/images/ui/page_theme.png" alt="">테마팩</button>
+    {{ else }}
+    <a class="site-nav-link" href="/#pack"><img src="/images/ui/page_theme.png" alt="">테마팩</a>
+    {{ end }}
     <span class="site-nav-sep"></span>
     {{ if eq $page "personality" }}
     <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'personality' }" @click="pageMode = 'personality'"><img src="/images/ui/page_prisoner.png" alt="">수감자</button>
