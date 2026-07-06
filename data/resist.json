@@ -27,6 +27,10 @@
     {
       "id": "resist_immune",
       "value": 0.0
+    },
+    {
+      "id": "resist_unwatched",
+      "value": -1
     }
   ]
 }

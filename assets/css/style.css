@@ -4492,6 +4492,21 @@ button.site-nav-link.site-nav-link--active {
 .personality-card-frame {
   position: relative;
 }
+/* 출시 예정(preview) 인격 뱃지 */
+.personality-preview-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 3;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #d23b3b;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
 /* 2안: 카드 하단 상세 정보 영역 */
 .personality-card-detail2 {
   width: 95%;

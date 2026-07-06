@@ -212,6 +212,121 @@
     {{ end }}
   {{ end }}
 {{ end }}
+{{/* ── 출시 예정(preview) 인격 합성 ──
+     data/preview/personality.json 의 최소 authoring(id·이름·색·스킬키워드·수비)을 기존 카드/편성/모달이
+     그대로 소비하는 더미 레코드로 펼친다. PV 미제공 값은 더미(위력·코인·갯수=1, 보정=0, 내성=-1[관측불가],
+     hp/속도=더미(모달에서 ??? / ? - ? 로 표시), 유형=QUESTION_MARK[question_mark 아이콘], 이름/패시브=관측불가).
+     실제 클라이언트 업데이트 후에는 preview.json 에서 해당 id 를 삭제한다(같은 id 정식 레코드가 대체). */}}
+{{ $previewList := slice }}
+{{ $prevData := $.Site.Data.preview.personality }}
+{{ if $prevData }}{{ range $prevData.list }}
+  {{ $id := .id }}{{ $idStr := string $id }}
+  {{/* 선택 필드(회차별 공개)·미제공 시 더미:
+       colors=스킬1·2·3 base 죄악속성 · defType/defColor=수비 base · skillKeywordList
+       skills[]=tier별 {name,atk,coins,super,sin,sync4:{name,sin,coins,super}}(동기화4 변형) · defense={name,atk,def,coins,super,sin,sync4}
+       passives[]=전투 패시브 실명 · supportPassive=서포트 패시브 실명. 위력 수치는 더미(1), 코인 개수·이름·유형은 실제값. */}}
+  {{ $colors := .colors | default slice }}
+  {{ $atkIds := slice (add (mul $id 10) 1) (add (mul $id 10) 2) (add (mul $id 10) 3) }}
+  {{ $defId := add (mul $id 10) 9 }}
+  {{ $skillsByTier := dict }}
+  {{ range (.skills | default slice) }}{{ $skillsByTier = merge $skillsByTier (dict (printf "%d" (int .tier)) .) }}{{ end }}
+  {{/* base와 sync4 변형은 각각 별도 스킬(정식 데이터도 이름 변경은 별개 스킬). 둘 다 attributeList에 넣어 모달에 함께 표시.
+       변형 id = id*1000+tier(공격)·id*1000+9(수비) — base(id*10+tier) / 패시브(id*100+n)와 충돌 없음. */}}
+  {{ $atkSkillIds := slice }}
+  {{ range $i, $sid := $atkIds }}
+    {{ $tier := add $i 1 }}
+    {{ $baseSin := "" }}{{ if lt $i (len $colors) }}{{ $baseSin = index $colors $i }}{{ end }}
+    {{ $sk := index $skillsByTier (printf "%d" $tier) }}
+    {{ $bName := "관측불가" }}{{ $bSin := $baseSin }}{{ $bAtk := "QUESTION_MARK" }}{{ $bCoins := 1 }}{{ $bSuper := false }}
+    {{ if $sk }}
+      {{ $bName = $sk.name }}
+      {{ $bSin = $sk.sin | default $baseSin }}
+      {{ $bAtk = $sk.atk | default "QUESTION_MARK" }}
+      {{ $bCoins = int ($sk.coins | default 1) }}
+      {{ $bSuper = $sk.super | default false }}
+    {{ end }}
+    {{ $bSd := slice }}{{ if ne $bSin "" }}{{ $bSd = slice (dict "g" 1 "a" $bSin) }}{{ end }}
+    {{ $bCt := slice }}{{ range seq $bCoins }}{{ $bCt = $bCt | append (cond $bSuper "S" "D") }}{{ end }}
+    {{ $skillMap = merge $skillMap (dict (string $sid) (dict "tier" $tier "sd" $bSd "ic" slice "at" $bAtk "dt" "" "lc" (slice (dict "g" 1 "v" 0)) "cc" (slice (dict "g" 1 "v" $bCoins)) "dv" (slice (dict "g" 1 "v" 1)) "ci" (slice (dict "g" 1 "cs" 1 "ct" $bCt "op" "ADD")) "tn" slice)) }}
+    {{ $skillNameMap = merge $skillNameMap (dict (string $sid) (slice (dict "g" 1 "n" $bName))) }}
+    {{ $atkSkillIds = $atkSkillIds | append $sid }}
+    {{ if and $sk $sk.sync4 }}
+      {{ $s4 := $sk.sync4 }}
+      {{ $vid := add (mul $id 1000) $tier }}
+      {{ $vSin := $s4.sin | default $bSin }}
+      {{ $vCoins := int ($s4.coins | default $bCoins) }}
+      {{ $vSd := slice }}{{ if ne $vSin "" }}{{ $vSd = slice (dict "g" 1 "a" $vSin) }}{{ end }}
+      {{ $vCt := slice }}{{ range seq $vCoins }}{{ $vCt = $vCt | append (cond ($s4.super | default false) "S" "D") }}{{ end }}
+      {{ $skillMap = merge $skillMap (dict (string $vid) (dict "tier" $tier "sd" $vSd "ic" slice "at" ($s4.atk | default $bAtk) "dt" "" "lc" (slice (dict "g" 1 "v" 0)) "cc" (slice (dict "g" 1 "v" $vCoins)) "dv" (slice (dict "g" 1 "v" 1)) "ci" (slice (dict "g" 1 "cs" 1 "ct" $vCt "op" "ADD")) "tn" slice)) }}
+      {{ $skillNameMap = merge $skillNameMap (dict (string $vid) (slice (dict "g" 1 "n" $s4.name))) }}
+      {{ $atkSkillIds = $atkSkillIds | append $vid }}
+    {{ end }}
+  {{ end }}
+  {{ $def := .defense }}
+  {{ $defType := "" }}{{ if $def }}{{ $defType = $def.def | default "COUNTER" }}{{ else }}{{ $defType = .defType | default "" }}{{ end }}
+  {{ $defIds := slice }}
+  {{ if ne $defType "" }}
+    {{ $defBaseSin := .defColor | default "" }}
+    {{ $dName := "관측불가" }}{{ $dSin := $defBaseSin }}{{ $dAtk := "" }}{{ $dCoins := 0 }}{{ $dSuper := false }}
+    {{ if $def }}
+      {{ $dName = $def.name }}
+      {{ $dSin = $def.sin | default $defBaseSin }}
+      {{ $dAtk = $def.atk | default "" }}
+      {{ $dCoins = int ($def.coins | default 1) }}
+      {{ $dSuper = $def.super | default false }}
+    {{ end }}
+    {{ $dSd := slice }}{{ if ne $dSin "" }}{{ $dSd = slice (dict "g" 1 "a" $dSin) }}{{ end }}
+    {{ $dCc := slice }}{{ $dCi := slice }}{{ $dDv := slice }}
+    {{ if $def }}
+      {{ $dCt := slice }}{{ range seq $dCoins }}{{ $dCt = $dCt | append (cond $dSuper "S" "D") }}{{ end }}
+      {{ $dCc = slice (dict "g" 1 "v" $dCoins) }}{{ $dCi = slice (dict "g" 1 "cs" 1 "ct" $dCt "op" "ADD") }}{{ $dDv = slice (dict "g" 1 "v" 1) }}
+    {{ end }}
+    {{ $skillMap = merge $skillMap (dict (string $defId) (dict "tier" 1 "sd" $dSd "ic" slice "at" $dAtk "dt" $defType "lc" (slice (dict "g" 1 "v" 0)) "cc" $dCc "dv" $dDv "ci" $dCi "tn" slice)) }}
+    {{ $skillNameMap = merge $skillNameMap (dict (string $defId) (slice (dict "g" 1 "n" $dName))) }}
+    {{ $defIds = slice $defId }}
+    {{ if and $def $def.sync4 }}
+      {{ $s4 := $def.sync4 }}
+      {{ $vdid := add (mul $id 1000) 9 }}
+      {{ $vdSin := $s4.sin | default $dSin }}
+      {{ $vdCoins := int ($s4.coins | default $dCoins) }}
+      {{ $vdSd := slice }}{{ if ne $vdSin "" }}{{ $vdSd = slice (dict "g" 1 "a" $vdSin) }}{{ end }}
+      {{ $vdCt := slice }}{{ range seq $vdCoins }}{{ $vdCt = $vdCt | append (cond ($s4.super | default false) "S" "D") }}{{ end }}
+      {{ $skillMap = merge $skillMap (dict (string $vdid) (dict "tier" 1 "sd" $vdSd "ic" slice "at" ($s4.atk | default $dAtk) "dt" $defType "lc" (slice (dict "g" 1 "v" 0)) "cc" (slice (dict "g" 1 "v" $vdCoins)) "dv" (slice (dict "g" 1 "v" 1)) "ci" (slice (dict "g" 1 "cs" 1 "ct" $vdCt "op" "ADD")) "tn" slice)) }}
+      {{ $skillNameMap = merge $skillNameMap (dict (string $vdid) (slice (dict "g" 1 "n" $s4.name))) }}
+      {{ $defIds = $defIds | append $vdid }}
+    {{ end }}
+  {{ end }}
+  {{ $nameMap = merge $nameMap (dict $idStr .name) }}
+  {{ $keywordMap = merge $keywordMap (dict "PREVIEW_UNKNOWN" "???") }}
+  {{ $bpIds := slice }}
+  {{ $pvs := .passives | default slice }}
+  {{ if gt (len $pvs) 0 }}
+    {{ range $pi, $pn := $pvs }}
+      {{ $bpid := add (mul $id 100) (add $pi 1) }}
+      {{ $passiveMap = merge $passiveMap (dict (string $bpid) (dict "name" $pn "desc" "" "res" slice "stock" slice)) }}
+      {{ $bpIds = $bpIds | append $bpid }}
+    {{ end }}
+  {{ else }}
+    {{ $bpid := add (mul $id 100) 1 }}
+    {{ $passiveMap = merge $passiveMap (dict (string $bpid) (dict "name" "관측불가" "desc" "" "res" slice "stock" slice)) }}
+    {{ $bpIds = slice $bpid }}
+  {{ end }}
+  {{ $spId := add (mul $id 100) 9 }}
+  {{ $passiveMap = merge $passiveMap (dict (string $spId) (dict "name" (.supportPassive | default "관측불가") "desc" "" "res" slice "stock" slice)) }}
+  {{ $ppMap = merge $ppMap (dict $idStr (dict "bp" (slice (dict "level" 1 "ids" $bpIds)) "sp" (slice (dict "level" 1 "ids" (slice $spId))))) }}
+  {{ $attrList := slice }}
+  {{ range $atkSkillIds }}{{ $attrList = $attrList | append (dict "skillId" . "number" 1) }}{{ end }}
+  {{ $rec := dict "id" $id "characterId" (int (strings.SliceString $idStr 1 3)) "rank" (.rank | default 3) "updatedDate" .updatedDate "season" .season "skillKeywordList" (.skillKeywordList | default slice) "associationList" (slice "PREVIEW_UNKNOWN") "unitKeywordList" slice "unitKeywordListByUnlockCode" slice "attributeList" $attrList "defenseSkillIDList" $defIds "resistInfo" (dict "atkResistList" (slice (dict "type" "SLASH" "value" -1) (dict "type" "PENETRATE" "value" -1) (dict "type" "HIT" "value" -1))) "hp" (dict "defaultStat" 1 "incrementByLevel" 0) "breakSection" (dict "sectionList" slice) "minSpeedList" (slice 1 1 1 1) "maxSpeedList" (slice 1 1 1 1) "defCorrection" 0 "preview" true }}
+  {{ $previewList = $previewList | append $rec }}
+{{ end }}{{ end }}
+{{ range $previewList }}
+  {{ $extraDataList = $extraDataList | append . }}
+  {{ $a1 := "" }}{{ $a2 := "" }}{{ $a3 := "" }}{{ $f1 := false }}{{ $f2 := false }}{{ $f3 := false }}
+  {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ $nl := index $skillNameMap (string .skillId) }}{{ if and $si $nl }}{{ if and (eq (int $si.tier) 1) (not $f1) }}{{ $a1 = $si.at }}{{ $f1 = true }}{{ end }}{{ if and (eq (int $si.tier) 2) (not $f2) }}{{ $a2 = $si.at }}{{ $f2 = true }}{{ end }}{{ if and (eq (int $si.tier) 3) (not $f3) }}{{ $a3 = $si.at }}{{ $f3 = true }}{{ end }}{{ end }}{{ end }}
+  {{ $atk := slice }}{{ if ne $a1 "" }}{{ $atk = $atk | append $a1 }}{{ end }}{{ if ne $a2 "" }}{{ $atk = $atk | append $a2 }}{{ end }}{{ if ne $a3 "" }}{{ $atk = $atk | append $a3 }}{{ end }}
+  {{ $def := slice }}{{ with index (sort .defenseSkillIDList) 0 }}{{ $si := index $skillMap (string .) }}{{ if (and $si $si.dt) }}{{ $def = $def | append $si.dt }}{{ end }}{{ end }}
+  {{ $formationMeta = merge $formationMeta (dict (string .id) (dict "rank" .rank "name" (index $nameMap (string .id) | default "") "kw" .skillKeywordList "atk" $atk "def" $def "preview" true)) }}
+{{ end }}
 {{/* 키워드 맵: parsingdata(name,desc,iconId) + data/buff iconId 폴백 */}}
 {{ $buffIconLookup := dict }}
 {{ range $.Site.Data.buff }}
@@ -354,6 +469,26 @@
     {{ end }}
   {{ end }}
 {{ end }}
+{{/* ── 출시 예정(preview) EGO — 스킬 맵 더미 (egoSkillMap/NameMap/AttrMap/AbNameMap) ──
+     data/preview/egoskill.json(id·이름·날짜·시즌)을 펼침. 각성·침식 스킬 id는 id에서 유도(=id*10+1/+2).
+     죄악속성 없음(sd 빈 → NEUTRAL), 유형=QUESTION_MARK, 위력·코인=1, 보정=0, 정신력=??, 이름=EGO명, desc 없음. */}}
+{{ $prevEgo := $.Site.Data.preview.egoskill }}
+{{ if $prevEgo }}{{ range $prevEgo.list }}
+  {{ $eid := int .id }}
+  {{ $awakeId := printf "%d" (add (mul $eid 10) 1) }}
+  {{ $corrId := printf "%d" (add (mul $eid 10) 2) }}
+  {{/* attrType(죄악속성) 선택 — 있으면 sd에 반영(스킬 프레임 색), 없으면 빈 sd(NEUTRAL) */}}
+  {{ $eAttr := .attrType | default "" }}
+  {{ $eSd := slice }}{{ if ne $eAttr "" }}{{ $eSd = slice (dict "g" 1 "a" $eAttr) }}{{ end }}
+  {{ $dummySkill := dict "tier" 1 "sd" $eSd "at" (.atkType | default "QUESTION_MARK") "dt" "" "lc" (slice (dict "g" 1 "v" 0)) "dv" (slice (dict "g" 1 "v" 1)) "ci" (slice (dict "g" 1 "cs" 1 "ct" (slice "D") "op" "ADD")) "tn" slice "bk" slice "mp" "??" "preview" true }}
+  {{ $egoSkillMap = merge $egoSkillMap (dict $awakeId $dummySkill) }}
+  {{ $egoSkillMap = merge $egoSkillMap (dict $corrId $dummySkill) }}
+  {{ $egoSkillNameMap = merge $egoSkillNameMap (dict $awakeId (slice (dict "g" 1 "n" .name))) }}
+  {{ $egoSkillNameMap = merge $egoSkillNameMap (dict $corrId (slice (dict "g" 1 "n" .name))) }}
+  {{ $egoSkillAttrMap = merge $egoSkillAttrMap (dict $awakeId $eAttr) }}
+  {{ $egoSkillAttrMap = merge $egoSkillAttrMap (dict $corrId $eAttr) }}
+  {{ $egoSkillAbNameMap = merge $egoSkillAbNameMap (dict $awakeId "관측 불가") }}
+{{ end }}{{ end }}
 
 <div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, 'formation-detail-mode-' + formationDetailMode, showSupport ? 'show-support' : '']">
 
@@ -623,7 +758,7 @@
                   </template>
                   <template x-if="egoSlot('{{ $pid }}', '{{ $g }}')">
                     <div class="formation-ego-equipped">
-                      <img class="formation-ego-img" :src="egoImg(egoSlot('{{ $pid }}', '{{ $g }}'))" alt="">
+                      <img class="formation-ego-img" x-show="!(egoMeta[egoSlot('{{ $pid }}', '{{ $g }}')]?.preview)" :src="egoImg(egoSlot('{{ $pid }}', '{{ $g }}'))" alt="">
                       <img class="formation-ego-frame-overlay" src="/images/ui/formation_ego_frame.png" alt="">
                       <span class="formation-ego-name" :style="{ color: egoSlotColor('{{ $pid }}', '{{ $g }}') }" x-text="egoSlotName('{{ $pid }}', '{{ $g }}')" x-effect="egoSlotName('{{ $pid }}', '{{ $g }}'); showEgoLoadout; $nextTick(() => fitEgoName($el))"></span>
                     </div>
@@ -846,11 +981,35 @@
         {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
       {{ end }}
     {{ end }}
+    {{/* ── 출시 예정(preview) EGO — egoMap 편입 ──
+         필요자원=7속성 아이콘 전부·갯수 ??, 내성=7속성 -1(관측불가), 환상체·패시브=관측 불가, 이미지=egoskill/preview/{id}_cg_preview.png(카드·모달 CG만).
+         attrType(죄악속성)·egoType(등급)은 선택 — 미제공 시 NEUTRAL/unwatched(카드 죄악=question_mark, 모달 등급=question_mark), 제공 시 실제 값.
+         preview EGO는 등급 공개 여부와 무관하게 편성 미포함(egoMeta.preview → equipEgo 가드). 실제 업데이트 시 preview/egoskill.json 에서 삭제. */}}
+    {{ $sins7 := slice "CRIMSON" "SCARLET" "AMBER" "SHAMROCK" "AZURE" "INDIGO" "VIOLET" }}
+    {{ if $prevEgo }}{{ range $prevEgo.list }}
+      {{ $eid := int .id }}{{ $eidStr := printf "%d" $eid }}
+      {{ $pcid := printf "%d" (int (strings.SliceString $eidStr 1 3)) }}
+      {{ $pAwakeId := printf "%d" (add (mul $eid 10) 1) }}
+      {{ $pCorrId := printf "%d" (add (mul $eid 10) 2) }}
+      {{ $pImg := printf "/images/egoskill/preview/%s_cg_preview.png" $eidStr }}
+      {{ $pd := printf "%d" (int .updatedDate) }}
+      {{ $pSeason := index $seasonMap (string (int .season)) }}
+      {{ $pFmtDate := printf "%s.%s.%s" (substr $pd 0 4) (substr $pd 4 2) (substr $pd 6 2) }}
+      {{ $pReq := slice }}{{ range $sins7 }}{{ $pReq = $pReq | append (dict "attributeType" . "num" "??") }}{{ end }}
+      {{ $pRes := slice }}{{ range $sins7 }}{{ $pRes = $pRes | append (dict "type" . "value" -1) }}{{ end }}
+      {{/* attrType(죄악속성)·egoType(등급) 선택 — 미제공 시 NEUTRAL/unwatched(더미) */}}
+      {{ $eAttr := .attrType | default "" }}
+      {{ $eType := lower (.egoType | default "unwatched") }}
+      {{ $eColor := index $attrColorMap $eAttr | default "#ffffff" }}
+      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측 불가") "passives" (slice (dict "name" (.passiveName | default "관측 불가") "desc" "")) "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
+      {{ $existing := index $egoMap $pcid | default slice }}
+      {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
+    {{ end }}{{ end }}
 
     {{/* EGO 편성: egoMeta(id→{name,type}) + 기본 로드아웃(zayin=2{pid}01, 나머지 빈칸) */}}
     {{ $egoMeta := dict }}
     {{ range $cid, $elist := $egoMap }}{{ range $elist }}
-      {{ $egoMeta = merge $egoMeta (dict .id (dict "name" .name "type" .egoType "color" .attrColor)) }}
+      {{ $egoMeta = merge $egoMeta (dict .id (dict "name" .name "type" .egoType "color" .attrColor "preview" (.preview | default false))) }}
     {{ end }}{{ end }}
     {{ $egoLoadoutDefaults := dict }}
     {{ range $prisoners }}
@@ -904,6 +1063,7 @@
         <div class="personality-row" x-show="pageMode === 'personality'">
           {{ range sort (sort $fullList "updatedDate") "rank" }}
           {{ $title := index $nameMap (string .id) }}
+          {{ $isPreview := .preview | default false }}
           {{ $d := printf "%d" (int .updatedDate) }}
           {{ $seasonId := int .season }}
           {{ if eq $seasonId 0 }}
@@ -942,13 +1102,13 @@
           {{ range .attributeList }}
             {{ $si := index $skillMap (string .skillId) }}
             {{ $nl := index $skillNameMap (string .skillId) }}
-            {{ if and $si $nl }}{{ $skills = $skills | append (dict "id" .skillId "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn) }}{{ end }}
+            {{ if and $si $nl }}{{ $skills = $skills | append (dict "id" .skillId "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn "preview" $isPreview) }}{{ end }}
           {{ end }}
           {{ $defSkills := slice }}
           {{ range .defenseSkillIDList }}
             {{ $si := index $skillMap (string .) }}
             {{ $nl := index $skillNameMap (string .) }}
-            {{ if and $si $nl }}{{ $defSkills = $defSkills | append (dict "id" . "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn) }}{{ end }}
+            {{ if and $si $nl }}{{ $defSkills = $defSkills | append (dict "id" . "tier" $si.tier "sd" $si.sd "ic" $si.ic "nl" $nl "at" $si.at "dt" $si.dt "lc" $si.lc "cc" $si.cc "dv" $si.dv "ci" $si.ci "tn" $si.tn "preview" $isPreview) }}{{ end }}
           {{ end }}
           {{ $ppData := index $ppMap (string .id) }}
           {{ $passiveBp := slice }}
@@ -964,12 +1124,12 @@
           <div class="personality-card" data-pkey="{{ .id }}"
             @click="assignFormation('{{ $pid }}', '{{ .id }}')"
             @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)"
-            @contextmenu.prevent="openPersonalityDetail({ id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
+            @contextmenu.prevent="openPersonalityDetail({ isPreview: {{ $isPreview }}, id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
             {{ $dt := "" }}
             {{ with index $defSkills 0 }}{{ $dt = .dt }}{{ end }}
             {{ $defTypeIcon := index (dict "COUNTER" "counter" "EVADE" "evade" "GUARD" "guard") $dt }}
             {{ $colorMap := dict "CRIMSON" "Crimson" "SCARLET" "Scarlet" "AMBER" "Amber" "SHAMROCK" "Shamrock" "AZURE" "Azure" "INDIGO" "Indigo" "VIOLET" "Violet" }}
-            {{ $atkIconMap := dict "SLASH" "slash" "HIT" "hit" "PENETRATE" "penetrate" }}
+            {{ $atkIconMap := dict "SLASH" "slash" "HIT" "hit" "PENETRATE" "penetrate" "QUESTION_MARK" "question_mark" }}
             {{ $s1attr := "" }}{{ $s1atk := "" }}
             {{ $s2attr := "" }}{{ $s2atk := "" }}
             {{ $s3attr := "" }}{{ $s3atk := "" }}
@@ -994,22 +1154,32 @@
             {{ end }}
             <button class="card-save-btn" @click.stop="copyPersonalityCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             <div class="personality-card-frame">
+              {{ if $isPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
               <img class="personality-card-rank"
                 src="/images/ui/personality_frame_0{{ .rank }}.png"
                 alt="">
+              {{ if $isPreview }}
+              <img class="personality-card-img"
+                src="/images/personality/preview/{{ .id }}_preview_info.png"
+                alt="{{ .id }}"
+                loading="lazy">
+              {{ else }}
               <img class="personality-card-img"
                 :src="gacksungIds[{{ .id }}] ? '/images/personality/{{ $pid }}/{{ .id }}_gacksung_info.webp' : '/images/personality/{{ $pid }}/{{ .id }}_normal_info.webp'"
                 alt="{{ .id }}"
                 loading="lazy">
+              {{ end }}
               <img class="personality-card-rank-icon"
                 src="/images/ui/personality_rank_0{{ .rank }}.png"
                 alt="rank {{ .rank }}">
               <div class="personality-card-info-rows">
-                {{ if or $defTypeIcon .skillKeywordList }}
+                {{ if or $defTypeIcon .skillKeywordList $isPreview }}
                 <div class="personality-card-skill-icons">
-                  {{ range .skillKeywordList }}
+                  {{ if and $isPreview (not .skillKeywordList) }}
+                  <img class="personality-card-skill-icon" src="/images/ui/question_mark.png" alt="">
+                  {{ else }}{{ range .skillKeywordList }}
                   <img class="personality-card-skill-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
-                  {{ end }}
+                  {{ end }}{{ end }}
                   {{ if $defTypeIcon }}
                   <img class="personality-card-def-icon" src="/images/ui/{{ $defTypeIcon }}.png" alt="{{ $dt }}">
                   {{ end }}
@@ -1042,9 +1212,11 @@
             </div>
             <div class="personality-card-detail2" style="border-image: url('/images/ui/personality_detail_{{ printf "%02d" (int .rank) }}.png') 20 fill stretch;">
               <div class="personality-card-detail2-row">
-                {{ range .skillKeywordList }}
+                {{ if and $isPreview (not .skillKeywordList) }}
+                <img class="personality-card-d2-keyword-icon" src="/images/ui/question_mark.png" alt="">
+                {{ else }}{{ range .skillKeywordList }}
                 <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
-                {{ end }}
+                {{ end }}{{ end }}
               </div>
               <div class="personality-card-detail2-row">
                 {{ range slice $s1attr $s2attr $s3attr $sDefAttr }}
@@ -1095,10 +1267,12 @@
         </div>
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          {{ $isEgoPreview := .preview | default false }}
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+            {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
-              {{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}
+              {{ if and $isEgoPreview (eq .attrType "") }}<img class="ego-cat-icon" src="/images/ui/question_mark.png" alt="">{{ else }}{{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}{{ end }}
             </div>
             <div class="ego-card">
               <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
@@ -1109,9 +1283,11 @@
             </div>
             <button class="card-save-btn" @click.stop="copyEgoCardImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             <div class="ego-card-detail2">
-              {{ range .skillKeywords }}
+              {{ if and $isEgoPreview (not .skillKeywords) }}
+              <img class="personality-card-d2-keyword-icon" src="/images/ui/question_mark.png" alt="">
+              {{ else }}{{ range .skillKeywords }}
               <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
-              {{ end }}
+              {{ end }}{{ end }}
             </div>
           </div>
           {{ end }}
@@ -1127,7 +1303,7 @@
     <div class="modal-box ego-detail-box detail-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <div class="personality-detail-title-row">
-          <img class="ego-detail-grade-icon" :src="egoDetail ? `/images/ui/egoskill_icon_${egoDetail.egoType}.png` : ''" alt="">
+          <img class="ego-detail-grade-icon" :src="!egoDetail ? '' : (egoDetail.isPreview && egoDetail.egoType === 'unwatched' ? '/images/ui/question_mark.png' : `/images/ui/egoskill_icon_${egoDetail.egoType}.png`)" alt="">
           <img class="personality-detail-icon" :src="egoDetail ? `/images/category/${egoDetail.charIcon}.png` : ''" alt="">
           <span class="modal-title" x-text="egoDetail ? egoDetail.name : ''"></span>
         </div>
@@ -1178,8 +1354,11 @@
             <span class="season-date"  x-text="egoDetail?.formattedDate ?? ''"></span>
             <span class="season-title" x-html="egoDetail?.seasonTitle ?? ''"></span>
             <span class="season-name"  x-show="egoDetail?.seasonName" x-html="egoDetail?.seasonName ?? ''"></span>
-            <template x-if="egoDetail?.skillKeywords?.length">
+            <template x-if="egoDetail?.isPreview || egoDetail?.skillKeywords?.length">
               <div class="season-skill-icons">
+                <template x-if="egoDetail?.isPreview && !(egoDetail?.skillKeywords?.length)">
+                  <img class="season-skill-icon" src="/images/ui/question_mark.png" alt="">
+                </template>
                 <template x-for="kw in egoDetail.skillKeywords" :key="kw">
                   <img class="season-skill-icon"
                        :src="`/images/buff/${kw}.png`"
@@ -1204,7 +1383,7 @@
                     <img class="ego-req-icon" :src="`/images/sin/${r.attributeType.charAt(0) + r.attributeType.slice(1).toLowerCase()}_require.png`" alt="">
                     <span class="ego-req-num"
                           :style="egoOverclock ? 'color:#fd3f3f' : ''"
-                          x-text="egoOverclock ? Math.ceil(r.num * 1.5) : r.num"></span>
+                          x-text="egoDetail?.isPreview ? '??' : (egoOverclock ? Math.ceil(r.num * 1.5) : r.num)"></span>
                   </div>
                 </template>
                 <div class="ego-requirement-item" x-show="egoAwakeSkill?.mp">
@@ -1213,7 +1392,7 @@
                     <span x-text="egoCorrosionSkill?.mp ? `${egoAwakeSkill?.mp}/` : `${egoAwakeSkill?.mp ?? ''}`"></span>
                     <span x-show="egoCorrosionSkill?.mp" style="display:none"
                           :style="egoOverclock ? 'color:#fd3f3f' : ''"
-                          x-text="egoOverclock ? Math.ceil(egoCorrosionSkill.mp * 1.5) : egoCorrosionSkill.mp"></span>
+                          x-text="egoDetail?.isPreview ? '??' : (egoOverclock ? Math.ceil(egoCorrosionSkill.mp * 1.5) : egoCorrosionSkill.mp)"></span>
                   </span>
                 </div>
               </div>
@@ -1225,13 +1404,13 @@
               <div class="personality-detail-resist" style="flex-wrap: wrap; gap: 0.7rem; padding-left: 0.5rem;">
                 <template x-for="res in egoDetail.resistList.filter(r => r.type !== 'WHITE' && r.type !== 'BLACK')" :key="res.type">
                   <div class="res-item">
-                    <img class="stat-icon" :src="`/images/sin/${res.type.charAt(0) + res.type.slice(1).toLowerCase()}_resist_${String(Math.round(res.value * 100)).padStart(3, '0')}.png`" alt="">
+                    <img class="stat-icon" :src="`/images/sin/${res.type.charAt(0) + res.type.slice(1).toLowerCase()}_resist_${res.value === -1 ? '100' : String(Math.round(res.value * 100)).padStart(3, '0')}.png`" alt="">
                     <div class="res-text">
                       <span class="res-label"
                             x-text="resistLabelMap[res.value]?.text ?? ''"
                             :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
                       <span class="res-label"
-                            x-text="`[X${res.value}]`"
+                            x-text="res.value === -1 ? '[X?]' : `[X${res.value}]`"
                             :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
                     </div>
                   </div>
@@ -1252,7 +1431,7 @@
                   <div class="skill-frame-item">
                     <div class="skill-frame-top-row">
                       <div class="skill-display">
-                        <img class="skill-icon-img" :src="egoAwakeSkill.iconImg">
+                        <img class="skill-icon-img" x-show="!egoDetail?.isPreview" :src="egoAwakeSkill.iconImg">
                         <img class="skill-frame-img" :src="egoSkillFrameSrc(egoAwakeSkill, false)" :style="'filter: url(#tint-' + egoSkillAttr(egoAwakeSkill) + ')'">
                       </div>
                       <div class="skill-frame-info">
@@ -1386,7 +1565,7 @@
                   <div class="skill-frame-item">
                     <div class="skill-frame-top-row">
                       <div class="skill-display">
-                        <img class="skill-icon-img" :src="egoCorrosionSkill.iconImg">
+                        <img class="skill-icon-img" x-show="!egoDetail?.isPreview" :src="egoCorrosionSkill.iconImg">
                         <img class="skill-frame-img" :src="egoSkillFrameSrc(egoCorrosionSkill, true)" :style="'filter: url(#tint-' + egoSkillAttr(egoCorrosionSkill) + ')'">
                       </div>
                       <div class="skill-frame-info">
@@ -1536,7 +1715,7 @@
       <div class="modal-body">
         <div class="personality-detail-img-wrap">
           <img class="personality-detail-img"
-            :src="personalityDetail ? ((noNormalIds[personalityDetail.id] || gacksungIds[personalityDetail.id]) ? `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_gacksung_profile_support_personality.webp` : `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_normal_profile_support_personality.webp`) : ''"
+            :src="!personalityDetail ? '' : (personalityDetail.isPreview ? `/images/personality/preview/${personalityDetail.id}_preview_profile_support_personality.png` : ((noNormalIds[personalityDetail.id] || gacksungIds[personalityDetail.id]) ? `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_gacksung_profile_support_personality.webp` : `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_normal_profile_support_personality.webp`))"
             @error="onProfileImgError($el)"
             alt="">
           <button class="card-save-btn" @click.stop="copyPortraitImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
@@ -1565,6 +1744,9 @@
               <span class="season-title" x-html="personalityDetail?.seasonTitle ?? ''"></span>
               <span class="season-name" x-show="personalityDetail?.seasonName" x-html="personalityDetail?.seasonName ?? ''"></span>
               <div class="season-skill-icons">
+                <template x-if="personalityDetail?.isPreview && !(personalityDetail?.skillKeywordList?.length)">
+                  <img class="season-skill-icon" src="/images/ui/question_mark.png" alt="">
+                </template>
                 <template x-for="kw in (personalityDetail?.skillKeywordList ?? [])">
                   <img class="season-skill-icon" :src="`/images/category/${kw.toLowerCase()}.png`" :alt="kw">
                 </template>
@@ -1586,13 +1768,13 @@
                 {{/* 방어 */}}
                 <div class="stat-row">
                   <img class="stat-icon" src="/images/ui/personality_def.png" alt="방어레벨">
-                  <span class="stat-value" x-text="personalityDetail ? `${Number(personalityLevel) + personalityDetail.defCorrection} (Lv ${personalityDetail.defCorrection >= 0 ? '+' : '-'} ${Math.abs(personalityDetail.defCorrection)})` : ''"></span>
+                  <span class="stat-value" x-text="!personalityDetail ? '' : (personalityDetail.isPreview ? '?? (Lv + ?)' : `${Number(personalityLevel) + personalityDetail.defCorrection} (Lv ${personalityDetail.defCorrection >= 0 ? '+' : '-'} ${Math.abs(personalityDetail.defCorrection)})`)"></span>
                 </div>
                 {{/* HP */}}
                 <div class="personality-detail-hp">
                   <div class="hp-label-row">
                     <img class="hp-icon" src="/images/ui/personality_hp.png" alt="HP">
-                    <span class="hp-total" x-text="personalityDetail ? Math.round(personalityDetail.hp.defaultStat + personalityDetail.hp.incrementByLevel * personalityLevel) : ''"></span>
+                    <span class="hp-total" x-text="!personalityDetail ? '' : (personalityDetail.isPreview ? '???' : Math.round(personalityDetail.hp.defaultStat + personalityDetail.hp.incrementByLevel * personalityLevel))"></span>
                   </div>
                   <div class="hp-bar-outer">
                     <div class="hp-bar-track">
@@ -1612,7 +1794,7 @@
                 {{/* 속도 */}}
                 <div class="stat-row">
                   <img class="stat-icon" src="/images/ui/personality_speed.png" alt="속도">
-                  <span class="stat-value" x-text="personalityDetail ? `${personalityDetail.minSpeedList[personalitySync-1]} - ${personalityDetail.maxSpeedList[personalitySync-1]}` : ''"></span>
+                  <span class="stat-value" x-text="!personalityDetail ? '' : (personalityDetail.isPreview ? '? - ?' : `${personalityDetail.minSpeedList[personalitySync-1]} - ${personalityDetail.maxSpeedList[personalitySync-1]}`)"></span>
                 </div>
                 {{/* 내성 */}}
                 <div class="personality-detail-resist">
@@ -1620,8 +1802,8 @@
                     <div class="res-item">
                       <img class="stat-icon" :src="`/images/ui/personality_res${res.type.charAt(0)+res.type.slice(1).toLowerCase()}.png`" alt="">
                       <div class="res-text">
-                        <span class="res-label" x-text="res.value === 0.5 ? '내성' : res.value === 2 ? '취약' : '보통'" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
-                        <span class="stat-value res-value" x-text="`[X${res.value}]`" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
+                        <span class="res-label" x-text="res.value === -1 ? '관측불가' : res.value === 0.5 ? '내성' : res.value === 2 ? '취약' : '보통'" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
+                        <span class="stat-value res-value" x-text="res.value === -1 ? '[X?]' : `[X${res.value}]`" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
                       </div>
                     </div>
                   </template>
@@ -1869,7 +2051,7 @@ function personalityPage() {
     egoLoadout: {},
     egoMeta: {{ $egoMeta | jsonify | safeJS }},
     egoLoadoutDefaults: {{ $egoLoadoutDefaults | jsonify | safeJS }},
-    egoKwAdd: { '20509': { '10508': ['Laceration'] } },   // EGO 장착 시 특정 인격 키워드 추가(구조화 데이터 없음 → 수동). { egoId: { 인격id: [키워드] } }
+    egoKwAdd: { '20509': { '10508': ['Laceration'] }, '20109': { '10110': ['Vibration'] } },   // EGO 장착 시 특정 인격 키워드 추가(구조화 데이터 없음 → 수동). { egoId: { 인격id: [키워드] } }. 20109=엄숙한 애도 EGO → 10110 로보토미EGO 엄숙한애도에 진동(침잠은 base)
     egoOverclock: false,
     egoNoECgIds: {},
     get egoCgImg() {
@@ -2450,7 +2632,7 @@ function personalityPage() {
     slotId(pid) { const id = this.formation[pid]; return (id && this.formationMeta[id]) ? id : this.formationDefaults[pid]; },
     slotMeta(pid) { return this.formationMeta[this.slotId(pid)] || {}; },
     slotForm(pid) { const id = this.slotId(pid); return (this.gacksungIds[id] && !this.noGacksungCgIds[id]) ? 'gacksung' : 'normal'; },
-    slotImg(pid) { const id = this.slotId(pid); return `/images/personality/${pid}/${id}_${this.slotForm(pid)}.webp`; }, // 풀 CG
+    slotImg(pid) { const id = this.slotId(pid); if (this.formationMeta[id]?.preview) return `/images/personality/preview/${id}_preview_profile.png`; return `/images/personality/${pid}/${id}_${this.slotForm(pid)}.webp`; }, // 풀 CG
     slotImgStyle(pid) {              // illust-pivots(unitinfo) 보정: CG(1920x1080) offset → 카드 비례 transform
       const p = this.illustPivots[`${this.slotId(pid)}_${this.slotForm(pid)}`];
       if (!p) return '';
@@ -2496,6 +2678,7 @@ function personalityPage() {
     egoImg(id) { return `/images/egoskill/${id.slice(1, 3)}/${id}_profile_summary.webp`; },
     egoGradeIcon(pid, grade) { return `/images/ui/egoskill_icon_${grade}${this.egoSlot(pid, grade) ? "" : "_inactive"}.png`; },
     equipEgo(pid, grade, id) {        // ego 탭 카드 좌클릭/탭 → 장비. zayin 은 해제 불가(스왑만), 나머지는 토글.
+      if (this.egoMeta[id]?.preview && this.egoMeta[id]?.type === 'unwatched') return;   // preview EGO 중 등급 미상(unwatched)만 편성 차단. 등급 공개된 preview는 장착 허용(egoKwAdd 시너지 미리보기)
       const cur = { ...(this.egoLoadout[pid] || {}) };
       if (grade === "zayin") cur.zayin = id;
       else cur[grade] = (cur[grade] === id) ? "" : id;
@@ -2558,6 +2741,7 @@ function personalityPage() {
       return this.personalityDetail.skills?.filter(s => s.tier === this.activeSkillTier) ?? [];
     },
     skillIconSrc(skill) {
+      if (skill.preview) return '/images/ui/question_mark.png';
       let iconId = String(skill.id);
       if (skill.ic?.length) {
         for (const e of skill.ic) {
@@ -2568,7 +2752,7 @@ function personalityPage() {
       return `/images/skill/skill_icon/${iconId}.webp`;
     },
     skillTypeIcons(skill) {
-      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png', QUESTION_MARK: '/images/ui/question_mark.png' };
       const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
       const atkIcon = atkMap[skill.at] ?? null;
       const defIcon = defMap[skill.dt] ?? null;
@@ -2601,7 +2785,7 @@ function personalityPage() {
         : (this.personalityDetail?.skills?.filter(s => s.tier === tier) ?? []);
       if (!skills.length) return [];
       const skill = skills[0];
-      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png', QUESTION_MARK: '/images/ui/question_mark.png' };
       const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
       const defIcon = defMap[skill.dt] ?? null;
       if (defIcon) return [defIcon];
@@ -2866,7 +3050,7 @@ function personalityPage() {
       return ct;
     },
     egoSkillTypeIcons(skill) {
-      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png' };
+      const atkMap = { SLASH: '/images/ui/slash.png', HIT: '/images/ui/hit.png', PENETRATE: '/images/ui/penetrate.png', QUESTION_MARK: '/images/ui/question_mark.png' };
       const defMap = { COUNTER: '/images/ui/counter.png', EVADE: '/images/ui/evade.png', GUARD: '/images/ui/guard.png' };
       const atkIcon = atkMap[skill.at] ?? null;
       const defIcon = defMap[skill.dt] ?? null;

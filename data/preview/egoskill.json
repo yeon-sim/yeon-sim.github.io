@@ -1,0 +1,17 @@
+{
+  "list": [
+    {
+      "id": 20109,
+      "name": "엄숙한 애도",
+      "updatedDate": 20260709,
+      "season": 9109,
+      "maxGaksung": 4,
+      "attrType": "AZURE",
+      "egoType": "HE",
+      "atkType": "PENETRATE",
+      "abName": "죽은 나비들의 장례",
+      "passiveName": "날개축처어진나비는입김에어리는가난한이슬을먹는다",
+      "skillKeywords": ["Sinking", "Vibration"]
+    }
+  ]
+}
