@@ -1066,7 +1066,7 @@ body {
 }
 
 /* ── 모달 ── */
-.modal-overlay {
+.modal-shade {
   display: none;
   position: fixed;
   inset: 0;
@@ -1075,7 +1075,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.modal-overlay.open {
+.modal-shade.open {
   display: flex;
 }
 .modal-box {

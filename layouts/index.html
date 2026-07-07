@@ -509,7 +509,7 @@
   </div>
 
   {{/* ── 프리셋 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: showPresetModal }" @click.self="showPresetModal = false" @contextmenu.prevent="showPresetModal = false">
+  <div class="modal-shade" :class="{ open: showPresetModal }" @click.self="showPresetModal = false" @contextmenu.prevent="showPresetModal = false">
     <div class="modal-box preset-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <div class="preset-header-left">
@@ -548,7 +548,7 @@
   </div>
 
   {{/* ── 프리셋 추가 모달 ── */}}
-  <div class="modal-overlay preset-add-modal-overlay" :class="{ open: showPresetAddModal }" @click.self="showPresetAddModal = false" @contextmenu.prevent="showPresetAddModal = false">
+  <div class="modal-shade preset-add-shade" :class="{ open: showPresetAddModal }" @click.self="showPresetAddModal = false" @contextmenu.prevent="showPresetAddModal = false">
     <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <span class="modal-title">프리셋 추가</span>
@@ -614,7 +614,7 @@
   </div>
 
   {{/* ── 공유 모달 ── */}}
-  <div class="modal-overlay preset-share-modal-overlay" :class="{ open: showShareModal }" @click.self="showShareModal = false" @contextmenu.prevent="showShareModal = false">
+  <div class="modal-shade preset-share-shade" :class="{ open: showShareModal }" @click.self="showShareModal = false" @contextmenu.prevent="showShareModal = false">
     <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <span class="modal-title" x-text="presets[sharePresetIdx]?.presetName ?? ''"></span>
@@ -677,7 +677,7 @@
   </div>
 
   {{/* ── 삭제 확인 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: showDeleteConfirmModal }" @click.self="showDeleteConfirmModal = false" @contextmenu.prevent="showDeleteConfirmModal = false">
+  <div class="modal-shade" :class="{ open: showDeleteConfirmModal }" @click.self="showDeleteConfirmModal = false" @contextmenu.prevent="showDeleteConfirmModal = false">
     <div class="modal-box delete-confirm-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <span class="modal-title">프리셋 삭제</span>
@@ -695,7 +695,7 @@
   </div>
 
   {{/* ── 코드로 추가 모달 ── */}}
-  <div class="modal-overlay code-add-modal-overlay" :class="{ open: showCodeAddModal }" @click.self="showCodeAddModal = false" @contextmenu.prevent="showCodeAddModal = false">
+  <div class="modal-shade code-add-shade" :class="{ open: showCodeAddModal }" @click.self="showCodeAddModal = false" @contextmenu.prevent="showCodeAddModal = false">
     <div class="modal-box code-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <span class="modal-title">코드로 추가</span>
@@ -715,7 +715,7 @@
        x-text="toastMessage"></div>
 
   {{/* ── 가이드 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: guideModal }" @click.self="guideModal = false" @contextmenu.prevent="guideModal = false"
+  <div class="modal-shade" :class="{ open: guideModal }" @click.self="guideModal = false" @contextmenu.prevent="guideModal = false"
        @keydown.left.window="guideModal && guidePage > 1 && guidePage--"
        @keydown.right.window="guideModal && guidePage < guidePages.length && guidePage++">
     <div class="modal-box guide-modal-box" @contextmenu.prevent="guideModal = false">
@@ -741,7 +741,7 @@
   </div>
 
   {{/* ── 이상 관측 가이드 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: presetGuideModal }" @click.self="presetGuideModal = false" @contextmenu.prevent="presetGuideModal = false"
+  <div class="modal-shade" :class="{ open: presetGuideModal }" @click.self="presetGuideModal = false" @contextmenu.prevent="presetGuideModal = false"
        @keydown.left.window="presetGuideModal && presetGuidePage > 1 && presetGuidePage--"
        @keydown.right.window="presetGuideModal && presetGuidePage < presetGuidePages.length && presetGuidePage++">
     <div class="modal-box guide-modal-box" @contextmenu.prevent="presetGuideModal = false">
@@ -770,7 +770,7 @@
   {{ partial "sponsor-modal.html" . }}
 
   {{/* ── 초기화 확인 모달 ── */}}
-  <div id="reset-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div id="reset-modal" class="modal-shade" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal-box modal-box--sm">
       <div class="modal-header">
         <span class="modal-title">수집 기록 초기화</span>
@@ -787,7 +787,7 @@
 
   {{/* ── gift 정보 팝업 (스택) ── */}}
   <template x-for="(popup, si) in giftPopupStack" :key="si">
-    <div class="modal-overlay open" @click.self="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)" @contextmenu.prevent="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)" :style="`z-index: ${popup.zIndex}`">
+    <div class="modal-shade open" @click.self="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)" @contextmenu.prevent="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)" :style="`z-index: ${popup.zIndex}`">
       <div class="modal-box gift-popup-box detail-modal-box" @contextmenu.prevent="Date.now() - _lastPopupOpenTime > 400 && giftPopupStack.splice(si, 1)">
         <div class="modal-header">
           <div class="gift-popup-title-row">
@@ -946,7 +946,7 @@
   {{ partial "keyword-tooltip.html" . }}
 
   {{/* ── 팩 팝업 ── */}}
-  <div class="modal-overlay" :class="{ open: packPopup }" @click.self="packPopup = null" @contextmenu.prevent="packPopup = null" :style="`z-index: ${packPopupZIndex}`">
+  <div class="modal-shade" :class="{ open: packPopup }" @click.self="packPopup = null" @contextmenu.prevent="packPopup = null" :style="`z-index: ${packPopupZIndex}`">
     <div class="modal-box pack-popup-box" x-show="packPopup" @contextmenu.prevent="packPopup = null">
       <div class="modal-header">
         <div class="pack-popup-title-row">
@@ -1576,7 +1576,7 @@ function checklist() {
 
     confirmAddPreset() {
       if (!this.presetAddName.trim()) {
-        this.showToast('이름을 입력해주세요.', { selector: '.preset-add-modal-overlay', error: true });
+        this.showToast('이름을 입력해주세요.', { selector: '.preset-add-shade', error: true });
         this.presetAddNameError = false;
         this.$nextTick(() => { this.presetAddNameError = true; });
         const pool = (typeof PRESET_PLACEHOLDER !== 'undefined' && PRESET_PLACEHOLDER.length)
@@ -1621,7 +1621,7 @@ function checklist() {
           this.presetAddGifts = data.gifts;
           this.showPresetAddModal = true;
         } catch {
-          this.showToast('부적절한 파일입니다.', { selector: '.preset-add-modal-overlay', error: true });
+          this.showToast('부적절한 파일입니다.', { selector: '.preset-add-shade', error: true });
         }
       };
       reader.readAsText(file);
@@ -1648,7 +1648,7 @@ function checklist() {
         this.showCodeAddModal = false;
         this.showPresetAddModal = true;
       } catch (e) {
-        this.showToast('부적절한 코드입니다.', { selector: '.code-add-modal-overlay', error: true });
+        this.showToast('부적절한 코드입니다.', { selector: '.code-add-shade', error: true });
       }
     },
 
@@ -1657,7 +1657,7 @@ function checklist() {
       this.toastError = error;
       const header = selector
         ? document.querySelector(`${selector}.open .modal-header`)
-        : document.querySelector('.preset-share-modal-overlay.open .modal-header');
+        : document.querySelector('.preset-share-shade.open .modal-header');
       if (header) {
         const rect = header.getBoundingClientRect();
         this.toastY = rect.top + rect.height / 2;

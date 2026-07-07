@@ -535,7 +535,7 @@
   {{ $atkResistTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "Slash") (dict "id" "HIT" "name" "타격" "icon" "Hit") (dict "id" "PENETRATE" "name" "관통" "icon" "Penetrate") }}
   {{ $atkResistLevels := slice (dict "v" "2" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "t" "보통" "c" "") (dict "v" "0.5" "t" "내성" "c" "#808080") }}
   {{ $attrResistLevels := slice (dict "v" "2" "n" "200" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "n" "100" "t" "보통" "c" "") (dict "v" "0.75" "n" "075" "t" "견딤" "c" "#cbcbcb") (dict "v" "0.5" "n" "050" "t" "내성" "c" "#808080") }}
-  <div class="modal-overlay" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
+  <div class="modal-shade" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
     <div class="modal-box advanced-search-box" @click.stop>
       <div class="modal-header">
         <span class="modal-title">상세 검색</span>
@@ -775,7 +775,7 @@
     </div>
 
     {{/* ── 편성/EGO 초기화 확인 모달 ── */}}
-    <div class="modal-overlay" :class="{ open: showFormationReset }" @click.self="showFormationReset = false" @contextmenu.prevent="showFormationReset = false">
+    <div class="modal-shade" :class="{ open: showFormationReset }" @click.self="showFormationReset = false" @contextmenu.prevent="showFormationReset = false">
       <div class="modal-box modal-box--sm" @contextmenu.prevent>
         <div class="modal-header">
           <span class="modal-title">편성 초기화</span>
@@ -791,7 +791,7 @@
     </div>
 
     {{/* ── 편성 코드 리스트 모달 (로컬 저장 편성 목록) ── */}}
-    <div class="modal-overlay" :class="{ open: showFormationCode }" @click.self="showFormationCode = false" @contextmenu.prevent="showFormationCode = false">
+    <div class="modal-shade" :class="{ open: showFormationCode }" @click.self="showFormationCode = false" @contextmenu.prevent="showFormationCode = false">
       <div class="modal-box preset-modal-box" @contextmenu.prevent>
         <div class="modal-header">
           <span class="modal-title">프리셋</span>
@@ -841,7 +841,7 @@
     </div>
 
     {{/* ── 편성 추가 모달 (이름 + 코드) ── */}}
-    <div class="modal-overlay" :class="{ open: showFormationAdd }" @click.self="showFormationAdd = false" @contextmenu.prevent="showFormationAdd = false">
+    <div class="modal-shade" :class="{ open: showFormationAdd }" @click.self="showFormationAdd = false" @contextmenu.prevent="showFormationAdd = false">
       <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
         <div class="modal-header">
           <span class="modal-title">편성 추가</span>
@@ -862,7 +862,7 @@
     </div>
 
     {{/* ── 편성 삭제 확인 모달 ── */}}
-    <div class="modal-overlay" :class="{ open: showFormationDelete }" @click.self="showFormationDelete = false" @contextmenu.prevent="showFormationDelete = false">
+    <div class="modal-shade" :class="{ open: showFormationDelete }" @click.self="showFormationDelete = false" @contextmenu.prevent="showFormationDelete = false">
       <div class="modal-box modal-box--sm" @contextmenu.prevent>
         <div class="modal-header">
           <span class="modal-title">편성 삭제</span>
@@ -878,7 +878,7 @@
     </div>
 
     {{/* ── 편성 코드 입출력 모달 (편성 패널에서 직접 호출) ── */}}
-    <div class="modal-overlay" :class="{ open: showFormationCodeModal }" @click.self="showFormationCodeModal = false" @contextmenu.prevent="showFormationCodeModal = false">
+    <div class="modal-shade" :class="{ open: showFormationCodeModal }" @click.self="showFormationCodeModal = false" @contextmenu.prevent="showFormationCodeModal = false">
       <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
         <div class="modal-header">
           <span class="modal-title">편성 코드</span>
@@ -1299,7 +1299,7 @@
   </div>
 
   {{/* ── EGO 상세 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: egoDetail }" @click.self="closeEgoDetail()" @contextmenu.prevent="closeEgoDetail()">
+  <div class="modal-shade" :class="{ open: egoDetail }" @click.self="closeEgoDetail()" @contextmenu.prevent="closeEgoDetail()">
     <div class="modal-box ego-detail-box detail-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <div class="personality-detail-title-row">
@@ -1697,7 +1697,7 @@
   </div>
 
   {{/* ── 인격 상세 모달 ── */}}
-  <div class="modal-overlay" :class="{ open: personalityDetail }" @click.self="closePersonalityDetail()" @contextmenu.prevent="closePersonalityDetail()">
+  <div class="modal-shade" :class="{ open: personalityDetail }" @click.self="closePersonalityDetail()" @contextmenu.prevent="closePersonalityDetail()">
     <div class="modal-box personality-detail-box detail-modal-box" @contextmenu.prevent
       :style="personalityDetail ? `border-image: url('/images/ui/modal_frame_personality_0${personalityDetail.rank}.png') 50 fill stretch` : ''">
       <div class="modal-header">

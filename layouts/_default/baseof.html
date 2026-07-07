@@ -74,14 +74,15 @@
   </script>
   <script>
     /* 모바일: 모달이 열려 있을 때 기기 '뒤로 가기'로 모달을 닫는다.
-       모든 모달은 .modal-overlay.open 으로 표시되고 배경(self) 클릭으로 닫히므로,
+       모든 모달은 .modal-shade.open 으로 표시되고 배경(self) 클릭으로 닫히므로,
+       (클래스명 modal-overlay → modal-shade: 일부 광고차단기 annoyance 필터가 .modal-overlay 를 팝업으로 오인해 제거함)
        열린 개수만큼 history 항목을 쌓고 popstate 때 최상위 모달을 배경 클릭으로 닫는다.
        개별 모달/Alpine 상태를 건드리지 않는 범용 처리. 터치 기기 한정(PC 미영향). */
     (function () {
       if (!(navigator.maxTouchPoints > 0)) return;
       var pushed = 0, suppress = false;
-      function openCount() { return document.querySelectorAll('.modal-overlay.open').length; }
-      function openList() { return Array.prototype.slice.call(document.querySelectorAll('.modal-overlay.open')); }
+      function openCount() { return document.querySelectorAll('.modal-shade.open').length; }
+      function openList() { return Array.prototype.slice.call(document.querySelectorAll('.modal-shade.open')); }
       function zOf(el) { var z = parseInt(getComputedStyle(el).zIndex, 10); return isNaN(z) ? 0 : z; }
 
       function closeTop() {
