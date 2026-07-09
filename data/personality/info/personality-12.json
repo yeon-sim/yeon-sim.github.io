@@ -1578,6 +1578,136 @@
           "number": 0
         }
       ]
+    },
+    {
+      "id": 11216,
+      "updatedDate": 20260709,
+      "appearance": "11216_Gregor_SalvadorAppearance",
+      "unitKeywordList": [
+        "FIXER",
+        "SMALL"
+      ],
+      "associationList": [
+        "DAWN"
+      ],
+      "skillKeywordList": [
+        "Combustion",
+        "Vibration"
+      ],
+      "characterId": 12,
+      "unitScriptID": "11216",
+      "panicType": 9999,
+      "season": 9109,
+      "walpurgisType": "LOR",
+      "defenseSkillIDList": [
+        1121604,
+        1121606
+      ],
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "initBuffList": [
+        {
+          "level": 1,
+          "list": [
+            {
+              "buff": "StigmaWorkshopHandStep1",
+              "stack": 0
+            }
+          ]
+        }
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 85,
+        "incrementByLevel": 3.1
+      },
+      "defCorrection": 4,
+      "minSpeedList": [
+        3,
+        4,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        5,
+        6,
+        6
+      ],
+      "uniqueAttribute": "CRIMSON",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyAsLevelRatioMultiply10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAllyAsLevelRatioMultiply5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          55
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 1
+          },
+          {
+            "type": "HIT",
+            "value": 2
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1121601,
+          "number": 3
+        },
+        {
+          "skillId": 1121602,
+          "number": 2
+        },
+        {
+          "skillId": 1121603,
+          "number": 1
+        },
+        {
+          "skillId": 1121605,
+          "number": 0
+        },
+        {
+          "skillId": 1121607,
+          "number": 0
+        }
+      ]
     }
   ]
 }

@@ -1455,6 +1455,9 @@
       ]
     },
     {
+      "id": 1050803
+    },
+    {
       "id": 1050801,
       "attributeResonanceCondition": [
         {
@@ -1703,6 +1706,9 @@
       "id": 1100902,
       "requireIDList": [
       ]
+    },
+    {
+      "id": 1100903
     },
     {
       "id": 1100901,
@@ -2844,6 +2850,9 @@
     },
     {
       "id": 1011002
+    },
+    {
+      "id": 1011003
     },
     {
       "id": 1011021,
@@ -4001,6 +4010,66 @@
         "CheckAwakenLevel3"
       ]
     },
+
+    {
+      "id": 1021602,
+      "controlValueList": [
+        50, 50, 75
+      ]
+    },
+    {
+      "id": 1021603
+    },
+    {
+      "id": 1021601,
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ],
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 3
+        }
+      ],
+      "controlValueList": [        
+        1, 
+        10, 20
+      ]
+    },
+    {
+      "id": 1021611,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 3
+        }
+      ],
+      "controlValueList": [        
+        1,
+        10, 20,
+        3
+      ]
+    },
+    {
+      "id": 1021621,
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 3
+        },
+        {
+          "type": "SCARLET",
+          "value": 3
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    
     {
       "id": 1051301,
       "attributeStockCondition": [
@@ -5065,6 +5134,62 @@
     },
     {
       "id": 1091621,
+      "attributeResonanceCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 3
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    {
+      "id": 1121601,
+      "controlValueList": [
+        1, 10, 20
+      ],
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 2
+        },
+        {
+          "type": "AMBER",
+          "value": 2
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ]
+    },
+    {
+      "id": 1121611,
+      "controlValueList": [
+        1, 10, 20, 2
+      ],
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 2
+        },
+        {
+          "type": "AMBER",
+          "value": 2
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    {
+      "id": 1121602
+    },
+    {
+      "id": 1121603
+    },
+    {
+      "id": 1121621,
       "attributeResonanceCondition": [
         {
           "type": "CRIMSON",

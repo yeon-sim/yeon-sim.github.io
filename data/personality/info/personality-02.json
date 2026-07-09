@@ -718,7 +718,7 @@
       "id": 10208,
       "updatedDate": 20240222,
       "appearance": "10208_Faust_SwordGroupAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
+      "unitKeywordList": [ "CLAN", "SMALL", "SALSOO" ],
       "associationList": [ "BLADE_LINEAGE" ],
       "skillKeywordList": [ "Breath", "Laceration" ],
       "characterId": 2,
@@ -1375,6 +1375,129 @@
         },
         {
           "skillId": 1021507,
+          "number": 0
+        }
+      ]
+    },
+    {
+      "id": 10216,
+      "updatedDate": 20260709,
+      "appearance": "10216_Faust_YunaAppearance",
+      "unitKeywordList": [ "FIXER", "SMALL"],
+      "associationList": [ "DAWN" ],
+      "skillKeywordList": [ "Combustion", "Vibration" ],
+      "characterId": 2,
+      "panicType": 9999,
+      "season": 9109,
+      "walpurgisType": "LOR",
+      "defenseSkillIDList": [
+        1021604, 
+        1021607
+      ],
+      "initBuffList": [
+        {
+          "level": 1,
+          "list": [
+            {
+              "buff": "StigmaWorkshopCelloCaseOne",
+              "stack": 0
+            }
+          ]
+        }
+      ],
+      "unitScriptID" : "10216",
+      "panicSkillOnErosion": 1000104,
+      "slotWeightConditionList": [
+        "Default1"
+      ],
+      "rank": 3,
+      "hp": {
+        "defaultStat": 66,
+        "incrementByLevel": 2.88
+      },
+      "defCorrection": 0,
+      "minSpeedList": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "maxSpeedList": [
+        5,
+        6,
+        7,
+        7
+      ],
+      "uniqueAttribute": "INDIGO",
+      "mentalConditionInfo": {
+        "add": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnWinDuelAsParryingCountMultiply10AndPlus20Percent"
+              },
+              {
+                "conditionID": "OnKillEnemyAsLevelRatioMultiply10"
+              },
+              {
+                "conditionID": "OnKillEnemyByOtherAllyAsLevelRatioMultiply5"
+              }
+            ]
+          }
+        ],
+        "min": [
+          {
+            "level": 1,
+            "conditionIDList": [
+              {
+                "conditionID": "OnDieAllyAsLevelRatio10"
+              }
+            ]
+          }
+        ]
+      },
+      "breakSection": {
+        "sectionList": [
+          55,
+          25
+        ]
+      },
+      "resistInfo": {
+        "atkResistList": [
+          {
+            "type": "SLASH",
+            "value": 0.5
+          },
+          {
+            "type": "PENETRATE",
+            "value": 2
+          },
+          {
+            "type": "HIT",
+            "value": 1
+          }
+        ]
+      },
+      "attributeList": [
+        {
+          "skillId": 1021601,
+          "number": 3
+        },
+        {
+          "skillId": 1021602,
+          "number": 2
+        },
+        {
+          "skillId": 1021603,
+          "number": 1
+        },
+        {
+          "skillId": 1021605,
+          "number": 0
+        },
+        {
+          "skillId": 1021606,
           "number": 0
         }
       ]

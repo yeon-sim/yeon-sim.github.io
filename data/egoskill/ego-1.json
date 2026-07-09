@@ -531,6 +531,85 @@
       ],
       "awakeningSkillId": 2010711,
       "corrosionSkillId": 2010721
+    },
+    {
+      "id": 20109,
+      "updatedDate": 20260709,
+      "characterId": 1,
+      "egoType": "HE",
+      "season": 9109,
+      "walpurgisType": "LOR",
+      "attributeResistList": [
+        {
+          "type": "CRIMSON",
+          "value": 1
+        },
+        {
+          "type": "SCARLET",
+          "value": 1
+        },
+        {
+          "type": "AMBER",
+          "value": 0.75
+        },
+        {
+          "type": "SHAMROCK",
+          "value": 2
+        },
+        {
+          "type": "AZURE",
+          "value": 0.5
+        },
+        {
+          "type": "INDIGO",
+          "value": 1
+        },
+        {
+          "type": "VIOLET",
+          "value": 2
+        },
+        {
+          "type": "WHITE",
+          "value": 2
+        },
+        {
+          "type": "BLACK",
+          "value": 2
+        }
+      ],
+      "requirementList": [
+        {
+          "attributeType": "AMBER",
+          "num": 1
+        },
+        {
+          "attributeType": "AZURE",
+          "num": 4
+        },
+        {
+          "attributeType": "INDIGO",
+          "num": 2
+        }
+      ],
+      "corrosionSectionList": [
+        {
+          "section": 0.5,
+          "probability": 0.25
+        },
+        {
+          "section": 0.25,
+          "probability": 0.75
+        },
+        {
+          "section": 0,
+          "probability": 1.0
+        }
+      ],
+      "awakeningPassiveList": [
+        2010911
+      ],
+      "awakeningSkillId": 2010911,
+      "corrosionSkillId": 2010921
     }
   ]
 }

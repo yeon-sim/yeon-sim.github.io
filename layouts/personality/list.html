@@ -716,7 +716,7 @@
         {{ $pid := .id }}
         <div class="formation-slot" data-pid="{{ .id }}"
           @click="toggleDeployOrder('{{ .id }}')"
-          @contextmenu.prevent="formationContext($event)"
+          @contextmenu.prevent="openFormPicker('{{ $pid }}')"
           @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)">
           <template x-if="showFormation">
             <div class="formation-slot-inner">
@@ -749,7 +749,7 @@
               {{ range $g := slice "zayin" "teth" "he" "waw" "aleph" }}
               <div class="formation-ego-row"
                 @click.stop=""
-                @contextmenu.prevent.stop="egoContext('{{ $pid }}', '{{ $g }}')"
+                @contextmenu.prevent.stop="openEgoPicker('{{ $pid }}', '{{ $g }}')"
                 @pointerdown.stop="startCardLongPress($event)" @pointerup.stop="cancelCardLongPress($event)" @pointermove.stop="cancelCardLongPress($event)" @pointercancel.stop="cancelCardLongPress($event)">
                 <img class="formation-ego-grade-icon" :src="egoGradeIcon('{{ $pid }}', '{{ $g }}')" alt="{{ $g }}">
                 <div class="formation-ego-illust">
@@ -894,6 +894,43 @@
       </div>
     </div>
 
+    {{/* ── 편성 인격 선택 모달 (슬롯 우클릭/롱프레스 → 인격 변경) ── */}}
+    <div class="modal-shade" :class="{ open: showFormPicker }" @click.self="showFormPicker = false" @contextmenu.prevent="showFormPicker = false">
+      <div class="modal-box form-picker-box" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title form-picker-title">
+            <img class="form-picker-title-icon" :src="`/images/category/${prisonerMeta[formPickerPid]?.icon}_02.png`" alt="" x-show="prisonerMeta[formPickerPid]">
+            <span class="form-picker-title-text">인격 선택<span class="form-picker-title-name" x-show="prisonerMeta[formPickerPid]" x-text="' : ' + (prisonerMeta[formPickerPid]?.name || '')"></span></span>
+          </span>
+          <button class="modal-btn preset-add-btn" :class="{ active: pickerDetail }" @click="pickerDetail = !pickerDetail" x-text="pickerDetail ? '자세히' : '간단히'"></button>
+        </div>
+        <div class="modal-body form-picker-body">
+          <div class="form-picker-grid">
+            <template x-for="id in _pidIdentities(formPickerPid)" :key="id">
+              <button class="form-picker-cardbtn" :class="{ active: id === slotId(formPickerPid) }" :style="`--glow: ${pickerGlow(formationMeta[id]?.rank || 3)}`" @click="pickFormation(formPickerPid, id)"
+                @contextmenu.prevent.stop="openCardDetailById('data-pkey', id)"
+                @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)">
+                <div class="formation-card">
+                  <div class="formation-card-imgwrap">
+                    <img class="formation-card-img" :src="pickerCardImg(id)" :style="pickerCardStyle(id)" alt="">
+                  </div>
+                  <img class="formation-card-frame" :class="'formation-card-frame--r' + (formationMeta[id]?.rank || 3)" :src="`/images/ui/personality_formation_0${formationMeta[id]?.rank || 3}.png`" alt="">
+                  <div class="formation-card-keywords" :style="pickerDetail ? 'display: flex' : 'display: none'">
+                    <div class="formation-card-icon-row">
+                      <template x-for="(kw, i) in (formationMeta[id]?.kw || [])" :key="i">
+                        <img class="formation-card-kw-icon" :src="`/images/category/${kw.toLowerCase()}.png`" :alt="kw">
+                      </template>
+                    </div>
+                  </div>
+                  <span class="formation-card-name" x-html="(formationMeta[id]?.name || id).replace(/\n/g, '<br>')"></span>
+                </div>
+              </button>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+
     {{/* ── EGO 맵 빌드 ── */}}
     {{ $egoTypeRank := dict "ZAYIN" 1 "TETH" 2 "HE" 3 "WAW" 4 "ALEPH" 5 }}
     {{ $attrColorMap := dict }}
@@ -1016,6 +1053,65 @@
       {{ $egoLoadoutDefaults = merge $egoLoadoutDefaults (dict .id (dict "zayin" (printf "2%s01" .id) "teth" "" "he" "" "waw" "" "aleph" "")) }}
     {{ end }}
 
+    {{/* ── 편성 EGO 선택 모달 (슬롯 우클릭/롱프레스 → EGO 변경) ── */}}
+    <div class="modal-shade" :class="{ open: showEgoPicker }" @click.self="showEgoPicker = false" @contextmenu.prevent="showEgoPicker = false">
+      <div class="modal-box form-picker-box ego-picker-box" @contextmenu.prevent>
+        <div class="modal-header">
+          <span class="modal-title form-picker-title">
+            <img class="form-picker-title-icon" :src="`/images/ui/egoskill_icon_${egoPickerGrade}.png`" alt="" x-show="egoPickerGrade">
+            <span class="form-picker-title-text">E.G.O 선택<span class="form-picker-title-name" x-show="prisonerMeta[egoPickerPid]" x-text="' : ' + (prisonerMeta[egoPickerPid]?.name || '') + (egoPickerGrade ? ' [' + egoPickerGrade.toUpperCase() + ']' : '')"></span></span>
+          </span>
+          <button class="modal-btn preset-add-btn" :class="{ active: egoPickerDetail }" @click="egoPickerDetail = !egoPickerDetail" x-text="egoPickerDetail ? '자세히' : '간단히'"></button>
+        </div>
+        <div class="modal-body form-picker-body">
+          <div class="form-picker-grid ego-picker-grid">
+            {{ range $prisoners }}
+            {{ $pid := .id }}
+            {{ $charId := int (strings.TrimLeft "0" $pid) }}
+            {{ $egoList := index $egoMap (printf "%d" $charId) | default slice }}
+            {{ range $grade := slice "zayin" "teth" "he" "waw" "aleph" }}
+            {{ $gradeEgos := sort (where $egoList "egoType" $grade) "updatedDate" }}
+            {{ if $gradeEgos }}
+            <template x-if="showEgoPicker && egoPickerPid === '{{ $pid }}' && egoPickerGrade === '{{ $grade }}'">
+              <div class="ego-picker-group">
+                {{ range $gradeEgos }}
+                {{ $isEgoPreview := .preview | default false }}
+                <div class="ego-card-wrap ego-picker-cardbtn" @click="pickEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')"
+                  @contextmenu.prevent.stop="openCardDetailById('data-egokey', '{{ .id }}')"
+                  @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)">
+                  {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
+                  <div class="ego-cat">
+                    <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
+                    {{ if and $isEgoPreview (eq .attrType "") }}<img class="ego-cat-icon" src="/images/ui/question_mark.png" alt="">{{ else }}{{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}{{ end }}
+                  </div>
+                  <div class="ego-card"
+                    :class="{ 'formation-equipped': egoEquipped('{{ $pid }}', '{{ .id }}') }"
+                    :style="`--glow: {{ .attrColor }}`">
+                    <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
+                    <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
+                    <img class="ego-frame-base" src="/images/ui/egoskill_frame_02.png" alt="" style="filter: url(#tint-{{ .attrType }})">
+                    <img class="ego-tag-img" src="/images/ui/egoskill_tag_{{ .egoType }}.png" alt="">
+                    <span class="ego-name">{{ .name }}</span>
+                  </div>
+                  <div class="ego-card-detail2" :style="egoPickerDetail ? 'display: flex' : 'display: none'">
+                    {{ if and $isEgoPreview (not .skillKeywords) }}
+                    <img class="personality-card-d2-keyword-icon" src="/images/ui/question_mark.png" alt="">
+                    {{ else }}{{ range .skillKeywords }}
+                    <img class="personality-card-d2-keyword-icon" src="/images/category/{{ . | lower }}.png" alt="{{ . }}">
+                    {{ end }}{{ end }}
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </template>
+            {{ end }}
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
     {{/* ── 수감자 목록 ── */}}
     <div class="personality-category-list">
       {{ range $prisoners }}
@@ -1122,6 +1218,8 @@
             x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
           <div class="personality-card" data-pkey="{{ .id }}"
+            :class="{ 'formation-equipped': showFormation && slotId('{{ $pid }}') === '{{ .id }}' }"
+            :style="`--glow: ${pickerGlow({{ int .rank }})}`"
             @click="assignFormation('{{ $pid }}', '{{ .id }}')"
             @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)"
             @contextmenu.prevent="openPersonalityDetail({ isPreview: {{ $isPreview }}, id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
@@ -1274,7 +1372,9 @@
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
               {{ if and $isEgoPreview (eq .attrType "") }}<img class="ego-cat-icon" src="/images/ui/question_mark.png" alt="">{{ else }}{{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}{{ end }}
             </div>
-            <div class="ego-card">
+            <div class="ego-card"
+              :class="{ 'formation-equipped': showFormation && egoEquipped('{{ $pid }}', '{{ .id }}') }"
+              :style="`--glow: {{ .attrColor }}`">
               <img class="ego-cg-img" src="{{ .img }}" alt="{{ .id }}">
               <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
               <img class="ego-frame-base" src="/images/ui/egoskill_frame_02.png" alt="" style="filter: url(#tint-{{ .attrType }})">
@@ -2033,6 +2133,14 @@ function personalityPage() {
     showFormationCode: false,
     showFormationAdd: false,
     showFormationCodeModal: false,
+    showFormPicker: false,
+    formPickerPid: null,
+    prisonerMeta: { {{ range $prisoners }}'{{ .id }}': { name: {{ .name | jsonify | safeJS }}, icon: '{{ .icon }}' }, {{ end }} },
+    pickerDetail: false,
+    showEgoPicker: false,
+    egoPickerPid: null,
+    egoPickerGrade: null,
+    egoPickerDetail: false,
     formationCodeText: '',
     formationCodeIoError: '',
     showFormationDelete: false,
@@ -2633,21 +2741,17 @@ function personalityPage() {
     slotMeta(pid) { return this.formationMeta[this.slotId(pid)] || {}; },
     slotForm(pid) { const id = this.slotId(pid); return (this.gacksungIds[id] && !this.noGacksungCgIds[id]) ? 'gacksung' : 'normal'; },
     slotImg(pid) { const id = this.slotId(pid); if (this.formationMeta[id]?.preview) return `/images/personality/preview/${id}_preview_profile.png`; return `/images/personality/${pid}/${id}_${this.slotForm(pid)}.webp`; }, // 풀 CG
-    slotImgStyle(pid) {              // illust-pivots(unitinfo) 보정: CG(1920x1080) offset → 카드 비례 transform
-      const p = this.illustPivots[`${this.slotId(pid)}_${this.slotForm(pid)}`];
+    slotImgStyle(pid) { return this._illustStyle(this.slotId(pid), this.slotForm(pid)); },
+    _illustStyle(id, form) {          // illust-pivots(unitinfo) 보정: CG(1920x1080) offset → 카드 비례 transform (슬롯·picker 공용)
+      const p = this.illustPivots[`${id}_${form}`];
       if (!p) return '';
-      // ── 보정 상수 (직접 조정) ──────────────────────────────
-      const SCALE = 1.5;          // 전체 확대 배율(순수 줌). normal/gacksung 정렬엔 영향 없음(수식상 상쇄)
-      const OFFSET_K = 0.8;       // ★ offset 강도 = normal/gacksung 정렬 보정. 두 상태 얼굴이 어긋나면 이 값만 조정
-      const BASE_X = 0;           // 전체 가로 이동(%) — 모든 인격을 같은 방향으로 함께 이동
-      const BASE_Y = 15;           // 전체 세로 이동(%) — 모든 인격을 같은 방향으로 함께 이동
-      const kx = 100 / 1920 * OFFSET_K; // 인격별 X offset 계수 (게임 표시크기 차이를 OFFSET_K 로 흡수)
-      const ky = 100 / 1080 * OFFSET_K; // 인격별 Y offset 계수
-      // OFFSET_K↑: 두 상태가 원본처럼 벌어져 있으면(보정 부족) 키움 / 반대로 넘치면(과보정) 줄임.
-      // Y는 게임(상+)↔CSS(하+) 반전. translate %는 요소 너비/높이 기준. 전체 동일 이동은 BASE_X/Y.
-      // ───────────────────────────────────────────────────────
+      const SCALE = 1.5;          // 전체 확대 배율(순수 줌). normal/gacksung 정렬엔 영향 없음
+      const OFFSET_K = 0.8;       // ★ offset 강도 = normal/gacksung 정렬 보정
+      const BASE_X = 0;           // 전체 가로 이동(%)
+      const BASE_Y = 15;          // 전체 세로 이동(%)
+      const kx = 100 / 1920 * OFFSET_K, ky = 100 / 1080 * OFFSET_K; // 인격별 offset 계수
       const tx = BASE_X + p.x * kx * SCALE;
-      const ty = BASE_Y - p.y * ky * SCALE;
+      const ty = BASE_Y - p.y * ky * SCALE;   // Y는 게임(상+)↔CSS(하+) 반전
       return `transform: translate(${tx.toFixed(3)}%, ${ty.toFixed(3)}%) scale(${p.s * SCALE}) rotate(${p.r}deg);`;
     },
     slotName(pid) { return (this.slotMeta(pid).name || '').replace(/\n/g, '<br>'); },
@@ -2656,16 +2760,31 @@ function personalityPage() {
       this.noGacksungCgIds = { ...this.noGacksungCgIds, [id]: true };
     },
     // 편성 슬롯 우클릭/롱프레스 → 해당 인격의 원본 카드에 contextmenu 합성 → 기존 상세 모달 재사용
-    formationContext(e) {
-      const slot = e.currentTarget.closest('.formation-slot');
-      if (!slot) return;
-      const src = document.querySelector(`.personality-category-list [data-pkey="${this.slotId(slot.dataset.pid)}"]`);
-      if (src) src.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
+    // ── 편성 슬롯 우클릭/롱프레스 → 해당 수감자 인격 목록에서 선택 변경 ──
+    openFormPicker(pid) { this.formPickerPid = pid; this.showFormPicker = true; },
+    pickFormation(pid, id) { this.assignFormation(pid, id); this.showFormPicker = false; },
+    _pidIdentities(pid) {   // 수감자(pid)의 인격 id 목록 — grade(rank) 오름차순, 동급은 id순
+      if (!pid) return [];
+      return Object.keys(this.formationMeta)
+        .filter(id => id.length === 5 && id.slice(1, 3) === pid)
+        .sort((a, b) => ((this.formationMeta[a]?.rank || 0) - (this.formationMeta[b]?.rank || 0)) || a.localeCompare(b));
+    },
+    pickerCardImg(id) {               // 편성 카드와 동일한 풀 CG (normal)
+      const pid = id.slice(1, 3);
+      if (this.formationMeta[id]?.preview) return `/images/personality/preview/${id}_preview_profile.png`;
+      return `/images/personality/${pid}/${id}_normal.webp`;
+    },
+    pickerGlow(rank) { return { 1: 'rgb(111,61,20)', 2: 'rgb(186,28,10)', 3: 'rgb(214,157,0)' }[rank] || 'rgb(214,157,0)'; },   // 선택 강조 글로우 색(등급별)
+    pickerCardStyle(id) {                 // picker 전용 오프셋(%) — 직접 조정 (OX=가로, OY=세로/양수=아래로)
+      const OX = 0, OY = 0;
+      const base = this._illustStyle(id, 'normal');
+      return base ? base.replace('transform:', `transform: translate(${OX}%, ${OY}%)`) : '';
     },
 
     // ── EGO 편성 ── 수감자별 등급(zayin~aleph) 1개씩 장비
     toggleEgoLoadout() { this.showEgoLoadout = !this.showEgoLoadout; },
     egoSlot(pid, grade) { return (this.egoLoadout[pid] && this.egoLoadout[pid][grade]) || ""; },
+    egoEquipped(pid, id) { const lo = this.egoLoadout[pid] || {}; return lo.zayin === id || lo.teth === id || lo.he === id || lo.waw === id || lo.aleph === id; },   // 해당 EGO가 이 수감자 로드아웃에 장착됐는지
     egoSlotName(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.name || "") : ""; },
     egoSlotColor(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.color || "") : ""; },
     fitEgoName(el) {                  // 지정 공간(부모=일러스트 높이) 안에 들어갈 때까지 폰트 축소 (2줄 줄바꿈 허용)
@@ -2686,9 +2805,12 @@ function personalityPage() {
       this.saveEgoLoadout();
     },
     saveEgoLoadout() { localStorage.setItem("personality-ego-loadout", JSON.stringify(this.egoLoadout)); },
-    egoContext(pid, grade) {          // 편성 ego 우클릭/롱프레스 → 원본 ego 카드에 contextmenu 합성 → ego 모달
-      const id = this.egoSlot(pid, grade); if (!id) return;
-      const src = document.querySelector(`.personality-category-list [data-egokey="${id}"]`);
+    // ── 편성 ego 슬롯 우클릭/롱프레스 → 해당 수감자·등급 EGO 목록에서 선택 변경 ──
+    openEgoPicker(pid, grade) { this.egoPickerPid = pid; this.egoPickerGrade = grade; this.showEgoPicker = true; },
+    pickEgo(pid, grade, id) { this.equipEgo(pid, grade, id); this.showEgoPicker = false; },
+    // 인격/EGO 선택 모달 카드 우클릭/롱프레스 → 원본 탭 카드에 contextmenu 합성 → 기존 상세 모달 재사용(중첩)
+    openCardDetailById(attr, id) {
+      const src = document.querySelector(`.personality-category-list [${attr}="${id}"]`);
       if (src) src.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
     },
 

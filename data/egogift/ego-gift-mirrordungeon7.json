@@ -647,6 +647,52 @@
       "keyword": "None",
       "lockType": false,
       "price": 250
+    },
+    {
+      "id": 9282,
+      "attributeType": "CRIMSON",
+      "upgradeDataList": [
+        {
+          "upgradeLevel": 0,
+          "localizeID": 9282,
+          "abilityIDList": [
+            9282,
+            92821,
+            92822,
+            92823,
+            92824
+          ]
+        }
+      ],
+      "tag": [
+        "TIER_3"
+      ],
+      "keyword": "Combustion",
+      "lockType": false,
+      "price": 250
+    },
+    {
+      "id": 9283,
+      "attributeType": "AMBER",
+      "upgradeDataList": [
+        {
+          "upgradeLevel": 0,
+          "localizeID": 9283,
+          "abilityIDList": [
+            9283,
+            92831,
+            92832,
+            92833,
+            92834
+          ]
+        }
+      ],
+      "tag": [
+        "TIER_4"
+      ],
+      "keyword": "Vibration",
+      "lockType": false,
+      "price": 390
     }
   ]
 }

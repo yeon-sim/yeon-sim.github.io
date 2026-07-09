@@ -1,1 +1,392 @@
-[]
+[
+  {
+    "loc": "1120601 Lv1 desc",
+    "before": "[WhenUse] 방어 레벨 증가 2를 얻음",
+    "after": "[WhenUse] [DefenseUp] 2를 얻음"
+  },
+  {
+    "loc": "1120601 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 신속 1을 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Agility] 1을 얻음"
+  },
+  {
+    "loc": "1120601 Lv2 desc",
+    "before": "[WhenUse] 방어 레벨 증가 2를 얻음\n[DefeatDuel] (자신의 방어 레벨 증가 X 3)만큼 보호막을 얻음. 다음 턴에 방어 레벨 증가 1을 얻음.",
+    "after": "[WhenUse] [DefenseUp] 2를 얻음\n[DefeatDuel] (자신의 [DefenseUp] X 3)만큼 보호막을 얻음. 다음 턴에 [DefenseUp] 1을 얻음."
+  },
+  {
+    "loc": "1120601 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 1을 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 1을 얻음"
+  },
+  {
+    "loc": "1120601 Lv4 desc",
+    "before": "[WhenUse] 방어 레벨 증가 2를 얻음\n[DefeatDuel] (자신의 방어 레벨 증가 X 5)만큼 보호막을 얻음. 다음 턴에 방어 레벨 증가 2를 얻음.",
+    "after": "[WhenUse] [DefenseUp] 2를 얻음\n[DefeatDuel] (자신의 [DefenseUp] X 5)만큼 보호막을 얻음. 다음 턴에 [DefenseUp] 2를 얻음."
+  },
+  {
+    "loc": "1120601 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 신속 2를 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [Agility] 2를 얻음"
+  },
+  {
+    "loc": "1120602 Lv1 desc",
+    "before": "[WhenUse] 방어 레벨 증가 2를 얻음",
+    "after": "[WhenUse] [DefenseUp] 2를 얻음"
+  },
+  {
+    "loc": "1120602 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv1 coin4.1",
+    "before": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +20%",
+    "after": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +20%"
+  },
+  {
+    "loc": "1120602 Lv2 desc",
+    "before": "[WhenUse] 방어 레벨 증가 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 2 증가",
+    "after": "[WhenUse] [DefenseUp] 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 2 증가"
+  },
+  {
+    "loc": "1120602 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv2 coin4.1",
+    "before": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +30%",
+    "after": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +30%"
+  },
+  {
+    "loc": "1120602 Lv4 desc",
+    "before": "[WhenUse] 방어 레벨 증가 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 3 증가\n자신의 방어 레벨 증가 가 6 이상이면, 합 위력 +1",
+    "after": "[WhenUse] [DefenseUp] 3을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 3 증가\n자신의 [DefenseUp] 가 6 이상이면, 합 위력 +1"
+  },
+  {
+    "loc": "1120602 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 다음 턴에 방어 레벨 증가 1을 얻음",
+    "after": "[OnSucceedAttack] 다음 턴에 [DefenseUp] 1을 얻음"
+  },
+  {
+    "loc": "1120602 Lv4 coin4.1",
+    "before": "자신의 방어 레벨 증가 가 6 이상이면, 피해량 +40%",
+    "after": "자신의 [DefenseUp] 가 6 이상이면, 피해량 +40%"
+  },
+  {
+    "loc": "1120603 Lv3 desc",
+    "before": "[WhenUse] 모든 아군에게 수비 위력 증가 2, 방어 레벨 증가 3 부여.\n자신의 방어 레벨 증가 가 6 이상이면, 코인 위력 +1\n자신의 방어 레벨 증가 가 10 이상이면, 피해량 +30%",
+    "after": "[WhenUse] 모든 아군에게 [Endurance] 2, [DefenseUp] 3 부여.\n자신의 [DefenseUp] 가 6 이상이면, 코인 위력 +1\n자신의 [DefenseUp] 가 10 이상이면, 피해량 +30%"
+  },
+  {
+    "loc": "1120603 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 모든 아군에게 방어 레벨 증가 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 모든 아군에게 [DefenseUp] 3 부여"
+  },
+  {
+    "loc": "1120603 Lv4 desc",
+    "before": "[WhenUse] 모든 아군에게 수비 위력 증가 2, 방어 레벨 증가 3 부여.\n자신의 방어 레벨 증가 6 당 코인 위력 +1 (최대 3)\n자신의 방어 레벨 증가 가 10 이상이면, 피해량 +50%",
+    "after": "[WhenUse] 모든 아군에게 [Endurance] 2, [DefenseUp] 3 부여.\n자신의 [DefenseUp] 6 당 코인 위력 +1 (최대 3)\n자신의 [DefenseUp] 가 10 이상이면, 피해량 +50%"
+  },
+  {
+    "loc": "1120603 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 다음 턴에 모든 아군에게 방어 레벨 증가 3 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 모든 아군에게 [DefenseUp] 3 부여"
+  },
+  {
+    "loc": "1120604 Lv1 desc",
+    "before": "[StartBattle] (자신의 방어 레벨 증가 X 2)만큼 보호막을 얻음",
+    "after": "[StartBattle] (자신의 [DefenseUp] X 2)만큼 보호막을 얻음"
+  },
+  {
+    "loc": "1120604 Lv4 desc",
+    "before": "[StartBattle] (자신의 방어 레벨 증가 X 2)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 도발치 5 증가",
+    "after": "[StartBattle] (자신의 [DefenseUp] X 2)만큼 보호막을 얻음\n[WhenUse] 다음 턴에 이 스킬 슬롯의 [Aggro] 5 증가"
+  },
+  {
+    "loc": "1120701 Lv1 desc",
+    "before": "[WhenUse] 호흡 2 얻음",
+    "after": "[WhenUse] [Breath] 2 얻음"
+  },
+  {
+    "loc": "1120701 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttackHead] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1120701 Lv2 desc",
+    "before": "[WhenUse] 호흡 3 얻음",
+    "after": "[WhenUse] [Breath] 3 얻음"
+  },
+  {
+    "loc": "1120701 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1120701 Lv2 coin1.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120701 Lv2 coin2.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120701 Lv4 desc",
+    "before": "[WhenUse] 호흡 3 얻음\n대상의 <sprite name=\"Laceration\"><color=#e30000><u><link=\"Laceration\">출혈</color></link></u>이 7 이상이면 코인 위력 +1",
+    "after": "[WhenUse] [Breath] 3 얻음\n대상의 <sprite name=\"Laceration\"><color=#e30000><u><link=\"Laceration\">[Laceration]</color></link></u>이 7 이상이면 코인 위력 +1"
+  },
+  {
+    "loc": "1120701 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 호흡 횟수 1 증가",
+    "after": "[OnSucceedAttack] 자신의 [Breath] 횟수 1 증가"
+  },
+  {
+    "loc": "1120701 Lv4 coin1.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120701 Lv4 coin2.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120702 Lv1 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 2 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 2 증가"
+  },
+  {
+    "loc": "1120702 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 3 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 3 얻음"
+  },
+  {
+    "loc": "1120702 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1120702 Lv1 coin2.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120702 Lv2 desc",
+    "before": "[WhenUse] 자신의 호흡 횟수 3 증가",
+    "after": "[WhenUse] 자신의 [Breath] 횟수 3 증가"
+  },
+  {
+    "loc": "1120702 Lv2 coin1.1",
+    "before": "[OnSucceedAttackHead] 호흡 4 얻음",
+    "after": "[OnSucceedAttackHead] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1120702 Lv2 coin1.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120702 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1120702 Lv2 coin2.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120702 Lv4 desc",
+    "before": "대상의 출혈 7당 코인 위력 +1 (최대 2)\n[WhenUse] 자신의 호흡 횟수 3 증가",
+    "after": "대상의 [Laceration] 7당 코인 위력 +1 (최대 2)\n[WhenUse] 자신의 [Breath] 횟수 3 증가"
+  },
+  {
+    "loc": "1120702 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 호흡 4 얻음",
+    "after": "[OnSucceedAttack] [Breath] 4 얻음"
+  },
+  {
+    "loc": "1120702 Lv4 coin1.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120702 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 3 부여",
+    "after": "[OnSucceedAttack] [Laceration] 3 부여"
+  },
+  {
+    "loc": "1120702 Lv4 coin2.2",
+    "before": "[CriticalOnSucceedAttack] 출혈 2 부여",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1120703 Lv3 desc",
+    "before": "[WhenUse] 대상의 출혈 3당 호흡 1을 얻음 (최대 5)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></color></link></u>이 7 이상이면 코인 위력 +1",
+    "after": "[WhenUse] 대상의 [Laceration] 3당 [Breath] 1을 얻음 (최대 5)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></color></link></u>이 7 이상이면 코인 위력 +1"
+  },
+  {
+    "loc": "1120703 Lv3 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 횟수 2 증가",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 횟수 2 증가"
+  },
+  {
+    "loc": "1120703 Lv3 coin2.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1120703 Lv4 desc",
+    "before": "[WhenUse] 대상의 출혈 3당 호흡 1을 얻음 (최대 10)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">호흡</color></color></link></u> 7 당 코인 위력 +1 (최대 3)",
+    "after": "[WhenUse] 대상의 [Laceration] 3당 [Breath] 1을 얻음 (최대 10)\n자신의 <sprite name=\"Breath\"><color=#f8c200><u><link=\"Breath\">[Breath]</color></color></link></u> 7 당 코인 위력 +1 (최대 3)"
+  },
+  {
+    "loc": "1120703 Lv4 coin1.1",
+    "before": "[CriticalOnSucceedAttack] 출혈 횟수 2 증가",
+    "after": "[CriticalOnSucceedAttack] [Laceration] 횟수 2 증가"
+  },
+  {
+    "loc": "1120703 Lv4 coin2.1",
+    "before": "탄환 1 소모",
+    "after": "[Bullet] 1 소모"
+  },
+  {
+    "loc": "1120703 Lv4 coin2.3",
+    "before": "[EnemyKill] 다음 턴에 더하기 코인 강화 1을 얻음",
+    "after": "[EnemyKill] 다음 턴에 [PlusCoinValueUp] 1을 얻음"
+  },
+  {
+    "loc": "1120704 Lv1 desc",
+    "before": "[OnSucceedEvade] 호흡 1 얻음 (턴 당 최대 3)",
+    "after": "[OnSucceedEvade] [Breath] 1 얻음 (턴 당 최대 3)"
+  },
+  {
+    "loc": "1120704 Lv4 desc",
+    "before": "[OnSucceedEvade] 호흡 1 얻음 (턴 당 최대 5)",
+    "after": "[OnSucceedEvade] [Breath] 1 얻음 (턴 당 최대 5)"
+  },
+  {
+    "loc": "1120802 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120802 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1120802 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120802 Lv2 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1120802 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120802 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면, 다음 턴에 공격 위력 감소 1 부여",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면, 다음 턴에 [Reduction] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 ",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
+  },
+  {
+    "loc": "1120803 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv3 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 ",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
+  },
+  {
+    "loc": "1120803 Lv3 coin3.1",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 더하기 코인 약화 1 부여",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 10 이상이면, 다음 턴에 [PlusCoinValueDown] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 ",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
+  },
+  {
+    "loc": "1120803 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 공격 레벨 감소 1 부여",
+    "after": "[OnSucceedAttack] [AttackDown] 1 부여"
+  },
+  {
+    "loc": "1120803 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 공격 레벨 감소 1 부여 ",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 7 이상이면 다음 턴에 [AttackDown] 1 부여 "
+  },
+  {
+    "loc": "1120803 Lv4 coin3.2",
+    "before": "[OnSucceedAttack] 대상의 [Laceration]이 <style=\"highlight\">7</style> 이상이면, 다음 턴에 더하기 코인 약화 1 부여",
+    "after": "[OnSucceedAttack] 대상의 [Laceration]이 <style=\"highlight\">7</style> 이상이면, 다음 턴에 [PlusCoinValueDown] 1 부여"
+  },
+  {
+    "loc": "1121101 Lv4 desc",
+    "before": "대상의 화상 <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)",
+    "after": "대상의 [Combustion] <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)"
+  },
+  {
+    "loc": "1121603 Lv3 desc",
+    "before": "[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여",
+    "after": "[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여"
+  },
+  {
+    "loc": "1121603 Lv4 desc",
+    "before": "<style=\"highlight\">피해량 +(자신과 대상이 보유한 [Combustion] 위력)% (최대 30%)</style>\n[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n<style=\"highlight\">[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n<style=\"highlight\">- 마지막 코인 적중 시, 대상의 화상 발동. 대상의 화상 횟수 1 감소</style>\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여",
+    "after": "<style=\"highlight\">피해량 +(자신과 대상이 보유한 [Combustion] 위력)% (최대 30%)</style>\n[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n<style=\"highlight\">[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n<style=\"highlight\">- 마지막 코인 적중 시, 대상의 [Combustion] 발동. 대상의 [Combustion] 횟수 1 감소</style>\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여"
+  },
+  {
+    "loc": "1121605 Lv3 desc",
+    "before": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +50% (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모",
+    "after": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +50% (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모"
+  },
+  {
+    "loc": "1121605 Lv4 desc",
+    "before": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 <style=\"highlight\">+75%</style> (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 메인 타겟의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모",
+    "after": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 <style=\"highlight\">+75%</style> (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 메인 타겟의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모"
+  }
+]

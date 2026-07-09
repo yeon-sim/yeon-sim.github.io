@@ -67,6 +67,7 @@ const PROTECT_WORDS = new Set([
   "<피주머니>", // [BloodPocket] — <혈귀>처럼 상태 참조, 평문 유지
   "오혈읍루", // "오혈"(CondensedBlood) — 스킬명
   "마지막 탄환", // "탄환"(Bullet) — 스킬명 ("탄환"은 다른 곳에서 정상 토큰화됨)
+  "포자탄", // "포자"(MeursaultBeeSpore) 오탐 방지 — 뫼르소 포자탄(긴/짧은 포자탄은 별도 [MeursaultSporeBullet*]). 게임도 일부 문맥은 <noparse>포자</noparse>탄
   "못한", "못했", // "못하다"(실패) 안의 "못"(NailPersonality) 오탐. "못 N 부여"·"못이" 는 정상 토큰화
   "소수점 버림", // "버림"(Discard) 오탐 — 소수점 내림. ("…개를 버림"·"순으로 버림" 은 [Discard] 로 토큰화)
   // 'X 속성의 Y' = 공명 속성 레벨 참조 (Y 디버프/버프 키워드 아님). 긴 복합형 우선.

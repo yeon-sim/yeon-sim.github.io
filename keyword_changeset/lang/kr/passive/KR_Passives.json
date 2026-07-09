@@ -680,18 +680,38 @@
     "after": "턴 시작 시,\n- 자신의 [UnlockBuff_Base] 단계에 따라 [IndexPrescriptYi_0]/[IndexPrescriptYi_1]/[IndexPrescriptYi_2]/[IndexPrescriptYi_3] 얻음\n- 무작위 적 1명에게 [IndexPrescriptTargetToEnemy] 부여 (집중 전투면, 부위에 부여)\n- 조작 슬롯의 자신의 기본 공격 스킬에 [IndexPrescriptTargetMarkToEnemy] 부여 (슬롯당 1개, 최대 2개 부여)\n· [UnlockBuffAlly_2] 이상이면, 스킬 3에 우선 부여 (강화된 스킬 우선)\n- 흐트러짐, [Inactible][TabExplain], 패닉, E.G.O 침식 상태면, 위의 모든 효과와 [IndexPrescript_Base_2nd] 수행 여부가 적용되지 않음"
   },
   {
-    "loc": "1051411",
-    "before": "[MeursaultBeeSpore]를 보유한 적 처치 시, 아래 효과 적용\n- 다음 턴 동안 부여하는 [MeursaultBeeSpore] 수치가 2배가 됨\n<style=\"highlight\">- 기본 공격 스킬로 처치 시 (해당 스킬에서 소모하는 포자탄 / 2)만큼 포자탄 획득 (소수점 올림, 스킬당 1회)</style>",
-    "after": "[MeursaultBeeSpore]를 보유한 적 처치 시, 아래 효과 적용\n- 다음 턴 동안 부여하는 [MeursaultBeeSpore] 수치가 2배가 됨\n<style=\"highlight\">- 기본 공격 스킬로 처치 시 (해당 스킬에서 소모하는 [MeursaultBeeSpore]탄 / 2)만큼 [MeursaultBeeSpore]탄 획득 (소수점 올림, 스킬당 1회)</style>"
-  },
-  {
-    "loc": "1051402",
-    "before": "상시 적용: [MeursaultSporeBulletLong] 10개, [MeursaultSporeBulletShort] 6개 보유\n\n<noparse>포자</noparse>탄을 소모하는 코인 적중 시\n- [MeursaultSporeBulletLong]을 소모했으면, [MeursaultBeeSpore] 2 부여\n- [MeursaultSporeBulletShort]을 소모했으면, [MeursaultBeeSpore] 3 부여\n- 이 효과는 스킬에서 부정적인 효과를 부여하는 것으로 취급됨\n\n[MeursaultSporeBulletShort]을 소모하는 코인 사용 전 [MeursaultSporeBulletShort]이 없으면,\n정신력 2, [MeursaultSporeBulletLong] 2 소모하여, [MeursaultSporeBulletShort] 1 얻음\n\n스킬 사용 중 포자탄이 부족하면, 다음 코인을 모두 취소하고 [MeursaultSporeBulletReloading]\n\n[MeursaultBeeSpore]가 있는 대상 사망 시 [MeursaultWorkerBee] 1 얻음",
-    "after": "상시 적용: [MeursaultSporeBulletLong] 10개, [MeursaultSporeBulletShort] 6개 보유\n\n<noparse>포자</noparse>탄을 소모하는 코인 적중 시\n- [MeursaultSporeBulletLong]을 소모했으면, [MeursaultBeeSpore] 2 부여\n- [MeursaultSporeBulletShort]을 소모했으면, [MeursaultBeeSpore] 3 부여\n- 이 효과는 스킬에서 부정적인 효과를 부여하는 것으로 취급됨\n\n[MeursaultSporeBulletShort]을 소모하는 코인 사용 전 [MeursaultSporeBulletShort]이 없으면,\n정신력 2, [MeursaultSporeBulletLong] 2 소모하여, [MeursaultSporeBulletShort] 1 얻음\n\n스킬 사용 중 [MeursaultBeeSpore]탄이 부족하면, 다음 코인을 모두 취소하고 [MeursaultSporeBulletReloading]\n\n[MeursaultBeeSpore]가 있는 대상 사망 시 [MeursaultWorkerBee] 1 얻음"
-  },
-  {
     "loc": "1091621",
     "before": "속도가 가장 빠른 아군 1명이 적에게 [VibrationExplosion] 시, 다음 턴에 공격 레벨 증가 2 얻음 (턴당 1회)\n- 엄지 소속의 경우 추가로 [Agility] 1 얻음 (턴당 1회)",
     "after": "속도가 가장 빠른 아군 1명이 적에게 [VibrationExplosion] 시, 다음 턴에 [AttackUp] 2 얻음 (턴당 1회)\n- 엄지 소속의 경우 추가로 [Agility] 1 얻음 (턴당 1회)"
+  },
+  {
+    "loc": "1121601",
+    "before": "자신 이외의 새벽 사무소[TabExplain] 소속 인격이 다음 조건 만족 시, 새벽 사무소[TabExplain] 대표 그레고르가 대상 적에게 ‘여명의 섬광’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- 새벽 사무소[TabExplain] 해결사 파우스트의 ‘사출’, ‘사출-정오’, ‘정오의 해체’ 또는 새벽 사무소[TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면, 새벽 사무소[TabExplain] 대표 그레고르가 사용하는 기본 스킬의 추가된 코인 적중 시 대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급",
+    "after": "자신 이외의 [DawnTeam][TabExplain] 소속 인격이 다음 조건 만족 시, [DawnTeam][TabExplain] 대표 그레고르가 대상 적에게 ‘여명의 섬광’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- [DawnTeam][TabExplain] 해결사 파우스트의 ‘사출’, ‘사출-[DawnFaust]’, ‘[DawnFaust]의 해체’ 또는 [DawnTeam][TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면, [DawnTeam][TabExplain] 대표 그레고르가 사용하는 기본 스킬의 추가된 코인 적중 시 대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급"
+  },
+  {
+    "loc": "1121611",
+    "before": "자신에게 [DawnLight]가 있을 때, 기본 공격 스킬 적중시 [StigmaWorkshopHandStep1] 2 얻음\n\n자신 이외의 새벽 사무소[TabExplain] 소속 인격이 다음 조건 만족 시, 새벽 사무소[TabExplain] 대표 그레고르가 대상 적에게 ‘여명의 섬광’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- 새벽 사무소[TabExplain] 해결사 파우스트의 ‘사출’, ‘사출-정오’, ‘정오의 해체’ 또는 새벽 사무소[TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면, 새벽 사무소[TabExplain] 대표 그레고르가 사용하는 기본 스킬의 추가된 코인 적중 시 대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급",
+    "after": "자신에게 [DawnLight]가 있을 때, 기본 공격 스킬 적중시 [StigmaWorkshopHandStep1] 2 얻음\n\n자신 이외의 [DawnTeam][TabExplain] 소속 인격이 다음 조건 만족 시, [DawnTeam][TabExplain] 대표 그레고르가 대상 적에게 ‘여명의 섬광’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- [DawnTeam][TabExplain] 해결사 파우스트의 ‘사출’, ‘사출-[DawnFaust]’, ‘[DawnFaust]의 해체’ 또는 [DawnTeam][TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면, [DawnTeam][TabExplain] 대표 그레고르가 사용하는 기본 스킬의 추가된 코인 적중 시 대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급"
+  },
+  {
+    "loc": "1121603",
+    "before": "스테이지 첫 등장 시, 자신을 포함한 전장에 있는 새벽 사무소[TabExplain] 소속 인격이 2명 이상이면, 모든 새벽 사무소[TabExplain] 소속 인격에게 해당 인원 수만큼 [DawnTeam] 부여\n\n새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면, 다음 효과 발동\n- 새벽 사무소[TabExplain] 해결사 싱클레어가 [DawnGregor] 얻음\n- 새벽 사무소[TabExplain] 대표 그레고르가 사망했으면, 턴 시작 시 새벽 사무소[TabExplain] 해결사 싱클레어가 보유한 [DawnGregor]가 [DawnGregorDying]로 변경됨\n- 턴 시작 시 새벽 사무소[TabExplain] 해결사 싱클레어의 체력이 50% 미만이면, [RunSinclair] 부여 (전투당 1회)",
+    "after": "스테이지 첫 등장 시, 자신을 포함한 전장에 있는 [DawnTeam][TabExplain] 소속 인격이 2명 이상이면, 모든 [DawnTeam][TabExplain] 소속 인격에게 해당 인원 수만큼 [DawnTeam] 부여\n\n[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면, 다음 효과 발동\n- [DawnTeam][TabExplain] 해결사 싱클레어가 [DawnGregor] 얻음\n- [DawnTeam][TabExplain] 대표 그레고르가 사망했으면, 턴 시작 시 [DawnTeam][TabExplain] 해결사 싱클레어가 보유한 [DawnGregor]가 [DawnGregorDying]로 변경됨\n- 턴 시작 시 [DawnTeam][TabExplain] 해결사 싱클레어의 체력이 50% 미만이면, [RunSinclair] 부여 (전투당 1회)"
+  },
+  {
+    "loc": "1021603",
+    "before": "새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면, 다음 효과 발동\n- 새벽 사무소[TabExplain] 해결사 싱클레어가 [DawnFaust] 얻음\n- 새벽 사무소[TabExplain] 해결사 파우스트가 사망했으면, 턴 시작 시 새벽 사무소[TabExplain] 해결사 싱클레어가 보유한 [DawnFaust]가 [DawnFaustDying]로 변경됨",
+    "after": "[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면, 다음 효과 발동\n- [DawnTeam][TabExplain] 해결사 싱클레어가 [DawnFaust] 얻음\n- [DawnTeam][TabExplain] 해결사 파우스트가 사망했으면, 턴 시작 시 [DawnTeam][TabExplain] 해결사 싱클레어가 보유한 [DawnFaust]가 [DawnFaustDying]로 변경됨"
+  },
+  {
+    "loc": "1021601",
+    "before": "자신 이외의 새벽 사무소[TabExplain] 소속 인격이 다음 조건 만족 시,\n새벽 사무소[TabExplain] 해결사 파우스트가 ‘연계’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- 새벽 사무소[TabExplain] 대표 그레고르의 ‘새벽을 가르는 검’, ‘새벽녘’ 또는\n새벽 사무소[TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면,\n새벽 사무소[TabExplain] 해결사 파우스트가 사용하는 기본 스킬의 재사용 코인 적중 시\n대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급",
+    "after": "자신 이외의 [DawnTeam][TabExplain] 소속 인격이 다음 조건 만족 시,\n[DawnTeam][TabExplain] 해결사 파우스트가 ‘연계’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- [DawnTeam][TabExplain] 대표 그레고르의 ‘새벽을 가르는 검’, ‘새벽녘’ 또는\n[DawnTeam][TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면,\n[DawnTeam][TabExplain] 해결사 파우스트가 사용하는 기본 스킬의 재사용 코인 적중 시\n대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급"
+  },
+  {
+    "loc": "1021611",
+    "before": "<style=\"highlight\">자신에게 [Firstlight]이 있을 때 전투 시작 시 (수치 x 3)만큼 [StigmaWorkshopCelloCaseOne] 얻음</style>\n\n자신 이외의 새벽 사무소[TabExplain] 소속 인격이 다음 조건 만족 시,\n새벽 사무소[TabExplain] 해결사 파우스트가 ‘연계’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- 새벽 사무소[TabExplain] 대표 그레고르의 ‘새벽을 가르는 검’, ‘새벽녘’ 또는\n새벽 사무소[TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n새벽 사무소[TabExplain] 해결사 싱클레어가 전장에 있으면,\n새벽 사무소[TabExplain] 해결사 파우스트가 사용하는 기본 스킬의 재사용 코인 적중 시\n대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급",
+    "after": "<style=\"highlight\">자신에게 [Firstlight]이 있을 때 전투 시작 시 (수치 x 3)만큼 [StigmaWorkshopCelloCaseOne] 얻음</style>\n\n자신 이외의 [DawnTeam][TabExplain] 소속 인격이 다음 조건 만족 시,\n[DawnTeam][TabExplain] 해결사 파우스트가 ‘연계’ 사용 (인격별 턴당 1회)\n- 기본 스킬 공격 종료 시 적중한 적이 흐트러졌을 때, 대상에게 사용\n(해당 스킬 공격 시작 전 이미 흐트러짐 상태였으면 발동하지 않음)\n- [DawnTeam][TabExplain] 대표 그레고르의 ‘새벽을 가르는 검’, ‘새벽녘’ 또는\n[DawnTeam][TabExplain] 해결사 싱클레어의 ‘낙인’, ‘타오르는 일격’ 공격 종료 시, 적중한 적에게 사용 (흐트러진 대상 우선)\n\n[DawnTeam][TabExplain] 해결사 싱클레어가 전장에 있으면,\n[DawnTeam][TabExplain] 해결사 파우스트가 사용하는 기본 스킬의 재사용 코인 적중 시\n대상 적의 [Combustion] 위력만큼 분노 피해를 추가로 입힘 (최대 10, 턴당 최대 20)\n- [Combustion]이 발동한 것으로 취급"
   }
 ]

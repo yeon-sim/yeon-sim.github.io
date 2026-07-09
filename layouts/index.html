@@ -1045,13 +1045,31 @@ const themeMap = {
   {{ range (index site.Data.lang.kr "KR_MirrorDungeonTheme-1").dataList }}"{{ .id }}": "{{ .name }}",
   {{ end }}
 };
+{{/* specialName: <color> 태그가 포함된 이름(있는 테마만). 색상 렌더에 우선 사용 */}}
+const themeSpecialMap = {
+  {{ range (index site.Data.lang.kr "KR_MirrorDungeonTheme-1").dataList }}{{ if .specialName }}"{{ .id }}": {{ .specialName | jsonify | safeJS }},
+  {{ end }}{{ end }}
+};
 
 const floorMap = {
   {{ range $themeList }}"{{ .id }}": [{{ range .exceptionConditions }}{ dungeonIdx: {{ .dungeonIdx }}, selectableFloors: [{{ range .selectableFloors }}{{ . }},{{ end }}] },{{ end }}],
   {{ end }}
 };
 
+function parseColorTags(str) {                 // "<color=#hex>텍스트</color> 평문..." → [{text, color}]
+  const parts = [], re = /<color=(#[0-9a-fA-F]{3,8})>(.*?)<\/color>/g;
+  let last = 0, m;
+  while ((m = re.exec(str)) !== null) {
+    if (m.index > last) parts.push({ text: str.slice(last, m.index), color: '#eacaa1' });   // 태그 밖 평문(공백 등)
+    parts.push({ text: m[2], color: m[1] });
+    last = re.lastIndex;
+  }
+  if (last < str.length) parts.push({ text: str.slice(last), color: '#eacaa1' });
+  return parts;
+}
 function packNameParts(packId) {
+  const special = themeSpecialMap[String(packId)];
+  if (special) return parseColorTags(special);   // specialName 의 <color> 태그를 세그먼트별 색으로 (있으면 우선)
   const name = themeMap[String(packId)] || String(packId);
   const rawColor = textColorMap[String(packId)];
   if (Array.isArray(rawColor)) {
@@ -1785,20 +1803,7 @@ function checklist() {
       const showBaton = batonMap[String(packId)] || false;
       const bossSpriteId = bossMap[String(packId)] || '';
       const hideLogo = hideLogoMap[String(packId)] || false;
-      const rawColor = textColorMap[String(packId)];
-      let nameColorParts = [];
-      if (Array.isArray(rawColor)) {
-        const colors = rawColor.map(c => `#${c}`);
-        const words = name.split(' ');
-        nameColorParts = words.map((word, i) => ({
-          text: i < words.length - 1 ? word + ' ' : word,
-          color: colors[Math.min(i, colors.length - 1)],
-        }));
-      } else if (rawColor) {
-        nameColorParts = [{ text: name, color: `#${rawColor}` }];
-      } else {
-        nameColorParts = [{ text: name, color: '#eacaa1' }];
-      }
+      const nameColorParts = packNameParts(packId);   // specialName/textColor 반영 (packNameParts 재사용)
       const specificGiftIds = specificGiftPoolMap[String(packId)] || [];
       const specificGifts = specificGiftIds.map(id => ({
         id,

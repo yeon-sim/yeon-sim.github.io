@@ -9530,6 +9530,1942 @@
           ]
         }
       ]
+    },
+
+    {
+      "id": 1021601,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "INDIGO",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 2,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S1",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnViaBuffCheck10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 20,
+                "turn": 0,
+                "value": 1
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnViaBuffCheck10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 20,
+                "turn": 0,
+                "value": 1
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 4,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnViaBuffCheck10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 20,
+                "turn": 0,
+                "value": 1
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021602,
+      "skillType": "SKILL",
+      "skillTier": 2,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "AMBER",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 3,
+          "defaultValue": 4,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S2",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnDivideByBuffStack10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 5,
+              "abilityScriptList": [
+                
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 5,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackIfRerollCoin10216_1_1",
+                  "value": 1
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }            
+          ]
+        },
+        {
+          "gaksungLevel": 2,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnDivideByBuffStack10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 5,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveSpecificBuffOnSucceedAttackViaCheckBuff10216_Combustion_Vibration",
+                  "buffData": {
+                    "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                    "buffOwner": "Self",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0,
+                    "value": 10
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 5,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackIfRerollCoin10216_1_1",
+                  "value": 1
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 6,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveSpecificBuffOnSucceedAttackViaCheckBuff10216_Combustion_Vibration",
+                  "buffData": {
+                    "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                    "buffOwner": "Self",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0,
+                    "value": 10
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 6,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackIfRerollCoin10216_1_1",
+                  "value": 1
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "SkillPowerResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 4,
+                "turn": 0,
+                "value": 1,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 6,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnDivideByBuffStack10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 6,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveSpecificBuffOnSucceedAttackDivideByBuffStack10216_Combustion_Vibration",
+                  "buffData": {
+                    "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                    "buffOwner": "Self",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0,
+                    "value": 10,
+                    "limit": 2
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 6,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttackIfRerollCoin10216_1_1",
+                  "value": 1
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021603,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 4,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S3",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "ChangeSkillOnBeforeTurnViaBuffCheckWithTurnLimit",
+              "turnLimit": 1,
+              "value": 1021606,
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 5,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnDivideByStack_StigmaWorkshopCelloCaseOne",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "buffOwner": "Self",
+                "target": "Target",
+                "stack": 0,
+                "turn": 1,
+                "value": 10,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnDivideByStack_StigmaWorkshopCelloCaseOne",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "buffOwner": "Self",
+                "target": "Target",
+                "stack": 0,
+                "turn": 1,
+                "value": 10,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnDivideByBuffStack10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 2,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_2",
+                  "value": 1
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "ChangeSkillOnBeforeTurnViaBuffCheckWithTurnLimit",
+              "turnLimit": 1,
+              "value": 1021606,
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnUse10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 8,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderOnUseDivideByBuff",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnDivideByStack_StigmaWorkshopCelloCaseOne",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "buffOwner": "Self",
+                "target": "Target",
+                "stack": 0,
+                "turn": 1,
+                "value": 10,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnDivideByStack_StigmaWorkshopCelloCaseOne",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "buffOwner": "Self",
+                "target": "Target",
+                "stack": 0,
+                "turn": 1,
+                "value": 10,
+                "limit": 3
+              }
+            },
+            {
+              "scriptName": "RerollLastCoinOnStartTurnDivideByBuffStack10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1,
+                "limit": 2
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 3,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SwitchVibrationOnSucceedAttack",
+                  "buffData": {
+                    "buffKeyword": "VibrationIgnition",
+                    "buffOwner": "Target"
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_3",
+                  "value": 1
+                },
+                {
+                  "scriptName": "GiveBuffOnSAIfRerolled",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                },
+                {
+                  "scriptName": "RerollLastCoin10216"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021604,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [],
+      "skillData": [
+        {
+          "gaksungLevel": 1,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "COUNTER",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 1,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S4",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "buffOwner": "Self",
+                "stack": 5,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnStartTurn",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 5,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnWinDuel",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 1,
+                    "turn": 0,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "abilityScriptList": [
+            {
+              "scriptName": "ChangeSkillOnBeforeTurn10216",
+              "turnLimit": 1,
+              "value": 1021607,
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnViaBuffCheck",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "buffOwner": "Self",
+                "stack": 5,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnStartTurn",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 5,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnWinDuel",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ShowSkillSlotUIEffectViaBuffCheck10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "GiveBuffOnBattleStart1021604",
+              "value": 1,
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self",
+                "stack": 6,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ChangeSkillOnBeforeTurn10216",
+              "turnLimit": 1,
+              "value": 1021607,
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnViaBuffCheckDevideByStackWithLimit2",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "buffOwner": "Self",
+                "stack": 5,
+                "turn": 0,
+                "value": 1
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnStartTurn",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 5,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "LoseBuffOnWinDuel",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "ShowSkillSlotUIEffectViaBuffCheck10216",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 30,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021605,
+      "skillType": "SKILL",
+      "skillTier": 1,
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 2,
+          "attributeType": "SHAMROCK",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 1,
+          "mpUsage": 0,
+          "skillLevelCorrection": 1,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S7",
+          "viewType": "BATTLE",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 3,
+          "defaultValue": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackDmgUpOnUseViaBuffCheckDivideByStack",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.01,
+                "limit": 30
+              }
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "abilityScriptList": [
+            {
+              "scriptName": "AttackDmgUpOnUseViaBuffCheckDivideByStack",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.02,
+                "limit": 60
+              }
+            },
+            {
+              "scriptName": "SkillPowerResultAdderViaOnUseBuffCheckDevideByStackWithLimit3",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "buffOwner": "Self",
+                "stack": 10,
+                "turn": 0,
+                "value": 1
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Vibration",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "scale": 3,
+              "abilityScriptList": [
+                {
+                  "scriptName": "GiveBuffOnSucceedAttack",
+                  "turnLimit": 2,
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "target": "Target",
+                    "stack": 0,
+                    "turn": 1,
+                    "activeRound": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021606,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "ATTACK",
+          "skillTargetType": "FRONT",
+          "targetNum": 3,
+          "mpUsage": 0,
+          "range" : 4,
+          "arearange" : 3,
+          "skillLevelCorrection": 5,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "canChangeTarget": true,
+          "skillMotion": "S5",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "DealRandomTargetAmongTargetsMTFirst"
+            },
+            {
+              "scriptName": "GiveRandomBuffOnSucceedAttack10216_Combustion_Vibration",
+              "buffData": {
+                "target": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "SwitchVibrationOnSucceedAttack10216",
+              "buffData": {
+                "buffKeyword": "VibrationIgnition"
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderSelf3"
+            },            
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "ParryingResultAdderOnSTViaSumOfTwoBuffStack_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "value": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 0,
+                "turn": 2,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "stack": 0,
+                "turn": 2,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttackToAllAttackedTargets10216",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "ResultReduction",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "Firstlight",
+                "target": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "CaseOverheating",
+                "target": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "RerollCoinByValue",
+                  "value" : 2
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_2",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "DealRandomTargetAmongTargetsMTFirst"
+            },
+            {
+              "scriptName": "AttackDmgMultiplierByBuffStackBoth10216",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.01,
+                "limit": 20
+              }
+            },            
+            {
+              "scriptName": "GiveRandomBuffOnSucceedAttack10216_Combustion_Vibration",
+              "buffData": {
+                "target": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "SwitchVibrationOnSucceedAttack10216",
+              "buffData": {
+                "buffKeyword": "VibrationIgnition"
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderSelf3"
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "ParryingResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "value": 2,
+                "limit": 4
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttackToAllAttackedTargets10216",
+              "turnLimit": 1,
+              "buffData": {
+                "buffKeyword": "ResultReduction",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 1
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "Firstlight",
+                "target": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "CaseOverheating",
+                "target": "Self",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "RerollCoinByValue",
+                  "value" : 2
+                },
+                {
+                  "scriptName": "AttackDmgMultiplierDivideByBuffStackTargetIfHasBuff10216_Firstlight",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "stack": 2,
+                    "turn": 0,
+                    "value": 0.01,
+                    "limit": 20
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_3",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1021607,
+      "skillType": "SKILL",
+      "skillTier": 3,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "skillData": [
+        {
+          "gaksungLevel": 3,
+          "attributeType": "CRIMSON",
+          "atkType": "SLASH",
+          "defType": "COUNTER",
+          "skillTargetType": "FRONT",
+          "targetNum": 3,
+          "mpUsage": 0,
+          "skillLevelCorrection": 5,
+          "defaultValue": 3,
+          "canTeamKill": false,
+          "canDuel": true,
+          "range" : 4,
+          "arearange" : 1.5,
+          "canChangeTarget": true,
+          "skillMotion": "S6",
+          "viewType": "ENCOUNTER",
+          "parryingCloseType": "NEAR",
+          "abilityScriptList": [
+            {
+              "scriptName": "DealRandomTargetAmongTargetsMTFirst"
+            },
+            {
+              "scriptName": "AttackDmgMultiplierByLoseHpRatio10216_25",
+              "value": 2
+            },
+            {
+              "scriptName": "GiveRandomBuffOnSucceedAttack10216_Combustion_Vibration",
+              "buffData": {
+                "target": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "SwitchVibrationOnSucceedAttack10216",
+              "buffData": {
+                "buffKeyword": "VibrationIgnition"
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderSelf3"
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnCheckSumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0
+              }
+            },
+            {
+              "scriptName": "ParryingResultAdderOnSTViaSumOfTwoBuffStack_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "value": 2
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 0,
+                "turn": 2,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "stack": 0,
+                "turn": 2,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "UseBuffAndHealHpRatioOnEndAttack10216",
+              "value": 0.05,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "value": 0.01,
+                "limit": 30                
+              }
+            },
+            {
+              "scriptName": "UseBuffAllStackOnEndAttack",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self"
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "Firstlight",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "RerollCoinByValue",
+                  "value" : 2
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_2",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "gaksungLevel": 4,
+          "defaultValue": 5,
+          "abilityScriptList": [
+            {
+              "scriptName": "DealRandomTargetAmongTargetsMTFirst"
+            },
+            {
+              "scriptName": "AttackDmgMultiplierByLoseHpRatio10216_50",
+              "value": 1
+            },
+            {
+              "scriptName": "AttackDmgMultiplierByBuffStackTarget10216",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 1,
+                "turn": 0,
+                "value": 0.01,
+                "limit": 20
+              }
+            },
+            {
+              "scriptName": "GiveRandomBuffOnSucceedAttack10216_Combustion_Vibration",
+              "buffData": {
+                "target": "Target",
+                "stack": 1,
+                "turn": 0,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "SwitchVibrationOnSucceedAttack10216",
+              "buffData": {
+                "buffKeyword": "VibrationIgnition"
+              }
+            },
+            {
+              "scriptName": "ParryingPowerResultAdderSelf3"
+            },
+            {
+              "scriptName": "CoinScaleAdderOnStartTurnDivideBySumOfTwoBuffStack_Combustion_Vibration",
+              "value": 1,
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "limit": 2
+              }
+            },
+            {
+              "scriptName": "ParryingResultAdderOnSTViaSumOfTwoBuffStackDivide_Combustion_Vibration",
+              "buffData": {
+                "buffOwner": "Target",
+                "stack": 6,
+                "turn": 0,
+                "value": 2,
+                "limit": 4
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnStartTurnToAllTargets",
+              "buffData": {
+                "buffKeyword": "Vibration",
+                "stack": 0,
+                "turn": 3,
+                "activeRound": 0
+              }
+            },
+            {
+              "scriptName": "UseBuffAndHealHpRatioOnEndAttack10216",
+              "value": 0.20,
+              "buffData": {
+                "buffKeyword": "Combustion",
+                "value": 0.01,
+                "limit": 30
+              }
+            },
+            {
+              "scriptName": "UseBuffAllStackOnEndAttack",
+              "buffData": {
+                "buffKeyword": "StigmaWorkshopCelloCaseOne",
+                "target": "Self"
+              }
+            },
+            {
+              "scriptName": "GiveBuffOnEndAttack",
+              "buffData": {
+                "buffKeyword": "Firstlight",
+                "target": "Self",
+                "stack": 3,
+                "turn": 0,
+                "activeRound": 0
+              }
+            }
+          ],
+          "coinList": [
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                }
+              ]
+            },
+            {
+              "operatorType": "ADD",
+              "grade": 2,
+              "color": "GREY",
+              "scale": 4,
+              "cutsceneStart": true,
+              "abilityScriptList": [
+                {
+                  "scriptName": "SuperCoin"
+                },
+                {
+                  "scriptName": "RerollCoinByValue",
+                  "value" : 2
+                },
+                {
+                  "scriptName": "AttackDmgMultiplierDivideByBuffStackTargetIfHasBuff10216_Firstlight",
+                  "buffData": {
+                    "buffKeyword": "Combustion",
+                    "stack": 1,
+                    "turn": 0,
+                    "value": 0.01,
+                    "limit": 20
+                  }
+                },
+                {
+                  "scriptName": "VibrationExplosionOnSucceedAttack10216_1_3",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
