@@ -10,6 +10,8 @@
 {{ $skillMap := dict }}
 {{ range $.Site.Data.personality.skill }}
   {{ range .list }}
+    {{/* 히든 스킬(조건부 변형)은 목록에서 제외 — $si 부재로 모든 소비처에서 자동 탈락 */}}
+    {{ if .isHiddenForUI }}{{ continue }}{{ end }}
     {{ $sd := slice }}
     {{ $ic := slice }}
     {{ $lc := slice }}
@@ -24,7 +26,15 @@
         {{ $sd = $sd | append (dict "g" .gaksungLevel "a" .attributeType) }}
       {{ end }}
       {{ if .iconID }}
-        {{ $ic = $ic | append (dict "g" .gaksungLevel "i" (printf "%v" .iconID)) }}
+        {{/* iconID 는 혼합 타입: 문자열("1010104_4" 동기화4 변형) + 숫자(7자리).
+             숫자에 %v 를 쓰면 float64 라 지수표기되고, 문자열에 int 를 쓰면 0 이 된다. */}}
+        {{ $iid := "" }}
+        {{ if eq (printf "%T" .iconID) "string" }}
+          {{ $iid = .iconID }}
+        {{ else }}
+          {{ $iid = printf "%d" (int .iconID) }}
+        {{ end }}
+        {{ $ic = $ic | append (dict "g" .gaksungLevel "i" $iid) }}
       {{ end }}
       {{ if isset . "skillLevelCorrection" }}
         {{ $lc = $lc | append (dict "g" .gaksungLevel "v" .skillLevelCorrection) }}
@@ -522,6 +532,45 @@
   var egoSkillMap = {{ $egoSkillMap | jsonify | safeJS }};
   var egoSkillNameMap = {{ $egoSkillNameMap | jsonify | safeJS }};
   var egoSkillDescMap = {{ $egoSkillDescMap | jsonify | safeJS }};
+  {{/* #검색(desc)용 EGO 패시브 desc. 인격 desc 는 위 skillDescMap/passiveMap 을 그대로 재사용한다. */}}
+  {{ $egoPassiveDescMap := dict }}
+  {{ range $.Site.Data.lang.kr.egoskill.KR_Passive_Ego.dataList }}
+    {{ $egoPassiveDescMap = merge $egoPassiveDescMap (dict (printf "%d" (int .id)) (.desc | default "")) }}
+  {{ end }}
+  var egoPassiveDescMap = {{ $egoPassiveDescMap | jsonify | safeJS }};
+
+  // #검색(desc): 카드의 스킬·패시브 desc 를 평문화해 부분일치에 쓴다.
+  // 위 원문 맵을 그대로 재사용하므로 desc 사본을 따로 빌드하지 않는다. 카드당 1회 계산 후 캐시.
+  var searchDescCache = {};
+  function cardSearchDesc(card) {
+    var key = String(card.id);
+    if (searchDescCache[key] !== undefined) return searchDescCache[key];
+    var parts = [];
+    (card.sIds || []).forEach(function (id) {
+      var dl = skillDescMap[String(id)] || egoSkillDescMap[String(id)];
+      if (!dl || !dl.length) return;
+      var last = dl[dl.length - 1]; // 최종 동기화 단계 기준
+      if (last.desc) parts.push(last.desc);
+      (last.coins || []).forEach(function (c) {
+        (c.descs || []).forEach(function (d) { if (d) parts.push(d); });
+      });
+    });
+    (card.pIds || []).forEach(function (id) {
+      var p = passiveMap[String(id)];
+      if (p && p.desc) parts.push(p.desc);
+      var e = egoPassiveDescMap[String(id)];
+      if (e) parts.push(e);
+    });
+    var t = parts.join(' ')
+      .replace(/<[^>]+>/g, '')                            // 게임/HTML 태그 제거
+      .replace(/\[([A-Za-z_0-9]+)\]/g, function (m, k) {  // 키워드 토큰 → 한글명
+        return (kwMap[k] && kwMap[k].name) || m;
+      })
+      .replace(/\s+/g, '')                                // 띄어쓰기 무시
+      .toLowerCase();
+    searchDescCache[key] = t;
+    return t;
+  }
   </script>
 
   {{/* ── 헤더 ── */}}
@@ -1015,7 +1064,7 @@
         {{ range .awakeningPassiveList }}{{ with index $egoPassiveKwMap (printf "%d" (int .)) }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}
         {{ $egoKw := delimit $egoKwParts "|" }}
         {{ $existing := index $egoMap $cid | default slice }}
-        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "pIds" (.awakeningPassiveList | default slice) "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
       {{ end }}
     {{ end }}
     {{/* ── 출시 예정(preview) EGO — egoMap 편입 ──
@@ -1038,7 +1087,7 @@
       {{ $eAttr := .attrType | default "" }}
       {{ $eType := lower (.egoType | default "unwatched") }}
       {{ $eColor := index $attrColorMap $eAttr | default "#ffffff" }}
-      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측 불가") "passives" (slice (dict "name" (.passiveName | default "관측 불가") "desc" "")) "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
+      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측 불가") "passives" (slice (dict "name" (.passiveName | default "관측 불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
       {{ $existing := index $egoMap $pcid | default slice }}
       {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
     {{ end }}{{ end }}
@@ -1214,8 +1263,15 @@
           {{ range $skills }}{{ with index .sd 0 }}{{ $skillColors = $skillColors | append .a }}{{ end }}{{ end }}
           {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
           {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
+          {{/* #검색(desc)용 id 목록. desc 원문은 skillDescMap/passiveMap 에 이미 있으므로 id 만 넘긴다. */}}
+          {{ $sIds := slice }}
+          {{ range $skills }}{{ $sIds = $sIds | append .id }}{{ end }}
+          {{ range $defSkills }}{{ $sIds = $sIds | append .id }}{{ end }}
+          {{ $pIds := slice }}
+          {{ range $passiveBp }}{{ range .ids }}{{ $pIds = $pIds | append . }}{{ end }}{{ end }}
+          {{ range $passiveSp }}{{ range .ids }}{{ $pIds = $pIds | append . }}{{ end }}{{ end }}
           <div class="personality-card-wrap"
-            x-show="isPersonalityVisible({ skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
+            x-show="isPersonalityVisible({ id: {{ .id }}, sIds: {{ $sIds | jsonify }}, pIds: {{ $pIds | jsonify }}, skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
           <div class="personality-card" data-pkey="{{ .id }}"
             :class="{ 'formation-equipped': showFormation && slotId('{{ $pid }}') === '{{ .id }}' }"
@@ -1366,7 +1422,7 @@
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
           {{ $isEgoPreview := .preview | default false }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
@@ -2483,7 +2539,7 @@ function personalityPage() {
         for (const term of terms) {
           if (term.startsWith('#')) {
             const tag = term.slice(1).replace(/\s/g, '').toLowerCase();   // 띄어쓰기 무시
-            if (tag && !(card.kw || '').includes(tag)) return false;
+            if (tag && !(card.kw || '').includes(tag) && !cardSearchDesc(card).includes(tag)) return false;
           } else {
             if (!card.name.toLowerCase().includes(term.toLowerCase())) return false;
           }
@@ -2505,7 +2561,7 @@ function personalityPage() {
         for (const term of terms) {
           if (term.startsWith('#')) {
             const tag = term.slice(1).replace(/\s/g, '').toLowerCase();   // 띄어쓰기 무시
-            if (tag && !(ego.kw || '').includes(tag)) return false;
+            if (tag && !(ego.kw || '').includes(tag) && !cardSearchDesc(ego).includes(tag)) return false;
             continue;
           }
           if (!ego.name.toLowerCase().includes(term.toLowerCase())) return false;

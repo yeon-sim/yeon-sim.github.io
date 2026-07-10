@@ -145,18 +145,38 @@
     "after": "턴 시작시 [Bullet]이 0이면 '엄폐'로 변경됨\n[WhenUse] 마침표 사무소 대표 홍루 인격이 전투에 등장해 있으면, 대상에게 [MeleeCover] 요청 (턴 당 1회)\n<style=\"highlight\">[OnSucceedEvade] [Breath] 3 얻음 (턴 당 최대 3회)</style>\n[EndBattle] 다음 턴에 [LogicAtelierAM] 1 얻음 (턴 당 1회)"
   },
   {
-    "loc": "1071503 Lv4 desc",
-    "before": "메인 타겟의 [Combustion]과 [Laceration]의 합 4당 최종 위력 +1 (최대 3)\n질투 공명 2당 최종 위력 +1 (최대 3)\n[StartBattle] (가장 높은 공명 수)만큼 이 스킬의 공격 레벨이 증가 (최대 6)\n<style=\"highlight\">[WhenUse] 메인 타겟이 [RetaliationBook]이면, 최종 위력 +2</style>\n[WhenUse] 질투 완전 공명 6 이상이면, 가중치 +1\n<style=\"highlight\">[WhenUse] 자신의 [VengeanceBookHeathcliff]가 20 이상이면, 가중치 +1</style>\n[WhenUse] 이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +<style=\"highlight\">60</style>% (집중 전투의 경우, 부위로 판정)\n<style=\"highlight\">[EnemyKill] 이 스킬로 처치한 적 1명당 원한 문신 2 얻음 (턴당 최대 6)</style>",
-    "after": "메인 타겟의 [Combustion]과 [Laceration]의 합 4당 최종 위력 +1 (최대 3)\n질투 공명 2당 최종 위력 +1 (최대 3)\n[StartBattle] (가장 높은 공명 수)만큼 이 스킬의 공격 레벨이 증가 (최대 6)\n<style=\"highlight\">[WhenUse] 메인 타겟이 [RetaliationBook]이면, 최종 위력 +2</style>\n[WhenUse] 질투 완전 공명 6 이상이면, 가중치 +1\n<style=\"highlight\">[WhenUse] 자신의 [VengeanceBookHeathcliff]가 20 이상이면, 가중치 +1</style>\n[WhenUse] 이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +<style=\"highlight\">60</style>% (집중 전투의 경우, 부위로 판정)\n<style=\"highlight\">[EnemyKill] 이 스킬로 처치한 적 1명당 [MiddleFingerTattooID] 2 얻음 (턴당 최대 6)</style>"
+    "loc": "1071201 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
   },
   {
-    "loc": "1071602 Lv4 desc",
-    "before": "[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)\n[WinDuel] 대상에게 [DuelEdgeAlly]가 있으면, 진동 횟수 1 증가</style>",
-    "after": "[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)\n[WinDuel] 대상에게 [DuelEdgeAlly]가 있으면, [Vibration] 횟수 1 증가</style>"
+    "loc": "1071201 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
   },
   {
-    "loc": "1071605 Lv4 desc",
-    "before": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse]\n- [Protection] 2 얻음 (턴당 1회)\n- [SupportProtect]로 보호한 대상의 정신력 5 회복</style>",
-    "after": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse]\n- [Protection] 2 얻음 (턴당 1회)\n- [SupportProtect]로 [Protection]한 대상의 정신력 5 회복</style>"
+    "loc": "1071202 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1071203 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1071204 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1071205 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1071205 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
   }
 ]

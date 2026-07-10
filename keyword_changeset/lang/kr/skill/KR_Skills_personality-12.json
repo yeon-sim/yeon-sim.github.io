@@ -368,25 +368,5 @@
     "loc": "1121101 Lv4 desc",
     "before": "대상의 화상 <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)",
     "after": "대상의 [Combustion] <style=\"highlight\">3 당</style>, 코인 위력 +1 (최대 2)"
-  },
-  {
-    "loc": "1121603 Lv3 desc",
-    "before": "[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여",
-    "after": "[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여"
-  },
-  {
-    "loc": "1121603 Lv4 desc",
-    "before": "<style=\"highlight\">피해량 +(자신과 대상이 보유한 [Combustion] 위력)% (최대 30%)</style>\n[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n<style=\"highlight\">[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n<style=\"highlight\">- 마지막 코인 적중 시, 대상의 화상 발동. 대상의 화상 횟수 1 감소</style>\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여",
-    "after": "<style=\"highlight\">피해량 +(자신과 대상이 보유한 [Combustion] 위력)% (최대 30%)</style>\n[StartBattle] 자신을 제외한 무작위 아군 2명에게 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[BeforeUse] [StigmaWorkshopHandStep1]이 30이면, ‘새벽녘’으로 발동됨 (턴당 1회)\n<style=\"highlight\">[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopHandStep1]이 20 이상이면, 다음 효과가 적용됨\n- 최종 위력 +1\n- 이 스킬의 모든 코인이 [SuperCoin]이 됨\n<style=\"highlight\">- 마지막 코인 적중 시, 대상의 [Combustion] 발동. 대상의 [Combustion] 횟수 1 감소</style>\n[EndSkill] 다음 턴에 모든 아군에게 [DawnLight] 1 부여\n- [StigmaWorkshopHandStep1]이 20 이상이면, [DawnLight] 1 추가 부여"
-  },
-  {
-    "loc": "1121605 Lv3 desc",
-    "before": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +50% (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모",
-    "after": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 +50% (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모"
-  },
-  {
-    "loc": "1121605 Lv4 desc",
-    "before": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 <style=\"highlight\">+75%</style> (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 새벽 사무소[TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 메인 타겟의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모",
-    "after": "이 스킬 공격 가중치보다 낮은 공격 대상 1당 피해량 <style=\"highlight\">+75%</style> (집중 전투인 경우, 부위로 판정)\n[WhenUse] 자신을 제외한 무작위 아군 2명에게 다음 턴에 [Protection] 2 부여\n([Protection]가 없는 아군 중 [DawnTeam][TabExplain] 소속 아군에게 우선 부여. 턴당 1회)\n[WhenUse] 자신의 [Combustion] 위력이 15 이상이면, 코인 위력 +1\n<style=\"highlight\">[WhenUse] 메인 타겟의 [Combustion]과 [Vibration]의 합 6당, 코인 위력 +1 (최대 2)</style>\n[EndSkill] 다음 효과 발동\n- 다음 턴에 모든 아군에게 [DawnLight] 3 부여\n- 자신의 [Combustion] 위력을 최대 15 소모하여 최대 체력의 (15 + 소모한 [Combustion] 위력)% 만큼 체력 회복\n- [StigmaWorkshopHandStep1] 전부 소모"
   }
 ]

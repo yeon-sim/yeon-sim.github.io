@@ -43,7 +43,6 @@ const EXCLUDE_NAMES = new Set([
   "최대 체력 증가", // [MaxHpMultiplier] — 평범한 서술 문구
   "강화 상태", // [EnhanceRose] — 기프트 전용 키워드, "강화 상태인 경우" 평문
   "열화침식", // [LCEFireFly_LowMorale] — EGO 침식 고유명사
-  "마탄", // [FreischutzShotCount] — 스킬명 "로보토미 E.G.O:: 마탄"
   "경혈", // [BloodArmorPersonalityFirst] — 스킬명 "산초/돈키호테류 경혈"
   "앙갚음", // [AaCePbBe] — 스킬명 "정의로운 앙갚음"
   "파탄", // [WanderingFootsteps_LowMorale] — 스킬명 "…파탄하라"
@@ -59,7 +58,7 @@ const PROTECT_WORDS = new Set([
   "취약인 속성", // 예: "약점, 취약인 속성으로 공격"
   "취약으로", // 예: "관통 속성 내성을 취약으로 변경"
   // 복합 고유명사 "특수 X" (출혈/침잠 등과 구별되는 별도 자원) → X 키워드 오탐 방지
-  "특수 출혈", "특수 침잠", "특수 화상", "특수 진동", "특수 충전", "특수 탄환", "특수 원호 방어",
+  "특수 출혈", "특수 침잠", "특수 화상", "특수 진동", "특수 탄환", "특수 원호 방어",
   // 측정 명사 "…증가량" : "피해량 증가"(AttackDmgUp)·"공격 위력 증가"(Enhancement) 가 "증가량" 앞부분만 잡힘
   "증가량",
   // "증가시키다" 동사 안의 "가시"(Thorn) 오탐 ("증가시킴/증가시키는")
@@ -67,7 +66,6 @@ const PROTECT_WORDS = new Set([
   "<피주머니>", // [BloodPocket] — <혈귀>처럼 상태 참조, 평문 유지
   "오혈읍루", // "오혈"(CondensedBlood) — 스킬명
   "마지막 탄환", // "탄환"(Bullet) — 스킬명 ("탄환"은 다른 곳에서 정상 토큰화됨)
-  "포자탄", // "포자"(MeursaultBeeSpore) 오탐 방지 — 뫼르소 포자탄(긴/짧은 포자탄은 별도 [MeursaultSporeBullet*]). 게임도 일부 문맥은 <noparse>포자</noparse>탄
   "못한", "못했", // "못하다"(실패) 안의 "못"(NailPersonality) 오탐. "못 N 부여"·"못이" 는 정상 토큰화
   "소수점 버림", // "버림"(Discard) 오탐 — 소수점 내림. ("…개를 버림"·"순으로 버림" 은 [Discard] 로 토큰화)
   // 'X 속성의 Y' = 공명 속성 레벨 참조 (Y 디버프/버프 키워드 아님). 긴 복합형 우선.
@@ -86,6 +84,28 @@ const SKIP_IDS = new Set([
   "1041501", // 삼천대세계 E.G.O
   "1111513", // 오티스 검 단계
 ]);
+// 사이트 미사용 공용·시스템 레코드 (소유 인격/EGO 가 없어 컷오프가 걸리지 않는 것들).
+//   어떤 인격의 battlePassiveList/supporterPassiveList·attributeList/defenseSkillIDList 에서도
+//   참조되지 않아 화면에 렌더되지 않는다(lang 맵의 죽은 키로만 남음) → 전처리할 이유가 없다.
+//   ⚠️ 여기에 없는 새 no-owner 레코드는 계속 처리된다(= changeset diff 로 드러나는 트립와이어).
+const UNUSED_IDS = new Set([
+  "0", "1", "2",                                    // 기본 수비 스킬 (방어/회피/반격)
+  "1000101", "1000102", "1000103", "1000104",       // 기본 스킬 + E.G.O 침식 (info.panicSkillOnErosion, 템플릿 미사용)
+  // 죄악 속성 공명 패시브 (7속성 × 2변형) — 전 수감자 공용, 인격 패시브 목록에 미포함
+  "1000121", "1000201", "1000221", "1000301", "1000321", "1000401", "1000421",
+  "1000501", "1000521", "1000601", "1000621", "1000701", "1000721",
+  // 붉은시선 계열 스킬·패시브 (999905 는 SKIP_IDS 에 이미 등록됨)
+  "999901", "999902", "999903", "999904", "999906", "999907", "999908", "999909",
+]);
+// 출시일 컷오프: 이 날짜(포함) 이후 출시된 인격·EGO 의 레코드는 전처리하지 않는다.
+//   전처리는 '발매 초기 평문 데이터'용이므로, 게임이 키워드를 직접 authoring 하기
+//   시작한 뒤의 콘텐츠에는 이득이 없고 오탐만 남는다.
+//   실측 오탐 발생 지점은 2026-06-11(인격 10815, [TabExplain] 관례 + 평범한 단어를
+//   이름으로 갖는 신규 키워드 정오=DawnFaust / 새벽 사무소=DawnTeam) 이지만,
+//   안전 마진을 두어 2025-11-01 로 앞당겨 설정한다.
+//   이 컷오프로 EXCLUDE_NAMES/PROTECT_WORDS 가 닫힌 레거시 집합만 다루게 되어
+//   신규 콘텐츠 때문에 상수가 계속 자라는 일이 없어진다.
+const CUTOFF_DATE = "20251101";
 // 모호 시 우선 채택할 parsingdata 파일 순위 (낮을수록 우선)
 const FILE_PRIORITY = { "KR_BattleKeywords.json": 0 };
 const fileRank = (f) => (f in FILE_PRIORITY ? FILE_PRIORITY[f] : 2);
@@ -170,12 +190,20 @@ function buildReplacer(nameMap) {
     }
     segs.push(["plain", text.slice(last)]);
 
-    for (const [kind, seg] of segs) {
+    for (let i = 0; i < segs.length; i++) {
+      const [kind, seg] = segs[i];
       if (kind === "prot") {
         out += seg;
         continue;
       }
+      // [TabExplain] 은 "바로 앞의 평문 구절"에 툴팁을 다는 게임 관례
+      //   (보호[TabExplain] · 새벽 사무소[TabExplain] · 라만차랜드[TabExplain] · 행동 불가[TabExplain])
+      // 그 구절을 토큰화하면 항상 오탐 → 평문 세그먼트 끝에서 끝나는 매치만 건너뛴다.
+      // (문장 앞쪽의 정상 키워드는 영향 없음)
+      const next = segs[i + 1];
+      const beforeTab = !!next && next[0] === "prot" && next[1].startsWith("[TabExplain");
       out += seg.replace(kwRE, (name, offset, full) => {
+        if (beforeTab && offset + name.length === full.length) return name;
         const entry = nameMap.get(name);
         if (!entry) return name;
         changed = true;
@@ -200,6 +228,36 @@ function listJson(dir, pred) {
     .filter((f) => f.endsWith(".json") && pred(f))
     .map((f) => join(dir, f));
 }
+// 소유자(인격/EGO) 출시일 맵. 레코드 id 앞 5자리 = 소유자 id.
+//   스킬 1021603→10216 · 패시브 1111513→11115 · EGO 스킬 201091→20109 · EGO 패시브 2010111→20101
+function buildOwnerDates() {
+  const m = new Map();
+  const rows = (p) => {
+    const d = JSON.parse(readFileSync(p, "utf-8"));
+    return d.list || d.dataList || [];
+  };
+  for (const f of listJson(join(DATA, "personality", "info"), () => true)) {
+    for (const r of rows(f)) {
+      if (r.id != null && r.updatedDate != null) m.set(String(r.id), String(r.updatedDate));
+    }
+  }
+  // EGO 장비 레코드(characterId 보유)만. ego-skill-*.json 은 스킬 레코드라 제외.
+  for (const f of listJson(join(DATA, "egoskill"), (x) => !x.startsWith("ego-skill"))) {
+    for (const r of rows(f)) {
+      if (r.characterId != null && r.updatedDate != null) m.set(String(r.id), String(r.updatedDate));
+    }
+  }
+  return m;
+}
+const OWNER_DATES = buildOwnerDates();
+let cutoffSkipped = 0;
+let unusedSkipped = 0;
+// 소유자를 못 찾으면(공용·시스템 레코드) 컷오프 미적용 = 기존 동작 유지(보수적).
+const isPostCutoff = (id) => {
+  const d = OWNER_DATES.get(String(id).slice(0, 5));
+  return !!d && d >= CUTOFF_DATE;
+};
+
 function targetFiles() {
   return [
     ...listJson(join(LANG, "skill"), () => true),
@@ -230,6 +288,8 @@ function processFile(path, replace, usage, changes, suspects) {
   for (const item of list) {
     const id = item.id;
     if (SKIP_IDS.has(String(id))) continue; // 레코드 통째 파싱 제외
+    if (UNUSED_IDS.has(String(id))) { unusedSkipped++; continue; } // 사이트 미사용 공용·시스템 레코드
+    if (isPostCutoff(id)) { cutoffSkipped++; continue; } // 컷오프 이후 출시 → 이미 authoring 됨
     if (typeof item.desc === "string") handleDesc(item.desc, `${id}`);
     if (Array.isArray(item.levelList)) {
       for (const lv of item.levelList) {
@@ -302,6 +362,8 @@ const lines = [];
 lines.push(`# 키워드 파싱 전처리 리포트  (${WRITE ? "WRITE 적용됨" : "DRY-RUN"})`);
 lines.push("");
 lines.push("== 요약 ==");
+lines.push(`- 컷오프 ${CUTOFF_DATE} 이후 출시 → 스킵한 레코드: ${cutoffSkipped}건`);
+lines.push(`- 사이트 미사용(UNUSED_IDS) → 스킵한 레코드: ${unusedSkipped}건`);
 lines.push(`대상 파일: ${files.length}`);
 lines.push(`변경 파일: ${filesChanged}`);
 lines.push(`총 치환 수: ${changes.reduce((n, c) => n, 0) || changes.length}`);

@@ -88,5 +88,30 @@
     "loc": "1090903 Lv3 desc",
     "before": "[WhenUse] 대상의 [Vibration]이 8 이상이면, 합 위력 +1\n[WhenUse] 자신의 진동 횟수를 8 소모하여 코인 위력 +1",
     "after": "[WhenUse] 대상의 [Vibration]이 8 이상이면, 합 위력 +1\n[WhenUse] 자신의 [Vibration] 횟수를 8 소모하여 코인 위력 +1"
+  },
+  {
+    "loc": "1091302 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1091303 Lv3 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 횟수 2 증가",
+    "after": "[OnSucceedAttack] [Sinking] 횟수 2 증가"
+  },
+  {
+    "loc": "1091306 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1091308 Lv1 coin2.2",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
+  },
+  {
+    "loc": "1091308 Lv4 coin2.2",
+    "before": "[OnSucceedAttack] 침잠 2 부여",
+    "after": "[OnSucceedAttack] [Sinking] 2 부여"
   }
 ]

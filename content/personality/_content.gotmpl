@@ -47,6 +47,14 @@
   {{ end }}
 {{ end }}
 
+{{/* 히든 스킬(조건부 변형) id 집합 — 상세 페이지에서도 제외 */}}
+{{ $hidden := dict }}
+{{ range site.Data.personality.skill }}
+  {{ range .list }}
+    {{ if .isHiddenForUI }}{{ $hidden = merge $hidden (dict (string .id) true) }}{{ end }}
+  {{ end }}
+{{ end }}
+
 {{/* ---- 페이지 생성 ---- */}}
 {{ range site.Data.personality.info }}
   {{ range .list }}
@@ -61,7 +69,7 @@
       {{ $seen := dict }}
       {{ $skills := slice }}
       {{ range $sids }}
-        {{ if not (isset $seen .) }}
+        {{ if and (not (isset $seen .)) (not (isset $hidden .)) }}
           {{ $seen = merge $seen (dict . true) }}
           {{ $n := index $skillName . }}
           {{ if $n }}

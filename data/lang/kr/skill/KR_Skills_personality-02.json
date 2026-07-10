@@ -2312,7 +2312,7 @@
         {
           "level": 4,
           "name": "지령에 따라 당신을 처단하겠습니다.",
-          "desc": "이 스킬에 [IndexPrescriptTargetMarkToEnemy]이 새겨졌으면, <style=\"highlight\">최종 위력 +1</style>, 크리티컬 피해량 <style=\"highlight\">+30%</style>\n자신의 [Breath]과 대상의 [Sinking]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)</style>\n[StartBattle] [BlessingOfIndexPrescriptAlly]가 6 이상이면, 이 스킬의 모든 코인이 [SuperCoin]으로 변경되고 <style=\"highlight\">피해량 +30%</style>\n[WhenUse] 자신의 [Breath] 횟수 3 증가\n<style=\"highlight\">- ([BlessingOfIndexPrescriptAlly]/3)만큼 [Breath] 얻음 (소수점 버림)</style>",
+          "desc": "이 스킬에 [IndexPrescriptTargetMarkToEnemy]이 새겨졌으면, <style=\"highlight\">최종 위력 +1</style>, 크리티컬 피해량 <style=\"highlight\">+30%</style>\n자신의 [Breath]과 대상의 [Sinking]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)</style>\n[StartBattle] [BlessingOfIndexPrescriptAlly]가 6 이상이면, 이 스킬의 모든 코인이 [SuperCoin]으로 변경되고 <style=\"highlight\">피해량 +30%</style>\n[WhenUse] 자신의 [Breath] 횟수 3 증가\n<style=\"highlight\">- ([BlessingOfIndexPrescriptAlly]/3)만큼 호흡 얻음 (소수점 버림)</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -3146,7 +3146,7 @@
         {
           "level": 3,
           "name": "사출",
-          "desc": "[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘사출-[DawnFaust]’로 발동됨 (턴당 1회)\n[WhenUse] 대상의 [Combustion]과 [Vibration]의 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [StigmaWorkshopCelloCaseOne] 5 얻음\n[WhenUse] [StigmaWorkshopCelloCaseOne] 10당,\n- 합 위력 +1 (최대 2)\n- 대상의 [Combustion] 횟수 1 증가 (최대 2)\n- 대상의 [Vibration] 횟수 1 증가 (최대 2)\n- 마지막 코인 1회 재사용 (스킬당 최대 2회)",
+          "desc": "[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘사출-정오’로 발동됨 (턴당 1회)\n[WhenUse] 대상의 [Combustion]과 [Vibration]의 합이 6 이상이면, 코인 위력 +1\n[WhenUse] [StigmaWorkshopCelloCaseOne] 5 얻음\n[WhenUse] [StigmaWorkshopCelloCaseOne] 10당,\n- 합 위력 +1 (최대 2)\n- 대상의 [Combustion] 횟수 1 증가 (최대 2)\n- 대상의 [Vibration] 횟수 1 증가 (최대 2)\n- 마지막 코인 1회 재사용 (스킬당 최대 2회)",
           "coinlist": [
             {
               "coindescs": [
@@ -3165,7 +3165,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 2회)"
                 },
                 {
                   "desc": "[ReUseOnSucceedAttack] [Combustion] 1 부여"
@@ -3177,7 +3177,7 @@
         {
           "level": 4,
           "name": "사출",
-          "desc": "[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘사출-[DawnFaust]’로 발동됨 (턴당 1회)\n[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopCelloCaseOne] <style=\"highlight\">8</style> 얻음\n[WhenUse] [StigmaWorkshopCelloCaseOne] 10당,\n- 합 위력 +1 (최대 <style=\"highlight\">3</style>)\n- 대상의 [Combustion] 횟수 1 증가 (최대 <style=\"highlight\">3</style>)\n- 대상의 [Vibration] 횟수 1 증가 (최대 <style=\"highlight\">3</style>)\n- 마지막 코인 1회 재사용 (스킬당 최대 2회)",
+          "desc": "[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘사출-정오’로 발동됨 (턴당 1회)\n[WhenUse] 대상의 [Combustion]과 [Vibration]의 합 <style=\"highlight\">6당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] [StigmaWorkshopCelloCaseOne] <style=\"highlight\">8</style> 얻음\n[WhenUse] [StigmaWorkshopCelloCaseOne] 10당,\n- 합 위력 +1 (최대 <style=\"highlight\">3</style>)\n- 대상의 [Combustion] 횟수 1 증가 (최대 <style=\"highlight\">3</style>)\n- 대상의 [Vibration] 횟수 1 증가 (최대 <style=\"highlight\">3</style>)\n- 마지막 코인 1회 재사용 (스킬당 최대 2회)",
           "coinlist": [
             {
               "coindescs": [
@@ -3196,7 +3196,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
                 },
                 {
                   "desc": "[ReUseOnSucceedAttack] [Combustion] 1 부여<style=\"highlight\"></style>"
@@ -3234,7 +3234,7 @@
         {
           "level": 3,
           "name": "낙인",
-          "desc": "[DuelCounter]\n<style=\"highlight\">[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘[DawnFaust]의 해체’로 발동됨 (턴당 1회)\n- [CaseOverheating]이 있으면, 이 효과가 발동하지 않음\n[WhenUse] 자신의 [Combustion]이 5 이상이면, 코인 위력 +1</style>\n[WhenUse] 자신의 [Combustion] 5 감소 (턴당 1회)\n[WinDuel] 자신의 [Combustion] 3 감소 (턴당 1회)",
+          "desc": "[DuelCounter]\n<style=\"highlight\">[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘정오의 해체’로 발동됨 (턴당 1회)\n- [CaseOverheating]이 있으면, 이 효과가 발동하지 않음\n[WhenUse] 자신의 [Combustion]이 5 이상이면, 코인 위력 +1</style>\n[WhenUse] 자신의 [Combustion] 5 감소 (턴당 1회)\n[WinDuel] 자신의 [Combustion] 3 감소 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [
@@ -3255,7 +3255,7 @@
         {
           "level": 4,
           "name": "낙인",
-          "desc": "[DuelCounter]\n<style=\"highlight\">[StartBattle] [StigmaWorkshopCelloCaseOne] 6 얻음 (전투당 1회)</style>\n[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘[DawnFaust]의 해체’로 발동됨 (턴당 1회)\n- [CaseOverheating]이 있으면, 이 효과가 발동하지 않음\n[WhenUse] 자신의 [Combustion] <style=\"highlight\">5당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] 자신의 [Combustion] 5 감소 (턴당 1회)\n[WinDuel] 자신의 [Combustion] 3 감소 (턴당 1회)",
+          "desc": "[DuelCounter]\n<style=\"highlight\">[StartBattle] [StigmaWorkshopCelloCaseOne] 6 얻음 (전투당 1회)</style>\n[BeforeUse] [StigmaWorkshopCelloCaseOne]이 30이면, ‘정오의 해체’로 발동됨 (턴당 1회)\n- [CaseOverheating]이 있으면, 이 효과가 발동하지 않음\n[WhenUse] 자신의 [Combustion] <style=\"highlight\">5당, 코인 위력 +1 (최대 2)</style>\n[WhenUse] 자신의 [Combustion] 5 감소 (턴당 1회)\n[WinDuel] 자신의 [Combustion] 3 감소 (턴당 1회)",
           "coinlist": [
             {
               "coindescs": [
@@ -3374,7 +3374,7 @@
                   "desc": "이 코인 재사용 (최대 2회)"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 2회)"
                 }
               ]
             }
@@ -3411,7 +3411,7 @@
                   "desc": "<style=\"highlight\">[Firstlight]이 있으면, 피해량 +(대상의 [Combustion] 위력/2)% (최대 20%)</style>"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
                 }
               ]
             }
@@ -3450,7 +3450,7 @@
                   "desc": "이 코인 재사용 (최대 2회)"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 2회)"
                 }
               ]
             }
@@ -3487,7 +3487,7 @@
                   "desc": "<style=\"highlight\">[Firstlight]이 있으면, 피해량 +(대상의 [Combustion] 위력)% (최대 20%)</style>"
                 },
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
                 }
               ]
             }

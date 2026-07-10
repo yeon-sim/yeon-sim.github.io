@@ -275,6 +275,21 @@
     "after": "[OnSucceedAttack] [Combustion] 횟수 1 증가"
   },
   {
+    "loc": "1081101 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 1 부여",
+    "after": "[OnSucceedAttack] [Laceration] 1 부여"
+  },
+  {
+    "loc": "1081101 Lv1 coin2.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
+    "loc": "1081102 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 출혈 2 부여",
+    "after": "[OnSucceedAttack] [Laceration] 2 부여"
+  },
+  {
     "loc": "1081103 Lv3 coin3.1",
     "before": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 출혈 횟수 3 감소",
     "after": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 [Laceration] 횟수 3 감소"
@@ -283,10 +298,5 @@
     "loc": "1081103 Lv4 coin3.2",
     "before": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 출혈 횟수 3 감소<style=\"highlight\"></style>",
     "after": "[OnSucceedAttack] 대상의 [Laceration] 3회 발동. 대상의 [Laceration] 횟수 3 감소<style=\"highlight\"></style>"
-  },
-  {
-    "loc": "1081507 Lv4 desc",
-    "before": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse] [SupportProtect]로 보호[TabExplain]한 대상의 정신력 5 회복</style>\n[WhenUse] [Breath] 3 얻음",
-    "after": "[CanDuelGuard]\n[SupportProtect] 전용 스킬\n<style=\"highlight\">[WhenUse] [SupportProtect]로 [Protection][TabExplain]한 대상의 정신력 5 회복</style>\n[WhenUse] [Breath] 3 얻음"
   }
 ]

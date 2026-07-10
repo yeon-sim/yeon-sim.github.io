@@ -118,5 +118,45 @@
     "loc": "1101002 Lv4 coin1.1",
     "before": "[WinDuelAttack] 자신 제외 현재 체력 비율이 가장 낮은 아군 <style=\"highlight\">2</style>명에게 다음 턴에 방어 레벨 증가 2 부여",
     "after": "[WinDuelAttack] 자신 제외 현재 체력 비율이 가장 낮은 아군 <style=\"highlight\">2</style>명에게 다음 턴에 [DefenseUp] 2 부여"
+  },
+  {
+    "loc": "1101301 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101302 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv3 coin1.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv3 coin2.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv3 coin3.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv4 coin2.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
+  },
+  {
+    "loc": "1101303 Lv4 coin3.3",
+    "before": "[OnSucceedAttack] 진동 횟수 1 증가",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 1 증가"
   }
 ]
