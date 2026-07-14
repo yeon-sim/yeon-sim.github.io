@@ -306,7 +306,7 @@
       {{ $defIds = $defIds | append $vdid }}
     {{ end }}
   {{ end }}
-  {{ $nameMap = merge $nameMap (dict $idStr .name) }}
+  {{ $nameMap = merge $nameMap (dict $idStr (.name | default "관측불가")) }}
   {{ $keywordMap = merge $keywordMap (dict "PREVIEW_UNKNOWN" "???") }}
   {{ $bpIds := slice }}
   {{ $pvs := .passives | default slice }}
@@ -497,7 +497,7 @@
   {{ $egoSkillNameMap = merge $egoSkillNameMap (dict $corrId (slice (dict "g" 1 "n" .name))) }}
   {{ $egoSkillAttrMap = merge $egoSkillAttrMap (dict $awakeId $eAttr) }}
   {{ $egoSkillAttrMap = merge $egoSkillAttrMap (dict $corrId $eAttr) }}
-  {{ $egoSkillAbNameMap = merge $egoSkillAbNameMap (dict $awakeId "관측 불가") }}
+  {{ $egoSkillAbNameMap = merge $egoSkillAbNameMap (dict $awakeId "관측불가") }}
 {{ end }}{{ end }}
 
 <div class="personality-page" x-data="personalityPage()" :class="['detail-mode-' + detailMode, 'formation-detail-mode-' + formationDetailMode, showSupport ? 'show-support' : '']">
@@ -1068,7 +1068,7 @@
       {{ end }}
     {{ end }}
     {{/* ── 출시 예정(preview) EGO — egoMap 편입 ──
-         필요자원=7속성 아이콘 전부·갯수 ??, 내성=7속성 -1(관측불가), 환상체·패시브=관측 불가, 이미지=egoskill/preview/{id}_cg_preview.png(카드·모달 CG만).
+         필요자원=7속성 아이콘 전부·갯수 ??, 내성=7속성 -1(관측불가), 환상체·패시브=관측불가, 이미지=egoskill/preview/{id}_cg_preview.png(카드·모달 CG만).
          attrType(죄악속성)·egoType(등급)은 선택 — 미제공 시 NEUTRAL/unwatched(카드 죄악=question_mark, 모달 등급=question_mark), 제공 시 실제 값.
          preview EGO는 등급 공개 여부와 무관하게 편성 미포함(egoMeta.preview → equipEgo 가드). 실제 업데이트 시 preview/egoskill.json 에서 삭제. */}}
     {{ $sins7 := slice "CRIMSON" "SCARLET" "AMBER" "SHAMROCK" "AZURE" "INDIGO" "VIOLET" }}
@@ -1087,7 +1087,7 @@
       {{ $eAttr := .attrType | default "" }}
       {{ $eType := lower (.egoType | default "unwatched") }}
       {{ $eColor := index $attrColorMap $eAttr | default "#ffffff" }}
-      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측 불가") "passives" (slice (dict "name" (.passiveName | default "관측 불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
+      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
       {{ $existing := index $egoMap $pcid | default slice }}
       {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
     {{ end }}{{ end }}
@@ -1195,10 +1195,16 @@
         {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ if $si }}{{ with index $si.sd 0 }}{{ $rColors = $rColors | append .a }}{{ end }}{{ end }}{{ end }}
         {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
         {{ range .defenseSkillIDList }}{{ $si := index $skillMap (string .) }}{{ if $si }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rColors = $rColors | append $da }}{{ end }}{{ end }}{{ end }}
-        {{ $rowData = $rowData | append (dict "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
+        {{/* #검색(desc)용 id 목록 — 카드 x-show 와 동일해야 행/카드 판정이 일치한다 (히든 스킬은 $skillMap 에 없어 자동 제외) */}}
+        {{ $rsIds := slice }}
+        {{ range .attributeList }}{{ if index $skillMap (string .skillId) }}{{ $rsIds = $rsIds | append .skillId }}{{ end }}{{ end }}
+        {{ range .defenseSkillIDList }}{{ if index $skillMap (string .) }}{{ $rsIds = $rsIds | append . }}{{ end }}{{ end }}
+        {{ $rpIds := slice }}
+        {{ if $ppd }}{{ range $ppd.bp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ range $ppd.sp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ end }}
+        {{ $rowData = $rowData | append (dict "id" .id "sIds" $rsIds "pIds" $rpIds "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
       {{ end }}
       {{ $egoRowData := slice }}
-      {{ range $egoList }}{{ $egoRowData = $egoRowData | append (dict "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList "kw" .kw) }}{{ end }}
+      {{ range $egoList }}{{ $esIds := slice .awakeSkillId .corrosionSkillId }}{{ range .additionalSkills }}{{ $esIds = $esIds | append .awakeId .corrosionId }}{{ end }}{{ $egoRowData = $egoRowData | append (dict "id" .id "sIds" $esIds "pIds" .pIds "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList "kw" .kw) }}{{ end }}
       <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
         x-show="(selectedPrisoner === null || selectedPrisoner.id === '{{ $pid }}') && (pageMode === 'ego' ? isEgoRowVisible({{ $egoRowData | jsonify }}) : isRowVisible({{ $rowData | jsonify }}))">
         <div class="category-label personality-category-label">

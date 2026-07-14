@@ -179,8 +179,9 @@
           <template x-for="packId in group.packs" :key="packId">
             <div class="pack-panel-item"
               x-show="!packFilter || (themeMap[String(packId)] || '').includes(packFilter)"
-              :class="{ 'is-extreme': extremeVisualMap[String(packId)] }"
+              :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isPackSelected(packId) }"
               :title="themeMap[String(packId)] || String(packId)"
+              @click="togglePackSelect(packId)"
               @contextmenu.prevent="openPackPopup(packId)"
             >
               <div class="pack-panel-card" :style="packMaskStyle(packId)">
@@ -225,6 +226,21 @@
                   </template>
                 </span>
               </div>
+              <img class="pack-panel-select"
+                x-show="isPackSelected(packId) && !extremeVisualMap[String(packId)]"
+                src="/images/pack/pack_select.png"
+                alt=""
+              >
+              <img class="pack-panel-extreme-select"
+                x-show="isPackSelected(packId) && extremeVisualMap[String(packId)]"
+                src="/images/pack/extreme_select.png"
+                alt=""
+              >
+              <img class="pack-panel-clear"
+                x-show="isPackSelected(packId)"
+                src="/images/ui/theme_clear.png"
+                alt=""
+              >
               <button class="card-save-btn" @click.stop="copyPackPanelCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
           </template>
@@ -295,6 +311,11 @@
             <img class="pack-panel-extreme-select"
               x-show="isPackSelected(packId) && extremeVisualMap[String(packId)]"
               src="/images/pack/extreme_select.png"
+              alt=""
+            >
+            <img class="pack-panel-clear"
+              x-show="isPackSelected(packId)"
+              src="/images/ui/theme_clear.png"
               alt=""
             >
           </div>

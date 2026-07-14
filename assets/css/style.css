@@ -604,16 +604,21 @@ body {
 .pack-panel-card {
   position: relative;
 }
-.pack-panel-item:hover {
+.pack-panel-item:not(.is-selected):hover {
   opacity: 0.8;
 }
 .pack-panel-item:hover .card-save-btn {
   opacity: 1;
 }
-.pack-panel-item.is-selected {
+/* 선택 시 딤은 카드·선택 오버레이에만 (theme_clear 는 선명 유지) */
+.pack-panel-item.is-selected .pack-panel-card,
+.pack-panel-item.is-selected .pack-panel-select,
+.pack-panel-item.is-selected .pack-panel-extreme-select {
   opacity: 0.5;
 }
-.pack-panel-item.is-selected:hover {
+.pack-panel-item.is-selected:hover .pack-panel-card,
+.pack-panel-item.is-selected:hover .pack-panel-select,
+.pack-panel-item.is-selected:hover .pack-panel-extreme-select {
   opacity: 0.4;
 }
 /* ── 팩 선택 오버레이 크기 조정은 여기서 ── */
@@ -638,6 +643,17 @@ body {
   display: block;
   pointer-events: none;
   z-index: 4;
+}
+.pack-panel-clear {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92px;   /* ← theme_clear.png 너비 (카드의 약 90%) */
+  height: auto;
+  display: block;
+  pointer-events: none;
+  z-index: 5;
 }
 .pack-panel-item.is-extreme {
   overflow: visible;
@@ -3654,6 +3670,7 @@ button.site-nav-link.site-nav-link--active {
   .pack-panel .pack-panel-item.is-extreme .pack-panel-name { bottom: 8px; }
   .pack-panel .pack-panel-select        { width: 77px; }
   .pack-panel .pack-panel-extreme-select { width: 91px; }
+  .pack-panel .pack-panel-clear         { width: 64px; }
 
   .site-title {
     font-size: clamp(2.8rem, 7vw, 3.3rem);
