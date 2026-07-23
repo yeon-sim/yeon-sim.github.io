@@ -584,6 +584,11 @@
   {{ $atkResistTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "Slash") (dict "id" "HIT" "name" "타격" "icon" "Hit") (dict "id" "PENETRATE" "name" "관통" "icon" "Penetrate") }}
   {{ $atkResistLevels := slice (dict "v" "2" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "t" "보통" "c" "") (dict "v" "0.5" "t" "내성" "c" "#808080") }}
   {{ $attrResistLevels := slice (dict "v" "2" "n" "200" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "n" "100" "t" "보통" "c" "") (dict "v" "0.75" "n" "075" "t" "견딤" "c" "#cbcbcb") (dict "v" "0.5" "n" "050" "t" "내성" "c" "#808080") }}
+  {{ $atkSkillTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "slash") (dict "id" "HIT" "name" "타격" "icon" "hit") (dict "id" "PENETRATE" "name" "관통" "icon" "penetrate") }}
+  {{ $defSkillTypes := slice (dict "id" "GUARD" "name" "가드" "icon" "guard") (dict "id" "EVADE" "name" "회피" "icon" "evade") (dict "id" "COUNTER" "name" "반격" "icon" "counter") }}
+  {{ $skillRows := slice (dict "key" "1" "label" "1스킬" "types" $atkSkillTypes) (dict "key" "2" "label" "2스킬" "types" $atkSkillTypes) (dict "key" "3" "label" "3스킬" "types" $atkSkillTypes) (dict "key" "def" "label" "수비" "types" $defSkillTypes) }}
+  {{ $timingTop := slice (dict "id" "perm" "label" "상시" "img" "season_0_kr") (dict "id" "walpurgis" "label" "발푸르기스의 밤" "img" "walpurgis_kr") (dict "id" "limited" "label" "한정" "img" "limited") }}
+  {{ $timingSeasons := slice (dict "id" "s1" "label" "시즌 1" "img" "season_1") (dict "id" "s2" "label" "시즌 2" "img" "season_2") (dict "id" "s3" "label" "시즌 3" "img" "season_3") (dict "id" "s4" "label" "시즌 4" "img" "season_4") (dict "id" "s5" "label" "시즌 5" "img" "season_5") (dict "id" "s6" "label" "시즌 6" "img" "season_6") (dict "id" "s7" "label" "시즌 7" "img" "season_7") }}
   <div class="modal-shade" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
     <div class="modal-box advanced-search-box" @click.stop>
       <div class="modal-header">
@@ -591,6 +596,24 @@
         <button type="button" class="modal-btn adv-search-reset-btn" @click="resetAdvancedFilter()">초기화</button>
       </div>
       <div class="modal-body adv-search-body">
+        {{/* 출시시기 — 인격·EGO 공통 (season 기반 필터, 최상단) */}}
+        <div class="adv-resist-section">
+          <div class="adv-resist-section-title">출시시기</div>
+          <div class="timing-filter-row">
+            {{ range $timingTop }}
+            <button type="button" class="timing-chip" title="{{ .label }}"
+              :class="{ active: timingFilter.includes('{{ .id }}') }"
+              @click="toggleTiming('{{ .id }}')"{{ if eq .id "limited" }} x-show="pageMode === 'ego'" style="display:none"{{ end }}><img src="/images/season/{{ .img }}.png" alt="{{ .label }}"></button>
+            {{ end }}
+          </div>
+          <div class="timing-filter-row">
+            {{ range $timingSeasons }}
+            <button type="button" class="timing-chip" title="{{ .label }}"
+              :class="{ active: timingFilter.includes('{{ .id }}') }"
+              @click="toggleTiming('{{ .id }}')"><img src="/images/season/{{ .img }}.png" alt="{{ .label }}"></button>
+            {{ end }}
+          </div>
+        </div>
         {{/* 물리내성 — 인격 탭 적용 */}}
         <div class="adv-resist-section" x-show="pageMode === 'personality'" style="display:none">
           <div class="adv-resist-section-title">물리내성</div>
@@ -611,6 +634,66 @@
                 <span class="adv-resist-cell-mult"{{ with .c }} style="color:{{ . }}"{{ end }}>[X{{ .v }}]</span>
               </button>
               {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        {{/* 스킬속성 — 인격 탭 적용 (1·2·3스킬 공격타입 + 수비타입, 각 행에 죄악속성) */}}
+        <div class="adv-resist-section" x-show="pageMode === 'personality'" style="display:none">
+          <div class="adv-resist-section-title">스킬속성</div>
+          {{ range $skillRows }}
+          {{ $rk := .key }}
+          {{ $typePrefix := cond (eq $rk "def") "수비" "물리" }}
+          <div class="adv-resist-row adv-skill-row">
+            <div class="adv-resist-head" :class="{ 'adv-skill-head-active': skillAtkFilter['{{ $rk }}'].length || skillSinFilter['{{ $rk }}'].length }"><span>{{ .label }}</span></div>
+            <div class="adv-skill-groups" @click.away="if (openSkillDropdown === '{{ $rk }}-atk' || openSkillDropdown === '{{ $rk }}-sin') openSkillDropdown = null">
+              <div class="skill-dd-row">
+                {{/* 물리/수비 타입 드롭다운 — 선택 시 라벨을 선택 속성 아이콘+이름으로 */}}
+                <button type="button" class="skill-dd-btn"
+                  :class="{ open: openSkillDropdown === '{{ $rk }}-atk' }"
+                  @click="openSkillDD('{{ $rk }}-atk', $event.currentTarget)">
+                  <span class="skill-dd-label">
+                    <span x-show="!skillAtkFilter['{{ $rk }}'].length">{{ $typePrefix }}<br>속성</span>
+                    <span class="skill-dd-selected" x-show="skillAtkFilter['{{ $rk }}'].length" style="display:none">
+                      <img class="skill-dd-selected-icon" :src="skillTypeInfo[skillAtkFilter['{{ $rk }}'][0]]?.icon" alt="">
+                      <span x-text="skillTypeInfo[skillAtkFilter['{{ $rk }}'][0]]?.name"></span>
+                    </span>
+                  </span>                </button>
+                {{/* 죄악속성 드롭다운 */}}
+                <button type="button" class="skill-dd-btn"
+                  :class="{ open: openSkillDropdown === '{{ $rk }}-sin' }"
+                  @click="openSkillDD('{{ $rk }}-sin', $event.currentTarget)">
+                  <span class="skill-dd-label">
+                    <span x-show="!skillSinFilter['{{ $rk }}'].length">죄악<br>속성</span>
+                    <span class="skill-dd-selected" x-show="skillSinFilter['{{ $rk }}'].length" style="display:none">
+                      <img class="skill-dd-selected-icon" :src="sinInfo[skillSinFilter['{{ $rk }}'][0]]?.icon" alt="">
+                      <span x-text="sinInfo[skillSinFilter['{{ $rk }}'][0]]?.name"></span>
+                    </span>
+                  </span>                </button>
+              </div>
+              {{/* 물리/수비 옵션 패널 */}}
+              <div class="skill-dd-panel" x-show="openSkillDropdown === '{{ $rk }}-atk'" style="display:none">
+                {{ range .types }}
+                <button type="button" class="adv-resist-cell adv-skill-cell-atk"
+                  :class="{ active: skillAtkFilter['{{ $rk }}'].includes('{{ .id }}') }"
+                  @click="toggleSkillAtk('{{ $rk }}', '{{ .id }}')">
+                  <img class="adv-resist-cell-icon" src="/images/ui/{{ .icon }}.png" alt="">
+                  <span class="adv-resist-cell-label">{{ .name }}</span>
+                </button>
+                {{ end }}
+              </div>
+              {{/* 죄악속성 옵션 패널 */}}
+              <div class="skill-dd-panel" x-show="openSkillDropdown === '{{ $rk }}-sin'" style="display:none">
+                {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+                <button type="button" class="adv-resist-cell adv-skill-cell-sin"
+                  :class="{ active: skillSinFilter['{{ $rk }}'].includes('{{ .id }}') }"
+                  @click="toggleSkillSin('{{ $rk }}', '{{ .id }}')"
+                  title="{{ .name }}">
+                  <img class="adv-resist-cell-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt="{{ .name }}">
+                  <span class="adv-resist-cell-label">{{ .name }}</span>
+                </button>
+                {{ end }}
+              </div>
             </div>
           </div>
           {{ end }}
@@ -683,7 +766,7 @@
               <img src="/images/ui/search_clear.png" alt="지우기">
             </button>
           </div>
-          <button class="filter-btn advanced-search-btn" :class="{ active: Object.values(atkResistFilter).some(a => a.length) || Object.values(attrResistFilter).some(a => a.length) }" @click="advancedSearchModal = true"><img class="filter-btn-icon" src="/images/ui/search_detail.png" alt="">상세 검색</button>
+          <button class="filter-btn advanced-search-btn" :class="{ active: Object.values(atkResistFilter).some(a => a.length) || Object.values(attrResistFilter).some(a => a.length) || Object.values(skillAtkFilter).some(a => a.length) || Object.values(skillSinFilter).some(a => a.length) || timingFilter.length }" @click="advancedSearchModal = true"><img class="filter-btn-icon" src="/images/ui/search_detail.png" alt="">상세 검색</button>
         </div>
       </div>
       <div class="controls-row controls-row-2">
@@ -1032,6 +1115,9 @@
         {{ end }}
         {{ $egoSeason := index $seasonMap (string $egoSeasonId) }}
         {{ $egoSeasonName := cond (eq (int .season) 0) "상시" $egoSeason.name }}
+        {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~7=s1~s7, 발푸르기스=walpurgis) */}}
+        {{ $egoTimings := slice }}{{ $egoRawSeason := int .season }}
+        {{ if eq $egoRawSeason 0 }}{{ $egoTimings = $egoTimings | append "perm" }}{{ $eud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $eud (int .startDate)) (or (eq (int .endDate) -1) (lt $eud (int .endDate))) }}{{ $egoTimings = $egoTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $egoRawSeason 9000 }}{{ $egoTimings = $egoTimings | append "walpurgis" }}{{ else if eq $egoRawSeason 8000 }}{{ $egoTimings = $egoTimings | append "limited" }}{{ else if and (ge $egoRawSeason 1) (le $egoRawSeason 7) }}{{ $egoTimings = $egoTimings | append (printf "s%d" $egoRawSeason) }}{{ end }}
         {{ $egoUpdatedDate := printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}
         {{ $corrosionId := printf "%d" (int .corrosionSkillId) }}
         {{ $awakeIconImg := printf "/images/egoskill/%s/%s_awaken_profile.webp" $num $idStr }}
@@ -1047,6 +1133,11 @@
         {{ $egoSkillKws := slice }}
         {{ range $skKwKey, $_ := $skKwDict }}
           {{ if index $skillKwAllowSet $skKwKey }}{{ $egoSkillKws = $egoSkillKws | append $skKwKey }}{{ end }}
+        {{ end }}
+        {{/* 수동 큐레이션 보정: 게임이 인라인 buffKeyword로 노출하지 않는 스킬 키워드 보충
+             (부여를 커스텀 스크립트·패시브·"무작위 N종"으로 처리해 자동 추출이 놓치는 EGO — data/egoskill/ego_skill_keyword_extra.json). union 이라 아이콘·검색·EGO 키워드 필터에 함께 반영. */}}
+        {{ with index (index $.Site.Data.egoskill "ego_skill_keyword_extra") $idStr }}
+          {{ range . }}{{ if and (index $skillKwAllowSet .) (not (in $egoSkillKws .)) }}{{ $egoSkillKws = $egoSkillKws | append . }}{{ end }}{{ end }}
         {{ end }}
         {{ $addSkills := slice }}
         {{ range .additionalList }}
@@ -1064,7 +1155,7 @@
         {{ range .awakeningPassiveList }}{{ with index $egoPassiveKwMap (printf "%d" (int .)) }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}
         {{ $egoKw := delimit $egoKwParts "|" }}
         {{ $existing := index $egoMap $cid | default slice }}
-        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "pIds" (.awakeningPassiveList | default slice) "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "pIds" (.awakeningPassiveList | default slice) "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "timing" $egoTimings "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
       {{ end }}
     {{ end }}
     {{/* ── 출시 예정(preview) EGO — egoMap 편입 ──
@@ -1087,7 +1178,10 @@
       {{ $eAttr := .attrType | default "" }}
       {{ $eType := lower (.egoType | default "unwatched") }}
       {{ $eColor := index $attrColorMap $eAttr | default "#ffffff" }}
-      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
+      {{/* 출시시기 검색용 — season 기반 타이밍 태그 */}}
+      {{ $pTimings := slice }}{{ $pRawSeason := int .season }}
+      {{ if eq $pRawSeason 0 }}{{ $pTimings = $pTimings | append "perm" }}{{ $peud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $peud (int .startDate)) (or (eq (int .endDate) -1) (lt $peud (int .endDate))) }}{{ $pTimings = $pTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $pRawSeason 9000 }}{{ $pTimings = $pTimings | append "walpurgis" }}{{ else if eq $pRawSeason 8000 }}{{ $pTimings = $pTimings | append "limited" }}{{ else if and (ge $pRawSeason 1) (le $pRawSeason 7) }}{{ $pTimings = $pTimings | append (printf "s%d" $pRawSeason) }}{{ end }}
+      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "timing" $pTimings "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
       {{ $existing := index $egoMap $pcid | default slice }}
       {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
     {{ end }}{{ end }}
@@ -1193,6 +1287,10 @@
         {{ $rKw := delimit $kwParts "|" }}
         {{ $rColors := slice }}
         {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ if $si }}{{ with index $si.sd 0 }}{{ $rColors = $rColors | append .a }}{{ end }}{{ end }}{{ end }}
+        {{/* 스킬속성 검색용 — 티어별 물리타입(at)/수비타입(dt) + 죄악속성(sync4 = g≤4 마지막). 한 슬롯에 스킬 여럿이면 첫 번째만 */}}
+        {{ $rAt := dict }}{{ $rCol := dict }}
+        {{ range .attributeList }}{{ $si := index $skillMap (string .skillId) }}{{ if $si }}{{ $t := printf "%d" (int $si.tier) }}{{ if not (index $rAt $t) }}{{ $rAt = merge $rAt (dict $t $si.at) }}{{ end }}{{ if not (index $rCol $t) }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rCol = merge $rCol (dict $t $da) }}{{ end }}{{ end }}{{ end }}{{ end }}
+        {{ range .defenseSkillIDList }}{{ $si := index $skillMap (string .) }}{{ if $si }}{{ if not (index $rAt "def") }}{{ $rAt = merge $rAt (dict "def" $si.dt) }}{{ end }}{{ if not (index $rCol "def") }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rCol = merge $rCol (dict "def" $da) }}{{ end }}{{ end }}{{ end }}{{ end }}
         {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
         {{ range .defenseSkillIDList }}{{ $si := index $skillMap (string .) }}{{ if $si }}{{ $da := "" }}{{ range $si.sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $rColors = $rColors | append $da }}{{ end }}{{ end }}{{ end }}
         {{/* #검색(desc)용 id 목록 — 카드 x-show 와 동일해야 행/카드 판정이 일치한다 (히든 스킬은 $skillMap 에 없어 자동 제외) */}}
@@ -1201,10 +1299,13 @@
         {{ range .defenseSkillIDList }}{{ if index $skillMap (string .) }}{{ $rsIds = $rsIds | append . }}{{ end }}{{ end }}
         {{ $rpIds := slice }}
         {{ if $ppd }}{{ range $ppd.bp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ range $ppd.sp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ end }}
-        {{ $rowData = $rowData | append (dict "id" .id "sIds" $rsIds "pIds" $rpIds "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
+        {{/* 출시시기 검색용 — season 기반 타이밍 태그 */}}
+        {{ $rTimings := slice }}{{ $rRawSeason := int .season }}
+        {{ if eq $rRawSeason 0 }}{{ $rTimings = $rTimings | append "perm" }}{{ $rud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $rud (int .startDate)) (or (eq (int .endDate) -1) (lt $rud (int .endDate))) }}{{ $rTimings = $rTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rRawSeason 9000 }}{{ $rTimings = $rTimings | append "walpurgis" }}{{ else if eq $rRawSeason 8000 }}{{ $rTimings = $rTimings | append "limited" }}{{ else if and (ge $rRawSeason 1) (le $rRawSeason 7) }}{{ $rTimings = $rTimings | append (printf "s%d" $rRawSeason) }}{{ end }}
+        {{ $rowData = $rowData | append (dict "id" .id "sIds" $rsIds "pIds" $rpIds "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "sAt" $rAt "sCol" $rCol "timing" $rTimings "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
       {{ end }}
       {{ $egoRowData := slice }}
-      {{ range $egoList }}{{ $esIds := slice .awakeSkillId .corrosionSkillId }}{{ range .additionalSkills }}{{ $esIds = $esIds | append .awakeId .corrosionId }}{{ end }}{{ $egoRowData = $egoRowData | append (dict "id" .id "sIds" $esIds "pIds" .pIds "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList "kw" .kw) }}{{ end }}
+      {{ range $egoList }}{{ $esIds := slice .awakeSkillId .corrosionSkillId }}{{ range .additionalSkills }}{{ $esIds = $esIds | append .awakeId .corrosionId }}{{ end }}{{ $egoRowData = $egoRowData | append (dict "id" .id "sIds" $esIds "pIds" .pIds "name" .name "skillKeywords" .skillKeywords "attrType" .attrType "attrResist" .resistList "timing" .timing "kw" .kw) }}{{ end }}
       <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
         x-show="(selectedPrisoner === null || selectedPrisoner.id === '{{ $pid }}') && (pageMode === 'ego' ? isEgoRowVisible({{ $egoRowData | jsonify }}) : isRowVisible({{ $rowData | jsonify }}))">
         <div class="category-label personality-category-label">
@@ -1267,6 +1368,13 @@
           {{ if $ppData }}{{ $passiveBp = $ppData.bp }}{{ $passiveSp = $ppData.sp }}{{ end }}
           {{ $skillColors := slice }}
           {{ range $skills }}{{ with index .sd 0 }}{{ $skillColors = $skillColors | append .a }}{{ end }}{{ end }}
+          {{/* 스킬속성 검색용 — 티어별 물리타입(at)/수비타입(dt) + 죄악속성(sync4 = g≤4 마지막). 한 슬롯에 스킬 여럿이면 첫 번째만 */}}
+          {{ $sAt := dict }}{{ $sCol := dict }}
+          {{ range $skills }}{{ $t := printf "%d" (int .tier) }}{{ if not (index $sAt $t) }}{{ $sAt = merge $sAt (dict $t .at) }}{{ end }}{{ if not (index $sCol $t) }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $sCol = merge $sCol (dict $t $da) }}{{ end }}{{ end }}{{ end }}
+          {{ range $defSkills }}{{ if not (index $sAt "def") }}{{ $sAt = merge $sAt (dict "def" .dt) }}{{ end }}{{ if not (index $sCol "def") }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $sCol = merge $sCol (dict "def" $da) }}{{ end }}{{ end }}{{ end }}
+          {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~7=s1~s7, 발푸르기스=walpurgis). season==0 은 updatedDate 로 시즌 파생 */}}
+          {{ $timings := slice }}{{ $rawSeason := int .season }}
+          {{ if eq $rawSeason 0 }}{{ $timings = $timings | append "perm" }}{{ $ud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $ud (int .startDate)) (or (eq (int .endDate) -1) (lt $ud (int .endDate))) }}{{ $timings = $timings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rawSeason 9000 }}{{ $timings = $timings | append "walpurgis" }}{{ else if eq $rawSeason 8000 }}{{ $timings = $timings | append "limited" }}{{ else if and (ge $rawSeason 1) (le $rawSeason 7) }}{{ $timings = $timings | append (printf "s%d" $rawSeason) }}{{ end }}
           {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
           {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
           {{/* #검색(desc)용 id 목록. desc 원문은 skillDescMap/passiveMap 에 이미 있으므로 id 만 넘긴다. */}}
@@ -1277,7 +1385,7 @@
           {{ range $passiveBp }}{{ range .ids }}{{ $pIds = $pIds | append . }}{{ end }}{{ end }}
           {{ range $passiveSp }}{{ range .ids }}{{ $pIds = $pIds | append . }}{{ end }}{{ end }}
           <div class="personality-card-wrap"
-            x-show="isPersonalityVisible({ id: {{ .id }}, sIds: {{ $sIds | jsonify }}, pIds: {{ $pIds | jsonify }}, skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
+            x-show="isPersonalityVisible({ id: {{ .id }}, sIds: {{ $sIds | jsonify }}, pIds: {{ $pIds | jsonify }}, skills: [{{ range .skillKeywordList }}'{{ . }}',{{ end }}], name: {{ (replace ($title | default "") "\n" " ") | jsonify }}, keywords: {{ $keywords | jsonify }}, colors: [{{ range $skillColors }}'{{ . }}',{{ end }}], sAt: {{ $sAt | jsonify }}, sCol: {{ $sCol | jsonify }}, timing: {{ $timings | jsonify }}, atkResist: {{ .resistInfo.atkResistList | jsonify }}, kw: {{ $cKw | jsonify }} })"
             :style="showSupport && pageMode === 'personality' ? 'padding-right: calc(200px + 4px)' : ''">
           <div class="personality-card" data-pkey="{{ .id }}"
             :class="{ 'formation-equipped': showFormation && slotId('{{ $pid }}') === '{{ .id }}' }"
@@ -1428,7 +1536,7 @@
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
           {{ $isEgoPreview := .preview | default false }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, timing: {{ .timing | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
@@ -2176,6 +2284,12 @@ function personalityPage() {
     activeColorTypes: [],
     atkResistFilter: { SLASH: [], HIT: [], PENETRATE: [] },
     attrResistFilter: { CRIMSON: [], SCARLET: [], AMBER: [], SHAMROCK: [], AZURE: [], INDIGO: [], VIOLET: [] },
+    skillAtkFilter: { '1': [], '2': [], '3': [], def: [] },   // 스킬별 물리/수비 타입(1·2·3=SLASH/HIT/PENETRATE, def=GUARD/EVADE/COUNTER)
+    skillSinFilter: { '1': [], '2': [], '3': [], def: [] },   // 스킬별 죄악속성(CRIMSON~VIOLET). sync4 기준
+    openSkillDropdown: null,   // 스킬속성 드롭다운 열림 상태 ('{key}-atk' | '{key}-sin' | null)
+    timingFilter: [],          // 출시시기(season) 필터: 'perm' | 's1'~'s7' | 'walpurgis'
+    skillTypeInfo: { {{ range $atkSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }}{{ range $defSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
+    sinInfo: { {{ range $.Site.Data.lang.kr.KR_ColorType.list }}'{{ .id }}': { icon: '/images/sin/{{ index $sinIconMap .id }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
     selectedPrisoner: null,
     prisonerDropdownOpen: false,
     showPrisonerFloat: false,
@@ -2308,9 +2422,40 @@ function personalityPage() {
       else arr.splice(idx, 1);
     },
 
+    // 드롭다운 내 단일 선택: 같은 값 재클릭 시 해제, 다른 값 선택 시 교체. 선택 후 드롭다운 접기
+    toggleSkillAtk(tier, val) {
+      this.skillAtkFilter[tier] = this.skillAtkFilter[tier].includes(val) ? [] : [val];
+      this.openSkillDropdown = null;
+    },
+
+    toggleSkillSin(tier, val) {
+      this.skillSinFilter[tier] = this.skillSinFilter[tier].includes(val) ? [] : [val];
+      this.openSkillDropdown = null;
+    },
+
+    // 단일 선택: 같은 칩 재클릭 시 해제, 다른 칩 선택 시 교체
+    toggleTiming(id) {
+      this.timingFilter = this.timingFilter.includes(id) ? [] : [id];
+    },
+
+    // 드롭다운 열기(토글). 열 때 확장 패널이 모달 밖으로 나가면 뷰 안으로 스크롤
+    openSkillDD(id, btn) {
+      const willOpen = this.openSkillDropdown !== id;
+      this.openSkillDropdown = willOpen ? id : null;
+      if (!willOpen) return;
+      this.$nextTick(() => {
+        const groups = btn.closest('.adv-skill-groups');
+        const panel = groups && [...groups.querySelectorAll('.skill-dd-panel')].find(p => p.offsetParent !== null);
+        (panel || btn).scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
+    },
+
     resetAdvancedFilter() {
       Object.keys(this.atkResistFilter).forEach(k => this.atkResistFilter[k] = []);
       Object.keys(this.attrResistFilter).forEach(k => this.attrResistFilter[k] = []);
+      Object.keys(this.skillAtkFilter).forEach(k => this.skillAtkFilter[k] = []);
+      Object.keys(this.skillSinFilter).forEach(k => this.skillSinFilter[k] = []);
+      this.timingFilter = [];
     },
 
     // 타입별 선택 단계는 OR, 타입 간은 AND. 선택 없는 타입은 무시.
@@ -2320,6 +2465,17 @@ function personalityPage() {
         if (!sel.length) continue;
         const r = (list ?? []).find(x => x.type === type);
         if (!r || !sel.includes(r.value)) return false;
+      }
+      return true;
+    },
+
+    // 스킬 티어별 필터: 티어 내 선택은 OR, 티어 간은 AND. 선택 없는 티어는 무시.
+    matchSkillMap(filterObj, cardMap) {
+      for (const tier in filterObj) {
+        const sel = filterObj[tier];
+        if (!sel.length) continue;
+        const v = (cardMap ?? {})[tier];
+        if (!v || !sel.includes(v)) return false;
       }
       return true;
     },
@@ -2540,6 +2696,9 @@ function personalityPage() {
       if (this.activeEgoTypes.length > 0 && !this.activeEgoTypes.every(t => card.skills.includes(t))) return false;
       if (this.activeColorTypes.length > 0 && !this.activeColorTypes.every(c => (card.colors ?? []).includes(c))) return false;
       if (!this.matchResist(this.atkResistFilter, card.atkResist)) return false;
+      if (!this.matchSkillMap(this.skillAtkFilter, card.sAt)) return false;
+      if (!this.matchSkillMap(this.skillSinFilter, card.sCol)) return false;
+      if (this.timingFilter.length && !(card.timing ?? []).some(t => this.timingFilter.includes(t))) return false;
       if (this.search) {
         const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
         for (const term of terms) {
@@ -2562,6 +2721,7 @@ function personalityPage() {
       if (this.activeEgoTypes.length > 0 && !this.activeEgoTypes.every(t => (ego.skillKeywords ?? []).includes(t))) return false;
       if (this.activeColorTypes.length > 0 && !this.activeColorTypes.every(c => c === ego.attrType)) return false;
       if (!this.matchResist(this.attrResistFilter, ego.attrResist)) return false;
+      if (this.timingFilter.length && !(ego.timing ?? []).some(t => this.timingFilter.includes(t))) return false;
       if (this.search) {
         const terms = this.search.split(',').map(t => t.trim()).filter(t => t);
         for (const term of terms) {
@@ -2584,6 +2744,8 @@ function personalityPage() {
       const saved = localStorage.getItem('personality-gacksung');
       if (saved) this.gacksungIds = JSON.parse(saved);
       this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
+      // 인격 탭 전환 시 EGO 전용 '한정' 필터 해제 (목록이 비는 것 방지)
+      this.$watch('pageMode', m => { if (m === 'personality') this.timingFilter = this.timingFilter.filter(t => t !== 'limited'); });
       const savedF = localStorage.getItem('personality-formation');
       this.formation = savedF ? { ...this.formationDefaults, ...JSON.parse(savedF) } : { ...this.formationDefaults };
       const savedO = localStorage.getItem('personality-deploy-order');

@@ -21,7 +21,7 @@
 <main class="browse-page">
   <nav class="browse-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
   <h1>{{ .Title }}</h1>
-  <p class="browse-intro">{{ .Description }}</p>
+  <p class="browse-intro">{{ .Params.intro }}</p>
   {{ range $sections }}
     {{ $label := .label }}
     {{ with site.GetPage .path }}

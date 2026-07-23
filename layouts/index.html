@@ -58,7 +58,7 @@
     </div>
     <div class="controls-row controls-row-2">
       <div class="controls-left">
-        <div class="preset-mode-bar" x-cloak x-show="panelMode !== 'default'" :class="{ 'preset-mode-bar--edit': panelMode === 'preset-edit' }">
+        <div class="preset-mode-bar" x-cloak x-show="!showPackPanel && panelMode !== 'default'" :class="{ 'preset-mode-bar--edit': panelMode === 'preset-edit' }">
           <div class="preset-mode-label-wrap" x-ref="presetModeLabelWrap">
             <span class="preset-mode-label" x-ref="presetModeLabel">
               <template x-if="panelMode === 'preset'">
@@ -72,15 +72,46 @@
         </div>
         <button
           class="filter-btn preset-panel-btn"
-          x-show="panelMode === 'default'"
+          x-show="!showPackPanel && panelMode === 'default'"
           @click="showPresetModal = true"
         ><img class="filter-btn-icon" src="/images/ui/preset.png" alt="">이상 관측</button>
-        <div class="preset-mode-actions" x-cloak x-show="panelMode === 'preset'">
+        <div class="preset-mode-actions" x-cloak x-show="!showPackPanel && panelMode === 'preset'">
           <button class="filter-btn preset-panel-btn" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">관측 종료</button>
+          <button class="filter-btn preset-panel-btn preset-pack-display-btn" @click="cyclePresetPackDisplay()"><img class="filter-btn-icon" src="/images/ui/theme_visibility.png" alt=""><span x-text="presetPackDisplayLabel()"></span></button>
+          <span class="pack-mode-wrap" x-show="presetPackDisplay === 'detail'">
+            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? '노말' : '하드'"></button>
+            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)">하드 모드 전용 테마팩이 있습니다.</span>
+          </span>
         </div>
-        <div class="preset-edit-actions" x-cloak x-show="panelMode === 'preset-edit'">
+        <div class="preset-edit-actions" x-cloak x-show="!showPackPanel && panelMode === 'preset-edit'">
           <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">나가기</button>
           <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt="">완료</button>
+        </div>
+
+        {{/* ── 테마팩 프리셋 UI (테마팩 탭 전용) ── */}}
+        <div class="preset-mode-bar" x-cloak x-show="showPackPanel && packPresetMode !== 'none'" :class="{ 'preset-mode-bar--edit': packPresetMode === 'edit' }">
+          <div class="preset-mode-label-wrap">
+            <span class="preset-mode-label">
+              <template x-if="packPresetMode === 'apply'"><span x-text="'관측 중 : ' + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
+              <template x-if="packPresetMode === 'edit'"><span x-text="'편집 중 : ' + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
+            </span>
+          </div>
+        </div>
+        <button
+          class="filter-btn preset-panel-btn pack-preset-open-btn"
+          x-cloak x-show="showPackPanel && packPresetMode === 'none'"
+          @click="openPackPresetModal()"
+        ><img class="filter-btn-icon" src="/images/ui/theme_preset.png" alt="">프리셋</button>
+        <div class="preset-mode-actions" x-cloak x-show="showPackPanel && packPresetMode === 'apply'">
+          <button class="filter-btn preset-panel-btn" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">관측 종료</button>
+          <span class="pack-mode-wrap">
+            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? '노말' : '하드'"></button>
+            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)">하드 모드 전용 테마팩이 있습니다.</span>
+          </span>
+        </div>
+        <div class="preset-edit-actions" x-cloak x-show="showPackPanel && packPresetMode === 'edit'">
+          <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">나가기</button>
+          <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPackPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt="">완료</button>
         </div>
       </div>
       <div class="filter-buttons">
@@ -98,13 +129,14 @@
         {{ end }}{{ end }}
       </div>
       <div class="controls-right">
-        <button class="guide-btn filter-btn" @click="guideModal = true; guidePage = 1">
+        <button class="guide-btn filter-btn" x-show="!showPackPanel" @click="guideModal = true; guidePage = 1">
           <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
           <span>가이드</span>
         </button>
         <div class="controls-right-row">
-          <button class="sort-btn filter-btn" @click="toggleSort()"><img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;"><span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span></button>
-          <button class="toggle-name-btn" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
+          <button class="sort-btn filter-btn" x-show="!showPackPanel" @click="toggleSort()"><img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;"><span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span></button>
+          <button class="toggle-name-btn" x-show="!showPackPanel" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
+          <button class="toggle-name-btn" x-cloak x-show="showPackPanel" @click="togglePackView()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="packViewMode === 'detail' ? '자세히' : '간단히'"></span></button>
           <button class="reset-btn filter-btn mobile-only" @click="document.getElementById('reset-modal').classList.add('open')"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span>초기화</span></button>
         </div>
       </div>
@@ -147,8 +179,8 @@
   </div>
 
   {{/* ── 팩 패널 ── */}}
-  <div class="pack-panel" x-cloak x-show="showPackPanel" x-transition>
-    <div class="pack-panel-search-row">
+  <div class="pack-panel" x-cloak x-show="showPackPanel" x-transition :class="{ 'pack-panel--simple': packViewMode === 'simple' }">
+    <div class="pack-panel-search-row" x-show="packPresetMode !== 'apply'">
       <div class="search-input-wrap">
         <input
           class="tag-filter-input"
@@ -173,18 +205,18 @@
       ></button>
     </div>
     <template x-for="(group, groupIdx) in packGroups" :key="groupIdx">
-      <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => !packFilter || (themeMap[String(id)] || '').includes(packFilter))">
+      <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => appliedPackHas(id) && (!packFilter || (themeMap[String(id)] || '').includes(packFilter)))">
         <div class="pack-group-label" x-text="group.label"></div>
         <div class="pack-group-items">
           <template x-for="packId in group.packs" :key="packId">
             <div class="pack-panel-item"
-              x-show="!packFilter || (themeMap[String(packId)] || '').includes(packFilter)"
-              :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isPackSelected(packId) }"
+              x-show="appliedPackHas(packId) && (!packFilter || (themeMap[String(packId)] || '').includes(packFilter))"
+              :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isBrowsePackSelected(packId) }"
               :title="themeMap[String(packId)] || String(packId)"
-              @click="togglePackSelect(packId)"
+              @click="toggleBrowsePackSelect(packId)"
               @contextmenu.prevent="openPackPopup(packId)"
             >
-              <div class="pack-panel-card" :style="packMaskStyle(packId)">
+              <div class="pack-panel-card" x-show="packViewMode === 'detail'" :style="packMaskStyle(packId)">
                 <img class="pack-panel-sprite"
                   :src="spriteMap[String(packId)] ? `/images/pack/${spriteMap[String(packId)]}.png` : ''"
                   :alt="themeMap[String(packId)] || String(packId)"
@@ -226,22 +258,33 @@
                   </template>
                 </span>
               </div>
+              <img class="pack-panel-banner"
+                x-show="packViewMode === 'simple'"
+                :src="`/images/banner/${packId}.png`"
+                onerror="this.src='/images/banner/pack_default.png'"
+                :alt="themeMap[String(packId)] || String(packId)"
+              >
               <img class="pack-panel-select"
-                x-show="isPackSelected(packId) && !extremeVisualMap[String(packId)]"
+                x-show="isBrowsePackSelected(packId) && !extremeVisualMap[String(packId)] && packViewMode === 'detail'"
                 src="/images/pack/pack_select.png"
                 alt=""
               >
               <img class="pack-panel-extreme-select"
-                x-show="isPackSelected(packId) && extremeVisualMap[String(packId)]"
+                x-show="isBrowsePackSelected(packId) && extremeVisualMap[String(packId)] && packViewMode === 'detail'"
                 src="/images/pack/extreme_select.png"
                 alt=""
               >
+              <img class="pack-panel-banner-select"
+                x-show="isBrowsePackSelected(packId) && packViewMode === 'simple'"
+                src="/images/banner/banner_select.png"
+                alt=""
+              >
               <img class="pack-panel-clear"
-                x-show="isPackSelected(packId)"
+                x-show="isBrowsePackSelected(packId)"
                 src="/images/ui/theme_clear.png"
                 alt=""
               >
-              <button class="card-save-btn" @click.stop="copyPackPanelCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+              <button class="card-save-btn" x-show="packViewMode === 'detail'" @click.stop="copyPackPanelCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
           </template>
         </div>
@@ -250,11 +293,12 @@
   </div>
 
   {{/* ── 프리셋 팩 패널 (이상 관측 모드) ── */}}
-  <div class="pack-panel preset-pack-panel" x-cloak x-show="panelMode === 'preset'" x-transition>
+  <div class="pack-panel preset-pack-panel" x-cloak x-show="panelMode === 'preset' && presetPackDisplay !== 'hidden' && !showPackPanel && !showTagPanel" :class="{ 'preset-pack-panel--detail': presetPackDisplay === 'detail' }" x-transition>
+    <template x-for="(group, gi) in presetDisplayGroups()" :key="gi">
     <div class="pack-group">
-      <div class="pack-group-label">테마팩</div>
+      <div class="pack-group-label" x-text="group.label"></div>
       <div class="pack-group-items">
-        <template x-for="packId in presetPackIds()" :key="packId">
+        <template x-for="packId in group.packs" :key="packId">
           <div class="pack-panel-item"
             :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isPackSelected(packId) }"
             :title="themeMap[String(packId)] || String(packId)"
@@ -322,6 +366,7 @@
         </template>
       </div>
     </div>
+    </template>
   </div>
 
   {{/* ── 카테고리별 행 ── */}}
@@ -485,8 +530,8 @@
 
   {{/* ── 플로팅 버튼 ── */}}
   <div class="float-btns" @click.away="showToc = false">
-    {{/* 목차 */}}
-    <div class="float-toc-wrap">
+    {{/* 목차 (테마팩 패널에선 숨김 — 기프트 카테고리 전용) */}}
+    <div class="float-toc-wrap" x-cloak x-show="!showPackPanel">
       <div class="float-toc-panel" x-show="showToc" x-transition>
         <button class="float-toc-item" @click="activeCategory = ''; showToc = false; window.scrollTo({top:0,behavior:'smooth'})">
           <img src="/images/ui/all.png" alt="전체" class="float-toc-icon">
@@ -510,8 +555,8 @@
         </svg>
       </button>
     </div>
-    {{/* 이미지/이름 토글 */}}
-    <button class="float-btn" @click="toggleNameDisplay()" title="이미지/이름">
+    {{/* 이미지/이름 토글 (테마팩 패널에선 자세히/간단히 토글) */}}
+    <button class="float-btn" @click="showPackPanel ? togglePackView() : toggleNameDisplay()" :title="showPackPanel ? '자세히/간단히' : '이미지/이름'">
       <img src="/images/ui/ui_switch.png" alt="" width="22" height="22" style="object-fit:contain;">
     </button>
     {{/* 맨 위로 / 맨 아래로 */}}
@@ -582,10 +627,10 @@
             @animationend="presetAddNameError = false">
         </div>
         <div class="preset-add-actions">
-          <button class="modal-btn preset-action-btn" @click="showCodeAddModal = true">코드로 추가</button>
-          <button class="modal-btn preset-action-btn" @click="$refs.fileAddInput.click()">파일로 추가</button>
+          <button class="modal-btn preset-action-btn" @click="showCodeAddModal = true">코드 적용</button>
+          <button class="modal-btn preset-action-btn" @click="$refs.fileAddInput.click()">파일 적용</button>
           <input type="file" accept=".json" class="file-add-input" x-ref="fileAddInput" @change="handleFileAdd($event)">
-          <button class="modal-btn preset-action-btn" @click="initPresetFromChecked()">새로 만들기</button>
+          <button class="modal-btn preset-action-btn" @click="initPresetFromChecked()">현재 선택</button>
         </div>
         <div class="preset-gift-scroll-wrap"
              x-data="scrollWrap('.preset-gift-scroll-area')">
@@ -719,13 +764,175 @@
   <div class="modal-shade code-add-shade" :class="{ open: showCodeAddModal }" @click.self="showCodeAddModal = false" @contextmenu.prevent="showCodeAddModal = false">
     <div class="modal-box code-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">코드로 추가</span>
+        <span class="modal-title">코드 적용</span>
         <button class="modal-btn preset-confirm-btn" @click="confirmCodeAdd()">완료</button>
       </div>
       <div class="modal-body code-add-modal-body">
         <textarea class="preset-add-input preset-add-textarea code-add-textarea"
                   placeholder="공유 코드를 입력하세요."
                   x-model="codeAddInput"></textarea>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 테마팩 프리셋 목록 모달 ── */}}
+  <div class="modal-shade" :class="{ open: showPackPresetModal }" @click.self="showPackPresetModal = false" @contextmenu.prevent="showPackPresetModal = false">
+    <div class="modal-box preset-modal-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <span class="modal-title">테마팩 프리셋</span>
+        <button class="modal-btn preset-add-btn" @click="openPackPresetAddModal()">추가</button>
+      </div>
+      <div class="modal-body preset-modal-body">
+        <div class="preset-list-scroll-wrap" x-data="scrollWrap('.pack-preset-scroll-area')">
+          <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+          <div class="preset-list-scroll-area pack-preset-scroll-area"
+               @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+            <template x-for="(p, idx) in packPresets" :key="idx">
+              <div class="preset-item formation-preset-item" @click="openPackPresetDetailModal(idx)">
+                <div class="formation-preset-info">
+                  <span class="preset-item-name" x-text="p.name"></span>
+                  <span class="pack-preset-count" x-text="`테마팩 ${p.packs.length}개`"></span>
+                </div>
+              </div>
+            </template>
+            <span class="preset-empty" x-show="!packPresets.length">저장된 프리셋이 없습니다.</span>
+          </div>
+          <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 테마팩 프리셋 추가(확인) 모달 ── */}}
+  <div class="modal-shade pack-preset-add-shade" :class="{ open: showPackPresetAddModal }" @click.self="showPackPresetAddModal = false" @contextmenu.prevent="showPackPresetAddModal = false">
+    <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <span class="modal-title">프리셋 추가</span>
+        <div class="modal-header-actions">
+          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? '노말' : '하드'"></button>
+          <span class="modal-header-divider"></span>
+          <button class="modal-btn preset-confirm-btn" @click="confirmAddPackPreset()">완료</button>
+        </div>
+      </div>
+      <div class="modal-body preset-add-modal-body">
+        <div class="preset-add-fields">
+          <input class="preset-add-input" type="text" placeholder="프리셋 이름" x-model="packPresetAddName"
+            :class="{ 'error-flash': packPresetAddNameError }"
+            @animationend="packPresetAddNameError = false">
+        </div>
+        <div class="preset-add-actions">
+          <button class="modal-btn preset-action-btn" @click="showPackCodeAddModal = true">코드 적용</button>
+          <button class="modal-btn preset-action-btn" @click="$refs.packFileAddInput.click()">파일 적용</button>
+          <input type="file" accept=".json" class="file-add-input" x-ref="packFileAddInput" @change="handlePackFileAdd($event)">
+          <button class="modal-btn preset-action-btn" @click="loadPackSelection()">현재 선택</button>
+        </div>
+        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()">하드 모드 전용 테마팩이 있습니다.</span>
+        <div class="preset-gift-scroll-wrap" x-data="scrollWrap('.pack-preset-add-scroll-area')">
+          <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+          <div class="preset-gift-scroll-area pack-preset-add-scroll-area"
+               @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+            <div class="pack-preset-preview-groups">
+              <template x-for="(group, gi) in packListGroups(previewSourceIds, previewDungeonMode)" :key="gi">
+                <div class="pack-preset-preview-group">
+                  <div class="pack-preset-preview-group-label" x-text="group.label"></div>
+                  <div class="pack-preset-preview-list">
+                    <template x-for="packId in group.packs" :key="packId">
+                      <img class="pack-preset-preview-img"
+                        :src="`/images/banner/${packId}.png`"
+                        onerror="this.src='/images/banner/pack_default.png'"
+                        :title="themeMap[String(packId)] || String(packId)"
+                        @click="openPackPopup(packId)">
+                    </template>
+                  </div>
+                </div>
+              </template>
+              <span class="preset-add-empty" x-show="!previewSourceIds.length">선택된 테마팩이 없습니다.</span>
+            </div>
+          </div>
+          <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 테마팩 프리셋 상세 모달 (적용/편집/삭제) ── */}}
+  <div class="modal-shade pack-preset-detail-shade" :class="{ open: showPackPresetDetailModal }" @click.self="showPackPresetDetailModal = false" @contextmenu.prevent="showPackPresetDetailModal = false">
+    <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <span class="modal-title" x-text="packPresets[packPresetDetailIdx]?.name ?? ''"></span>
+        <div class="modal-header-actions">
+          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? '노말' : '하드'"></button>
+          <span class="modal-header-divider"></span>
+          <div class="preset-preview-actions">
+            <button class="modal-btn preset-item-btn" @click="applyPackPreset(packPresetDetailIdx)">적용</button>
+            <button class="modal-btn preset-item-btn" @click="editPackPreset(packPresetDetailIdx)">편집</button>
+            <button class="modal-btn preset-item-btn" @click="askDeletePackPreset(packPresetDetailIdx)">삭제</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body preset-add-modal-body">
+        <div class="preset-share-actions">
+          <button class="modal-btn preset-action-btn" @click="sharePackByCode()">코드로 공유</button>
+          <button class="modal-btn preset-action-btn" @click="sharePackByFile()">파일로 공유</button>
+        </div>
+        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()">하드 모드 전용 테마팩이 있습니다.</span>
+        <div class="preset-gift-scroll-wrap" x-data="scrollWrap('.pack-preset-detail-scroll-area')">
+          <div class="scroll-indicator" :class="{ visible: up }">▲</div>
+          <div class="preset-gift-scroll-area pack-preset-detail-scroll-area"
+               @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;">
+            <div class="pack-preset-preview-groups">
+              <template x-for="(group, gi) in packListGroups(previewSourceIds, previewDungeonMode)" :key="gi">
+                <div class="pack-preset-preview-group">
+                  <div class="pack-preset-preview-group-label" x-text="group.label"></div>
+                  <div class="pack-preset-preview-list">
+                    <template x-for="packId in group.packs" :key="packId">
+                      <img class="pack-preset-preview-img"
+                        :src="`/images/banner/${packId}.png`"
+                        onerror="this.src='/images/banner/pack_default.png'"
+                        :title="themeMap[String(packId)] || String(packId)"
+                        @click="openPackPopup(packId)">
+                    </template>
+                  </div>
+                </div>
+              </template>
+              <span class="preset-add-empty" x-show="!previewSourceIds.length">테마팩이 없습니다.</span>
+            </div>
+          </div>
+          <div class="scroll-indicator" :class="{ visible: down }">▼</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 테마팩 프리셋 삭제 확인 모달 ── */}}
+  <div class="modal-shade" :class="{ open: showPackPresetDeleteModal }" @click.self="showPackPresetDeleteModal = false" @contextmenu.prevent="showPackPresetDeleteModal = false">
+    <div class="modal-box delete-confirm-modal-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <span class="modal-title">프리셋 삭제</span>
+      </div>
+      <div class="modal-body delete-confirm-modal-body">
+        <p class="delete-confirm-text">
+          '<span x-text="packPresets[packPresetDeleteIdx]?.name ?? ''"></span>'을 삭제합니다.
+        </p>
+        <div class="delete-confirm-actions">
+          <button class="modal-btn preset-action-btn" @click="showPackPresetDeleteModal = false">취소</button>
+          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deletePackPreset()">삭제</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 테마팩 프리셋 코드로 추가 모달 ── */}}
+  <div class="modal-shade pack-code-add-shade" :class="{ open: showPackCodeAddModal }" @click.self="showPackCodeAddModal = false" @contextmenu.prevent="showPackCodeAddModal = false">
+    <div class="modal-box code-add-modal-box" @contextmenu.prevent>
+      <div class="modal-header">
+        <span class="modal-title">코드 적용</span>
+        <button class="modal-btn preset-confirm-btn" @click="confirmPackCodeAdd()">완료</button>
+      </div>
+      <div class="modal-body code-add-modal-body">
+        <textarea class="preset-add-input preset-add-textarea code-add-textarea"
+                  placeholder="공유 코드를 입력하세요."
+                  x-model="packCodeAddInput"></textarea>
       </div>
     </div>
   </div>
@@ -794,10 +1001,10 @@
   <div id="reset-modal" class="modal-shade" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal-box modal-box--sm">
       <div class="modal-header">
-        <span class="modal-title">수집 기록 초기화</span>
+        <span class="modal-title">초기화</span>
       </div>
       <div class="modal-body delete-confirm-modal-body">
-        <p class="delete-confirm-text">모든 수집 기록이 삭제됩니다.</p>
+        <p class="delete-confirm-text" x-text="showPackPanel ? '테마팩 선택 상태가 모두 해제됩니다.' : '기프트 선택 상태가 모두 해제됩니다.'"></p>
         <div class="delete-confirm-actions">
           <button class="modal-btn preset-action-btn" onclick="document.getElementById('reset-modal').classList.remove('open')">취소</button>
           <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetAll()">초기화</button>
@@ -1136,7 +1343,27 @@ const packGroups = [];
       }
     }
   }
+  // 하드 5층과 평행중첩은 출현 테마팩 풀이 동일하므로 하나로 병합 (검증 완료)
+  {
+    const h5 = groupMap['1_5'], par = groupMap['2'];
+    if (h5 || par) {
+      const packs = [];
+      for (const p of [...(h5 ? h5.packs : []), ...(par ? par.packs : [])]) {
+        if (!packs.includes(p)) packs.push(p);
+      }
+      groupMap['1_5'] = { label: '하드\n5층\n&\n평행중첩', dungeonIdx: 1, sortKey: 1005, packs };
+      delete groupMap['2'];
+    }
+  }
   packGroups.push(...Object.values(groupMap).sort((a, b) => a.sortKey - b.sortKey));
+}
+
+/* 난이도별(노말=dungeonIdx 0, 하드=dungeonIdx>=1) 팩 집합 — "하드 모드 전용" 판정용 */
+const packDifficultySet = { normal: new Set(), hard: new Set() };
+for (const g of packGroups) {
+  for (const pid of g.packs) {
+    (g.dungeonIdx === 0 ? packDifficultySet.normal : packDifficultySet.hard).add(String(pid));
+  }
 }
 
 const spriteMap = {
@@ -1329,8 +1556,9 @@ function checklist() {
     presetGuidePages: [{{ range site.Data.guide.preset.pages }}`{{ . }}`,{{ end }}],
     showToc: false,
     showPackPanel: false,
+    packViewMode: 'detail',
     packFilter: '',
-    packDungeonMode: 'normal',
+    packDungeonMode: 'hard',
     showPresetModal: false,
     showPresetAddModal: false,
     presetAddName: '',
@@ -1342,6 +1570,25 @@ function checklist() {
     activePanelPresetIdx: null,
     presetEditGifts: {},
     selectedPackIds: {},
+    browseSelectedPackIds: {},
+    presetPackDisplay: 'simple',
+    showHardOnlyMsg: false,
+    _hardOnlyTimer: null,
+    packPresets: [],
+    packPresetMode: 'none',
+    activePackPresetIdx: null,
+    showPackPresetModal: false,
+    showPackPresetAddModal: false,
+    packPresetAddName: '',
+    packPresetAddNameError: false,
+    showPackPresetDeleteModal: false,
+    packPresetDeleteIdx: null,
+    showPackPresetDetailModal: false,
+    packPresetDetailIdx: null,
+    previewSourceIds: [],
+    previewDungeonMode: 'hard',
+    showPackCodeAddModal: false,
+    packCodeAddInput: '',
     showShareModal: false,
     sharePresetIdx: null,
     showDeleteConfirmModal: false,
@@ -1373,7 +1620,11 @@ function checklist() {
         }
         localStorage.setItem('egogift-presets-initialized', 'true');
       }
+      const savedPackPresets = localStorage.getItem('egogift-pack-presets');
+      if (savedPackPresets) this.packPresets = JSON.parse(savedPackPresets);
       this.showName = localStorage.getItem('egogift-showname') === 'true';
+      const savedPackView = localStorage.getItem('egogift-pack-viewmode');
+      if (savedPackView === 'simple' || savedPackView === 'detail') this.packViewMode = savedPackView;
       this.showPilgrimage = Math.random() < (typeof PILGRIMAGE_APPEAR_PROB !== 'undefined' ? PILGRIMAGE_APPEAR_PROB : 0);
       if (window.location.hash === '#pack') {
         this.showPackPanel = true;
@@ -1382,15 +1633,20 @@ function checklist() {
       this.$nextTick(() => this.updateVisibleRowCount());
       this.$watch('showPackPanel', val => {
         if (val) this.$nextTick(() => this.fitPackPanelNames());
+        else if (this.packPresetMode !== 'none') this.exitPackPresetMode();
       });
       this.$watch('packDungeonMode', () => {
-        if (this.showPackPanel) this.$nextTick(() => this.fitPackPanelNames());
+        if (this.showPackPanel || this.panelMode === 'preset') this.$nextTick(() => this.fitPackPanelNames());
       });
       this.$watch('panelMode', val => {
         if (val === 'preset') this.$nextTick(() => this.fitPackPanelNames());
         this.$nextTick(() => this.checkPresetLabelOverflow());
       });
+      this.$watch('presetPackDisplay', () => {
+        if (this.panelMode === 'preset') this.$nextTick(() => this.fitPackPanelNames());
+      });
       this.$watch('activePanelPresetIdx', () => {
+        if (this.panelMode === 'preset') this.$nextTick(() => this.fitPackPanelNames());
         this.$nextTick(() => this.checkPresetLabelOverflow());
       });
 
@@ -1991,6 +2247,12 @@ function checklist() {
       localStorage.setItem('egogift-showname', this.showName);
     },
 
+    togglePackView() {
+      this.packViewMode = this.packViewMode === 'detail' ? 'simple' : 'detail';
+      localStorage.setItem('egogift-pack-viewmode', this.packViewMode);
+      if (this.packViewMode === 'detail') this.$nextTick(() => this.fitPackPanelNames());
+    },
+
     toggleSort() {
       this.sortMode = this.sortMode === 'id' ? 'grade' : 'id';
     },
@@ -2042,6 +2304,7 @@ function checklist() {
       this.activePanelPresetIdx = null;
       this.presetEditGifts = {};
       this.selectedPackIds = {};
+      this.showHardOnlyMsg = false;
     },
 
     togglePackSelect(packId) {
@@ -2056,6 +2319,230 @@ function checklist() {
 
     isPackSelected(packId) {
       return !!this.selectedPackIds[String(packId)];
+    },
+
+    toggleBrowsePackSelect(packId) {
+      const key = String(packId);
+      if (this.browseSelectedPackIds[key]) {
+        delete this.browseSelectedPackIds[key];
+      } else {
+        this.browseSelectedPackIds[key] = true;
+      }
+      this.browseSelectedPackIds = { ...this.browseSelectedPackIds };
+    },
+
+    isBrowsePackSelected(packId) {
+      return !!this.browseSelectedPackIds[String(packId)];
+    },
+
+    cyclePresetPackDisplay() {
+      const order = ['simple', 'detail', 'hidden'];
+      this.presetPackDisplay = order[(order.indexOf(this.presetPackDisplay) + 1) % order.length];
+      this.showHardOnlyMsg = false;
+    },
+
+    presetPackDisplayLabel() {
+      return { simple: '간단히', detail: '자세히', hidden: '미표시' }[this.presetPackDisplay];
+    },
+
+    presetDisplayGroups() {
+      if (this.presetPackDisplay === 'hidden') return [];
+      const ids = this.presetPackIds();
+      if (!ids.length) return [];
+      if (this.presetPackDisplay === 'simple') return [{ label: '테마팩', packs: ids }];
+      const set = new Set(ids.map(String));
+      return packGroups
+        .filter(g => this.packDungeonMode === 'normal' ? g.dungeonIdx === 0 : g.dungeonIdx >= 1)
+        .map(g => ({ label: g.label, packs: g.packs.filter(id => set.has(String(id))) }))
+        .filter(g => g.packs.length);
+    },
+
+    hasHardOnlyPresetPacks() {
+      return this.presetPackIds().some(id => packDifficultySet.hard.has(String(id)) && !packDifficultySet.normal.has(String(id)));
+    },
+
+    // 현재 문맥(이상 관측 / 테마팩 프리셋 적용)의 팩 집합에 하드 전용 팩이 있는지
+    _currentHardOnlyExists() {
+      if (this.packPresetMode === 'apply' && this.activePackPresetIdx !== null) {
+        return (this.packPresets[this.activePackPresetIdx]?.packs || []).some(id => packDifficultySet.hard.has(String(id)) && !packDifficultySet.normal.has(String(id)));
+      }
+      return this.hasHardOnlyPresetPacks();
+    },
+
+    toggleDifficulty() {
+      this.packDungeonMode = this.packDungeonMode === 'normal' ? 'hard' : 'normal';
+      clearTimeout(this._hardOnlyTimer);
+      this.showHardOnlyMsg = this.packDungeonMode === 'normal' && this._currentHardOnlyExists();
+      if (this.showHardOnlyMsg) {
+        this._hardOnlyTimer = setTimeout(() => { this.showHardOnlyMsg = false; }, 1500);
+      }
+    },
+
+    // ── 테마팩 프리셋 ──
+    savePackPresets() { localStorage.setItem('egogift-pack-presets', JSON.stringify(this.packPresets)); },
+    selectedPackList() { return Object.keys(this.browseSelectedPackIds).filter(k => this.browseSelectedPackIds[k]).map(Number).sort((a, b) => a - b); },
+    appliedPackHas(id) {
+      if (this.packPresetMode !== 'apply' || this.activePackPresetIdx === null) return true;
+      return (this.packPresets[this.activePackPresetIdx]?.packs || []).includes(Number(id));
+    },
+    openPackPresetModal() { this.showPackPresetModal = true; },
+    // 미리보기 목록에 하드 전용(하드에만 있고 노말엔 없는) 팩이 있는가
+    previewHasHardOnly() {
+      return (this.previewSourceIds || []).some(id => packDifficultySet.hard.has(String(id)) && !packDifficultySet.normal.has(String(id)));
+    },
+    // 임의 팩 목록을 층별(테마팩 패널과 동일 규칙) + 난이도로 분류
+    packListGroups(ids, mode) {
+      const set = new Set((ids || []).map(String));
+      if (!set.size) return [];
+      return packGroups
+        .filter(g => mode === 'normal' ? g.dungeonIdx === 0 : g.dungeonIdx >= 1)
+        .map(g => ({ label: g.label, packs: g.packs.filter(id => set.has(String(id))) }))
+        .filter(g => g.packs.length);
+    },
+    openPackPresetAddModal() {
+      this.packPresetAddName = '';
+      this.previewSourceIds = this.selectedPackList();
+      this.previewDungeonMode = 'hard';
+      this.showPackPresetAddModal = true;
+    },
+    openPackPresetDetailModal(idx) {
+      this.packPresetDetailIdx = idx;
+      this.previewSourceIds = (this.packPresets[idx]?.packs || []).slice().sort((a, b) => a - b);
+      this.previewDungeonMode = 'hard';
+      this.showPackPresetDetailModal = true;
+    },
+    confirmAddPackPreset() {
+      if (!this.packPresetAddName.trim()) {
+        this.showToast('이름을 입력해주세요.', { selector: '.pack-preset-add-shade', error: true });
+        this.packPresetAddNameError = false;
+        this.$nextTick(() => { this.packPresetAddNameError = true; });
+        return;
+      }
+      this.packPresets.push({ name: this.packPresetAddName.trim(), packs: [...this.previewSourceIds] });
+      this.savePackPresets();
+      this.showPackPresetAddModal = false;
+      this.browseSelectedPackIds = {};
+    },
+    loadPackSelection() {
+      this.previewSourceIds = this.selectedPackList();   // 현재 브라우즈 선택으로 되돌림
+    },
+    handlePackFileAdd(event) {
+      const file = event.target.files[0];
+      event.target.value = '';
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (typeof data.name !== 'string' || !Array.isArray(data.packs)) throw new Error();
+          this.packPresetAddName = data.name;
+          this.previewSourceIds = data.packs.map(Number);
+          this.previewDungeonMode = 'hard';
+          this.showPackPresetAddModal = true;
+        } catch {
+          this.showToast('부적절한 파일입니다.', { selector: '.pack-preset-add-shade', error: true });
+        }
+      };
+      reader.readAsText(file);
+    },
+    confirmPackCodeAdd() {
+      try {
+        const json = LZString.decompressFromEncodedURIComponent(this.packCodeAddInput.trim());
+        if (!json) throw new Error();
+        const data = JSON.parse(json);
+        if (typeof data.name !== 'string' || !Array.isArray(data.packs)) throw new Error();
+        this.packPresetAddName = data.name;
+        this.previewSourceIds = data.packs.map(Number);
+        this.previewDungeonMode = 'hard';
+        this.packCodeAddInput = '';
+        this.showPackCodeAddModal = false;
+        this.showPackPresetAddModal = true;
+      } catch (e) {
+        this.showToast('부적절한 코드입니다.', { selector: '.pack-code-add-shade', error: true });
+      }
+    },
+    sharePackByCode() {
+      const preset = this.packPresets[this.packPresetDetailIdx];
+      if (!preset) return;
+      const encoded = LZString.compressToEncodedURIComponent(JSON.stringify({ name: preset.name, packs: preset.packs }));
+      navigator.clipboard.writeText(encoded).then(() => {
+        this.showToast('클립보드에 복사되었습니다.', { selector: '.pack-preset-detail-shade' });
+      }).catch(() => {});
+    },
+    async sharePackByFile() {
+      const preset = this.packPresets[this.packPresetDetailIdx];
+      if (!preset) return;
+      const json = JSON.stringify({ name: preset.name, packs: preset.packs }, null, 2);
+      if (window.showSaveFilePicker) {
+        try {
+          const fileHandle = await window.showSaveFilePicker({
+            suggestedName: `${preset.name}.json`,
+            types: [{ description: 'JSON 파일', accept: { 'application/json': ['.json'] } }],
+          });
+          const writable = await fileHandle.createWritable();
+          await writable.write(json);
+          await writable.close();
+        } catch (e) {
+          // 사용자가 취소한 경우 무시
+        }
+      } else {
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${preset.name}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    },
+    applyPackPreset(idx) {
+      this.activePackPresetIdx = idx;
+      this.packPresetMode = 'apply';
+      this.packDungeonMode = 'hard';
+      this.browseSelectedPackIds = {};
+      this.showHardOnlyMsg = false;
+      this.showPackPresetModal = false;
+      this.showPackPresetDetailModal = false;
+      this.$nextTick(() => this.fitPackPanelNames());
+    },
+    editPackPreset(idx) {
+      this.activePackPresetIdx = idx;
+      this.packPresetMode = 'edit';
+      const sel = {};
+      for (const id of (this.packPresets[idx]?.packs || [])) sel[String(id)] = true;
+      this.browseSelectedPackIds = sel;
+      this.showPackPresetModal = false;
+      this.showPackPresetDetailModal = false;
+    },
+    confirmPackPresetEdit() {
+      if (this.activePackPresetIdx !== null && this.packPresets[this.activePackPresetIdx]) {
+        this.packPresets[this.activePackPresetIdx].packs = this.selectedPackList();
+        this.savePackPresets();
+      }
+      this.exitPackPresetMode();
+    },
+    exitPackPresetMode() {
+      this.packPresetMode = 'none';
+      this.activePackPresetIdx = null;
+      this.browseSelectedPackIds = {};
+      this.showHardOnlyMsg = false;
+      this.$nextTick(() => this.fitPackPanelNames());
+    },
+    askDeletePackPreset(idx) {
+      this.packPresetDeleteIdx = idx;
+      this.showPackPresetDeleteModal = true;
+    },
+    deletePackPreset() {
+      const idx = this.packPresetDeleteIdx;
+      if (idx !== null && idx >= 0) {
+        if (this.activePackPresetIdx === idx) this.exitPackPresetMode();
+        else if (this.activePackPresetIdx !== null && this.activePackPresetIdx > idx) this.activePackPresetIdx--;
+        this.packPresets.splice(idx, 1);
+        this.savePackPresets();
+      }
+      this.showPackPresetDeleteModal = false;
+      this.showPackPresetDetailModal = false;
+      this.packPresetDeleteIdx = null;
     },
 
     isChecked(id) {
@@ -2201,8 +2688,12 @@ function checklist() {
     },
 
     resetAll() {
-      this.checked = {};
-      localStorage.removeItem('egogift-checked');
+      if (this.showPackPanel) {
+        this.browseSelectedPackIds = {};   // 테마팩 패널: 선택만 초기화 (기프트 유지)
+      } else {
+        this.checked = {};
+        localStorage.removeItem('egogift-checked');
+      }
       document.getElementById('reset-modal').classList.remove('open');
     },
 

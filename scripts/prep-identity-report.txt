@@ -1,51 +1,29 @@
 ## 데이터 (.bytes → .json)
-  복사예정: personality-02.bytes → personality\info\personality-02.json
-  복사예정: personality-skill-02.bytes → personality\skill\personality-skill-02.json
-  복사예정: personality-passive-02.bytes → personality\passive\personality-passive-02.json
-  복사예정: personality-12.bytes → personality\info\personality-12.json
-  복사예정: personality-skill-12.bytes → personality\skill\personality-skill-12.json
-  복사예정: personality-passive-12.bytes → personality\passive\personality-passive-12.json
-  복사예정: passive.bytes → personality\passive\passive.json
-  복사예정: passive_check4.bytes → personality\passive\passive_check4.json
-  복사예정: ego-1.bytes → egoskill\ego-1.json
-  복사예정: ego-skill-1.bytes → egoskill\ego-skill-1.json
+  복사: personality-01.bytes → personality\info\personality-01.json
+  복사: personality-skill-01.bytes → personality\skill\personality-skill-01.json
+  복사: personality-passive-01.bytes → personality\passive\personality-passive-01.json
+  복사: passive.bytes → personality\passive\passive.json
+  복사: passive_check4.bytes → personality\passive\passive_check4.json
 ## illust-pivots
-  복사예정: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
+  복사: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
 ## preview 정리
+  제거: personality.json 에서 1건
 ## 이미지
-  img: 10216_gacksung.png → personality\02\10216_gacksung.webp
-  img: 10216_normal.png → personality\02\10216_normal.webp
-  img: 10216_gacksung_info.png → personality\02\10216_gacksung_info.webp
-  img: 10216_normal_info.png → personality\02\10216_normal_info.webp
-  img: 10216_gacksung_profile.png → personality\02\10216_gacksung_profile.webp
-  img: 10216_normal_profile.png → personality\02\10216_normal_profile.webp
-  img: 10216_gacksung_profile_support_personality.png → personality\02\10216_gacksung_profile_support_personality.webp
-  img: 10216_normal_profile_support_personality.png → personality\02\10216_normal_profile_support_personality.webp
-  img: 11216_gacksung.png → personality\12\11216_gacksung.webp
-  img: 11216_normal.png → personality\12\11216_normal.webp
-  img: 11216_gacksung_info.png → personality\12\11216_gacksung_info.webp
-  img: 11216_normal_info.png → personality\12\11216_normal_info.webp
-  img: 11216_gacksung_profile.png → personality\12\11216_gacksung_profile.webp
-  img: 11216_normal_profile.png → personality\12\11216_normal_profile.webp
-  img: 11216_gacksung_profile_support_personality.png → personality\12\11216_gacksung_profile_support_personality.webp
-  img: 11216_normal_profile_support_personality.png → personality\12\11216_normal_profile_support_personality.webp
-  img: 20109_cg.png → egoskill\01\20109_cg.webp
-  img: 20109_e_cg.png → egoskill\01\20109_e_cg.webp
-  img: 20109_awaken_profile.png → egoskill\01\20109_awaken_profile.webp
-  img: 20109_erosion_profile.png → egoskill\01\20109_erosion_profile.webp
-  img: 20109_profile_summary.png → egoskill\01\20109_profile_summary.webp
-  skillicon: 1021601
-  skillicon: 1021602
-  skillicon: 1021603
-  skillicon: 1021604
-  skillicon: 1021605
-  skillicon: 1021606
-  skillicon: 1021607
-  skillicon: 1121601
-  skillicon: 1121602
-  skillicon: 1121603
-  skillicon: 1121605
-  skillicon: 1121604
-  skillicon: 1121606
+  img: 10116_gacksung.png → personality\01\10116_gacksung.webp
+  img: 10116_normal.png → personality\01\10116_normal.webp
+  img: 10116_gacksung_info.png → personality\01\10116_gacksung_info.webp
+  img: 10116_normal_info.png → personality\01\10116_normal_info.webp
+  img: 10116_gacksung_profile.png → personality\01\10116_gacksung_profile.webp
+  img: 10116_normal_profile.png → personality\01\10116_normal_profile.webp
+  img: 10116_gacksung_profile_support_personality.png → personality\01\10116_gacksung_profile_support_personality.webp
+  img: 10116_normal_profile_support_personality.png → personality\01\10116_normal_profile_support_personality.webp
+  skillicon: 1011601
+  skillicon: 1011602
+  skillicon: 1011603
+  skillicon: 1011604
+  skillicon: 1011604_4
+  skillicon: 1011605
 ## 버프 아이콘
+  buff: DriftingDimensionYisang (복사)
+  buff: FourDimensionYisang (복사)
 ## 감사

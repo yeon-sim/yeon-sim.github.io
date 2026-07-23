@@ -5802,6 +5802,38 @@
     },
     {
       "id": 814402
+    },
+    {
+      "id": 1011601,
+      "attributeStockCondition": [
+        {
+          "type": "VIOLET",
+          "value": 4
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ],
+      "controlValueList": [
+        20,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 1011602
+    },
+    {
+      "id": 1011621,
+      "attributeStockCondition": [
+        {
+          "type": "VIOLET",
+          "value": 3
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
     }
   ]
 }

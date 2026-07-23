@@ -1,0 +1,6 @@
+{
+  "20104": ["Burst", "Charge"],
+  "20203": ["Laceration"],
+  "20705": ["Combustion", "Laceration", "Vibration", "Burst", "Sinking", "Breath", "Charge"],
+  "21201": ["Combustion", "Laceration", "Vibration", "Burst", "Sinking"]
+}

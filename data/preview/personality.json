@@ -1,20 +1,3 @@
 {
-  "list": [
-    {
-      "id": 10116,
-      "name": "관측불가",
-      "updatedDate": 20260723,
-      "season": 7,
-      "rank": 3,
-      "skillKeywordList": ["Charge", "Burst"],
-      "skills": [
-        { "tier": 1, "name": "차원 베기", "atk": "SLASH", "sin": "INDIGO" },
-        { "tier": 2, "name": "연속 차원 베기", "atk": "SLASH", "sin": "AMBER" },
-        { "tier": 3, "name": "공간 절단", "atk": "SLASH", "sin": "VIOLET", "sync4": { "name": "사차각 왜곡 시계열 절단", "atk": "SLASH", "sin": "VIOLET" } }
-      ],
-      "defense": { "name": "회피", "def": "EVADE", "sin": "VIOLET" },
-      "passives": ["속도와좌표와속도", "뚫린 골목"],
-      "supportPassive": "사람은광선보다도빠르게달아나라"
-    }
-  ]
+  "list": []
 }

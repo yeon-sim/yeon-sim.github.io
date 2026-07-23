@@ -79,6 +79,7 @@
       "characterId": 9,
       "egoType": "HE",
       "season": 1,
+      "maxEgoSyncLevel": 5,
       "attributeResistList": [
         {
           "type": "CRIMSON",
@@ -146,7 +147,8 @@
         }
       ],
       "awakeningPassiveList": [
-        2090211
+        2090211,
+        2090212
       ],
       "awakeningSkillId": 2090211,
       "corrosionSkillId": 2090221

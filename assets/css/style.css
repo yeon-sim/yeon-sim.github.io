@@ -388,6 +388,110 @@ body {
   width: 120px;
 }
 
+/* 테마팩 표시 토글·프리셋 버튼: 3글자 유틸 버튼(가이드·등급순·이미지)과 동일 너비 */
+.filter-btn.preset-pack-display-btn,
+.filter-btn.pack-preset-open-btn {
+  width: 102px;
+}
+
+/* 하드 모드 전용 테마팩 안내 (자세히에서 "노말"로 토글 시 난이도 버튼 위 메시지) */
+.pack-mode-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.hard-only-msg {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 200px;
+  width: max-content;
+  text-align: center;
+  background: #2a2119;
+  border: 1px solid #6b5a3e;
+  color: #eacaa1;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  z-index: 50;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.hard-only-msg::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #6b5a3e;
+}
+
+/* 테마팩 프리셋 목록 항목 카운트 */
+.pack-preset-count {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+/* 테마팩 프리셋 미리보기 (저장 이미지와 동일 방식으로 합성한 단일 이미지, 층별 분류) */
+.pack-preset-preview-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.pack-preset-preview-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pack-preset-preview-group-label {
+  font-weight: bold;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  white-space: normal;   /* 라벨의 \n 은 공백으로 (예: "하드 5층 & 평행중첩") */
+}
+/* 모달 헤더 액션 그룹 (난이도 토글 | 세로선 | 완료/적용·편집·삭제) */
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+/* 그룹 내 버튼 패딩을 토글(preset-action-btn)에 맞춰 통일 → 2글자 버튼 동일 너비 */
+.modal-header-actions .modal-btn {
+  padding: 2px 7px;
+}
+.modal-header-divider {
+  width: 1px;
+  height: 22px;
+  background: #6b5a3e;
+  flex-shrink: 0;
+}
+.pack-preset-hard-note {
+  display: block;
+  font-size: 0.8rem;
+  color: #e6b422;
+  margin: 0 4px 6px;
+}
+/* 가운데 정렬(행 전체) + 마지막 행 좌측부터 채움 (인격/EGO 그리드와 동일 패턴) */
+.pack-preset-preview-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);   /* 배너 폭 — 모달에서 한 행 4개 */
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+.pack-preset-preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .preset-panel-btn .filter-btn-icon {
   width: 24px;
   height: 24px;
@@ -565,7 +669,7 @@ body {
 .pack-group-label {
   width: 64px;
   min-width: 64px;
-  font-size: 1.0rem;
+  font-size: 0.9rem;
   color: #e0e0e0;
   font-weight: bold;
   padding-top: 4px;
@@ -580,10 +684,17 @@ body {
   width: calc(56px + 8px + 10 * 100px + 9 * (0.25rem + 2px));
 }
 .preset-pack-panel .pack-group-label {
-  width: 56px;
-  min-width: 56px;
+  width: 64px;
+  min-width: 64px;
 }
 .preset-pack-panel .pack-group {
+  border-bottom: none;
+}
+/* 자세히 모드: 테마팩 탭처럼 층별 그룹 구분선 */
+.preset-pack-panel--detail .pack-group {
+  border-bottom: 3px solid #4a3d2e;
+}
+.preset-pack-panel--detail .pack-group:last-child {
   border-bottom: none;
 }
 
@@ -612,14 +723,46 @@ body {
 }
 /* 선택 시 딤은 카드·선택 오버레이에만 (theme_clear 는 선명 유지) */
 .pack-panel-item.is-selected .pack-panel-card,
+.pack-panel-item.is-selected .pack-panel-banner,
 .pack-panel-item.is-selected .pack-panel-select,
-.pack-panel-item.is-selected .pack-panel-extreme-select {
+.pack-panel-item.is-selected .pack-panel-extreme-select,
+.pack-panel-item.is-selected .pack-panel-banner-select {
   opacity: 0.5;
 }
 .pack-panel-item.is-selected:hover .pack-panel-card,
+.pack-panel-item.is-selected:hover .pack-panel-banner,
 .pack-panel-item.is-selected:hover .pack-panel-select,
-.pack-panel-item.is-selected:hover .pack-panel-extreme-select {
+.pack-panel-item.is-selected:hover .pack-panel-extreme-select,
+.pack-panel-item.is-selected:hover .pack-panel-banner-select {
   opacity: 0.4;
+}
+/* 간단히(배너) 뷰: 카드 대신 테마팩 배너 이미지 */
+.pack-panel-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+/* 간단히 선택 시: 배너를 덮는 선택 프레임 (배너와 동일 비율) */
+.pack-panel-banner-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+/* 간단히에선 배너 높이가 낮아 VICTORY 스탬프 세로 크기를 축소 */
+.pack-panel--simple .pack-panel-clear {
+  width: auto;
+  height: 34px;
+}
+.pack-panel--simple .pack-group-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 102px);   /* 카드(스프라이트) 폭과 동일 */
+  justify-content: start;   /* 자세히(flex-start)와 라벨~요소 간격 일치 */
+  gap: 15px;   /* 자세히와 요소 간 여백 일치 */
 }
 /* ── 팩 선택 오버레이 크기 조정은 여기서 ── */
 .pack-panel-select {
@@ -1360,7 +1503,7 @@ button.site-nav-link.site-nav-link--active {
 }
 .adv-resist-cell {
   flex: none;
-  width: calc((100% - 15px) / 4);
+  width: calc((100% - 30px) / 7);   /* 전 그룹 공통 7열 그리드 → 셀 수 달라도 좌측 정렬 시 열 맞춤 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1388,6 +1531,98 @@ button.site-nav-link.site-nav-link--active {
 .adv-resist-cell-mult {
   font-size: 0.6rem;
   opacity: 0.85;
+}
+/* 스킬속성: 한 스킬 행 안에 물리/수비 타입 줄 + 죄악속성 줄을 세로로 쌓음 */
+.adv-skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+/* 죄악속성(7셀)은 라벨 공간 확보 위해 좌우 패딩 축소 */
+.adv-skill-cell-sin {
+  padding: 4px 0;
+}
+/* 스킬속성 드롭다운(2안): 물리/수비·죄악 박스 → 클릭 시 옵션 인라인 확장 */
+.skill-dd-row {
+  display: flex;
+  gap: 8px;
+}
+.skill-dd-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  min-width: 78px;
+  background: #17100a;
+  border: 1px solid #4a3d2e;
+  border-radius: 6px;
+  color: #cbb894;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.skill-dd-btn:hover {
+  border-color: #6b5942;
+}
+/* 선택 하이라이트는 드롭다운이 아니라 그룹명(1스킬·2스킬·수비 등)에 적용 */
+.adv-resist-head.adv-skill-head-active {
+  color: #fbc502;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(251, 197, 2, 0.5);
+}
+.skill-dd-label {
+  flex: 1;
+  text-align: center;
+  line-height: 1.15;
+}
+.skill-dd-selected {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.skill-dd-selected-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+.skill-dd-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 6px;
+  background: #17100a;
+  border: 1px solid #4a3d2e;
+  border-radius: 6px;
+}
+.skill-dd-panel .adv-resist-cell {
+  width: 46px;
+}
+/* 출시시기 필터 칩 */
+.timing-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+/* 이미지 칩: 한 줄에 5개 (gap 6px × 4) */
+.timing-chip {
+  flex: 0 0 calc((100% - 24px) / 5);
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: 0;
+  cursor: pointer;
+}
+.timing-chip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.timing-chip:hover {
+  filter: brightness(1.2);
+}
+.timing-chip.active {
+  filter: brightness(1.15) drop-shadow(0 0 5px #fbc502);
 }
 
 .modal-box--changelog .modal-header {
@@ -1489,6 +1724,10 @@ button.site-nav-link.site-nav-link--active {
 }
 .modal-box--sm .modal-title {
   font-size: 1.1rem;
+}
+/* 초기화(기프트·테마팩) 확인 모달만 폭 +20% (다른 --sm 모달 무영향) */
+#reset-modal .modal-box {
+  width: 384px;
 }
 
 /* ── 인격 상세 팝업 ── */
@@ -3658,6 +3897,9 @@ button.site-nav-link.site-nav-link--active {
     width: 100%;
     gap: 10px;
   }
+  .pack-panel--simple .pack-group-items {
+    grid-template-columns: repeat(auto-fill, 71px);   /* 모바일 카드 폭과 동일 */
+  }
   .pack-panel .pack-panel-sprite        { width: 71px; }
   .pack-panel .pack-panel-boss          { height: 77px; bottom: 38px; }
   .pack-panel .pack-panel-warning       { bottom: 94px; width: 35px; }
@@ -3720,7 +3962,8 @@ button.site-nav-link.site-nav-link--active {
   .controls-left .preset-exit-action,
   .controls-left .preset-confirm-action,
   .controls-left .preset-mode-actions,
-  .controls-left .preset-panel-btn    { order: 1; }
+  .controls-left .preset-panel-btn,
+  .controls-left .preset-mode-actions .pack-mode-wrap   { order: 1; }
   /* 줄바꿈용 가상 요소: 버튼(order:1) 뒤에 삽입해 인디케이터를 다음 행으로 밀어냄 */
   .controls-row-2 .controls-left::after {
     content: '';
@@ -3738,6 +3981,11 @@ button.site-nav-link.site-nav-link--active {
   .controls-row-2 .controls-left .preset-edit-btn {
     width: auto;
     padding: 0 4px;
+  }
+  /* 단, 테마팩 표시 토글·프리셋 버튼은 다른 3글자 버튼과 동일 너비 유지 (관측 종료는 auto) */
+  .controls-row-2 .controls-left .preset-panel-btn.preset-pack-display-btn,
+  .controls-row-2 .controls-left .preset-panel-btn.pack-preset-open-btn {
+    width: 102px;
   }
   /* 필터 버튼: 아이콘을 텍스트 위로(세로 배치) + 6열×2행 (수감자 페이지 필터와 동일 스타일) */
   .controls-row-2 .filter-buttons {
@@ -3810,6 +4058,9 @@ button.site-nav-link.site-nav-link--active {
   }
   .modal-box--sm {
     width: min(360px, 90vw);
+  }
+  #reset-modal .modal-box {
+    width: min(432px, 90vw);
   }
 
 }
@@ -3953,7 +4204,7 @@ button.site-nav-link.site-nav-link--active {
   flex-shrink: 0;
 }
 .advanced-search-box {
-  width: 460px;
+  width: 552px;
   background: none;
   border: 35px solid transparent;
   border-image: url('/images/ui/modal_frame_default.png') 50 fill stretch;
@@ -4722,7 +4973,7 @@ button.site-nav-link.site-nav-link--active {
     max-height: 90vh;
   }
   .advanced-search-box {
-    width: min(560px, 96vw);
+    width: min(672px, 96vw);
   }
   .detail-modal-box {
     width: min(480px, 96vw);
@@ -4749,6 +5000,18 @@ button.site-nav-link.site-nav-link--active {
   /* 기프트 모달: 최대 높이 85svh (내용에 맞춰 커지되 상한. svh = 주소창 고려·고정. .modal-box 90vh 상속 덮음) */
   .gift-popup-box {
     max-height: 85svh;
+  }
+  /* 공유 모달·테마팩 프리셋 상세 모달: 헤더 버튼이 제목 폭을 잠식 → 2줄로 분리
+     (1줄 제목 / 2줄 버튼. 정렬은 기존과 동일: 제목 좌측, 버튼 우측) */
+  .preset-share-shade .modal-header,
+  .pack-preset-detail-shade .modal-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .preset-share-shade .preset-preview-actions,
+  .pack-preset-detail-shade .modal-header-actions {
+    justify-content: flex-end;
   }
 
   /* 수감자 필터 버튼(속성·죄악 7개): 한 줄 유지 + 가운데 정렬.
