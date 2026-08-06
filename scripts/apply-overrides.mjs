@@ -11,6 +11,8 @@
 //  - 병합: deep-merge, 배열은 교체
 //  - 오버라이드에만 있는 새 id 는 append (리포트에 [신규] 표시)
 //  - 컨테이너가 없는 최상위 객체(키 맵/단일 레코드)는 최상위 키 기준 deep-merge
+//    (대상에 컨테이너가 있어도 패치에 없으면 파일 단위 플래그로 보고 최상위 병합.
+//     단 패치에 id 가 있으면 레코드 패치 오작성이므로 shape 오류로 남긴다)
 //  - 멱등: 값 set 방식이라 재실행해도 결과 동일
 
 import { readdirSync, statSync, readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -122,8 +124,8 @@ for (const ovPath of overrideFiles) {
         nNew++;
       }
     }
-  } else if (isObj(target) && isObj(override) && !tc && !oc) {
-    // 최상위 키 맵 / 단일 레코드 → 최상위 키 기준 deep-merge
+  } else if (isObj(target) && isObj(override) && !oc && !(tc && KEY in override)) {
+    // 최상위 키 맵 / 단일 레코드 / 파일 단위 플래그 → 최상위 키 기준 deep-merge
     const leaves = diffLeaves(target, override);
     const changed = leaves.filter((l) => !l.same);
     if (changed.length === 0) {

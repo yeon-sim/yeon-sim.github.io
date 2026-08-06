@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "loc": "2020511 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  },
+  {
+    "loc": "2020511 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  },
+  {
+    "loc": "2020511 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  },
+  {
+    "loc": "2020521 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  },
+  {
+    "loc": "2020521 Lv3 coin1.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2020521 Lv3 coin1.3",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  },
+  {
+    "loc": "2020521 Lv4 coin1.1",
+    "before": "[OnSucceedAttackTail] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttackTail] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2020521 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 대상의 [Combustion] 2를 방어 레벨 감소 1로 전환 (최대 10)",
+    "after": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (최대 10)"
+  }
+]

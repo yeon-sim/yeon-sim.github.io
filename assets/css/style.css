@@ -2476,7 +2476,7 @@ button.site-nav-link.site-nav-link--active {
 }
 .ego-detail-info-col {
   position: absolute;
-  left: calc(130px + 0.8rem);  /* cg-col 너비 + gap */
+  left: calc(150px + 0.8rem);  /* cg-col 너비 + gap */
   top: 0;
   right: 0;
   bottom: 0;
@@ -2542,7 +2542,8 @@ button.site-nav-link.site-nav-link--active {
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  width: 130px;    /* ← 1열 고정 너비 */
+  width: 150px;    /* ← 1열 고정 너비. 동기화 5단계 버튼 5개(28.2px×5 + gap 0.1rem×4 ≈ 147.4px)가
+                        들어가야 하므로 이 아래로 줄이면 Ⅴ 버튼이 잘린다 */
   flex-shrink: 0;
 }
 .ego-detail-cg-col:hover .card-save-btn {

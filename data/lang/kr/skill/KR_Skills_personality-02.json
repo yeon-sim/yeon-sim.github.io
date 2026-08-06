@@ -3165,7 +3165,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 2회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
                 },
                 {
                   "desc": "[ReUseOnSucceedAttack] [Combustion] 1 부여"
@@ -3196,7 +3196,7 @@
             {
               "coindescs": [
                 {
-                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 진동 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
+                  "desc": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 <style=\"highlight\">3</style>회)"
                 },
                 {
                   "desc": "[ReUseOnSucceedAttack] [Combustion] 1 부여<style=\"highlight\"></style>"
