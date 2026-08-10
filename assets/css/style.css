@@ -24,6 +24,18 @@
   src: url('/font/KOTRA_BOLD.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  /* 한글+라틴만 커버로 제한 → 일본어(가나·한자)는 이 폰트를 쓰지 않고 폴백으로 넘어감.
+     (KOTRA_BOLD 가 일본어 코드포인트를 빈 글리프로 보유해 폴백을 막던 문제 해결) */
+  unicode-range: U+0000-024F, U+2000-206F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+}
+
+@font-face {
+  /* 일본어 레이어 — KOTRA_BOLD 가 unicode-range 로 한글+라틴만 커버하므로,
+     KOTRA_BOLD 스택의 일본어(가나·한자)는 이 폰트로 렌더된다. */
+  font-family: 'logotypejp_mp_b_1.1';
+  src: url('/font/logotypejp_mp_b_1.1.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 [x-cloak] { display: none !important; }
@@ -43,7 +55,7 @@ input, button, select, textarea {
 }
 
 body {
-  font-family: 'KOTRA_BOLD', 'Malgun Gothic', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'Malgun Gothic', sans-serif;
   background: #120d08;
   color: #e0e0e0;
   padding: 1rem;
@@ -880,14 +892,19 @@ body {
 .pack-panel-name {
   position: absolute;
   bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'KOTRA_BOLD', sans-serif;
+  /* 중앙정렬: transform(translateX) 대신 레이아웃(auto margin) — 합성 레이어 서브픽셀 리샘플링에 의한
+     텍스트 흐림 방지. fit-content 라 offsetWidth = 텍스트 폭(측정 로직 유지). */
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  max-width: 100%;
+  text-align: center;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.81rem;
   white-space: nowrap;
-  text-shadow: 1px 1px 3px #000;
+  text-shadow: 1px 1px 1px #000;
   z-index: 3;
-  display: inline-block;
 }
 .pack-panel-item.is-extreme .pack-panel-name {
   bottom: 12px;
@@ -1205,7 +1222,7 @@ body {
 .analytics-section-title {
   color: #aaa;
   font-size: 1rem;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   margin-bottom: 0.3rem;
 }
 .analytics-info-list {
@@ -1427,7 +1444,7 @@ button.site-nav-link.site-nav-link--active {
   font-size: 1rem;
   font-weight: bold;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'Malgun Gothic', sans-serif;
 }
 .modal-close {
   background: none;
@@ -1684,7 +1701,7 @@ button.site-nav-link.site-nav-link--active {
   font-weight: bold;
   color: #c8a84b;
   margin-bottom: 0.4rem;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
 }
 .changelog-date {
   font-size: 0.8rem;
@@ -1790,7 +1807,7 @@ button.site-nav-link.site-nav-link--active {
   cursor: pointer;
   color: #aaa;
   text-shadow: 0 1px 1px #000;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.72rem;
   padding: 0.1rem 0.4rem;
   flex: 1;
@@ -1860,7 +1877,7 @@ button.site-nav-link.site-nav-link--active {
   cursor: pointer;
   color: #aaa;
   text-shadow: 0 1px 1px #000;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.72rem;
   padding: calc(0.1rem + 3px) 0.5rem;
   white-space: nowrap;
@@ -2591,7 +2608,7 @@ button.site-nav-link.site-nav-link--active {
   object-fit: contain;
 }
 .gift-popup-hard span {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 1.2rem;
   margin-right: 0.6rem;
 }
@@ -2814,7 +2831,7 @@ button.site-nav-link.site-nav-link--active {
 .preset-item-cat-count {
   font-size: 0.75rem;
   color: #aaa;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
 }
 .preset-preview-actions {
   display: flex;
@@ -2943,7 +2960,7 @@ button.site-nav-link.site-nav-link--active {
   align-items: center;
   gap: 5px;
   font-size: 0.8rem;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   color: #c9a84c;
   padding-bottom: 2px;
   border-bottom: 1px solid #4a3d2e;
@@ -2997,7 +3014,7 @@ button.site-nav-link.site-nav-link--active {
 .delete-confirm-text {
   font-size: 0.9rem;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   text-align: left;
   word-break: break-all;
 }
@@ -3045,7 +3062,7 @@ button.site-nav-link.site-nav-link--active {
   background: rgba(30, 20, 10, 0.92);
   border: 1px solid #6b5230;
   color: #e0c98a;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.9rem;
   padding: 8px 20px;
   border-radius: 4px;
@@ -3069,7 +3086,7 @@ button.site-nav-link.site-nav-link--active {
   border-radius: 0;
   background: none;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
   display: inline-flex;
@@ -3118,7 +3135,7 @@ button.site-nav-link.site-nav-link--active {
   font-size: 1.1rem;
 }
 .guide-page-indicator {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.85rem;
   color: #888;
 }
@@ -3175,7 +3192,7 @@ button.site-nav-link.site-nav-link--active {
   display: block;
 }
 .guide-page-counter {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.8rem;
   color: #c8a84b;
   min-width: 52px;
@@ -3268,7 +3285,7 @@ button.site-nav-link.site-nav-link--active {
   bottom: 29px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.95rem;
   white-space: nowrap;
   text-shadow: 1px 1px 3px #000;
@@ -3329,7 +3346,7 @@ button.site-nav-link.site-nav-link--active {
 }
 .pack-popup-difficulty {
   color: #c8a84b;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   min-width: 5rem;
 }
 .pack-popup-floors {
@@ -3345,7 +3362,7 @@ button.site-nav-link.site-nav-link--active {
   margin-top: 0.2rem;
 }
 .pack-popup-section-label {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   font-size: 0.85rem;
   color: #c8a84b;
   margin-bottom: 0.4rem;
@@ -3353,7 +3370,7 @@ button.site-nav-link.site-nav-link--active {
 .pack-popup-no-gifts {
   font-size: 0.85rem;
   color: #9c9c9c;
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   padding-left: 0.5rem;
 }
 .pack-popup-gift-list {
@@ -3549,7 +3566,7 @@ button.site-nav-link.site-nav-link--active {
   align-items: center;
   gap: 0.3rem;
   margin-bottom: 1rem;
-  font-family: 'LiberationSans', KOTRA_BOLD;
+  font-family: 'LiberationSans', KOTRA_BOLD, 'logotypejp_mp_b_1.1';
   font-size: 1rem;
 }
 .gift-popup-related-label {
@@ -3557,7 +3574,7 @@ button.site-nav-link.site-nav-link--active {
 }
 
 .gift-popup-used-in-label {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   margin-top: 0px;
 }
 
@@ -3642,7 +3659,7 @@ button.site-nav-link.site-nav-link--active {
   flex-shrink: 0;
 }
 .buff-tooltip-name {
-  font-family: 'KOTRA_BOLD', sans-serif;
+  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
   color: #f7c100;
   font-size: 1.05rem;
   flex: 1;
@@ -5219,4 +5236,18 @@ button.site-nav-link.site-nav-link--active {
   background: transparent;
   color: #edd0ac;
   border: 1px solid #6a5a3e;
+}
+
+/* [스파이크] 클라이언트 사이드 언어 전환 토글 */
+.lang-switch {
+  gap: 4px;
+}
+.lang-btn {
+  min-width: 44px;
+  justify-content: center;
+  opacity: 0.55;
+}
+.lang-btn--active {
+  opacity: 1;
+  outline: 1px solid #c9a84c;
 }

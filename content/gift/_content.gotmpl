@@ -1,6 +1,6 @@
 {{/* 기프트 상세 페이지를 분산 소스 조립(partials/egogift/assemble.html)에서 생성 (/gift/{id}).
      기프트 페이지(index.html)와 동일한 454종(9xxx + 언어 보유). */}}
-{{ range partial "egogift/assemble.html" . }}
+{{ range partial "egogift/assemble.html" "kr" }}
   {{ $.AddPage (dict
     "path" (printf "%d" (int .id))
     "title" .name

@@ -1,0 +1,37 @@
+[
+  {
+    "loc": "19812 desc",
+    "before": "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 <style=\"upgradeHighlight\">2</style>회)",
+    "after": "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 2회)"
+  },
+  {
+    "loc": "29812 desc",
+    "before": "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 <style=\"upgradeHighlight\">3</style>회)",
+    "after": "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 3회)"
+  },
+  {
+    "loc": "19813 desc",
+    "before": "[편성 순서 <style=\"upgradeHighlight\">2번</style>, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2, [Vulnerable] 1 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 1 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +<style=\"upgradeHighlight\">12.5</style>%",
+    "after": "[편성 순서 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2, [Vulnerable] 1 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 1 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +12.5%"
+  },
+  {
+    "loc": "29813 desc",
+    "before": "[편성 순서 <style=\"upgradeHighlight\">1번</style>, 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 <style=\"upgradeHighlight\">[Enhancement] 2 얻음</style>\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 <style=\"upgradeHighlight\">2</style> 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +<style=\"upgradeHighlight\">15</style>%",
+    "after": "[편성 순서 1번, 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 2 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +15%"
+  },
+  {
+    "loc": "19814 desc",
+    "before": "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 <style=\"upgradeHighlight\">2</style>명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]",
+    "after": "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 2명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+  },
+  {
+    "loc": "29814 desc",
+    "before": "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 <style=\"upgradeHighlight\">3</style>명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]",
+    "after": "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 3명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+  },
+  {
+    "loc": "9816 desc",
+    "before": "[편성 순서 1번 인격 전용 효과]\n\n기본 공격 스킬 중에 [Vibration] 위력, 횟수를 부여하거나, [VibrationExplosion] 효과를 보유한 스킬이 있는 인격에게 적용됨\n스테이지 시작시, [UltraPrecisionTimeAcceleration]을 5 얻음",
+    "after": "[편성 순서 1번 인격 전용 효과]\n\n기본 공격 스킬 중에 [Vibration] 위력, 횟수를 부여하거나, [VibrationExplosion] 효과를 보유한 스킬이 있는 인격에게 적용됨\n스테이지 시작 시, [UltraPrecisionTimeAcceleration]을 5 얻음"
+  }
+]

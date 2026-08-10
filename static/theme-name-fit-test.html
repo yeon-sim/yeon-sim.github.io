@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>테마명 폰트 맞춤 테스트 — 연심</title>
+<style>
+  /* 실제 사이트와 동일한 폰트 스택 재현 */
+  @font-face {
+    font-family: 'KOTRA_BOLD';
+    src: url('/font/KOTRA_BOLD.woff2') format('woff2');
+    unicode-range: U+0000-024F, U+2000-206F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+  }
+  @font-face {
+    font-family: 'logotypejp_mp_b_1.1';
+    src: url('/font/logotypejp_mp_b_1.1.woff2') format('woff2');
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #120d08; color: #e6e0d6;
+    font-family: 'Malgun Gothic', system-ui, sans-serif;
+    padding: 24px; line-height: 1.4;
+  }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .note { color: #9a8f7d; font-size: 13px; margin-bottom: 16px; }
+  .note b { color: #c9a84c; }
+
+  .controls {
+    position: sticky; top: 0; z-index: 5; background: #120d08;
+    padding: 12px 0; margin-bottom: 20px; border-bottom: 1px solid #3a2f1f;
+    display: flex; gap: 28px; align-items: center; flex-wrap: wrap;
+  }
+  .controls label { font-size: 13px; color: #c9a84c; display: flex; align-items: center; gap: 8px; }
+  .controls output { color: #f0e9dc; font-weight: bold; min-width: 48px; }
+
+  table { border-collapse: collapse; }
+  th, td { border: 1px solid #2a2115; padding: 16px; text-align: center; vertical-align: top; }
+  th { color: #c9a84c; font-size: 13px; }
+  td .rid { color: #b8ab95; font-size: 12px; font-family: 'Consolas', monospace; }
+
+  /* 카드 목업 — sprite 폭(102px)에 이름 오버레이 */
+  .card {
+    position: relative; width: var(--card-w); height: 92px;
+    margin: 0 auto; background: #241b10;
+    border: 1px solid #4a3c26; border-radius: 4px;
+  }
+  /* maxW 경계 가이드(점선) — 이름이 이 폭을 넘으면 축소/줄바꿈 */
+  .card::after {
+    content: ''; position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
+    width: var(--max-w); height: 78px; border: 1px dashed rgba(201,168,76,0.30); pointer-events: none;
+  }
+  .pack-name {
+    position: absolute; bottom: 8px;
+    /* 중앙정렬: transform 대신 레이아웃(auto margin) — 텍스트 흐림 방지 */
+    left: 0; right: 0; margin-inline: auto; width: fit-content; max-width: 100%;
+    font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+    font-size: 0.81rem;              /* 실제 기본값 */
+    white-space: nowrap; text-shadow: 1px 1px 1px #000; z-index: 3;
+    text-align: center; color: #f4ecdd;
+    /* 줄바꿈 모드에서 쓰일 값들 (JS가 토글) */
+    word-break: keep-all; overflow-wrap: break-word; line-height: 1.15;
+  }
+  .meta { margin-top: 8px; font-size: 11px; color: #8a7f6d; font-family: 'Consolas', monospace; }
+  .meta .wrap { color: #d98a4b; }
+</style>
+</head>
+<body>
+  <h1>테마명 폰트 맞춤 테스트</h1>
+  <p class="note">
+    <b>텍스트 폭 W = sprite 폭</b> (데스크톱 102 / 모바일 71). 한 줄로 W에 들어갈 때까지 0.5px씩 축소 → <b>하한선</b>에서도 넘치면 W 폭으로 <b>줄바꿈</b>(greedy).<br>
+    <b>모바일</b>은 데스크톱 대비 폭 비율(71/102 ≈ 0.696)로 <b>기본 폰트·하한선</b>을 자동 축소. 하한선 슬라이더 = 데스크톱 기준값.
+  </p>
+
+  <div class="controls">
+    <label>하한선(min, 데스크톱) <input type="range" id="minSize" min="4" max="14" step="0.5" value="9">
+      <output id="minVal">9.0</output>px</label>
+    <label>줄바꿈 전략
+      <select id="strategy">
+        <option value="auto">greedy (기본)</option>
+        <option value="balance">balance</option>
+        <option value="pretty">pretty</option>
+      </select>
+    </label>
+    <label>기기
+      <select id="device">
+        <option value="desktop">데스크톱 (sprite 102)</option>
+        <option value="mobile">모바일 (sprite 71)</option>
+      </select>
+    </label>
+    <span class="samples" id="derived"></span>
+  </div>
+
+  <table id="tbl">
+    <thead><tr><th>테마</th><th>한글</th><th>English</th><th>日本語</th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const THEMES = [
+      { id: 1009, kr: '둥지, 공방, 기술',            en: 'Nest, Workshop, and Technology',            jp: '巣、工房、技術' },
+      { id: 1123, kr: '워프특급 살인사건 BokGak',    en: 'Murder on the WARP Express BokGak',         jp: 'ワープ特急殺人事件 BokGak' },
+      { id: 1501, kr: 'N사 신 구인회',               en: 'N Corp. New League of Nine Littérateurs',   jp: 'N社 新九人会' },
+      { id: 1510, kr: '어느 도서관의 어떤 책 속으로', en: "Into a Certain Library's Book",             jp: 'とある図書館の、ある本の中へ' },
+    ];
+
+    // 규칙: 텍스트 폭 W = sprite 폭. 모바일은 데스크톱 대비 폭 비율(71/102)로 base·min 축소.
+    const SPRITE = { desktop: 102, mobile: 71 };
+    const RATIO = SPRITE.mobile / SPRITE.desktop;      // ≈ 0.696
+    const BASE_DESKTOP = 0.81 * 16 - 0.5;             // .pack-panel-name 기본 0.81rem(12.96px) − 0.5px = 12.46px
+
+    const tbody = document.querySelector('#tbl tbody');
+    const cells = [];   // {el(nameEl), meta, text}
+    for (const t of THEMES) {
+      const tr = document.createElement('tr');
+      const td0 = document.createElement('td');
+      td0.innerHTML = `<span class="rid">${t.id}</span>`;
+      tr.appendChild(td0);
+      for (const lc of ['kr','en','jp']) {
+        const td = document.createElement('td');
+        td.innerHTML =
+          `<div class="card"><span class="pack-name">${t[lc]}</span></div>` +
+          `<div class="meta"></div>`;
+        tr.appendChild(td);
+        cells.push({ nameEl: td.querySelector('.pack-name'), meta: td.querySelector('.meta') });
+      }
+      tbody.appendChild(tr);
+    }
+
+    // fit 로직(단일 폭 W): W 안에 한 줄로 들어갈 때까지 축소 → 하한 도달해도 넘치면 W 폭으로 줄바꿈
+    function fitName(el, W, base, minSize, strategy) {
+      el.style.whiteSpace = 'nowrap';
+      el.style.width = '';                                     // 측정 시엔 auto(폭 제약 없음)
+      el.style.maxWidth = 'none';
+      el.style.textWrapStyle = '';                             // 리셋
+      el.style.fontSize = base + 'px';                         // 기기별 기본 폰트에서 시작
+      let size = base;
+      while (el.offsetWidth > W && size - 0.5 >= minSize) {     // 한 줄로 축소(하한 전까지)
+        size -= 0.5;
+        el.style.fontSize = size + 'px';
+      }
+      if (el.offsetWidth > W) {                                // 하한에서도 넘침 → 줄바꿈(같은 폭)
+        el.style.fontSize = minSize + 'px';
+        el.style.whiteSpace = 'normal';
+        el.style.width = W + 'px';                             // ⚠ 명시적 width — 절대배치 left:50% 가용폭 함정 회피
+        el.style.textWrapStyle = strategy;                     // greedy(auto)/balance/pretty
+      }
+      const px = parseFloat(el.style.fontSize) || parseFloat(getComputedStyle(el).fontSize);
+      const lineH = parseFloat(getComputedStyle(el).lineHeight) || px * 1.15;
+      const lines = Math.max(1, Math.round(el.offsetHeight / lineH));   // 실제 줄 수
+      return { px, lines };
+    }
+
+    function applyAll() {
+      const devKey = document.getElementById('device').value;
+      const desktopMin = parseFloat(document.getElementById('minSize').value);
+      const strategy = document.getElementById('strategy').value;
+
+      const scale = devKey === 'mobile' ? RATIO : 1;
+      const sprite = SPRITE[devKey];               // 카드(이미지) 폭 — 시각 참조용
+      const W = 95.86 * scale;                      // 텍스트 폭 (데스크톱 95.86px / 모바일 66.73px)
+      const base = BASE_DESKTOP * scale;           // 기본 폰트 (모바일은 비율 축소)
+      const minSize = desktopMin * scale;          // 하한선 (모바일은 비율 축소)
+
+      document.documentElement.style.setProperty('--card-w', sprite + 'px');  // 카드 = sprite (유지)
+      document.documentElement.style.setProperty('--max-w', W + 'px');        // 가이드 = 텍스트 폭 W
+      document.getElementById('derived').textContent =
+        `적용값 → sprite ${sprite}px · 텍스트폭 ${W.toFixed(1)}px · 기본 ${base.toFixed(1)}px · 하한 ${minSize.toFixed(2)}px` +
+        (devKey === 'mobile' ? ` (×${RATIO.toFixed(3)})` : '');
+
+      for (const c of cells) {
+        const r = fitName(c.nameEl, W, base, minSize, strategy);
+        c.meta.innerHTML = `${r.px.toFixed(1)}px · ${r.lines}줄` +
+          (r.lines >= 2 ? ` <span class="wrap">(줄바꿈)</span>` : '');   // 실제 줄 수 기준
+      }
+    }
+
+    const minEl = document.getElementById('minSize'), minOut = document.getElementById('minVal');
+    minEl.addEventListener('input', () => { minOut.textContent = parseFloat(minEl.value).toFixed(1); applyAll(); });
+    document.getElementById('strategy').addEventListener('change', applyAll);
+    document.getElementById('device').addEventListener('change', applyAll);
+
+    // 폰트 로드 후 측정 (폭이 폰트에 의존)
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(applyAll);
+    window.addEventListener('load', applyAll);
+  </script>
+</body>
+</html>

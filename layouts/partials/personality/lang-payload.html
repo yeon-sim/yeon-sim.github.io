@@ -1,0 +1,147 @@
+{{- /* [클라이언트 사이드 언어 전환] 인격/EGO 페이지의 "언어 의존 텍스트 맵"만 모은 페이로드.
+       list.html 의 맵 빌드 로직을 언어 정규화(partials/lang.html)로 읽어 그대로 미러링한다.
+       구조 맵(skillMap 속성·ppMap·색상 등 언어 무관)은 페이지 인라인에 그대로 두고, 여기엔 텍스트만.
+       인자: 언어 코드 문자열 ("kr"·"en"·"jp") → /lang/personality-{lc}.json */ -}}
+{{- $lc := . -}}
+{{- $L := partialCached "lang.html" $lc $lc -}}
+{{- $colorRE := `<color=(#[0-9a-fA-F]{3,8})>(.*?)</color>` -}}
+
+{{- /* 스킬 이름/설명 (id → nl:[{g,n}] / dl:[{level,desc,coins}]) */ -}}
+{{- $skillName := dict -}}
+{{- $skillDesc := dict -}}
+{{- range $L.skill -}}
+  {{- range .dataList -}}
+    {{- if .levelList -}}
+      {{- $nl := slice -}}
+      {{- $dl := slice -}}
+      {{- range .levelList -}}
+        {{- $nl = $nl | append (dict "g" .level "n" .name) -}}
+        {{- $coins := slice -}}
+        {{- $coinIdx := 0 -}}
+        {{- range .coinlist -}}
+          {{- $coinIdx = add $coinIdx 1 -}}
+          {{- if .coindescs -}}
+            {{- $descs := slice -}}
+            {{- $hasContent := false -}}
+            {{- range .coindescs -}}{{- $descs = $descs | append .desc -}}{{- if ne (.desc | default "") "" -}}{{- $hasContent = true -}}{{- end -}}{{- end -}}
+            {{- if $hasContent -}}{{- $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) -}}{{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) -}}
+      {{- end -}}
+      {{- $skillName = merge $skillName (dict (string .id) $nl) -}}
+      {{- $skillDesc = merge $skillDesc (dict (string .id) $dl) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 인격 이름 (id → title) */ -}}
+{{- $name := dict -}}
+{{- range $L.Personalities.dataList -}}{{- $name = merge $name (dict (string .id) .title) -}}{{- end -}}
+
+{{- /* 내성 라벨 (value → {text,color}); color 는 언어무관(data/resist) */ -}}
+{{- $resistText := dict -}}
+{{- range $L.ResistText.dataList -}}{{- $resistText = merge $resistText (dict .id .content) -}}{{- end -}}
+{{- $resistLabel := dict -}}
+{{- range site.Data.resist.dataList -}}
+  {{- $resistLabel = merge $resistLabel (dict (printf "%v" .value) (dict "text" (index $resistText .id | default "") "color" (.color | default ""))) -}}
+{{- end -}}
+
+{{- /* 시즌 (id → {title,name}); color 태그 → span */ -}}
+{{- $season := dict -}}
+{{- range $L.Season.dataList -}}
+  {{- $season = merge $season (dict (string .id) (dict
+    "title" (.title | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
+    "name"  (.name  | replaceRE $colorRE "<span style=\"color:$1\">$2</span>"))) -}}
+{{- end -}}
+
+{{- /* 유닛 키워드 (suffix → content); color 태그 → span */ -}}
+{{- $keyword := dict -}}
+{{- range $L.unitkeyword -}}
+  {{- range .dataList -}}
+    {{- $suffix := strings.TrimPrefix "UnitKeyword_" .id -}}
+    {{- if not (isset $keyword $suffix) -}}
+      {{- $keyword = merge $keyword (dict $suffix (.content | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 패시브 이름/설명 (id → {name,desc}); 구조(res/stock)는 언어무관이라 페이지 인라인 유지 */ -}}
+{{- $passive := dict -}}
+{{- range (slice $L.passive.Passives.dataList (index $L.passive "Passives_check4").dataList) -}}
+  {{- range . -}}{{- $passive = merge $passive (dict (string .id) (dict "name" .name "desc" .desc)) -}}{{- end -}}
+{{- end -}}
+
+{{- /* 파싱 키워드 (id → {name,desc,iconId,skillTag}); iconId 는 언어무관 폴백 */ -}}
+{{- $buffIcon := dict -}}
+{{- range site.Data.buff -}}{{- range .list -}}{{- if and .id .iconId -}}{{- $buffIcon = merge $buffIcon (dict (string .id) (string .iconId)) -}}{{- end -}}{{- end -}}{{- end -}}
+{{- $kw := dict -}}
+{{- range $L.parsingdata -}}
+  {{- $isSkillTag := .skillTag | default false -}}
+  {{- range .dataList -}}
+    {{- $iconId := "" -}}
+    {{- if .iconId -}}{{- $iconId = .iconId -}}{{- else -}}{{- with index $buffIcon (string .id) -}}{{- $iconId = . -}}{{- end -}}{{- end -}}
+    {{- if not (isset $kw (string .id)) -}}
+      {{- $kw = merge $kw (dict (string .id) (dict "name" (.name | default "") "desc" (.desc | default "") "iconId" $iconId "skillTag" $isSkillTag)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* EGO 스킬 이름/설명/환상체명 (id → ...) */ -}}
+{{- $egoSkillName := dict -}}
+{{- $egoSkillDesc := dict -}}
+{{- $egoSkillAbName := dict -}}
+{{- range $L.egoskill -}}
+  {{- if .dataList -}}
+    {{- range .dataList -}}
+      {{- if .levelList -}}
+        {{- $egoSkillAbName = merge $egoSkillAbName (dict (printf "%d" (int .id)) ((index .levelList 0).abName | default "")) -}}
+        {{- $nl := slice -}}
+        {{- $dl := slice -}}
+        {{- range .levelList -}}
+          {{- $nl = $nl | append (dict "g" .level "n" .name) -}}
+          {{- $coins := slice -}}
+          {{- $coinIdx := 0 -}}
+          {{- range .coinlist -}}
+            {{- $coinIdx = add $coinIdx 1 -}}
+            {{- if .coindescs -}}
+              {{- $descs := slice -}}
+              {{- range .coindescs -}}{{- if .desc -}}{{- $descs = $descs | append .desc -}}{{- end -}}{{- end -}}
+              {{- if $descs -}}{{- $coins = $coins | append (dict "idx" $coinIdx "descs" $descs) -}}{{- end -}}
+            {{- end -}}
+          {{- end -}}
+          {{- $dl = $dl | append (dict "level" .level "desc" (.desc | default "") "coins" $coins) -}}
+        {{- end -}}
+        {{- $egoSkillName = merge $egoSkillName (dict (printf "%d" (int .id)) $nl) -}}
+        {{- $egoSkillDesc = merge $egoSkillDesc (dict (printf "%d" (int .id)) $dl) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* EGO 장비명 / EGO 패시브(이름·설명) */ -}}
+{{- $egoName := dict -}}
+{{- range $L.egoskill.Egos.dataList -}}{{- $egoName = merge $egoName (dict (printf "%d" (int .id)) .name) -}}{{- end -}}
+{{- $egoPassive := dict -}}
+{{- range $L.egoskill.Passive_Ego.dataList -}}{{- $egoPassive = merge $egoPassive (dict (printf "%d" (int .id)) (dict "name" .name "desc" .desc)) -}}{{- end -}}
+
+{{- /* sin(죄악속성) 이름 (id → name) */ -}}
+{{- $sin := dict -}}
+{{- range $L.ColorType.list -}}{{- $sin = merge $sin (dict .id .name) -}}{{- end -}}
+
+{{- return dict
+      "lang" $lc
+      "skillName" $skillName
+      "skillDesc" $skillDesc
+      "name" $name
+      "resistLabel" $resistLabel
+      "season" $season
+      "keyword" $keyword
+      "passive" $passive
+      "kw" $kw
+      "egoSkillName" $egoSkillName
+      "egoSkillDesc" $egoSkillDesc
+      "egoSkillAbName" $egoSkillAbName
+      "egoName" $egoName
+      "egoPassive" $egoPassive
+      "sin" $sin -}}

@@ -1,7 +1,18 @@
 {{ define "main" }}
 
 {{/* 데이터 로드 — egogifts.json 대신 분산 소스 조립 (partials/egogift/assemble.html) */}}
-{{ $gifts := partial "egogift/assemble.html" . }}
+{{ $gifts := partialCached "egogift/assemble.html" "kr" "kr" }}
+
+{{/* [스파이크] 클라이언트 사이드 언어 전환용 언어별 페이로드 발행 → /lang/gift-{lc}.json.
+     현재 페이지 동작에는 영향 없음 (발행만 하고 소비하지 않는다). */}}
+{{ range $lc := slice "kr" "en" "jp" }}
+  {{ $r := resources.FromString (printf "lang/gift-%s.json" $lc) (partial "egogift/lang-payload.html" $lc | jsonify) }}
+  {{/* RelPermalink 평가가 발행을 트리거한다. 변수에 담아 출력은 내지 않는다. */}}
+  {{ $published := $r.RelPermalink }}
+  {{/* 정적 UI 문구 카탈로그(KR_YeonSimUI 계열) → /lang/ui-{lc}.json */}}
+  {{ $ui := resources.FromString (printf "lang/ui-%s.json" $lc) (index (partialCached "lang.html" $lc $lc) "YeonSimUI" | jsonify) }}
+  {{ $uiPublished := $ui.RelPermalink }}
+{{ end }}
 {{/* 카테고리 — egogift/category.json(id·플래그) + KR_Categories(이름) 조인 */}}
 {{ $catNameMap := dict }}
 {{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ $catNameMap = merge $catNameMap (dict .id .name) }}{{ end }}
@@ -30,7 +41,7 @@
           <input
             class="search-input"
             type="search"
-            placeholder="이름 및 태그(#)으로 검색"
+            :placeholder="ui('search.placeholder')"
             x-model="search"
             @input="onSearch()"
           >
@@ -47,12 +58,12 @@
           class="filter-btn tag-panel-btn"
           :class="{ active: showTagPanel }"
           @click="showTagPanel = !showTagPanel; showPackPanel = false; packFilter = ''"
-        ># 태그</button>
+        ><span x-text="ui('search.tag_button')"># 태그</span></button>
       </div>
       <div class="controls-right">
         <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
           <img class="filter-btn-icon" src="/images/ui/clear.png" alt="">
-          <span>초기화</span>
+          <span x-text="ui('common.reset')">초기화</span>
         </button>
       </div>
     </div>
@@ -62,10 +73,10 @@
           <div class="preset-mode-label-wrap" x-ref="presetModeLabelWrap">
             <span class="preset-mode-label" x-ref="presetModeLabel">
               <template x-if="panelMode === 'preset'">
-                <span x-text="'관측 중 : ' + (presets[activePanelPresetIdx]?.presetName ?? '')"></span>
+                <span x-text="ui('preset.observing_prefix') + (presets[activePanelPresetIdx]?.presetName ?? '')"></span>
               </template>
               <template x-if="panelMode === 'preset-edit'">
-                <span x-text="'편집 중 : ' + (presets[activePanelPresetIdx]?.presetName ?? '')"></span>
+                <span x-text="ui('preset.editing_prefix') + (presets[activePanelPresetIdx]?.presetName ?? '')"></span>
               </template>
             </span>
           </div>
@@ -74,26 +85,26 @@
           class="filter-btn preset-panel-btn"
           x-show="!showPackPanel && panelMode === 'default'"
           @click="showPresetModal = true"
-        ><img class="filter-btn-icon" src="/images/ui/preset.png" alt="">이상 관측</button>
+        ><img class="filter-btn-icon" src="/images/ui/preset.png" alt=""><span x-text="ui('preset.observe')">이상 관측</span></button>
         <div class="preset-mode-actions" x-cloak x-show="!showPackPanel && panelMode === 'preset'">
-          <button class="filter-btn preset-panel-btn" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">관측 종료</button>
+          <button class="filter-btn preset-panel-btn" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt=""><span x-text="ui('preset.observe_end')">관측 종료</span></button>
           <button class="filter-btn preset-panel-btn preset-pack-display-btn" @click="cyclePresetPackDisplay()"><img class="filter-btn-icon" src="/images/ui/theme_visibility.png" alt=""><span x-text="presetPackDisplayLabel()"></span></button>
           <span class="pack-mode-wrap" x-show="presetPackDisplay === 'detail'">
-            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? '노말' : '하드'"></button>
-            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)">하드 모드 전용 테마팩이 있습니다.</span>
+            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? ui('pack.difficulty.normal') : ui('pack.difficulty.hard')"></button>
+            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)" x-text="ui('pack.hard_only_msg')">하드 모드 전용 테마팩이 있습니다.</span>
           </span>
         </div>
         <div class="preset-edit-actions" x-cloak x-show="!showPackPanel && panelMode === 'preset-edit'">
-          <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">나가기</button>
-          <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt="">완료</button>
+          <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt=""><span x-text="ui('common.exit')">나가기</span></button>
+          <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt=""><span x-text="ui('common.done')">완료</span></button>
         </div>
 
         {{/* ── 테마팩 프리셋 UI (테마팩 탭 전용) ── */}}
         <div class="preset-mode-bar" x-cloak x-show="showPackPanel && packPresetMode !== 'none'" :class="{ 'preset-mode-bar--edit': packPresetMode === 'edit' }">
           <div class="preset-mode-label-wrap">
             <span class="preset-mode-label">
-              <template x-if="packPresetMode === 'apply'"><span x-text="'관측 중 : ' + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
-              <template x-if="packPresetMode === 'edit'"><span x-text="'편집 중 : ' + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
+              <template x-if="packPresetMode === 'apply'"><span x-text="ui('preset.observing_prefix') + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
+              <template x-if="packPresetMode === 'edit'"><span x-text="ui('preset.editing_prefix') + (packPresets[activePackPresetIdx]?.name ?? '')"></span></template>
             </span>
           </div>
         </div>
@@ -101,17 +112,17 @@
           class="filter-btn preset-panel-btn pack-preset-open-btn"
           x-cloak x-show="showPackPanel && packPresetMode === 'none'"
           @click="openPackPresetModal()"
-        ><img class="filter-btn-icon" src="/images/ui/theme_preset.png" alt="">프리셋</button>
+        ><img class="filter-btn-icon" src="/images/ui/theme_preset.png" alt=""><span x-text="ui('pack.preset')">프리셋</span></button>
         <div class="preset-mode-actions" x-cloak x-show="showPackPanel && packPresetMode === 'apply'">
-          <button class="filter-btn preset-panel-btn" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">관측 종료</button>
+          <button class="filter-btn preset-panel-btn" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt=""><span x-text="ui('preset.observe_end')">관측 종료</span></button>
           <span class="pack-mode-wrap">
-            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? '노말' : '하드'"></button>
-            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)">하드 모드 전용 테마팩이 있습니다.</span>
+            <button class="filter-btn pack-mode-btn" @click="toggleDifficulty()" x-text="packDungeonMode === 'normal' ? ui('pack.difficulty.normal') : ui('pack.difficulty.hard')"></button>
+            <span class="hard-only-msg" x-show="showHardOnlyMsg" x-transition @click="showHardOnlyMsg = false; clearTimeout(_hardOnlyTimer)" x-text="ui('pack.hard_only_msg')">하드 모드 전용 테마팩이 있습니다.</span>
           </span>
         </div>
         <div class="preset-edit-actions" x-cloak x-show="showPackPanel && packPresetMode === 'edit'">
-          <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt="">나가기</button>
-          <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPackPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt="">완료</button>
+          <button class="filter-btn preset-edit-btn preset-exit-action" @click="exitPackPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt=""><span x-text="ui('common.exit')">나가기</span></button>
+          <button class="filter-btn preset-edit-btn preset-confirm-action" @click="confirmPackPresetEdit()"><img class="filter-btn-icon" src="/images/ui/preset_modify.png" alt=""><span x-text="ui('common.done')">완료</span></button>
         </div>
       </div>
       <div class="filter-buttons">
@@ -119,7 +130,7 @@
           class="filter-btn"
           :class="{ active: activeCategory === '' }"
           @click="activeCategory = ''"
-        ><img class="filter-btn-icon" src="/images/ui/all.png" alt="">전체</button>
+        ><img class="filter-btn-icon" src="/images/ui/all.png" alt=""><span x-text="ui('common.all')">전체</span></button>
         {{ range $categories }}{{ if not .easterEgg }}
         <button
           class="filter-btn"
@@ -131,13 +142,19 @@
       <div class="controls-right">
         <button class="guide-btn filter-btn" x-show="!showPackPanel" @click="guideModal = true; guidePage = 1">
           <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
-          <span>가이드</span>
+          <span x-text="ui('gift.guide')">가이드</span>
         </button>
         <div class="controls-right-row">
-          <button class="sort-btn filter-btn" x-show="!showPackPanel" @click="toggleSort()"><img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;"><span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span></button>
-          <button class="toggle-name-btn" x-show="!showPackPanel" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? '이름' : '이미지'"></span></button>
-          <button class="toggle-name-btn" x-cloak x-show="showPackPanel" @click="togglePackView()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="packViewMode === 'detail' ? '자세히' : '간단히'"></span></button>
-          <button class="reset-btn filter-btn mobile-only" @click="document.getElementById('reset-modal').classList.add('open')"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span>초기화</span></button>
+          <button class="sort-btn filter-btn" x-show="!showPackPanel" @click="toggleSort()"><img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;"><span x-text="sortMode === 'id' ? ui('sort.by_id') : ui('sort.by_grade')"></span></button>
+          <button class="toggle-name-btn" x-show="!showPackPanel" @click="toggleNameDisplay()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="showName ? ui('toggle.name') : ui('toggle.image')"></span></button>
+          <button class="toggle-name-btn" x-cloak x-show="showPackPanel" @click="togglePackView()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="packViewMode === 'detail' ? ui('toggle.detail') : ui('toggle.simple')"></span></button>
+          <button class="reset-btn filter-btn mobile-only" @click="document.getElementById('reset-modal').classList.add('open')"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span x-text="ui('common.reset')">초기화</span></button>
+        </div>
+        {{/* [스파이크] 클라이언트 사이드 언어 전환 토글 */}}
+        <div class="controls-right-row lang-switch">
+          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'kr' }" @click="setGiftLang('kr')">한국어</button>
+          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'en' }" @click="setGiftLang('en')">EN</button>
+          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'jp' }" @click="setGiftLang('jp')">日本語</button>
         </div>
       </div>
     </div>
@@ -152,7 +169,7 @@
       <input
         class="tag-filter-input"
         type="search"
-        placeholder="태그 검색"
+        :placeholder="ui('search.tag_placeholder')"
         x-model="tagFilter"
       >
       <button
@@ -185,7 +202,7 @@
         <input
           class="tag-filter-input"
           type="search"
-          placeholder="테마팩 검색"
+          :placeholder="ui('pack.search_placeholder')"
           x-model="packFilter"
           style="margin: 0;"
         >
@@ -201,25 +218,25 @@
       <button
         class="filter-btn pack-mode-btn"
         @click="packDungeonMode = packDungeonMode === 'normal' ? 'hard' : 'normal'"
-        x-text="packDungeonMode === 'normal' ? '노말' : '하드'"
+        x-text="packDungeonMode === 'normal' ? ui('pack.difficulty.normal') : ui('pack.difficulty.hard')"
       ></button>
     </div>
     <template x-for="(group, groupIdx) in packGroups" :key="groupIdx">
-      <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => appliedPackHas(id) && (!packFilter || (themeMap[String(id)] || '').includes(packFilter)))">
+      <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => appliedPackHas(id) && (!packFilter || themeNameOf(id, giftL).includes(packFilter)))">
         <div class="pack-group-label" x-text="group.label"></div>
         <div class="pack-group-items">
           <template x-for="packId in group.packs" :key="packId">
             <div class="pack-panel-item"
-              x-show="appliedPackHas(packId) && (!packFilter || (themeMap[String(packId)] || '').includes(packFilter))"
+              x-show="appliedPackHas(packId) && (!packFilter || themeNameOf(packId, giftL).includes(packFilter))"
               :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isBrowsePackSelected(packId) }"
-              :title="themeMap[String(packId)] || String(packId)"
+              :title="themeNameOf(packId, giftL)"
               @click="toggleBrowsePackSelect(packId)"
               @contextmenu.prevent="openPackPopup(packId)"
             >
               <div class="pack-panel-card" x-show="packViewMode === 'detail'" :style="packMaskStyle(packId)">
                 <img class="pack-panel-sprite"
                   :src="spriteMap[String(packId)] ? `/images/pack/${spriteMap[String(packId)]}.png` : ''"
-                  :alt="themeMap[String(packId)] || String(packId)"
+                  :alt="themeNameOf(packId, giftL)"
                 >
                 <img class="pack-panel-boss"
                   x-show="bossMap[String(packId)]"
@@ -236,7 +253,7 @@
                   src="/images/pack/Baton.png"
                   alt="baton"
                 >
-                <span class="pack-panel-baton-label" x-show="batonMap[String(packId)]">장기 전투</span>
+                <span class="pack-panel-baton-label" x-show="batonMap[String(packId)]" x-text="ui('pack.baton_label')">장기 전투</span>
                 <img class="pack-panel-cover"
                   x-show="!extremeVisualMap[String(packId)]"
                   src="/images/pack/pack_cover.png"
@@ -253,7 +270,7 @@
                   alt="logo"
                 >
                 <span class="pack-panel-name">
-                  <template x-for="(part, i) in packNameParts(packId)" :key="i">
+                  <template x-for="(part, i) in packNameParts(packId, giftL)" :key="i">
                     <span :style="{ color: part.color }" x-text="part.text"></span>
                   </template>
                 </span>
@@ -262,7 +279,7 @@
                 x-show="packViewMode === 'simple'"
                 :src="`/images/banner/${packId}.png`"
                 onerror="this.src='/images/banner/pack_default.png'"
-                :alt="themeMap[String(packId)] || String(packId)"
+                :alt="themeNameOf(packId, giftL)"
               >
               <img class="pack-panel-select"
                 x-show="isBrowsePackSelected(packId) && !extremeVisualMap[String(packId)] && packViewMode === 'detail'"
@@ -284,7 +301,7 @@
                 src="/images/ui/theme_clear.png"
                 alt=""
               >
-              <button class="card-save-btn" x-show="packViewMode === 'detail'" @click.stop="copyPackPanelCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+              <button class="card-save-btn" x-show="packViewMode === 'detail'" @click.stop="copyPackPanelCard($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
           </template>
         </div>
@@ -301,14 +318,14 @@
         <template x-for="packId in group.packs" :key="packId">
           <div class="pack-panel-item"
             :class="{ 'is-extreme': extremeVisualMap[String(packId)], 'is-selected': isPackSelected(packId) }"
-            :title="themeMap[String(packId)] || String(packId)"
+            :title="themeNameOf(packId, giftL)"
             @click="togglePackSelect(packId)"
             @contextmenu.prevent="openPackPopup(packId)"
           >
             <div class="pack-panel-card" :style="packMaskStyle(packId)">
               <img class="pack-panel-sprite"
                 :src="spriteMap[String(packId)] ? `/images/pack/${spriteMap[String(packId)]}.png` : ''"
-                :alt="themeMap[String(packId)] || String(packId)"
+                :alt="themeNameOf(packId, giftL)"
               >
               <img class="pack-panel-boss"
                 x-show="bossMap[String(packId)]"
@@ -325,7 +342,7 @@
                 src="/images/pack/Baton.png"
                 alt="baton"
               >
-              <span class="pack-panel-baton-label" x-show="batonMap[String(packId)]">장기 전투</span>
+              <span class="pack-panel-baton-label" x-show="batonMap[String(packId)]" x-text="ui('pack.baton_label')">장기 전투</span>
               <img class="pack-panel-cover"
                 x-show="!extremeVisualMap[String(packId)]"
                 src="/images/pack/pack_cover.png"
@@ -342,7 +359,7 @@
                 alt="logo"
               >
               <span class="pack-panel-name">
-                <template x-for="(part, i) in packNameParts(packId)" :key="i">
+                <template x-for="(part, i) in packNameParts(packId, giftL)" :key="i">
                   <span :style="{ color: part.color }" x-text="part.text"></span>
                 </template>
               </span>
@@ -379,9 +396,9 @@
     <div id="cat-{{ $catId }}" class="category-row" :style="{ display: isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
       <div class="category-label">
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}">
-        <span class="cat-name">{{ $catName }}</span>
+        <span class="cat-name" x-text="cName('{{ $catId }}')">{{ $catName }}</span>
         <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
-        <span class="cat-combo-label">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -408,14 +425,14 @@
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label">{{ .name }}</span>
+          <span class="gift-name-label" x-text="gName('{{ .id }}')">{{ .name }}</span>
           {{ $badgeCat := or .category_origin .category }}{{ if ne $badgeCat "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCat }}.png"
             alt="{{ $badgeCat }}"
             loading="lazy"
           >{{ end }}
-          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -427,9 +444,9 @@
     <div id="cat-None" class="category-row" :style="{ display: isRowVisible('None') ? 'flex' : 'none' }">
       <div class="category-label">
         <img class="cat-icon" src="/images/category/none.png" alt="범용">
-        <span class="cat-name">범용</span>
+        <span class="cat-name" x-text="cName('None')">범용</span>
         <span class="cat-count" x-text="`${checkedInCategory('None')} / {{ $noneCount }}`"></span>
-        <span class="cat-combo-label">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('None')} / ${comboTotalInCategory('None')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -456,14 +473,14 @@
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label">{{ .name }}</span>
+          <span class="gift-name-label" x-text="gName('{{ .id }}')">{{ .name }}</span>
           {{ $badgeCat2 := or .category_origin .category }}{{ if ne $badgeCat2 "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCat2 }}.png"
             alt="{{ $badgeCat2 }}"
             loading="lazy"
           >{{ end }}
-          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -476,9 +493,9 @@
     <div id="cat-{{ $catId }}" class="category-row" :style="{ display: showPilgrimage && isRowVisible('{{ $catId }}') ? 'flex' : 'none' }">
       <div class="category-label">
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}" @click.stop="onPilgrimageIconClick()" style="cursor: pointer;">
-        <span class="cat-name">{{ $catName }}</span>
+        <span class="cat-name" x-text="cName('{{ $catId }}')">{{ $catName }}</span>
         <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
-        <span class="cat-combo-label">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -505,14 +522,14 @@
           <div class="gift-grade-wrap"><img class="gift-grade" src="/images/egogift/gift_grade_{{ .grade }}.png" alt="grade {{ .grade }}"></div>
           {{ if or (eq .difficulty "hard") (eq .difficulty "limited") }}<img class="gift-difficulty" src="/images/ui/difficulty_{{ .difficulty }}.png" alt="{{ .difficulty }}">{{ end }}
           <div class="check-mark">✓</div>
-          <span class="gift-name-label">{{ .name }}</span>
+          <span class="gift-name-label" x-text="gName('{{ .id }}')">{{ .name }}</span>
           {{ $badgeCatEgg := or .category_origin .category }}{{ if ne $badgeCatEgg "None" }}<img
             class="cat-badge"
             src="/images/category/{{ lower $badgeCatEgg }}.png"
             loading="lazy"
             alt="{{ $badgeCatEgg }}"
           >{{ end }}
-          <button class="card-save-btn" @click.stop="copyGiftCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+          <button class="card-save-btn" @click.stop="copyGiftCard($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
         </div>
         {{ end }}{{ end }}
       </div>
@@ -522,7 +539,7 @@
   </div>
 
   {{/* ── 결과 없음 ── */}}
-  <div class="no-result" x-show="!showTagPanel && !showPackPanel && visibleRowCount === 0">
+  <div class="no-result" x-show="!showTagPanel && !showPackPanel && visibleRowCount === 0" x-text="ui('gift.no_results')">
     조건에 맞는 기프트가 없습니다.
   </div>
 
@@ -535,11 +552,11 @@
       <div class="float-toc-panel" x-show="showToc" x-transition>
         <button class="float-toc-item" @click="activeCategory = ''; showToc = false; window.scrollTo({top:0,behavior:'smooth'})">
           <img src="/images/ui/all.png" alt="전체" class="float-toc-icon">
-          <span>전체</span>
+          <span x-text="ui('common.all')">전체</span>
         </button>
         <button class="float-toc-item" @click="scrollToCategory('None')">
           <img src="/images/ui/none.png" alt="범용" class="float-toc-icon">
-          <span>범용</span>
+          <span x-text="cName('None')">범용</span>
         </button>
         {{ range $categories }}{{ if ne .id "None" }}
         <button class="float-toc-item" @click="scrollToCategory('{{ .id }}')"{{ if .easterEgg }} x-show="showPilgrimage"{{ end }}>
@@ -548,7 +565,7 @@
         </button>
         {{ end }}{{ end }}
       </div>
-      <button class="float-btn" @click="showToc = !showToc" title="목차">
+      <button class="float-btn" @click="showToc = !showToc" :title="ui('toc.title')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
           <circle cx="3" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.5" fill="currentColor" stroke="none"/>
@@ -556,17 +573,17 @@
       </button>
     </div>
     {{/* 이미지/이름 토글 (테마팩 패널에선 자세히/간단히 토글) */}}
-    <button class="float-btn" @click="showPackPanel ? togglePackView() : toggleNameDisplay()" :title="showPackPanel ? '자세히/간단히' : '이미지/이름'">
+    <button class="float-btn" @click="showPackPanel ? togglePackView() : toggleNameDisplay()" :title="showPackPanel ? ui('float.detail_simple') : ui('float.image_name')">
       <img src="/images/ui/ui_switch.png" alt="" width="22" height="22" style="object-fit:contain;">
     </button>
     {{/* 맨 위로 / 맨 아래로 */}}
     <div class="float-scroll-group">
-      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">
+      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" :title="ui('float.top')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="18 15 12 9 6 15"/>
         </svg>
       </button>
-      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="맨 아래로">
+      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" :title="ui('float.bottom')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
@@ -579,12 +596,12 @@
     <div class="modal-box preset-modal-box" @contextmenu.prevent>
       <div class="modal-header">
         <div class="preset-header-left">
-          <span class="modal-title">이상(理想) 관측</span>
+          <span class="modal-title" x-text="ui('preset.observe_title')">이상(理想) 관측</span>
           <button class="modal-btn preset-help-btn" @click="presetGuideModal = true; presetGuidePage = 1">
             <img class="preset-help-icon" src="/images/ui/question_mark.png" alt="도움말">
           </button>
         </div>
-        <button class="modal-btn preset-add-btn" @click="openPresetAddModal()">추가</button>
+        <button class="modal-btn preset-add-btn" @click="openPresetAddModal()"><span x-text="ui('common.add')">추가</span></button>
       </div>
       <div class="modal-body preset-modal-body">
         <div class="preset-list-scroll-wrap"
@@ -605,7 +622,7 @@
                 </div>
               </div>
             </template>
-            <span class="preset-empty" x-show="!presets.length">저장된 이상 관측이 없습니다.</span>
+            <span class="preset-empty" x-show="!presets.length" x-text="ui('preset.empty_observe')">저장된 이상 관측이 없습니다.</span>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
         </div>
@@ -617,8 +634,8 @@
   <div class="modal-shade preset-add-shade" :class="{ open: showPresetAddModal }" @click.self="showPresetAddModal = false" @contextmenu.prevent="showPresetAddModal = false">
     <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">프리셋 추가</span>
-        <button class="modal-btn preset-confirm-btn" @click="confirmAddPreset()">완료</button>
+        <span class="modal-title" x-text="ui('preset.add_title')">프리셋 추가</span>
+        <button class="modal-btn preset-confirm-btn" @click="confirmAddPreset()"><span x-text="ui('common.done')">완료</span></button>
       </div>
       <div class="modal-body preset-add-modal-body">
         <div class="preset-add-fields">
@@ -627,10 +644,10 @@
             @animationend="presetAddNameError = false">
         </div>
         <div class="preset-add-actions">
-          <button class="modal-btn preset-action-btn" @click="showCodeAddModal = true">코드 적용</button>
-          <button class="modal-btn preset-action-btn" @click="$refs.fileAddInput.click()">파일 적용</button>
+          <button class="modal-btn preset-action-btn" @click="showCodeAddModal = true"><span x-text="ui('preset.code_apply')">코드 적용</span></button>
+          <button class="modal-btn preset-action-btn" @click="$refs.fileAddInput.click()"><span x-text="ui('preset.file_apply')">파일 적용</span></button>
           <input type="file" accept=".json" class="file-add-input" x-ref="fileAddInput" @change="handleFileAdd($event)">
-          <button class="modal-btn preset-action-btn" @click="initPresetFromChecked()">현재 선택</button>
+          <button class="modal-btn preset-action-btn" @click="initPresetFromChecked()"><span x-text="ui('preset.current_selection')">현재 선택</span></button>
         </div>
         <div class="preset-gift-scroll-wrap"
              x-data="scrollWrap('.preset-gift-scroll-area')">
@@ -646,7 +663,7 @@
                     <span class="preset-gift-count" x-text="`[${group.gifts.length} / ${group.total}]`"></span>
                     <template x-if="group.fusionTotal > 0">
                       <span class="preset-gift-combo-wrap">
-                        <span class="preset-gift-combo-label">조합</span>
+                        <span class="preset-gift-combo-label" x-text="ui('gift.combo')">조합</span>
                         <span class="preset-gift-count" x-text="`[${group.fusionSelected} / ${group.fusionTotal}]`"></span>
                       </span>
                     </template>
@@ -670,7 +687,7 @@
                   </div>
                 </div>
               </template>
-              <span class="preset-add-empty" x-show="!presetAddGifts.length">추가된 기프트가 없습니다.</span>
+              <span class="preset-add-empty" x-show="!presetAddGifts.length" x-text="ui('preset.add_empty')">추가된 기프트가 없습니다.</span>
             </div>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
@@ -685,15 +702,15 @@
       <div class="modal-header">
         <span class="modal-title" x-text="presets[sharePresetIdx]?.presetName ?? ''"></span>
         <div class="preset-preview-actions">
-          <button class="modal-btn preset-item-btn" @click="applyPreset(sharePresetIdx)">적용</button>
-          <button class="modal-btn preset-item-btn" @click="enterPresetEditMode(sharePresetIdx)">편집</button>
-          <button class="modal-btn preset-item-btn" @click="showDeleteConfirmModal = true">삭제</button>
+          <button class="modal-btn preset-item-btn" @click="applyPreset(sharePresetIdx)"><span x-text="ui('common.apply')">적용</span></button>
+          <button class="modal-btn preset-item-btn" @click="enterPresetEditMode(sharePresetIdx)"><span x-text="ui('common.edit')">편집</span></button>
+          <button class="modal-btn preset-item-btn" @click="showDeleteConfirmModal = true"><span x-text="ui('common.delete')">삭제</span></button>
         </div>
       </div>
       <div class="modal-body preset-add-modal-body">
         <div class="preset-share-actions">
-          <button class="modal-btn preset-action-btn" @click="shareByCode()">코드로 공유</button>
-          <button class="modal-btn preset-action-btn" @click="shareByFile()">파일로 공유</button>
+          <button class="modal-btn preset-action-btn" @click="shareByCode()"><span x-text="ui('preset.share_code')">코드로 공유</span></button>
+          <button class="modal-btn preset-action-btn" @click="shareByFile()"><span x-text="ui('preset.share_file')">파일로 공유</span></button>
         </div>
         <div class="preset-gift-scroll-wrap"
              x-data="scrollWrap('.preset-gift-scroll-area')">
@@ -709,7 +726,7 @@
                     <span class="preset-gift-count" x-text="`[${group.gifts.length} / ${group.total}]`"></span>
                     <template x-if="group.fusionTotal > 0">
                       <span class="preset-gift-combo-wrap">
-                        <span class="preset-gift-combo-label">조합</span>
+                        <span class="preset-gift-combo-label" x-text="ui('gift.combo')">조합</span>
                         <span class="preset-gift-count" x-text="`[${group.fusionSelected} / ${group.fusionTotal}]`"></span>
                       </span>
                     </template>
@@ -733,7 +750,7 @@
                   </div>
                 </div>
               </template>
-              <span class="preset-add-empty" x-show="!presets[sharePresetIdx]?.gifts?.length">기프트가 없습니다.</span>
+              <span class="preset-add-empty" x-show="!presets[sharePresetIdx]?.gifts?.length" x-text="ui('preset.gifts_empty')">기프트가 없습니다.</span>
             </div>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
@@ -746,15 +763,15 @@
   <div class="modal-shade" :class="{ open: showDeleteConfirmModal }" @click.self="showDeleteConfirmModal = false" @contextmenu.prevent="showDeleteConfirmModal = false">
     <div class="modal-box delete-confirm-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">프리셋 삭제</span>
+        <span class="modal-title" x-text="ui('preset.delete_title')">프리셋 삭제</span>
       </div>
       <div class="modal-body delete-confirm-modal-body">
         <p class="delete-confirm-text">
-          '<span x-text="presets[sharePresetIdx]?.presetName ?? ''"></span>'을 삭제합니다.
+          '<span x-text="presets[sharePresetIdx]?.presetName ?? ''"></span><span x-text="ui('preset.delete_suffix')">'을 삭제합니다.</span>
         </p>
         <div class="delete-confirm-actions">
-          <button class="modal-btn preset-action-btn" @click="showDeleteConfirmModal = false">취소</button>
-          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deletePreset()">삭제</button>
+          <button class="modal-btn preset-action-btn" @click="showDeleteConfirmModal = false"><span x-text="ui('common.cancel')">취소</span></button>
+          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deletePreset()"><span x-text="ui('common.delete')">삭제</span></button>
         </div>
       </div>
     </div>
@@ -764,12 +781,12 @@
   <div class="modal-shade code-add-shade" :class="{ open: showCodeAddModal }" @click.self="showCodeAddModal = false" @contextmenu.prevent="showCodeAddModal = false">
     <div class="modal-box code-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">코드 적용</span>
-        <button class="modal-btn preset-confirm-btn" @click="confirmCodeAdd()">완료</button>
+        <span class="modal-title" x-text="ui('preset.code_apply')">코드 적용</span>
+        <button class="modal-btn preset-confirm-btn" @click="confirmCodeAdd()"><span x-text="ui('common.done')">완료</span></button>
       </div>
       <div class="modal-body code-add-modal-body">
         <textarea class="preset-add-input preset-add-textarea code-add-textarea"
-                  placeholder="공유 코드를 입력하세요."
+                  :placeholder="ui('code.placeholder')"
                   x-model="codeAddInput"></textarea>
       </div>
     </div>
@@ -779,8 +796,8 @@
   <div class="modal-shade" :class="{ open: showPackPresetModal }" @click.self="showPackPresetModal = false" @contextmenu.prevent="showPackPresetModal = false">
     <div class="modal-box preset-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">테마팩 프리셋</span>
-        <button class="modal-btn preset-add-btn" @click="openPackPresetAddModal()">추가</button>
+        <span class="modal-title" x-text="ui('pack.preset_title')">테마팩 프리셋</span>
+        <button class="modal-btn preset-add-btn" @click="openPackPresetAddModal()"><span x-text="ui('common.add')">추가</span></button>
       </div>
       <div class="modal-body preset-modal-body">
         <div class="preset-list-scroll-wrap" x-data="scrollWrap('.pack-preset-scroll-area')">
@@ -791,11 +808,11 @@
               <div class="preset-item formation-preset-item" @click="openPackPresetDetailModal(idx)">
                 <div class="formation-preset-info">
                   <span class="preset-item-name" x-text="p.name"></span>
-                  <span class="pack-preset-count" x-text="`테마팩 ${p.packs.length}개`"></span>
+                  <span class="pack-preset-count" x-text="ui('pack.label') + ' ' + p.packs.length + ui('pack.preset_count_suffix')"></span>
                 </div>
               </div>
             </template>
-            <span class="preset-empty" x-show="!packPresets.length">저장된 프리셋이 없습니다.</span>
+            <span class="preset-empty" x-show="!packPresets.length" x-text="ui('preset.empty')">저장된 프리셋이 없습니다.</span>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
         </div>
@@ -807,26 +824,26 @@
   <div class="modal-shade pack-preset-add-shade" :class="{ open: showPackPresetAddModal }" @click.self="showPackPresetAddModal = false" @contextmenu.prevent="showPackPresetAddModal = false">
     <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">프리셋 추가</span>
+        <span class="modal-title" x-text="ui('preset.add_title')">프리셋 추가</span>
         <div class="modal-header-actions">
-          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? '노말' : '하드'"></button>
+          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? ui('pack.difficulty.normal') : ui('pack.difficulty.hard')"></button>
           <span class="modal-header-divider"></span>
-          <button class="modal-btn preset-confirm-btn" @click="confirmAddPackPreset()">완료</button>
+          <button class="modal-btn preset-confirm-btn" @click="confirmAddPackPreset()"><span x-text="ui('common.done')">완료</span></button>
         </div>
       </div>
       <div class="modal-body preset-add-modal-body">
         <div class="preset-add-fields">
-          <input class="preset-add-input" type="text" placeholder="프리셋 이름" x-model="packPresetAddName"
+          <input class="preset-add-input" type="text" :placeholder="ui('preset.name_placeholder')" x-model="packPresetAddName"
             :class="{ 'error-flash': packPresetAddNameError }"
             @animationend="packPresetAddNameError = false">
         </div>
         <div class="preset-add-actions">
-          <button class="modal-btn preset-action-btn" @click="showPackCodeAddModal = true">코드 적용</button>
-          <button class="modal-btn preset-action-btn" @click="$refs.packFileAddInput.click()">파일 적용</button>
+          <button class="modal-btn preset-action-btn" @click="showPackCodeAddModal = true"><span x-text="ui('preset.code_apply')">코드 적용</span></button>
+          <button class="modal-btn preset-action-btn" @click="$refs.packFileAddInput.click()"><span x-text="ui('preset.file_apply')">파일 적용</span></button>
           <input type="file" accept=".json" class="file-add-input" x-ref="packFileAddInput" @change="handlePackFileAdd($event)">
-          <button class="modal-btn preset-action-btn" @click="loadPackSelection()">현재 선택</button>
+          <button class="modal-btn preset-action-btn" @click="loadPackSelection()"><span x-text="ui('preset.current_selection')">현재 선택</span></button>
         </div>
-        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()">하드 모드 전용 테마팩이 있습니다.</span>
+        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()" x-text="ui('pack.hard_only_msg')">하드 모드 전용 테마팩이 있습니다.</span>
         <div class="preset-gift-scroll-wrap" x-data="scrollWrap('.pack-preset-add-scroll-area')">
           <div class="scroll-indicator" :class="{ visible: up }">▲</div>
           <div class="preset-gift-scroll-area pack-preset-add-scroll-area"
@@ -840,13 +857,13 @@
                       <img class="pack-preset-preview-img"
                         :src="`/images/banner/${packId}.png`"
                         onerror="this.src='/images/banner/pack_default.png'"
-                        :title="themeMap[String(packId)] || String(packId)"
+                        :title="themeNameOf(packId, giftL)"
                         @click="openPackPopup(packId)">
                     </template>
                   </div>
                 </div>
               </template>
-              <span class="preset-add-empty" x-show="!previewSourceIds.length">선택된 테마팩이 없습니다.</span>
+              <span class="preset-add-empty" x-show="!previewSourceIds.length" x-text="ui('pack.selected_empty')">선택된 테마팩이 없습니다.</span>
             </div>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
@@ -861,21 +878,21 @@
       <div class="modal-header">
         <span class="modal-title" x-text="packPresets[packPresetDetailIdx]?.name ?? ''"></span>
         <div class="modal-header-actions">
-          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? '노말' : '하드'"></button>
+          <button class="modal-btn preset-action-btn" @click="previewDungeonMode = previewDungeonMode === 'normal' ? 'hard' : 'normal'" x-text="previewDungeonMode === 'normal' ? ui('pack.difficulty.normal') : ui('pack.difficulty.hard')"></button>
           <span class="modal-header-divider"></span>
           <div class="preset-preview-actions">
-            <button class="modal-btn preset-item-btn" @click="applyPackPreset(packPresetDetailIdx)">적용</button>
-            <button class="modal-btn preset-item-btn" @click="editPackPreset(packPresetDetailIdx)">편집</button>
-            <button class="modal-btn preset-item-btn" @click="askDeletePackPreset(packPresetDetailIdx)">삭제</button>
+            <button class="modal-btn preset-item-btn" @click="applyPackPreset(packPresetDetailIdx)"><span x-text="ui('common.apply')">적용</span></button>
+            <button class="modal-btn preset-item-btn" @click="editPackPreset(packPresetDetailIdx)"><span x-text="ui('common.edit')">편집</span></button>
+            <button class="modal-btn preset-item-btn" @click="askDeletePackPreset(packPresetDetailIdx)"><span x-text="ui('common.delete')">삭제</span></button>
           </div>
         </div>
       </div>
       <div class="modal-body preset-add-modal-body">
         <div class="preset-share-actions">
-          <button class="modal-btn preset-action-btn" @click="sharePackByCode()">코드로 공유</button>
-          <button class="modal-btn preset-action-btn" @click="sharePackByFile()">파일로 공유</button>
+          <button class="modal-btn preset-action-btn" @click="sharePackByCode()"><span x-text="ui('preset.share_code')">코드로 공유</span></button>
+          <button class="modal-btn preset-action-btn" @click="sharePackByFile()"><span x-text="ui('preset.share_file')">파일로 공유</span></button>
         </div>
-        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()">하드 모드 전용 테마팩이 있습니다.</span>
+        <span class="pack-preset-hard-note" x-show="previewDungeonMode === 'normal' && previewHasHardOnly()" x-text="ui('pack.hard_only_msg')">하드 모드 전용 테마팩이 있습니다.</span>
         <div class="preset-gift-scroll-wrap" x-data="scrollWrap('.pack-preset-detail-scroll-area')">
           <div class="scroll-indicator" :class="{ visible: up }">▲</div>
           <div class="preset-gift-scroll-area pack-preset-detail-scroll-area"
@@ -889,13 +906,13 @@
                       <img class="pack-preset-preview-img"
                         :src="`/images/banner/${packId}.png`"
                         onerror="this.src='/images/banner/pack_default.png'"
-                        :title="themeMap[String(packId)] || String(packId)"
+                        :title="themeNameOf(packId, giftL)"
                         @click="openPackPopup(packId)">
                     </template>
                   </div>
                 </div>
               </template>
-              <span class="preset-add-empty" x-show="!previewSourceIds.length">테마팩이 없습니다.</span>
+              <span class="preset-add-empty" x-show="!previewSourceIds.length" x-text="ui('pack.empty')">테마팩이 없습니다.</span>
             </div>
           </div>
           <div class="scroll-indicator" :class="{ visible: down }">▼</div>
@@ -908,15 +925,15 @@
   <div class="modal-shade" :class="{ open: showPackPresetDeleteModal }" @click.self="showPackPresetDeleteModal = false" @contextmenu.prevent="showPackPresetDeleteModal = false">
     <div class="modal-box delete-confirm-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">프리셋 삭제</span>
+        <span class="modal-title" x-text="ui('preset.delete_title')">프리셋 삭제</span>
       </div>
       <div class="modal-body delete-confirm-modal-body">
         <p class="delete-confirm-text">
-          '<span x-text="packPresets[packPresetDeleteIdx]?.name ?? ''"></span>'을 삭제합니다.
+          '<span x-text="packPresets[packPresetDeleteIdx]?.name ?? ''"></span><span x-text="ui('preset.delete_suffix')">'을 삭제합니다.</span>
         </p>
         <div class="delete-confirm-actions">
-          <button class="modal-btn preset-action-btn" @click="showPackPresetDeleteModal = false">취소</button>
-          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deletePackPreset()">삭제</button>
+          <button class="modal-btn preset-action-btn" @click="showPackPresetDeleteModal = false"><span x-text="ui('common.cancel')">취소</span></button>
+          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deletePackPreset()"><span x-text="ui('common.delete')">삭제</span></button>
         </div>
       </div>
     </div>
@@ -926,12 +943,12 @@
   <div class="modal-shade pack-code-add-shade" :class="{ open: showPackCodeAddModal }" @click.self="showPackCodeAddModal = false" @contextmenu.prevent="showPackCodeAddModal = false">
     <div class="modal-box code-add-modal-box" @contextmenu.prevent>
       <div class="modal-header">
-        <span class="modal-title">코드 적용</span>
-        <button class="modal-btn preset-confirm-btn" @click="confirmPackCodeAdd()">완료</button>
+        <span class="modal-title" x-text="ui('preset.code_apply')">코드 적용</span>
+        <button class="modal-btn preset-confirm-btn" @click="confirmPackCodeAdd()"><span x-text="ui('common.done')">완료</span></button>
       </div>
       <div class="modal-body code-add-modal-body">
         <textarea class="preset-add-input preset-add-textarea code-add-textarea"
-                  placeholder="공유 코드를 입력하세요."
+                  :placeholder="ui('code.placeholder')"
                   x-model="packCodeAddInput"></textarea>
       </div>
     </div>
@@ -948,7 +965,7 @@
        @keydown.right.window="guideModal && guidePage < guidePages.length && guidePage++">
     <div class="modal-box guide-modal-box" @contextmenu.prevent="guideModal = false">
       <div class="modal-header">
-        <span class="modal-title">가이드</span>
+        <span class="modal-title" x-text="ui('guide.title')">가이드</span>
       </div>
       <div class="modal-body guide-modal-body">
         <div class="guide-image-wrap">
@@ -974,7 +991,7 @@
        @keydown.right.window="presetGuideModal && presetGuidePage < presetGuidePages.length && presetGuidePage++">
     <div class="modal-box guide-modal-box" @contextmenu.prevent="presetGuideModal = false">
       <div class="modal-header">
-        <span class="modal-title">이상(理想) 관측 가이드</span>
+        <span class="modal-title" x-text="ui('preset.observe_guide_title')">이상(理想) 관측 가이드</span>
       </div>
       <div class="modal-body guide-modal-body">
         <div class="guide-image-wrap">
@@ -1001,13 +1018,13 @@
   <div id="reset-modal" class="modal-shade" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal-box modal-box--sm">
       <div class="modal-header">
-        <span class="modal-title">초기화</span>
+        <span class="modal-title" x-text="ui('common.reset')">초기화</span>
       </div>
       <div class="modal-body delete-confirm-modal-body">
-        <p class="delete-confirm-text" x-text="showPackPanel ? '테마팩 선택 상태가 모두 해제됩니다.' : '기프트 선택 상태가 모두 해제됩니다.'"></p>
+        <p class="delete-confirm-text" x-text="showPackPanel ? ui('reset.pack_msg') : ui('reset.gift_msg')"></p>
         <div class="delete-confirm-actions">
-          <button class="modal-btn preset-action-btn" onclick="document.getElementById('reset-modal').classList.remove('open')">취소</button>
-          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetAll()">초기화</button>
+          <button class="modal-btn preset-action-btn" onclick="document.getElementById('reset-modal').classList.remove('open')"><span x-text="ui('common.cancel')">취소</span></button>
+          <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetAll()" x-text="ui('common.reset')">초기화</button>
         </div>
       </div>
     </div>
@@ -1049,7 +1066,7 @@
                 :src="`/images/category/${(popup.categoryOrigin || popup.category || '').toLowerCase()}.png`"
                 :alt="popup.categoryOrigin || popup.category"
               >
-              <button class="card-save-btn" @click.stop="copyGiftPopupIcon($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+              <button class="card-save-btn" @click.stop="copyGiftPopupIcon($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             </div>
             <div class="upgrade-btns" x-show="popup.upgrades && popup.upgrades.length" :class="{ 'upgrade-btns--left': popup.upgrades.length < 2 }">
               <button class="upgrade-btn" :class="{ selected: popup.upgradeLevel === 0 }" @click="popup.upgradeLevel = 0">
@@ -1064,7 +1081,7 @@
             </div>
             <div class="gift-popup-packs" x-show="popup.packs && popup.packs.length">
               <template x-for="packId in popup.packs" :key="packId">
-                <img class="pack-banner" :src="`/images/banner/${packId}.png`" :alt="themeMap[String(packId)] || String(packId)" onerror="this.src='/images/banner/pack_default.png'" @click.stop="openPackPopup(packId)">
+                <img class="pack-banner" :src="`/images/banner/${packId}.png`" :alt="themeNameOf(packId, giftL)" onerror="this.src='/images/banner/pack_default.png'" @click.stop="openPackPopup(packId)">
               </template>
             </div>
           </div>
@@ -1097,7 +1114,7 @@
                    @scroll="up = $el.scrollTop > 0; down = $el.scrollTop + $el.clientHeight < $el.scrollHeight - 1;"
                    @click="handleKwClick($event)">
                 <div class="gift-popup-related" x-show="popup.curse">
-                  <span class="gift-popup-related-label">관련 축복 기프트 :</span>
+                  <span class="gift-popup-related-label" x-text="ui('popup.related_bless')">관련 축복 기프트 :</span>
                   <div class="fusion-recipe-card" :class="{ fusion: popup.curse?.isFusionBg }" @click.stop="openGiftPopup(popup.curse?.id)">
                     <div class="fusion-icon-wrap">
                       <img class="fusion-icon" :src="`/images/egogift/${popup.curse?.id}.png`" alt="">
@@ -1110,7 +1127,7 @@
                   </div>
                 </div>
                 <div class="gift-popup-related" x-show="popup.bless">
-                  <span class="gift-popup-related-label">관련 저주 기프트 :</span>
+                  <span class="gift-popup-related-label" x-text="ui('popup.related_curse')">관련 저주 기프트 :</span>
                   <div class="fusion-recipe-card" :class="{ fusion: popup.bless?.isFusionBg }" @click.stop="openGiftPopup(popup.bless?.id)">
                     <div class="fusion-icon-wrap">
                       <img class="fusion-icon" :src="`/images/egogift/${popup.bless?.id}.png`" alt="">
@@ -1123,7 +1140,7 @@
                   </div>
                 </div>
                 <div class="gift-popup-used-in" x-show="popup.usedInRecipes && popup.usedInRecipes.length">
-                  <span class="gift-popup-related-label gift-popup-used-in-label">다음으로 조합 :</span>
+                  <span class="gift-popup-related-label gift-popup-used-in-label" x-text="ui('popup.used_in')">다음으로 조합 :</span>
                   <template x-for="(entry, ri) in (popup.usedInRecipes || [])" :key="ri">
                     <div class="fusion-recipe-row used-in-recipe-row">
                       <template x-for="(mat, idx) in entry.materials" :key="idx">
@@ -1190,7 +1207,7 @@
             <img class="pack-popup-boss" x-show="packPopup?.bossSpriteId" :src="`/images/boss/${packPopup?.bossSpriteId}.png`" alt="boss">
             <img class="pack-popup-warning" x-show="packPopup?.showWarning" src="/images/pack/Warning.png" alt="warning">
             <img class="pack-popup-baton" x-show="packPopup?.showBaton" src="/images/pack/Baton.png" alt="baton">
-            <span class="pack-popup-baton-label" x-show="packPopup?.showBaton">장기 전투</span>
+            <span class="pack-popup-baton-label" x-show="packPopup?.showBaton" x-text="ui('pack.baton_label')">장기 전투</span>
             <img class="pack-popup-cover" x-show="!packPopup?.isExtreme" src="/images/pack/pack_cover.png" alt="">
             <img class="pack-popup-extreme-frame" x-show="packPopup?.isExtreme" src="/images/pack/extreme_frame.png" alt="">
             <img class="pack-popup-logo" x-show="!packPopup?.hideLogo" src="/images/pack/logo.png" alt="logo">
@@ -1199,20 +1216,20 @@
                 <span :style="{ color: part.color }" x-text="part.text"></span>
               </template>
             </span>
-            <button class="card-save-btn" @click.stop="copyPackSprite($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+            <button class="card-save-btn" @click.stop="copyPackSprite($event)" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
           </div>
           <div class="pack-popup-info">
             <div class="pack-popup-conditions">
               <template x-for="cond in (packPopup?.conditions || [])" :key="cond.dungeonIdx">
                 <div class="pack-popup-condition-row">
-                  <span class="pack-popup-difficulty" x-text="['노말','하드','평행중첩','익스트림'][cond.dungeonIdx]"></span>
+                  <span class="pack-popup-difficulty" x-text="[ui('pack.difficulty.normal'),ui('pack.difficulty.hard'),ui('pack.difficulty.parallel'),ui('pack.difficulty.extreme')][cond.dungeonIdx]"></span>
                   <span class="pack-popup-floors" x-text="(function(c){ const sf = c.selectableFloors; if (sf && sf.length > 0) { const floors = sf.map(f=>f+1).sort((a,b)=>a-b); if (c.dungeonIdx <= 1) return floors.map(f=>f+'층').join(', '); const consec = floors.every((f,i)=>i===0||f===floors[i-1]+1); return consec && floors.length > 1 ? floors[0]+' ~ '+floors[floors.length-1]+'층' : floors.map(f=>f+'층').join(', '); } return ['','',' 6 ~ 10층','11 ~ 15층'][c.dungeonIdx]||''; })(cond)"></span>
                 </div>
               </template>
             </div>
             <div class="pack-popup-specific-gifts">
-              <div class="pack-popup-section-label">테마팩 전용 기프트</div>
-              <span class="pack-popup-no-gifts" x-show="!packPopup?.specificGifts?.length">없음</span>
+              <div class="pack-popup-section-label" x-text="ui('pack.specific_gifts')">테마팩 전용 기프트</div>
+              <span class="pack-popup-no-gifts" x-show="!packPopup?.specificGifts?.length" x-text="ui('common.none')">없음</span>
               <div class="pack-popup-gift-list" x-show="packPopup?.specificGifts?.length > 0">
                 <template x-for="gift in (packPopup?.specificGifts || [])" :key="gift.id">
                   <div class="pack-popup-gift-item" :title="gift.name" @click.stop="openGiftPopup(gift.id)" style="cursor: pointer;">
@@ -1295,10 +1312,21 @@ function parseColorTags(str) {                 // "<color=#hex>텍스트</color>
   if (last < str.length) parts.push({ text: str.slice(last), color: '#eacaa1' });
   return parts;
 }
-function packNameParts(packId) {
-  const special = themeSpecialMap[String(packId)];
+{{/* [언어 전환] 테마명 브리지 — 전역 함수가 Alpine giftL 에 접근하기 위한 창구.
+     loadGiftLang 이 갱신. 템플릿은 packNameParts/themeNameOf 에 giftL 을 넘겨 재렌더를 트리거. */}}
+window.__giftL = null;
+function themeNameOf(packId, L) {
+  const gl = L || window.__giftL;
+  return (gl && gl.theme && gl.theme[String(packId)]) || themeMap[String(packId)] || String(packId);
+}
+function themeSpecialOf(packId, L) {
+  const gl = L || window.__giftL;
+  return (gl && gl.themeSpecial && gl.themeSpecial[String(packId)]) || themeSpecialMap[String(packId)];
+}
+function packNameParts(packId, L) {
+  const special = themeSpecialOf(packId, L);
   if (special) return parseColorTags(special);   // specialName 의 <color> 태그를 세그먼트별 색으로 (있으면 우선)
-  const name = themeMap[String(packId)] || String(packId);
+  const name = themeNameOf(packId, L);
   const rawColor = textColorMap[String(packId)];
   if (Array.isArray(rawColor)) {
     const colors = rawColor.map(c => `#${c}`);
@@ -1458,14 +1486,15 @@ function scrollWrap(selector) {
 const buffDetailMap = {{ $kwMap | jsonify | safeJS }};
 const kwMap = buffDetailMap;
 
-function parseDesc(raw) {
+function parseDesc(raw, kwMapArg) {
+  const map = kwMapArg || buffDetailMap;
   const text = (typeof raw === 'string' ? raw : String(raw))
     .replace(/^"|"$/g, '')
     .replace(/\\n/g, '\n');
   return text
     .replace(/<style=\\?"upgradeHighlight\\?">([\s\S]*?)<\/style>/g, '<span class="upgrade-highlight">$1</span>')
     .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
-      const b = buffDetailMap[kw];
+      const b = map[kw];
       if (!b) return match;
       const fallback = b.iconId ? `this.src='/images/buff/${b.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
       const iconHtml = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${fallback}" alt="">`;
@@ -1532,6 +1561,8 @@ const giftMap = {
 </script>
 
 <script>
+{{/* [언어 전환] 정적 UI 문구 카탈로그(빌드타임 인라인 kr — SSR·초기 렌더용, fetch 불필요) */}}
+const UI_KR = {{ site.Data.lang.kr.KR_YeonSimUI | jsonify | safeJS }};
 function checklist() {
   return {
     ...kwTooltipMixin(),
@@ -1602,7 +1633,47 @@ function checklist() {
     showPilgrimage: false,
     pilgrimageIconClickCount: 0,
 
+    // [스파이크] 클라이언트 사이드 언어 전환 — 기프트 텍스트 페이로드
+    lang: 'kr',
+    giftL: null,   // /lang/gift-{lc}.json (null 이면 빌드타임 kr 맵으로 폴백)
+    uiL: null,     // /lang/ui-{lc}.json (정적 UI 문구; null 이면 UI_KR 로 폴백)
+
+    async loadGiftLang() {
+      try {
+        const res = await fetch(`/lang/gift-${this.lang}.json`);
+        if (res.ok) {
+          this.giftL = await res.json();
+          window.__giftL = this.giftL;   // 전역 함수(packNameParts·툴팁)용 브리지
+        }
+      } catch (e) { /* 실패 시 기존 kr 유지 */ }
+    },
+    async loadUI() {
+      if (this.lang === 'kr') { this.uiL = null; return; }   // kr 은 UI_KR 인라인 사용(무fetch)
+      try {
+        const res = await fetch(`/lang/ui-${this.lang}.json`);
+        if (res.ok) this.uiL = await res.json();
+      } catch (e) { /* 실패 시 UI_KR 폴백 */ }
+    },
+    // 정적 UI 문구 조회 (선택 언어 → 없으면 kr → 없으면 키 자체)
+    ui(key) { return (this.uiL && this.uiL[key]) || UI_KR[key] || key; },
+    setGiftLang(lc) {
+      if (lc === this.lang) return;
+      this.lang = lc;
+      localStorage.setItem('giftLang', lc);
+      this.loadGiftLang();
+      this.loadUI();
+    },
+    // 언어 의존 접근자 (giftL 우선, 없으면 빌드타임 kr 맵)
+    gName(id)  { return (this.giftL && this.giftL.giftName[id]) || itemNameMap[id] || id; },
+    cName(id)  { return (this.giftL && this.giftL.categoryName[id]) || catDisplayNameMap[id] || id; },
+    _sName(id) { return (this.giftL ? this.giftL.giftName[id] : itemNameMap[id]) || ''; },
+    _sDesc(id) { return (this.giftL ? this.giftL.searchDesc[id] : searchDescMap[id]) || ''; },
+    _tags(id)  { return (this.giftL ? this.giftL.giftTags[id] : itemTagsMap[id]) || []; },
+
     init() {
+      this.lang = localStorage.getItem('giftLang') || 'kr';
+      this.loadGiftLang();
+      this.loadUI();
       const saved = localStorage.getItem('egogift-checked');
       if (saved) this.checked = JSON.parse(saved);
       const savedPresets = localStorage.getItem('egogift-presets');
@@ -1648,6 +1719,9 @@ function checklist() {
       this.$watch('activePanelPresetIdx', () => {
         if (this.panelMode === 'preset') this.$nextTick(() => this.fitPackPanelNames());
         this.$nextTick(() => this.checkPresetLabelOverflow());
+      });
+      this.$watch('giftL', () => {   // [언어 전환] 테마명 길이가 바뀌므로 패널 이름 폰트 재조정
+        if (this.showPackPanel || this.panelMode === 'preset') this.$nextTick(() => this.fitPackPanelNames());
       });
 
       // ── gift-card 이벤트 위임 ──
@@ -1721,16 +1795,32 @@ function checklist() {
     },
 
     fitPackPanelNames() {
-      const isMobile = window.innerWidth <= 768;
-      const maxW = isMobile ? 71 : 91;  /* 모바일: sprite 71px, 데스크탑: 91px */
-      const maxH = 18;
+      // 값은 데스크톱 기준 px. 모바일은 폭 비율(71/102)로 일괄 축소. (sprite 이미지 폭 102/71 은 CSS 유지)
+      const isMobile = window.innerWidth <= 768;   // 모바일 sprite 71 미디어쿼리와 동일 브레이크포인트
+      const scale = isMobile ? 71 / 102 : 1;
+      const W = 95.86 * scale;                     // 텍스트 폭 (데스크톱 95.86px / 모바일 66.73px)
+      const base = 12.46 * scale;                  // 기본 폰트 (데스크톱 12.46px)
+      const minSize = 9 * scale;                   // 하한선 (데스크톱 9px)
       document.querySelectorAll('.pack-panel-name').forEach(el => {
-        el.style.fontSize = '';
-        const baseSize = parseFloat(getComputedStyle(el).fontSize);
-        let size = baseSize;
-        while ((el.offsetWidth > maxW || el.offsetHeight > maxH) && size > 4) {
+        // 리셋 (한 줄 측정 상태)
+        el.style.whiteSpace = 'nowrap';
+        el.style.width = '';
+        el.style.textAlign = '';
+        el.style.wordBreak = '';
+        el.style.overflowWrap = '';
+        el.style.fontSize = base + 'px';
+        let size = base;
+        while (el.offsetWidth > W && size - 0.5 >= minSize) {   // 한 줄로 축소(하한 전까지)
           size -= 0.5;
           el.style.fontSize = size + 'px';
+        }
+        if (el.offsetWidth > W) {                  // 하한에서도 넘침 → W 폭으로 줄바꿈(greedy)
+          el.style.fontSize = minSize + 'px';
+          el.style.whiteSpace = 'normal';
+          el.style.width = W + 'px';               // ⚠ 명시적 width — 절대배치 left:50% 가용폭 함정 회피
+          el.style.textAlign = 'center';
+          el.style.wordBreak = 'keep-all';
+          el.style.overflowWrap = 'break-word';
         }
       });
     },
@@ -1871,7 +1961,7 @@ function checklist() {
 
     confirmAddPreset() {
       if (!this.presetAddName.trim()) {
-        this.showToast('이름을 입력해주세요.', { selector: '.preset-add-shade', error: true });
+        this.showToast(this.ui('toast.name_required'), { selector: '.preset-add-shade', error: true });
         this.presetAddNameError = false;
         this.$nextTick(() => { this.presetAddNameError = true; });
         const pool = (typeof PRESET_PLACEHOLDER !== 'undefined' && PRESET_PLACEHOLDER.length)
@@ -1899,7 +1989,7 @@ function checklist() {
       const json = JSON.stringify({ presetName: preset.presetName, gifts: preset.gifts });
       const encoded = LZString.compressToEncodedURIComponent(json);
       navigator.clipboard.writeText(encoded).then(() => {
-        this.showToast('클립보드에 복사되었습니다.');
+        this.showToast(this.ui('toast.copied'));
       }).catch(() => {});
     },
 
@@ -1916,7 +2006,7 @@ function checklist() {
           this.presetAddGifts = data.gifts;
           this.showPresetAddModal = true;
         } catch {
-          this.showToast('부적절한 파일입니다.', { selector: '.preset-add-shade', error: true });
+          this.showToast(this.ui('toast.invalid_file'), { selector: '.preset-add-shade', error: true });
         }
       };
       reader.readAsText(file);
@@ -1943,7 +2033,7 @@ function checklist() {
         this.showCodeAddModal = false;
         this.showPresetAddModal = true;
       } catch (e) {
-        this.showToast('부적절한 코드입니다.', { selector: '.code-add-shade', error: true });
+        this.showToast(this.ui('toast.invalid_code'), { selector: '.code-add-shade', error: true });
       }
     },
 
@@ -1972,7 +2062,7 @@ function checklist() {
         try {
           const fileHandle = await window.showSaveFilePicker({
             suggestedName: `${preset.presetName}.json`,
-            types: [{ description: 'JSON 파일', accept: { 'application/json': ['.json'] } }],
+            types: [{ description: this.ui('file.json_desc'), accept: { 'application/json': ['.json'] } }],
           });
           const writable = await fileHandle.createWritable();
           await writable.write(json);
@@ -2031,9 +2121,11 @@ function checklist() {
           };
         })
       );
-      const upgrades = (g.upgrades || []).map(u => ({
+      const kwMap = (this.giftL && this.giftL.kw) || buffDetailMap;
+      const upSrc = (this.giftL && this.giftL.giftUpgrades[id]) || g.upgrades || [];
+      const upgrades = upSrc.map(u => ({
         name: u.name.replace(/^"|"$/g, ''),
-        descHtml: parseDesc(u.desc),
+        descHtml: parseDesc(u.desc, kwMap),
         category: u.category,
         tags: u.tags
       }));
@@ -2050,8 +2142,8 @@ function checklist() {
       this.giftPopupStack.push({
         id,
         zIndex,
-        name: g.name.replace(/^"|"$/g, ''),
-        descHtml: parseDesc(g.desc),
+        name: (this.giftL ? (this.giftL.giftName[id] || g.name) : g.name).replace(/^"|"$/g, ''),
+        descHtml: parseDesc((this.giftL && this.giftL.giftDesc[id]) || g.desc, kwMap),
         grade: g.grade,
         tags: g.tags,
         category: g.category,
@@ -2072,7 +2164,7 @@ function checklist() {
     openPackPopup(packId) {
       this.packPopupZIndex = this.nextZIndex;
       this.nextZIndex += 10;
-      const name = themeMap[String(packId)] || String(packId);
+      const name = themeNameOf(packId, this.giftL);
       const conditions = floorMap[String(packId)] || [];
       const isExtreme = !!extremeVisualMap[String(packId)];
       const spriteId = spriteMap[String(packId)] || '';
@@ -2080,7 +2172,7 @@ function checklist() {
       const showBaton = batonMap[String(packId)] || false;
       const bossSpriteId = bossMap[String(packId)] || '';
       const hideLogo = hideLogoMap[String(packId)] || false;
-      const nameColorParts = packNameParts(packId);   // specialName/textColor 반영 (packNameParts 재사용)
+      const nameColorParts = packNameParts(packId, this.giftL);   // specialName/textColor 반영 (packNameParts 재사용)
       const specificGiftIds = specificGiftPoolMap[String(packId)] || [];
       const specificGifts = specificGiftIds.map(id => ({
         id,
@@ -2146,7 +2238,7 @@ function checklist() {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })]);
         btn._iconHtml ??= btn.innerHTML;
         clearTimeout(btn._copyTimer);
-        btn.textContent = '복사됨';
+        btn.textContent = this.ui('copy.copied');
         btn._copyTimer = setTimeout(() => { btn.innerHTML = btn._iconHtml; }, 1200);
       } catch(e) {
         console.warn('복사 실패:', e);
@@ -2342,14 +2434,14 @@ function checklist() {
     },
 
     presetPackDisplayLabel() {
-      return { simple: '간단히', detail: '자세히', hidden: '미표시' }[this.presetPackDisplay];
+      return { simple: this.ui('toggle.simple'), detail: this.ui('toggle.detail'), hidden: this.ui('toggle.hidden') }[this.presetPackDisplay];
     },
 
     presetDisplayGroups() {
       if (this.presetPackDisplay === 'hidden') return [];
       const ids = this.presetPackIds();
       if (!ids.length) return [];
-      if (this.presetPackDisplay === 'simple') return [{ label: '테마팩', packs: ids }];
+      if (this.presetPackDisplay === 'simple') return [{ label: this.ui('pack.label'), packs: ids }];
       const set = new Set(ids.map(String));
       return packGroups
         .filter(g => this.packDungeonMode === 'normal' ? g.dungeonIdx === 0 : g.dungeonIdx >= 1)
@@ -2413,7 +2505,7 @@ function checklist() {
     },
     confirmAddPackPreset() {
       if (!this.packPresetAddName.trim()) {
-        this.showToast('이름을 입력해주세요.', { selector: '.pack-preset-add-shade', error: true });
+        this.showToast(this.ui('toast.name_required'), { selector: '.pack-preset-add-shade', error: true });
         this.packPresetAddNameError = false;
         this.$nextTick(() => { this.packPresetAddNameError = true; });
         return;
@@ -2440,7 +2532,7 @@ function checklist() {
           this.previewDungeonMode = 'hard';
           this.showPackPresetAddModal = true;
         } catch {
-          this.showToast('부적절한 파일입니다.', { selector: '.pack-preset-add-shade', error: true });
+          this.showToast(this.ui('toast.invalid_file'), { selector: '.pack-preset-add-shade', error: true });
         }
       };
       reader.readAsText(file);
@@ -2458,7 +2550,7 @@ function checklist() {
         this.showPackCodeAddModal = false;
         this.showPackPresetAddModal = true;
       } catch (e) {
-        this.showToast('부적절한 코드입니다.', { selector: '.pack-code-add-shade', error: true });
+        this.showToast(this.ui('toast.invalid_code'), { selector: '.pack-code-add-shade', error: true });
       }
     },
     sharePackByCode() {
@@ -2466,7 +2558,7 @@ function checklist() {
       if (!preset) return;
       const encoded = LZString.compressToEncodedURIComponent(JSON.stringify({ name: preset.name, packs: preset.packs }));
       navigator.clipboard.writeText(encoded).then(() => {
-        this.showToast('클립보드에 복사되었습니다.', { selector: '.pack-preset-detail-shade' });
+        this.showToast(this.ui('toast.copied'), { selector: '.pack-preset-detail-shade' });
       }).catch(() => {});
     },
     async sharePackByFile() {
@@ -2477,7 +2569,7 @@ function checklist() {
         try {
           const fileHandle = await window.showSaveFilePicker({
             suggestedName: `${preset.name}.json`,
-            types: [{ description: 'JSON 파일', accept: { 'application/json': ['.json'] } }],
+            types: [{ description: this.ui('file.json_desc'), accept: { 'application/json': ['.json'] } }],
           });
           const writable = await fileHandle.createWritable();
           await writable.write(json);
@@ -2638,12 +2730,12 @@ function checklist() {
       }
       const { names, tags } = this.parseSearch();
       if (names.length > 0) {
-        const name = itemNameMap[String(id)] || '';
+        const name = this._sName(id);
         if (!names.some(n => name.includes(n))) return false;
       }
       if (tags.length > 0) {
-        const giftTags = itemTagsMap[id] || [];
-        const sdesc = searchDescMap[id] || '';
+        const giftTags = this._tags(id);
+        const sdesc = this._sDesc(id);
         if (!tags.some(t => { const ts = t.replace(/\s/g, '');
           return giftTags.some(gt => gt.replace(/\s/g, '').startsWith(ts)) || sdesc.includes(ts.toLowerCase()); })) return false;
       }
@@ -2663,11 +2755,11 @@ function checklist() {
       return Object.keys(itemCategoryMap)
         .filter(id => itemCategoryMap[id] === catId)
         .some(id => {
-          const name = itemNameMap[id] || '';
+          const name = this._sName(id);
           if (names.length > 0 && !names.some(n => name.includes(n))) return false;
           if (tags.length > 0) {
-            const giftTags = itemTagsMap[id] || [];
-            const sdesc = searchDescMap[id] || '';
+            const giftTags = this._tags(id);
+            const sdesc = this._sDesc(id);
             if (!tags.some(t => { const ts = t.replace(/\s/g, '');
               return giftTags.some(gt => gt.replace(/\s/g, '').startsWith(ts)) || sdesc.includes(ts.toLowerCase()); })) return false;
           }

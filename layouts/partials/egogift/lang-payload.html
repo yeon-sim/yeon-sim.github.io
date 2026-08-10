@@ -1,0 +1,83 @@
+{{- /* [클라이언트 사이드 언어 전환 스파이크] 기프트 페이지의 "언어 의존 텍스트"만 모은 페이로드.
+       언어 무관 구조(grade·category·packs·isFusion 등)는 페이지 인라인에 그대로 두고,
+       여기엔 언어를 바꾸면 달라지는 값만 담는다. → /lang/gift-{lc}.json 으로 발행.
+
+       인자: 언어 코드 문자열 ("kr"·"en"·"jp") */ -}}
+{{- $lc := . -}}
+{{- $L := partialCached "lang.html" $lc $lc -}}
+{{- $Lkr := partialCached "lang.html" "kr" "kr" -}}
+{{- $gifts := partialCached "egogift/assemble.html" $lc $lc -}}
+
+{{- /* 키워드 id -> {name, desc, iconId} (index.html 의 buffDetailMap 과 동일 규칙) */ -}}
+{{- $buffIcon := dict -}}
+{{- range site.Data.buff -}}
+  {{- range .list -}}
+    {{- if and .id .iconId -}}{{- $buffIcon = merge $buffIcon (dict (string .id) (string .iconId)) -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $kw := dict -}}
+{{- range $L.parsingdata -}}
+  {{- range .dataList -}}
+    {{- $id := string .id -}}
+    {{- if not (isset $kw $id) -}}
+      {{- $icon := "" -}}
+      {{- if .iconId -}}{{- $icon = .iconId -}}{{- else -}}{{- with index $buffIcon $id -}}{{- $icon = . -}}{{- end -}}{{- end -}}
+      {{- $kw = merge $kw (dict $id (dict "name" (.name | default "") "desc" (.desc | default "") "iconId" $icon)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 검색용 desc 평문에 쓰는 id -> 이름 맵 (kwmap.html 과 같은 형태, 단 언어별) */ -}}
+{{- $kwName := dict -}}
+{{- range $id, $v := $kw -}}{{- $kwName = merge $kwName (dict $id $v.name) -}}{{- end -}}
+
+{{- /* 기프트 텍스트: 이름·설명·업그레이드·태그명·검색용 평문 */ -}}
+{{- $name := dict -}}
+{{- $desc := dict -}}
+{{- $ups := dict -}}
+{{- $tags := dict -}}
+{{- $sdesc := dict -}}
+{{- range $gifts -}}
+  {{- $k := string .id -}}
+  {{- $name = merge $name (dict $k .name) -}}
+  {{- $desc = merge $desc (dict $k .desc) -}}
+  {{- $tags = merge $tags (dict $k .tags) -}}
+  {{- $sdesc = merge $sdesc (dict $k (replace (partial "format-desc-text.html" (dict "desc" .desc "kw" $kwName) | lower) " " "")) -}}
+  {{- with .upgrade -}}{{- $ups = merge $ups (dict $k .) -}}{{- end -}}
+{{- end -}}
+
+{{- /* 카테고리 표시명 (해당 언어 값이 비면 kr 폴백) */ -}}
+{{- $catName := dict -}}
+{{- range $Lkr.egogift.Categories.dataList -}}{{- $catName = merge $catName (dict .id .name) -}}{{- end -}}
+{{- range $L.egogift.Categories.dataList -}}{{- if .name -}}{{- $catName = merge $catName (dict .id .name) -}}{{- end -}}{{- end -}}
+
+{{- /* 카테고리 -> [기프트 이름] (수집 현황·검색용) */ -}}
+{{- $catGiftNames := dict -}}
+{{- range site.Data.egogift.category.dataList -}}
+  {{- $cid := .id -}}
+  {{- $ns := slice -}}
+  {{- range $gifts -}}{{- if eq .category $cid -}}{{- $ns = $ns | append .name -}}{{- end -}}{{- end -}}
+  {{- $catGiftNames = merge $catGiftNames (dict $cid $ns) -}}
+{{- end -}}
+
+{{- /* 테마팩 이름 (floor_data 는 dev 라벨이라 반드시 MirrorDungeonTheme-1 을 쓴다) */ -}}
+{{- $theme := dict -}}
+{{- $themeSp := dict -}}
+{{- range (index $L "MirrorDungeonTheme-1").dataList -}}
+  {{- $tid := string .id -}}
+  {{- $theme = merge $theme (dict $tid (.name | default "")) -}}
+  {{- if .specialName -}}{{- $themeSp = merge $themeSp (dict $tid .specialName) -}}{{- end -}}
+{{- end -}}
+
+{{- return dict
+      "lang" $lc
+      "giftName" $name
+      "giftDesc" $desc
+      "giftUpgrades" $ups
+      "giftTags" $tags
+      "searchDesc" $sdesc
+      "categoryName" $catName
+      "categoryGiftNames" $catGiftNames
+      "kw" $kw
+      "theme" $theme
+      "themeSpecial" $themeSp -}}

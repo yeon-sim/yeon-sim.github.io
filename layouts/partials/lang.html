@@ -1,0 +1,21 @@
+{{- /* 언어 코드 → 파일명 접두어(KR_/EN_/JP_)를 뗀 정규화 데이터 맵.
+       data/lang/{lc}/ 의 파일과 하위 디렉토리를 같은 규칙으로 정규화한다.
+       접두어 지식은 이 partial 에만 두고, 호출부는 언어 무관한 이름으로 접근한다.
+
+       호출: {{ $L := partialCached "lang.html" "kr" "kr" }}
+             $L.Personalities · $L.egogift.Tags · (index $L "MirrorDungeonTheme-1") */ -}}
+{{- $p := printf "%s_" (upper .) -}}
+{{- $out := dict -}}
+{{- range $k, $v := index site.Data.lang . -}}
+  {{- if hasPrefix $k $p -}}
+    {{- $out = merge $out (dict (strings.TrimPrefix $p $k) $v) -}}
+  {{- else -}}
+    {{- /* 하위 디렉토리 (egogift·egoskill·parsingdata·passive·skill·unitkeyword) */ -}}
+    {{- $sub := dict -}}
+    {{- range $k2, $v2 := $v -}}
+      {{- if hasPrefix $k2 $p -}}{{- $sub = merge $sub (dict (strings.TrimPrefix $p $k2) $v2) -}}{{- end -}}
+    {{- end -}}
+    {{- $out = merge $out (dict $k $sub) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

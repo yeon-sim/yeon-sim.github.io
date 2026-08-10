@@ -1,0 +1,112 @@
+[
+  {
+    "loc": "19210 desc",
+    "before": "[편성 4번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] <style=\"upgradeHighlight\">2</style> 얻음",
+    "after": "[편성 4번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음"
+  },
+  {
+    "loc": "29210 desc",
+    "before": "[편성 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음",
+    "after": "[편성 4번, 5번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음"
+  },
+  {
+    "loc": "9211 desc",
+    "before": "턴 시작시, 적 전체의 [Sinking] 위력과 [Sinking] 횟수의 합이 30 이상이면, 아래 효과 적용\n\n- [Sinking] 위력, 횟수를 부여하는 스킬의 최종 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외)\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 6인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 스킬의 피해량 +20% (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n · 공격 대상이 정신력이 -45이면, 추가 피해량 +10%\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 10인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 더하기 코인 스킬의 코인 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n · 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)",
+    "after": "턴 시작 시, 적 전체의 [Sinking] 위력과 [Sinking] 횟수의 합이 30 이상이면, 아래 효과 적용\n\n- [Sinking] 위력, 횟수를 부여하는 스킬의 최종 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외)\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 6인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 스킬의 피해량 +20% (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n· 공격 대상이 정신력이 -45이면, 추가 피해량 +10%\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 10인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 더하기 코인 스킬의 코인 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n· 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)"
+  },
+  {
+    "loc": "9212 simpleDesc[1] ability92121",
+    "before": "크리티컬 적중시 일정 확률로 다음 턴에 [PenetrateResultUp] 얻음, 조건 만족 시 다음 턴에 [PlusCoinValueUp] 얻음, 부정적인 효과 부여량 증가",
+    "after": "크리티컬 적중 시 일정 확률로 다음 턴에 [PenetrateResultUp] 얻음, 조건 만족 시 다음 턴에 [PlusCoinValueUp] 얻음, 부정적인 효과 부여량 증가"
+  },
+  {
+    "loc": "9213 desc",
+    "before": "혈귀인 모든 아군의 기본 스킬 코인 위력 +1, 자신의 ([BloodDinner_Accumulation] / 10)%만큼 스킬 <noparse>피해량 증가</noparse>\n\n턴 종료 시, [Laceration]을 보유한 아군 중 가장 체력이 적은 인격 2명이 자신의 최대 체력의 5%만큼 체력을 회복하고 다음 턴 시작시 [SwirlingBloodPersonality] 10 얻음\n\n적 처치시, 해당 적의 (본체 최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n\n턴 종료시 이번 턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] 5, [Laceration] 횟수 3 부여.\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 2회 발동시키고, 모든 적의 [Laceration] 횟수 2 감소",
+    "after": "혈귀인 모든 아군의 기본 스킬 코인 위력 +1, 자신의 ([BloodDinner_Accumulation] / 10)%만큼 스킬 피해량 증가\n\n턴 종료 시, [Laceration]을 보유한 아군 중 가장 체력이 적은 인격 2명이 자신의 최대 체력의 5%만큼 체력을 회복하고 다음 턴 시작 시 [SwirlingBloodPersonality] 10 얻음\n\n적 처치 시, 해당 적의 (본체 최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n\n턴 종료 시 이번 턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] 5, [Laceration] 횟수 3 부여.\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 2회 발동시키고, 모든 적의 [Laceration] 횟수 2 감소"
+  },
+  {
+    "loc": "19219 desc",
+    "before": "적에게 동일한 공격 유형의 스킬이 <style=\"upgradeHighlight\">9번</style> 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)",
+    "after": "적에게 동일한 공격 유형의 스킬이 9번 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+  },
+  {
+    "loc": "29219 desc",
+    "before": "적에게 동일한 공격 유형의 스킬이 <style=\"upgradeHighlight\">6번</style> 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)",
+    "after": "적에게 동일한 공격 유형의 스킬이 6번 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+  },
+  {
+    "loc": "19225 desc",
+    "before": "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 <style=\"upgradeHighlight\">+15%</style> (턴당 1회)",
+    "after": "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 +15% (턴당 1회)"
+  },
+  {
+    "loc": "29225 desc",
+    "before": "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 <style=\"upgradeHighlight\">+20%</style> (턴당 1회)",
+    "after": "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 +20% (턴당 1회)"
+  },
+  {
+    "loc": "9256 desc",
+    "before": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n[편성 1번 인격 전용 효과]\n- 합 진행 시 매 합마다 자신이 [LookingFutureMirror] 1 얻음. 대상에게 [Vibration]과 [Combustion] 2 부여 (스킬당 최대 10회)\n- 합 승리 시 메인 타겟에게 [VibrationIgnition]로 [Switch_Vibration]하고, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 적중 시 대상이 흐트러짐 상태라면, 가하는 피해량 +30%\n- 크리티컬 적중 시 [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)",
+    "after": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n[편성 1번 인격 전용 효과]\n- 합 진행 시 매 합마다 자신이 [LookingFutureMirror] 1 얻음. 대상에게 [Vibration]과 [Combustion] 2 부여 (스킬당 최대 10회)\n- 합 승리 시 메인 타겟에게 [VibrationIgnition]로 [Switch_Vibration]하고, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 적중 시 대상이 흐트러짐 상태라면, 가하는 피해량 +30%\n- 크리티컬 적중 시 [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+  },
+  {
+    "loc": "9257 desc",
+    "before": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n합 진행 시, 대상의 [Sinking]과 자신의 [Breath]의 합 30당, 합 위력 +1 (최대 5)\n\n[SuperCoin]의 피해량 +25%\n[SuperCoin]으로 피해를 받을 때, 피해량 -25%,\n\n[검지 소속 인격 전용 효과]\n- 전장에 처음으로 등장할 때, [BlessingOfIndexPrescriptAlly] 6 얻음\n· [UnlockBuff_Base]을 획득 가능한 인격일 경우, 추가로 [UnlockBuffAlly_2] 얻음\n- [IndexPrescriptTargetToEnemy]을 보유한 적에게 입히는 피해량 +50%",
+    "after": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n합 진행 시, 대상의 [Sinking]과 자신의 [Breath]의 합 30당, 합 위력 +1 (최대 5)\n\n[SuperCoin]의 피해량 +25%\n[SuperCoin]으로 피해를 받을 때, 피해량 -25%,\n\n[검지 소속 인격 전용 효과]\n- 전장에 처음으로 등장할 때, [BlessingOfIndexPrescriptAlly] 6 얻음\n· [UnlockBuff_Base]을 획득 가능한 인격일 경우, 추가로 [UnlockBuffAlly_2] 얻음\n- [IndexPrescriptTargetToEnemy]을 보유한 적에게 입히는 피해량 +50%"
+  },
+  {
+    "loc": "9258 desc",
+    "before": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n스테이지 시작시 전장에 있는 중지 소속 아군 1명당 모든 아군이 보호막 50씩 얻음 (대기 인원 미포함, 이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n 중지 소속 아군이 질투 속성이나 타격 속성 기본 스킬 공격 종료 시 입힌 스킬 피해량의 10%만큼 체력 회복\n- 반격 스킬로 발동했을 경우, 대신 입힌 스킬 피해량의 20%만큼 체력 회복\n- 초과된 체력 회복량은 보호막으로 획득함 (이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n전투 시작시, 장착한 수비 스킬 수만큼 해당 턴 동안 중지 소속 아군의 공격 레벨이 증가 (최대 12)\n- 장착한 수비 스킬 수가 6 이상이면, 질투 속성 기본 스킬 피해량 +30%, 초과한 수비 스킬 수만큼 추가로 +10% (최대 추가 증가량 60%)",
+    "after": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n스테이지 시작 시 전장에 있는 중지 소속 아군 1명당 모든 아군이 보호막 50씩 얻음 (대기 인원 미포함, 이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n중지 소속 아군이 질투 속성이나 타격 속성 기본 스킬 공격 종료 시 입힌 스킬 피해량의 10%만큼 체력 회복\n- 반격 스킬로 발동했을 경우, 대신 입힌 스킬 피해량의 20%만큼 체력 회복\n- 초과된 체력 회복량은 보호막으로 획득함 (이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n전투 시작 시, 장착한 수비 스킬 수만큼 해당 턴 동안 중지 소속 아군의 공격 레벨이 증가 (최대 12)\n- 장착한 수비 스킬 수가 6 이상이면, 질투 속성 기본 스킬 피해량 +30%, 초과한 수비 스킬 수만큼 추가로 +10% (최대 추가 증가량 60%)"
+  },
+  {
+    "loc": "9259 desc",
+    "before": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n약지 소속 인격이 기본 공격 스킬 사용 시, 대상에게 부여된 부정적인 효과의 개수에 따라 해당 스킬에 아래 효과 적용\n- 2 ~ : 합 위력 +2\n- 4 ~ : 피해량 +15%\n- 6 ~ : 코인 효과로 부여하는 부정적인 효과의 위력, 횟수 부여값 +1\n- 7 ~ : 기본 위력 +2\n- 8 ~ : 피해량 +35%",
+    "after": "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n약지 소속 인격이 기본 공격 스킬 사용 시, 대상에게 부여된 부정적인 효과의 개수에 따라 해당 스킬에 아래 효과 적용\n- 2 ~ : 합 위력 +2\n- 4 ~ : 피해량 +15%\n- 6 ~ : 코인 효과로 부여하는 부정적인 효과의 위력, 횟수 부여값 +1\n- 7 ~ : 기본 위력 +2\n- 8 ~ : 피해량 +35%"
+  },
+  {
+    "loc": "9250 desc",
+    "before": "[편성 순서 1번 인격 전용 효과]\n스테이지 시작시, [KAmpouleMirror] 1 얻음",
+    "after": "[편성 순서 1번 인격 전용 효과]\n스테이지 시작 시, [KAmpouleMirror] 1 얻음"
+  },
+  {
+    "loc": "9251 desc",
+    "before": "[Combustion] 위력 최댓값 +30\n\n[Combustion]을 보유한 대상과 합 승리시, 대상의 [Combustion] 1회 발동, 대상의 [Combustion] 횟수 1 감소 (인격당 1회)\n\n[Combustion]을 보유한 적에게 스킬 사용시, 메인 타겟의 ([Combustion] 위력 / 10) 만큼 해당 스킬의 공격 레벨이 증가 (최대 8)",
+    "after": "[Combustion] 위력 최댓값 +30\n\n[Combustion]을 보유한 대상과 합 승리 시, 대상의 [Combustion] 1회 발동, 대상의 [Combustion] 횟수 1 감소 (인격당 1회)\n\n[Combustion]을 보유한 적에게 스킬 사용 시, 메인 타겟의 ([Combustion] 위력 / 10) 만큼 해당 스킬의 공격 레벨이 증가 (최대 8)"
+  },
+  {
+    "loc": "9252 desc",
+    "before": "N사 광신도 소속이면, 기본 스킬의 기본 위력 +3\n\nN사 광신도 소속 인격이 [AssemblePersonality]을 얻을 때, 모든 N사 광신도 소속 인격도 해당 수치만큼 [AssemblePersonality] 얻음 (턴당 1회, 본인 포함)\n- 색욕 완전 공명이 있으면, 부여량 3배로 적용\n\n스테이지 시작시 모든 적에게 [NailPersonality] 2 부여\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상과 기본 스킬로 합 진행 시 [Laceration] 3 부여 (스킬당 1회)\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상에게 기본 스킬로 가하는 피해량 +100%",
+    "after": "N사 광신도 소속이면, 기본 스킬의 기본 위력 +3\n\nN사 광신도 소속 인격이 [AssemblePersonality]을 얻을 때, 모든 N사 광신도 소속 인격도 해당 수치만큼 [AssemblePersonality] 얻음 (턴당 1회, 본인 포함)\n- 색욕 완전 공명이 있으면, 부여량 3배로 적용\n\n스테이지 시작 시 모든 적에게 [NailPersonality] 2 부여\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상과 기본 스킬로 합 진행 시 [Laceration] 3 부여 (스킬당 1회)\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상에게 기본 스킬로 가하는 피해량 +100%"
+  },
+  {
+    "loc": "9253 desc",
+    "before": "첫 턴 시작시, [BloodDinner] 300 얻음\n[BloodDinner]이 [Laceration] 효과로 생성될 때 2배로 생성됨\n[BloodDinner]을 소모하는 스킬 사용시 해당 스킬에서 소모한 값만큼 공격 종료 시에 [BloodDinner]을 추가 소모함\n\n[라만차랜드 인격 전용 효과]\n라만차랜드 소속 인격 전투 참여 시, 인격에 따라 아래 효과 적용\n- 라만차랜드 실장 돈키호테: [BloodArmorPersonalityFirst] 15 얻음\n- 라만차랜드 공주 로쟈: [BloomingThornsRodionFirst] 15 얻음\n- 라만차랜드 신부 그레고르: [BloodyHandGregFirst] 15 얻음\n- 라만차랜드 이발사 오티스: [BloodScissorPersonalityFirst] 15 얻음\n- 라만차랜드 왕자 뫼르소: [BloodArmorMeursault] 3 얻음\n\n[라만차랜드 실장 돈키호테 전용 효과]\n- 자신을 제외한 라만차랜드 소속 인격 1명당 라만차랜드 실장 돈키호테 기본 스킬의 최종 위력 +1, 가하는 피해량 +30% (최대 4, 120%, 대기 인원 포함, 사망 인원 포함, 미 편성 인원 제외)",
+    "after": "첫 턴 시작 시, [BloodDinner] 300 얻음\n[BloodDinner]이 [Laceration] 효과로 생성될 때 2배로 생성됨\n[BloodDinner]을 소모하는 스킬 사용 시 해당 스킬에서 소모한 값만큼 공격 종료 시에 [BloodDinner]을 추가 소모함\n\n[라만차랜드 인격 전용 효과]\n라만차랜드 소속 인격 전투 참여 시, 인격에 따라 아래 효과 적용\n- 라만차랜드 실장 돈키호테: [BloodArmorPersonalityFirst] 15 얻음\n- 라만차랜드 공주 로쟈: [BloomingThornsRodionFirst] 15 얻음\n- 라만차랜드 신부 그레고르: [BloodyHandGregFirst] 15 얻음\n- 라만차랜드 이발사 오티스: [BloodScissorPersonalityFirst] 15 얻음\n- 라만차랜드 왕자 뫼르소: [BloodArmorMeursault] 3 얻음\n\n[라만차랜드 실장 돈키호테 전용 효과]\n- 자신을 제외한 라만차랜드 소속 인격 1명당 라만차랜드 실장 돈키호테 기본 스킬의 최종 위력 +1, 가하는 피해량 +30% (최대 4, 120%, 대기 인원 포함, 사망 인원 포함, 미 편성 인원 제외)"
+  },
+  {
+    "loc": "9254 desc",
+    "before": "[Vibration] 횟수나 [Charge] 횟수를 소모하는 기본 스킬의 피해량 +20% (특수 <noparse>충전</noparse> 포함, 위력 고정 특수 <noparse>충전</noparse> 제외)\n\n기본 스킬로 [Vibration] 횟수나 [Charge] 횟수를 소모했으면, 스킬 종료 시 소모한 횟수의 절반 돌려받음 (최소 1, 소수점 <noparse>버림</noparse>, 특수 <noparse>충전</noparse> 포함, 위력 고정 특수 <noparse>충전</noparse> 제외)",
+    "after": "[Vibration] 횟수나 [Charge] 횟수를 소모하는 기본 스킬의 피해량 +20% (특수 충전 포함, 위력 고정 특수 충전 제외)\n\n기본 스킬로 [Vibration] 횟수나 [Charge] 횟수를 소모했으면, 스킬 종료 시 소모한 횟수의 절반 돌려받음 (최소 1, 소수점 버림, 특수 충전 포함, 위력 고정 특수 충전 제외)"
+  },
+  {
+    "loc": "9255 desc",
+    "before": "적에게 [Vibration] 위력, [Vibration] 횟수 또는 특수 진동을 부여하는 기본 스킬로 합 승리시 아래 특수 <noparse>진동</noparse> 중 무작위 특수 <noparse>진동</noparse>으로 [FusionVibration] (턴당 최대 1회)\n- [VibrationIgnition]\n- [VibrationBleeding]\n- [VibrationEcho]\n- [VibrationCollapse]\n- [VibrationChainPersonality]",
+    "after": "적에게 [Vibration] 위력, [Vibration] 횟수 또는 특수 진동을 부여하는 기본 스킬로 합 승리 시 아래 특수 진동 중 무작위 특수 진동으로 [FusionVibration] (턴당 최대 1회)\n- [VibrationIgnition]\n- [VibrationBleeding]\n- [VibrationEcho]\n- [VibrationCollapse]\n- [VibrationChainPersonality]"
+  },
+  {
+    "loc": "9274 desc",
+    "before": "적에게 크리티컬 적중시 다음 턴에 [Binding] 1 부여 (턴당 2회)\n[Binding]을 보유한 적에게 스킬 적중시, [Breath] 1 얻음. (인격당 턴당 2회)\n\n턴 시작 시 [Laceration]을 보유한 모든 적이 자신의 [Binding] 수치만큼 [AttackDown] 얻음 (최대 5)\n\n턴 시작 시 모든 적(집중 전투면 부위로 판정)에게 [Binding]이 부여되어있다면, 모든 아군이 [Breath] 3 얻음",
+    "after": "적에게 크리티컬 적중 시 다음 턴에 [Binding] 1 부여 (턴당 2회)\n[Binding]을 보유한 적에게 스킬 적중 시, [Breath] 1 얻음. (인격당 턴당 2회)\n\n턴 시작 시 [Laceration]을 보유한 모든 적이 자신의 [Binding] 수치만큼 [AttackDown] 얻음 (최대 5)\n\n턴 시작 시 모든 적(집중 전투면 부위로 판정)에게 [Binding]이 부여되어있다면, 모든 아군이 [Breath] 3 얻음"
+  },
+  {
+    "loc": "9276 desc",
+    "before": "아군 인격이 [SupportProtect]를 얻을 때 [AttackDmgUp] 2, [Protection] 2 얻음\n\n[편성 1번 전용 효과]\n턴 종료시 다음 턴에 [Agility] 2 얻음\n인격의 속도가 적보다 빠르면, 속도 차이당 피해량 +3% (최대 30%)",
+    "after": "아군 인격이 [SupportProtect]를 얻을 때 [AttackDmgUp] 2, [Protection] 2 얻음\n\n[편성 1번 전용 효과]\n턴 종료 시 다음 턴에 [Agility] 2 얻음\n인격의 속도가 적보다 빠르면, 속도 차이당 피해량 +3% (최대 30%)"
+  },
+  {
+    "loc": "9280 desc",
+    "before": "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여",
+    "after": "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작 시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여"
+  }
+]

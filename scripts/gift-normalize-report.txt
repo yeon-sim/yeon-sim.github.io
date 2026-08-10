@@ -1,0 +1,1058 @@
+# 기프트 desc 정규화 리포트  (WRITE 적용됨)
+
+== 요약 ==
+스코프: base 9xxx + 강화(19xxx/29xxx)만
+대상 파일: 28 / 스코프 레코드: 671 / 변경 파일: 17 / 정규화된 필드: 325
+
+== 마크업 태그 인벤토리 (STRIP_TAGS 점검: 한글 <…>는 보존돼야 함) ==
+    397  <style="upgradeHighlight">
+    397  </style>
+     21  <noparse>
+     21  </noparse>
+      3  <혈귀>   ← 한글: 보존 대상
+      1  <기계 융화 생명체>   ← 한글: 보존 대상
+
+== [Token] 키워드 (보존, distinct 121) ==
+    291  [Burst]
+    285  [Vibration]
+    277  [Laceration]
+    266  [Combustion]
+    263  [Breath]
+    241  [Sinking]
+    198  [Charge]
+    124  [Agility]
+    120  [AttackUp]
+     89  [AttackDmgUp]
+     52  [DefenseDown]
+     40  [Binding]
+     36  [Enhancement]
+     31  [Vulnerable]
+     29  [DefenseUp]
+     28  [Bullet]
+     25  [Protection]
+     25  [ChargeForceField]
+     24  [VibrationExplosion]
+     22  [TabExplain]
+     22  [AttackDown]
+     21  [HitDamageUp]
+     21  [PenetrateDamageUp]
+     17  [ResultEnhancement]
+     17  [Paralysis]
+     17  [BloodDinner]
+     12  [PlusCoinValueUp]
+     12  [TakeHpHealIncrease]
+     12  [TensionUp]
+     11  [FusionVibration]
+
+== 미커버 '…시' 붙임형 (SI_STEMS 후보 / 또는 보호어) ==
+
+== 상세 변경 (before → after) ==
+
+### lang\kr\egogift\KR_EGOgift_cultivation.json
+  [9820 desc]
+    - "턴 시작 시, 방어 레벨이 가장 높은 아군 하나에게 보호막 (방어 레벨/3) 부여 (흑수-오 소속 인격을 우선으로 지정. 보호막 최대 15)\n\n보호막을 보유한 아군이 합 승리시, 적에게 (속도/2)만큼 [Vibration] 위력을 부여하고, 다음 턴에 [Agility] 2, [DefenseUp] 2 얻음(턴 당, 인격 당 1회)"
+    + "턴 시작 시, 방어 레벨이 가장 높은 아군 하나에게 보호막 (방어 레벨/3) 부여 (흑수-오 소속 인격을 우선으로 지정. 보호막 최대 15)\n\n보호막을 보유한 아군이 합 승리 시, 적에게 (속도/2)만큼 [Vibration] 위력을 부여하고, 다음 턴에 [Agility] 2, [DefenseUp] 2 얻음(턴 당, 인격 당 1회)"
+  [9825 simpleDesc[0] ability9825]
+    - " 공격 레벨 증가, 방어 레벨 증가, 체력 회복, 가주 후보 소속이면 추가 효과로 자신을 포함한 모든 아군에게 다음 턴에 신속, 보호, 공격 레벨 증가 부여"
+    + "공격 레벨 증가, 방어 레벨 증가, 체력 회복, 가주 후보 소속이면 추가 효과로 자신을 포함한 모든 아군에게 다음 턴에 신속, 보호, 공격 레벨 증가 부여"
+  [19826 desc]
+    - "[편성 2번, <style=\"upgradeHighlight\">4번</style> 인격 전용 효과]\n\n자신의 잃은 체력 1%당 기본 스킬로 가하는 피해량 +1%(최대 10%)"
+    + "[편성 2번, 4번 인격 전용 효과]\n\n자신의 잃은 체력 1%당 기본 스킬로 가하는 피해량 +1%(최대 10%)"
+  [29826 desc]
+    - "[편성 2번, 4번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n자신의 잃은 체력 1%당 기본 스킬로 가하는 피해량 +1%(최대 10%)"
+    + "[편성 2번, 4번, 6번 인격 전용 효과]\n\n자신의 잃은 체력 1%당 기본 스킬로 가하는 피해량 +1%(최대 10%)"
+  [9828 desc]
+    - "[편성 1번 인격 전용 효과]\n[Bullet]을 소모하는 스킬 사용 시 다음 효과 적용\n- 다음 턴에 [Agility] 3 얻음. (턴 당 1회)\n- 적중 시 [VibrationExplosion]. [Vibration] 횟수 1 소모 (턴 당 2회)\n- 합 승리 후 적중시 대상에게 [Combustion]과 [Vibration](특수 화상과 특수 진동을 포함)이 함께 존재할 경우, [Combustion]과 [Vibration]의 위력 합만큼 분노 피해를 입힘. (턴 당 2회)\n\n분노 공명을 4 이상 발동하였다면, 다음 효과 적용\n- 분노 속성 스킬을 사용할 경우, 스킬의 코인 위력 2 증가\n- 적중 시 [Bullet]을 소모하였다면, 피해량 +30%"
+    + "[편성 1번 인격 전용 효과]\n[Bullet]을 소모하는 스킬 사용 시 다음 효과 적용\n- 다음 턴에 [Agility] 3 얻음. (턴 당 1회)\n- 적중 시 [VibrationExplosion]. [Vibration] 횟수 1 소모 (턴 당 2회)\n- 합 승리 후 적중 시 대상에게 [Combustion]과 [Vibration](특수 화상과 특수 진동을 포함)이 함께 존재할 경우, [Combustion]과 [Vibration]의 위력 합만큼 분노 피해를 입힘. (턴 당 2회)\n\n분노 공명을 4 이상 발동하였다면, 다음 효과 적용\n- 분노 속성 스킬을 사용할 경우, 스킬의 코인 위력 2 증가\n- 적중 시 [Bullet]을 소모하였다면, 피해량 +30%"
+  [9830 desc]
+    - "스테이지 첫 턴 시작시 또는 대기 해제되는 모든 아군에게 [VerEmergencyCandy] 3 부여\n이전 턴에 [VerEmergencyCandy]이 소모되지 않았으면, 턴 시작 시 [VerHunger] 1 부여"
+    + "스테이지 첫 턴 시작 시 또는 대기 해제되는 모든 아군에게 [VerEmergencyCandy] 3 부여\n이전 턴에 [VerEmergencyCandy]이 소모되지 않았으면, 턴 시작 시 [VerHunger] 1 부여"
+
+### lang\kr\egogift\KR_EGOgift_lcbcheckup-re.json
+  [9246 desc]
+    - "림버스 컴퍼니 소속 인격이면, 아래 효과 적용\n- 턴 시작 시 [ParryingResultUp]를 (전투에 참여한 림버스 컴퍼니 소속 인격 수 / 3)만큼 얻음 (최대 2, 소수점 버림)\n\nLCE 소속 인격이면, 아래 효과 적용\n- (전투에 참여한 E.G.O 장비를 입은 인격 수 X 10)%만큼 가하는 <noparse>피해량 증가</noparse> (최대 30%)\n- 같은 소속 아군 사망 시 모든 종류의 E.G.O 자원을 1개씩 얻고, 이번 전투동안 턴 시작 시 [PlusCoinValueUp] 1, [MinusCoinValueUp] 1 얻음 (전투당 인격별 최대 2회)"
+    + "림버스 컴퍼니 소속 인격이면, 아래 효과 적용\n- 턴 시작 시 [ParryingResultUp]를 (전투에 참여한 림버스 컴퍼니 소속 인격 수 / 3)만큼 얻음 (최대 2, 소수점 버림)\n\nLCE 소속 인격이면, 아래 효과 적용\n- (전투에 참여한 E.G.O 장비를 입은 인격 수 X 10)%만큼 가하는 피해량 증가 (최대 30%)\n- 같은 소속 아군 사망 시 모든 종류의 E.G.O 자원을 1개씩 얻고, 이번 전투동안 턴 시작 시 [PlusCoinValueUp] 1, [MinusCoinValueUp] 1 얻음 (전투당 인격별 최대 2회)"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon-EventTheme.json
+  [9731 desc]
+    - "턴 시작 시, [Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n[Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 아군이 사용하는 스킬 3의 더하기 코인 위력 +2, 피해량 +25%.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(8/코인 수) (최소 1, 소수점 버림)\n\n[Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 아군이 합을 진행할 때, 자신보다 속도가 2 이상 높은 적과 진행할 경우 합 위력 +2, 가하는 피해량 +(대상이 보유한 [Vibration] 위력, 최대 50)%.\n\n 턴 시작 시, 속도가 제일 느린 아군 셋이 속도가 느린 순으로 [AttackUp] 5, [AttackUp] 3, [AttackUp] 2를 얻음."
+    + "턴 시작 시, [Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n[Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 아군이 사용하는 스킬 3의 더하기 코인 위력 +2, 피해량 +25%.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(8/코인 수) (최소 1, 소수점 버림)\n\n[Vibration] 위력 또는 [Vibration] 횟수 또는 특수 진동을 부여하는 아군이 합을 진행할 때, 자신보다 속도가 2 이상 높은 적과 진행할 경우 합 위력 +2, 가하는 피해량 +(대상이 보유한 [Vibration] 위력, 최대 50)%.\n\n턴 시작 시, 속도가 제일 느린 아군 셋이 속도가 느린 순으로 [AttackUp] 5, [AttackUp] 3, [AttackUp] 2를 얻음."
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon-EventTheme_2.json
+  [9751 desc]
+    - "턴 시작시, 모든 아군이 [DefenseUp] 2 얻음.\n각 아군이 (자신의 [DefenseUp]/4)만큼 공격 레벨이 증가함. (최대 10)"
+    + "턴 시작 시, 모든 아군이 [DefenseUp] 2 얻음.\n각 아군이 (자신의 [DefenseUp]/4)만큼 공격 레벨이 증가함. (최대 10)"
+  [19751 desc]
+    - "턴 시작시, 모든 아군이 [DefenseUp] <style=\"upgradeHighlight\">4</style> 얻음.\n각 아군이 (자신의 [DefenseUp]/<style=\"upgradeHighlight\">3</style>)만큼 공격 레벨이 증가함. (최대 10)"
+    + "턴 시작 시, 모든 아군이 [DefenseUp] 4 얻음.\n각 아군이 (자신의 [DefenseUp]/3)만큼 공격 레벨이 증가함. (최대 10)"
+  [29751 desc]
+    - "턴 시작시, 모든 아군이 [DefenseUp] 4 얻음.\n각 아군이 (자신의 [DefenseUp]/<style=\"upgradeHighlight\">2</style>)만큼 공격 레벨이 증가함. (최대 10)"
+    + "턴 시작 시, 모든 아군이 [DefenseUp] 4 얻음.\n각 아군이 (자신의 [DefenseUp]/2)만큼 공격 레벨이 증가함. (최대 10)"
+  [19752 desc]
+    - "공격 적중시마다 [Zazen] 1 얻음. (스킬 당 <style=\"upgradeHighlight\">3</style>회)\n자신이 이번 턴에 적에게 스킬로 피격 당한 상태면, 얻는 [Zazen] +1."
+    + "공격 적중시마다 [Zazen] 1 얻음. (스킬 당 3회)\n자신이 이번 턴에 적에게 스킬로 피격 당한 상태면, 얻는 [Zazen] +1."
+  [29752 desc]
+    - "공격 적중시마다 [Zazen] <style=\"upgradeHighlight\">2</style> 얻음. (스킬 당 3회)\n자신이 이번 턴에 적에게 스킬로 피격 당한 상태면, 얻는 [Zazen] +1."
+    + "공격 적중시마다 [Zazen] 2 얻음. (스킬 당 3회)\n자신이 이번 턴에 적에게 스킬로 피격 당한 상태면, 얻는 [Zazen] +1."
+  [9753 desc]
+    - " 홀수 턴이면, 모든 아군이 [AttackDmgUp] 1 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1 얻음."
+    + "홀수 턴이면, 모든 아군이 [AttackDmgUp] 1 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1 얻음."
+  [19753 desc]
+    - " 홀수 턴이면, 모든 아군이 [AttackDmgUp] 1 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1, <style=\"upgradeHighlight\">[DefenseUp] 1</style> 얻음."
+    + "홀수 턴이면, 모든 아군이 [AttackDmgUp] 1 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1, [DefenseUp] 1 얻음."
+  [29753 desc]
+    - " 홀수 턴이면, 모든 아군이 [AttackDmgUp] 1, <style=\"upgradeHighlight\">[AttackUp] 1</style> 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1, [DefenseUp] 1 얻음."
+    + "홀수 턴이면, 모든 아군이 [AttackDmgUp] 1, [AttackUp] 1 얻음. 짝수 턴이면, 모든 아군이 [Protection] 1, [DefenseUp] 1 얻음."
+  [19754 desc]
+    - "스테이지 시작 시 (현재 층 x <style=\"upgradeHighlight\">3</style>)%만큼 모든 아군의 최대 체력이 증가 (최대 <style=\"upgradeHighlight\">30</style>%)"
+    + "스테이지 시작 시 (현재 층 x 3)%만큼 모든 아군의 최대 체력이 증가 (최대 30%)"
+  [29754 desc]
+    - "스테이지 시작 시 (현재 층 x <style=\"upgradeHighlight\">5</style>)%만큼 모든 아군의 최대 체력이 증가 (최대 <style=\"upgradeHighlight\">50</style>%)"
+    + "스테이지 시작 시 (현재 층 x 5)%만큼 모든 아군의 최대 체력이 증가 (최대 50%)"
+  [19755 desc]
+    - "[편성 6번 인격 전용 효과]\n\n전투 시작 시, 자신을 타겟팅한 적의 공격 스킬당 가하는 피해량 +10% (최대 20%)\n\n전투 시작 시 2개 이상의 공격 스킬의 타겟이 되었으면, 자신을 타겟팅한 적에게 <style=\"upgradeHighlight\">(2 x 타겟팅한 스킬 수)</style>만큼 체력 고정 피해와 정신력 피해를 줌. (최대 <style=\"upgradeHighlight\">5</style>. 아군에게는 피해를 주지 않음)"
+    + "[편성 6번 인격 전용 효과]\n\n전투 시작 시, 자신을 타겟팅한 적의 공격 스킬당 가하는 피해량 +10% (최대 20%)\n\n전투 시작 시 2개 이상의 공격 스킬의 타겟이 되었으면, 자신을 타겟팅한 적에게 (2 x 타겟팅한 스킬 수)만큼 체력 고정 피해와 정신력 피해를 줌. (최대 5. 아군에게는 피해를 주지 않음)"
+  [29755 desc]
+    - "[편성 <style=\"upgradeHighlight\">1번,</style> 6번 인격 전용 효과]\n\n전투 시작 시, 자신을 타겟팅한 적의 공격 스킬당 가하는 피해량 +10% (최대 <style=\"upgradeHighlight\">30</style>%)\n\n전투 시작 시 2개 이상의 공격 스킬의 타겟이 되었으면, 자신을 타겟팅한 적에게 (2 x 타겟팅한 스킬 수)만큼 체력 고정 피해와 정신력 피해를 줌. (최대 <style=\"upgradeHighlight\">10</style>. 아군에게는 피해를 주지 않음)"
+    + "[편성 1번, 6번 인격 전용 효과]\n\n전투 시작 시, 자신을 타겟팅한 적의 공격 스킬당 가하는 피해량 +10% (최대 30%)\n\n전투 시작 시 2개 이상의 공격 스킬의 타겟이 되었으면, 자신을 타겟팅한 적에게 (2 x 타겟팅한 스킬 수)만큼 체력 고정 피해와 정신력 피해를 줌. (최대 10. 아군에게는 피해를 주지 않음)"
+  [9756 desc]
+    - "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)"
+    + "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료 시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)"
+  [19756 desc]
+    - "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)\n\n<style=\"upgradeHighlight\">자신에게 [Combustion]이 있으면, 대신 해당 공격동안 체력이 1로 유지되고 해당 공격 종료시 전체 체력의 30%만큼 회복함.(위 효과와 합쳐 전투 당 1회 발동)</style>"
+    + "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료 시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)\n\n자신에게 [Combustion]이 있으면, 대신 해당 공격동안 체력이 1로 유지되고 해당 공격 종료 시 전체 체력의 30%만큼 회복함.(위 효과와 합쳐 전투 당 1회 발동)"
+  [29756 desc]
+    - "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)\n\n자신에게 [Combustion]이 있으면, 대신 해당 공격동안 체력이 1로 유지되고 해당 공격 종료시 전체 체력의 <style=\"upgradeHighlight\">40</style>%만큼 회복함.(위 효과와 합쳐 전투 당 1회 발동)"
+    + "사망할 정도의 피해를 입었다면, 해당 공격동안 체력이 1로 유지되고 해당 공격 종료 시 전체 체력의 20%만큼 회복함. (전투당 1회 발동)\n\n자신에게 [Combustion]이 있으면, 대신 해당 공격동안 체력이 1로 유지되고 해당 공격 종료 시 전체 체력의 40%만큼 회복함.(위 효과와 합쳐 전투 당 1회 발동)"
+  [19757 desc]
+    - "전투 중 피격당했다면, 공격자에게 다음 턴에 [Paralysis] 1 부여. (캐릭터 1명당 턴 당 1 회)\n\n<style=\"upgradeHighlight\">전투 시작 시 질투 완전 공명 5 이상이면, 모든 적에게 [Paralysis] 1 부여.</style>"
+    + "전투 중 피격당했다면, 공격자에게 다음 턴에 [Paralysis] 1 부여. (캐릭터 1명당 턴 당 1 회)\n\n전투 시작 시 질투 완전 공명 5 이상이면, 모든 적에게 [Paralysis] 1 부여."
+  [9760 desc]
+    - "[편성 1번 인격 전용 효과]\n\n턴 시작시 흐트러짐, 사기저하, 패닉 상태인 적이 있으면, 모든 적에게 [AttackDown] 1 또는 [DefenseDown] 1 부여. (턴 당 최대 3회)\n\n흐트러짐, 사기저하, 패닉 상태인 적에게 공격 적중시, [AttackDown] 1 또는 [DefenseDown] 1 부여 (턴 당 최대 3회)"
+    + "[편성 1번 인격 전용 효과]\n\n턴 시작 시 흐트러짐, 사기저하, 패닉 상태인 적이 있으면, 모든 적에게 [AttackDown] 1 또는 [DefenseDown] 1 부여. (턴 당 최대 3회)\n\n흐트러짐, 사기저하, 패닉 상태인 적에게 공격 적중 시, [AttackDown] 1 또는 [DefenseDown] 1 부여 (턴 당 최대 3회)"
+  [9761 desc]
+    - "[편성 1, 2, 7, 8번 인격 전용 효과]\n\n스킬, 코인 효과로 얻는 [Vibration] 횟수의 값 +1\n  - 공격 대상이 흐트러짐, 사기저하, 패닉 상태면 대신 +2\n\n턴 시작시 흐트러짐, 사기저하, 패닉 상태인 적이 있으면, 모든 적에게 [AttackDown] 2 또는 [DefenseDown] 2 부여 (턴 당 최대 3회)\n\n흐트러짐, 사기저하, 패닉 상태인 적에게 공격 적중시, [AttackDown] 1 또는 [DefenseDown] 1 부여 (턴 당 최대 3회. 다른 인격과 횟수 공유)"
+    + "[편성 1, 2, 7, 8번 인격 전용 효과]\n\n스킬, 코인 효과로 얻는 [Vibration] 횟수의 값 +1\n- 공격 대상이 흐트러짐, 사기저하, 패닉 상태면 대신 +2\n\n턴 시작 시 흐트러짐, 사기저하, 패닉 상태인 적이 있으면, 모든 적에게 [AttackDown] 2 또는 [DefenseDown] 2 부여 (턴 당 최대 3회)\n\n흐트러짐, 사기저하, 패닉 상태인 적에게 공격 적중 시, [AttackDown] 1 또는 [DefenseDown] 1 부여 (턴 당 최대 3회. 다른 인격과 횟수 공유)"
+  [9763 desc]
+    - "턴 시작시, 모든 아군이 '분노 ~ 질투 피해량 증가' 중 무작위 효과 1 얻음\n\n턴 시작시, 모든 적에게 '분노 ~ 질투 취약' 중 무작위 효과 1 부여"
+    + "턴 시작 시, 모든 아군이 '분노 ~ 질투 피해량 증가' 중 무작위 효과 1 얻음\n\n턴 시작 시, 모든 적에게 '분노 ~ 질투 취약' 중 무작위 효과 1 부여"
+  [9764 desc]
+    - "아군의 스킬 적중 시마다, [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 2개 효과의 위력 1 부여 (턴 당 3회)\n\n아군의 스킬 적중 시마다, 무작위 아군 두 명에게 다음 턴에 [Breath] 횟수, [Charge] 횟수, [Agility], [AttackUp], [DefenseUp] 중 무작위 1개 효과 1 부여 (턴 당 3회)\n\n턴 시작시, 모든 아군이 '분노 ~ 질투 피해량 증가' 중 무작위 효과 2가지를 1씩 얻음\n\n턴 시작시, 모든 적에게 '분노 ~ 질투 취약' 중 무작위 효과 2가지를 1씩 부여"
+    + "아군의 스킬 적중 시마다, [Combustion], [Laceration], [Vibration], [Burst], [Sinking] 중 무작위 2개 효과의 위력 1 부여 (턴 당 3회)\n\n아군의 스킬 적중 시마다, 무작위 아군 두 명에게 다음 턴에 [Breath] 횟수, [Charge] 횟수, [Agility], [AttackUp], [DefenseUp] 중 무작위 1개 효과 1 부여 (턴 당 3회)\n\n턴 시작 시, 모든 아군이 '분노 ~ 질투 피해량 증가' 중 무작위 효과 2가지를 1씩 얻음\n\n턴 시작 시, 모든 적에게 '분노 ~ 질투 취약' 중 무작위 효과 2가지를 1씩 부여"
+  [9769 desc]
+    - "턴 종료시 이번 턴에 퇴각한 아군이 있으면, 다음 턴 시작시 속도가 가장 빠른 아군 1명이 [Enhancement] 2, [AttackDmgUp] 1 얻음\n\n전투 시작시 이번 턴에 대기해제된 아군이 있으면, 대기해제된 아군이 [Enhancement] 2, [Endurance] 2 얻음"
+    + "턴 종료 시 이번 턴에 퇴각한 아군이 있으면, 다음 턴 시작 시 속도가 가장 빠른 아군 1명이 [Enhancement] 2, [AttackDmgUp] 1 얻음\n\n전투 시작 시 이번 턴에 대기해제된 아군이 있으면, 대기해제된 아군이 [Enhancement] 2, [Endurance] 2 얻음"
+  [9770 desc]
+    - "턴 시작시 자신에게 [Breath]이 있으면, [DefenseUp] 2, [Endurance] 1 얻음\n\n[Breath]이 있으면 처음으로 적중하는 코인의 피해량 +10%\n\n해당 코인이 크리티컬 적중시, 크리티컬 피해량 +20%"
+    + "턴 시작 시 자신에게 [Breath]이 있으면, [DefenseUp] 2, [Endurance] 1 얻음\n\n[Breath]이 있으면 처음으로 적중하는 코인의 피해량 +10%\n\n해당 코인이 크리티컬 적중 시, 크리티컬 피해량 +20%"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon-mowe-re.json
+  [9205 desc]
+    - "적 처치시, 해당 적의 (최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n턴 종료 시 이번턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음"
+    + "적 처치 시, 해당 적의 (최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n턴 종료 시 이번턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음"
+  [19818 desc]
+    - "[Charge] 횟수 또는 특수 충전을 소모하는 스킬로 적에게 피해를 입히면, 이번 턴 동안 해당 적의 물리 내성 중 가장 낮은 값 +0.1 (턴당 1회)\n<style=\"upgradeHighlight\">- 추가로 [VioletResistDown] 1 부여</style>"
+    + "[Charge] 횟수 또는 특수 충전을 소모하는 스킬로 적에게 피해를 입히면, 이번 턴 동안 해당 적의 물리 내성 중 가장 낮은 값 +0.1 (턴당 1회)\n- 추가로 [VioletResistDown] 1 부여"
+  [29818 desc]
+    - "[Charge] 횟수 또는 특수 충전을 소모하는 스킬로 적에게 피해를 입히면, 이번 턴 동안 해당 적의 물리 내성 중 가장 낮은 값 +0.1 (턴당 <style=\"upgradeHighlight\">2</style>회)\n- 추가로 [VioletResistDown] 1 부여, <style=\"upgradeHighlight\">[AzureResistDown] 1 부여</style>"
+    + "[Charge] 횟수 또는 특수 충전을 소모하는 스킬로 적에게 피해를 입히면, 이번 턴 동안 해당 적의 물리 내성 중 가장 낮은 값 +0.1 (턴당 2회)\n- 추가로 [VioletResistDown] 1 부여, [AzureResistDown] 1 부여"
+  [19817 desc]
+    - "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-2</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">15</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] <style=\"upgradeHighlight\">3</style> 부여 (턴당 최대 2회)"
+    + "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 -2 (정신력이 없는 적은 [Sinking] 위력이 15 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] 3 부여 (턴당 최대 2회)"
+  [29817 desc]
+    - "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-3</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">10</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] 3 부여 (턴당 최대 <style=\"upgradeHighlight\">3</style>회)"
+    + "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 -3 (정신력이 없는 적은 [Sinking] 위력이 10 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] 3 부여 (턴당 최대 3회)"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon-StoryTheme.json
+  [9404 desc]
+    - "적에게 색욕 또는 탐식 속성 공격 스킬 적중시, 대상에게 [Muckworm] 2 부여 (E.G.O 스킬 제외).\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬일 경우에는 효과가 강화되어 [Muckworm] 3 부여."
+    + "적에게 색욕 또는 탐식 속성 공격 스킬 적중 시, 대상에게 [Muckworm] 2 부여 (E.G.O 스킬 제외).\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬일 경우에는 효과가 강화되어 [Muckworm] 3 부여."
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon-StoryTheme_2.json
+  [9431 desc]
+    - "[편성  5번, 6번 인격 전용 효과]\n\n자신의 체력이 45% 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 20% 이하가 되면, 효과를 대신하여 스킬 사용시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)"
+    + "[편성 5번, 6번 인격 전용 효과]\n\n자신의 체력이 45% 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 20% 이하가 되면, 효과를 대신하여 스킬 사용 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)"
+  [19431 desc]
+    - "[편성  5번, 6번 인격 전용 효과]\n\n자신의 체력이 <style=\"upgradeHighlight\">65%</style> 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 <style=\"upgradeHighlight\">40%</style> 이하가 되면, 효과를 대신하여 스킬 사용시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n<style=\"upgradeHighlight\">5합 이상의 합에서 승리한 경우, 합에서 승리한 스킬로 가하는 피해량 +(합 횟수 X2)% (최대 20%)</style>"
+    + "[편성 5번, 6번 인격 전용 효과]\n\n자신의 체력이 65% 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 40% 이하가 되면, 효과를 대신하여 스킬 사용 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n5합 이상의 합에서 승리한 경우, 합에서 승리한 스킬로 가하는 피해량 +(합 횟수 X2)% (최대 20%)"
+  [29431 desc]
+    - "[편성 5번, 6번 인격 전용 효과]\n\n자신의 체력이 65% 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 40% 이하가 되면, 효과를 대신하여 스킬 사용시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n5합 이상의 합에서 승리한 경우, 합에서 승리한 스킬로 가하는 피해량 <style=\"upgradeHighlight\">+(합 횟수 X3)% (최대 30%)</style>"
+    + "[편성 5번, 6번 인격 전용 효과]\n\n자신의 체력이 65% 이하가 되면, 합 승리 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n자신의 체력이 40% 이하가 되면, 효과를 대신하여 스킬 사용 시 [AttackUp] 1, [TakeHpHealIncrease]를 1 얻음 (캐릭터당 턴 당 2회)\n\n5합 이상의 합에서 승리한 경우, 합에서 승리한 스킬로 가하는 피해량 +(합 횟수 X3)% (최대 30%)"
+  [9432 desc]
+    - "턴 종료시 흐트러짐 상태가 되었을 때, 흐트러짐 상태가 해제되고, 다음 턴 시작 시 모든 적에게 [Sinking] 위력 4, [Sinking] 횟수 4 부여 (전투당 1회 발동, 강제 흐트러짐 제외, 집중 전투에서는 부위로 판정)\n\n적 처치 시 [Sinking] 횟수가 가장 낮은 적 1명의 [Sinking] 횟수 2 증가 (턴당 3회 발동, 집중 전투에서는 부위로 판정)"
+    + "턴 종료 시 흐트러짐 상태가 되었을 때, 흐트러짐 상태가 해제되고, 다음 턴 시작 시 모든 적에게 [Sinking] 위력 4, [Sinking] 횟수 4 부여 (전투당 1회 발동, 강제 흐트러짐 제외, 집중 전투에서는 부위로 판정)\n\n적 처치 시 [Sinking] 횟수가 가장 낮은 적 1명의 [Sinking] 횟수 2 증가 (턴당 3회 발동, 집중 전투에서는 부위로 판정)"
+  [19435 desc]
+    - "턴 시작 시, 이전 턴에 흐트러짐 상태에서 회복한 적에게 [Binding] <style=\"upgradeHighlight\">2</style> 부여\n\n체력 비율이 가장 높은 아군이 공격 적중 시, 대상이 흐트러짐 상태라면, 흐트러짐 단계에 따라 피해량 +<style=\"upgradeHighlight\">10%</style>"
+    + "턴 시작 시, 이전 턴에 흐트러짐 상태에서 회복한 적에게 [Binding] 2 부여\n\n체력 비율이 가장 높은 아군이 공격 적중 시, 대상이 흐트러짐 상태라면, 흐트러짐 단계에 따라 피해량 +10%"
+  [29435 desc]
+    - "턴 시작 시, 이전 턴에 흐트러짐 상태에서 회복한 적에게 [Binding] <style=\"upgradeHighlight\">3</style> 부여\n\n체력 비율이 가장 높은 아군이 공격 적중 시, 대상이 흐트러짐 상태라면, 흐트러짐 단계에 따라 피해량 +<style=\"upgradeHighlight\">12.5%</style>"
+    + "턴 시작 시, 이전 턴에 흐트러짐 상태에서 회복한 적에게 [Binding] 3 부여\n\n체력 비율이 가장 높은 아군이 공격 적중 시, 대상이 흐트러짐 상태라면, 흐트러짐 단계에 따라 피해량 +12.5%"
+  [9436 desc]
+    - "일반 전투에서 [Sinking] 위력과 [Sinking] 횟수의 합이 10 이상인 적에게 공격 적중시, 대상의 정신력이 -45이면,\n대상의 ([Sinking] 위력 / 2)만큼 우울 피해를 입힘 (스킬당 1회 발동)\n\n집중 전투에서 [Sinking] 위력과 [Sinking] 횟수의 합이 10 이상인 적에게 공격 적중시,\n대상의 ([Sinking] 위력 / 2)만큼 우울 피해를 입힘 (스킬당 1회 발동)\n\n적에게 공격 적중한 스킬이 [Sinking](횟수, 특수 <noparse>침잠</noparse> 포함)을 부여하는 스킬일 경우, ([Sinking] 위력/2) 대신 ([Sinking] 위력)만큼 우울 피해를 입힘 \n(턴에서 처음으로 공격 적중한 [Sinking] 부여 스킬에만 적용)"
+    + "일반 전투에서 [Sinking] 위력과 [Sinking] 횟수의 합이 10 이상인 적에게 공격 적중 시, 대상의 정신력이 -45이면,\n대상의 ([Sinking] 위력 / 2)만큼 우울 피해를 입힘 (스킬당 1회 발동)\n\n집중 전투에서 [Sinking] 위력과 [Sinking] 횟수의 합이 10 이상인 적에게 공격 적중 시,\n대상의 ([Sinking] 위력 / 2)만큼 우울 피해를 입힘 (스킬당 1회 발동)\n\n적에게 공격 적중한 스킬이 [Sinking](횟수, 특수 침잠 포함)을 부여하는 스킬일 경우, ([Sinking] 위력/2) 대신 ([Sinking] 위력)만큼 우울 피해를 입힘\n(턴에서 처음으로 공격 적중한 [Sinking] 부여 스킬에만 적용)"
+  [19440 desc]
+    - "혈귀인 모든 아군의 기본 스킬 코인 위력 +1\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] <style=\"upgradeHighlight\">5</style>, [Laceration] 횟수 3 부여.\n\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 1회 발동시키고, 모든 적의 [Laceration] 횟수 1 감소"
+    + "혈귀인 모든 아군의 기본 스킬 코인 위력 +1\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] 5, [Laceration] 횟수 3 부여.\n\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 1회 발동시키고, 모든 적의 [Laceration] 횟수 1 감소"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon.json
+  [19001 desc]
+    - "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력 또는 특수 화상을 부여할 경우, 모든 적에게 <style=\"upgradeHighlight\">[Combustion] 위력 4</style> 무작위로 나누어 부여.\n\n분노 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 <style=\"upgradeHighlight\">[Combustion] 위력 6</style> 무작위로 나누어 부여."
+    + "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력 또는 특수 화상을 부여할 경우, 모든 적에게 [Combustion] 위력 4 무작위로 나누어 부여.\n\n분노 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 [Combustion] 위력 6 무작위로 나누어 부여."
+  [29001 desc]
+    - "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력 또는 특수 화상을 부여할 경우, 모든 적에게 <style=\"upgradeHighlight\">[Combustion] 5</style> 무작위로 나누어 부여.\n\n<style=\"upgradeHighlight\">분노 공명</style>을 발동하였다면 전투 시작 시, 모든 적에게 <style=\"upgradeHighlight\">[Combustion] 위력 8</style> 무작위로 나누어 부여."
+    + "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력 또는 특수 화상을 부여할 경우, 모든 적에게 [Combustion] 5 무작위로 나누어 부여.\n\n분노 공명을 발동하였다면 전투 시작 시, 모든 적에게 [Combustion] 위력 8 무작위로 나누어 부여."
+  [19003 desc]
+    - "전투 시작 시 <style=\"upgradeHighlight\">[Combustion] 또는 특수 화상에 걸린 적 전체(환상체일 경우, 모든 부위)에게</style> [Combustion] 위력 2 부여."
+    + "전투 시작 시 [Combustion] 또는 특수 화상에 걸린 적 전체(환상체일 경우, 모든 부위)에게 [Combustion] 위력 2 부여."
+  [29003 desc]
+    - "전투 시작 시 적 <style=\"upgradeHighlight\">전체(환상체일 경우, 모든 부위)에게 [Combustion] 위력 3</style> 부여."
+    + "전투 시작 시 적 전체(환상체일 경우, 모든 부위)에게 [Combustion] 위력 3 부여."
+  [19005 desc]
+    - "<style=\"upgradeHighlight\">[Laceration] 위력 또는 특수 출혈을 부여하는 스킬 또는 분노 속성의 스킬</style>을 사용하여 적에게 적중 시, 대상에게 <style=\"upgradeHighlight\">[Laceration] 위력 5</style> 부여."
+    + "[Laceration] 위력 또는 특수 출혈을 부여하는 스킬 또는 분노 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Laceration] 위력 5 부여."
+  [29005 desc]
+    - "[Laceration] 위력 또는 특수 출혈을 부여하는 스킬 또는 분노 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Laceration] 위력 5, <style=\"upgradeHighlight\">[Laceration] 횟수 1 부여.</style>"
+    + "[Laceration] 위력 또는 특수 출혈을 부여하는 스킬 또는 분노 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Laceration] 위력 5, [Laceration] 횟수 1 부여."
+  [19009 desc]
+    - "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 색욕 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 <style=\"upgradeHighlight\">[Combustion] 위력 4</style> 부여.\n\n턴 시작 시 [Combustion] 위력 20 이상을 보유한 적의 경우, [Combustion] 위력이 2배로 증가."
+    + "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 색욕 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Combustion] 위력 4 부여.\n\n턴 시작 시 [Combustion] 위력 20 이상을 보유한 적의 경우, [Combustion] 위력이 2배로 증가."
+  [29009 desc]
+    - "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 색욕 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Combustion] 위력 4 부여.\n\n턴 시작 시 [Combustion] 위력 20 이상을 보유한 적의 경우, <style=\"upgradeHighlight\">[Combustion] 위력이 2.5배</style>로 증가."
+    + "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 색욕 속성의 스킬을 사용하여 적에게 적중 시, 대상에게 [Combustion] 위력 4 부여.\n\n턴 시작 시 [Combustion] 위력 20 이상을 보유한 적의 경우, [Combustion] 위력이 2.5배로 증가."
+  [19010 desc]
+    - "턴 시작 시, 무작위 아군 하나가 [AttackDmgUp] 2 얻음.\n\n색욕 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 <style=\"upgradeHighlight\">[AttackDmgUp] 2</style> 추가로 얻음."
+    + "턴 시작 시, 무작위 아군 하나가 [AttackDmgUp] 2 얻음.\n\n색욕 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [AttackDmgUp] 2 추가로 얻음."
+  [29010 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">무작위 아군 둘</style>이 [AttackDmgUp] 2 얻음.\n\n색욕 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [AttackDmgUp] 2 추가로 얻음."
+    + "턴 시작 시, 무작위 아군 둘이 [AttackDmgUp] 2 얻음.\n\n색욕 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [AttackDmgUp] 2 추가로 얻음."
+  [9012 desc]
+    - "타격 스킬 또는 나태 속성 스킬로 공격 종료시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 타격 스킬 위력 +2."
+    + "타격 스킬 또는 나태 속성 스킬로 공격 종료 시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 타격 스킬 위력 +2."
+  [19013 desc]
+    - "스킬을 사용하여 적에게 적중 시 12 이상의 체력 피해를 입혔다면, 대상에게 <style=\"upgradeHighlight\">[Burst] 위력 3</style> 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Burst] 위력 5</style> 부여."
+    + "스킬을 사용하여 적에게 적중 시 12 이상의 체력 피해를 입혔다면, 대상에게 [Burst] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Burst] 위력 5 부여."
+  [29013 desc]
+    - "스킬을 사용하여 <style=\"upgradeHighlight\">적에게 적중 시 1 이상의 체력 피해를 입혔다면</style>, 대상에게 [Burst] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Burst] 위력 5 부여, <style=\"upgradeHighlight\">[Burst] 횟수 1 증가.</style>"
+    + "스킬을 사용하여 적에게 적중 시 1 이상의 체력 피해를 입혔다면, 대상에게 [Burst] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Burst] 위력 5 부여, [Burst] 횟수 1 증가."
+  [19015 desc]
+    - "흐트러짐 상태의 적에게 스킬을 사용하여 <style=\"upgradeHighlight\">가하는 피해량 +12.5%.</style>\n\n진동 위력, 진동 횟수를 부여하거나, 진폭 변환, 진동 폭발, 진폭 얽힘 효과를 보유한 스킬 또는 나태 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">피해량 +25%.</style>"
+    + "흐트러짐 상태의 적에게 스킬을 사용하여 가하는 피해량 +12.5%.\n\n진동 위력, 진동 횟수를 부여하거나, 진폭 변환, 진동 폭발, 진폭 얽힘 효과를 보유한 스킬 또는 나태 속성 스킬을 사용할 경우, 효과가 강화되어 피해량 +25%."
+  [29015 desc]
+    - "흐트러짐 상태의 적에게 스킬을 사용하여 <style=\"upgradeHighlight\">가하는 피해량 +15%.</style>\n\n진동 위력, 진동 횟수를 부여하거나, 진폭 변환, 진동 폭발, 진폭 얽힘 효과를 보유한 스킬 또는 나태 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">피해량 +30%.</style>"
+    + "흐트러짐 상태의 적에게 스킬을 사용하여 가하는 피해량 +15%.\n\n진동 위력, 진동 횟수를 부여하거나, 진폭 변환, 진동 폭발, 진폭 얽힘 효과를 보유한 스킬 또는 나태 속성 스킬을 사용할 경우, 효과가 강화되어 피해량 +30%."
+  [19016 desc]
+    - "흐트러짐 상태가 아닌 적에게 탐식 속성 스킬을 사용하여 적중하였거나 또는 스킬 효과로 [Vibration] 위력을 부여할 경우, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Vibration] 위력 6</style> 무작위로 나누어 부여."
+    + "흐트러짐 상태가 아닌 적에게 탐식 속성 스킬을 사용하여 적중하였거나 또는 스킬 효과로 [Vibration] 위력을 부여할 경우, 모든 적(환상체일 경우, 모든 부위)에게 [Vibration] 위력 6 무작위로 나누어 부여."
+  [29016 desc]
+    - "흐트러짐 상태가 아닌 적에게 탐식 속성 스킬을 사용하여 적중하였거나 또는 스킬 효과로 [Vibration] 위력을 부여할 경우, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Vibration] 위력 8</style> 무작위로 나누어 부여."
+    + "흐트러짐 상태가 아닌 적에게 탐식 속성 스킬을 사용하여 적중하였거나 또는 스킬 효과로 [Vibration] 위력을 부여할 경우, 모든 적(환상체일 경우, 모든 부위)에게 [Vibration] 위력 8 무작위로 나누어 부여."
+  [19018 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">무작위 적 둘</style>(환상체일 경우, 모든 부위)에게 [Burst] 위력 4 부여.\n\n탐식 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 <style=\"upgradeHighlight\">[Burst] 위력 3</style> 부여."
+    + "턴 시작 시, 무작위 적 둘(환상체일 경우, 모든 부위)에게 [Burst] 위력 4 부여.\n\n탐식 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 [Burst] 위력 3 부여."
+  [29018 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">무작위 적 셋</style>(환상체일 경우, 모든 부위)에게 [Burst] 위력 4 부여.\n\n탐식 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 <style=\"upgradeHighlight\">[Burst] 위력 4</style> 부여."
+    + "턴 시작 시, 무작위 적 셋(환상체일 경우, 모든 부위)에게 [Burst] 위력 4 부여.\n\n탐식 완전 공명을 발동하였다면 전투 시작 시, 모든 적에게 [Burst] 위력 4 부여."
+  [19020 desc]
+    - "턴 시작 시 흐트러짐 상태인 적들이 있을 경우, 대상은 흐트러짐 상태에서 풀려나는 대신 <style=\"upgradeHighlight\">(10+흐트러짐 단계x5)만큼</style> <style=\"upgradeHighlight\">[Laceration] 위력을 얻고 그 수치만큼 </style>이번 턴과 다음 턴 동안 대상에게 [AttackDown] 부여(동일한 적에게는 전투 당 1회 발동하며, 흐트러짐 상태에서 풀려나지 않는 특정 적에게는 발동하지 않음)."
+    + "턴 시작 시 흐트러짐 상태인 적들이 있을 경우, 대상은 흐트러짐 상태에서 풀려나는 대신 (10+흐트러짐 단계x5)만큼 [Laceration] 위력을 얻고 그 수치만큼 이번 턴과 다음 턴 동안 대상에게 [AttackDown] 부여(동일한 적에게는 전투 당 1회 발동하며, 흐트러짐 상태에서 풀려나지 않는 특정 적에게는 발동하지 않음)."
+  [29020 desc]
+    - "턴 시작 시 흐트러짐 상태인 적들이 있을 경우, 대상은 흐트러짐 상태에서 풀려나는 대신 <style=\"upgradeHighlight\">(12+흐트러짐 단계x6)만큼</style> [Laceration] 위력을 얻고 그 수치만큼 이번 턴과 다음 턴 동안 대상에게 [AttackDown]와 <style=\"upgradeHighlight\">[DefenseDown]</style> 부여(동일한 적에게는 전투 당 1회 발동하며, 흐트러짐 상태에서 풀려나지 않는 특정 적에게는 발동하지 않음)."
+    + "턴 시작 시 흐트러짐 상태인 적들이 있을 경우, 대상은 흐트러짐 상태에서 풀려나는 대신 (12+흐트러짐 단계x6)만큼 [Laceration] 위력을 얻고 그 수치만큼 이번 턴과 다음 턴 동안 대상에게 [AttackDown]와 [DefenseDown] 부여(동일한 적에게는 전투 당 1회 발동하며, 흐트러짐 상태에서 풀려나지 않는 특정 적에게는 발동하지 않음)."
+  [19023 desc]
+    - "스킬 효과로 [Burst] 위력을 부여할 때마다 대상에게 <style=\"upgradeHighlight\">[Burst] 위력 2</style>, [Burst] 횟수 1 부여."
+    + "스킬 효과로 [Burst] 위력을 부여할 때마다 대상에게 [Burst] 위력 2, [Burst] 횟수 1 부여."
+  [29023 desc]
+    - "스킬 효과로 [Burst] 위력을 부여할 때마다 대상에게 <style=\"upgradeHighlight\">[Burst] 위력 3</style>, [Burst] 횟수 1 부여.\n\n<style=\"upgradeHighlight\">우울 속성 스킬을 사용할 경우, 효과가 강화되어 [Burst] 위력 3, [Burst] 횟수 2 부여.</style>"
+    + "스킬 효과로 [Burst] 위력을 부여할 때마다 대상에게 [Burst] 위력 3, [Burst] 횟수 1 부여.\n\n우울 속성 스킬을 사용할 경우, 효과가 강화되어 [Burst] 위력 3, [Burst] 횟수 2 부여."
+  [19027 desc]
+    - "타격 스킬 또는 오만 속성 스킬을 사용하여 적에게 적중 시, 대상에게 <style=\"upgradeHighlight\">3만큼의 정신력 고정 피해를 입힘.</style>\n\n정신력이 0 미만인 아군이 <style=\"upgradeHighlight\">가하는 피해량 +15%</style>"
+    + "타격 스킬 또는 오만 속성 스킬을 사용하여 적에게 적중 시, 대상에게 3만큼의 정신력 고정 피해를 입힘.\n\n정신력이 0 미만인 아군이 가하는 피해량 +15%"
+  [29027 desc]
+    - "타격 스킬 또는 오만 속성 스킬을 사용하여 적에게 적중 시, 대상에게 <style=\"upgradeHighlight\">5만큼의 정신력 고정 피해를 입힘.</style>\n\n정신력이 0 미만인 아군이 <style=\"upgradeHighlight\">가하는 피해량 +25%</style>"
+    + "타격 스킬 또는 오만 속성 스킬을 사용하여 적에게 적중 시, 대상에게 5만큼의 정신력 고정 피해를 입힘.\n\n정신력이 0 미만인 아군이 가하는 피해량 +25%"
+  [9030 desc]
+    - "관통 스킬 또는 오만 속성 스킬로 공격 종료시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 관통 스킬 위력 +2."
+    + "관통 스킬 또는 오만 속성 스킬로 공격 종료 시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 관통 스킬 위력 +2."
+  [19031 desc]
+    - "<style=\"upgradeHighlight\">웨이브 첫 턴 시작 시</style>, 적 전체(환상체일 경우, 모든 부위)에게 [Vibration] 위력 4, [Vibration] 횟수 4 부여.\n\n질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 [Vibration] 위력 2 부여."
+    + "웨이브 첫 턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 [Vibration] 위력 4, [Vibration] 횟수 4 부여.\n\n질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 [Vibration] 위력 2 부여."
+  [29031 desc]
+    - "웨이브 첫 턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Vibration] 위력 5, [Vibration] 횟수 5 부여.</style>\n\n질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 <style=\"upgradeHighlight\">[Vibration] 위력 3 부여.</style>"
+    + "웨이브 첫 턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 [Vibration] 위력 5, [Vibration] 횟수 5 부여.\n\n질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 [Vibration] 위력 3 부여."
+  [9032 desc]
+    - "참격 스킬 또는 질투 속성 스킬로 공격 종료시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 참격 스킬 위력 +2.\n\n질투 완전 공명을 발동하였다면, 전투 시작 시 모든 아군이 [AttackUp] 2, [DefenseUp] 2 얻음."
+    + "참격 스킬 또는 질투 속성 스킬로 공격 종료 시 적이 사망했으면, 해당 아군이 이번 턴을 제외한 다음 턴부터 2턴 동안 참격 스킬 위력 +2.\n\n질투 완전 공명을 발동하였다면, 전투 시작 시 모든 아군이 [AttackUp] 2, [DefenseUp] 2 얻음."
+  [9034 desc]
+    - "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 해당 스킬의 코인 수 절반만큼 추가로 [Combustion] 위력 부여(소수는 올림하여 계산).\n- [중첩 발동 불가] 입주 신고 히스클리프 E.G.O의 패시브 「회로 연결」 발동 시, 이 효과가 발동하지 않음\n\n적중시 대상의 [Combustion] 위력이 99면, [IDMicroChip] 1 부여 (적당 1회, 턴당 3회)"
+    + "[Combustion] 위력 또는 특수 화상을 부여하는 스킬 또는 질투 속성 스킬을 사용하여 적에게 적중 시, 대상에게 해당 스킬의 코인 수 절반만큼 추가로 [Combustion] 위력 부여(소수는 올림하여 계산).\n- [중첩 발동 불가] 입주 신고 히스클리프 E.G.O의 패시브 「회로 연결」 발동 시, 이 효과가 발동하지 않음\n\n적중 시 대상의 [Combustion] 위력이 99면, [IDMicroChip] 1 부여 (적당 1회, 턴당 3회)"
+  [19035 desc]
+    - "턴 시작 시, 적 전체에게 <style=\"upgradeHighlight\">4만큼 질투 피해</style>를 입힘.\n\n대상의 <style=\"upgradeHighlight\">체력이 50% 미만이면</style> [ResultReduction] 1 부여."
+    + "턴 시작 시, 적 전체에게 4만큼 질투 피해를 입힘.\n\n대상의 체력이 50% 미만이면 [ResultReduction] 1 부여."
+  [29035 desc]
+    - "턴 시작 시, 적 전체에게 <style=\"upgradeHighlight\">5만큼 질투 피해</style>를 입힘.\n\n대상의 체력이 50% 미만이면 <style=\"upgradeHighlight\">[ResultReduction] 2 부여.</style>"
+    + "턴 시작 시, 적 전체에게 5만큼 질투 피해를 입힘.\n\n대상의 체력이 50% 미만이면 [ResultReduction] 2 부여."
+  [19036 desc]
+    - "집중 전투 방식이 아닌 전투 스테이지 입장 시, 모든 적에게 <style=\"upgradeHighlight\">최대 체력 25%만큼</style> 고정 피해를 입힘."
+    + "집중 전투 방식이 아닌 전투 스테이지 입장 시, 모든 적에게 최대 체력 25%만큼 고정 피해를 입힘."
+  [29036 desc]
+    - "집중 전투 방식이 아닌 전투 스테이지 입장 시, 모든 적에게 <style=\"upgradeHighlight\">최대 체력 30%만큼</style> 고정 피해를 입힘."
+    + "집중 전투 방식이 아닌 전투 스테이지 입장 시, 모든 적에게 최대 체력 30%만큼 고정 피해를 입힘."
+  [9037 desc]
+    - "스테이지 시작 시, 모든 속성의 E.G.O 자원 +1\n전투 승리시 가장 적게 보유한 E.G.O 자원 2종을 2개씩 얻음"
+    + "스테이지 시작 시, 모든 속성의 E.G.O 자원 +1\n전투 승리 시 가장 적게 보유한 E.G.O 자원 2종을 2개씩 얻음"
+  [19041 desc]
+    - "아군이 스킬 효과로 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여할 때마다 해당 인격이 다음 턴에 공격 레벨이 1 증가 <style=\"upgradeHighlight\">(최대 4)</style>.\n\n우울 또는 분노 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [Sinking] 위력 또는 [Sinking] 횟수를 부여할 때마다 다음 턴에 공격 레벨이 2 증가 <style=\"upgradeHighlight\">(최대 5)</style>."
+    + "아군이 스킬 효과로 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여할 때마다 해당 인격이 다음 턴에 공격 레벨이 1 증가 (최대 4).\n\n우울 또는 분노 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [Sinking] 위력 또는 [Sinking] 횟수를 부여할 때마다 다음 턴에 공격 레벨이 2 증가 (최대 5)."
+  [29041 desc]
+    - "아군이 스킬 효과로 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여할 때마다 해당 인격이 다음 턴에 <style=\"upgradeHighlight\">공격 레벨이 2 증가</style> (최대 4).\n\n우울 또는 분노 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [Sinking] 위력 또는 [Sinking] 횟수를 부여할 때마다 다음 턴에 <style=\"upgradeHighlight\">공격 레벨이 3 증가 (최대 6)</style>."
+    + "아군이 스킬 효과로 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여할 때마다 해당 인격이 다음 턴에 공격 레벨이 2 증가 (최대 4).\n\n우울 또는 분노 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [Sinking] 위력 또는 [Sinking] 횟수를 부여할 때마다 다음 턴에 공격 레벨이 3 증가 (최대 6)."
+  [19042 desc]
+    - "아군이 스킬 효과로 적에게 부여하는 [Laceration] 위력 수치가 2배로 적용.\n\n턴 종료 시 [Laceration] 또는 특수 출혈에 걸린 적들이 다음 턴에 <style=\"upgradeHighlight\">속도가 3만큼 감소.</style>"
+    + "아군이 스킬 효과로 적에게 부여하는 [Laceration] 위력 수치가 2배로 적용.\n\n턴 종료 시 [Laceration] 또는 특수 출혈에 걸린 적들이 다음 턴에 속도가 3만큼 감소."
+  [29042 desc]
+    - "아군이 스킬 효과로 적에게 부여하는 <style=\"upgradeHighlight\">[Laceration] 위력 수치가 2.5배로 적용.</style>\n\n턴 종료 시 [Laceration] 또는 특수 출혈에 걸린 적들이 다음 턴에 속도가 3만큼 감소."
+    + "아군이 스킬 효과로 적에게 부여하는 [Laceration] 위력 수치가 2.5배로 적용.\n\n턴 종료 시 [Laceration] 또는 특수 출혈에 걸린 적들이 다음 턴에 속도가 3만큼 감소."
+  [19043 desc]
+    - "<style=\"upgradeHighlight\">분노 공명을 발동하였거나</style> [Charge] 횟수 또는 특수 충전을 획득하거나 부여하는 스킬을 사용할 경우, 다음 턴 시작 시 모든 아군이 [Charge] 횟수 3 증가 (턴 당 1회 발동)."
+    + "분노 공명을 발동하였거나 [Charge] 횟수 또는 특수 충전을 획득하거나 부여하는 스킬을 사용할 경우, 다음 턴 시작 시 모든 아군이 [Charge] 횟수 3 증가 (턴 당 1회 발동)."
+  [29043 desc]
+    - "분노 공명을 발동하였거나 [Charge] 횟수 또는 특수 충전을 획득하거나 부여하는 스킬을 사용할 경우, 다음 턴 시작 시 모든 아군이 <style=\"upgradeHighlight\">[Charge] 횟수 4 증가</style> (턴 당 1회 발동)."
+    + "분노 공명을 발동하였거나 [Charge] 횟수 또는 특수 충전을 획득하거나 부여하는 스킬을 사용할 경우, 다음 턴 시작 시 모든 아군이 [Charge] 횟수 4 증가 (턴 당 1회 발동)."
+  [19044 desc]
+    - "스킬을 사용하여 적에게 적중 시, 다음 턴에 대상에게 [Vibration] 위력 1 부여.\n\n분노 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Vibration] 위력 3 부여.</style>"
+    + "스킬을 사용하여 적에게 적중 시, 다음 턴에 대상에게 [Vibration] 위력 1 부여.\n\n분노 속성 스킬을 사용할 경우, 효과가 강화되어 [Vibration] 위력 3 부여."
+  [29044 desc]
+    - "스킬을 사용하여 적에게 적중 시, 다음 턴에 대상에게 <style=\"upgradeHighlight\">[Vibration] 위력 2 부여.</style>\n\n분노 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Vibration] 위력 4 부여.</style>"
+    + "스킬을 사용하여 적에게 적중 시, 다음 턴에 대상에게 [Vibration] 위력 2 부여.\n\n분노 속성 스킬을 사용할 경우, 효과가 강화되어 [Vibration] 위력 4 부여."
+  [19045 desc]
+    - "턴 종료 시, [Combustion] 상태인 적에게 대상이 보유한 [Combustion] 횟수의 절반 만큼을 소모하여 ([Combustion] 위력 x 소모한 [Combustion] 횟수)만큼 추가 분노 피해를 입힘. <style=\"upgradeHighlight\">(화상 횟수 최대 7 소모)</style>\n\n불꽃의 편린 효과로 소모한 [Combustion] 횟수만큼, 다음 턴 동안 대상의 방어 레벨이 감소 <style=\"upgradeHighlight\">(최대 5).</style>"
+    + "턴 종료 시, [Combustion] 상태인 적에게 대상이 보유한 [Combustion] 횟수의 절반 만큼을 소모하여 ([Combustion] 위력 x 소모한 [Combustion] 횟수)만큼 추가 분노 피해를 입힘. (화상 횟수 최대 7 소모)\n\n불꽃의 편린 효과로 소모한 [Combustion] 횟수만큼, 다음 턴 동안 대상의 방어 레벨이 감소 (최대 5)."
+  [29045 desc]
+    - "턴 종료 시, [Combustion] 상태인 적에게 대상이 보유한 [Combustion] 횟수의 절반 만큼을 소모하여 ([Combustion] 위력 x 소모한 [Combustion] 횟수)만큼 추가 분노 피해를 입힘. <style=\"upgradeHighlight\">(화상 횟수 최대 10 소모)</style>\n\n불꽃의 편린 효과로 소모한 [Combustion] 횟수만큼, 다음 턴 동안 대상의 방어 레벨이 감소 <style=\"upgradeHighlight\">(최대 8).</style>"
+    + "턴 종료 시, [Combustion] 상태인 적에게 대상이 보유한 [Combustion] 횟수의 절반 만큼을 소모하여 ([Combustion] 위력 x 소모한 [Combustion] 횟수)만큼 추가 분노 피해를 입힘. (화상 횟수 최대 10 소모)\n\n불꽃의 편린 효과로 소모한 [Combustion] 횟수만큼, 다음 턴 동안 대상의 방어 레벨이 감소 (최대 8)."
+  [19047 desc]
+    - "턴 종료 시, 모든 적에게 <style=\"upgradeHighlight\">(현재 속도 +1)만큼</style> [Burst] 위력을 부여.\n\n색욕 완전 공명을 발동하였다면 전투 시작 시, 무작위 적 하나에게 <style=\"upgradeHighlight\">[Burst] 위력 4</style>, [Burst] 횟수 3 부여."
+    + "턴 종료 시, 모든 적에게 (현재 속도 +1)만큼 [Burst] 위력을 부여.\n\n색욕 완전 공명을 발동하였다면 전투 시작 시, 무작위 적 하나에게 [Burst] 위력 4, [Burst] 횟수 3 부여."
+  [29047 desc]
+    - "턴 종료 시, 모든 적에게 <style=\"upgradeHighlight\">(현재 속도 +2)만큼</style> [Burst] 위력을 부여.\n\n색욕 완전 공명을 발동하였다면 전투 시작 시, 무작위 적 하나에게 <style=\"upgradeHighlight\">[Burst] 위력 5, [Burst] 횟수 4 부여.</style>"
+    + "턴 종료 시, 모든 적에게 (현재 속도 +2)만큼 [Burst] 위력을 부여.\n\n색욕 완전 공명을 발동하였다면 전투 시작 시, 무작위 적 하나에게 [Burst] 위력 5, [Burst] 횟수 4 부여."
+  [19048 desc]
+    - "스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 <style=\"upgradeHighlight\">[Laceration] 위력 2</style>, [Laceration] 횟수 1 부여.\n\n색욕 속성 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 3, [Laceration] 횟수 1 부여."
+    + "스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 [Laceration] 위력 2, [Laceration] 횟수 1 부여.\n\n색욕 속성 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 3, [Laceration] 횟수 1 부여."
+  [29048 desc]
+    - "스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 <style=\"upgradeHighlight\">[Laceration] 위력 3</style>, [Laceration] 횟수 1 부여.\n\n색욕 속성 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 3, <style=\"upgradeHighlight\">[Laceration] 횟수 2 부여.</style>"
+    + "스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 [Laceration] 위력 3, [Laceration] 횟수 1 부여.\n\n색욕 속성 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 3, [Laceration] 횟수 2 부여."
+  [19049 desc]
+    - "[Sinking] 위력 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 [Sinking] 위력 3, [Sinking] 횟수 2 부여 (동일한 적에게는 턴 당 1회 발동).\n\n<style=\"upgradeHighlight\">우울 또는 색욕 공명을 발동하였다면</style> 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 2, [Sinking] 횟수 3 부여."
+    + "[Sinking] 위력 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 [Sinking] 위력 3, [Sinking] 횟수 2 부여 (동일한 적에게는 턴 당 1회 발동).\n\n우울 또는 색욕 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 2, [Sinking] 횟수 3 부여."
+  [29049 desc]
+    - "[Sinking] 위력 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 <style=\"upgradeHighlight\">[Sinking] 위력 4, [Sinking] 횟수 3 부여</style> (동일한 적에게는 턴 당 1회 발동).\n\n우울 또는 색욕 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3, [Sinking] 횟수 3 부여."
+    + "[Sinking] 위력 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 [Sinking] 위력 4, [Sinking] 횟수 3 부여 (동일한 적에게는 턴 당 1회 발동).\n\n우울 또는 색욕 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3, [Sinking] 횟수 3 부여."
+  [19050 desc]
+    - "<style=\"upgradeHighlight\">웨이브 첫 턴 시작 시</style>, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Laceration] 위력 2</style>, [Laceration] 횟수 15 부여.\n\n턴 시작 시 [Laceration] 상태인 적의 공격 레벨과 방어 레벨이 이번 턴 동안 ([Laceration] 위력 / 3)만큼 감소 ([Laceration] 위력 30 스택 시, 효과 최대)."
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Laceration] 위력 2, [Laceration] 횟수 15 부여.\n\n턴 시작 시 [Laceration] 상태인 적의 공격 레벨과 방어 레벨이 이번 턴 동안 ([Laceration] 위력 / 3)만큼 감소 ([Laceration] 위력 30 스택 시, 효과 최대)."
+  [29050 desc]
+    - "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Laceration] 위력 4, [Laceration] 횟수 20 부여.</style>\n\n턴 시작 시 [Laceration] 상태인 적의 공격 레벨과 방어 레벨이 이번 턴 동안 <style=\"upgradeHighlight\">([Laceration] 위력 / 2)만큼 감소</style> ([Laceration] 위력 30 스택 시, 효과 최대)."
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Laceration] 위력 4, [Laceration] 횟수 20 부여.\n\n턴 시작 시 [Laceration] 상태인 적의 공격 레벨과 방어 레벨이 이번 턴 동안 ([Laceration] 위력 / 2)만큼 감소 ([Laceration] 위력 30 스택 시, 효과 최대)."
+  [19051 desc]
+    - "아군이 스킬 효과로 획득하는 [Breath] 위력 수치가 1.5배로 적용.\n\n<style=\"upgradeHighlight\">아군이 적을 처치하였다면</style>, 다음 턴 시작 시 <style=\"upgradeHighlight\">[Breath] 위력 3</style>, [Breath] 횟수 2 얻음 (턴 당 1회)."
+    + "아군이 스킬 효과로 획득하는 [Breath] 위력 수치가 1.5배로 적용.\n\n아군이 적을 처치하였다면, 다음 턴 시작 시 [Breath] 위력 3, [Breath] 횟수 2 얻음 (턴 당 1회)."
+  [29051 desc]
+    - "아군이 스킬 효과로 획득하는 <style=\"upgradeHighlight\">[Breath] 위력 수치가 2배</style>로 적용.\n\n아군이 적을 처치하였다면, 다음 턴 시작 시 <style=\"upgradeHighlight\">[Breath] 위력 4</style>, [Breath] 횟수 2 얻음 (턴 당 1회)."
+    + "아군이 스킬 효과로 획득하는 [Breath] 위력 수치가 2배로 적용.\n\n아군이 적을 처치하였다면, 다음 턴 시작 시 [Breath] 위력 4, [Breath] 횟수 2 얻음 (턴 당 1회)."
+  [19052 desc]
+    - "턴 시작 시, 무작위 아군 둘이 <style=\"upgradeHighlight\">[Charge] 횟수 3 증가 </style>(스킬을 사용하여 [Charge] 횟수 또는 특수 충전을 획득하는 인격을 우선으로 지정).\n\n<style=\"upgradeHighlight\">나태 공명을 발동하였다면</style> 전투 시작 시, 무작위 아군 중 한 명이 [Charge] 횟수 3 증가."
+    + "턴 시작 시, 무작위 아군 둘이 [Charge] 횟수 3 증가 (스킬을 사용하여 [Charge] 횟수 또는 특수 충전을 획득하는 인격을 우선으로 지정).\n\n나태 공명을 발동하였다면 전투 시작 시, 무작위 아군 중 한 명이 [Charge] 횟수 3 증가."
+  [29052 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">무작위 아군 셋</style>이 [Charge] 횟수 3 증가 (스킬을 사용하여 [Charge] 횟수 또는 특수 충전을 획득하는 인격을 우선으로 지정).\n\n나태 공명을 발동하였다면 전투 시작 시, 무작위 아군 중 한 명이 <style=\"upgradeHighlight\">[Charge] 횟수 5 증가.</style>"
+    + "턴 시작 시, 무작위 아군 셋이 [Charge] 횟수 3 증가 (스킬을 사용하여 [Charge] 횟수 또는 특수 충전을 획득하는 인격을 우선으로 지정).\n\n나태 공명을 발동하였다면 전투 시작 시, 무작위 아군 중 한 명이 [Charge] 횟수 5 증가."
+  [19053 desc]
+    - "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Combustion] 위력 6, [Combustion] 횟수 3 부여.</style>\n\n나태 완전 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Combustion] 위력 4</style>, [Combustion] 횟수 2 부여."
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Combustion] 위력 6, [Combustion] 횟수 3 부여.\n\n나태 완전 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Combustion] 위력 4, [Combustion] 횟수 2 부여."
+  [29053 desc]
+    - "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Combustion] 위력 8, [Combustion] 횟수 3 부여.</style>\n\n<style=\"upgradeHighlight\">나태 공명을 발동하였다면</style> 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Combustion] 위력 4, <style=\"upgradeHighlight\">[Combustion] 횟수 3 부여.</style>"
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Combustion] 위력 8, [Combustion] 횟수 3 부여.\n\n나태 공명을 발동하였다면 전투 시작 시, 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Combustion] 위력 4, [Combustion] 횟수 3 부여."
+  [19055 desc]
+    - "턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Vibration] 위력을 (3 + 현재 턴 x 2) 부여, [Vibration] 횟수 3 부여.</style>\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)에게 [VibrationExplosion] 효과 부여."
+    + "턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Vibration] 위력을 (3 + 현재 턴 x 2) 부여, [Vibration] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)에게 [VibrationExplosion] 효과 부여."
+  [29055 desc]
+    - "턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Vibration] 위력을 (5 + 현재 턴 x 2) 부여</style>, [Vibration] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[VibrationExplosion] 효과 2회 부여.</style>"
+    + "턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Vibration] 위력을 (5 + 현재 턴 x 2) 부여, [Vibration] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)에게 [VibrationExplosion] 효과 2회 부여."
+  [19060 desc]
+    - "턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Burst] 위력 4</style>, [Burst] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)이 (파열 위력 x 파열 횟수)만큼 탐식 피해를 입음. <style=\"upgradeHighlight\">(파열 횟수 최대 7까지 적용)</style>"
+    + "턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 [Burst] 위력 4, [Burst] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)이 (파열 위력 x 파열 횟수)만큼 탐식 피해를 입음. (파열 횟수 최대 7까지 적용)"
+  [29060 desc]
+    - "턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Burst] 위력 6</style>, [Burst] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)이 (파열 위력 x 파열 횟수)만큼 탐식 피해를 입음. <style=\"upgradeHighlight\">(파열 횟수 최대 10까지 적용)</style>"
+    + "턴 시작 시, 적 전체(환상체일 경우, 모든 부위)에게 [Burst] 위력 6, [Burst] 횟수 3 부여.\n\n턴 종료 시, 모든 적(환상체일 경우, 모든 부위)이 (파열 위력 x 파열 횟수)만큼 탐식 피해를 입음. (파열 횟수 최대 10까지 적용)"
+  [19062 desc]
+    - "턴 종료 시, [Charge] 횟수와 특수 충전을 합하여 7 이상 보유한 아군이 다음 턴에 <style=\"upgradeHighlight\">[Agility] 2 얻음.</style>\n\n우울 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 다음 턴에 <style=\"upgradeHighlight\">[Agility] 3</style>, [ResultEnhancement] 1 얻음."
+    + "턴 종료 시, [Charge] 횟수와 특수 충전을 합하여 7 이상 보유한 아군이 다음 턴에 [Agility] 2 얻음.\n\n우울 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 다음 턴에 [Agility] 3, [ResultEnhancement] 1 얻음."
+  [29062 desc]
+    - "턴 종료 시, [Charge] 횟수와 특수 충전을 합하여 7 이상 보유한 아군이 다음 턴에 <style=\"upgradeHighlight\">[Agility] 3 얻음.</style>\n\n우울 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 다음 턴에 <style=\"upgradeHighlight\">[Agility] 4</style>, [ResultEnhancement] 1 얻음."
+    + "턴 종료 시, [Charge] 횟수와 특수 충전을 합하여 7 이상 보유한 아군이 다음 턴에 [Agility] 3 얻음.\n\n우울 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 다음 턴에 [Agility] 4, [ResultEnhancement] 1 얻음."
+  [19063 desc]
+    - "전투 시작 시, 무작위 아군 하나가 <style=\"upgradeHighlight\">[Breath] 위력 4 얻음</style> (공격 스킬을 사용하여 [Breath] 횟수를 획득하는 인격을 우선으로 지정).\n\n우울 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 <style=\"upgradeHighlight\">[Breath] 위력 4 얻고 [Breath] 횟수 3 증가.</style>"
+    + "전투 시작 시, 무작위 아군 하나가 [Breath] 위력 4 얻음 (공격 스킬을 사용하여 [Breath] 횟수를 획득하는 인격을 우선으로 지정).\n\n우울 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [Breath] 위력 4 얻고 [Breath] 횟수 3 증가."
+  [29063 desc]
+    - "전투 시작 시, <style=\"upgradeHighlight\">무작위 아군 둘</style>이 [Breath] 위력 4 얻음 (공격 스킬을 사용하여 [Breath] 횟수를 획득하는 인격을 우선으로 지정).\n\n우울 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [Breath] 위력 4 얻고 [Breath] 횟수 3 증가."
+    + "전투 시작 시, 무작위 아군 둘이 [Breath] 위력 4 얻음 (공격 스킬을 사용하여 [Breath] 횟수를 획득하는 인격을 우선으로 지정).\n\n우울 속성 공격 스킬을 보유한 아군에게 우선으로 적용되며, 이 경우에는 [Breath] 위력 4 얻고 [Breath] 횟수 3 증가."
+  [9065 desc]
+    - "정신력 감소로 인하여 부정적 효과(사기저하, 패닉)를 얻은 적에게 입히는 피해량 35% 증가.\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 <noparse>침잠</noparse> 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+    + "정신력 감소로 인하여 부정적 효과(사기저하, 패닉)를 얻은 적에게 입히는 피해량 35% 증가.\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 침잠 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+  [19065 desc]
+    - "<style=\"upgradeHighlight\">정신력이 0 미만인 적에게 입히는 피해량 40% 증가.</style>\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 <noparse>침잠</noparse> 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+    + "정신력이 0 미만인 적에게 입히는 피해량 40% 증가.\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 침잠 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+  [29065 desc]
+    - "<style=\"upgradeHighlight\">정신력이 없거나 0 미만인 적에게 입히는 피해량 50% 증가.</style>\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 <noparse>침잠</noparse> 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+    + "정신력이 없거나 0 미만인 적에게 입히는 피해량 50% 증가.\n\n[Sinking] 위력을 부여하거나 횟수를 증가시키는 스킬일 경우, 추가로 피해량 10% 증가 (특수 침잠 포함)\n\n정신력이 없는 적에게 [Sinking] 효과가 적용될 경우, 우울 속성 피해를 입히는 대신 이를 포함한 죄악 속성 중 가장 효과적인 속성 피해로 변경."
+  [19066 desc]
+    - "<style=\"upgradeHighlight\">웨이브 첫 턴 시작 시</style>, 모든 아군이 <style=\"upgradeHighlight\">[Breath] 위력 5</style> 얻고 [Breath] 횟수 4 증가.\n\n오만 완전 공명을 발동하였다면 전투 시작 시, 모든 아군이 <style=\"upgradeHighlight\">[Breath] 위력 3 얻고</style> [Breath] 횟수 2 증가.\n- [중첩 발동 불가] 흉통 료슈 E.G.O의 패시브 「숨」 발동 시, 이 효과가 발동하지 않음"
+    + "웨이브 첫 턴 시작 시, 모든 아군이 [Breath] 위력 5 얻고 [Breath] 횟수 4 증가.\n\n오만 완전 공명을 발동하였다면 전투 시작 시, 모든 아군이 [Breath] 위력 3 얻고 [Breath] 횟수 2 증가.\n- [중첩 발동 불가] 흉통 료슈 E.G.O의 패시브 「숨」 발동 시, 이 효과가 발동하지 않음"
+  [29066 desc]
+    - "웨이브 첫 턴 시작 시, 모든 아군이 [Breath] 위력 5 얻고 <style=\"upgradeHighlight\">[Breath] 횟수 5 증가.</style>\n\n<style=\"upgradeHighlight\">오만 공명을 발동하였다면</style> 전투 시작 시, 모든 아군이 [Breath] 위력 3 얻고 <style=\"upgradeHighlight\">[Breath] 횟수 3 증가.</style>\n- [중첩 발동 불가] 흉통 료슈 E.G.O의 패시브 「숨」 발동 시, 이 효과가 발동하지 않음"
+    + "웨이브 첫 턴 시작 시, 모든 아군이 [Breath] 위력 5 얻고 [Breath] 횟수 5 증가.\n\n오만 공명을 발동하였다면 전투 시작 시, 모든 아군이 [Breath] 위력 3 얻고 [Breath] 횟수 3 증가.\n- [중첩 발동 불가] 흉통 료슈 E.G.O의 패시브 「숨」 발동 시, 이 효과가 발동하지 않음"
+  [19069 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">[Charge] 횟수와 특수 충전을 합하여 3 이상</style> 보유한 아군이 [AttackDmgUp] 1 얻음.\n\n오만 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [AttackDmgUp] 2 얻음."
+    + "턴 시작 시, [Charge] 횟수와 특수 충전을 합하여 3 이상 보유한 아군이 [AttackDmgUp] 1 얻음.\n\n오만 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [AttackDmgUp] 2 얻음."
+  [29069 desc]
+    - "턴 시작 시, <style=\"upgradeHighlight\">[Charge] 횟수 또는 특수 충전을 보유한 아군이 [AttackDmgUp] 2 얻음.</style>\n\n오만 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[AttackDmgUp] 3 얻음.</style>"
+    + "턴 시작 시, [Charge] 횟수 또는 특수 충전을 보유한 아군이 [AttackDmgUp] 2 얻음.\n\n오만 속성 공격 스킬을 보유한 아군의 경우, 효과가 강화되어 [AttackDmgUp] 3 얻음."
+  [19070 desc]
+    - "아군이 치명타로 가하는 피해량이 1.2배에서 <style=\"upgradeHighlight\">2배로 증가.</style>\n\n치명타가 발생하여 [Breath] 횟수를 소모하였을 경우, 해당 인격이 다음 턴에 <style=\"upgradeHighlight\">[AttackUp] 12 얻음</style> (인격 별로 턴 당 1회 발동)."
+    + "아군이 치명타로 가하는 피해량이 1.2배에서 2배로 증가.\n\n치명타가 발생하여 [Breath] 횟수를 소모하였을 경우, 해당 인격이 다음 턴에 [AttackUp] 12 얻음 (인격 별로 턴 당 1회 발동)."
+  [29070 desc]
+    - "아군이 치명타로 가하는 피해량이 1.2배에서 <style=\"upgradeHighlight\">2.5배로 증가.</style>\n\n치명타가 발생하여 [Breath] 횟수를 소모하였을 경우, 해당 인격이 다음 턴에 <style=\"upgradeHighlight\">[AttackUp] 15 얻음</style> (인격 별로 턴 당 1회 발동)."
+    + "아군이 치명타로 가하는 피해량이 1.2배에서 2.5배로 증가.\n\n치명타가 발생하여 [Breath] 횟수를 소모하였을 경우, 해당 인격이 다음 턴에 [AttackUp] 15 얻음 (인격 별로 턴 당 1회 발동)."
+  [19072 desc]
+    - "스테이지 시작 시, 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 4 증가.</style>\n\n질투 속성 공격 스킬을 보유하고 있는 아군이 전투에 둘 이상 참여한 경우, 효과가 강화되어 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 6 증가.</style>"
+    + "스테이지 시작 시, 모든 아군의 [Charge] 횟수 4 증가.\n\n질투 속성 공격 스킬을 보유하고 있는 아군이 전투에 둘 이상 참여한 경우, 효과가 강화되어 모든 아군의 [Charge] 횟수 6 증가."
+  [29072 desc]
+    - "스테이지 시작 시, 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 5 증가.</style>\n\n질투 속성 공격 스킬을 보유하고 있는 아군이 전투에 둘 이상 참여한 경우, 효과가 강화되어 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 7 증가.</style>"
+    + "스테이지 시작 시, 모든 아군의 [Charge] 횟수 5 증가.\n\n질투 속성 공격 스킬을 보유하고 있는 아군이 전투에 둘 이상 참여한 경우, 효과가 강화되어 모든 아군의 [Charge] 횟수 7 증가."
+  [19073 desc]
+    - "스킬 효과로 [Breath] 위력을 획득할 때마다 대상이 <style=\"upgradeHighlight\">[Breath] 위력 2, [Breath] 횟수 2 얻음.</style>\n\n질투 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Breath] 위력 3, [Breath] 횟수 3 얻음.</style>"
+    + "스킬 효과로 [Breath] 위력을 획득할 때마다 대상이 [Breath] 위력 2, [Breath] 횟수 2 얻음.\n\n질투 속성 스킬을 사용할 경우, 효과가 강화되어 [Breath] 위력 3, [Breath] 횟수 3 얻음."
+  [29073 desc]
+    - "스킬 효과로 [Breath] 위력을 획득할 때마다 대상이 <style=\"upgradeHighlight\">[Breath] 위력 3, [Breath] 횟수 3 얻음.</style>\n\n질투 속성 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Breath] 위력 4, [Breath] 횟수 4 얻음.</style>"
+    + "스킬 효과로 [Breath] 위력을 획득할 때마다 대상이 [Breath] 위력 3, [Breath] 횟수 3 얻음.\n\n질투 속성 스킬을 사용할 경우, 효과가 강화되어 [Breath] 위력 4, [Breath] 횟수 4 얻음."
+  [19074 desc]
+    - "전투 시작 시, 정신력이 0 미만인 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Sinking] 위력 3 부여.</style>\n\n질투 속성 스킬을 사용할 때마다 다음 턴에 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Sinking] 위력 2</style> 나누어 부여."
+    + "전투 시작 시, 정신력이 0 미만인 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3 부여.\n\n질투 속성 스킬을 사용할 때마다 다음 턴에 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 2 나누어 부여."
+  [29074 desc]
+    - "전투 시작 시, 정신력이 0 미만인 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Sinking] 위력 4, [Sinking] 횟수 1 부여.</style>\n\n질투 속성 스킬을 사용할 때마다 다음 턴에 모든 적(환상체일 경우, 무작위 부위 하나)에게 <style=\"upgradeHighlight\">[Sinking] 위력 3</style> 나누어 부여."
+    + "전투 시작 시, 정신력이 0 미만인 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 4, [Sinking] 횟수 1 부여.\n\n질투 속성 스킬을 사용할 때마다 다음 턴에 모든 적(환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3 나누어 부여."
+  [9075 desc]
+    - "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 [Charge] 횟수 5 증가.\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 2 증가.\n\n[1번 편성 전용 효과] 스테이지 시작시, [ChoSuperCharge] 1 얻음"
+    + "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 [Charge] 횟수 5 증가.\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 2 증가.\n\n[1번 편성 전용 효과] 스테이지 시작 시, [ChoSuperCharge] 1 얻음"
+  [19075 desc]
+    - "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 6 증가.</style>\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 <style=\"upgradeHighlight\">3</style> 증가.\n\n[1번 편성 전용 효과] 스테이지 시작시, [ChoSuperCharge] <style=\"upgradeHighlight\">10</style> 얻음"
+    + "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 [Charge] 횟수 6 증가.\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 3 증가.\n\n[1번 편성 전용 효과] 스테이지 시작 시, [ChoSuperCharge] 10 얻음"
+  [29075 desc]
+    - "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 <style=\"upgradeHighlight\">[Charge] 횟수 8 증가.</style>\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 <style=\"upgradeHighlight\">4</style> 증가.\n\n[1번 편성 전용 효과] 스테이지 시작시, [ChoSuperCharge] <style=\"upgradeHighlight\">20</style> 얻음"
+    + "[Charge] 횟수 최대치 +10.\n\n스테이지 시작 시, 모든 아군의 [Charge] 횟수 8 증가.\n\n턴 시작 시, 모든 아군의 [Charge] 횟수 4 증가.\n\n[1번 편성 전용 효과] 스테이지 시작 시, [ChoSuperCharge] 20 얻음"
+  [19082 desc]
+    - "획득 시, 편성 인격의 <style=\"upgradeHighlight\">레벨 7 증가.</style>"
+    + "획득 시, 편성 인격의 레벨 7 증가."
+  [29082 desc]
+    - "획득 시, 편성 인격의 <style=\"upgradeHighlight\">레벨 10 증가.</style>"
+    + "획득 시, 편성 인격의 레벨 10 증가."
+  [9084 desc]
+    - "턴 시작 시, 속도가 제일 빠른 아군 중 하나를 지정하고 다음 턴에 대상에게 [Agility] 5 부여\n\n다음 턴 시작 시, 오래된 조각상 효과를 받는 아군을 제외한 나머지 아군 중 속도가 제일 빠른 아군 하나를 지정하여 기프트 효과를 다시 적용 (대상으로 지정할 다른 아군이 없을 경우, 효과 소멸)\n\n자신의 속도가 10 이상이면, 대상과의 (속도 차이/2)만큼 <noparse>공격 레벨 증가</noparse> (최대 5, 소수점 버림)"
+    + "턴 시작 시, 속도가 제일 빠른 아군 중 하나를 지정하고 다음 턴에 대상에게 [Agility] 5 부여\n\n다음 턴 시작 시, 오래된 조각상 효과를 받는 아군을 제외한 나머지 아군 중 속도가 제일 빠른 아군 하나를 지정하여 기프트 효과를 다시 적용 (대상으로 지정할 다른 아군이 없을 경우, 효과 소멸)\n\n자신의 속도가 10 이상이면, 대상과의 (속도 차이/2)만큼 공격 레벨 증가 (최대 5, 소수점 버림)"
+  [19087 desc]
+    - "[Combustion] 효과로 적을 처치하였다면 다음 턴 시작 시, [Combustion] 위력을 부여하는 스킬을 보유한 아군 인격 둘이 <style=\"upgradeHighlight\">[AttackDmgUp] 2 얻음.</style>"
+    + "[Combustion] 효과로 적을 처치하였다면 다음 턴 시작 시, [Combustion] 위력을 부여하는 스킬을 보유한 아군 인격 둘이 [AttackDmgUp] 2 얻음."
+  [29087 desc]
+    - "[Combustion] 효과로 적을 처치하였다면 다음 턴 시작 시, [Combustion] 위력을 부여하는 스킬을 보유한 <style=\"upgradeHighlight\">아군 인격 셋</style>이 [AttackDmgUp] 2 얻음."
+    + "[Combustion] 효과로 적을 처치하였다면 다음 턴 시작 시, [Combustion] 위력을 부여하는 스킬을 보유한 아군 인격 셋이 [AttackDmgUp] 2 얻음."
+  [19089 desc]
+    - "스킬을 사용하여 적에게 적중 시 12 이상의 체력 피해를 입혔다면, 대상에게 <style=\"upgradeHighlight\">[Laceration] 위력 3 부여.</style>\n\n참격 스킬을 사용할 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Laceration] 위력 5 부여.</style>"
+    + "스킬을 사용하여 적에게 적중 시 12 이상의 체력 피해를 입혔다면, 대상에게 [Laceration] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 5 부여."
+  [29089 desc]
+    - "스킬을 사용하여 적에게 <style=\"upgradeHighlight\">적중 시 1 이상의 체력 피해를 입혔다면</style>, 대상에게 [Laceration] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 5, <style=\"upgradeHighlight\">[Laceration] 횟수 1 부여.</style>"
+    + "스킬을 사용하여 적에게 적중 시 1 이상의 체력 피해를 입혔다면, 대상에게 [Laceration] 위력 3 부여.\n\n참격 스킬을 사용할 경우, 효과가 강화되어 [Laceration] 위력 5, [Laceration] 횟수 1 부여."
+  [9091 desc]
+    - "[VibrationExplosion]이 적용된 적에게 이번 턴에 [Vulnerable] 1 부여  (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+    + "[VibrationExplosion]이 적용된 적에게 이번 턴에 [Vulnerable] 1 부여 (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+  [19091 desc]
+    - "[VibrationExplosion]이 적용된 적에게 <style=\"upgradeHighlight\">이번 턴과 다음 턴에</style> [Vulnerable] 1 부여 (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+    + "[VibrationExplosion]이 적용된 적에게 이번 턴과 다음 턴에 [Vulnerable] 1 부여 (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+  [29091 desc]
+    - "[VibrationExplosion]이 적용된 적에게 이번 턴과 다음 턴에 <style=\"upgradeHighlight\">[Vulnerable] 2 부여</style> (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+    + "[VibrationExplosion]이 적용된 적에게 이번 턴과 다음 턴에 [Vulnerable] 2 부여 (공격 스킬을 사용하여 진동 폭발 부여 시, 스킬 당 최대 1회)."
+  [9092 simpleDesc[2] ability90922]
+    - "[Vulnerable] 1 부여 "
+    + "[Vulnerable] 1 부여"
+  [19093 desc]
+    - "턴 종료 시 [Burst] 상태인 <style=\"upgradeHighlight\">적의 수(환상체일 경우, 모든 부위)+3만큼</style>, 다음 턴에 무작위 아군 하나에게 [AttackDmgUp] 1, [Agility] 1 효과 중 하나를 부여."
+    + "턴 종료 시 [Burst] 상태인 적의 수(환상체일 경우, 모든 부위)+3만큼, 다음 턴에 무작위 아군 하나에게 [AttackDmgUp] 1, [Agility] 1 효과 중 하나를 부여."
+  [29093 desc]
+    - "턴 종료 시 [Burst] 상태인 적의 수(환상체일 경우, 모든 부위)+3만큼, 다음 턴에 무작위 아군 하나에게 <style=\"upgradeHighlight\">[AttackDmgUp] 1, [Agility] 1 효과를 부여.</style>"
+    + "턴 종료 시 [Burst] 상태인 적의 수(환상체일 경우, 모든 부위)+3만큼, 다음 턴에 무작위 아군 하나에게 [AttackDmgUp] 1, [Agility] 1 효과를 부여."
+  [19095 desc]
+    - "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Sinking] 횟수 (10+등장한 적의 수x3)만큼</style> 무작위로 나누어 부여 (환상체일 경우, 적 숫자는 본체 하나로 계산)."
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Sinking] 횟수 (10+등장한 적의 수x3)만큼 무작위로 나누어 부여 (환상체일 경우, 적 숫자는 본체 하나로 계산)."
+  [29095 desc]
+    - "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 <style=\"upgradeHighlight\">[Sinking] 횟수 (10+등장한 적의 수x4)만큼</style> 무작위로 나누어 부여 (환상체일 경우, 적 숫자는 본체 하나로 계산)."
+    + "웨이브 첫 턴 시작 시, 모든 적(환상체일 경우, 모든 부위)에게 [Sinking] 횟수 (10+등장한 적의 수x4)만큼 무작위로 나누어 부여 (환상체일 경우, 적 숫자는 본체 하나로 계산)."
+  [9096 desc]
+    - "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n스킬을 사용하여 적에게 적중 시, 대상에게 [Sinking] 위력 5 부여.\n\n턴 시작 시, 모든 적 또는 부위가 각자 직전 턴에 피격을 받아 소모한 [Sinking] 횟수의 절반만큼 [Sinking] 횟수를 다시 얻음.\n\n기본 공격 스킬 적중시, (대상의 [Sinking] 위력/10)만큼 우울 속성 피해 (최소 피해 1)\n\n공격 스킬 적중 시, 대상의 0 미만의 정신력 1 당 스킬 피해량 +1%.\n- 대상이 패닉 상태면, 대신 스킬 피해량 +50%\n- 정신력이 없는 대상이면, 대상이 보유한 [Sinking] 위력 2 당 스킬 피해량 +1%. 침잠 위력이 90 이상이면, 대신 스킬 피해량 +50%"
+    + "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n스킬을 사용하여 적에게 적중 시, 대상에게 [Sinking] 위력 5 부여.\n\n턴 시작 시, 모든 적 또는 부위가 각자 직전 턴에 피격을 받아 소모한 [Sinking] 횟수의 절반만큼 [Sinking] 횟수를 다시 얻음.\n\n기본 공격 스킬 적중 시, (대상의 [Sinking] 위력/10)만큼 우울 속성 피해 (최소 피해 1)\n\n공격 스킬 적중 시, 대상의 0 미만의 정신력 1 당 스킬 피해량 +1%.\n- 대상이 패닉 상태면, 대신 스킬 피해량 +50%\n- 정신력이 없는 대상이면, 대상이 보유한 [Sinking] 위력 2 당 스킬 피해량 +1%. 침잠 위력이 90 이상이면, 대신 스킬 피해량 +50%"
+  [19097 desc]
+    - "턴 시작 시, [Breath] 위력을 보유하지 않은 무작위 아군 하나에게 <style=\"upgradeHighlight\">[Breath] 위력 3 부여.</style>\n\n모든 아군이 [Breath] 상태일 경우, 효과가 변경되어 모든 아군에게 <style=\"upgradeHighlight\">[Breath] 횟수 2 부여.</style>"
+    + "턴 시작 시, [Breath] 위력을 보유하지 않은 무작위 아군 하나에게 [Breath] 위력 3 부여.\n\n모든 아군이 [Breath] 상태일 경우, 효과가 변경되어 모든 아군에게 [Breath] 횟수 2 부여."
+  [29097 desc]
+    - "턴 시작 시, [Breath] 위력을 보유하지 않은 <style=\"upgradeHighlight\">무작위 아군 둘</style>에게 [Breath] 위력 3 부여.\n\n모든 아군이 [Breath] 상태일 경우, 효과가 변경되어 모든 아군에게 <style=\"upgradeHighlight\">[Breath] 횟수 3 부여.</style>"
+    + "턴 시작 시, [Breath] 위력을 보유하지 않은 무작위 아군 둘에게 [Breath] 위력 3 부여.\n\n모든 아군이 [Breath] 상태일 경우, 효과가 변경되어 모든 아군에게 [Breath] 횟수 3 부여."
+  [19099 desc]
+    - "웨이브 첫 턴 시작 시, 모든 아군이 <style=\"upgradeHighlight\">[ChargeForceField] 5 얻음.</style>"
+    + "웨이브 첫 턴 시작 시, 모든 아군이 [ChargeForceField] 5 얻음."
+  [29099 desc]
+    - "웨이브 첫 턴 시작 시, 모든 아군이 <style=\"upgradeHighlight\">[ChargeForceField] 7 얻음.</style>"
+    + "웨이브 첫 턴 시작 시, 모든 아군이 [ChargeForceField] 7 얻음."
+  [9100 desc]
+    - "턴 시작 시, [Charge] 횟수 또는 특수 충전을 획득하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작 시, 모든 아군이 [ChargeForceField] 7 얻음. (웨이브 당 최대 1회)\n\n턴 시작 시, 아군이 ([Charge] 횟수/5+1)만큼 [AttackDmgUp]를 얻음. (최대 9. 올림하여 처리. 특수 충전을 포함)\n\n각 인격마다 (이번 전투 동안 공격 스킬을 사용하여 누적 소모한 [Charge] 횟수/4)만큼 턴 시작 시, 공격 레벨 증가 얻음. ([Charge] 횟수 40 소모 시, 효과 최대)\n\n각 인격마다 [Charge] 횟수를 10 소모할 때마다 [Charge] 1 얻음. (전투당 인격별로 5회, 위력 고정인 특수 충전 제외)\n\n턴 시작시, 모든 아군이 자신의 [Charge] 위력 2 당 [Enhancement] 1 얻음 (최대 3)"
+    + "턴 시작 시, [Charge] 횟수 또는 특수 충전을 획득하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작 시, 모든 아군이 [ChargeForceField] 7 얻음. (웨이브 당 최대 1회)\n\n턴 시작 시, 아군이 ([Charge] 횟수/5+1)만큼 [AttackDmgUp]를 얻음. (최대 9. 올림하여 처리. 특수 충전을 포함)\n\n각 인격마다 (이번 전투 동안 공격 스킬을 사용하여 누적 소모한 [Charge] 횟수/4)만큼 턴 시작 시, 공격 레벨 증가 얻음. ([Charge] 횟수 40 소모 시, 효과 최대)\n\n각 인격마다 [Charge] 횟수를 10 소모할 때마다 [Charge] 1 얻음. (전투당 인격별로 5회, 위력 고정인 특수 충전 제외)\n\n턴 시작 시, 모든 아군이 자신의 [Charge] 위력 2 당 [Enhancement] 1 얻음 (최대 3)"
+  [19101 desc]
+    - "[Combustion] 위력, [Combustion] 횟수, 특수 화상을 부여하는 스킬을 사용하여 합 승리 시, <style=\"upgradeHighlight\">(남은 코인 수/2+1)</style>만큼 대상 적에게 [Combustion] 위력 부여"
+    + "[Combustion] 위력, [Combustion] 횟수, 특수 화상을 부여하는 스킬을 사용하여 합 승리 시, (남은 코인 수/2+1)만큼 대상 적에게 [Combustion] 위력 부여"
+  [29101 desc]
+    - "[Combustion] 위력, [Combustion] 횟수, 특수 화상을 부여하는 스킬을 사용하여 합 승리 시, <style=\"upgradeHighlight\">(남은 코인 수+1)</style>만큼 대상 적에게 [Combustion] 위력 부여"
+    + "[Combustion] 위력, [Combustion] 횟수, 특수 화상을 부여하는 스킬을 사용하여 합 승리 시, (남은 코인 수+1)만큼 대상 적에게 [Combustion] 위력 부여"
+  [19102 desc]
+    - "아군이 대상보다 정신력이 <style=\"upgradeHighlight\">25</style> 이상 높을 경우, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 스킬로 입히는 피해량 <style=\"upgradeHighlight\">+12.5%</style> (정신력이 없는 적의 경우에는 0으로 계산)"
+    + "아군이 대상보다 정신력이 25 이상 높을 경우, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 스킬로 입히는 피해량 +12.5% (정신력이 없는 적의 경우에는 0으로 계산)"
+  [29102 desc]
+    - "아군이 대상보다 정신력이 <style=\"upgradeHighlight\">15</style> 이상 높을 경우, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 스킬로 입히는 피해량 <style=\"upgradeHighlight\">+20%</style> (정신력이 없는 적의 경우에는 0으로 계산)"
+    + "아군이 대상보다 정신력이 15 이상 높을 경우, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 스킬로 입히는 피해량 +20% (정신력이 없는 적의 경우에는 0으로 계산)"
+  [19103 desc]
+    - "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력이나 횟수 또는 특수 화상을 부여할 경우, 다음 턴에 [Agility] 1 얻음. (스킬 당 1회, 턴 당 최대 3회)\n\n[Agility]을 이미 보유한 경우, 효과가 강화되어 <style=\"upgradeHighlight\">[Agility] 2</style>, [AttackUp] 2 얻음."
+    + "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력이나 횟수 또는 특수 화상을 부여할 경우, 다음 턴에 [Agility] 1 얻음. (스킬 당 1회, 턴 당 최대 3회)\n\n[Agility]을 이미 보유한 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2 얻음."
+  [29103 desc]
+    - "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력이나 횟수 또는 특수 화상을 부여할 경우, 다음 턴에 [Agility] 1 얻음. (스킬 당 1회, 턴 당 최대 3회)\n\n[Agility]을 이미 보유한 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2, <style=\"upgradeHighlight\">[AttackDmgUp] 2</style> 얻음."
+    + "[Combustion] 또는 특수 화상에 걸린 적에게 스킬 효과로 [Combustion] 위력이나 횟수 또는 특수 화상을 부여할 경우, 다음 턴에 [Agility] 1 얻음. (스킬 당 1회, 턴 당 최대 3회)\n\n[Agility]을 이미 보유한 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2, [AttackDmgUp] 2 얻음."
+  [9104 simpleDesc[0] ability9104]
+    - "조건 만족시, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 공격 스킬로 입히는 피해량 +50%"
+    + "조건 만족 시, [Combustion] 위력 또는 [Combustion] 횟수 또는 특수 화상을 부여하는 공격 스킬로 입히는 피해량 +50%"
+  [19106 desc]
+    - "전투 시작 시 모든 적(환상체일 경우, 모든 부위)이 [Laceration]에 걸린 경우, 다음 턴에 모든 아군이 [Agility] 1, <style=\"upgradeHighlight\">[AttackDmgUp] 1</style> 얻음."
+    + "전투 시작 시 모든 적(환상체일 경우, 모든 부위)이 [Laceration]에 걸린 경우, 다음 턴에 모든 아군이 [Agility] 1, [AttackDmgUp] 1 얻음."
+  [29106 desc]
+    - "전투 시작 시 모든 적(환상체일 경우, 모든 부위)이 [Laceration]에 걸린 경우, 다음 턴에 모든 아군이 [Agility] <style=\"upgradeHighlight\">2</style>, [AttackDmgUp] 1, <style=\"upgradeHighlight\">[AttackUp] 2</style> 얻음."
+    + "전투 시작 시 모든 적(환상체일 경우, 모든 부위)이 [Laceration]에 걸린 경우, 다음 턴에 모든 아군이 [Agility] 2, [AttackDmgUp] 1, [AttackUp] 2 얻음."
+  [19107 desc]
+    - "속도가 제일 빠른 아군 <style=\"upgradeHighlight\">둘</style>이 [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬을 사용하여 적에게 피해를 입힐 경우, 피해량 +<style=\"upgradeHighlight\">15</style>%."
+    + "속도가 제일 빠른 아군 둘이 [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬을 사용하여 적에게 피해를 입힐 경우, 피해량 +15%."
+  [29107 desc]
+    - "속도가 제일 빠른 아군 <style=\"upgradeHighlight\">셋</style>이 [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬을 사용하여 적에게 피해를 입힐 경우, 피해량 +<style=\"upgradeHighlight\">20</style>%."
+    + "속도가 제일 빠른 아군 셋이 [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬을 사용하여 적에게 피해를 입힐 경우, 피해량 +20%."
+  [9108 simpleDesc[0] ability9108]
+    - "조건 만족시, 메인 공격 대상의 [Laceration] 횟수가 7 이상이면 피해량 +10%"
+    + "조건 만족 시, 메인 공격 대상의 [Laceration] 횟수가 7 이상이면 피해량 +10%"
+  [19108 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬 사용 시, 메인 공격 대상의 [Laceration] 횟수가 5 이상이면 피해량 <style=\"upgradeHighlight\">+15</style>%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬 사용 시, 메인 공격 대상의 [Laceration] 횟수가 5 이상이면 피해량 +15%"
+  [19108 simpleDesc[0] ability19108]
+    - "조건 만족시, 메인 공격 대상의 [Laceration] 횟수가 5 이상이면 피해량 +15"
+    + "조건 만족 시, 메인 공격 대상의 [Laceration] 횟수가 5 이상이면 피해량 +15"
+  [29108 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬 사용 시, 메인 공격 대상의 [Laceration] 횟수가 3 이상이면 피해량 <style=\"upgradeHighlight\">+20</style>%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬 사용 시, 메인 공격 대상의 [Laceration] 횟수가 3 이상이면 피해량 +20%"
+  [29108 simpleDesc[0] ability29108]
+    - "조건 만족시, 메인 공격 대상의 [Laceration] 횟수가 3 이상이면 피해량 +20%"
+    + "조건 만족 시, 메인 공격 대상의 [Laceration] 횟수가 3 이상이면 피해량 +20%"
+  [9110 simpleDesc[1] ability91101]
+    - "조건 만족시, [Laceration] 횟수를 추가로 부여하고 대상이 보유한 [Laceration] 위력만큼 색욕 피해 추가로 입힘."
+    + "조건 만족 시, [Laceration] 횟수를 추가로 부여하고 대상이 보유한 [Laceration] 위력만큼 색욕 피해 추가로 입힘."
+  [9111 simpleDesc[0] ability9110]
+    - "조건 만족시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+    + "조건 만족 시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+  [19111 desc]
+    - "[Vibration] 위력을 보유한 적이 사망할 경우, 대상이 보유한 ([Vibration] 위력과 [Vibration] 횟수의 합x<style=\"upgradeHighlight\">0.75</style>)만큼 다음 턴에 무작위 적 하나(환상체일 경우, 무작위 부위 하나)에게 나태 피해를 입힘"
+    + "[Vibration] 위력을 보유한 적이 사망할 경우, 대상이 보유한 ([Vibration] 위력과 [Vibration] 횟수의 합x0.75)만큼 다음 턴에 무작위 적 하나(환상체일 경우, 무작위 부위 하나)에게 나태 피해를 입힘"
+  [19111 simpleDesc[0] ability19110]
+    - "조건 만족시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+    + "조건 만족 시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+  [29111 desc]
+    - "[Vibration] 위력을 보유한 적이 사망할 경우, 대상이 보유한 ([Vibration] 위력과 [Vibration] 횟수의 합x<style=\"upgradeHighlight\">1.25</style>)만큼 다음 턴에 무작위 적 하나(환상체일 경우, 무작위 부위 하나)에게 나태 피해를 입힘"
+    + "[Vibration] 위력을 보유한 적이 사망할 경우, 대상이 보유한 ([Vibration] 위력과 [Vibration] 횟수의 합x1.25)만큼 다음 턴에 무작위 적 하나(환상체일 경우, 무작위 부위 하나)에게 나태 피해를 입힘"
+  [29111 simpleDesc[0] ability29110]
+    - "조건 만족시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+    + "조건 만족 시, 다음 턴에 무작위 적 하나에게 나태 피해를 입힘"
+  [19112 desc]
+    - "[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)을 사용하여 합 승리 시, <style=\"upgradeHighlight\">남은 코인 수</style>만큼 대상 적에게 [Vibration] 위력 부여"
+    + "[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)을 사용하여 합 승리 시, 남은 코인 수만큼 대상 적에게 [Vibration] 위력 부여"
+  [29112 desc]
+    - "[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)을 사용하여 합 승리 시, 남은 코인 수만큼 대상 적에게 [Vibration] 위력과 <style=\"upgradeHighlight\">(남은 코인 수/2)만큼 [Vibration] 횟수</style> 부여"
+    + "[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)을 사용하여 합 승리 시, 남은 코인 수만큼 대상 적에게 [Vibration] 위력과 (남은 코인 수/2)만큼 [Vibration] 횟수 부여"
+  [9113 simpleDesc[1] ability91131]
+    - "조건 만족시, 스킬로 가하는 피해량 +(흐트러짐 단계x7.5)%"
+    + "조건 만족 시, 스킬로 가하는 피해량 +(흐트러짐 단계x7.5)%"
+  [9113 simpleDesc[2] ability91132]
+    - "조건 만족시, 효과가 강화되어 피해량 +(흐트러짐 단계x15)%"
+    + "조건 만족 시, 효과가 강화되어 피해량 +(흐트러짐 단계x15)%"
+  [19113 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)의 공격 레벨 +2\n\n메인 공격 대상이 [Vibration] 상태이고 흐트러진 경우, 스킬로 가하는 피해량 +(흐트러짐 단계x<style=\"upgradeHighlight\">10</style>)%\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬로 적을 공격할 경우, 효과가 강화되어 피해량 +(흐트러짐 단계x<style=\"upgradeHighlight\">20</style>)%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)의 공격 레벨 +2\n\n메인 공격 대상이 [Vibration] 상태이고 흐트러진 경우, 스킬로 가하는 피해량 +(흐트러짐 단계x10)%\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬로 적을 공격할 경우, 효과가 강화되어 피해량 +(흐트러짐 단계x20)%"
+  [19113 simpleDesc[1] ability191131]
+    - "조건 만족시, 스킬로 가하는 피해량 +(흐트러짐 단계x10)%"
+    + "조건 만족 시, 스킬로 가하는 피해량 +(흐트러짐 단계x10)%"
+  [19113 simpleDesc[2] ability191132]
+    - "조건 만족시, 스킬로 가하는 피해량 +(흐트러짐 단계x20)%"
+    + "조건 만족 시, 스킬로 가하는 피해량 +(흐트러짐 단계x20)%"
+  [29113 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)의 공격 레벨 +<style=\"upgradeHighlight\">3</style>\n\n메인 공격 대상이 [Vibration] 상태이고 흐트러진 경우, 스킬로 가하는 피해량 +(흐트러짐 단계x<style=\"upgradeHighlight\">12.5</style>)%\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬로 적을 공격할 경우, 효과가 강화되어 피해량 +(흐트러짐 단계x<style=\"upgradeHighlight\">25</style>)%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬(본인 또는 아군을 대상으로 하는 경우 포함)의 공격 레벨 +3\n\n메인 공격 대상이 [Vibration] 상태이고 흐트러진 경우, 스킬로 가하는 피해량 +(흐트러짐 단계x12.5)%\n\n[Vibration] 위력 또는 [Vibration] 횟수를 부여하는 스킬로 적을 공격할 경우, 효과가 강화되어 피해량 +(흐트러짐 단계x25)%"
+  [29113 simpleDesc[1] ability291131]
+    - "조건 만족시, 스킬로 가하는 피해량 +(흐트러짐 단계x12.5)%"
+    + "조건 만족 시, 스킬로 가하는 피해량 +(흐트러짐 단계x12.5)%"
+  [29113 simpleDesc[2] ability291132]
+    - "조건 만족시, 스킬로 가하는 피해량 +(흐트러짐 단계x25)%"
+    + "조건 만족 시, 스킬로 가하는 피해량 +(흐트러짐 단계x25)%"
+  [9114 desc]
+    - "아군이 [Vibration] 위력 또는 [Vibration] 횟수를 부여하는 공격 스킬(본인 또는 아군을 대상으로 하는 경우 포함)로 적을 흐트러뜨릴 경우 (E.G.O 스킬 제외), 다음 턴에 대상이 보유한 [Vibration] 위력의 1/3만큼을 다른 무작위 적들(환상체일 경우, 무작위 부위)에게 [Vibration] 위력을 나누어 부여함\n\n 해당 효과를 부여할 다른 적들이 없는 경우, 효과가 변경되어 다음 턴에 대상이 보유한 [Vibration] 위력이 1.5배로 증가"
+    + "아군이 [Vibration] 위력 또는 [Vibration] 횟수를 부여하는 공격 스킬(본인 또는 아군을 대상으로 하는 경우 포함)로 적을 흐트러뜨릴 경우 (E.G.O 스킬 제외), 다음 턴에 대상이 보유한 [Vibration] 위력의 1/3만큼을 다른 무작위 적들(환상체일 경우, 무작위 부위)에게 [Vibration] 위력을 나누어 부여함\n\n해당 효과를 부여할 다른 적들이 없는 경우, 효과가 변경되어 다음 턴에 대상이 보유한 [Vibration] 위력이 1.5배로 증가"
+  [9114 simpleDesc[0] ability9114]
+    - "조건 만족시, 다음 턴에 대상이 보유한 [Vibration] 위력의 1/3만큼을 다른 무작위 적들에게 [Vibration] 위력을 나누어 부여함"
+    + "조건 만족 시, 다음 턴에 대상이 보유한 [Vibration] 위력의 1/3만큼을 다른 무작위 적들에게 [Vibration] 위력을 나누어 부여함"
+  [9115 simpleDesc[1] ability91151]
+    - "조건 만족시, 피해량 +(적이 보유한 [Vibration] 위력+5)%"
+    + "조건 만족 시, 피해량 +(적이 보유한 [Vibration] 위력+5)%"
+  [9115 simpleDesc[2] ability91152]
+    - "조건 만족시, 효과가 강화되어 피해량 +(적이 보유한 [Vibration] 위력과 [Vibration] 횟수의 합+5)%"
+    + "조건 만족 시, 효과가 강화되어 피해량 +(적이 보유한 [Vibration] 위력과 [Vibration] 횟수의 합+5)%"
+  [9116 simpleDesc[1] ability91161]
+    - "조건 만족시, 효과가 강화되어 공격 시작 전에 [Vibration] 횟수를 추가로 부여(ZAYIN의 경우 2, 등급이 오를수록 +1)하고 피해량 +(대상이 보유한 [Vibration] 위력 x1.5)%"
+    + "조건 만족 시, 효과가 강화되어 공격 시작 전에 [Vibration] 횟수를 추가로 부여(ZAYIN의 경우 2, 등급이 오를수록 +1)하고 피해량 +(대상이 보유한 [Vibration] 위력 x1.5)%"
+  [9117 simpleDesc[0] ability9117]
+    - "조건 만족시, 다음 턴에 [Agility] 1 얻음."
+    + "조건 만족 시, 다음 턴에 [Agility] 1 얻음."
+  [9117 simpleDesc[1] ability91171]
+    - "조건 만족시, 피해량 +12.5%"
+    + "조건 만족 시, 피해량 +12.5%"
+  [19119 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 사용하여 합 승리 시, 대상 적에게 <style=\"upgradeHighlight\">[Burst] 위력 2</style>, [Burst] 횟수 2 부여 (인격 별로 턴 당 1회).\n\n대상이 [Burst] 상태가 아닐 경우, 효과가 강화되어 [Burst] 위력 <style=\"upgradeHighlight\">4</style>, [Burst] 횟수 2 부여."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 사용하여 합 승리 시, 대상 적에게 [Burst] 위력 2, [Burst] 횟수 2 부여 (인격 별로 턴 당 1회).\n\n대상이 [Burst] 상태가 아닐 경우, 효과가 강화되어 [Burst] 위력 4, [Burst] 횟수 2 부여."
+  [29119 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 사용하여 합 승리 시, 대상 적에게 [Burst] 위력 <style=\"upgradeHighlight\">4</style>, [Burst] 횟수 2 부여 (인격 별로 턴 당 1회).\n\n대상이 [Burst] 상태가 아닐 경우, 효과가 강화되어 [Burst] 위력 <style=\"upgradeHighlight\">6</style>, [Burst] 횟수 <style=\"upgradeHighlight\">3</style>부여."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 사용하여 합 승리 시, 대상 적에게 [Burst] 위력 4, [Burst] 횟수 2 부여 (인격 별로 턴 당 1회).\n\n대상이 [Burst] 상태가 아닐 경우, 효과가 강화되어 [Burst] 위력 6, [Burst] 횟수 3부여."
+  [19122 desc]
+    - "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬의 피해량 +<style=\"upgradeHighlight\">7.5</style>% (E.G.O 스킬 제외).\n\n코인 수가 2개 이하인 경우, 효과가 강화되어 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">12.5</style>%."
+    + "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬의 피해량 +7.5% (E.G.O 스킬 제외).\n\n코인 수가 2개 이하인 경우, 효과가 강화되어 합 위력 +1, 피해량 +12.5%."
+  [29122 desc]
+    - "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬의 피해량 +<style=\"upgradeHighlight\">10</style>% (E.G.O 스킬 제외).\n\n코인 수가 2개 이하인 경우, 효과가 강화되어 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">15</style>%."
+    + "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬의 피해량 +10% (E.G.O 스킬 제외).\n\n코인 수가 2개 이하인 경우, 효과가 강화되어 합 위력 +1, 피해량 +15%."
+  [19123 desc]
+    - "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 합 승리 시 정신력 <style=\"upgradeHighlight\">6</style>을 추가로 회복(턴 당 1회)하고, 정신력이 최대일 경우에는 피해량 +<style=\"upgradeHighlight\">10</style>%.\n\n해당 인격이 빼기 코인 스킬(E.G.O 스킬 제외)을 사용할 경우, 효과가 변경되어 스킬 사용 시 정신력이 -15 이상일 경우에는 정신력이 -15로 감소하고 피해량 +(정신력 감소한 수치<style=\"upgradeHighlight\">+5</style>)%, 정신력이 -15 미만일 경우에는 피해량 +<style=\"upgradeHighlight\">20</style>%."
+    + "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 합 승리 시 정신력 6을 추가로 회복(턴 당 1회)하고, 정신력이 최대일 경우에는 피해량 +10%.\n\n해당 인격이 빼기 코인 스킬(E.G.O 스킬 제외)을 사용할 경우, 효과가 변경되어 스킬 사용 시 정신력이 -15 이상일 경우에는 정신력이 -15로 감소하고 피해량 +(정신력 감소한 수치+5)%, 정신력이 -15 미만일 경우에는 피해량 +20%."
+  [29123 desc]
+    - "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 합 승리 시 정신력 <style=\"upgradeHighlight\">7</style>을 추가로 회복(턴 당 1회)하고, 정신력이 최대일 경우에는 피해량 +<style=\"upgradeHighlight\">12.5</style>%.\n\n해당 인격이 빼기 코인 스킬(E.G.O 스킬 제외)을 사용할 경우, 효과가 변경되어 스킬 사용 시 정신력이 -15 이상일 경우에는 정신력이 -15로 감소하고 피해량 +(정신력 감소한 수치+<style=\"upgradeHighlight\">10</style>)%, 정신력이 -15 미만일 경우에는 피해량 +<style=\"upgradeHighlight\">25</style>%."
+    + "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 합 승리 시 정신력 7을 추가로 회복(턴 당 1회)하고, 정신력이 최대일 경우에는 피해량 +12.5%.\n\n해당 인격이 빼기 코인 스킬(E.G.O 스킬 제외)을 사용할 경우, 효과가 변경되어 스킬 사용 시 정신력이 -15 이상일 경우에는 정신력이 -15로 감소하고 피해량 +(정신력 감소한 수치+10)%, 정신력이 -15 미만일 경우에는 피해량 +25%."
+  [19124 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n[Sinking] 위력과 [Sinking] 횟수의 합이 <style=\"upgradeHighlight\">8</style> 이상인 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬로 피해를 입힐 경우, 공격 종료 시 [Sinking] 위력 <style=\"upgradeHighlight\">3</style>, [Sinking] 횟수 2 부여 (인격별 턴 당 2회)\n집중 전투 방식의 전투 스테이지에서는 효과가 변경되어 [Sinking] <style=\"upgradeHighlight\">5</style>, [Sinking] 횟수 2 부여 (인격별 턴 당 1회)."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Sinking] 위력과 [Sinking] 횟수의 합이 8 이상인 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬로 피해를 입힐 경우, 공격 종료 시 [Sinking] 위력 3, [Sinking] 횟수 2 부여 (인격별 턴 당 2회)\n집중 전투 방식의 전투 스테이지에서는 효과가 변경되어 [Sinking] 5, [Sinking] 횟수 2 부여 (인격별 턴 당 1회)."
+  [29124 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Sinking] 위력과 [Sinking] 횟수의 합이 <style=\"upgradeHighlight\">5</style> 이상인 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬로 피해를 입힐 경우, 공격 종료 시 [Sinking] 위력 3, [Sinking] 횟수 <style=\"upgradeHighlight\">3</style> 부여 (인격별 턴 당 2회)\n집중 전투 방식의 전투 스테이지에서는 효과가 변경되어 [Sinking] 5, [Sinking] 횟수 <style=\"upgradeHighlight\">3</style> 부여 (인격별 턴 당 1회)."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n[Sinking] 위력과 [Sinking] 횟수의 합이 5 이상인 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬로 피해를 입힐 경우, 공격 종료 시 [Sinking] 위력 3, [Sinking] 횟수 3 부여 (인격별 턴 당 2회)\n집중 전투 방식의 전투 스테이지에서는 효과가 변경되어 [Sinking] 5, [Sinking] 횟수 3 부여 (인격별 턴 당 1회)."
+  [9126 simpleDesc[1] ability91261]
+    - "조건 만족시, 공격 시작 전에 [Sinking] 횟수를 추가로 부여(ZAYIN의 경우 2, 등급이 오를수록 +1)하고 피해량 +(E.G.O 스킬 사용 시 소모한 정신력x2.5)%"
+    + "조건 만족 시, 공격 시작 전에 [Sinking] 횟수를 추가로 부여(ZAYIN의 경우 2, 등급이 오를수록 +1)하고 피해량 +(E.G.O 스킬 사용 시 소모한 정신력x2.5)%"
+  [19127 desc]
+    - "턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 1, <style=\"upgradeHighlight\">[AttackUp] 1</style> 부여. (같은 인격일 경우 중복 가능)\n\n색욕 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Agility] 2, <style=\"upgradeHighlight\">[AttackUp] 2</style> 부여 (E.G.O 스킬 제외)."
+    + "턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 1, [AttackUp] 1 부여. (같은 인격일 경우 중복 가능)\n\n색욕 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2 부여 (E.G.O 스킬 제외)."
+  [29127 desc]
+    - "턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 1, [AttackUp] 1, <style=\"upgradeHighlight\">[AttackDmgUp] 1</style> 부여. (같은 인격일 경우 중복 가능)\n\n색욕 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2, [AttackDmgUp] <style=\"upgradeHighlight\">2</style> 부여 (E.G.O 스킬 제외)."
+    + "턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 1, [AttackUp] 1, [AttackDmgUp] 1 부여. (같은 인격일 경우 중복 가능)\n\n색욕 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Agility] 2, [AttackUp] 2, [AttackDmgUp] 2 부여 (E.G.O 스킬 제외)."
+  [19128 desc]
+    - "웨이브 첫 턴 시작 시, 속도가 제일 빠른 아군 하나가 [Breath] 위력 <style=\"upgradeHighlight\">4</style>, [Breath] 횟수 <style=\"upgradeHighlight\">4</style> 얻음.\n\n질투 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Breath] 위력 <style=\"upgradeHighlight\">5</style>, [Breath] 횟수 <style=\"upgradeHighlight\">5</style> 얻음."
+    + "웨이브 첫 턴 시작 시, 속도가 제일 빠른 아군 하나가 [Breath] 위력 4, [Breath] 횟수 4 얻음.\n\n질투 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Breath] 위력 5, [Breath] 횟수 5 얻음."
+  [29128 desc]
+    - "<style=\"upgradeHighlight\">턴 시작 시</style>, 속도가 제일 빠른 아군 하나가 [Breath] 위력 4, [Breath] 횟수 4 얻음.\n\n질투 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Breath] 위력 5, [Breath] 횟수 5 얻음."
+    + "턴 시작 시, 속도가 제일 빠른 아군 하나가 [Breath] 위력 4, [Breath] 횟수 4 얻음.\n\n질투 속성 공격 스킬을 보유한 아군일 경우, 효과가 강화되어 [Breath] 위력 5, [Breath] 횟수 5 얻음."
+  [19129 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n적에게 치명타 피해를 입힐 때마다 다음 턴에 [DefenseDown] 1 부여 (인격 별로 턴 당 <style=\"upgradeHighlight\">4</style>회까지 부여 가능).\n[중첩 발동 불가] 홍적 돈키호테 E.G.O의 패시브 발동 시, 이 효과가 발동하지 않음."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n적에게 치명타 피해를 입힐 때마다 다음 턴에 [DefenseDown] 1 부여 (인격 별로 턴 당 4회까지 부여 가능).\n[중첩 발동 불가] 홍적 돈키호테 E.G.O의 패시브 발동 시, 이 효과가 발동하지 않음."
+  [29129 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n적에게 치명타 피해를 입힐 때마다 다음 턴에 [DefenseDown] 1 부여 (인격 별로 턴 당 <style=\"upgradeHighlight\">6</style>회까지 부여 가능).\n[중첩 발동 불가] 홍적 돈키호테 E.G.O의 패시브 발동 시, 이 효과가 발동하지 않음."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n적에게 치명타 피해를 입힐 때마다 다음 턴에 [DefenseDown] 1 부여 (인격 별로 턴 당 6회까지 부여 가능).\n[중첩 발동 불가] 홍적 돈키호테 E.G.O의 패시브 발동 시, 이 효과가 발동하지 않음."
+  [19132 desc]
+    - "턴 종료 시 [Charge] 횟수가 <style=\"upgradeHighlight\">4</style> 미만인 경우에는 다음 턴 시작 시 [Charge] 횟수 3 증가. (특수 충전을 포함)\n\n턴 종료 시 [Charge] 횟수가 <style=\"upgradeHighlight\">4</style> 이상인 경우에는 다음 턴 시작 시 [AttackDmgUp] 1 얻음. (특수 충전을 포함)"
+    + "턴 종료 시 [Charge] 횟수가 4 미만인 경우에는 다음 턴 시작 시 [Charge] 횟수 3 증가. (특수 충전을 포함)\n\n턴 종료 시 [Charge] 횟수가 4 이상인 경우에는 다음 턴 시작 시 [AttackDmgUp] 1 얻음. (특수 충전을 포함)"
+  [29132 desc]
+    - "턴 종료 시 [Charge] 횟수가 <style=\"upgradeHighlight\">5</style> 미만인 경우에는 다음 턴 시작 시 [Charge] 횟수 <style=\"upgradeHighlight\">4</style> 증가. (특수 충전을 포함)\n\n턴 종료 시 [Charge] 횟수가 <style=\"upgradeHighlight\">5</style> 이상인 경우에는 다음 턴 시작 시 [AttackDmgUp] <style=\"upgradeHighlight\">2</style> 얻음. (특수 충전을 포함)"
+    + "턴 종료 시 [Charge] 횟수가 5 미만인 경우에는 다음 턴 시작 시 [Charge] 횟수 4 증가. (특수 충전을 포함)\n\n턴 종료 시 [Charge] 횟수가 5 이상인 경우에는 다음 턴 시작 시 [AttackDmgUp] 2 얻음. (특수 충전을 포함)"
+  [19133 desc]
+    - "턴 종료 시, 이번 턴에 공격 스킬을 사용하여 소모한 ([Charge] 횟수와 특수 충전의 합<style=\"upgradeHighlight\">+1</style>)만큼 체력과 정신력을 회복.\n\n남은 체력이 최대 체력의 절반 이하일 경우, 회복되는 수치가 <style=\"upgradeHighlight\">2</style>배로 적용."
+    + "턴 종료 시, 이번 턴에 공격 스킬을 사용하여 소모한 ([Charge] 횟수와 특수 충전의 합+1)만큼 체력과 정신력을 회복.\n\n남은 체력이 최대 체력의 절반 이하일 경우, 회복되는 수치가 2배로 적용."
+  [29133 desc]
+    - "턴 종료 시, 이번 턴에 공격 스킬을 사용하여 소모한 ([Charge] 횟수와 특수 충전의 합<style=\"upgradeHighlight\">+2</style>)만큼 체력과 정신력을 회복.\n\n남은 체력이 최대 체력의 <style=\"upgradeHighlight\">75</style>% 이하일 경우, 회복되는 수치가 2배로 적용."
+    + "턴 종료 시, 이번 턴에 공격 스킬을 사용하여 소모한 ([Charge] 횟수와 특수 충전의 합+2)만큼 체력과 정신력을 회복.\n\n남은 체력이 최대 체력의 75% 이하일 경우, 회복되는 수치가 2배로 적용."
+  [19134 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n턴 시작 시 효과 대상 인격이 [ChargeForceField] <style=\"upgradeHighlight\">3</style> 얻음\n\n효과 적용 대상 인격이 [Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유하였다면, [ChargeForceField] 상태일 때, 아군의 스킬 1 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">15</style>%."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 시작 시 효과 대상 인격이 [ChargeForceField] 3 얻음\n\n효과 적용 대상 인격이 [Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유하였다면, [ChargeForceField] 상태일 때, 아군의 스킬 1 합 위력 +1, 피해량 +15%."
+  [29134 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 시작 시 효과 대상 인격이 [ChargeForceField] <style=\"upgradeHighlight\">4</style> 얻음\n\n효과 적용 대상 인격이 [Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유하였다면, [ChargeForceField] 상태일 때, 아군의 스킬 1 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">25</style>%."
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 시작 시 효과 대상 인격이 [ChargeForceField] 4 얻음\n\n효과 적용 대상 인격이 [Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유하였다면, [ChargeForceField] 상태일 때, 아군의 스킬 1 합 위력 +1, 피해량 +25%."
+  [9135 desc]
+    - "[편성 1번, 2번 인격 전용 효과]\n\n턴 시작 시 [Charge] 횟수와 특수 충전(위력 고정)의 합이 10 이상인 경우 발동. \n\n[Charge] 횟수 또는 특수 충전(위력 고정)을 획득하거나 소모하는 스킬 3의 더하기 코인 위력 +1.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(4/코인 수). (최소 1, 소수점 버림)\n\n해당 스킬의 기본 위력이 5 미만일 경우 피해량 +25%, 기본 위력이 5 이상일 경우 더하기 코인 위력 추가로 +1.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(4/코인 수). (최소 1, 소수점 버림)\n\n※ 위력과 횟수를 함께 보유한 특수 충전은 충전 횟수로 계산됨"
+    + "[편성 1번, 2번 인격 전용 효과]\n\n턴 시작 시 [Charge] 횟수와 특수 충전(위력 고정)의 합이 10 이상인 경우 발동.\n\n[Charge] 횟수 또는 특수 충전(위력 고정)을 획득하거나 소모하는 스킬 3의 더하기 코인 위력 +1.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(4/코인 수). (최소 1, 소수점 버림)\n\n해당 스킬의 기본 위력이 5 미만일 경우 피해량 +25%, 기본 위력이 5 이상일 경우 더하기 코인 위력 추가로 +1.\n- 빼기 코인 스킬일 경우, 더하기 코인 위력 대신 기본 위력 +(4/코인 수). (최소 1, 소수점 버림)\n\n※ 위력과 횟수를 함께 보유한 특수 충전은 충전 횟수로 계산됨"
+  [19137 desc]
+    - "[편성 4번 인격 전용 효과]\n\n턴 종료 시, 참격 공격 스킬을 보유한 인격이 (보유한 참격 공격 스킬의 수<style=\"upgradeHighlight\">+1</style>)만큼 (동일한 스킬은 하나로 계산되며, E.G.O 스킬과 반격은 제외) 다음 턴에 [Agility]을 얻음."
+    + "[편성 4번 인격 전용 효과]\n\n턴 종료 시, 참격 공격 스킬을 보유한 인격이 (보유한 참격 공격 스킬의 수+1)만큼 (동일한 스킬은 하나로 계산되며, E.G.O 스킬과 반격은 제외) 다음 턴에 [Agility]을 얻음."
+  [29137 desc]
+    - "[편성 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n턴 종료 시, 참격 공격 스킬을 보유한 인격이 (보유한 참격 공격 스킬의 수+1)만큼 (동일한 스킬은 하나로 계산되며, E.G.O 스킬과 반격은 제외) 다음 턴에 [Agility]을 얻음."
+    + "[편성 4번, 5번 인격 전용 효과]\n\n턴 종료 시, 참격 공격 스킬을 보유한 인격이 (보유한 참격 공격 스킬의 수+1)만큼 (동일한 스킬은 하나로 계산되며, E.G.O 스킬과 반격은 제외) 다음 턴에 [Agility]을 얻음."
+  [19138 desc]
+    - "[편성 5번 인격 전용 효과]\n\n공격 대상인 적과의 속도 차이가 3 이상인 경우, 참격 스킬 피해량 +<style=\"upgradeHighlight\">20</style>%."
+    + "[편성 5번 인격 전용 효과]\n\n공격 대상인 적과의 속도 차이가 3 이상인 경우, 참격 스킬 피해량 +20%."
+  [29138 desc]
+    - "[편성 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n공격 대상인 적과의 속도 차이가 <style=\"upgradeHighlight\">2</style> 이상인 경우, 참격 스킬 피해량 +20%."
+    + "[편성 5번, 6번 인격 전용 효과]\n\n공격 대상인 적과의 속도 차이가 2 이상인 경우, 참격 스킬 피해량 +20%."
+  [19139 desc]
+    - "[편성 <style=\"upgradeHighlight\">4번,</style> 6번 인격 전용 효과]\n\n코인 수가 2 이하인 참격 스킬(E.G.O 스킬 제외)의 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">15</style>%.\n\n단일 코인 스킬인 경우, 효과가 강화되어 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">25</style>%."
+    + "[편성 4번, 6번 인격 전용 효과]\n\n코인 수가 2 이하인 참격 스킬(E.G.O 스킬 제외)의 합 위력 +1, 피해량 +15%.\n\n단일 코인 스킬인 경우, 효과가 강화되어 합 위력 +1, 피해량 +25%."
+  [29139 desc]
+    - "[편성 4번, 6번 인격 전용 효과]\n\n코인 수가 2 이하인 참격 스킬(E.G.O 스킬 제외)의 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">20</style>%.\n\n단일 코인 스킬인 경우, 효과가 강화되어 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">30</style>%."
+    + "[편성 4번, 6번 인격 전용 효과]\n\n코인 수가 2 이하인 참격 스킬(E.G.O 스킬 제외)의 합 위력 +1, 피해량 +20%.\n\n단일 코인 스킬인 경우, 효과가 강화되어 합 위력 +1, 피해량 +30%."
+  [9140 desc]
+    - "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] 1 얻고 합 위력 +1.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 75%로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 50% 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 1 얻음. "
+    + "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] 1 얻고 합 위력 +1.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 75%로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 50% 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 1 얻음."
+  [19140 desc]
+    - "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] <style=\"upgradeHighlight\">2</style> 얻고 합 위력 +1.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 <style=\"upgradeHighlight\">50%</style>로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 <style=\"upgradeHighlight\">75%</style> 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 <style=\"upgradeHighlight\">2</style> 얻음. "
+    + "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] 2 얻고 합 위력 +1.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 50%로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 75% 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 2 얻음."
+  [29140 desc]
+    - "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] 2 얻고 <style=\"upgradeHighlight\">최종 위력 +1</style>.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 <style=\"upgradeHighlight\">49%</style>로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 75% 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 <style=\"upgradeHighlight\">3</style> 얻음. "
+    + "참격 스킬을 2개 이상 보유한 모든 아군이 이번 전투 동안 첫 턴에는 합 위력 +1, 두 번째 턴부터는 [Agility] 2 얻고 최종 위력 +1.\n\n시 협회 소속 인격이 유지 또는 회복 가능한 최대 체력의 상한선이 49%로 고정되는 대신 받는 피해량과 자신이 받는 회복량이 75% 감소 (전투 진입 시 발동, E.G.O 기프트로 인한 회복 제외).\n\n시 협회 소속 인격이라면 매 턴 시작시마다 참격 위력 증가 1, 참격 피해량 증가 3 얻음."
+  [19141 desc]
+    - "[편성 3번, 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n일방 공격 시, 참격 스킬의 피해량 +10%\n\n합 승리 시, 참격 스킬의 피해량 +(40/남은 코인 수)%"
+    + "[편성 3번, 4번, 5번 인격 전용 효과]\n\n일방 공격 시, 참격 스킬의 피해량 +10%\n\n합 승리 시, 참격 스킬의 피해량 +(40/남은 코인 수)%"
+  [29141 desc]
+    - "[편성 3번, 4번, 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n일방 공격 시, 참격 스킬의 피해량 +<style=\"upgradeHighlight\">12.5</style>%\n\n합 승리 시, 참격 스킬의 피해량 +(<style=\"upgradeHighlight\">50</style>/남은 코인 수)%"
+    + "[편성 3번, 4번, 5번, 6번 인격 전용 효과]\n\n일방 공격 시, 참격 스킬의 피해량 +12.5%\n\n합 승리 시, 참격 스킬의 피해량 +(50/남은 코인 수)%"
+  [19143 desc]
+    - "[편성 4번 인격 전용 효과]\n\n관통 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [PenetrateDamageUp] <style=\"upgradeHighlight\">2</style> 얻음."
+    + "[편성 4번 인격 전용 효과]\n\n관통 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [PenetrateDamageUp] 2 얻음."
+  [29143 desc]
+    - "[편성 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n관통 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [PenetrateDamageUp] 2 얻음."
+    + "[편성 4번, 5번 인격 전용 효과]\n\n관통 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [PenetrateDamageUp] 2 얻음."
+  [19144 desc]
+    - "[편성 <style=\"upgradeHighlight\">5번</style>, 6번 인격 전용 효과]\n\n관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격 별로 턴 당 1회).\n\n해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, <style=\"upgradeHighlight\">[PenetrateDamageUp] 1</style> 추가로 얻음 (인격 별로 턴 당 1회)."
+    + "[편성 5번, 6번 인격 전용 효과]\n\n관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격 별로 턴 당 1회).\n\n해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 추가로 얻음 (인격 별로 턴 당 1회)."
+  [29144 desc]
+    - "[편성 5번, 6번 인격 전용 효과]\n\n관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격 별로 턴 당 <style=\"upgradeHighlight\">2</style>회).\n\n해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] <style=\"upgradeHighlight\">2</style> 추가로 얻음 (인격 별로 턴 당 1회)."
+    + "[편성 5번, 6번 인격 전용 효과]\n\n관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격 별로 턴 당 2회).\n\n해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 2 추가로 얻음 (인격 별로 턴 당 1회)."
+  [19145 desc]
+    - "관통 공격 스킬의 합 위력 +1, <style=\"upgradeHighlight\">피해량 +5%</style>\n\n[Bullet]을 소모하는 스킬의 피해량 +(<style=\"upgradeHighlight\">50</style>/코인 수)%\n\n[Bullet]을 전부 소모하였다면 다음 턴 시작 시, [Bullet] 2 얻음 (인격 별로 전투당 1회)"
+    + "관통 공격 스킬의 합 위력 +1, 피해량 +5%\n\n[Bullet]을 소모하는 스킬의 피해량 +(50/코인 수)%\n\n[Bullet]을 전부 소모하였다면 다음 턴 시작 시, [Bullet] 2 얻음 (인격 별로 전투당 1회)"
+  [29145 desc]
+    - "관통 공격 스킬의 합 위력 +1, 피해량 +<style=\"upgradeHighlight\">10</style>%\n\n[Bullet]을 소모하는 스킬의 피해량 +(<style=\"upgradeHighlight\">60</style>/코인 수)%\n\n[Bullet]을 전부 소모하였다면 다음 턴 시작 시, [Bullet] 2 얻음 (인격 별로 전투당 1회)"
+    + "관통 공격 스킬의 합 위력 +1, 피해량 +10%\n\n[Bullet]을 소모하는 스킬의 피해량 +(60/코인 수)%\n\n[Bullet]을 전부 소모하였다면 다음 턴 시작 시, [Bullet] 2 얻음 (인격 별로 전투당 1회)"
+  [19146 desc]
+    - "[편성 3번, 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n합 진행 시 합 위력 +1, 관통 스킬의 피해량 +20%.\n\n일방 공격 진행 시 관통 스킬의 피해량 +10%."
+    + "[편성 3번, 4번, 5번 인격 전용 효과]\n\n합 진행 시 합 위력 +1, 관통 스킬의 피해량 +20%.\n\n일방 공격 진행 시 관통 스킬의 피해량 +10%."
+  [29146 desc]
+    - "[편성 3번, 4번, 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n합 진행 시 합 위력 +1, 관통 스킬의 피해량 +<style=\"upgradeHighlight\">25</style>%.\n\n일방 공격 진행 시 관통 스킬의 피해량 +<style=\"upgradeHighlight\">12.5</style>%."
+    + "[편성 3번, 4번, 5번, 6번 인격 전용 효과]\n\n합 진행 시 합 위력 +1, 관통 스킬의 피해량 +25%.\n\n일방 공격 진행 시 관통 스킬의 피해량 +12.5%."
+  [19148 desc]
+    - "[편성 6번 인격 전용 효과]\n\n타격 스킬 <style=\"upgradeHighlight\">사용 시</style>, 다음 턴에 [Agility] 1 얻음 (최대 2회).\n\n턴 종료 시, 이번 턴에 적에게 피해를 주지 못했다면 효과가 강화되어 다음 턴에 [Agility] 3 얻음."
+    + "[편성 6번 인격 전용 효과]\n\n타격 스킬 사용 시, 다음 턴에 [Agility] 1 얻음 (최대 2회).\n\n턴 종료 시, 이번 턴에 적에게 피해를 주지 못했다면 효과가 강화되어 다음 턴에 [Agility] 3 얻음."
+  [29148 desc]
+    - "[편성 <style=\"upgradeHighlight\">4번</style>, 6번 인격 전용 효과]\n\n타격 스킬 사용 시, 다음 턴에 [Agility] 1, <style=\"upgradeHighlight\">[HitDamageUp] 1</style> 얻음 (최대 2회).\n\n턴 종료 시, 이번 턴에 적에게 피해를 주지 못했다면 효과가 강화되어 다음 턴에 [Agility] 3, <style=\"upgradeHighlight\">[HitDamageUp] 2</style> 얻음."
+    + "[편성 4번, 6번 인격 전용 효과]\n\n타격 스킬 사용 시, 다음 턴에 [Agility] 1, [HitDamageUp] 1 얻음 (최대 2회).\n\n턴 종료 시, 이번 턴에 적에게 피해를 주지 못했다면 효과가 강화되어 다음 턴에 [Agility] 3, [HitDamageUp] 2 얻음."
+  [19149 desc]
+    - "[편성 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n타격 스킬을 사용하여 적에게 적중 시, <style=\"upgradeHighlight\">3 ~ 5</style>만큼 타격 피해를 추가로 입힘.\n\n우울 속성 공격 스킬일 경우, 효과가 강화되어 추가로 <style=\"upgradeHighlight\">4</style>만큼 체력을 회복."
+    + "[편성 5번, 6번 인격 전용 효과]\n\n타격 스킬을 사용하여 적에게 적중 시, 3 ~ 5만큼 타격 피해를 추가로 입힘.\n\n우울 속성 공격 스킬일 경우, 효과가 강화되어 추가로 4만큼 체력을 회복."
+  [29149 desc]
+    - "[편성 5번, 6번 인격 전용 효과]\n\n타격 스킬을 사용하여 적에게 적중 시, <style=\"upgradeHighlight\">5 ~ 7</style>만큼 타격 피해를 추가로 입힘.\n\n우울 속성 공격 스킬일 경우, 효과가 강화되어 추가로 <style=\"upgradeHighlight\">6</style>만큼 체력을 회복."
+    + "[편성 5번, 6번 인격 전용 효과]\n\n타격 스킬을 사용하여 적에게 적중 시, 5 ~ 7만큼 타격 피해를 추가로 입힘.\n\n우울 속성 공격 스킬일 경우, 효과가 강화되어 추가로 6만큼 체력을 회복."
+  [19150 desc]
+    - "턴 시작 시 타격 공격 스킬을 보유한 경우, [AttackUp] <style=\"upgradeHighlight\">2</style> 얻음 (E.G.O 스킬 제외).\n\n타격 공격 스킬을 2개 이상 보유한 경우, 효과가 강화되어 [AttackUp] <style=\"upgradeHighlight\">2</style>, [HitDamageUp] 1 얻음.\n\n빼기 코인을 사용하는 타격 공격 스킬을 2개 이상 보유한 경우, 효과가 더욱 강화되어 [AttackUp] <style=\"upgradeHighlight\">3</style>, [HitDamageUp] 2 얻음."
+    + "턴 시작 시 타격 공격 스킬을 보유한 경우, [AttackUp] 2 얻음 (E.G.O 스킬 제외).\n\n타격 공격 스킬을 2개 이상 보유한 경우, 효과가 강화되어 [AttackUp] 2, [HitDamageUp] 1 얻음.\n\n빼기 코인을 사용하는 타격 공격 스킬을 2개 이상 보유한 경우, 효과가 더욱 강화되어 [AttackUp] 3, [HitDamageUp] 2 얻음."
+  [29150 desc]
+    - "턴 시작 시 타격 공격 스킬을 보유한 경우, [AttackUp] 2, <style=\"upgradeHighlight\">[HitDamageUp] 1</style> 얻음 (E.G.O 스킬 제외).\n\n타격 공격 스킬을 2개 이상 보유한 경우, 효과가 강화되어 [AttackUp] 2, [HitDamageUp] <style=\"upgradeHighlight\">2</style> 얻음.\n\n빼기 코인을 사용하는 타격 공격 스킬을 2개 이상 보유한 경우, 효과가 더욱 강화되어 [AttackUp] 3, [HitDamageUp] <style=\"upgradeHighlight\">3</style> 얻음."
+    + "턴 시작 시 타격 공격 스킬을 보유한 경우, [AttackUp] 2, [HitDamageUp] 1 얻음 (E.G.O 스킬 제외).\n\n타격 공격 스킬을 2개 이상 보유한 경우, 효과가 강화되어 [AttackUp] 2, [HitDamageUp] 2 얻음.\n\n빼기 코인을 사용하는 타격 공격 스킬을 2개 이상 보유한 경우, 효과가 더욱 강화되어 [AttackUp] 3, [HitDamageUp] 3 얻음."
+  [19151 desc]
+    - "[편성 3번, 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n타격 스킬의 합 종료 후에 코인이 2개 이상 남아있는 경우 피해량 +10%, 3개 이상 남아있을 경우 피해량 +20%, 4개 이상 남아있을 경우 피해량 +40%."
+    + "[편성 3번, 4번, 5번 인격 전용 효과]\n\n타격 스킬의 합 종료 후에 코인이 2개 이상 남아있는 경우 피해량 +10%, 3개 이상 남아있을 경우 피해량 +20%, 4개 이상 남아있을 경우 피해량 +40%."
+  [29151 desc]
+    - "[편성 3번, 4번, 5번, <style=\"upgradeHighlight\">6번</style> 인격 전용 효과]\n\n타격 스킬의 합 종료 후에 코인이 2개 이상 남아있는 경우 피해량 +<style=\"upgradeHighlight\">12.5</style>%, 3개 이상 남아있을 경우 피해량 +<style=\"upgradeHighlight\">25</style>%, 4개 이상 남아있을 경우 피해량 +<style=\"upgradeHighlight\">50</style>%."
+    + "[편성 3번, 4번, 5번, 6번 인격 전용 효과]\n\n타격 스킬의 합 종료 후에 코인이 2개 이상 남아있는 경우 피해량 +12.5%, 3개 이상 남아있을 경우 피해량 +25%, 4개 이상 남아있을 경우 피해량 +50%."
+  [19086 desc]
+    - "턴 종료 시, [Vibration] 위력을 <style=\"upgradeHighlight\">8</style> 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, <style=\"upgradeHighlight\">[DefenseDown] 2</style> 부여. 대상이 [Vibration] 위력을 <style=\"upgradeHighlight\">15</style> 이상 보유한 경우, 효과가 강화되어 [Binding] 2, [Paralysis] 1, <style=\"upgradeHighlight\">[DefenseDown] 2</style> 부여."
+    + "턴 종료 시, [Vibration] 위력을 8 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, [DefenseDown] 2 부여. 대상이 [Vibration] 위력을 15 이상 보유한 경우, 효과가 강화되어 [Binding] 2, [Paralysis] 1, [DefenseDown] 2 부여."
+  [29086 desc]
+    - "턴 종료 시, [Vibration] 위력을 <style=\"upgradeHighlight\">5</style> 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, [DefenseDown] <style=\"upgradeHighlight\">3</style> 부여. 대상이 [Vibration] 위력을 <style=\"upgradeHighlight\">10</style> 이상 보유한 경우, 효과가 강화되어 [Binding] 2, [Paralysis] 1, [DefenseDown] <style=\"upgradeHighlight\">4</style> 부여."
+    + "턴 종료 시, [Vibration] 위력을 5 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, [DefenseDown] 3 부여. 대상이 [Vibration] 위력을 10 이상 보유한 경우, 효과가 강화되어 [Binding] 2, [Paralysis] 1, [DefenseDown] 4 부여."
+  [19117 desc]
+    - "[편성 1번, 2번, <style=\"upgradeHighlight\">3번</style> 인격 전용 효과]\n\n턴 종료 시 이번 턴에 [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 한 번이라도 사용하였다면, 다음 턴에 [Agility] 1 얻음.\n\n자신의 속도가 <style=\"upgradeHighlight\">5</style> 이상이면, [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬의 피해량 +<style=\"upgradeHighlight\">15</style>%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 종료 시 이번 턴에 [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 한 번이라도 사용하였다면, 다음 턴에 [Agility] 1 얻음.\n\n자신의 속도가 5 이상이면, [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬의 피해량 +15%"
+  [19117 simpleDesc[0] ability19117]
+    - "조건 만족시, 다음 턴에 [Agility] 1 얻음."
+    + "조건 만족 시, 다음 턴에 [Agility] 1 얻음."
+  [19117 simpleDesc[1] ability191171]
+    - "조건 만족시, 피해량 +15%"
+    + "조건 만족 시, 피해량 +15%"
+  [29117 desc]
+    - "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 종료 시 이번 턴에 [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 한 번이라도 사용하였다면, 다음 턴에 [Agility] <style=\"upgradeHighlight\">1 ~ 2</style> 얻음.\n\n자신의 속도가 <style=\"upgradeHighlight\">4</style> 이상이면, [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬의 피해량 +<style=\"upgradeHighlight\">20</style>%"
+    + "[편성 1번, 2번, 3번 인격 전용 효과]\n\n턴 종료 시 이번 턴에 [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 한 번이라도 사용하였다면, 다음 턴에 [Agility] 1 ~ 2 얻음.\n\n자신의 속도가 4 이상이면, [Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬의 피해량 +20%"
+  [29117 simpleDesc[0] ability29117]
+    - "조건 만족시, 다음 턴에 [Agility] 1 ~ 2 얻음."
+    + "조건 만족 시, 다음 턴에 [Agility] 1 ~ 2 얻음."
+  [29117 simpleDesc[1] ability291171]
+    - "조건 만족시, 피해량 +20%"
+    + "조건 만족 시, 피해량 +20%"
+  [19192 desc]
+    - "턴 종료 시, 출혈을 보유한 아군 중 가장 체력이 적은 인격 <style=\"upgradeHighlight\">2명</style>이 자신의 최대 체력의 5%만큼 체력을 회복."
+    + "턴 종료 시, 출혈을 보유한 아군 중 가장 체력이 적은 인격 2명이 자신의 최대 체력의 5%만큼 체력을 회복."
+  [19194 desc]
+    - "참격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 세븐 협회 소속 인격은 관통, 타격 기본 공격 스킬에도 효과가 적용<style=\"upgradeHighlight\">되고 약점 분석 추가로 부여</style>\n\n<style=\"upgradeHighlight\">홀수 번째 턴 시작 시</style>, 세븐 협회 소속 인격이 (자신을 제외한 다른 세븐 협회 소속 인격 수/2)만큼 합 위력 증가 얻음 (버림하여 처리, 최대 2)."
+    + "참격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 세븐 협회 소속 인격은 관통, 타격 기본 공격 스킬에도 효과가 적용되고 약점 분석 추가로 부여\n\n홀수 번째 턴 시작 시, 세븐 협회 소속 인격이 (자신을 제외한 다른 세븐 협회 소속 인격 수/2)만큼 합 위력 증가 얻음 (버림하여 처리, 최대 2)."
+  [29194 desc]
+    - "참격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 세븐 협회 소속 인격은 관통, 타격 기본 공격 스킬에도 효과가 적용되고 약점 분석, <style=\"upgradeHighlight\">합 위력 감소 1</style> 추가로 부여\n\n<style=\"upgradeHighlight\">턴 시작 시</style>, 세븐 협회 소속 인격이 (자신을 제외한 다른 세븐 협회 소속 인격 수/2)만큼 합 위력 증가 얻음 (버림하여 처리, 최대 2). <style=\"upgradeHighlight\">합 승리 시 해당 스킬의 피해량 +20%.</style>"
+    + "참격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 세븐 협회 소속 인격은 관통, 타격 기본 공격 스킬에도 효과가 적용되고 약점 분석, 합 위력 감소 1 추가로 부여\n\n턴 시작 시, 세븐 협회 소속 인격이 (자신을 제외한 다른 세븐 협회 소속 인격 수/2)만큼 합 위력 증가 얻음 (버림하여 처리, 최대 2). 합 승리 시 해당 스킬의 피해량 +20%."
+  [9195 simpleDesc[0] ability9195]
+    - "합 위력 +1, 적중시 공격 레벨 감소 부여"
+    + "합 위력 +1, 적중 시 공격 레벨 감소 부여"
+  [19195 desc]
+    - "참격 유형인 스킬 1의 합 위력 +1, 적중 시 공격 레벨 감소 2 부여.\n- 흑운회 소속 인격은 효과가 변경되어, 참격 유형 <style=\"upgradeHighlight\">또는 색욕 속성</style>인 모든 기본 공격 스킬에 효과 적용\n\n흑운회 소속 인격이 턴 시작 시 위력 증가 1을 얻음. 기본 공격 스킬을 사용하여 적중 시 출혈 위력, 출혈 횟수를 부여할 때마다 호흡 위력 1 얻음 (인격 별로 턴 당 최대 <style=\"upgradeHighlight\">6</style>)."
+    + "참격 유형인 스킬 1의 합 위력 +1, 적중 시 공격 레벨 감소 2 부여.\n- 흑운회 소속 인격은 효과가 변경되어, 참격 유형 또는 색욕 속성인 모든 기본 공격 스킬에 효과 적용\n\n흑운회 소속 인격이 턴 시작 시 위력 증가 1을 얻음. 기본 공격 스킬을 사용하여 적중 시 출혈 위력, 출혈 횟수를 부여할 때마다 호흡 위력 1 얻음 (인격 별로 턴 당 최대 6)."
+  [19195 simpleDesc[0] ability19195]
+    - "합 위력 +1, 적중시 공격 레벨 감소 부여"
+    + "합 위력 +1, 적중 시 공격 레벨 감소 부여"
+  [29195 desc]
+    - "참격 유형인 스킬 1의 합 위력 +1, 적중 시 공격 레벨 감소 2 부여.\n- 흑운회 소속 인격은 효과가 변경되어, <style=\"upgradeHighlight\">모든</style> 기본 공격 스킬에 효과 적용\n\n흑운회 소속 인격이 턴 시작 시 위력 증가 1을 얻음. 기본 공격 스킬을 사용하여 적중 시 출혈 위력, 출혈 횟수를 부여할 때마다 호흡 위력 <style=\"upgradeHighlight\">1~2</style> 얻음 (인격 별로 턴 당 최대 <style=\"upgradeHighlight\">8</style>)."
+    + "참격 유형인 스킬 1의 합 위력 +1, 적중 시 공격 레벨 감소 2 부여.\n- 흑운회 소속 인격은 효과가 변경되어, 모든 기본 공격 스킬에 효과 적용\n\n흑운회 소속 인격이 턴 시작 시 위력 증가 1을 얻음. 기본 공격 스킬을 사용하여 적중 시 출혈 위력, 출혈 횟수를 부여할 때마다 호흡 위력 1~2 얻음 (인격 별로 턴 당 최대 8)."
+  [29195 simpleDesc[0] ability29195]
+    - "합 위력 +1, 적중시 공격 레벨 감소 부여"
+    + "합 위력 +1, 적중 시 공격 레벨 감소 부여"
+  [19198 desc]
+    - "관통 기본 공격 스킬로 합 승리 후 적중 시, 대상 적에게 다음 턴에 속박 1 부여 (인격 별로 턴 당 1회, 동일한 적에게 <style=\"upgradeHighlight\">최대 2</style>).\n- 섕크 협회 소속 인격은 효과가 추가되어 다음 턴에 신속 1 얻음 (인격 별로 턴 당 1회)\n\n섕크 협회 소속 인격이 각 자신이 부여하는 결투 선포, 점혈 또는 집중 공격을 보유한 적(환상체일 경우, 부위)에게 기본 공격 스킬을 사용하여 합 승리 후 적중 시, 호흡 위력 <style=\"upgradeHighlight\">4</style> 얻음 (인격 별로 턴 당 1회)."
+    + "관통 기본 공격 스킬로 합 승리 후 적중 시, 대상 적에게 다음 턴에 속박 1 부여 (인격 별로 턴 당 1회, 동일한 적에게 최대 2).\n- 섕크 협회 소속 인격은 효과가 추가되어 다음 턴에 신속 1 얻음 (인격 별로 턴 당 1회)\n\n섕크 협회 소속 인격이 각 자신이 부여하는 결투 선포, 점혈 또는 집중 공격을 보유한 적(환상체일 경우, 부위)에게 기본 공격 스킬을 사용하여 합 승리 후 적중 시, 호흡 위력 4 얻음 (인격 별로 턴 당 1회)."
+  [29198 desc]
+    - "관통 기본 공격 스킬로 합 승리 후 적중 시, 대상 적에게 다음 턴에 속박 1 부여 (인격 별로 턴 당 1회, 동일한 적에게 최대 2).\n- 섕크 협회 소속 인격은 효과가 추가되어 다음 턴에 신속 1 얻음 (인격 별로 턴 당 <style=\"upgradeHighlight\">2</style>회)\n\n섕크 협회 소속 인격이 각 자신이 부여하는 결투 선포, 점혈 또는 집중 공격을 보유한 적(환상체일 경우, 부위)에게 기본 공격 스킬을 사용하여 합 승리 후 적중 시, 호흡 위력 4 얻음 (인격 별로 턴 당 <style=\"upgradeHighlight\">2</style>회)."
+    + "관통 기본 공격 스킬로 합 승리 후 적중 시, 대상 적에게 다음 턴에 속박 1 부여 (인격 별로 턴 당 1회, 동일한 적에게 최대 2).\n- 섕크 협회 소속 인격은 효과가 추가되어 다음 턴에 신속 1 얻음 (인격 별로 턴 당 2회)\n\n섕크 협회 소속 인격이 각 자신이 부여하는 결투 선포, 점혈 또는 집중 공격을 보유한 적(환상체일 경우, 부위)에게 기본 공격 스킬을 사용하여 합 승리 후 적중 시, 호흡 위력 4 얻음 (인격 별로 턴 당 2회)."
+  [19199 desc]
+    - "관통 유형인 스킬 2의 공격 레벨 +2, 코인 수가 2개 이하인 경우에는 효과가 강화되어 공격 레벨 +2, 합 위력 +(2/코인 수).\n- 기술해방연합 소속 인격은 효과가 변경되어, 관통 유형 <style=\"upgradeHighlight\">또는 탐식 속성</style>인 모든 기본 공격 스킬에 효과 적용\n\n기술해방연합 소속 인격이 턴 시작 시 <style=\"upgradeHighlight\">(자신이 보유한 부정적인 효과 수 + 1)</style>만큼 [AttackUp]를 얻음 (최대 <style=\"upgradeHighlight\">4</style>)."
+    + "관통 유형인 스킬 2의 공격 레벨 +2, 코인 수가 2개 이하인 경우에는 효과가 강화되어 공격 레벨 +2, 합 위력 +(2/코인 수).\n- 기술해방연합 소속 인격은 효과가 변경되어, 관통 유형 또는 탐식 속성인 모든 기본 공격 스킬에 효과 적용\n\n기술해방연합 소속 인격이 턴 시작 시 (자신이 보유한 부정적인 효과 수 + 1)만큼 [AttackUp]를 얻음 (최대 4)."
+  [29199 desc]
+    - "관통 유형인 스킬 2의 공격 레벨 +2, 코인 수가 2개 이하인 경우에는 효과가 강화되어 공격 레벨 +2, 합 위력 +(2/코인 수).\n- 기술해방연합 소속 인격은 효과가 변경되어, <style=\"upgradeHighlight\">모든</style> 기본 공격 스킬에 효과 적용\n\n기술해방연합 소속 인격이 턴 시작 시 <style=\"upgradeHighlight\">합 위력 증가 1</style>,(자신이 보유한 부정적인 효과 중 가장 높은 수치의 값 +1)만큼 [AttackUp]를 얻음 (최대 <style=\"upgradeHighlight\">5</style>)."
+    + "관통 유형인 스킬 2의 공격 레벨 +2, 코인 수가 2개 이하인 경우에는 효과가 강화되어 공격 레벨 +2, 합 위력 +(2/코인 수).\n- 기술해방연합 소속 인격은 효과가 변경되어, 모든 기본 공격 스킬에 효과 적용\n\n기술해방연합 소속 인격이 턴 시작 시 합 위력 증가 1,(자신이 보유한 부정적인 효과 중 가장 높은 수치의 값 +1)만큼 [AttackUp]를 얻음 (최대 5)."
+  [19202 desc]
+    - "타격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 디에치 협회 소속 인격은 참격, 관통 기본 공격 스킬에도 효과가 적용되고 방어 레벨 감소 1 추가로 부여\n\n디에치 협회 소속 인격이 버림 스킬을 사용하여 자신의 스킬을 버렸다면, 다음 턴 시작 시 <style=\"upgradeHighlight\">(버린 스킬의 등급 + 1)</style>만큼 공격 레벨 증가 얻음 (가장 높은 등급으로 계산, 최대 <style=\"upgradeHighlight\">4</style>)."
+    + "타격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 디에치 협회 소속 인격은 참격, 관통 기본 공격 스킬에도 효과가 적용되고 방어 레벨 감소 1 추가로 부여\n\n디에치 협회 소속 인격이 버림 스킬을 사용하여 자신의 스킬을 버렸다면, 다음 턴 시작 시 (버린 스킬의 등급 + 1)만큼 공격 레벨 증가 얻음 (가장 높은 등급으로 계산, 최대 4)."
+  [29202 desc]
+    - "타격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 디에치 협회 소속 인격은 참격, 관통 기본 공격 스킬에도 효과가 적용되고 방어 레벨 감소 1 추가로 부여\n\n디에치 협회 소속 인격이 버림 스킬을 사용하여 자신의 스킬을 버렸다면, 다음 턴 시작 시 <style=\"upgradeHighlight\">(버린 스킬의 등급+2)</style>만큼 공격 레벨 증가 얻음 (가장 높은 등급으로 계산, 최대 <style=\"upgradeHighlight\">5</style>)."
+    + "타격 기본 공격 스킬로 합 승리 시, 대상 적에게 다음 턴에 방어 레벨 감소 2 부여 (인격 별로 턴 당 1회, 동일한 적에게 중첩 불가).\n- 디에치 협회 소속 인격은 참격, 관통 기본 공격 스킬에도 효과가 적용되고 방어 레벨 감소 1 추가로 부여\n\n디에치 협회 소속 인격이 버림 스킬을 사용하여 자신의 스킬을 버렸다면, 다음 턴 시작 시 (버린 스킬의 등급+2)만큼 공격 레벨 증가 얻음 (가장 높은 등급으로 계산, 최대 5)."
+  [9204 simpleDesc[2] ability92042]
+    - "반격 스킬 사용시 피해로 흐트러지지 않음"
+    + "반격 스킬 사용 시 피해로 흐트러지지 않음"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon_2.json
+  [9156 desc]
+    - "턴 종료시, [Combustion] 횟수를 3 이상 보유한 적이 [Combustion]을 1회 더 발동함 ([Combustion] 횟수 1 감소)"
+    + "턴 종료 시, [Combustion] 횟수를 3 이상 보유한 적이 [Combustion]을 1회 더 발동함 ([Combustion] 횟수 1 감소)"
+  [9158 desc]
+    - "턴 시작 시, [Combustion] 및 특수 화상을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n스킬(E.G.O 스킬 포함) 적중 시 대상의 [Combustion] 횟수가 3 이상이면, 대상의 [Combustion]을 1회 발동함. ([Combustion] 횟수 1 감소, 스킬당 1회 발동)\n\n턴 종료시, [Combustion] 횟수를 3 이상 보유한 적이 [Combustion]을 1회 더 발동함 ([Combustion] 횟수 1 감소)\n\n[Combustion] 상태인 적이 사망하였을 경우(환상체일 경우, 본체 사망 시), 남은 [Combustion] 위력 수치만큼을 다음 턴 시작 시 [Combustion] 위력 수치가 제일 적은 적 중 하나에게 부여.\n\n턴 시작 시 [Combustion] 상태인 적에게 이번 턴 동안 [AttackDown] 4 부여\n\n[Combustion]을 보유한 적이 사망하였을 경우, 다음 턴 시작시, [Combustion] 부여 스킬을 보유한 아군 (사망한 적의 [Combustion] 위력/15)명이 [AttackDmgUp] 2 얻음. (턴 당 1회 발동)"
+    + "턴 시작 시, [Combustion] 및 특수 화상을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n스킬(E.G.O 스킬 포함) 적중 시 대상의 [Combustion] 횟수가 3 이상이면, 대상의 [Combustion]을 1회 발동함. ([Combustion] 횟수 1 감소, 스킬당 1회 발동)\n\n턴 종료 시, [Combustion] 횟수를 3 이상 보유한 적이 [Combustion]을 1회 더 발동함 ([Combustion] 횟수 1 감소)\n\n[Combustion] 상태인 적이 사망하였을 경우(환상체일 경우, 본체 사망 시), 남은 [Combustion] 위력 수치만큼을 다음 턴 시작 시 [Combustion] 위력 수치가 제일 적은 적 중 하나에게 부여.\n\n턴 시작 시 [Combustion] 상태인 적에게 이번 턴 동안 [AttackDown] 4 부여\n\n[Combustion]을 보유한 적이 사망하였을 경우, 다음 턴 시작 시, [Combustion] 부여 스킬을 보유한 아군 (사망한 적의 [Combustion] 위력/15)명이 [AttackDmgUp] 2 얻음. (턴 당 1회 발동)"
+  [9162 desc]
+    - "턴 시작 시, [Laceration] 및 특수 출혈을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n아군이 합 승리 시, 적의 [Laceration]을 1회 발동시키고, [Laceration] 횟수 1 감소 (아군 1명당 턴 당 1회)\n\n적이 [Laceration] 피해로 흐트러질 수 있으며, 적이 합 진행 중 [Laceration] 피해로 흐트러지면, 적의 남은 코인 수만큼 [Laceration]을 발동시키고, 발동한 횟수만큼 [Laceration] 횟수 감소 \n\n모든 적이 [Laceration]이 부여되어 있으면 방어 레벨 2 감소. 턴 종료 시 ([Laceration]이 발동한 횟수 X 2)만큼 다음 턴에 [DefenseDown]를 얻음 (최대 20)\n\n스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 [Laceration] 위력 3, [Laceration] 횟수 1 부여"
+    + "턴 시작 시, [Laceration] 및 특수 출혈을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n아군이 합 승리 시, 적의 [Laceration]을 1회 발동시키고, [Laceration] 횟수 1 감소 (아군 1명당 턴 당 1회)\n\n적이 [Laceration] 피해로 흐트러질 수 있으며, 적이 합 진행 중 [Laceration] 피해로 흐트러지면, 적의 남은 코인 수만큼 [Laceration]을 발동시키고, 발동한 횟수만큼 [Laceration] 횟수 감소\n\n모든 적이 [Laceration]이 부여되어 있으면 방어 레벨 2 감소. 턴 종료 시 ([Laceration]이 발동한 횟수 X 2)만큼 다음 턴에 [DefenseDown]를 얻음 (최대 20)\n\n스킬 효과로 [Laceration] 위력 또는 특수 출혈을 부여할 때마다 대상에게 [Laceration] 위력 3, [Laceration] 횟수 1 부여"
+  [9163 desc]
+    - "[Vibration] 횟수를 소모한 스킬로 합 승리시, 대상에게 [Vibration]이 없다면 대상의 [Vibration] 횟수 2 증가.\n\n해당 공격 스킬을 포함하여 나태 공명 3 이상이면, 대신 대상의 [Vibration] 횟수 3 증가"
+    + "[Vibration] 횟수를 소모한 스킬로 합 승리 시, 대상에게 [Vibration]이 없다면 대상의 [Vibration] 횟수 2 증가.\n\n해당 공격 스킬을 포함하여 나태 공명 3 이상이면, 대신 대상의 [Vibration] 횟수 3 증가"
+  [9166 desc]
+    - "턴 시작 시, [Vibration] 위력 또는 [Vibration] 횟수를 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외. 인격이 스스로 [Vibration] 횟수를 얻는 경우에는 발동 x)\n\n자신의 [Vibration] 횟수를 소모한 스킬로 합 승리시, 대상에게 [Vibration] 이 없다면 대상의 [Vibration] 횟수 3 증가\n\n턴 시작 시 합 위력이 (자신의 [Vibration] 횟수/5)만큼 증가. (최대 3)\n\n자신의 [Vibration] 횟수를 소모하는 스킬을 사용했을 때, 적 처치 혹은 흐트러짐 상태로 만들경우 (소모한 [Vibration] 횟수 / 2)만큼 자신의 [Vibration] 횟수 증가  (스킬당 1회)"
+    + "턴 시작 시, [Vibration] 위력 또는 [Vibration] 횟수를 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외. 인격이 스스로 [Vibration] 횟수를 얻는 경우에는 발동 x)\n\n자신의 [Vibration] 횟수를 소모한 스킬로 합 승리 시, 대상에게 [Vibration] 이 없다면 대상의 [Vibration] 횟수 3 증가\n\n턴 시작 시 합 위력이 (자신의 [Vibration] 횟수/5)만큼 증가. (최대 3)\n\n자신의 [Vibration] 횟수를 소모하는 스킬을 사용했을 때, 적 처치 혹은 흐트러짐 상태로 만들경우 (소모한 [Vibration] 횟수 / 2)만큼 자신의 [Vibration] 횟수 증가 (스킬당 1회)"
+  [9166 simpleDesc[0] ability9166]
+    - "자신의 [Vibration] 횟수를 소모한 스킬로 합 승리시, 대상에게 [Vibration] 이 없다면 대상의 [Vibration] 횟수 3 증가"
+    + "자신의 [Vibration] 횟수를 소모한 스킬로 합 승리 시, 대상에게 [Vibration] 이 없다면 대상의 [Vibration] 횟수 3 증가"
+  [9172 desc]
+    - "기본 공격 스킬 사용시, 적이 [Sinking] 위력이 5 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 3)"
+    + "기본 공격 스킬 사용 시, 적이 [Sinking] 위력이 5 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 3)"
+  [9175 desc]
+    - "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n기본 공격 스킬 사용시, 적이 [Sinking] 위력이 5 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 5)\n\n턴 종료 시 정신력이 -45인 적의 수만큼 다음 턴에 모든 아군이 [AttackUp] 얻음 (최대 3)"
+    + "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n기본 공격 스킬 사용 시, 적이 [Sinking] 위력이 5 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 5)\n\n턴 종료 시 정신력이 -45인 적의 수만큼 다음 턴에 모든 아군이 [AttackUp] 얻음 (최대 3)"
+  [9176 desc]
+    - "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작시, 무작위 적 하나에게 [WaveSinking] 1 부여\n\n[WaveSinking]를 보유한 적 사망 시, 대상의 [WaveSinking] 수치만큼 [WaveSinking] 수치가 최대치가 아닌 가장 높은 적에게 다음 턴 시작 시 [WaveSinking] 부여.\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 [Sinking] 위력 4, [Sinking] 횟수 3 부여 (적 1명 당 턴 당 1회 발동)\n우울 또는 색욕 완전 공명을 발동하였다면, 전투 시작 시, 모든 적 (환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3, [Sinking] 횟수 3 부여.\n\n기본 공격 스킬 공격 종료 시, 적이 [Sinking] 위력이 10 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 5), 대상에게 [DefenseDown] 부여 (최대 5, 적 1명당 턴 당 1회 발동)\n\n턴 종료 시 정신력이 -45거나, 정신력이 없는 적의 수만큼 다음 턴에 모든 아군이 [AttackUp] 얻음 (최대 6)\n\n[Sinking] 위력, 횟수 또는 특수 침잠을 부여하는 더하기 코인 스킬의 코인 위력 +1\n[Sinking] 위력, 횟수 또는 특수 침잠을 부여하는 빼기 코인 스킬의 기본 위력 + (4/코인 수) (최소 1. 소수점 버림)\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하거나 획득하는 기본 공격 스킬을 사용하여 적에게 적중 시, 대상이 보유한 [Sinking] 효과(특수 침잠을 포함)를 발동시킬 때마다 턴 종료 시 자신의 정신력 5 회복 (인격 별로 턴 당 2회).\n턴 시작 시 정신력이 45일 경우 효과가 변경되어, 기본 공격 스킬을 사용하여 적중 시 대상이 보유한 [Sinking] 효과(특수 침잠을 포함)를 발동시킬 때마다 대상 적에게 [Sinking] 횟수 3 부여 (인격 별로 턴 당 2회)"
+    + "턴 시작 시, [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 시작 시, 무작위 적 하나에게 [WaveSinking] 1 부여\n\n[WaveSinking]를 보유한 적 사망 시, 대상의 [WaveSinking] 수치만큼 [WaveSinking] 수치가 최대치가 아닌 가장 높은 적에게 다음 턴 시작 시 [WaveSinking] 부여.\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬을 사용하여 적에게 적중 시 체력 피해를 입혔다면, 턴 종료 시 대상에게 [Sinking] 위력 4, [Sinking] 횟수 3 부여 (적 1명 당 턴 당 1회 발동)\n우울 또는 색욕 완전 공명을 발동하였다면, 전투 시작 시, 모든 적 (환상체일 경우, 무작위 부위 하나)에게 [Sinking] 위력 3, [Sinking] 횟수 3 부여.\n\n기본 공격 스킬 공격 종료 시, 적이 [Sinking] 위력이 10 이상이면, 대상의 ([Sinking] 위력 / 10)만큼 자신의 정신력 회복 (최대 5), 대상에게 [DefenseDown] 부여 (최대 5, 적 1명당 턴 당 1회 발동)\n\n턴 종료 시 정신력이 -45거나, 정신력이 없는 적의 수만큼 다음 턴에 모든 아군이 [AttackUp] 얻음 (최대 6)\n\n[Sinking] 위력, 횟수 또는 특수 침잠을 부여하는 더하기 코인 스킬의 코인 위력 +1\n[Sinking] 위력, 횟수 또는 특수 침잠을 부여하는 빼기 코인 스킬의 기본 위력 + (4/코인 수) (최소 1. 소수점 버림)\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하거나 획득하는 기본 공격 스킬을 사용하여 적에게 적중 시, 대상이 보유한 [Sinking] 효과(특수 침잠을 포함)를 발동시킬 때마다 턴 종료 시 자신의 정신력 5 회복 (인격 별로 턴 당 2회).\n턴 시작 시 정신력이 45일 경우 효과가 변경되어, 기본 공격 스킬을 사용하여 적중 시 대상이 보유한 [Sinking] 효과(특수 침잠을 포함)를 발동시킬 때마다 대상 적에게 [Sinking] 횟수 3 부여 (인격 별로 턴 당 2회)"
+  [9178 desc]
+    - "턴 종료시, 각 아군이 자신의 호흡 위력이 20을 초과했으면, 호흡 위력을 1 소모하여 호흡 횟수 1 증가"
+    + "턴 종료 시, 각 아군이 자신의 호흡 위력이 20을 초과했으면, 호흡 위력을 1 소모하여 호흡 횟수 1 증가"
+  [9180 desc]
+    - "턴 시작 시, [Breath] 위력 또는 [Breath] 횟수를 부여하거나 획득하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 종료시, 각 아군이 자신의 [Breath] 위력이 20을 초과했으면, [Breath] 위력을 1 소모하여 [Breath] 횟수 1 증가\n\n턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 2, [AttackUp] 1 부여 (같은 인격일 경우 중복 가능)\n\n스킬 효과로 [Breath]위력을 획득할 때마다 해당 캐릭터가 [Breath] 위력 2, [Breath] 횟수 2 얻음. 보유한 [Breath] 위력과 횟수의 합이 20 미만이면, 대신 [Breath] 위력 3, [Breath] 횟수 3 얻음.\n\n전투 종료 시, 자신의 [Breath] 위력이 40을 초과하면, [Breath] 위력을 15 소모하여 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard] (캐릭터 당, 턴 당 1회)"
+    + "턴 시작 시, [Breath] 위력 또는 [Breath] 횟수를 부여하거나 획득하는 공격 스킬을 보유한 인격이 5인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n턴 종료 시, 각 아군이 자신의 [Breath] 위력이 20을 초과했으면, [Breath] 위력을 1 소모하여 [Breath] 횟수 1 증가\n\n턴 종료 시, [Breath] 위력이 제일 높은 아군 하나와 [Breath] 횟수가 제일 높은 아군 하나에게 다음 턴에 [Agility] 2, [AttackUp] 1 부여 (같은 인격일 경우 중복 가능)\n\n스킬 효과로 [Breath]위력을 획득할 때마다 해당 캐릭터가 [Breath] 위력 2, [Breath] 횟수 2 얻음. 보유한 [Breath] 위력과 횟수의 합이 20 미만이면, 대신 [Breath] 위력 3, [Breath] 횟수 3 얻음.\n\n전투 종료 시, 자신의 [Breath] 위력이 40을 초과하면, [Breath] 위력을 15 소모하여 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard] (캐릭터 당, 턴 당 1회)"
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon_6.json
+  [9804 desc]
+    - "[Burst] 위력이 5 이상 부여된 적에게 공격 적중 시 [Breath] 위력 1을 얻고, 자신의 [Breath] 횟수 1 증가 (스킬당 최대 3회).\n\n[Burst], [Breath]을 부여하거나 획득하는 공격 스킬을 보유한 인격이 편성된 수에 따라 기프트 효과 강화 (E.G.O 스킬 제외, 편성 인원 포함).\n\n스킬 적중 시 대상의 [Burst]이 20 이상이면, 크리티컬 피해량 +10% (편성 인원 수 1명당 크리티컬 피해량 3% 추가로 증가)\n\n- 12인 이상\n스킬 적중 시 크리티컬이 발생했다면, 자신에게 부여된 해제 가능한 부정적인 효과 중 무작위 1개 제거 (턴 당, 인격 당 1회) "
+    + "[Burst] 위력이 5 이상 부여된 적에게 공격 적중 시 [Breath] 위력 1을 얻고, 자신의 [Breath] 횟수 1 증가 (스킬당 최대 3회).\n\n[Burst], [Breath]을 부여하거나 획득하는 공격 스킬을 보유한 인격이 편성된 수에 따라 기프트 효과 강화 (E.G.O 스킬 제외, 편성 인원 포함).\n\n스킬 적중 시 대상의 [Burst]이 20 이상이면, 크리티컬 피해량 +10% (편성 인원 수 1명당 크리티컬 피해량 3% 추가로 증가)\n\n- 12인 이상\n스킬 적중 시 크리티컬이 발생했다면, 자신에게 부여된 해제 가능한 부정적인 효과 중 무작위 1개 제거 (턴 당, 인격 당 1회)"
+  [9795 desc]
+    - "턴 시작 시, [BloodDinner]을 소모하는 스킬을 보유한 인격이 3인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n전투 시작 시 [BloodDinner]을 소모하는 인격이 공격하는 대상의 [Laceration] 위력이 30 이상일 때, 대상의 [Laceration] 위력을 15로 감소시키고, 감소한 [Laceration] 위력만큼 [BloodDinner]을 생성함. (턴 당 적 전체에서 1회 발동, 광역 스킬의 경우 메인 타겟에게만 적용됨)\n\n해당 효과로 생성된 [BloodDinner] 10 당, [BloodDinner]을 소모하는 스킬을 보유한 인격에게 다음 턴에 위력 증가 1, 피해량 증가 1 부여 (최대 4) "
+    + "턴 시작 시, [BloodDinner]을 소모하는 스킬을 보유한 인격이 3인 이상이면, 이번 전투 동안 발동 (E.G.O 스킬 제외. 대기 인원 제외)\n\n전투 시작 시 [BloodDinner]을 소모하는 인격이 공격하는 대상의 [Laceration] 위력이 30 이상일 때, 대상의 [Laceration] 위력을 15로 감소시키고, 감소한 [Laceration] 위력만큼 [BloodDinner]을 생성함. (턴 당 적 전체에서 1회 발동, 광역 스킬의 경우 메인 타겟에게만 적용됨)\n\n해당 효과로 생성된 [BloodDinner] 10 당, [BloodDinner]을 소모하는 스킬을 보유한 인격에게 다음 턴에 위력 증가 1, 피해량 증가 1 부여 (최대 4)"
+  [9796 desc]
+    - "편성 순서 5번 아군의 [Breath] 위력과 [Breath] 횟수의 합이 50 이상일 경우, 합 승리 또는 일방 공격시 사용하는 스킬 코인이 반드시 앞면(마이너스 코인일 경우 뒷면)으로 결정되고, 치명타로 가하는 피해량 +80% (전투 당 1회, E.G.O 스킬 제외)\n\n편성된 인원 중 [Breath] 위력 또는 [Breath] 횟수를 부여 또는 획득하는 공격 스킬을 보유한 인격이 5인 이상 일 때, 편성 순서 5번 아군의 크리티컬 피해량 +60% (조건 초과 편성 인원 수 1명당 크리티컬 피해량 20% 추가로 증가, 편성 인원 포함)"
+    + "편성 순서 5번 아군의 [Breath] 위력과 [Breath] 횟수의 합이 50 이상일 경우, 합 승리 또는 일방 공격 시 사용하는 스킬 코인이 반드시 앞면(마이너스 코인일 경우 뒷면)으로 결정되고, 치명타로 가하는 피해량 +80% (전투 당 1회, E.G.O 스킬 제외)\n\n편성된 인원 중 [Breath] 위력 또는 [Breath] 횟수를 부여 또는 획득하는 공격 스킬을 보유한 인격이 5인 이상 일 때, 편성 순서 5번 아군의 크리티컬 피해량 +60% (조건 초과 편성 인원 수 1명당 크리티컬 피해량 20% 추가로 증가, 편성 인원 포함)"
+  [9798 desc]
+    - "스테이지 시작시, [BloodDinner]을 100 생성\n턴 시작 시, [Laceration]이 있는 적 (부위)에 [RoseThorn]을 2 부여함.\n모든 적 (부위)에 [Laceration]이 있으면, [RoseThorn]을 4 부여함."
+    + "스테이지 시작 시, [BloodDinner]을 100 생성\n턴 시작 시, [Laceration]이 있는 적 (부위)에 [RoseThorn]을 2 부여함.\n모든 적 (부위)에 [Laceration]이 있으면, [RoseThorn]을 4 부여함."
+
+### lang\kr\egogift\KR_EGOgift_MirrorDungeon_7.json
+  [19210 desc]
+    - "[편성 4번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] <style=\"upgradeHighlight\">2</style> 얻음"
+    + "[편성 4번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음"
+  [29210 desc]
+    - "[편성 4번, <style=\"upgradeHighlight\">5번</style> 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음"
+    + "[편성 4번, 5번 인격 전용 효과]\n\n타격 공격 스킬을 2개 이상 보유한 경우, 턴 시작 시 [ParryingResultUp] 2 얻음"
+  [9211 desc]
+    - "턴 시작시, 적 전체의 [Sinking] 위력과 [Sinking] 횟수의 합이 30 이상이면, 아래 효과 적용\n\n- [Sinking] 위력, 횟수를 부여하는 스킬의 최종 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외)\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 6인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 스킬의 피해량 +20% (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n · 공격 대상이 정신력이 -45이면, 추가 피해량 +10%\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 10인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 더하기 코인 스킬의 코인 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n · 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)"
+    + "턴 시작 시, 적 전체의 [Sinking] 위력과 [Sinking] 횟수의 합이 30 이상이면, 아래 효과 적용\n\n- [Sinking] 위력, 횟수를 부여하는 스킬의 최종 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외)\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 6인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 스킬의 피해량 +20% (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n· 공격 대상이 정신력이 -45이면, 추가 피해량 +10%\n\n- [Sinking] 위력 또는 [Sinking] 횟수 또는 특수 침잠을 부여하는 공격 스킬을 보유한 인격이 10인 이상이면, 추가로 [Sinking] 위력, 횟수를 부여하는 더하기 코인 스킬의 코인 위력 +1 (특수 침잠 포함, E.G.O 스킬 제외, 대기 인원 포함)\n· 빼기 코인 스킬일 경우, 코인 위력 대신 기본 위력 +(4/코인 수) (최소 1, 소수점 버림)"
+  [9212 simpleDesc[1] ability92121]
+    - "크리티컬 적중시 일정 확률로 다음 턴에 [PenetrateResultUp] 얻음, 조건 만족 시 다음 턴에 [PlusCoinValueUp] 얻음, 부정적인 효과 부여량 증가"
+    + "크리티컬 적중 시 일정 확률로 다음 턴에 [PenetrateResultUp] 얻음, 조건 만족 시 다음 턴에 [PlusCoinValueUp] 얻음, 부정적인 효과 부여량 증가"
+  [9213 desc]
+    - "혈귀인 모든 아군의 기본 스킬 코인 위력 +1, 자신의 ([BloodDinner_Accumulation] / 10)%만큼 스킬 <noparse>피해량 증가</noparse>\n\n턴 종료 시, [Laceration]을 보유한 아군 중 가장 체력이 적은 인격 2명이 자신의 최대 체력의 5%만큼 체력을 회복하고 다음 턴 시작시 [SwirlingBloodPersonality] 10 얻음\n\n적 처치시, 해당 적의 (본체 최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n\n턴 종료시 이번 턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] 5, [Laceration] 횟수 3 부여.\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 2회 발동시키고, 모든 적의 [Laceration] 횟수 2 감소"
+    + "혈귀인 모든 아군의 기본 스킬 코인 위력 +1, 자신의 ([BloodDinner_Accumulation] / 10)%만큼 스킬 피해량 증가\n\n턴 종료 시, [Laceration]을 보유한 아군 중 가장 체력이 적은 인격 2명이 자신의 최대 체력의 5%만큼 체력을 회복하고 다음 턴 시작 시 [SwirlingBloodPersonality] 10 얻음\n\n적 처치 시, 해당 적의 (본체 최대 체력/10)만큼 [BloodDinner] 생성 (최대 50)\n\n턴 종료 시 이번 턴에 사망한 아군이 있으면, 다음 턴에 모든 아군이 [Enhancement] 2 얻음\n\n적이 증원되는 전투에서 새로운 적이 등장하면, 전투 시작 시 해당 적에게 [Laceration] 5, [Laceration] 횟수 3 부여.\n아군에 <혈귀>가 있다면, 적이 증원될 때 모든 적의 [Laceration]을 2회 발동시키고, 모든 적의 [Laceration] 횟수 2 감소"
+  [19219 desc]
+    - "적에게 동일한 공격 유형의 스킬이 <style=\"upgradeHighlight\">9번</style> 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+    + "적에게 동일한 공격 유형의 스킬이 9번 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+  [29219 desc]
+    - "적에게 동일한 공격 유형의 스킬이 <style=\"upgradeHighlight\">6번</style> 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+    + "적에게 동일한 공격 유형의 스킬이 6번 적중 할 시 해당 공격 유형의 물리 내성 +0.1 (환상체일 경우 모든 부위, 적 별로 전투당 3회 적용, 이 효과로 내성은 2.0 초과가 될 수 없음)"
+  [19225 desc]
+    - "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 <style=\"upgradeHighlight\">+15%</style> (턴당 1회)"
+    + "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 +15% (턴당 1회)"
+  [29225 desc]
+    - "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 <style=\"upgradeHighlight\">+20%</style> (턴당 1회)"
+    + "수비 스킬 사용 시 다음 턴에 스킬 3 피해량 +20% (턴당 1회)"
+  [9256 desc]
+    - "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n[편성 1번 인격 전용 효과]\n- 합 진행 시 매 합마다 자신이 [LookingFutureMirror] 1 얻음. 대상에게 [Vibration]과 [Combustion] 2 부여 (스킬당 최대 10회)\n- 합 승리 시 메인 타겟에게 [VibrationIgnition]로 [Switch_Vibration]하고, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 적중 시 대상이 흐트러짐 상태라면, 가하는 피해량 +30%\n- 크리티컬 적중 시 [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+    + "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n[편성 1번 인격 전용 효과]\n- 합 진행 시 매 합마다 자신이 [LookingFutureMirror] 1 얻음. 대상에게 [Vibration]과 [Combustion] 2 부여 (스킬당 최대 10회)\n- 합 승리 시 메인 타겟에게 [VibrationIgnition]로 [Switch_Vibration]하고, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소\n- 스킬 적중 시 대상이 흐트러짐 상태라면, 가하는 피해량 +30%\n- 크리티컬 적중 시 [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소 (스킬당 2회)"
+  [9257 desc]
+    - "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n합 진행 시, 대상의 [Sinking]과 자신의 [Breath]의 합 30당, 합 위력 +1 (최대 5)\n\n[SuperCoin]의 피해량 +25%\n[SuperCoin]으로 피해를 받을 때, 피해량 -25%,\n\n[검지 소속 인격 전용 효과]\n- 전장에 처음으로 등장할 때, [BlessingOfIndexPrescriptAlly] 6 얻음\n· [UnlockBuff_Base]을 획득 가능한 인격일 경우, 추가로 [UnlockBuffAlly_2] 얻음\n- [IndexPrescriptTargetToEnemy]을 보유한 적에게 입히는 피해량 +50%"
+    + "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n합 진행 시, 대상의 [Sinking]과 자신의 [Breath]의 합 30당, 합 위력 +1 (최대 5)\n\n[SuperCoin]의 피해량 +25%\n[SuperCoin]으로 피해를 받을 때, 피해량 -25%,\n\n[검지 소속 인격 전용 효과]\n- 전장에 처음으로 등장할 때, [BlessingOfIndexPrescriptAlly] 6 얻음\n· [UnlockBuff_Base]을 획득 가능한 인격일 경우, 추가로 [UnlockBuffAlly_2] 얻음\n- [IndexPrescriptTargetToEnemy]을 보유한 적에게 입히는 피해량 +50%"
+  [9258 desc]
+    - "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n스테이지 시작시 전장에 있는 중지 소속 아군 1명당 모든 아군이 보호막 50씩 얻음 (대기 인원 미포함, 이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n 중지 소속 아군이 질투 속성이나 타격 속성 기본 스킬 공격 종료 시 입힌 스킬 피해량의 10%만큼 체력 회복\n- 반격 스킬로 발동했을 경우, 대신 입힌 스킬 피해량의 20%만큼 체력 회복\n- 초과된 체력 회복량은 보호막으로 획득함 (이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n전투 시작시, 장착한 수비 스킬 수만큼 해당 턴 동안 중지 소속 아군의 공격 레벨이 증가 (최대 12)\n- 장착한 수비 스킬 수가 6 이상이면, 질투 속성 기본 스킬 피해량 +30%, 초과한 수비 스킬 수만큼 추가로 +10% (최대 추가 증가량 60%)"
+    + "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n스테이지 시작 시 전장에 있는 중지 소속 아군 1명당 모든 아군이 보호막 50씩 얻음 (대기 인원 미포함, 이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n중지 소속 아군이 질투 속성이나 타격 속성 기본 스킬 공격 종료 시 입힌 스킬 피해량의 10%만큼 체력 회복\n- 반격 스킬로 발동했을 경우, 대신 입힌 스킬 피해량의 20%만큼 체력 회복\n- 초과된 체력 회복량은 보호막으로 획득함 (이 효과로 획득한 보호막은 턴 종료시에도 사라지지 않음)\n\n전투 시작 시, 장착한 수비 스킬 수만큼 해당 턴 동안 중지 소속 아군의 공격 레벨이 증가 (최대 12)\n- 장착한 수비 스킬 수가 6 이상이면, 질투 속성 기본 스킬 피해량 +30%, 초과한 수비 스킬 수만큼 추가로 +10% (최대 추가 증가량 60%)"
+  [9259 desc]
+    - "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 <noparse>버림</noparse>, E.G.O 스킬 포함)\n\n약지 소속 인격이 기본 공격 스킬 사용 시, 대상에게 부여된 부정적인 효과의 개수에 따라 해당 스킬에 아래 효과 적용\n- 2 ~ : 합 위력 +2\n- 4 ~ : 피해량 +15%\n- 6 ~ : 코인 효과로 부여하는 부정적인 효과의 위력, 횟수 부여값 +1\n- 7 ~ : 기본 위력 +2\n- 8 ~ : 피해량 +35%"
+    + "아군이 사용하는 스킬의 코인 위력 +(8/ 코인 수) (더하기 코인 적용), 최종 위력 +(8 / 코인 수) (빼기 코인 적용) (최소 증가 값 1, 소수점 버림, E.G.O 스킬 포함)\n\n약지 소속 인격이 기본 공격 스킬 사용 시, 대상에게 부여된 부정적인 효과의 개수에 따라 해당 스킬에 아래 효과 적용\n- 2 ~ : 합 위력 +2\n- 4 ~ : 피해량 +15%\n- 6 ~ : 코인 효과로 부여하는 부정적인 효과의 위력, 횟수 부여값 +1\n- 7 ~ : 기본 위력 +2\n- 8 ~ : 피해량 +35%"
+  [9250 desc]
+    - "[편성 순서 1번 인격 전용 효과]\n스테이지 시작시, [KAmpouleMirror] 1 얻음"
+    + "[편성 순서 1번 인격 전용 효과]\n스테이지 시작 시, [KAmpouleMirror] 1 얻음"
+  [9251 desc]
+    - "[Combustion] 위력 최댓값 +30\n\n[Combustion]을 보유한 대상과 합 승리시, 대상의 [Combustion] 1회 발동, 대상의 [Combustion] 횟수 1 감소 (인격당 1회)\n\n[Combustion]을 보유한 적에게 스킬 사용시, 메인 타겟의 ([Combustion] 위력 / 10) 만큼 해당 스킬의 공격 레벨이 증가 (최대 8)"
+    + "[Combustion] 위력 최댓값 +30\n\n[Combustion]을 보유한 대상과 합 승리 시, 대상의 [Combustion] 1회 발동, 대상의 [Combustion] 횟수 1 감소 (인격당 1회)\n\n[Combustion]을 보유한 적에게 스킬 사용 시, 메인 타겟의 ([Combustion] 위력 / 10) 만큼 해당 스킬의 공격 레벨이 증가 (최대 8)"
+  [9252 desc]
+    - "N사 광신도 소속이면, 기본 스킬의 기본 위력 +3\n\nN사 광신도 소속 인격이 [AssemblePersonality]을 얻을 때, 모든 N사 광신도 소속 인격도 해당 수치만큼 [AssemblePersonality] 얻음 (턴당 1회, 본인 포함)\n- 색욕 완전 공명이 있으면, 부여량 3배로 적용\n\n스테이지 시작시 모든 적에게 [NailPersonality] 2 부여\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상과 기본 스킬로 합 진행 시 [Laceration] 3 부여 (스킬당 1회)\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상에게 기본 스킬로 가하는 피해량 +100%"
+    + "N사 광신도 소속이면, 기본 스킬의 기본 위력 +3\n\nN사 광신도 소속 인격이 [AssemblePersonality]을 얻을 때, 모든 N사 광신도 소속 인격도 해당 수치만큼 [AssemblePersonality] 얻음 (턴당 1회, 본인 포함)\n- 색욕 완전 공명이 있으면, 부여량 3배로 적용\n\n스테이지 시작 시 모든 적에게 [NailPersonality] 2 부여\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상과 기본 스킬로 합 진행 시 [Laceration] 3 부여 (스킬당 1회)\n\nN사 광신도 소속 인격이 [NailPersonality]이 있는 대상에게 기본 스킬로 가하는 피해량 +100%"
+  [9253 desc]
+    - "첫 턴 시작시, [BloodDinner] 300 얻음\n[BloodDinner]이 [Laceration] 효과로 생성될 때 2배로 생성됨\n[BloodDinner]을 소모하는 스킬 사용시 해당 스킬에서 소모한 값만큼 공격 종료 시에 [BloodDinner]을 추가 소모함\n\n[라만차랜드 인격 전용 효과]\n라만차랜드 소속 인격 전투 참여 시, 인격에 따라 아래 효과 적용\n- 라만차랜드 실장 돈키호테: [BloodArmorPersonalityFirst] 15 얻음\n- 라만차랜드 공주 로쟈: [BloomingThornsRodionFirst] 15 얻음\n- 라만차랜드 신부 그레고르: [BloodyHandGregFirst] 15 얻음\n- 라만차랜드 이발사 오티스: [BloodScissorPersonalityFirst] 15 얻음\n- 라만차랜드 왕자 뫼르소: [BloodArmorMeursault] 3 얻음\n\n[라만차랜드 실장 돈키호테 전용 효과]\n- 자신을 제외한 라만차랜드 소속 인격 1명당 라만차랜드 실장 돈키호테 기본 스킬의 최종 위력 +1, 가하는 피해량 +30% (최대 4, 120%, 대기 인원 포함, 사망 인원 포함, 미 편성 인원 제외)"
+    + "첫 턴 시작 시, [BloodDinner] 300 얻음\n[BloodDinner]이 [Laceration] 효과로 생성될 때 2배로 생성됨\n[BloodDinner]을 소모하는 스킬 사용 시 해당 스킬에서 소모한 값만큼 공격 종료 시에 [BloodDinner]을 추가 소모함\n\n[라만차랜드 인격 전용 효과]\n라만차랜드 소속 인격 전투 참여 시, 인격에 따라 아래 효과 적용\n- 라만차랜드 실장 돈키호테: [BloodArmorPersonalityFirst] 15 얻음\n- 라만차랜드 공주 로쟈: [BloomingThornsRodionFirst] 15 얻음\n- 라만차랜드 신부 그레고르: [BloodyHandGregFirst] 15 얻음\n- 라만차랜드 이발사 오티스: [BloodScissorPersonalityFirst] 15 얻음\n- 라만차랜드 왕자 뫼르소: [BloodArmorMeursault] 3 얻음\n\n[라만차랜드 실장 돈키호테 전용 효과]\n- 자신을 제외한 라만차랜드 소속 인격 1명당 라만차랜드 실장 돈키호테 기본 스킬의 최종 위력 +1, 가하는 피해량 +30% (최대 4, 120%, 대기 인원 포함, 사망 인원 포함, 미 편성 인원 제외)"
+  [9254 desc]
+    - "[Vibration] 횟수나 [Charge] 횟수를 소모하는 기본 스킬의 피해량 +20% (특수 <noparse>충전</noparse> 포함, 위력 고정 특수 <noparse>충전</noparse> 제외)\n\n기본 스킬로 [Vibration] 횟수나 [Charge] 횟수를 소모했으면, 스킬 종료 시 소모한 횟수의 절반 돌려받음 (최소 1, 소수점 <noparse>버림</noparse>, 특수 <noparse>충전</noparse> 포함, 위력 고정 특수 <noparse>충전</noparse> 제외)"
+    + "[Vibration] 횟수나 [Charge] 횟수를 소모하는 기본 스킬의 피해량 +20% (특수 충전 포함, 위력 고정 특수 충전 제외)\n\n기본 스킬로 [Vibration] 횟수나 [Charge] 횟수를 소모했으면, 스킬 종료 시 소모한 횟수의 절반 돌려받음 (최소 1, 소수점 버림, 특수 충전 포함, 위력 고정 특수 충전 제외)"
+  [9255 desc]
+    - "적에게 [Vibration] 위력, [Vibration] 횟수 또는 특수 진동을 부여하는 기본 스킬로 합 승리시 아래 특수 <noparse>진동</noparse> 중 무작위 특수 <noparse>진동</noparse>으로 [FusionVibration] (턴당 최대 1회)\n- [VibrationIgnition]\n- [VibrationBleeding]\n- [VibrationEcho]\n- [VibrationCollapse]\n- [VibrationChainPersonality]"
+    + "적에게 [Vibration] 위력, [Vibration] 횟수 또는 특수 진동을 부여하는 기본 스킬로 합 승리 시 아래 특수 진동 중 무작위 특수 진동으로 [FusionVibration] (턴당 최대 1회)\n- [VibrationIgnition]\n- [VibrationBleeding]\n- [VibrationEcho]\n- [VibrationCollapse]\n- [VibrationChainPersonality]"
+  [9274 desc]
+    - "적에게 크리티컬 적중시 다음 턴에 [Binding] 1 부여 (턴당 2회)\n[Binding]을 보유한 적에게 스킬 적중시, [Breath] 1 얻음. (인격당 턴당 2회)\n\n턴 시작 시 [Laceration]을 보유한 모든 적이 자신의 [Binding] 수치만큼 [AttackDown] 얻음 (최대 5)\n\n턴 시작 시 모든 적(집중 전투면 부위로 판정)에게 [Binding]이 부여되어있다면, 모든 아군이 [Breath] 3 얻음"
+    + "적에게 크리티컬 적중 시 다음 턴에 [Binding] 1 부여 (턴당 2회)\n[Binding]을 보유한 적에게 스킬 적중 시, [Breath] 1 얻음. (인격당 턴당 2회)\n\n턴 시작 시 [Laceration]을 보유한 모든 적이 자신의 [Binding] 수치만큼 [AttackDown] 얻음 (최대 5)\n\n턴 시작 시 모든 적(집중 전투면 부위로 판정)에게 [Binding]이 부여되어있다면, 모든 아군이 [Breath] 3 얻음"
+  [9276 desc]
+    - "아군 인격이 [SupportProtect]를 얻을 때 [AttackDmgUp] 2, [Protection] 2 얻음\n\n[편성 1번 전용 효과]\n턴 종료시 다음 턴에 [Agility] 2 얻음\n인격의 속도가 적보다 빠르면, 속도 차이당 피해량 +3% (최대 30%)"
+    + "아군 인격이 [SupportProtect]를 얻을 때 [AttackDmgUp] 2, [Protection] 2 얻음\n\n[편성 1번 전용 효과]\n턴 종료 시 다음 턴에 [Agility] 2 얻음\n인격의 속도가 적보다 빠르면, 속도 차이당 피해량 +3% (최대 30%)"
+  [9280 desc]
+    - "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여"
+    + "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작 시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여"
+
+### lang\kr\egogift\KR_EGOgift_night-clean-up-re.json
+  [9272 desc]
+    - "흑수 - 묘 소속 인격이 스테이지에 첫 등장 시 3턴동안 속도 최솟값이 10으로 유지됨 (속도 최솟값이 10 이상이면, 이 효과는 발동하지 않음)\n\n자신의 [LegStrength] 수치 1당, 기본 스킬의 합 위력 +1, 피해량 +10%\n\n[BurstAgility] 부여 시 [BurstAgility]이 없는 적 2명에게 추가 부여함 (턴당 1회, 집중 전투에서는 부위로 판정)\n\n자신의 속도가 대상보다 빠를 때, 스킬로 부여하는 [Burst] 혹은 [Burst] 횟수를 대상에게 (속도 차 / 3)만큼 추가 부여 (최대 3)\n\n턴 종료시 흑수 - 묘 소속이면, 다음 턴에 [Agility] 2 얻음\n자신의 속도가 대상보다 빠르거나 일방 공격을 할 경우, (속도 차 / 3)만큼 참격 피해량 +10% (최대 30%)\n자신의 속도가 대상보다 빠르면, (속도 차 / 3)당 받는 피해량 -10% (최대 30%)"
+    + "흑수 - 묘 소속 인격이 스테이지에 첫 등장 시 3턴동안 속도 최솟값이 10으로 유지됨 (속도 최솟값이 10 이상이면, 이 효과는 발동하지 않음)\n\n자신의 [LegStrength] 수치 1당, 기본 스킬의 합 위력 +1, 피해량 +10%\n\n[BurstAgility] 부여 시 [BurstAgility]이 없는 적 2명에게 추가 부여함 (턴당 1회, 집중 전투에서는 부위로 판정)\n\n자신의 속도가 대상보다 빠를 때, 스킬로 부여하는 [Burst] 혹은 [Burst] 횟수를 대상에게 (속도 차 / 3)만큼 추가 부여 (최대 3)\n\n턴 종료 시 흑수 - 묘 소속이면, 다음 턴에 [Agility] 2 얻음\n자신의 속도가 대상보다 빠르거나 일방 공격을 할 경우, (속도 차 / 3)만큼 참격 피해량 +10% (최대 30%)\n자신의 속도가 대상보다 빠르면, (속도 차 / 3)당 받는 피해량 -10% (최대 30%)"
+  [9272 simpleDesc[4] ability92724]
+    - "턴 종료시 다음 턴에 [Agility] 얻음"
+    + "턴 종료 시 다음 턴에 [Agility] 얻음"
+
+### lang\kr\egogift\KR_EGOgift_pilgrimage.json
+  [9837 desc]
+    - "턴 시작 시, 모든 아군이 [TakeHpHealIncrease] 2 얻음.\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 보유한 인격이면 효과가 강화되어, 대신 [TakeHpHealIncrease] 4 얻음.\n\n[명령 : 용해 파우스트  E.G.O 전용 효과]\n이 E.G.O 스킬의 효과, 패시브로 회복한 체력 회복 수치의 초과량이 보호막으로 전환됨"
+    + "턴 시작 시, 모든 아군이 [TakeHpHealIncrease] 2 얻음.\n[Burst] 위력 또는 [Burst] 횟수를 부여하는 공격 스킬을 보유한 인격이면 효과가 강화되어, 대신 [TakeHpHealIncrease] 4 얻음.\n\n[명령 : 용해 파우스트 E.G.O 전용 효과]\n이 E.G.O 스킬의 효과, 패시브로 회복한 체력 회복 수치의 초과량이 보호막으로 전환됨"
+
+### lang\kr\egogift\KR_EGOgift_tktRe.json
+  [19812 desc]
+    - "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 <style=\"upgradeHighlight\">2</style>회)"
+    + "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 2회)"
+  [29812 desc]
+    - "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 <style=\"upgradeHighlight\">3</style>회)"
+    + "적에게 [Switch_Vibration] 혹은 [FusionVibration] 시킬 경우, 대상에게 [VibrationExplosion] (인격마다 턴 당 3회)"
+  [19813 desc]
+    - "[편성 순서 <style=\"upgradeHighlight\">2번</style>, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2, [Vulnerable] 1 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 1 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +<style=\"upgradeHighlight\">12.5</style>%"
+    + "[편성 순서 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2, [Vulnerable] 1 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 1 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +12.5%"
+  [29813 desc]
+    - "[편성 순서 <style=\"upgradeHighlight\">1번</style>, 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 <style=\"upgradeHighlight\">[Enhancement] 2 얻음</style>\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 <style=\"upgradeHighlight\">2</style> 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +<style=\"upgradeHighlight\">15</style>%"
+    + "[편성 순서 1번, 2번, 3번 인격 전용 효과]\n\n체력이 0이 될 때, 체력이 1 미만으로 감소하지 않고, 전체 체력의 80%만큼 즉시 회복. 흐트러짐 상태 해제 (전투마다 인격당 1회 발동, 소수점 올림)\nE.G.O 기프트의 효과 발동 시 다음 턴부터 스테이지동안 턴 시작 시 [Enhancement] 2 얻음\nT사 직원이면, [TimeRentalTwoPersonality]를 얻을 때 2 추가로 얻음\nT사 직원이면, 대상에게 [TimeSuspend]가 있으면, 공격 스킬로 가하는 피해량 +15%"
+  [19814 desc]
+    - "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 <style=\"upgradeHighlight\">2</style>명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+    + "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 2명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+  [29814 desc]
+    - "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 <style=\"upgradeHighlight\">3</style>명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+    + "턴 시작 시 [Vibration] 횟수가 가장 많은 인격 3명의 [Vibration]을 [VibrationDistribution]로 [FusionVibration]"
+  [9816 desc]
+    - "[편성 순서 1번 인격 전용 효과]\n\n기본 공격 스킬 중에 [Vibration] 위력, 횟수를 부여하거나, [VibrationExplosion] 효과를 보유한 스킬이 있는 인격에게 적용됨\n스테이지 시작시, [UltraPrecisionTimeAcceleration]을 5 얻음"
+    + "[편성 순서 1번 인격 전용 효과]\n\n기본 공격 스킬 중에 [Vibration] 위력, 횟수를 부여하거나, [VibrationExplosion] 효과를 보유한 스킬이 있는 인격에게 적용됨\n스테이지 시작 시, [UltraPrecisionTimeAcceleration]을 5 얻음"
+
+### lang\kr\egogift\KR_EGOgift_TwiningThreads.json
+  [9260 desc]
+    - "한 턴 동안 자신의 기본 스킬로 [Charge] 횟수를 10 이상 소모했으면, 다음 턴에 기본 스킬로 가하는 피해량 +20% (위력 고정인 특수 <noparse>충전</noparse> 제외)\n- 소모한 [Charge]이 특수 충전이면, 다음 턴에 부여하는 [Laceration] 위력과 [Laceration] 횟수 +1"
+    + "한 턴 동안 자신의 기본 스킬로 [Charge] 횟수를 10 이상 소모했으면, 다음 턴에 기본 스킬로 가하는 피해량 +20% (위력 고정인 특수 충전 제외)\n- 소모한 [Charge]이 특수 충전이면, 다음 턴에 부여하는 [Laceration] 위력과 [Laceration] 횟수 +1"
+  [9262 desc]
+    - "약지 소속 인격 공격 종료시 대상에게 무작위 물리 내성 약화 1 부여 (턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +10%"
+    + "약지 소속 인격 공격 종료 시 대상에게 무작위 물리 내성 약화 1 부여 (턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +10%"
+  [9263 desc]
+    - "턴 시작시, 약지 소속 인격이 2인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n약지 신체파 소속 인격의 기본 스킬 적중시 대상에게 [SlashResistDown] 1 부여 (스킬당 1회, 턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +20%\n\n턴 시작시 모든 적들의 [Laceration] 위력의 합이 99 이상이면, 약지 신체파 소속 인격이 [RingFingerPhysical] 1 얻음"
+    + "턴 시작 시, 약지 소속 인격이 2인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n약지 신체파 소속 인격의 기본 스킬 적중 시 대상에게 [SlashResistDown] 1 부여 (스킬당 1회, 턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +20%\n\n턴 시작 시 모든 적들의 [Laceration] 위력의 합이 99 이상이면, 약지 신체파 소속 인격이 [RingFingerPhysical] 1 얻음"
+  [9264 desc]
+    - "턴 시작시, 약지 소속 인격이 2인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n약지 야수파 소속 인격의 기본 스킬 적중시 대상에게 [HitResistDown] 1 부여 (스킬당 1회, 턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +20%\n\n턴 시작시 모든 적들의 [Laceration] 위력의 합이 99 이상이면, 약지 야수파 소속 인격이 [RingFingerFauvism] 1 얻음"
+    + "턴 시작 시, 약지 소속 인격이 2인 이상일 때 발동 (출격 인원을 기준으로 함).\n\n약지 야수파 소속 인격의 기본 스킬 적중 시 대상에게 [HitResistDown] 1 부여 (스킬당 1회, 턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +20%\n\n턴 시작 시 모든 적들의 [Laceration] 위력의 합이 99 이상이면, 약지 야수파 소속 인격이 [RingFingerFauvism] 1 얻음"
+  [9266 desc]
+    - "공격 가중치가 2 이상인 스킬 공격 종료 시, 사용한 스킬 속성의 E.G.O 자원 +(적에게 적중한 횟수 / 2). (소수점 <noparse>버림</noparse>, 스킬당 최대 5)\n\n공격 가중치가 2 이상인 스킬로 크리티컬이 발생했다면, 공격 종료시 제일 적게 보유한 E.G.O 자원 +(크리티컬이 발생한 코인 수). (최대 3)"
+    + "공격 가중치가 2 이상인 스킬 공격 종료 시, 사용한 스킬 속성의 E.G.O 자원 +(적에게 적중한 횟수 / 2). (소수점 버림, 스킬당 최대 5)\n\n공격 가중치가 2 이상인 스킬로 크리티컬이 발생했다면, 공격 종료 시 제일 적게 보유한 E.G.O 자원 +(크리티컬이 발생한 코인 수). (최대 3)"
+  [19267 desc]
+    - "[Combustion] 위력 최댓값 <style=\"upgradeHighlight\">+21</style>\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+25%</style>"
+    + "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 +25%"
+  [29267 desc]
+    - "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, ([Combustion] 위력 x <style=\"upgradeHighlight\">1.5</style>)만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+30%</style>"
+    + "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, ([Combustion] 위력 x 1.5)만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 +30%"
+  [9268 desc]
+    - "턴 종료시, 무작위 약지 소속 인격 ([Laceration]을 보유한 적 수)명에게 다음 턴에 무작위 죄악 속성 <noparse>피해량 증가</noparse> 1 부여 (턴당 인격 별로 최대 1회, 집중 전투일 경우 부위로 판정)\n\n약지 소속 인격이 가하는 피해량 +10%"
+    + "턴 종료 시, 무작위 약지 소속 인격 ([Laceration]을 보유한 적 수)명에게 다음 턴에 무작위 죄악 속성 피해량 증가 1 부여 (턴당 인격 별로 최대 1회, 집중 전투일 경우 부위로 판정)\n\n약지 소속 인격이 가하는 피해량 +10%"
+
+### lang\kr\egogift\KR_EGOgift_walpu4.json
+  [9746 desc]
+    - "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠를 부여하는 공격 스킬로 합을 진행한 후 공격 피해를 입힐 경우, 적중시 진행한 합 횟수만큼 [Sinking] 위력 부여 (최대 부여량 3, 턴 당 3회 발동)"
+    + "[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠를 부여하는 공격 스킬로 합을 진행한 후 공격 피해를 입힐 경우, 적중 시 진행한 합 횟수만큼 [Sinking] 위력 부여 (최대 부여량 3, 턴 당 3회 발동)"
+  [9748 desc]
+    - "합 승리시, 진행한 합 횟수만큼 정신력 회복 (최대 3)\n정신력이 45이상에서 회복한다면, 합 횟수의 절반만큼 다음 턴에 [AttackUp] 얻음 (최대 3)"
+    + "합 승리 시, 진행한 합 횟수만큼 정신력 회복 (최대 3)\n정신력이 45이상에서 회복한다면, 합 횟수의 절반만큼 다음 턴에 [AttackUp] 얻음 (최대 3)"
+  [9748 simpleDesc[0] ability9748]
+    - "합 승리시, 진행한 합 횟수만큼 정신력 회복"
+    + "합 승리 시, 진행한 합 횟수만큼 정신력 회복"
+
+### lang\kr\egogift\KR_EGOgift_walpu8.json
+  [9234 desc]
+    - "[Bullet]을 얻거나 소모하는 스킬 사용 시 다음 턴에 [Agility] 1, [Enhancement] 1 얻음 (인격별로 턴당 1회) \n- [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬이면, 가하는 피해량 +(20/코인 수)%"
+    + "[Bullet]을 얻거나 소모하는 스킬 사용 시 다음 턴에 [Agility] 1, [Enhancement] 1 얻음 (인격별로 턴당 1회)\n- [Laceration] 위력, [Laceration] 횟수 또는 특수 출혈을 부여하는 스킬이면, 가하는 피해량 +(20/코인 수)%"
+  [19236 desc]
+    - "이번 턴에 아군 또는 적 사망 시 모든 캐릭터가 다음 턴에 [Vulnerable] <style=\"upgradeHighlight\">2</style> 얻음 (웨이브당 1회)\n- 효과를 발동한 다음 턴에 아군이 합 승리 시 모든 아군의 [Vulnerable] 1 감소하고 모든 적에게 [Laceration] 4 부여, [Laceration] 횟수 2 증가 (턴당 <style=\"upgradeHighlight\">2</style>회)"
+    + "이번 턴에 아군 또는 적 사망 시 모든 캐릭터가 다음 턴에 [Vulnerable] 2 얻음 (웨이브당 1회)\n- 효과를 발동한 다음 턴에 아군이 합 승리 시 모든 아군의 [Vulnerable] 1 감소하고 모든 적에게 [Laceration] 4 부여, [Laceration] 횟수 2 증가 (턴당 2회)"
+  [29236 desc]
+    - "이번 턴에 아군 또는 적 사망 시 모든 캐릭터가 다음 턴에 [Vulnerable] <style=\"upgradeHighlight\">3</style> 얻음 (웨이브당 1회)\n- 효과를 발동한 다음 턴에 아군이 합 승리 시 모든 아군의 [Vulnerable] 1 감소하고 모든 적에게 [Laceration] 4 부여, [Laceration] 횟수 2 증가 (턴당 <style=\"upgradeHighlight\">3</style>회)"
+    + "이번 턴에 아군 또는 적 사망 시 모든 캐릭터가 다음 턴에 [Vulnerable] 3 얻음 (웨이브당 1회)\n- 효과를 발동한 다음 턴에 아군이 합 승리 시 모든 아군의 [Vulnerable] 1 감소하고 모든 적에게 [Laceration] 4 부여, [Laceration] 횟수 2 증가 (턴당 3회)"
+  [19237 desc]
+    - "[편성 3번, <style=\"upgradeHighlight\">4번</style> 인격 전용 효과]\n\n턴 시작 시 [TensionUp] 1 얻음\n\n공격 적중 시, 25% 확률로 자신과 무작위 아군 1명에게 [TensionUp] 1 부여\n- [Laceration] 또는 [Combustion] 위력, 횟수 부여하는 스킬(특수 키워드 포함)이면, 부여 확률이 <style=\"upgradeHighlight\">75</style>%로 변경"
+    + "[편성 3번, 4번 인격 전용 효과]\n\n턴 시작 시 [TensionUp] 1 얻음\n\n공격 적중 시, 25% 확률로 자신과 무작위 아군 1명에게 [TensionUp] 1 부여\n- [Laceration] 또는 [Combustion] 위력, 횟수 부여하는 스킬(특수 키워드 포함)이면, 부여 확률이 75%로 변경"
+  [29237 desc]
+    - "[편성 3번, 4번 인격 전용 효과]\n\n턴 시작 시 [TensionUp] 1 얻음\n\n공격 적중 시, 25% 확률로 자신과 무작위 아군 <style=\"upgradeHighlight\">2</style>명에게 [TensionUp] 1 부여\n- [Laceration] 또는 [Combustion] 위력, 횟수 부여하는 스킬(특수 키워드 포함)이면, 부여 확률이 <style=\"upgradeHighlight\">100</style>%로 변경"
+    + "[편성 3번, 4번 인격 전용 효과]\n\n턴 시작 시 [TensionUp] 1 얻음\n\n공격 적중 시, 25% 확률로 자신과 무작위 아군 2명에게 [TensionUp] 1 부여\n- [Laceration] 또는 [Combustion] 위력, 횟수 부여하는 스킬(특수 키워드 포함)이면, 부여 확률이 100%로 변경"
+  [9239 desc]
+    - "관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격별 턴당 2회)\n- 해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 2 추가로 얻음 (인격별 턴당 1회)\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 적에게 공격 적중 시, [PinkPetals] 2 부여\n- 적의 [Sinking] 위력 5당, [PinkPetals] 1 추가 부여 (최대 4)\n- 적의 [PinkPetals] 수치가 10 이상이면, 공격 적중 시 [Vibration] 2 부여 (턴당 3회)\n\n턴 종료 시, [Sinking]과 [Vibration] 위력의 합 5 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, [DefenseDown] 3 부여\n- 대상이 [Sinking]과 [Vibration] 위력의 합이 10 이상이면, 효과가 강화되어 [Binding] 2, [Paralysis] 1, [DefenseDown] 4 부여\n\n턴 종료 시 모든 적에게 [PinkPetals]이 있을 경우, 다음 턴에 모든 아군이 [Enhancement] 1 얻음"
+    + "관통 스킬을 사용하여 적에게 적중 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 1 얻음 (인격별 턴당 2회)\n- 해당 스킬로 적 처치 시, 다음 턴에 [Agility] 1, [PenetrateDamageUp] 2 추가로 얻음 (인격별 턴당 1회)\n\n[Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 적에게 공격 적중 시, [PinkPetals] 2 부여\n- 적의 [Sinking] 위력 5당, [PinkPetals] 1 추가 부여 (최대 4)\n- 적의 [PinkPetals] 수치가 10 이상이면, 공격 적중 시 [Vibration] 2 부여 (턴당 3회)\n\n턴 종료 시, [Sinking]과 [Vibration] 위력의 합 5 이상 보유한 적(환상체일 경우, 해당 부위)에게 다음 턴에 [Binding] 2, [DefenseDown] 3 부여\n- 대상이 [Sinking]과 [Vibration] 위력의 합이 10 이상이면, 효과가 강화되어 [Binding] 2, [Paralysis] 1, [DefenseDown] 4 부여\n\n턴 종료 시 모든 적에게 [PinkPetals]이 있을 경우, 다음 턴에 모든 아군이 [Enhancement] 1 얻음"

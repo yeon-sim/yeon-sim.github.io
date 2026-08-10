@@ -3,13 +3,14 @@ function kwTooltipMixin() {
     kwTooltip: null,
 
     openKwTooltip(kwId, clientX, clientY) {
-      const b = kwMap?.[kwId];
+      const map = (window.__giftL && window.__giftL.kw) || (window.__personalityL && window.__personalityL.kw) || kwMap;   // [언어 전환] 선택 언어 우선(기프트/인격)
+      const b = map?.[kwId];
       if (!b) return;
       const descHtml = (b.desc || '')
         .replace(/^"|"$/g, '')
         .replace(/\\n/g, '\n')
         .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
-          const inner = kwMap?.[kw];
+          const inner = map?.[kw];
           if (!inner) return match;
           const icFallback = inner.iconId
             ? `this.src='/images/buff/${inner.iconId}.png';this.onerror=null;`

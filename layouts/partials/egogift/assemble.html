@@ -2,10 +2,14 @@
        빌드타임에 조립해 egogifts.json 동등 구조의 기프트 slice 를 반환.
        검증 기준점: scripts/egogift-assembled-ref.json (node scripts/egogift-assemble-check.mjs). */ -}}
 
-{{- /* 1) 언어: localizeID(string) -> {name,desc} (KR_EGOgift* 만, base는 localizeID=id) */ -}}
+{{- /* 인자: 언어 코드 문자열 ("kr"·"en"·"jp"). 접두어 정규화는 partials/lang.html 이 담당. */ -}}
+{{- $L := partialCached "lang.html" . . -}}
+{{- $Lkr := partialCached "lang.html" "kr" "kr" -}}
+
+{{- /* 1) 언어: localizeID(string) -> {name,desc} (EGOgift* 만, base는 localizeID=id) */ -}}
 {{- $lang := newScratch -}}
-{{- range $f, $d := site.Data.lang.kr.egogift -}}
-  {{- if hasPrefix $f "KR_EGOgift" -}}
+{{- range $f, $d := $L.egogift -}}
+  {{- if hasPrefix $f "EGOgift" -}}
     {{- range $d.dataList -}}
       {{- $k := string .id -}}
       {{- if not ($lang.Get $k) -}}{{- $lang.Set $k . -}}{{- end -}}
@@ -13,9 +17,10 @@
   {{- end -}}
 {{- end -}}
 
-{{- /* 2) 태그 id -> 한글명 (KR_Tags) */ -}}
+{{- /* 2) 태그 id -> 이름 (Tags). 해당 언어 값이 비면 kr 로 폴백 */ -}}
 {{- $tagName := newScratch -}}
-{{- range site.Data.lang.kr.egogift.KR_Tags -}}{{- $tagName.Set .id .name -}}{{- end -}}
+{{- range $Lkr.egogift.Tags -}}{{- $tagName.Set .id .name -}}{{- end -}}
+{{- range $L.egogift.Tags -}}{{- if .name -}}{{- $tagName.Set .id .name -}}{{- end -}}{{- end -}}
 
 {{- /* 3) 기프트 id -> [태그명] (경량화 152종, id→name) */ -}}
 {{- $tags := newScratch -}}

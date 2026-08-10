@@ -1,0 +1,92 @@
+{
+  "dataList": [
+    {
+      "id": 0,
+      "name": ""
+    },
+    {
+      "id": 1,
+      "title": "<color=#970000></color>",
+      "name": "<color=#970000></color>"
+    },
+    {
+      "id": 2,
+      "title": "<color=#d7e7ef></color>",
+      "name": "<color=#d7e7ef></color>"
+    },
+    {
+      "id": 3,
+      "title": "<color=#26bec3></color>",
+      "name": "<color=#26bec3></color>"
+    },
+    {
+      "id": 4,
+      "title": "<color=#7e57a8></color>",
+      "name": "<color=#7e57a8></color>"
+    },
+    {
+      "id": 5,
+      "title": "<color=#fded23></color>",
+      "name": "<color=#fded23></color>"
+    },
+    {
+      "id": 6,
+      "title": "<color=#5bfddb></color>",
+      "name": "<color=#5bfddb></color>"
+    },
+    {
+      "id": 7,
+      "title": "<color=#cb1c16></color>",
+      "name": "<color=#fefefe></color> <color=#cb1c16></color>"
+    },
+    {
+      "id": 8000,
+      "title": "<color=#8f8ffc></color>",
+      "name": "<color=#8f8ffc></color>"
+    },
+    {
+      "id": 9101,
+      "title": "<color=#88ef01></color>"
+    },
+    {
+      "id": 9102,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#7ba462></color>"
+    },
+    {
+      "id": 9103,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#eae2cb></color>"
+    },
+    {
+      "id": 9104,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#8871c1></color>"
+    },
+    {
+      "id": 9105,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#c8b796></color>"
+    },
+    {
+      "id": 9106,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#f04b93></color> <color=#0163c4></color>"
+    },
+    {
+      "id": 9107,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#eec6a6></color>"
+    },
+    {
+      "id": 9108,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#e29417></color>"
+    },
+    {
+      "id": 9109,
+      "title": "<color=#88ef01></color>",
+      "name": "<color=#dbb788></color>"
+    }
+  ]
+}

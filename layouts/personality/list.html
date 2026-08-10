@@ -1,5 +1,12 @@
 {{ define "main" }}
 
+{{/* [클라이언트 사이드 언어 전환] 인격/EGO 언어별 텍스트 페이로드 발행 → /lang/personality-{lc}.json.
+     현재 페이지 동작에는 영향 없음 (발행만 하고 소비하지 않는다). */}}
+{{ range $lc := slice "kr" "en" "jp" }}
+  {{ $r := resources.FromString (printf "lang/personality-%s.json" $lc) (partial "personality/lang-payload.html" $lc | jsonify) }}
+  {{ $published := $r.RelPermalink }}
+{{ end }}
+
 {{/* ── 데이터 ── */}}
 {{/* EGO 필터용 7속성 — egogift/category.json(id) + KR_Categories(이름) */}}
 {{ $catNameP := dict }}
@@ -800,6 +807,12 @@
             <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
             <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? '간단히' : '자세히') : (detailMode === 'simple' ? '간단히' : detailMode === 'detail1' ? '자세히 1' : '자세히 2')"></span>
           </button>
+          {{/* [스파이크] 클라이언트 사이드 언어 전환 토글 */}}
+          <div class="controls-right-row lang-switch">
+            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'kr' }" @click="setLang('kr')">한국어</button>
+            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'en' }" @click="setLang('en')">EN</button>
+            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'jp' }" @click="setLang('jp')">日本語</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1234,7 +1247,7 @@
                     <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
                     <img class="ego-frame-base" src="/images/ui/egoskill_frame_02.png" alt="" style="filter: url(#tint-{{ .attrType }})">
                     <img class="ego-tag-img" src="/images/ui/egoskill_tag_{{ .egoType }}.png" alt="">
-                    <span class="ego-name">{{ .name }}</span>
+                    <span class="ego-name" x-text="egoCardName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
                   </div>
                   <div class="ego-card-detail2" :style="egoPickerDetail ? 'display: flex' : 'display: none'">
                     {{ if and $isEgoPreview (not .skillKeywords) }}
@@ -1475,7 +1488,7 @@
                 {{ end }}
               </div>
               {{ if $title }}
-              <span class="personality-card-name">{{ replace $title "\n" "<br>" | safeHTML }}</span>
+              <span class="personality-card-name" x-html="pCardName('{{ .id }}', {{ (replace $title "\n" "<br>") | jsonify }})">{{ replace $title "\n" "<br>" | safeHTML }}</span>
               {{ end }}
             </div>
             <div class="personality-card-detail2" style="border-image: url('/images/ui/personality_detail_{{ printf "%02d" (int .rank) }}.png') 20 fill stretch;">
@@ -1536,7 +1549,7 @@
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
           {{ $isEgoPreview := .preview | default false }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, timing: {{ .timing | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, timing: {{ .timing | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, pIds: {{ .pIds | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
             {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
@@ -1549,7 +1562,7 @@
               <img class="ego-frame-border" src="/images/ui/egoskill_frame_01.png" alt="">
               <img class="ego-frame-base" src="/images/ui/egoskill_frame_02.png" alt="" style="filter: url(#tint-{{ .attrType }})">
               <img class="ego-tag-img" src="/images/ui/egoskill_tag_{{ .egoType }}.png" alt="">
-              <span class="ego-name">{{ .name }}</span>
+              <span class="ego-name" x-text="egoCardName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
             </div>
             <button class="card-save-btn" @click.stop="copyEgoCardImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
             <div class="ego-card-detail2">
@@ -1677,11 +1690,11 @@
                     <img class="stat-icon" :src="`/images/sin/${res.type.charAt(0) + res.type.slice(1).toLowerCase()}_resist_${res.value === -1 ? '100' : String(Math.round(res.value * 100)).padStart(3, '0')}.png`" alt="">
                     <div class="res-text">
                       <span class="res-label"
-                            x-text="resistLabelMap[res.value]?.text ?? ''"
-                            :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
+                            x-text="resistLabel(res.value)?.text ?? ''"
+                            :style="resistLabel(res.value)?.color ? `color:${resistLabel(res.value).color}` : ''"></span>
                       <span class="res-label"
                             x-text="res.value === -1 ? '[X?]' : `[X${res.value}]`"
-                            :style="resistLabelMap[res.value]?.color ? `color:${resistLabelMap[res.value].color}` : ''"></span>
+                            :style="resistLabel(res.value)?.color ? `color:${resistLabel(res.value).color}` : ''"></span>
                     </div>
                   </div>
                 </template>
@@ -2278,6 +2291,21 @@
 function personalityPage() {
   return {
     ...kwTooltipMixin(),
+    // [클라이언트 사이드 언어 전환] 데이터축 텍스트 페이로드 (/lang/personality-{lc}.json)
+    lang: 'kr',
+    pL: null,   // null 이면 빌드타임 kr 맵으로 폴백
+    async loadPersonalityLang() {
+      try {
+        const res = await fetch(`/lang/personality-${this.lang}.json`);
+        if (res.ok) { this.pL = await res.json(); window.__personalityL = this.pL; }
+      } catch (e) { /* 실패 시 kr 유지 */ }
+    },
+    setLang(lc) {
+      if (lc === this.lang) return;
+      this.lang = lc;
+      localStorage.setItem('giftLang', lc);   // 기프트 페이지와 동일 키(사이트 공통 언어)
+      this.loadPersonalityLang();
+    },
     search: '',
     pageMode: 'personality',
     activeEgoTypes: [],
@@ -2354,7 +2382,7 @@ function personalityPage() {
       if (!this.egoDetail?.awakeSkillId) return null;
       const sd = egoSkillMap?.[this.egoDetail.awakeSkillId];
       if (!sd) return null;
-      const nl = egoSkillNameMap?.[this.egoDetail.awakeSkillId] ?? [];
+      const nl = this.pL?.egoSkillName?.[this.egoDetail.awakeSkillId] ?? egoSkillNameMap?.[this.egoDetail.awakeSkillId] ?? [];
       return { ...sd, id: this.egoDetail.awakeSkillId, nl, iconImg: this.egoDetail.awakeIconImg };
     },
     get egoCorrosionSkill() {
@@ -2362,7 +2390,7 @@ function personalityPage() {
       if (!cid || cid === '0') return null;
       const sd = egoSkillMap?.[cid];
       if (!sd) return null;
-      const nl = egoSkillNameMap?.[cid] ?? [];
+      const nl = this.pL?.egoSkillName?.[cid] ?? egoSkillNameMap?.[cid] ?? [];
       return { ...sd, id: cid, nl, iconImg: this.egoDetail.corrosionIconImg };
     },
     get egoAdditionalAwakeSkills() {
@@ -2372,7 +2400,7 @@ function personalityPage() {
         .map(s => {
           const sd = egoSkillMap?.[s.awakeId];
           if (!sd) return null;
-          const nl = egoSkillNameMap?.[s.awakeId] ?? [];
+          const nl = this.pL?.egoSkillName?.[s.awakeId] ?? egoSkillNameMap?.[s.awakeId] ?? [];
           return { ...sd, id: s.awakeId, nl, iconImg: this.egoDetail.awakeIconImg };
         })
         .filter(Boolean);
@@ -2384,7 +2412,7 @@ function personalityPage() {
         .map(s => {
           const sd = egoSkillMap?.[s.corrosionId];
           if (!sd) return null;
-          const nl = egoSkillNameMap?.[s.corrosionId] ?? [];
+          const nl = this.pL?.egoSkillName?.[s.corrosionId] ?? egoSkillNameMap?.[s.corrosionId] ?? [];
           return { ...sd, id: s.corrosionId, nl, iconImg: this.egoDetail.corrosionIconImg };
         })
         .filter(Boolean);
@@ -2741,6 +2769,8 @@ function personalityPage() {
     },
 
     init() {
+      this.lang = localStorage.getItem('giftLang') || 'kr';
+      this.loadPersonalityLang();
       const saved = localStorage.getItem('personality-gacksung');
       if (saved) this.gacksungIds = JSON.parse(saved);
       this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
@@ -2763,7 +2793,17 @@ function personalityPage() {
       }
     },
 
-    openPersonalityDetail(data) { this.personalityDetail = data; this.personalitySync = 4; },
+    openPersonalityDetail(data) {
+      const L = this.pL;   // [언어 전환] baked 이름·스킬명을 pL 로 덮음 (id 보유)
+      if (L) {
+        const nm = L.name?.[data.id];
+        if (nm) data.name = nm.replace(/\n/g, ' ');
+        const rel = s => { const n = L.skillName?.[String(s.id)]; return n ? { ...s, nl: n } : s; };
+        if (data.skills) data.skills = data.skills.map(rel);
+        if (data.defenseSkills) data.defenseSkills = data.defenseSkills.map(rel);
+      }
+      this.personalityDetail = data; this.personalitySync = 4;
+    },
 
     // ── 편성 ── 각 수감자가 사용할 인격을 정하는 기능. (전용 카드 레이아웃 / gacksungIds 에 반응)
     toggleFormation() { this.showFormation = !this.showFormation; },
@@ -3228,7 +3268,7 @@ function personalityPage() {
       return `(Lv - ${Math.abs(c)})`;
     },
     skillDesc(skill) {
-      const dl = skillDescMap?.[String(skill.id)];
+      const dl = this.pL?.skillDesc?.[String(skill.id)] ?? skillDescMap?.[String(skill.id)];
       if (!dl?.length) return null;
       let entry = null;
       for (const d of dl) {
@@ -3278,10 +3318,17 @@ function personalityPage() {
       return Array.from({ length: this.skillTargetNum(skill) }, (_, i) => i);
     },
     passiveInfo(id) {
-      return passiveMap?.[String(id)] ?? { name: '', desc: '', res: [], stock: [] };
+      const base = passiveMap?.[String(id)] ?? { name: '', desc: '', res: [], stock: [] };
+      const t = this.pL?.passive?.[String(id)];   // 언어 텍스트(name/desc) 우선, 구조(res/stock)는 base
+      return t ? { ...base, ...t } : base;
     },
+    resistLabel(v) { return this.pL?.resistLabel?.[v] ?? resistLabelMap?.[v] ?? { text: '', color: '' }; },
+    // [언어 전환] 카드 이름 (kr = 빌드타임 폴백 인자)
+    pCardName(id, kr) { const n = this.pL?.name?.[String(id)]; return n != null ? n.replace(/\n/g, '<br>') : kr; },
+    egoCardName(id, kr) { return this.pL?.egoName?.[String(id)] ?? kr; },
     formatPassiveDesc(desc) {
       if (!desc) return '';
+      const kwSrc = this.pL?.kw ?? passiveKeywordMap;   // 언어별 키워드(이름·아이콘) 우선
       return desc
         .replace(/<style="highlight">([\s\S]*?)<\/style>/g, '<span class="passive-highlight">$1</span>')
         .replace(/<color=(#[0-9a-fA-F]+)>([\s\S]*?)<\/color>/g, '<span style="color:$1">$2</span>')
@@ -3292,7 +3339,7 @@ function personalityPage() {
         .replace(/<([^a-zA-Z/!][^>]*)>/g, '&lt;$1&gt;')
         .replace(/<[^>]*>/g, '')
         .replace(/\[([^\[\]]+)\]/g, (match, kw) => {
-          const b = passiveKeywordMap?.[kw];
+          const b = kwSrc?.[kw];
           if (!b) return match;
           const fallback = b.iconId ? `this.src='/images/buff/${b.iconId}.png';this.onerror=null;` : `this.style.display='none';`;
           const iconHtml = `<img class="buff-keyword-icon" src="/images/buff/${kw}.png" onerror="${fallback}" alt="">`;
@@ -3307,7 +3354,22 @@ function personalityPage() {
         .replace(/\n/g, '<br>');
     },
     closePersonalityDetail() { this.personalityDetail = null; },
-    openEgoDetail(data) { this.egoDetail = data; if (this.egoSync > data.maxGaksung) this.egoSync = data.maxGaksung; this.egoOverclock = false; },
+    openEgoDetail(data) {
+      const L = this.pL;   // [언어 전환] baked EGO명·환상체명을 pL 로 덮음
+      if (L) {
+        const nm = L.egoName?.[data.id];
+        if (nm) data.name = nm;
+        const ab = L.egoSkillAbName?.[data.awakeSkillId];
+        if (ab) data.abName = ab;
+        if (data.pIds?.length && L.egoPassive) {   // EGO 패시브 이름/설명
+          data.passives = data.pIds.map((pid, i) => {
+            const t = L.egoPassive[String(pid)];
+            return t ? { ...(data.passives[i] || {}), ...t } : (data.passives[i] || { name: '', desc: '' });
+          });
+        }
+      }
+      this.egoDetail = data; if (this.egoSync > data.maxGaksung) this.egoSync = data.maxGaksung; this.egoOverclock = false;
+    },
     closeEgoDetail() { this.egoDetail = null; },
     onEgoCgError(el) {
       const id = this.egoDetail?.id;
@@ -3420,7 +3482,7 @@ function personalityPage() {
     },
     egoSkillDesc(skill) {
       if (!skill) return null;
-      const dl = egoSkillDescMap?.[String(skill.id)];
+      const dl = this.pL?.egoSkillDesc?.[String(skill.id)] ?? egoSkillDescMap?.[String(skill.id)];
       if (!dl?.length) return null;
       let entry = null;
       for (const d of dl) {
