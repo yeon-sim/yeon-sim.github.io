@@ -1,9 +1,25 @@
 ## 데이터 (.bytes → .json)
-  복사: ego-3.bytes → egoskill\ego-3.json
-  복사: ego-skill-3.bytes → egoskill\ego-skill-3.json
-  복사: ego-10.bytes → egoskill\ego-10.json
-  복사: ego-skill-10.bytes → egoskill\ego-skill-10.json
+  복사예정: personality-06.bytes → personality\info\personality-06.json
+  복사예정: personality-skill-06.bytes → personality\skill\personality-skill-06.json
+  복사예정: personality-passive-06.bytes → personality\passive\personality-passive-06.json
+  복사예정: passive.bytes → personality\passive\passive.json
+  복사예정: passive_check4.bytes → personality\passive\passive_check4.json
+## illust-pivots
+  복사예정: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
 ## preview 정리
 ## 이미지
+  img: 10616_gacksung.png → personality\06\10616_gacksung.webp
+  img: 10616_normal.png → personality\06\10616_normal.webp
+  img: 10616_gacksung_info.png → personality\06\10616_gacksung_info.webp
+  img: 10616_normal_info.png → personality\06\10616_normal_info.webp
+  img: 10616_gacksung_profile.png → personality\06\10616_gacksung_profile.webp
+  img: 10616_normal_profile.png → personality\06\10616_normal_profile.webp
+  img: 10616_gacksung_profile_support_personality.png → personality\06\10616_gacksung_profile_support_personality.webp
+  img: 10616_normal_profile_support_personality.png → personality\06\10616_normal_profile_support_personality.webp
+  skillicon: 1061601
+  skillicon: 1061602
+  skillicon: 1061603
+  skillicon: 1061604
+  skillicon: 1061604_4
 ## 버프 아이콘
 ## 감사

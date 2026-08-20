@@ -103,6 +103,8 @@ if (persons.length) {
   pivot = copyBytes(`${SD}/illust-pivots-unitinfo/illust-pivots-unitinfo.bytes`, `${DATA}/personality/illust-pivots-unitinfo.json`);
 }
 
+const idRe = (id) => new RegExp(`^${id}(_|$)`);
+
 // ── 0. preview 정리 (충돌 id 제거) ─────────────────────────────────────────
 log('## preview 정리');
 const previewRemoved = [];
@@ -121,11 +123,27 @@ for (const [file, wantIds] of [
     log(`  ${WRITE ? '제거' : '제거예정'}: ${path.basename(file)} 에서 ${removed}건`);
   }
 }
+// preview 이미지 삭제 (정식 편입된 id는 preview 이미지가 쓰이지 않음).
+// .clip 은 편집 원본이라 제외 (템플릿은 더미 id 19999/29999 라 원래 안 걸리지만 방어적으로).
+let previewImgN = 0;
+for (const [dir, wantIds] of [
+  [`${IMG}/personality/preview`, persons.map(p => p.id)],
+  [`${IMG}/egoskill/preview`, egos.map(e => e.id)],
+]) {
+  if (!fs.existsSync(dir)) continue;
+  for (const f of fs.readdirSync(dir)) {
+    if (/\.clip$/i.test(f)) continue;
+    if (!wantIds.some(id => idRe(id).test(path.basename(f, path.extname(f))))) continue;
+    if (WRITE) fs.unlinkSync(path.join(dir, f));
+    previewImgN++;
+    log(`  ${WRITE ? '삭제' : '삭제예정'}: preview 이미지 ${path.relative(IMG, path.join(dir, f))}`);
+  }
+}
+if (previewImgN) previewRemoved.push(`이미지:${previewImgN}`);
 
 // ── 5a. 이미지 (CG/info/profile/support/EGO CG + 스킬아이콘) ─────────────────
 log('## 이미지');
 let imgN = 0;
-const idRe = (id) => new RegExp(`^${id}(_|$)`);
 // 인격/EGO 유닛 이미지: Sprite/Unit + UserInfoSuppotPortrait 에서 id 매칭
 const unitPngs = [...walkPng(`${SPR}/Unit`), ...walkPng(`${SPR}/UserInfoSuppotPortrait`)];
 for (const { id } of [...persons, ...egos]) {

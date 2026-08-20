@@ -5834,6 +5834,62 @@
       "requireIDList": [
         "CheckAwakenLevel3"
       ]
+    },
+    {
+      "id": 1061601,
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 2
+        },
+        {
+          "type": "INDIGO",
+          "value": 2
+        }
+      ],
+      "controlValueList": [
+        5, 2, 15
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ]
+    },
+    {
+      "id": 1061602
+    },
+    {
+      "id": 1061603
+    },
+    {
+      "id": 1061611,
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 2
+        },
+        {
+          "type": "INDIGO",
+          "value": 2
+        }
+      ],
+      "controlValueList": [
+        3, 2, 15, 5
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel4"
+      ]
+    },
+    {
+      "id": 1061621,
+      "attributeResonanceCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 3
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
     }
   ]
 }
