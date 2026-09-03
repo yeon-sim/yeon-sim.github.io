@@ -1,16 +1,14 @@
 == sync-lang 리포트 (WRITE) ==
 소스: C:\Program Files (x86)\Steam\steamapps\common\Limbus Company\LimbusCompany_Data\Assets\Resources_moved\Localize\kr
-동일 85 · 갱신 39 · 사이트 authoring 5 · 경고 0
+동일 91 · 갱신 33 · 사이트 authoring 5 · 경고 0
 
 ## 갱신 대상
   egogift\KR_EgoGiftCategory.json
   egogift\KR_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Passive_Ego.json (레코드 48건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Skills_Ego-a1c5p2.json
+  egoskill\KR_Egos.json
+  egoskill\KR_Passive_Ego.json (레코드 47건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego.json (레코드 75건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Skills_Ego_Personality-01.json
   egoskill\KR_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Skills_Ego_Personality-03.json
   egoskill\KR_Skills_Ego_Personality-04.json (레코드 4건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego_Personality-05.json (레코드 4건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego_Personality-06.json (레코드 3건 상이 — 토큰화/게임갱신)
@@ -20,12 +18,8 @@
   egoskill\KR_Skills_Ego_Personality-10.json (레코드 4건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego_Personality-11.json (레코드 2건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego_Personality-12.json (레코드 3건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Skills_Ego_Personality-a1c9p2.json
   egoskill\KR_Skills_Ego_Personality-a1c9p3.json (레코드 1건 상이 — 토큰화/게임갱신)
-  KR_Personalities.json
   KR_ResistText.json
-  parsingdata\KR_BattleKeywords-BossRaid.json
-  parsingdata\KR_BattleKeywords.json (레코드 1건 상이 — 토큰화/게임갱신)
   parsingdata\KR_SkillTag.json
   passive\KR_Passives.json (레코드 130건 상이 — 토큰화/게임갱신)
   passive\KR_Passives_check4.json (레코드 13건 상이 — 토큰화/게임갱신)
