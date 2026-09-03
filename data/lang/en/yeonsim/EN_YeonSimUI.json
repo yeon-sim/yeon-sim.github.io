@@ -61,7 +61,7 @@
   "preset.help_alt": "Help",
   "pack.preset": "Preset",
   "pack.preset_title": "Pack Preset",
-  "pack.preset_count_suffix": "",
+  "pack.preset_count": "{n} Packs",
   "pack.selected_empty": "No Packs selected.",
   "pack.empty": "No Packs.",
   "guide.title": "Guide",

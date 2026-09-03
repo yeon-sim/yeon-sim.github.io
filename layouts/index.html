@@ -807,7 +807,7 @@
               <div class="preset-item formation-preset-item" @click="openPackPresetDetailModal(idx)">
                 <div class="formation-preset-info">
                   <span class="preset-item-name" x-text="p.name"></span>
-                  <span class="pack-preset-count" x-text="ui('pack.label') + ' ' + p.packs.length + ui('pack.preset_count_suffix')"></span>
+                  <span class="pack-preset-count" x-text="_fmt('pack.preset_count', { n: p.packs.length })"></span>
                 </div>
               </div>
             </template>

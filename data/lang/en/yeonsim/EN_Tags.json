@@ -233,11 +233,11 @@
   },
   {
     "id": "dealDamageUp",
-    "name": "Deal Damage Up"
+    "name": "Deal Damage Down"
   },
   {
     "id": "dealDamageDown",
-    "name": "Deal Damage Down"
+    "name": "Deal Damage Up"
   },
   {
     "id": "takeDamageDown",

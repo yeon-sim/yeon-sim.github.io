@@ -492,6 +492,14 @@
       "changes": [
         "신규 언어 설정이 추가되었습니다 : English, 日本語"
       ]
+    },{
+      "version": "1.17.1",
+      "date": "2026-09-03",
+      "target_game_date": "2026-09-03",
+      "target_game_version": "1.113.0",
+      "changes": [
+        "English : 일부 기프트 태그의 오타가 수정되었습니다."
+      ]
     }
   ]
 }

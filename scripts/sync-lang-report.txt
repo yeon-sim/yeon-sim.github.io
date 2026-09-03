@@ -1,11 +1,10 @@
-== sync-lang 리포트 (WRITE) ==
+== sync-lang 리포트 (DRY-RUN) ==
 소스: C:\Program Files (x86)\Steam\steamapps\common\Limbus Company\LimbusCompany_Data\Assets\Resources_moved\Localize\kr
-동일 91 · 갱신 33 · 사이트 authoring 5 · 경고 0
+동일 93 · 갱신 32 · 사이트 authoring 9 · 경고 0
 
 ## 갱신 대상
   egogift\KR_EgoGiftCategory.json
   egogift\KR_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
-  egoskill\KR_Egos.json
   egoskill\KR_Passive_Ego.json (레코드 47건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego.json (레코드 75건 상이 — 토큰화/게임갱신)
   egoskill\KR_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
@@ -38,11 +37,15 @@
   skill\KR_Skills_personality-12.json (레코드 11건 상이 — 토큰화/게임갱신)
 
 ## 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
-  egogift\KR_Categories.json
-  egogift\KR_Tags.json
-  KR_ColorType.json
-  KR_Season.json
-  KR_SkillKeyword.json
+  yeonsim\KR_Categories.json
+  yeonsim\KR_ColorType.json
+  yeonsim\KR_Guide.json
+  yeonsim\KR_GuidePreset.json
+  yeonsim\KR_Season.json
+  yeonsim\KR_SkillKeyword.json
+  yeonsim\KR_TagCategories.json
+  yeonsim\KR_Tags.json
+  yeonsim\KR_YeonSimUI.json
 
 ## 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
    필요하면 `--adopt <파일명> --write` 로 1회 편입하면 이후 자동 동기화된다.

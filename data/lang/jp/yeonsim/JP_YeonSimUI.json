@@ -61,7 +61,7 @@
   "preset.help_alt": "ヘルプ",
   "pack.preset": "プリセット",
   "pack.preset_title": "パックプリセット",
-  "pack.preset_count_suffix": "個",
+  "pack.preset_count": "パック {n}個",
   "pack.selected_empty": "選択されたパックがありません。",
   "pack.empty": "パックがありません。",
   "guide.title": "ガイド",

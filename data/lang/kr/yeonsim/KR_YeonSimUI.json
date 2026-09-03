@@ -61,7 +61,7 @@
   "preset.help_alt": "도움말",
   "pack.preset": "프리셋",
   "pack.preset_title": "테마팩 프리셋",
-  "pack.preset_count_suffix": "개",
+  "pack.preset_count": "테마팩 {n}개",
   "pack.selected_empty": "선택된 테마팩이 없습니다.",
   "pack.empty": "테마팩이 없습니다.",
   "guide.title": "가이드",
