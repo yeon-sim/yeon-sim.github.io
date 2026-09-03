@@ -7,9 +7,32 @@
   </div>
 </div>
 
-<footer class="site-footer">
-  <p class="footer-note">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
-  <p class="footer-note">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
+{{/* [언어 전환] 푸터는 페이지의 루트 x-data 바깥에 놓이므로 자체 스코프가 필요하다.
+     UI_KR 은 이 푸터를 쓰는 세 레이아웃(index·personality/list·legal)이 모두 선언하므로 그대로 참조.
+     (classic script 의 최상위 const 는 window 에 붙지 않아 typeof 로 확인한다)
+     언어 전환은 페이지 컴포넌트가 쏘는 'yeonsim:lang' 이벤트로 받는다. */}}
+<script>
+function footerUI() {
+  return {
+    uiL: null,
+    ui(key) {
+      const kr = (typeof UI_KR !== 'undefined') ? UI_KR : {};
+      return (this.uiL && this.uiL[key]) || kr[key] || key;
+    },
+    _load(lc) {   // baseof 의 UI_ALL 에서 동기 조회 (예전엔 /lang/ui-{lc}.json fetch)
+      this.uiL = (!lc || lc === 'kr' || typeof UI_ALL === 'undefined') ? null : (UI_ALL[lc] || null);
+    },
+    init() {
+      this._load(window.yeonsimLang());                                // 사이트 공통 언어(선택값 > 브라우저 언어 > kr)
+      window.addEventListener('yeonsim:lang', e => this._load(e.detail));
+    },
+  };
+}
+</script>
+
+<footer class="site-footer" x-data="footerUI()">
+  <p class="footer-note" x-text="ui('footer.disclaimer')">연심(連心)은 Limbus Company의 비공식 팬 사이트입니다.</p>
+  <p class="footer-note" x-text="ui('footer.copyright')">모든 게임 리소스의 저작권은 Project Moon에 있습니다.</p>
   <p class="footer-version">
     {{ with last 1 .Site.Data.changelog.versions }}{{ $v := index . 0 }}
     Site <button class="version-btn" onclick="document.getElementById('changelog-modal').classList.add('open')">v.{{ $v.version }}</button>
@@ -17,11 +40,11 @@
     {{ end }}
   </p>
   <p class="footer-note">
-    <a class="footer-link" href="/about/">사이트 소개</a>
+    <a class="footer-link" href="/about/" x-text="ui('footer.about')">사이트 소개</a>
     &nbsp;·&nbsp;
-    <a class="footer-link" href="/privacy/">개인정보처리방침</a>
+    <a class="footer-link" href="/privacy/" x-text="ui('footer.privacy')">개인정보처리방침</a>
     &nbsp;·&nbsp;
-    <a class="footer-link" href="/browse/">사이트맵</a>
+    <a class="footer-link" href="/browse/" x-text="ui('footer.sitemap')">사이트맵</a>
   </p>
   <p class="footer-copy">&copy; 2026 연심(連心)</p>
 </footer>

@@ -10,7 +10,7 @@
 {{/* ── 데이터 ── */}}
 {{/* EGO 필터용 7속성 — egogift/category.json(id) + KR_Categories(이름) */}}
 {{ $catNameP := dict }}
-{{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ $catNameP = merge $catNameP (dict .id .name) }}{{ end }}
+{{ range site.Data.lang.kr.yeonsim.KR_Categories.dataList }}{{ $catNameP = merge $catNameP (dict .id .name) }}{{ end }}
 {{ $egoCats := slice }}
 {{ range first 7 site.Data.egogift.category.dataList }}{{ $egoCats = $egoCats | append (merge . (dict "name" (index $catNameP .id))) }}{{ end }}
 {{/* 스킬 맵 (skillId → {tier, sd:[{g, a}], at, dt}) */}}
@@ -125,7 +125,7 @@
 {{/* 시즌 맵 (id → {title, name}), color 태그를 빌드 타임에 span으로 변환 */}}
 {{ $colorRE := `<color=(#[0-9a-fA-F]{3,8})>(.*?)</color>` }}
 {{ $seasonMap := dict }}
-{{ range .Site.Data.lang.kr.KR_Season.dataList }}
+{{ range .Site.Data.lang.kr.yeonsim.KR_Season.dataList }}
   {{ $seasonMap = merge $seasonMap (dict (string .id) (dict
     "title" (.title | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
     "name"  (.name  | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
@@ -588,48 +588,51 @@
 
   {{/* ── 상세 검색 모달 ── */}}
   {{ $sinIconMap := dict "CRIMSON" "Crimson" "SCARLET" "Scarlet" "AMBER" "Amber" "SHAMROCK" "Shamrock" "AZURE" "Azure" "INDIGO" "Indigo" "VIOLET" "Violet" }}
-  {{ $atkResistTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "Slash") (dict "id" "HIT" "name" "타격" "icon" "Hit") (dict "id" "PENETRATE" "name" "관통" "icon" "Penetrate") }}
+  {{/* [언어 전환] 각 슬라이스의 "uk" = 정적 UI 카탈로그 키. SSR 은 kr(name/label/t)을 그대로 쓰고,
+       런타임에 ui(uk) 로 덮는다. 내성 등급(취약/보통/견딤/내성)만은 카탈로그가 아니라
+       데이터축(KR_ResistText → pL.resistLabel)이 출처라 uk 없이 resistLabel(v).text 로 조회. */}}
+  {{ $atkResistTypes := slice (dict "id" "SLASH" "name" "참격" "uk" "type.slash" "icon" "Slash") (dict "id" "PENETRATE" "name" "관통" "uk" "type.penetrate" "icon" "Penetrate") (dict "id" "HIT" "name" "타격" "uk" "type.hit" "icon" "Hit") }}
   {{ $atkResistLevels := slice (dict "v" "2" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "t" "보통" "c" "") (dict "v" "0.5" "t" "내성" "c" "#808080") }}
   {{ $attrResistLevels := slice (dict "v" "2" "n" "200" "t" "취약" "c" "#ea3c3c") (dict "v" "1" "n" "100" "t" "보통" "c" "") (dict "v" "0.75" "n" "075" "t" "견딤" "c" "#cbcbcb") (dict "v" "0.5" "n" "050" "t" "내성" "c" "#808080") }}
-  {{ $atkSkillTypes := slice (dict "id" "SLASH" "name" "참격" "icon" "slash") (dict "id" "HIT" "name" "타격" "icon" "hit") (dict "id" "PENETRATE" "name" "관통" "icon" "penetrate") }}
-  {{ $defSkillTypes := slice (dict "id" "GUARD" "name" "가드" "icon" "guard") (dict "id" "EVADE" "name" "회피" "icon" "evade") (dict "id" "COUNTER" "name" "반격" "icon" "counter") }}
-  {{ $skillRows := slice (dict "key" "1" "label" "1스킬" "types" $atkSkillTypes) (dict "key" "2" "label" "2스킬" "types" $atkSkillTypes) (dict "key" "3" "label" "3스킬" "types" $atkSkillTypes) (dict "key" "def" "label" "수비" "types" $defSkillTypes) }}
-  {{ $timingTop := slice (dict "id" "perm" "label" "상시" "img" "season_0_kr") (dict "id" "walpurgis" "label" "발푸르기스의 밤" "img" "walpurgis_kr") (dict "id" "limited" "label" "한정" "img" "limited") }}
-  {{ $timingSeasons := slice (dict "id" "s1" "label" "시즌 1" "img" "season_1") (dict "id" "s2" "label" "시즌 2" "img" "season_2") (dict "id" "s3" "label" "시즌 3" "img" "season_3") (dict "id" "s4" "label" "시즌 4" "img" "season_4") (dict "id" "s5" "label" "시즌 5" "img" "season_5") (dict "id" "s6" "label" "시즌 6" "img" "season_6") (dict "id" "s7" "label" "시즌 7" "img" "season_7") }}
+  {{ $atkSkillTypes := slice (dict "id" "SLASH" "name" "참격" "uk" "type.slash" "icon" "slash") (dict "id" "PENETRATE" "name" "관통" "uk" "type.penetrate" "icon" "penetrate") (dict "id" "HIT" "name" "타격" "uk" "type.hit" "icon" "hit") }}
+  {{ $defSkillTypes := slice (dict "id" "GUARD" "name" "가드" "uk" "type.guard" "icon" "guard") (dict "id" "EVADE" "name" "회피" "uk" "type.evade" "icon" "evade") (dict "id" "COUNTER" "name" "반격" "uk" "type.counter" "icon" "counter") }}
+  {{ $skillRows := slice (dict "key" "1" "label" "1스킬" "uk" "skill.tier1" "types" $atkSkillTypes) (dict "key" "2" "label" "2스킬" "uk" "skill.tier2" "types" $atkSkillTypes) (dict "key" "3" "label" "3스킬" "uk" "skill.tier3" "types" $atkSkillTypes) (dict "key" "def" "label" "수비" "uk" "skill.def" "types" $defSkillTypes) }}
+  {{ $timingTop := slice (dict "id" "perm" "label" "상시" "uk" "timing.perm" "img" "season_0_kr" "imgL" "season_0") (dict "id" "walpurgis" "label" "발푸르기스의 밤" "uk" "timing.walpurgis" "img" "walpurgis_kr" "imgL" "walpurgis") (dict "id" "limited" "label" "한정" "uk" "timing.limited" "img" "limited") }}
+  {{ $timingSeasons := slice (dict "id" "s1" "label" "시즌 1" "uk" "timing.s1" "img" "season_1") (dict "id" "s2" "label" "시즌 2" "uk" "timing.s2" "img" "season_2") (dict "id" "s3" "label" "시즌 3" "uk" "timing.s3" "img" "season_3") (dict "id" "s4" "label" "시즌 4" "uk" "timing.s4" "img" "season_4") (dict "id" "s5" "label" "시즌 5" "uk" "timing.s5" "img" "season_5") (dict "id" "s6" "label" "시즌 6" "uk" "timing.s6" "img" "season_6") (dict "id" "s7" "label" "시즌 7" "uk" "timing.s7" "img" "season_7") }}
   <div class="modal-shade" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
     <div class="modal-box advanced-search-box" @click.stop>
       <div class="modal-header">
-        <span class="modal-title">상세 검색</span>
-        <button type="button" class="modal-btn adv-search-reset-btn" @click="resetAdvancedFilter()">초기화</button>
+        <span class="modal-title" x-text="ui('adv.title')">상세 검색</span>
+        <button type="button" class="modal-btn adv-search-reset-btn" @click="resetAdvancedFilter()" x-text="ui('common.reset')">초기화</button>
       </div>
       <div class="modal-body adv-search-body">
         {{/* 출시시기 — 인격·EGO 공통 (season 기반 필터, 최상단) */}}
         <div class="adv-resist-section">
-          <div class="adv-resist-section-title">출시시기</div>
+          <div class="adv-resist-section-title" x-text="ui('adv.timing')">출시시기</div>
           <div class="timing-filter-row">
             {{ range $timingTop }}
-            <button type="button" class="timing-chip" title="{{ .label }}"
+            <button type="button" class="timing-chip" title="{{ .label }}" :title="ui('{{ .uk }}')"
               :class="{ active: timingFilter.includes('{{ .id }}') }"
-              @click="toggleTiming('{{ .id }}')"{{ if eq .id "limited" }} x-show="pageMode === 'ego'" style="display:none"{{ end }}><img src="/images/season/{{ .img }}.png" alt="{{ .label }}"></button>
+              @click="toggleTiming('{{ .id }}')"{{ if eq .id "limited" }} x-show="pageMode === 'ego'" style="display:none"{{ end }}><img src="/images/season/{{ .img }}.png"{{ with .imgL }} :src="`/images/season/{{ . }}_${lang}.png`"{{ end }} alt="{{ .label }}" :alt="ui('{{ .uk }}')"></button>
             {{ end }}
           </div>
           <div class="timing-filter-row">
             {{ range $timingSeasons }}
-            <button type="button" class="timing-chip" title="{{ .label }}"
+            <button type="button" class="timing-chip" title="{{ .label }}" :title="ui('{{ .uk }}')"
               :class="{ active: timingFilter.includes('{{ .id }}') }"
-              @click="toggleTiming('{{ .id }}')"><img src="/images/season/{{ .img }}.png" alt="{{ .label }}"></button>
+              @click="toggleTiming('{{ .id }}')"><img src="/images/season/{{ .img }}.png" alt="{{ .label }}" :alt="ui('{{ .uk }}')"></button>
             {{ end }}
           </div>
         </div>
         {{/* 물리내성 — 인격 탭 적용 */}}
         <div class="adv-resist-section" x-show="pageMode === 'personality'" style="display:none">
-          <div class="adv-resist-section-title">물리내성</div>
+          <div class="adv-resist-section-title" x-text="ui('adv.atk_resist')">물리내성</div>
           {{ range $atkResistTypes }}
-          {{ $type := .id }}{{ $ticon := .icon }}{{ $tname := .name }}
+          {{ $type := .id }}{{ $ticon := .icon }}{{ $tname := .name }}{{ $tuk := .uk }}
           <div class="adv-resist-row">
             <div class="adv-resist-head">
               <img class="adv-resist-head-icon" src="/images/ui/personality_res{{ $ticon }}.png" alt="">
-              <span>{{ $tname }}</span>
+              <span x-text="ui('{{ $tuk }}')">{{ $tname }}</span>
             </div>
             <div class="adv-resist-cells">
               {{ range $atkResistLevels }}
@@ -637,7 +640,7 @@
                 :class="{ active: atkResistFilter['{{ $type }}'].includes({{ .v }}) }"
                 @click="toggleAtkResist('{{ $type }}', {{ .v }})">
                 <img class="adv-resist-cell-icon" src="/images/ui/personality_res{{ $ticon }}.png" alt="">
-                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }}>{{ .t }}</span>
+                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }} x-text="resistLabel({{ .v }}).text || {{ .t | jsonify }}">{{ .t }}</span>
                 <span class="adv-resist-cell-mult"{{ with .c }} style="color:{{ . }}"{{ end }}>[X{{ .v }}]</span>
               </button>
               {{ end }}
@@ -647,12 +650,13 @@
         </div>
         {{/* 스킬속성 — 인격 탭 적용 (1·2·3스킬 공격타입 + 수비타입, 각 행에 죄악속성) */}}
         <div class="adv-resist-section" x-show="pageMode === 'personality'" style="display:none">
-          <div class="adv-resist-section-title">스킬속성</div>
+          <div class="adv-resist-section-title" x-text="ui('adv.skill_attr')">스킬속성</div>
           {{ range $skillRows }}
           {{ $rk := .key }}
           {{ $typePrefix := cond (eq $rk "def") "수비" "물리" }}
+          {{ $ddUk := cond (eq $rk "def") "adv.dd_def" "adv.dd_atk" }}
           <div class="adv-resist-row adv-skill-row">
-            <div class="adv-resist-head" :class="{ 'adv-skill-head-active': skillAtkFilter['{{ $rk }}'].length || skillSinFilter['{{ $rk }}'].length }"><span>{{ .label }}</span></div>
+            <div class="adv-resist-head" :class="{ 'adv-skill-head-active': skillAtkFilter['{{ $rk }}'].length || skillSinFilter['{{ $rk }}'].length }"><span x-text="ui('{{ .uk }}')">{{ .label }}</span></div>
             <div class="adv-skill-groups" @click.away="if (openSkillDropdown === '{{ $rk }}-atk' || openSkillDropdown === '{{ $rk }}-sin') openSkillDropdown = null">
               <div class="skill-dd-row">
                 {{/* 물리/수비 타입 드롭다운 — 선택 시 라벨을 선택 속성 아이콘+이름으로 */}}
@@ -660,10 +664,10 @@
                   :class="{ open: openSkillDropdown === '{{ $rk }}-atk' }"
                   @click="openSkillDD('{{ $rk }}-atk', $event.currentTarget)">
                   <span class="skill-dd-label">
-                    <span x-show="!skillAtkFilter['{{ $rk }}'].length">{{ $typePrefix }}<br>속성</span>
+                    <span x-show="!skillAtkFilter['{{ $rk }}'].length" x-html="ui('{{ $ddUk }}')">{{ $typePrefix }}<br>속성</span>
                     <span class="skill-dd-selected" x-show="skillAtkFilter['{{ $rk }}'].length" style="display:none">
                       <img class="skill-dd-selected-icon" :src="skillTypeInfo[skillAtkFilter['{{ $rk }}'][0]]?.icon" alt="">
-                      <span x-text="skillTypeInfo[skillAtkFilter['{{ $rk }}'][0]]?.name"></span>
+                      <span x-text="ui(skillTypeInfo[skillAtkFilter['{{ $rk }}'][0]]?.uk || '')"></span>
                     </span>
                   </span>                </button>
                 {{/* 죄악속성 드롭다운 */}}
@@ -671,10 +675,10 @@
                   :class="{ open: openSkillDropdown === '{{ $rk }}-sin' }"
                   @click="openSkillDD('{{ $rk }}-sin', $event.currentTarget)">
                   <span class="skill-dd-label">
-                    <span x-show="!skillSinFilter['{{ $rk }}'].length">죄악<br>속성</span>
+                    <span x-show="!skillSinFilter['{{ $rk }}'].length" x-html="ui('adv.dd_sin')">죄악<br>속성</span>
                     <span class="skill-dd-selected" x-show="skillSinFilter['{{ $rk }}'].length" style="display:none">
                       <img class="skill-dd-selected-icon" :src="sinInfo[skillSinFilter['{{ $rk }}'][0]]?.icon" alt="">
-                      <span x-text="sinInfo[skillSinFilter['{{ $rk }}'][0]]?.name"></span>
+                      <span x-text="sinName(skillSinFilter['{{ $rk }}'][0], sinInfo[skillSinFilter['{{ $rk }}'][0]]?.name || '')"></span>
                     </span>
                   </span>                </button>
               </div>
@@ -685,19 +689,19 @@
                   :class="{ active: skillAtkFilter['{{ $rk }}'].includes('{{ .id }}') }"
                   @click="toggleSkillAtk('{{ $rk }}', '{{ .id }}')">
                   <img class="adv-resist-cell-icon" src="/images/ui/{{ .icon }}.png" alt="">
-                  <span class="adv-resist-cell-label">{{ .name }}</span>
+                  <span class="adv-resist-cell-label" x-text="ui('{{ .uk }}')">{{ .name }}</span>
                 </button>
                 {{ end }}
               </div>
               {{/* 죄악속성 옵션 패널 */}}
               <div class="skill-dd-panel" x-show="openSkillDropdown === '{{ $rk }}-sin'" style="display:none">
-                {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+                {{ range $.Site.Data.lang.kr.yeonsim.KR_ColorType.list }}
                 <button type="button" class="adv-resist-cell adv-skill-cell-sin"
                   :class="{ active: skillSinFilter['{{ $rk }}'].includes('{{ .id }}') }"
                   @click="toggleSkillSin('{{ $rk }}', '{{ .id }}')"
-                  title="{{ .name }}">
-                  <img class="adv-resist-cell-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt="{{ .name }}">
-                  <span class="adv-resist-cell-label">{{ .name }}</span>
+                  title="{{ .name }}" :title="sinName('{{ .id }}', {{ .name | jsonify }})">
+                  <img class="adv-resist-cell-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt="{{ .name }}" :alt="sinName('{{ .id }}', {{ .name | jsonify }})">
+                  <span class="adv-resist-cell-label" x-text="sinName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
                 </button>
                 {{ end }}
               </div>
@@ -707,13 +711,13 @@
         </div>
         {{/* 속성내성 — EGO 탭 적용 */}}
         <div class="adv-resist-section" x-show="pageMode === 'ego'" style="display:none">
-          <div class="adv-resist-section-title">속성내성</div>
-          {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+          <div class="adv-resist-section-title" x-text="ui('adv.attr_resist')">속성내성</div>
+          {{ range $.Site.Data.lang.kr.yeonsim.KR_ColorType.list }}
           {{ $type := .id }}{{ $tname := .name }}{{ $sicon := index $sinIconMap .id }}
           <div class="adv-resist-row">
             <div class="adv-resist-head">
               <img class="adv-resist-head-icon" src="/images/sin/{{ $sicon }}.png" alt="">
-              <span>{{ $tname }}</span>
+              <span x-text="sinName('{{ $type }}', {{ $tname | jsonify }})">{{ $tname }}</span>
             </div>
             <div class="adv-resist-cells">
               {{ range $attrResistLevels }}
@@ -721,7 +725,7 @@
                 :class="{ active: attrResistFilter['{{ $type }}'].includes({{ .v }}) }"
                 @click="toggleAttrResist('{{ $type }}', {{ .v }})">
                 <img class="adv-resist-cell-icon" src="/images/sin/{{ $sicon }}_resist_{{ .n }}.png" alt="">
-                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }}>{{ .t }}</span>
+                <span class="adv-resist-cell-label"{{ with .c }} style="color:{{ . }}"{{ end }} x-text="resistLabel({{ .v }}).text || {{ .t | jsonify }}">{{ .t }}</span>
                 <span class="adv-resist-cell-mult"{{ with .c }} style="color:{{ . }}"{{ end }}>[X{{ .v }}]</span>
               </button>
               {{ end }}
@@ -743,15 +747,15 @@
           <div class="prisoner-dropdown-wrap" @click.away="prisonerDropdownOpen = false">
             <button class="filter-btn prisoner-filter-btn" @click="prisonerDropdownOpen = !prisonerDropdownOpen">
                 <img class="filter-btn-icon" :class="{ 'prisoner-filter-btn-icon': selectedPrisoner }" :src="selectedPrisoner ? `/images/category/${selectedPrisoner.icon}_02.png` : '/images/ui/personality.png'" alt="">
-                <span x-text="selectedPrisoner ? selectedPrisoner.name : '수감자'"></span>
+                <span x-text="selectedPrisoner ? prisonerName(selectedPrisoner.id, selectedPrisoner.name) : ui('prisoner.label')">수감자</span>
               </button>
             <div class="prisoner-dropdown-panel" x-show="prisonerDropdownOpen" style="display:none">
               <button class="prisoner-dropdown-item prisoner-dropdown-item--all" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; prisonerDropdownOpen = false">
-                <img class="prisoner-dropdown-icon" src="/images/ui/personality.png" alt="">전체
+                <img class="prisoner-dropdown-icon" src="/images/ui/personality.png" alt=""><span x-text="ui('common.all')">전체</span>
               </button>
               {{ range $prisoners }}
               <button class="prisoner-dropdown-item" :class="{ active: selectedPrisoner?.id === '{{ .id }}' }" @click="selectedPrisoner = { id: '{{ .id }}', name: {{ .name | jsonify }}, icon: '{{ .icon }}' }; prisonerDropdownOpen = false">
-                <img class="prisoner-dropdown-icon" src="/images/category/{{ .icon }}_02.png" alt="">{{ .name }}
+                <img class="prisoner-dropdown-icon" src="/images/category/{{ .icon }}_02.png" alt=""><span x-text="prisonerName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
               </button>
               {{ end }}
             </div>
@@ -760,7 +764,7 @@
             <input
               class="search-input"
               type="search"
-              placeholder="이름 및 태그(#)으로 검색"
+              placeholder="이름 및 태그(#)으로 검색" :placeholder="ui('search.placeholder')"
               x-model="search"
               @input="onSearch()"
             >
@@ -770,10 +774,10 @@
               @click="search = ''; onSearch()"
               tabindex="-1"
             >
-              <img src="/images/ui/search_clear.png" alt="지우기">
+              <img src="/images/ui/search_clear.png" alt="지우기" :alt="ui('alt.clear_search')">
             </button>
           </div>
-          <button class="filter-btn advanced-search-btn" :class="{ active: Object.values(atkResistFilter).some(a => a.length) || Object.values(attrResistFilter).some(a => a.length) || Object.values(skillAtkFilter).some(a => a.length) || Object.values(skillSinFilter).some(a => a.length) || timingFilter.length }" @click="advancedSearchModal = true"><img class="filter-btn-icon" src="/images/ui/search_detail.png" alt="">상세 검색</button>
+          <button class="filter-btn advanced-search-btn" :class="{ active: Object.values(atkResistFilter).some(a => a.length) || Object.values(attrResistFilter).some(a => a.length) || Object.values(skillAtkFilter).some(a => a.length) || Object.values(skillSinFilter).some(a => a.length) || timingFilter.length }" @click="advancedSearchModal = true"><img class="filter-btn-icon" src="/images/ui/search_detail.png" alt=""><span x-text="ui('adv.title')">상세 검색</span></button>
         </div>
       </div>
       <div class="controls-row controls-row-2">
@@ -783,36 +787,30 @@
             class="filter-btn"
             :class="{ active: activeEgoTypes.includes('{{ .id }}') }"
             @click="toggleEgoType('{{ .id }}')"
-          ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt="">{{ .name }}</button>
+          ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt=""><span x-text="catName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span></button>
           {{ end }}
         </div>
       </div>
       <div class="controls-row controls-row-2">
         <div class="controls-left">
-          <button class="filter-btn formation-toggle-btn" :class="{ active: showFormation }" @click="toggleFormation()"><img class="filter-btn-icon" src="/images/ui/formation.png" alt="">편성</button>
-          <button class="filter-btn formation-code-btn" @click="openFormationCode()"><img class="filter-btn-icon" src="/images/ui/copy.png" alt="">프리셋</button>
+          <button class="filter-btn formation-toggle-btn" :class="{ active: showFormation }" @click="toggleFormation()"><img class="filter-btn-icon" src="/images/ui/formation.png" alt=""><span x-text="ui('formation.label')">편성</span></button>
+          <button class="filter-btn formation-code-btn" @click="openFormationCode()"><img class="filter-btn-icon" src="/images/ui/copy.png" alt=""><span x-text="ui('formation.preset')">프리셋</span></button>
         </div>
         <div class="personality-filter-row">
-          {{ range $.Site.Data.lang.kr.KR_ColorType.list }}
+          {{ range $.Site.Data.lang.kr.yeonsim.KR_ColorType.list }}
           <button
             class="filter-btn"
             :class="{ active: activeColorTypes.includes('{{ .id }}') }"
             @click="toggleColorType('{{ .id }}')"
-          ><img class="filter-btn-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt="">{{ .name }}</button>
+          ><img class="filter-btn-icon" src="/images/sin/{{ index $sinIconMap .id }}.png" alt=""><span x-text="sinName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span></button>
           {{ end }}
         </div>
         <div class="controls-right">
-          <button class="filter-btn support-toggle-btn" x-show="pageMode === 'personality'" style="display:none" :class="{ active: showSupport }" @click="showSupport = !showSupport"><img class="filter-btn-icon" src="/images/ui/support.png" alt="">서포트</button>
+          <button class="filter-btn support-toggle-btn" x-show="pageMode === 'personality'" style="display:none" :class="{ active: showSupport }" @click="showSupport = !showSupport"><img class="filter-btn-icon" src="/images/ui/support.png" alt=""><span x-text="ui('filter.support')">서포트</span></button>
           <button class="filter-btn detail-toggle-btn" @click="detailMode = pageMode === 'ego' ? (detailMode === 'simple' ? 'detail2' : 'simple') : (detailMode === 'simple' ? 'detail1' : detailMode === 'detail1' ? 'detail2' : 'simple')">
             <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
-            <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? '간단히' : '자세히') : (detailMode === 'simple' ? '간단히' : detailMode === 'detail1' ? '자세히 1' : '자세히 2')"></span>
+            <span x-text="pageMode === 'ego' ? (detailMode === 'simple' ? ui('toggle.simple') : ui('toggle.detail')) : (detailMode === 'simple' ? ui('toggle.simple') : detailMode === 'detail1' ? ui('toggle.detail1') : ui('toggle.detail2'))"></span>
           </button>
-          {{/* [스파이크] 클라이언트 사이드 언어 전환 토글 */}}
-          <div class="controls-right-row lang-switch">
-            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'kr' }" @click="setLang('kr')">한국어</button>
-            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'en' }" @click="setLang('en')">EN</button>
-            <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'jp' }" @click="setLang('jp')">日本語</button>
-          </div>
         </div>
       </div>
     </div>
@@ -823,7 +821,7 @@
         <div class="formation-bar-left">
           <div class="formation-title-block">
             <div class="formation-title-wrap">
-              <span class="formation-title" x-show="!editingFormationName" x-text="formationName"></span>
+              <span class="formation-title" x-show="!editingFormationName" x-text="formationTitle()"></span>
               <input class="formation-title-input" x-show="editingFormationName" style="display:none"
                 x-ref="formationNameInput" x-model="formationName" maxlength="20"
                 @input="sizeFormationInput($event.target)"
@@ -833,12 +831,12 @@
               <button class="filter-btn formation-ego-btn" :class="{ active: showEgoLoadout }" @click="toggleEgoLoadout()"><img class="filter-btn-icon" src="/images/ui/egoskill.png" alt="">E.G.O</button>
               <button class="filter-btn formation-detail-btn" @click="formationDetailMode = formationDetailMode === 'simple' ? 'detail1' : formationDetailMode === 'detail1' ? 'detail2' : 'simple'">
                 <img class="filter-btn-icon" src="/images/ui/detail.png" alt="">
-                <span x-text="formationDetailMode === 'simple' ? '간단히' : formationDetailMode === 'detail1' ? '자세히 1' : '자세히 2'"></span>
+                <span x-text="formationDetailMode === 'simple' ? ui('toggle.simple') : formationDetailMode === 'detail1' ? ui('toggle.detail1') : ui('toggle.detail2')"></span>
               </button>
             </div>
-            <template x-for="row in [{ label: '출전', scope: 'deploy' }, { label: '전체', scope: 'all' }]" :key="row.scope">
+            <template x-for="row in [{ key: 'formation.deploy', scope: 'deploy' }, { key: 'common.all', scope: 'all' }]" :key="row.scope">
               <div class="formation-kw-row">
-                <span class="formation-kw-label" x-text="row.label"></span>
+                <span class="formation-kw-label" x-text="ui(row.key)"></span>
                 <div class="formation-kw-summary">
                   <template x-for="kw in formationKeywordSummary(row.scope)" :key="kw.id">
                     <span class="formation-kw-summary-item">
@@ -852,8 +850,8 @@
           </div>
         </div>
         <div class="formation-bar-right">
-          <button class="reset-btn filter-btn formation-reset-all-btn" @click="showFormationReset = true"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span>초기화</span></button>
-          <button class="filter-btn formation-reset-btn" @click="resetDeployOrder()"><img class="filter-btn-icon" src="/images/ui/formation_clear.png" alt="">선택 초기화</button>
+          <button class="reset-btn filter-btn formation-reset-all-btn" @click="showFormationReset = true"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span x-text="ui('common.reset')">초기화</span></button>
+          <button class="filter-btn formation-reset-btn" @click="resetDeployOrder()"><img class="filter-btn-icon" src="/images/ui/formation_clear.png" alt=""><span x-text="ui('formation.reset_select')">선택 초기화</span></button>
         </div>
       </div>
       <div class="formation-grid">
@@ -923,13 +921,13 @@
     <div class="modal-shade" :class="{ open: showFormationReset }" @click.self="showFormationReset = false" @contextmenu.prevent="showFormationReset = false">
       <div class="modal-box modal-box--sm" @contextmenu.prevent>
         <div class="modal-header">
-          <span class="modal-title">편성 초기화</span>
+          <span class="modal-title" x-text="ui('formation.reset_title')">편성 초기화</span>
         </div>
         <div class="modal-body delete-confirm-modal-body">
-          <p class="delete-confirm-text">인격·E.G.O 편성이 기본값으로 되돌아갑니다.</p>
+          <p class="delete-confirm-text" x-text="ui('formation.reset_msg')">인격·E.G.O 편성이 기본값으로 되돌아갑니다.</p>
           <div class="delete-confirm-actions">
-            <button class="modal-btn preset-action-btn" @click="showFormationReset = false">취소</button>
-            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetFormationAndEgo()">초기화</button>
+            <button class="modal-btn preset-action-btn" @click="showFormationReset = false" x-text="ui('common.cancel')">취소</button>
+            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="resetFormationAndEgo()" x-text="ui('common.reset')">초기화</button>
           </div>
         </div>
       </div>
@@ -939,8 +937,8 @@
     <div class="modal-shade" :class="{ open: showFormationCode }" @click.self="showFormationCode = false" @contextmenu.prevent="showFormationCode = false">
       <div class="modal-box preset-modal-box" @contextmenu.prevent>
         <div class="modal-header">
-          <span class="modal-title">프리셋</span>
-          <button class="modal-btn preset-add-btn" @click="openFormationAdd()">추가</button>
+          <span class="modal-title" x-text="ui('formation.preset')">프리셋</span>
+          <button class="modal-btn preset-add-btn" @click="openFormationAdd()" x-text="ui('common.add')">추가</button>
         </div>
         <div class="modal-body preset-modal-body">
           <div class="preset-list-scroll-wrap" x-data="scrollWrap('.formation-preset-scroll-area')">
@@ -952,7 +950,7 @@
                   <div class="formation-preset-info">
                     <span class="preset-item-name" x-text="p.name"></span>
                     <div class="formation-kw-row">
-                      <span class="formation-kw-label">출전</span>
+                      <span class="formation-kw-label" x-text="ui('formation.deploy')">출전</span>
                       <div class="preset-item-cat-summary">
                         <template x-for="kw in (p.summaryDeploy || [])" :key="kw.id">
                           <span class="preset-item-cat">
@@ -963,7 +961,7 @@
                       </div>
                     </div>
                     <div class="formation-kw-row">
-                      <span class="formation-kw-label">전체</span>
+                      <span class="formation-kw-label" x-text="ui('common.all')">전체</span>
                       <div class="preset-item-cat-summary">
                         <template x-for="kw in (p.summaryAll || p.summary || [])" :key="kw.id">
                           <span class="preset-item-cat">
@@ -974,10 +972,10 @@
                       </div>
                     </div>
                   </div>
-                  <button class="formation-preset-del" @click.stop="askDeleteFormationPreset(idx)" title="삭제"><img src="/images/ui/modal_clear.png" alt="삭제"></button>
+                  <button class="formation-preset-del" @click.stop="askDeleteFormationPreset(idx)" title="삭제" :title="ui('common.delete')"><img src="/images/ui/modal_clear.png" alt="삭제"></button>
                 </div>
               </template>
-              <span class="preset-empty" x-show="!formationPresets.length">저장된 편성이 없습니다.</span>
+              <span class="preset-empty" x-show="!formationPresets.length" x-text="ui('formation.empty')">저장된 편성이 없습니다.</span>
             </div>
             <div class="scroll-indicator" :class="{ visible: down }">▼</div>
           </div>
@@ -989,17 +987,17 @@
     <div class="modal-shade" :class="{ open: showFormationAdd }" @click.self="showFormationAdd = false" @contextmenu.prevent="showFormationAdd = false">
       <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
         <div class="modal-header">
-          <span class="modal-title">편성 추가</span>
-          <button class="modal-btn preset-confirm-btn" @click="confirmFormationAdd()">완료</button>
+          <span class="modal-title" x-text="ui('formation.add_title')">편성 추가</span>
+          <button class="modal-btn preset-confirm-btn" @click="confirmFormationAdd()" x-text="ui('common.done')">완료</button>
         </div>
         <div class="modal-body preset-add-modal-body">
           <div class="formation-code-section">
-            <span class="formation-code-label">이름</span>
-            <input class="preset-add-input" type="text" x-model="formationAddName" maxlength="20" placeholder="편성 이름">
+            <span class="formation-code-label" x-text="ui('preset.name_placeholder_short')">이름</span>
+            <input class="preset-add-input" type="text" x-model="formationAddName" maxlength="20" placeholder="편성 이름" :placeholder="ui('formation.name_placeholder')">
           </div>
           <div class="formation-code-section">
-            <span class="formation-code-label">편성 코드</span>
-            <textarea class="preset-add-input formation-code-textarea" x-model="formationAddCode" placeholder="편성 코드" @focus="$event.target.select()"></textarea>
+            <span class="formation-code-label" x-text="ui('formation.code')">편성 코드</span>
+            <textarea class="preset-add-input formation-code-textarea" x-model="formationAddCode" placeholder="편성 코드" :placeholder="ui('formation.code')" @focus="$event.target.select()"></textarea>
           </div>
           <p class="formation-code-error" x-show="formationAddError" x-text="formationAddError" style="display:none"></p>
         </div>
@@ -1010,13 +1008,13 @@
     <div class="modal-shade" :class="{ open: showFormationDelete }" @click.self="showFormationDelete = false" @contextmenu.prevent="showFormationDelete = false">
       <div class="modal-box modal-box--sm" @contextmenu.prevent>
         <div class="modal-header">
-          <span class="modal-title">편성 삭제</span>
+          <span class="modal-title" x-text="ui('formation.delete_title')">편성 삭제</span>
         </div>
         <div class="modal-body delete-confirm-modal-body">
-          <p class="delete-confirm-text">'<span x-text="formationPresets[formationDeleteIdx]?.name ?? ''"></span>'을(를) 삭제합니다.</p>
+          <p class="delete-confirm-text">'<span x-text="formationPresets[formationDeleteIdx]?.name ?? ''"></span><span x-text="ui('formation.delete_suffix')">'을(를) 삭제합니다.</span></p>
           <div class="delete-confirm-actions">
-            <button class="modal-btn preset-action-btn" @click="showFormationDelete = false">취소</button>
-            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deleteFormationPreset()">삭제</button>
+            <button class="modal-btn preset-action-btn" @click="showFormationDelete = false" x-text="ui('common.cancel')">취소</button>
+            <button class="modal-btn preset-action-btn delete-confirm-ok-btn" @click="deleteFormationPreset()" x-text="ui('common.delete')">삭제</button>
           </div>
         </div>
       </div>
@@ -1026,14 +1024,14 @@
     <div class="modal-shade" :class="{ open: showFormationCodeModal }" @click.self="showFormationCodeModal = false" @contextmenu.prevent="showFormationCodeModal = false">
       <div class="modal-box preset-add-modal-box" @contextmenu.prevent>
         <div class="modal-header">
-          <span class="modal-title">편성 코드</span>
+          <span class="modal-title" x-text="ui('formation.code')">편성 코드</span>
           <div class="formation-codeio-actions">
-            <button class="modal-btn preset-action-btn" @click="copyFormationCodeText($event)">복사</button>
-            <button class="modal-btn preset-action-btn" @click="applyFormationCodeText()">적용</button>
+            <button class="modal-btn preset-action-btn" @click="copyFormationCodeText($event)" x-text="ui('common.copy')">복사</button>
+            <button class="modal-btn preset-action-btn" @click="applyFormationCodeText()" x-text="ui('common.apply')">적용</button>
           </div>
         </div>
         <div class="modal-body preset-add-modal-body">
-          <textarea class="preset-add-input formation-code-textarea" x-model="formationCodeText" placeholder="편성 코드" @focus="$event.target.select()"></textarea>
+          <textarea class="preset-add-input formation-code-textarea" x-model="formationCodeText" placeholder="편성 코드" :placeholder="ui('formation.code')" @focus="$event.target.select()"></textarea>
           <p class="formation-code-error" x-show="formationCodeIoError" x-text="formationCodeIoError" style="display:none"></p>
         </div>
       </div>
@@ -1045,9 +1043,9 @@
         <div class="modal-header">
           <span class="modal-title form-picker-title">
             <img class="form-picker-title-icon" :src="`/images/category/${prisonerMeta[formPickerPid]?.icon}_02.png`" alt="" x-show="prisonerMeta[formPickerPid]">
-            <span class="form-picker-title-text">인격 선택<span class="form-picker-title-name" x-show="prisonerMeta[formPickerPid]" x-text="' : ' + (prisonerMeta[formPickerPid]?.name || '')"></span></span>
+            <span class="form-picker-title-text"><span x-text="ui('picker.identity')">인격 선택</span><span class="form-picker-title-name" x-show="prisonerMeta[formPickerPid]" x-text="' : ' + prisonerName(formPickerPid, prisonerMeta[formPickerPid]?.name || '')"></span></span>
           </span>
-          <button class="modal-btn preset-add-btn" :class="{ active: pickerDetail }" @click="pickerDetail = !pickerDetail" x-text="pickerDetail ? '자세히' : '간단히'"></button>
+          <button class="modal-btn preset-add-btn" :class="{ active: pickerDetail }" @click="pickerDetail = !pickerDetail" x-text="pickerDetail ? ui('toggle.detail') : ui('toggle.simple')"></button>
         </div>
         <div class="modal-body form-picker-body">
           <div class="form-picker-grid">
@@ -1067,7 +1065,7 @@
                       </template>
                     </div>
                   </div>
-                  <span class="formation-card-name" x-html="(formationMeta[id]?.name || id).replace(/\n/g, '<br>')"></span>
+                  <span class="formation-card-name" x-html="pCardName(id, (formationMeta[id]?.name || id).replace(/\n/g, '<br>'))"></span>
                 </div>
               </button>
             </template>
@@ -1127,7 +1125,7 @@
           {{ end }}
         {{ end }}
         {{ $egoSeason := index $seasonMap (string $egoSeasonId) }}
-        {{ $egoSeasonName := cond (eq (int .season) 0) "상시" $egoSeason.name }}
+        {{ $egoSeasonName := cond (eq (int .season) 0) (index $seasonMap "0").name $egoSeason.name }}
         {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~7=s1~s7, 발푸르기스=walpurgis) */}}
         {{ $egoTimings := slice }}{{ $egoRawSeason := int .season }}
         {{ if eq $egoRawSeason 0 }}{{ $egoTimings = $egoTimings | append "perm" }}{{ $eud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $eud (int .startDate)) (or (eq (int .endDate) -1) (lt $eud (int .endDate))) }}{{ $egoTimings = $egoTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $egoRawSeason 9000 }}{{ $egoTimings = $egoTimings | append "walpurgis" }}{{ else if eq $egoRawSeason 8000 }}{{ $egoTimings = $egoTimings | append "limited" }}{{ else if and (ge $egoRawSeason 1) (le $egoRawSeason 7) }}{{ $egoTimings = $egoTimings | append (printf "s%d" $egoRawSeason) }}{{ end }}
@@ -1168,7 +1166,7 @@
         {{ range .awakeningPassiveList }}{{ with index $egoPassiveKwMap (printf "%d" (int .)) }}{{ if . }}{{ $egoKwParts = $egoKwParts | append . }}{{ end }}{{ end }}{{ end }}
         {{ $egoKw := delimit $egoKwParts "|" }}
         {{ $existing := index $egoMap $cid | default slice }}
-        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "pIds" (.awakeningPassiveList | default slice) "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "timing" $egoTimings "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
+        {{ $egoMap = merge $egoMap (dict $cid ($existing | append (dict "id" $idStr "img" $img "eCgImg" $eCgImg "typeRank" $rank "updatedDate" (int .updatedDate) "egoType" (lower .egoType) "attrType" $attr "attrColor" $attrColor "name" $name "maxGaksung" $maxSyncLevel "abName" $abName "passives" $passives "pIds" (.awakeningPassiveList | default slice) "formattedDate" $egoUpdatedDate "seasonTitle" $egoSeason.title "seasonName" $egoSeasonName "seasonId" $egoSeasonId "rawSeason" (int .season) "timing" $egoTimings "requirementList" .requirementList "resistList" .attributeResistList "awakeSkillId" $awakeId "corrosionSkillId" $corrosionId "awakeIconImg" $awakeIconImg "corrosionIconImg" $corrosionIconImg "skillKeywords" $egoSkillKws "additionalSkills" $addSkills "kw" $egoKw))) }}
       {{ end }}
     {{ end }}
     {{/* ── 출시 예정(preview) EGO — egoMap 편입 ──
@@ -1194,7 +1192,7 @@
       {{/* 출시시기 검색용 — season 기반 타이밍 태그 */}}
       {{ $pTimings := slice }}{{ $pRawSeason := int .season }}
       {{ if eq $pRawSeason 0 }}{{ $pTimings = $pTimings | append "perm" }}{{ $peud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $peud (int .startDate)) (or (eq (int .endDate) -1) (lt $peud (int .endDate))) }}{{ $pTimings = $pTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $pRawSeason 9000 }}{{ $pTimings = $pTimings | append "walpurgis" }}{{ else if eq $pRawSeason 8000 }}{{ $pTimings = $pTimings | append "limited" }}{{ else if and (ge $pRawSeason 1) (le $pRawSeason 7) }}{{ $pTimings = $pTimings | append (printf "s%d" $pRawSeason) }}{{ end }}
-      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "timing" $pTimings "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
+      {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "seasonId" (int .season) "rawSeason" (int .season) "timing" $pTimings "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
       {{ $existing := index $egoMap $pcid | default slice }}
       {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
     {{ end }}{{ end }}
@@ -1215,9 +1213,9 @@
         <div class="modal-header">
           <span class="modal-title form-picker-title">
             <img class="form-picker-title-icon" :src="`/images/ui/egoskill_icon_${egoPickerGrade}.png`" alt="" x-show="egoPickerGrade">
-            <span class="form-picker-title-text">E.G.O 선택<span class="form-picker-title-name" x-show="prisonerMeta[egoPickerPid]" x-text="' : ' + (prisonerMeta[egoPickerPid]?.name || '') + (egoPickerGrade ? ' [' + egoPickerGrade.toUpperCase() + ']' : '')"></span></span>
+            <span class="form-picker-title-text"><span x-text="ui('picker.ego')">E.G.O 선택</span><span class="form-picker-title-name" x-show="prisonerMeta[egoPickerPid]" x-text="' : ' + prisonerName(egoPickerPid, prisonerMeta[egoPickerPid]?.name || '') + (egoPickerGrade ? ' [' + egoPickerGrade.toUpperCase() + ']' : '')"></span></span>
           </span>
-          <button class="modal-btn preset-add-btn" :class="{ active: egoPickerDetail }" @click="egoPickerDetail = !egoPickerDetail" x-text="egoPickerDetail ? '자세히' : '간단히'"></button>
+          <button class="modal-btn preset-add-btn" :class="{ active: egoPickerDetail }" @click="egoPickerDetail = !egoPickerDetail" x-text="egoPickerDetail ? ui('toggle.detail') : ui('toggle.simple')"></button>
         </div>
         <div class="modal-body form-picker-body">
           <div class="form-picker-grid ego-picker-grid">
@@ -1235,7 +1233,7 @@
                 <div class="ego-card-wrap ego-picker-cardbtn" @click="pickEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')"
                   @contextmenu.prevent.stop="openCardDetailById('data-egokey', '{{ .id }}')"
                   @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)">
-                  {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
+                  {{ if $isEgoPreview }}<span class="personality-preview-badge" x-text="ui('badge.preview')">예정</span>{{ end }}
                   <div class="ego-cat">
                     <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
                     {{ if and $isEgoPreview (eq .attrType "") }}<img class="ego-cat-icon" src="/images/ui/question_mark.png" alt="">{{ else }}{{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}{{ end }}
@@ -1322,8 +1320,8 @@
       <div class="category-row personality-category-row" id="prisoner-{{ $pid }}"
         x-show="(selectedPrisoner === null || selectedPrisoner.id === '{{ $pid }}') && (pageMode === 'ego' ? isEgoRowVisible({{ $egoRowData | jsonify }}) : isRowVisible({{ $rowData | jsonify }}))">
         <div class="category-label personality-category-label">
-          <img class="cat-icon" src="/images/category/{{ .icon }}.png" alt="{{ .name }}">
-          <span class="cat-name">{{ .name }}</span>
+          <img class="cat-icon" src="/images/category/{{ .icon }}.png" alt="{{ .name }}" :alt="prisonerName('{{ .id }}', {{ .name | jsonify }})">
+          <span class="cat-name" x-text="prisonerName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
         </div>
         <div class="personality-row" x-show="pageMode === 'personality'">
           {{ range sort (sort $fullList "updatedDate") "rank" }}
@@ -1340,19 +1338,22 @@
             {{ end }}
           {{ end }}
           {{ $season := index $seasonMap (string $seasonId) }}
-          {{ $seasonName := cond (eq (int .season) 0) "상시" $season.name }}
+          {{ $seasonName := cond (eq (int .season) 0) (index $seasonMap "0").name $season.name }}
+          {{/* [언어 전환] $keywords 는 kr 라벨이 baked 된 값이라, 런타임에 pL.keyword 로 조회할
+               suffix 키를 $kwIds 로 병행 수집한다(같은 조건에서 append 하므로 인덱스 1:1 대응). */}}
           {{ $keywords := slice }}
+          {{ $kwIds := slice }}
           {{ range .unitKeywordList }}
             {{ $label := index $keywordMap . }}
-            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ $kwIds = $kwIds | append . }}{{ end }}
           {{ end }}
           {{ range .associationList }}
             {{ $label := index $keywordMap . }}
-            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ $kwIds = $kwIds | append . }}{{ end }}
           {{ end }}
           {{ range .unitKeywordListByUnlockCode }}
             {{ $label := index $keywordMap .id }}
-            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ end }}
+            {{ if $label }}{{ $keywords = $keywords | append $label }}{{ $kwIds = $kwIds | append .id }}{{ end }}
           {{ end }}
           {{/* #키워드 검색: 스킬/패시브 파싱 키워드 + 스킬 타입 키워드(파싱 이름) + 유닛 키워드 평문(공백제거·소문자) */}}
           {{ $cKwParts := slice }}
@@ -1405,7 +1406,7 @@
             :style="`--glow: ${pickerGlow({{ int .rank }})}`"
             @click="assignFormation('{{ $pid }}', '{{ .id }}')"
             @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)"
-            @contextmenu.prevent="openPersonalityDetail({ isPreview: {{ $isPreview }}, id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, keywords: {{ $keywords | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
+            @contextmenu.prevent="openPersonalityDetail({ isPreview: {{ $isPreview }}, id: {{ .id }}, name: {{ replace $title "\n" " " | jsonify }}, pid: '{{ $pid }}', icon: '{{ $pIcon }}', prisoner: {{ $pName | jsonify }}, rank: {{ .rank }}, updatedDate: '{{ printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}', seasonTitle: {{ $season.title | jsonify }}, seasonName: {{ $seasonName | jsonify }}, season: {{ $seasonId }}, rawSeason: {{ int .season }}, keywords: {{ $keywords | jsonify }}, kwIds: {{ $kwIds | jsonify }}, skillKeywordList: {{ .skillKeywordList | jsonify }}, hp: { defaultStat: {{ .hp.defaultStat }}, incrementByLevel: {{ .hp.incrementByLevel }} }, breakSections: {{ .breakSection.sectionList | jsonify }}, minSpeedList: {{ .minSpeedList | jsonify }}, maxSpeedList: {{ .maxSpeedList | jsonify }}, defCorrection: {{ .defCorrection }}, resistList: {{ .resistInfo.atkResistList | jsonify }}, skills: {{ $skills | jsonify }}, defenseSkills: {{ $defSkills | jsonify }}, passives: { bp: {{ $passiveBp | jsonify }}, sp: {{ $passiveSp | jsonify }} } })">
             {{ $dt := "" }}
             {{ with index $defSkills 0 }}{{ $dt = .dt }}{{ end }}
             {{ $defTypeIcon := index (dict "COUNTER" "counter" "EVADE" "evade" "GUARD" "guard") $dt }}
@@ -1433,9 +1434,9 @@
             {{ with index $defSkills 0 }}
               {{ range .sd }}{{ if le (int .g) 4 }}{{ $sDefAttr = .a }}{{ end }}{{ end }}
             {{ end }}
-            <button class="card-save-btn" @click.stop="copyPersonalityCard($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+            <button class="card-save-btn" @click.stop="copyPersonalityCard($event)" title="이미지 클립보드 복사" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사" :alt="ui('alt.copy')"></button>
             <div class="personality-card-frame">
-              {{ if $isPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
+              {{ if $isPreview }}<span class="personality-preview-badge" x-text="ui('badge.preview')">예정</span>{{ end }}
               <img class="personality-card-rank"
                 src="/images/ui/personality_frame_0{{ .rank }}.png"
                 alt="">
@@ -1527,13 +1528,13 @@
             {{ $p := index $passiveMap (string .) }}
             {{ if $p }}
             <div class="support-passive-item">
-              <span class="support-passive-name">{{ $p.name | default "" }}</span>
+              <span class="support-passive-name" x-text="passiveInfo('{{ string . }}').name">{{ $p.name | default "" }}</span>
               {{ $spRes := $p.res | default slice }}{{ $spStock := $p.stock | default slice }}
               {{ if or (gt (len $spRes) 0) (gt (len $spStock) 0) }}
               <div class="passive-condition">
                 {{ range $spStock }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt="">X {{ .v }}</span>{{ end }}
-                {{ if gt (len $spStock) 0 }}<span class="passive-cond-item">보유</span>{{ end }}
-                {{ range $spRes }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt="">X {{ .v }} 공명</span>{{ end }}
+                {{ if gt (len $spStock) 0 }}<span class="passive-cond-item" x-text="ui('passive.cond_stock')">보유</span>{{ end }}
+                {{ range $spRes }}<span class="passive-cond-item"><img class="passive-cond-icon" src="/images/sin/{{ index $sinIconMap .t }}.png" alt=""><span x-text="`X {{ .v }} ${ui('passive.cond_res')}`">X {{ .v }} 공명</span></span>{{ end }}
               </div>
               {{ end }}
               <div class="passive-desc" x-html="formatPassiveDesc(passiveInfo('{{ string . }}').desc)" @click="handleKwClick($event)"></div>
@@ -1549,8 +1550,8 @@
         <div class="ego-row" x-show="pageMode === 'ego'" style="display:none">
           {{ range sort (sort $egoList "updatedDate") "typeRank" }}
           {{ $isEgoPreview := .preview | default false }}
-          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, timing: {{ .timing | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, pIds: {{ .pIds | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
-            {{ if $isEgoPreview }}<span class="personality-preview-badge">예정</span>{{ end }}
+          <div class="ego-card-wrap" data-egokey="{{ .id }}" @click="equipEgo('{{ $pid }}', '{{ .egoType }}', '{{ .id }}')" x-show="isEgoVisible({ id: '{{ .id }}', sIds: ['{{ .awakeSkillId }}','{{ .corrosionSkillId }}'{{ range .additionalSkills }},'{{ .awakeId }}','{{ .corrosionId }}'{{ end }}], pIds: {{ .pIds | jsonify }}, name: {{ .name | jsonify }}, skillKeywords: {{ .skillKeywords | jsonify }}, attrType: {{ .attrType | jsonify }}, attrResist: {{ .resistList | jsonify }}, timing: {{ .timing | jsonify }}, kw: {{ .kw | jsonify }} })" @pointerdown="startCardLongPress($event)" @pointerup="cancelCardLongPress($event)" @pointermove="cancelCardLongPress($event)" @pointercancel="cancelCardLongPress($event)" @contextmenu.prevent="openEgoDetail({ isPreview: {{ .preview | default false }}, name: {{ .name | jsonify }}, charIcon: '{{ $pIcon }}', egoType: '{{ .egoType }}', img: '{{ .img }}', maxGaksung: {{ .maxGaksung }}, abName: {{ .abName | jsonify }}, attrColor: '{{ .attrColor }}', passives: {{ .passives | jsonify }}, pIds: {{ .pIds | jsonify }}, formattedDate: {{ .formattedDate | jsonify }}, seasonTitle: {{ .seasonTitle | jsonify }}, seasonName: {{ .seasonName | jsonify }}, season: {{ .seasonId }}, rawSeason: {{ .rawSeason }}, requirementList: {{ .requirementList | jsonify }}, resistList: {{ .resistList | jsonify }}, awakeSkillId: '{{ .awakeSkillId }}', corrosionSkillId: '{{ .corrosionSkillId }}', awakeIconImg: '{{ .awakeIconImg }}', corrosionIconImg: '{{ .corrosionIconImg }}', id: '{{ .id }}', eCgImg: '{{ .eCgImg }}', skillKeywords: {{ .skillKeywords | jsonify }}, additionalSkills: {{ .additionalSkills | jsonify }} })">
+            {{ if $isEgoPreview }}<span class="personality-preview-badge" x-text="ui('badge.preview')">예정</span>{{ end }}
             <div class="ego-cat">
               <img class="ego-cat-frame" src="/images/ui/egoskill_category_frame.png" alt="">
               {{ if and $isEgoPreview (eq .attrType "") }}<img class="ego-cat-icon" src="/images/ui/question_mark.png" alt="">{{ else }}{{ with index $sinIconMap .attrType }}<img class="ego-cat-icon" src="/images/sin/{{ . }}.png" alt="{{ . }}">{{ end }}{{ end }}
@@ -1564,7 +1565,7 @@
               <img class="ego-tag-img" src="/images/ui/egoskill_tag_{{ .egoType }}.png" alt="">
               <span class="ego-name" x-text="egoCardName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
             </div>
-            <button class="card-save-btn" @click.stop="copyEgoCardImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+            <button class="card-save-btn" @click.stop="copyEgoCardImg($event)" title="이미지 클립보드 복사" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사" :alt="ui('alt.copy')"></button>
             <div class="ego-card-detail2">
               {{ if and $isEgoPreview (not .skillKeywords) }}
               <img class="personality-card-d2-keyword-icon" src="/images/ui/question_mark.png" alt="">
@@ -1595,7 +1596,7 @@
         <div class="ego-detail-row-1">
           <div class="ego-detail-cg-col">
             <img class="ego-detail-cg" :src="egoCgImg" @error="onEgoCgError($el)" alt="">
-            <button class="card-save-btn" @click.stop="copyEgoDetailImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+            <button class="card-save-btn" @click.stop="copyEgoDetailImg($event)" title="이미지 클립보드 복사" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사" :alt="ui('alt.copy')"></button>
             <div class="ego-detail-sync-btns" x-show="egoDetail">
               <template x-if="egoDetail">
                 <template x-for="n in Array.from({ length: egoDetail.maxGaksung }, (_, i) => i + 1)" :key="n">
@@ -1626,9 +1627,9 @@
           </div>
         </div>
         <div class="personality-detail-tabs">
-          <button class="tab-btn" :class="{ active: egoTab === 'profile' }"  @click="egoTab = 'profile'">프로필</button>
-          <button class="tab-btn" :class="{ active: egoTab === 'awaken' }"   @click="egoTab = 'awaken'">각성 스킬</button>
-          <button class="tab-btn" :class="{ active: egoTab === 'corrode' }" :disabled="!egoDetail?.corrosionSkillId || egoDetail.corrosionSkillId === '0'" @click="egoTab = 'corrode'">침식 스킬</button>
+          <button class="tab-btn" :class="{ active: egoTab === 'profile' }"  @click="egoTab = 'profile'" x-text="ui('tab.profile')">프로필</button>
+          <button class="tab-btn" :class="{ active: egoTab === 'awaken' }"   @click="egoTab = 'awaken'" x-text="ui('tab.awaken')">각성 스킬</button>
+          <button class="tab-btn" :class="{ active: egoTab === 'corrode' }" :disabled="!egoDetail?.corrosionSkillId || egoDetail.corrosionSkillId === '0'" @click="egoTab = 'corrode'" x-text="ui('tab.corrode')">침식 스킬</button>
         </div>
 
         {{/* ── 프로필 탭 ── */}}
@@ -1655,7 +1656,7 @@
           <template x-if="egoDetail?.requirementList?.length || egoAwakeSkill?.mp">
             <div>
               <div class="ego-section-label-row">
-                <span class="ego-section-label">필요 자원</span>
+                <span class="ego-section-label" x-text="ui('ego.resource')">필요 자원</span>
                 <button type="button" class="ego-overclock-btn" :class="{ active: egoOverclock }" @click="egoOverclock = !egoOverclock">
                   <img src="/images/ui/btn_overclock.png" alt="">
                 </button>
@@ -1683,7 +1684,7 @@
           </template>
           <template x-if="egoDetail?.resistList?.length">
             <div>
-              <span class="ego-section-label">내성 정보</span>
+              <span class="ego-section-label" x-text="ui('ego.resist_info')">내성 정보</span>
               <div class="personality-detail-resist" style="flex-wrap: wrap; gap: 0.7rem; padding-left: 0.5rem;">
                 <template x-for="res in egoDetail.resistList.filter(r => r.type !== 'WHITE' && r.type !== 'BLACK')" :key="res.type">
                   <div class="res-item">
@@ -2001,7 +2002,7 @@
             :src="!personalityDetail ? '' : (personalityDetail.isPreview ? `/images/personality/preview/${personalityDetail.id}_preview_profile_support_personality.png` : ((noNormalIds[personalityDetail.id] || gacksungIds[personalityDetail.id]) ? `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_gacksung_profile_support_personality.webp` : `/images/personality/${personalityDetail.pid}/${personalityDetail.id}_normal_profile_support_personality.webp`))"
             @error="onProfileImgError($el)"
             alt="">
-          <button class="card-save-btn" @click.stop="copyPortraitImg($event)" title="이미지 클립보드 복사"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사"></button>
+          <button class="card-save-btn" @click.stop="copyPortraitImg($event)" title="이미지 클립보드 복사" :title="ui('card.save_title')"><img class="card-save-icon" src="/images/ui/copy.png" alt="복사" :alt="ui('alt.copy')"></button>
         </div>
         <div class="personality-detail-info-col">
           {{/* ── sync 버튼 ── */}}
@@ -2014,10 +2015,10 @@
 
           {{/* ── 탭 버튼 ── */}}
           <div class="personality-detail-tabs">
-            <button class="tab-btn" :class="{ active: personalityTab === 'info' }"    @click.stop="personalityTab = 'info'">프로필</button>
-            <button class="tab-btn" :class="{ active: personalityTab === 'skill' }"   @click.stop="personalityTab = 'skill'">스킬</button>
-            <button class="tab-btn" :class="{ active: personalityTab === 'passive' }" @click.stop="personalityTab = 'passive'">패시브</button>
-            <button class="tab-btn" :class="{ active: personalityTab === 'support' }" @click.stop="personalityTab = 'support'">서포트</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'info' }"    @click.stop="personalityTab = 'info'" x-text="ui('tab.profile')">프로필</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'skill' }"   @click.stop="personalityTab = 'skill'" x-text="ui('tab.skill')">스킬</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'passive' }" @click.stop="personalityTab = 'passive'" x-text="ui('tab.passive')">패시브</button>
+            <button class="tab-btn" :class="{ active: personalityTab === 'support' }" @click.stop="personalityTab = 'support'" x-text="ui('filter.support')">서포트</button>
           </div>
 
           {{/* ── 기본 정보 ── */}}
@@ -2050,7 +2051,7 @@
               <div class="personality-stat-line">
                 {{/* 방어 */}}
                 <div class="stat-row">
-                  <img class="stat-icon" src="/images/ui/personality_def.png" alt="방어레벨">
+                  <img class="stat-icon" src="/images/ui/personality_def.png" alt="방어레벨" :alt="ui('stat.def')">
                   <span class="stat-value" x-text="!personalityDetail ? '' : (personalityDetail.isPreview ? '?? (Lv + ?)' : `${Number(personalityLevel) + personalityDetail.defCorrection} (Lv ${personalityDetail.defCorrection >= 0 ? '+' : '-'} ${Math.abs(personalityDetail.defCorrection)})`)"></span>
                 </div>
                 {{/* HP */}}
@@ -2076,7 +2077,7 @@
               <div class="personality-stat-line">
                 {{/* 속도 */}}
                 <div class="stat-row">
-                  <img class="stat-icon" src="/images/ui/personality_speed.png" alt="속도">
+                  <img class="stat-icon" src="/images/ui/personality_speed.png" alt="속도" :alt="ui('stat.speed')">
                   <span class="stat-value" x-text="!personalityDetail ? '' : (personalityDetail.isPreview ? '? - ?' : `${personalityDetail.minSpeedList[personalitySync-1]} - ${personalityDetail.maxSpeedList[personalitySync-1]}`)"></span>
                 </div>
                 {{/* 내성 */}}
@@ -2085,7 +2086,7 @@
                     <div class="res-item">
                       <img class="stat-icon" :src="`/images/ui/personality_res${res.type.charAt(0)+res.type.slice(1).toLowerCase()}.png`" alt="">
                       <div class="res-text">
-                        <span class="res-label" x-text="res.value === -1 ? '관측불가' : res.value === 0.5 ? '내성' : res.value === 2 ? '취약' : '보통'" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
+                        <span class="res-label" x-text="resistLabel([-1, 0.5, 2].includes(res.value) ? res.value : 1).text" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
                         <span class="stat-value res-value" x-text="res.value === -1 ? '[X?]' : `[X${res.value}]`" :style="res.value === 0.5 ? 'color:#808080' : res.value === 2 ? 'color:#ea3c3c' : ''"></span>
                       </div>
                     </div>
@@ -2098,10 +2099,10 @@
           {{/* ── 스킬 정보 ── */}}
           <div class="skill-tab-content" x-show="personalityTab === 'skill'">
             <div class="personality-detail-skill-btns">
-              <button class="skill-btn" :class="{'active': activeSkillTier === 1}" :style="tierAttrName(1) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(1)}.png')` : ''" @click="activeSkillTier = 1"><template x-for="src in tierTypeIcons(1)"><img :src="src" class="skill-btn-type-icon"></template>스킬1</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 2}" :style="tierAttrName(2) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(2)}.png')` : ''" @click="activeSkillTier = 2"><template x-for="src in tierTypeIcons(2)"><img :src="src" class="skill-btn-type-icon"></template>스킬2</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 3}" :style="tierAttrName(3) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(3)}.png')` : ''" @click="activeSkillTier = 3"><template x-for="src in tierTypeIcons(3)"><img :src="src" class="skill-btn-type-icon"></template>스킬3</button>
-              <button class="skill-btn" :class="{'active': activeSkillTier === 'defense'}" :style="tierAttrName('defense') ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName('defense')}.png')` : ''" @click="activeSkillTier = 'defense'"><template x-for="src in tierTypeIcons('defense')"><img :src="src" class="skill-btn-type-icon"></template>수비</button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 1}" :style="tierAttrName(1) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(1)}.png')` : ''" @click="activeSkillTier = 1"><template x-for="src in tierTypeIcons(1)"><img :src="src" class="skill-btn-type-icon"></template><span x-text="ui('skill.btn1')">스킬1</span></button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 2}" :style="tierAttrName(2) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(2)}.png')` : ''" @click="activeSkillTier = 2"><template x-for="src in tierTypeIcons(2)"><img :src="src" class="skill-btn-type-icon"></template><span x-text="ui('skill.btn2')">스킬2</span></button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 3}" :style="tierAttrName(3) ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName(3)}.png')` : ''" @click="activeSkillTier = 3"><template x-for="src in tierTypeIcons(3)"><img :src="src" class="skill-btn-type-icon"></template><span x-text="ui('skill.btn3')">스킬3</span></button>
+              <button class="skill-btn" :class="{'active': activeSkillTier === 'defense'}" :style="tierAttrName('defense') ? `--btn-img: url('/images/ui/button_modal_2_${tierAttrName('defense')}.png')` : ''" @click="activeSkillTier = 'defense'"><template x-for="src in tierTypeIcons('defense')"><img :src="src" class="skill-btn-type-icon"></template><span x-text="ui('skill.def')">수비</span></button>
             </div>
             <div class="skill-frame-scroll-wrap" x-data="scrollWrap('.skill-frame-scroll-area')">
               <div class="scroll-indicator" :class="{ visible: up }">▲</div>
@@ -2185,11 +2186,11 @@
                               <span x-text="`X ${c.v}`"></span>
                             </span>
                           </template>
-                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
+                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item" x-text="ui('passive.cond_stock')">보유</span>
                           <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
                             <span class="passive-cond-item">
                               <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
-                              <span x-text="`X ${c.v} 공명`"></span>
+                              <span x-text="`X ${c.v} ${ui('passive.cond_res')}`"></span>
                             </span>
                           </template>
                         </div>
@@ -2221,11 +2222,11 @@
                               <span x-text="`X ${c.v}`"></span>
                             </span>
                           </template>
-                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item">보유</span>
+                          <span x-show="passiveInfo(passiveId).stock?.length" class="passive-cond-item" x-text="ui('passive.cond_stock')">보유</span>
                           <template x-for="c in (passiveInfo(passiveId).res ?? [])" :key="c.t + 'res'">
                             <span class="passive-cond-item">
                               <img class="passive-cond-icon" :src="`/images/sin/${c.t[0]+c.t.slice(1).toLowerCase()}.png`">
-                              <span x-text="`X ${c.v} 공명`"></span>
+                              <span x-text="`X ${c.v} ${ui('passive.cond_res')}`"></span>
                             </span>
                           </template>
                         </div>
@@ -2252,17 +2253,17 @@
     <div class="float-toc-wrap" @click.away="showPrisonerFloat = false">
       <div class="float-toc-panel float-prisoner-panel" x-show="showPrisonerFloat" x-transition style="display:none">
         <button class="float-toc-item float-prisoner-all" :class="{ active: selectedPrisoner === null }" @click="selectedPrisoner = null; showPrisonerFloat = false">
-          <img src="/images/ui/personality.png" alt="전체" class="float-toc-icon">
-          <span>전체</span>
+          <img src="/images/ui/personality.png" alt="전체" :alt="ui('common.all')" class="float-toc-icon">
+          <span x-text="ui('common.all')">전체</span>
         </button>
         {{ range $prisoners }}
         <button class="float-toc-item" :class="{ active: selectedPrisoner?.id === '{{ .id }}' }" @click="selectedPrisoner = { id: '{{ .id }}', name: {{ .name | jsonify }}, icon: '{{ .icon }}' }; showPrisonerFloat = false">
-          <img src="/images/category/{{ .icon }}_02.png" alt="{{ .name }}" class="float-toc-icon">
-          <span>{{ .name }}</span>
+          <img src="/images/category/{{ .icon }}_02.png" alt="{{ .name }}" :alt="prisonerName('{{ .id }}', {{ .name | jsonify }})" class="float-toc-icon">
+          <span x-text="prisonerName('{{ .id }}', {{ .name | jsonify }})">{{ .name }}</span>
         </button>
         {{ end }}
       </div>
-      <button class="float-btn" @click="showPrisonerFloat = !showPrisonerFloat" title="수감자">
+      <button class="float-btn" @click="showPrisonerFloat = !showPrisonerFloat" title="수감자" :title="ui('prisoner.label')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
           <circle cx="3" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.5" fill="currentColor" stroke="none"/>
@@ -2270,12 +2271,12 @@
       </button>
     </div>
     <div class="float-scroll-group">
-      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">
+      <button class="float-btn float-btn--top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로" :title="ui('float.top')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="18 15 12 9 6 15"/>
         </svg>
       </button>
-      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="맨 아래로">
+      <button class="float-btn float-btn--bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="맨 아래로" :title="ui('float.bottom')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
@@ -2288,23 +2289,43 @@
 {{ partial "site-footer.html" . }}
 
 <script>
+// 정적 UI 문구 카탈로그. 3개 언어 모두 baseof 가 UI_ALL 로 인라인하므로 fetch 가 없다.
+const UI_KR = UI_ALL.kr;   // 카탈로그는 baseof 가 3개 언어를 인라인한다
 function personalityPage() {
   return {
     ...kwTooltipMixin(),
     // [클라이언트 사이드 언어 전환] 데이터축 텍스트 페이로드 (/lang/personality-{lc}.json)
     lang: 'kr',
     pL: null,   // null 이면 빌드타임 kr 맵으로 폴백
+    uiL: null,  // 정적 UI 문구 (baseof 의 UI_ALL 에서 대입; null 이면 UI_KR 로 폴백)
+    // head 에서 미리 쏜 요청(__langPreload)이 있으면 그걸 쓴다 (index.html 의 loadGiftLang 과 동일 규칙).
     async loadPersonalityLang() {
+      const lc = this.lang;
+      // kr 은 받지 않는다 — pL 을 읽는 모든 지점이 `?? 빌드타임 kr 맵` 폴백을 갖고 있어
+      // personality-kr.json(gzip 252KB)은 순수 중복이다 (index.html loadGiftLang 과 동일 규칙).
+      if (lc === 'kr') { this.pL = null; window.__personalityL = null; return; }
       try {
-        const res = await fetch(`/lang/personality-${this.lang}.json`);
-        if (res.ok) { this.pL = await res.json(); window.__personalityL = this.pL; }
+        const pre = window.__langPreload;
+        const data = (pre && pre.lc === lc)
+          ? await pre.promise
+          : await fetch(`/lang/personality-${lc}.json`).then(r => (r.ok ? r.json() : null));
+        if (data && this.lang === lc) { this.pL = data; window.__personalityL = this.pL; }
       } catch (e) { /* 실패 시 kr 유지 */ }
     },
+    // UI 문구는 baseof 가 3개 언어를 인라인(UI_ALL)하므로 네트워크 왕복이 없다.
+    loadUI() {
+      this.uiL = (this.lang === 'kr') ? null : (UI_ALL[this.lang] || null);
+      this._scheduleFitFilterTexts();
+    },
+    // 정적 UI 문구 조회 (선택 언어 → 없으면 kr → 없으면 키 자체)
+    ui(key) { return (this.uiL && this.uiL[key]) || UI_KR[key] || key; },
     setLang(lc) {
       if (lc === this.lang) return;
       this.lang = lc;
       localStorage.setItem('giftLang', lc);   // 기프트 페이지와 동일 키(사이트 공통 언어)
       this.loadPersonalityLang();
+      this.loadUI();
+      window.dispatchEvent(new CustomEvent('yeonsim:lang', { detail: lc }));   // 루트 밖(푸터) 알림
     },
     search: '',
     pageMode: 'personality',
@@ -2316,8 +2337,8 @@ function personalityPage() {
     skillSinFilter: { '1': [], '2': [], '3': [], def: [] },   // 스킬별 죄악속성(CRIMSON~VIOLET). sync4 기준
     openSkillDropdown: null,   // 스킬속성 드롭다운 열림 상태 ('{key}-atk' | '{key}-sin' | null)
     timingFilter: [],          // 출시시기(season) 필터: 'perm' | 's1'~'s7' | 'walpurgis'
-    skillTypeInfo: { {{ range $atkSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }}{{ range $defSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
-    sinInfo: { {{ range $.Site.Data.lang.kr.KR_ColorType.list }}'{{ .id }}': { icon: '/images/sin/{{ index $sinIconMap .id }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
+    skillTypeInfo: { {{ range $atkSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }}, uk: '{{ .uk }}' }, {{ end }}{{ range $defSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }}, uk: '{{ .uk }}' }, {{ end }} },
+    sinInfo: { {{ range $.Site.Data.lang.kr.yeonsim.KR_ColorType.list }}'{{ .id }}': { icon: '/images/sin/{{ index $sinIconMap .id }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
     selectedPrisoner: null,
     prisonerDropdownOpen: false,
     showPrisonerFloat: false,
@@ -2331,7 +2352,7 @@ function personalityPage() {
     egoTab: 'profile',
     showSupport: false,
     showFormation: false,
-    formationName: '편성',
+    formationName: '',   // [언어 전환] '' = 미지정 → formationTitle() 이 언어별 기본값 사용. 사용자가 지은 이름만 담는다.
     editingFormationName: false,
     showFormationReset: false,
     showFormationCode: false,
@@ -2619,7 +2640,7 @@ function personalityPage() {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': makeBlob() })]);
         btn._iconHtml ??= btn.innerHTML;
         clearTimeout(btn._copyTimer);
-        btn.textContent = '복사됨';
+        btn.textContent = this.ui('copy.copied');
         btn._copyTimer = setTimeout(() => { btn.innerHTML = btn._iconHtml; }, 1200);
       } catch (e) {
         console.warn('클립보드 복사 실패 → 다운로드 폴백:', e);
@@ -2647,7 +2668,7 @@ function personalityPage() {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': this.composeEgoCardBlob(wrap) })]);
         btn._iconHtml ??= btn.innerHTML;
         clearTimeout(btn._copyTimer);
-        btn.textContent = '복사됨';
+        btn.textContent = this.ui('copy.copied');
         btn._copyTimer = setTimeout(() => { btn.innerHTML = btn._iconHtml; }, 1200);
       } catch (e) {
         console.warn('클립보드 복사 실패 → 다운로드 폴백:', e);
@@ -2705,7 +2726,7 @@ function personalityPage() {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': this.composeCardBlob(frame) })]);
         btn._iconHtml ??= btn.innerHTML; // 아이콘 HTML 최초 1회 저장
         clearTimeout(btn._copyTimer);    // 연속 클릭 시 이전 복원 타이머 취소
-        btn.textContent = '복사됨';
+        btn.textContent = this.ui('copy.copied');
         btn._copyTimer = setTimeout(() => { btn.innerHTML = btn._iconHtml; }, 1200);
       } catch (e) {
         console.warn('클립보드 복사 실패 → 다운로드 폴백:', e);
@@ -2769,9 +2790,17 @@ function personalityPage() {
     },
 
     init() {
-      this.lang = localStorage.getItem('giftLang') || 'kr';
+      this.lang = window.yeonsimLang();
       this.loadPersonalityLang();
+      this.loadUI();
       const saved = localStorage.getItem('personality-gacksung');
+      // 웹폰트 로드 전에는 폭 측정이 어긋나므로 로드 완료 후 맞춘다
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.fitFilterTexts());
+      else this._scheduleFitFilterTexts();
+      window.addEventListener('resize', () => this._scheduleFitFilterTexts());
+      this.$watch('pL', () => this._scheduleFitFilterTexts());
+      this.$watch('pageMode', () => this._scheduleFitFilterTexts());   // 탭 전환으로 버튼이 새로 드러남
+
       if (saved) this.gacksungIds = JSON.parse(saved);
       this.$watch('gacksungIds', val => localStorage.setItem('personality-gacksung', JSON.stringify(val)));
       // 인격 탭 전환 시 EGO 전용 '한정' 필터 해제 (목록이 비는 것 방지)
@@ -2785,6 +2814,8 @@ function personalityPage() {
       if (savedE) { const s = JSON.parse(savedE); for (const k in s) this.egoLoadout[k] = { ...this.egoLoadout[k], ...s[k] }; }
       const savedN = localStorage.getItem('personality-formation-name');
       if (savedN) this.formationName = savedN;
+      // 구버전은 기본값 '편성' 을 그대로 저장했다 → 미지정으로 되돌려 언어를 따르게 한다
+      if (this.formationName === UI_KR['formation.default_name']) this.formationName = '';
       const savedP = localStorage.getItem('personality-formation-presets');
       if (savedP) { try { this.formationPresets = JSON.parse(savedP); } catch (e) {} }
       if (window.location.hash === '#ego') {
@@ -2801,6 +2832,10 @@ function personalityPage() {
         const rel = s => { const n = L.skillName?.[String(s.id)]; return n ? { ...s, nl: n } : s; };
         if (data.skills) data.skills = data.skills.map(rel);
         if (data.defenseSkills) data.defenseSkills = data.defenseSkills.map(rel);
+        // 소속 키워드: kwIds(suffix) 로 조회, 없으면 baked kr 라벨 유지
+        if (data.kwIds) data.keywords = data.keywords.map((kr, i) => L.keyword?.[data.kwIds[i]] ?? kr);
+        this._localizeSeason(data);
+        data.prisoner = this.prisonerName(data.pid, data.prisoner);
       }
       this.personalityDetail = data; this.personalitySync = 4;
     },
@@ -2882,44 +2917,44 @@ function personalityPage() {
     // ── 편성 코드 입출력 (편성 패널 직접 호출, 현재 코드 기본값) ──
     async openFormationCodeModal() {
       this.formationCodeIoError = '';
-      if (!window.CompressionStream) { this.formationCodeText = ''; this.formationCodeIoError = '이 브라우저는 코드 기능을 지원하지 않습니다.'; this.showFormationCodeModal = true; return; }
+      if (!window.CompressionStream) { this.formationCodeText = ''; this.formationCodeIoError = this.ui('toast.no_compression'); this.showFormationCodeModal = true; return; }
       try { this.formationCodeText = await this.exportFormationCode(); }
-      catch (e) { this.formationCodeText = ''; this.formationCodeIoError = '코드 생성 실패'; }
+      catch (e) { this.formationCodeText = ''; this.formationCodeIoError = this.ui('toast.code_failed'); }
       this.showFormationCodeModal = true;
     },
     copyFormationCodeText(ev) {
       const b = ev.currentTarget;
       if (!this.formationCodeText) return;
       navigator.clipboard?.writeText(this.formationCodeText).catch(() => {});
-      const t = b.textContent; b.textContent = '복사됨'; clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = t; }, 1200);
+      const t = b.textContent; b.textContent = this.ui('copy.copied'); clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = t; }, 1200);
     },
     async applyFormationCodeText() {
       this.formationCodeIoError = '';
       try { await this.applyFormationCode(this.formationCodeText); this.showFormationCodeModal = false; }
-      catch (e) { this.formationCodeIoError = '잘못된 코드입니다.'; }
+      catch (e) { this.formationCodeIoError = this.ui('toast.invalid_code'); }
     },
     // ── 편성 코드 프리셋 (이상 관측 유사, 로컬 저장) ──
     openFormationCode() { this.showFormationCode = true; },
     async openFormationAdd() {            // 추가 모달: 이름·코드 기본값 = 현재 편성
       this.formationAddError = '';
-      this.formationAddName = this.formationName || '편성';
-      if (!window.CompressionStream) { this.formationAddCode = ''; this.formationAddError = '이 브라우저는 코드 기능을 지원하지 않습니다.'; this.showFormationAdd = true; return; }
+      this.formationAddName = this.formationTitle();
+      if (!window.CompressionStream) { this.formationAddCode = ''; this.formationAddError = this.ui('toast.no_compression'); this.showFormationAdd = true; return; }
       try { this.formationAddCode = await this.exportFormationCode(); }
-      catch (e) { this.formationAddCode = ''; this.formationAddError = '코드 생성 실패'; }
+      catch (e) { this.formationAddCode = ''; this.formationAddError = this.ui('toast.code_failed'); }
       this.showFormationAdd = true;
     },
     async confirmFormationAdd() {         // 이름+코드 검증 → 키워드 요약 계산 → 리스트에 저장
       this.formationAddError = '';
       const name = (this.formationAddName || '').trim();
       const code = (this.formationAddCode || '').trim();
-      if (!name) { this.formationAddError = '이름을 입력해주세요.'; return; }
+      if (!name) { this.formationAddError = this.ui('toast.name_required'); return; }
       let summaryDeploy, summaryAll;
       try {
         const d = await this._decodeFormationCode(code);
         summaryAll = this._keywordSummaryOf(d.formation, Object.keys(this.formationDefaults), d.egoLoadout);
         summaryDeploy = this._keywordSummaryOf(d.formation, d.deployOrder, d.egoLoadout);
       }
-      catch (e) { this.formationAddError = '잘못된 편성 코드입니다.'; return; }
+      catch (e) { this.formationAddError = this.ui('toast.invalid_formation_code'); return; }
       this.formationPresets = [...this.formationPresets, { name, code, summaryDeploy, summaryAll }];
       this.saveFormationPresets();
       this.showFormationAdd = false;
@@ -2945,9 +2980,79 @@ function personalityPage() {
     _b64enc(u8) { let s = ''; for (let i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]); return btoa(s); },
     _b64dec(str) { const s = atob(str); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; },
     saveFormation() { localStorage.setItem('personality-formation', JSON.stringify(this.formation)); },
+    // ── 필터 버튼 텍스트 맞춤 ──
+    // .filter-btn 은 고정폭이라 언어에 따라 문구가 길어지면(예: 화상→Burn, 파열→Rupture) 버튼을 넘친다.
+    // 버튼 크기는 그대로 두고 폰트만 줄인다. fitEgoName 과 동일한 축소 루프 방식.
+    // 버튼 내용이 넘치는 정도(px). 양수면 넘침.
+    // ⚠️ scrollWidth 를 쓰면 안 된다 — .filter-btn.active::after 가 position:absolute 로 버튼보다 크게
+    //    깔려 있어(PC 125%, 모바일 inset:-6px) 활성 버튼이 항상 "넘침"으로 잡힌다.
+    //    실제 콘텐츠인 flex 자식(아이콘·텍스트)의 필요 폭만으로 판정한다(의사요소는 children 에 없음).
+    _btnOverflow(btn) {
+      const cs = getComputedStyle(btn);
+      const inner = btn.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      const kids = Array.from(btn.children).filter(k => getComputedStyle(k).position !== 'absolute');
+      if (!kids.length) return 0;
+      const gap = parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0;
+      const ws = kids.map(k => k.getBoundingClientRect().width);
+      const need = cs.flexDirection.indexOf('column') === 0
+        ? Math.max.apply(null, ws)                                   // 세로 배치(모바일): 가장 넓은 자식
+        : ws.reduce((a, b) => a + b, 0) + gap * (kids.length - 1);   // 가로 배치(PC): 합계 + 간격
+      return need - inner;
+    },
+    fitFilterText(el) {
+      const btn = el && el.closest('.filter-btn');
+      if (!btn || btn.offsetParent === null) return;   // 숨겨진 버튼은 측정 불가(표시될 때 다시 호출됨)
+      el.style.fontSize = '';                          // 매번 기본값에서 재계산(언어 전환으로 짧아지면 다시 커져야 함)
+      // 하한 3px: 가장 긴 문구(Keywordless)가 좁은 화면에서도 들어가려면 이 정도까지 필요.
+      let f = parseFloat(getComputedStyle(el).fontSize) || 16, guard = 32;
+      while (guard-- > 0 && f > 3 && this._btnOverflow(btn) > 0.5) {
+        f -= 0.5;
+        el.style.fontSize = f + 'px';
+      }
+    },
+    // 모바일은 .filter-btn 이 width:auto 라 버튼이 텍스트만큼 늘어나 버튼 단위 넘침이 안 생긴다.
+    // 이때 실제 제약은 "행 전체가 화면 폭에 들어가는가" 이므로, 행 가용폭을 버튼 수로 나눠
+    // 균등 폭을 먼저 확정한다. 폰트 축소는 그 다음 버튼 단위로 각자 수행 → 폭은 균일, 글자는 최대 크기.
+    fitFilterRow(row) {
+      if (!row || row.offsetParent === null) return;
+      const btns = Array.from(row.querySelectorAll('.filter-btn')).filter(b => b.offsetParent !== null);
+      if (!btns.length) return;
+      btns.forEach(b => { b.style.width = ''; });
+      const cs = getComputedStyle(row);
+      const gap = parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0;
+      // 시각적 행별(= offsetTop 이 같은 것끼리) 필요 폭·개수. row.scrollWidth 는 위와 같은 이유로 못 쓴다.
+      const perTop = new Map();
+      btns.forEach(b => {
+        const k = Math.round(b.offsetTop);
+        const e = perTop.get(k) || { sum: 0, n: 0 };
+        e.sum += b.getBoundingClientRect().width; e.n++;
+        perTop.set(k, e);
+      });
+      let need = 0, perRow = 1;
+      perTop.forEach(e => { need = Math.max(need, e.sum + gap * (e.n - 1)); perRow = Math.max(perRow, e.n); });
+      if (need <= row.clientWidth + 0.5) return;   // 자연 폭으로 이미 들어감(PC·KR) → 손대지 않음
+      const w = (row.clientWidth - gap * (perRow - 1)) / perRow;
+      if (!(w > 0)) return;
+      btns.forEach(b => { b.style.width = w.toFixed(2) + 'px'; });
+    },
+    fitFilterTexts() {
+      // 이전 실행이 남긴 인라인 폭을 먼저 제거 — 안 지우면 리사이즈·언어 전환 때 옛 폭 기준으로 측정된다
+      document.querySelectorAll('.personality-filter-row .filter-btn, .controls-row-2 .filter-buttons .filter-btn')
+        .forEach(b => { b.style.width = ''; });
+      // 1) 균등 폭 확정(모바일에서 행이 넘칠 때만) → 2) 확정된 폭 안에서 버튼별 폰트 축소
+      document.querySelectorAll('.personality-filter-row, .controls-row-2 .filter-buttons')
+        .forEach(row => this.fitFilterRow(row));
+      document.querySelectorAll('.filter-btn span').forEach(el => this.fitFilterText(el));
+    },
+    _scheduleFitFilterTexts() {                        // 연속 호출 합치기(리사이즈·연속 로드)
+      clearTimeout(this._fitFilterTimer);
+      this._fitFilterTimer = setTimeout(() => this.$nextTick(() => this.fitFilterTexts()), 30);
+    },
+    formationTitle() { return this.formationName || this.ui('formation.default_name'); },
     // ── 편성 이름 편집 ── 제목("편성") 인라인 수정
     toggleEditFormationName() {
       this.editingFormationName = true;
+      if (!this.formationName) this.formationName = this.formationTitle();   // 편집 중엔 실제 문자열로 다룬다
       this.$nextTick(() => { const el = this.$refs.formationNameInput; if (el) { el.focus(); el.select(); this.sizeFormationInput(el); } });
     },
     sizeFormationInput(el) {              // 입력 텍스트 폭만큼 너비 조정 (상한은 CSS max-width)
@@ -2961,7 +3066,7 @@ function personalityPage() {
     stopEditFormationName() {
       if (!this.editingFormationName) return;
       this.editingFormationName = false;
-      if (!this.formationName.trim()) this.formationName = '편성';
+      if (!this.formationName.trim() || this.formationName === this.ui('formation.default_name')) this.formationName = '';
       localStorage.setItem('personality-formation-name', this.formationName);
     },
     // ── 키워드 요약 ── 지정 pid 목록의 (EGO 특수효과 추가분 포함) 스킬 키워드를 {아이콘, 개수}로 집계
@@ -3018,7 +3123,7 @@ function personalityPage() {
       const ty = BASE_Y - p.y * ky * SCALE;   // Y는 게임(상+)↔CSS(하+) 반전
       return `transform: translate(${tx.toFixed(3)}%, ${ty.toFixed(3)}%) scale(${p.s * SCALE}) rotate(${p.r}deg);`;
     },
-    slotName(pid) { return (this.slotMeta(pid).name || '').replace(/\n/g, '<br>'); },
+    slotName(pid) { return this.pCardName(this.slotId(pid), (this.slotMeta(pid).name || '').replace(/\n/g, '<br>')); },
     onFormationImgError(el, id) {     // gacksung CG 없는 인격(LCB 등) → normal CG 폴백
       if (!id || this.noGacksungCgIds[id]) return;
       this.noGacksungCgIds = { ...this.noGacksungCgIds, [id]: true };
@@ -3049,7 +3154,7 @@ function personalityPage() {
     toggleEgoLoadout() { this.showEgoLoadout = !this.showEgoLoadout; },
     egoSlot(pid, grade) { return (this.egoLoadout[pid] && this.egoLoadout[pid][grade]) || ""; },
     egoEquipped(pid, id) { const lo = this.egoLoadout[pid] || {}; return lo.zayin === id || lo.teth === id || lo.he === id || lo.waw === id || lo.aleph === id; },   // 해당 EGO가 이 수감자 로드아웃에 장착됐는지
-    egoSlotName(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.name || "") : ""; },
+    egoSlotName(pid, grade) { const id = this.egoSlot(pid, grade); return id ? this.egoCardName(id, this.egoMeta[id]?.name || "") : ""; },
     egoSlotColor(pid, grade) { const id = this.egoSlot(pid, grade); return id ? (this.egoMeta[id]?.color || "") : ""; },
     fitEgoName(el) {                  // 지정 공간(부모=일러스트 높이) 안에 들어갈 때까지 폰트 축소 (2줄 줄바꿈 허용)
       if (!el || el.offsetParent === null) return;
@@ -3326,6 +3431,21 @@ function personalityPage() {
     // [언어 전환] 카드 이름 (kr = 빌드타임 폴백 인자)
     pCardName(id, kr) { const n = this.pL?.name?.[String(id)]; return n != null ? n.replace(/\n/g, '<br>') : kr; },
     egoCardName(id, kr) { return this.pL?.egoName?.[String(id)] ?? kr; },
+    sinName(id, kr) { return this.pL?.sin?.[id] ?? kr; },
+    catName(id, kr) { return this.pL?.category?.[id] ?? kr; },
+    prisonerName(pid, kr) { return this.pL?.characterName?.[pid] ?? kr; },   // pid = "01"~"12"
+    // 시즌 표기(모달): pL.season 우선. 값이 `<span style="color:..">텍스트</span>` 라
+    // 안쪽 텍스트가 비면 빈 span 만 렌더되므로, 태그를 뗀 실제 텍스트가 있을 때만 덮어쓴다
+    // (번역이 아직 안 채워진 언어에서 시즌 표기가 통째로 사라지는 것 방지).
+    _localizeSeason(data) {
+      const S = this.pL?.season;
+      if (!S || data.season == null) return;
+      const has = h => String(h || '').replace(/<[^>]*>/g, '').trim() !== '';
+      const t = S[String(data.season)];
+      if (t && has(t.title)) data.seasonTitle = t.title;
+      const n = S[String(data.rawSeason === 0 ? 0 : data.season)];   // 상시(season 0)는 0번 레코드의 name
+      if (n && has(n.name)) data.seasonName = n.name;
+    },
     formatPassiveDesc(desc) {
       if (!desc) return '';
       const kwSrc = this.pL?.kw ?? passiveKeywordMap;   // 언어별 키워드(이름·아이콘) 우선
@@ -3367,6 +3487,7 @@ function personalityPage() {
             return t ? { ...(data.passives[i] || {}), ...t } : (data.passives[i] || { name: '', desc: '' });
           });
         }
+        this._localizeSeason(data);
       }
       this.egoDetail = data; if (this.egoSync > data.maxGaksung) this.egoSync = data.maxGaksung; this.egoOverclock = false;
     },

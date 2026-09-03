@@ -288,5 +288,6 @@
       "id": "AlwaysUseEGOPassive2010911",
       "name": "[Always Active - Lobotomy E.G.O::Solemn Lament Yi Sang Exclusive Effect]"
     }
-  ]
+  ],
+  "skillTag": true
 }

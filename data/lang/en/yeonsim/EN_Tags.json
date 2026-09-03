@@ -1,0 +1,610 @@
+[
+  {
+    "id": "wrathResistance",
+    "name": "Wrath Resist"
+  },
+  {
+    "id": "lustResistance",
+    "name": "Lust Resist"
+  },
+  {
+    "id": "slothResistance",
+    "name": "Sloth Resist"
+  },
+  {
+    "id": "gluttonyResistance",
+    "name": "Gluttony Resist"
+  },
+  {
+    "id": "gloomResistance",
+    "name": "Gloom Resist"
+  },
+  {
+    "id": "prideResistance",
+    "name": "Pride Resist"
+  },
+  {
+    "id": "envyResistance",
+    "name": "Envy Resist"
+  },
+  {
+    "id": "attackResistance",
+    "name": "Attack Resist"
+  },
+  {
+    "id": "fixedDamage",
+    "name": "Fixed Damage"
+  },
+  {
+    "id": "slashResistance",
+    "name": "Slash Resist"
+  },
+  {
+    "id": "slashSkill",
+    "name": "Slash Skill"
+  },
+  {
+    "id": "slashPowerUp",
+    "name": "Slash Power Up"
+  },
+  {
+    "id": "penetrateResistance",
+    "name": "Pierce Resist"
+  },
+  {
+    "id": "penetrateSkill",
+    "name": "Pierce Skill"
+  },
+  {
+    "id": "penetratePowerUp",
+    "name": "Pierce Power Up"
+  },
+  {
+    "id": "hitResistance",
+    "name": "Blunt Resist"
+  },
+  {
+    "id": "hitSkill",
+    "name": "Blunt Skill"
+  },
+  {
+    "id": "hitPowerUp",
+    "name": "Blunt Power Up"
+  },
+  {
+    "id": "ammoGain",
+    "name": "Gain Ammo"
+  },
+  {
+    "id": "activateCombustion",
+    "name": "Activate Burn"
+  },
+  {
+    "id": "inflictCombustionPotency",
+    "name": "Inflict Burn"
+  },
+  {
+    "id": "combustionCount",
+    "name": "Burn Count"
+  },
+  {
+    "id": "loseCombustionCount",
+    "name": "Reduce Burn Count"
+  },
+  {
+    "id": "inflictCombustionCount",
+    "name": "Inflict Burn Count"
+  },
+  {
+    "id": "activateLaceration",
+    "name": "Activate Bleed"
+  },
+  {
+    "id": "lacerationPotency",
+    "name": "Bleed Potency"
+  },
+  {
+    "id": "loseLacerationPotency",
+    "name": "Reduce Bleed Potency"
+  },
+  {
+    "id": "inflictLacerationPotency",
+    "name": "Inflict Bleed"
+  },
+  {
+    "id": "lacerationCount",
+    "name": "Bleed Count"
+  },
+  {
+    "id": "loseLacerationCount",
+    "name": "Reduce Bleed Count"
+  },
+  {
+    "id": "inflictLacerationCount",
+    "name": "Inflict Bleed Count"
+  },
+  {
+    "id": "inflictVibrationPotency",
+    "name": "Inflict Tremor"
+  },
+  {
+    "id": "vibrationCount",
+    "name": "Tremor Count"
+  },
+  {
+    "id": "loseVibrationCount",
+    "name": "Reduce Tremor Count"
+  },
+  {
+    "id": "inflictVibrationCount",
+    "name": "Inflict Tremor Count"
+  },
+  {
+    "id": "vibrationHemorrhage",
+    "name": "Tremor - Hemorrhage"
+  },
+  {
+    "id": "vibrationEverlasting",
+    "name": "Tremor - Reverb"
+  },
+  {
+    "id": "vibrationDistribution",
+    "name": "Tremor - Distribution"
+  },
+  {
+    "id": "vibrationDecay",
+    "name": "Tremor - Decay"
+  },
+  {
+    "id": "vibrationChain",
+    "name": "Tremor - Chain"
+  },
+  {
+    "id": "vibrationScorch",
+    "name": "Tremor - Scorch"
+  },
+  {
+    "id": "vibrationSuperposition",
+    "name": "Tremor - Superposition"
+  },
+  {
+    "id": "loseBurstPotency",
+    "name": "Reduce Rupture Potency"
+  },
+  {
+    "id": "inflictBurstPotency",
+    "name": "Inflict Rupture"
+  },
+  {
+    "id": "inflictBurstCount",
+    "name": "Inflict Rupture Count"
+  },
+  {
+    "id": "sinkingPotency",
+    "name": "Sinking Potency"
+  },
+  {
+    "id": "inflictSinkingPotency",
+    "name": "Inflict Sinking"
+  },
+  {
+    "id": "sinkingCount",
+    "name": "Sinking Count"
+  },
+  {
+    "id": "inflictSinkingCount",
+    "name": "Inflict Sinking Count"
+  },
+  {
+    "id": "loseBreathPotency",
+    "name": "Reduce Poise Potency"
+  },
+  {
+    "id": "inflictBreathPotency",
+    "name": "Gain Poise"
+  },
+  {
+    "id": "inflictBreathCount",
+    "name": "Gain Poise Count"
+  },
+  {
+    "id": "inflictChargeBarrier",
+    "name": "Gain Charge Barrier"
+  },
+  {
+    "id": "chargePotency",
+    "name": "Charge Potency"
+  },
+  {
+    "id": "inflictChargePotency",
+    "name": "Gain Charge"
+  },
+  {
+    "id": "loseChargeCount",
+    "name": "Reduce Charge Count"
+  },
+  {
+    "id": "inflictChargeCount",
+    "name": "Gain Charge Count"
+  },
+  {
+    "id": "useChargeCount",
+    "name": "Use Charge Count"
+  },
+  {
+    "id": "dealDamageUp",
+    "name": "Deal Damage Up"
+  },
+  {
+    "id": "dealDamageDown",
+    "name": "Deal Damage Down"
+  },
+  {
+    "id": "takeDamageDown",
+    "name": "Take Damage Down"
+  },
+  {
+    "id": "takeDamageUp",
+    "name": "Take Damage Up"
+  },
+  {
+    "id": "inflictDamageUp",
+    "name": "Inflict Damage Up"
+  },
+  {
+    "id": "inflictSlashDamageUp",
+    "name": "Inflict Slash Damage Up"
+  },
+  {
+    "id": "inflictPenetrateDamageUp",
+    "name": "Inflict Pierce Damage Up"
+  },
+  {
+    "id": "inflictHitDamageUp",
+    "name": "Inflict Blunt Damage Up"
+  },
+  {
+    "id": "dealCriticalDamageUp",
+    "name": "Critical Damage Up"
+  },
+  {
+    "id": "inflictCriticalDamageUp",
+    "name": "Inflict Critical Damage Up"
+  },
+  {
+    "id": "inflictAttackPowerUp",
+    "name": "Inflict Attack Power Up"
+  },
+  {
+    "id": "coinPowerDown",
+    "name": "Coin Power Down"
+  },
+  {
+    "id": "coinPowerUp",
+    "name": "Coin Power Up"
+  },
+  {
+    "id": "plusCoinPowerUp",
+    "name": "Plus Coin Power Up"
+  },
+  {
+    "id": "basePowerUp",
+    "name": "Base Power Up"
+  },
+  {
+    "id": "clashPowerDown",
+    "name": "Clash Power Down"
+  },
+  {
+    "id": "clashPowerUp",
+    "name": "Clash Power Up"
+  },
+  {
+    "id": "inflictPowerUp",
+    "name": "Inflict Power Up"
+  },
+  {
+    "id": "inflictPowerDown",
+    "name": "Inflict Power Down"
+  },
+  {
+    "id": "powerUp",
+    "name": "Power Up"
+  },
+  {
+    "id": "finalPowerDown",
+    "name": "Final Power Down"
+  },
+  {
+    "id": "finalPowerUp",
+    "name": "Final Power Up"
+  },
+  {
+    "id": "offenseLevelUp",
+    "name": "Offense Level Up"
+  },
+  {
+    "id": "defenseLevelUp",
+    "name": "Defense Level Up"
+  },
+  {
+    "id": "maxSpeedUp",
+    "name": "Max Speed Up"
+  },
+  {
+    "id": "minSpeedUp",
+    "name": "Min Speed Up"
+  },
+  {
+    "id": "healSp",
+    "name": "Heal SP"
+  },
+  {
+    "id": "healHp",
+    "name": "Heal HP"
+  },
+  {
+    "id": "healHpUp",
+    "name": "Heal HP Up"
+  },
+  {
+    "id": "inflictHaste",
+    "name": "Apply Haste"
+  },
+  {
+    "id": "recoverStagger",
+    "name": "Recover Stagger"
+  },
+  {
+    "id": "removeNegativeEffect",
+    "name": "Remove Negative Effect"
+  },
+  {
+    "id": "inflictProtection",
+    "name": "Apply Protection"
+  },
+  {
+    "id": "inflictShield",
+    "name": "Apply Shield"
+  },
+  {
+    "id": "maxHpUp",
+    "name": "Max HP Up"
+  },
+  {
+    "id": "bless",
+    "name": "Blessed"
+  },
+  {
+    "id": "offenseLevelDown",
+    "name": "Offense Level Down"
+  },
+  {
+    "id": "defenseLevelDown",
+    "name": "Defense Level Down"
+  },
+  {
+    "id": "loseSpeed",
+    "name": "Lose Speed"
+  },
+  {
+    "id": "inflictBind",
+    "name": "Inflict Bind"
+  },
+  {
+    "id": "maxSpeedDown",
+    "name": "Max Speed Down"
+  },
+  {
+    "id": "minSpeedDown",
+    "name": "Min Speed Down"
+  },
+  {
+    "id": "maxHpDown",
+    "name": "Max HP Down"
+  },
+  {
+    "id": "inflictFragile",
+    "name": "Inflict Fragile"
+  },
+  {
+    "id": "inflictParalyze",
+    "name": "Inflict Paralyze"
+  },
+  {
+    "id": "stagger",
+    "name": "Stagger"
+  },
+  {
+    "id": "curse",
+    "name": "Cursed"
+  },
+  {
+    "id": "indexFinger",
+    "name": "The Index"
+  },
+  {
+    "id": "sameFaction",
+    "name": "Same Faction"
+  },
+  {
+    "id": "pinkyFinger",
+    "name": "The Pinky"
+  },
+  {
+    "id": "ringFinger",
+    "name": "The Ring"
+  },
+  {
+    "id": "thumb",
+    "name": "The Thumb"
+  },
+  {
+    "id": "middleFinger",
+    "name": "The Middle"
+  },
+  {
+    "id": "substitute",
+    "name": "Substitued"
+  },
+  {
+    "id": "allyKilled",
+    "name": "Ally Defeated"
+  },
+  {
+    "id": "regularEncounters",
+    "name": "Regular Encounters"
+  },
+  {
+    "id": "focusedEncounters",
+    "name": "Unopposed Attack"
+  },
+  {
+    "id": "enemyKilled",
+    "name": "Enemy Defeated"
+  },
+  {
+    "id": "enemyDefeated",
+    "name": "On Kill"
+  },
+  {
+    "id": "onHit",
+    "name": "When Hitting"
+  },
+  {
+    "id": "combatStart",
+    "name": "Combat Start"
+  },
+  {
+    "id": "critical",
+    "name": "Critical"
+  },
+  {
+    "id": "turnStart",
+    "name": "Turn Start"
+  },
+  {
+    "id": "turnEnd",
+    "name": "Turn End"
+  },
+  {
+    "id": "takeHit",
+    "name": "Take Hit"
+  },
+  {
+    "id": "winClash",
+    "name": "Win Clash"
+  },
+  {
+    "id": "teamNumber1",
+    "name": "#1"
+  },
+  {
+    "id": "teamNumber2",
+    "name": "#2"
+  },
+  {
+    "id": "teamNumber3",
+    "name": "#3"
+  },
+  {
+    "id": "teamNumber4",
+    "name": "#4"
+  },
+  {
+    "id": "teamNumber5",
+    "name": "#5"
+  },
+  {
+    "id": "teamNumber6",
+    "name": "#6"
+  },
+  {
+    "id": "teamNumber7",
+    "name": "#7"
+  },
+  {
+    "id": "teamNumber8",
+    "name": "#8"
+  },
+  {
+    "id": "4Faction",
+    "name": "4 Identities"
+  },
+  {
+    "id": "egoResource",
+    "name": "EGO Resource"
+  },
+  {
+    "id": "egoSkill",
+    "name": "EGO Skill"
+  },
+  {
+    "id": "egoPassive",
+    "name": "EGO Passive"
+  },
+  {
+    "id": "EX",
+    "name": "EX"
+  },
+  {
+    "id": "shop",
+    "name": "Shop"
+  },
+  {
+    "id": "refresh",
+    "name": "Refresh"
+  },
+  {
+    "id": "liquor",
+    "name": "Liquor"
+  },
+  {
+    "id": "skill1",
+    "name": "SKill 1"
+  },
+  {
+    "id": "skill2",
+    "name": "Skill 2"
+  },
+  {
+    "id": "skill3",
+    "name": "Skill 3"
+  },
+  {
+    "id": "additionalSkill",
+    "name": "Add Skill"
+  },
+  {
+    "id": "fusion",
+    "name": "Fusion"
+  },
+  {
+    "id": "coffee",
+    "name": "Coffe"
+  },
+  {
+    "id": "cost",
+    "name": "Cost"
+  },
+  {
+    "id": "gainCost",
+    "name": "Gain Cost"
+  },
+  {
+    "id": "themePackExclusive",
+    "name": "Theme Pack Exclusive"
+  },
+  {
+    "id": "keywordTrigger",
+    "name": "Keyword Trigger"
+  },
+  {
+    "id": "deployLevelUp",
+    "name": "Deploy Level Up"
+  },
+  {
+    "id": "hidden",
+    "name": "Hidden"
+  }
+]

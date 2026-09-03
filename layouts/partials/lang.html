@@ -3,7 +3,7 @@
        접두어 지식은 이 partial 에만 두고, 호출부는 언어 무관한 이름으로 접근한다.
 
        호출: {{ $L := partialCached "lang.html" "kr" "kr" }}
-             $L.Personalities · $L.egogift.Tags · (index $L "MirrorDungeonTheme-1") */ -}}
+             $L.Personalities · $L.egogift.EGOgift · $L.yeonsim.Tags(자작) · (index $L "MirrorDungeonTheme-1") */ -}}
 {{- $p := printf "%s_" (upper .) -}}
 {{- $out := dict -}}
 {{- range $k, $v := index site.Data.lang . -}}

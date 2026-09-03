@@ -1,39 +1,144 @@
 {{ define "main" }}
+{{/* [언어 전환] 이 페이지는 Alpine 컴포넌트가 없고 크롤러용 허브라, HTML 본문은 kr 로 두고
+     번역명을 data-en/data-jp 속성으로 함께 실은 뒤 작은 스크립트가 textContent 만 바꾼다.
+     (페이로드 fetch 를 쓰지 않는 이유: gift 780KB + personality 1.9MB 를 목록 한 장에 받을 이유가 없다) */}}
 {{ $sections := slice
-  (dict "label" "기프트" "path" "/gift")
-  (dict "label" "수감자 인격" "path" "/personality")
-  (dict "label" "E.G.O" "path" "/ego")
+  (dict "key" "gift" "label" "기프트" "path" "/gift")
+  (dict "key" "personality" "label" "수감자 인격" "path" "/personality")
+  (dict "key" "ego" "label" "E.G.O" "path" "/ego")
 }}
+{{/* 언어별 id→표시명 맵. 제목 조합 규칙은 각 섹션의 콘텐츠 어댑터(_content.gotmpl)와 동일하게 맞춘다. */}}
+{{/* EGO id → characterId (언어 무관, 데이터에서 직접).
+     id 앞자리로 유도하면 6자리 id(예: 211011)에서 어긋나므로 어댑터와 동일하게 데이터를 쓴다. */}}
+{{ $egoChar := dict }}
+{{ range $f, $d := site.Data.egoskill }}
+  {{ range $d.list }}
+    {{ if and .id .characterId }}
+      {{ $egoChar = merge $egoChar (dict (printf "%d" (int .id)) (string (int .characterId))) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* 인격·EGO 정렬 키: 수감자 id 우선, 같은 수감자 안에서는 항목 id 순.
+     제목(가나다) 정렬은 언어마다 순서가 달라지므로 쓰지 않는다.
+     EGO 는 6자리 id(예: 201011)가 5건 섞여 있어 id 단독 숫자 정렬로도 수감자 순서가 깨진다. */}}
+{{ $sortKey := dict }}
+{{ range $f, $d := site.Data.personality.info }}
+  {{ range $d.list }}
+    {{ if and .id .characterId }}
+      {{ $sortKey = merge $sortKey (dict (printf "%d" (int .id)) (add (mul (int .characterId) 10000000) (int .id))) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ range $f, $d := site.Data.egoskill }}
+  {{ range $d.list }}
+    {{ if and .id .characterId }}
+      {{ $sortKey = merge $sortKey (dict (printf "%d" (int .id)) (add (mul (int .characterId) 10000000) (int .id))) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $names := dict }}
+{{ range $lc := slice "en" "jp" }}
+  {{ $L := partialCached "lang.html" $lc $lc }}
+  {{/* 기프트 — assemble 파셜이 언어 인자를 받는다 */}}
+  {{ $g := dict }}
+  {{ range partialCached "egogift/assemble.html" $lc $lc }}
+    {{ $g = merge $g (dict (printf "%d" (int .id)) .name) }}
+  {{ end }}
+  {{/* 인격 — "{name} - {title}" (title 의 개행은 공백으로) */}}
+  {{ $p := dict }}
+  {{ range $L.Personalities.dataList }}
+    {{ if and .name .title }}
+      {{ $p = merge $p (dict (string .id) (printf "%s - %s" .name (replace .title "\n" " "))) }}
+    {{ end }}
+  {{ end }}
+  {{/* EGO — "{수감자명} - {EGO명}". 수감자명은 Characters(id 1~12) */}}
+  {{ $cn := dict }}
+  {{ with $L.Characters }}
+    {{ range .dataList }}
+      {{ if and (ge (int .id) 1) (le (int .id) 12) }}{{ $cn = merge $cn (dict (string (int .id)) .name) }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $e := dict }}
+  {{ range $L.egoskill.Egos.dataList }}
+    {{ if .name }}
+      {{ $t := .name }}
+      {{ with index $egoChar (printf "%d" (int .id)) }}
+        {{ with index $cn . }}{{ $t = printf "%s - %s" . $t }}{{ end }}
+      {{ end }}
+      {{ $e = merge $e (dict (printf "%d" (int .id)) $t) }}
+    {{ end }}
+  {{ end }}
+  {{ $names = merge $names (dict $lc (dict "gift" $g "personality" $p "ego" $e)) }}
+{{ end }}
 <style>
   .browse-page{max-width:1040px;margin:0 auto;padding:28px 18px 72px;line-height:1.5}
-  .browse-nav{font-size:.85rem;opacity:.7;margin:0 0 18px}
-  .browse-nav a{color:inherit}
   .browse-page h1{font-size:1.7rem;margin:0 0 6px}
   .browse-intro{opacity:.75;margin:0 0 28px;font-size:.95rem}
   .browse-section{margin:0 0 34px}
   .browse-section h2{font-size:1.15rem;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.15);display:flex;align-items:baseline;gap:8px}
   .browse-section h2 .cnt{font-size:.8rem;opacity:.55;font-weight:400}
-  .browse-list{list-style:none;padding:0;margin:0;columns:4 190px;column-gap:24px}
-  .browse-list li{break-inside:avoid;margin:1px 0}
+  .browse-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));column-gap:24px}
+  .browse-list li{margin:1px 0;min-width:0}
   .browse-list a{display:block;padding:3px 6px;border-radius:5px;color:inherit;text-decoration:none;font-size:.9rem;opacity:.85}
   .browse-list a:hover{background:rgba(255,255,255,.08);opacity:1}
 </style>
-<main class="browse-page">
-  <nav class="browse-nav"><a href="/">기프트</a> · <a href="/personality/">수감자</a></nav>
-  <h1>{{ .Title }}</h1>
-  <p class="browse-intro">{{ .Params.intro }}</p>
+<div class="content-page" x-data="simplePage()">
+  {{ partial "site-header.html" "page" }}
+  {{ partial "sponsor-modal.html" . }}
+  <main class="browse-page">
+  <h1 data-en="Browse" data-jp="一覧">{{ .Title }}</h1>
+  <p class="browse-intro"
+     data-en="연심(連心) — Full list of Gifts, Identities, and E.G.O. Every detail page is linked here."
+     data-jp="連心 — ギフト・人格・E.G.O の全一覧。すべての詳細ページへ移動できます。">{{ .Params.intro }}</p>
   {{ range $sections }}
-    {{ $label := .label }}
+    {{ $key := .key }}{{ $label := .label }}
     {{ with site.GetPage .path }}
       <section class="browse-section">
-        <h2>{{ $label }} <span class="cnt">{{ len .Pages }}</span></h2>
+        {{ $labelEn := cond (eq $key "gift") "Gift" (cond (eq $key "personality") "Identities" "E.G.O") }}
+        {{ $labelJp := cond (eq $key "gift") "ギフト" (cond (eq $key "personality") "人格" "E.G.O") }}
+        <h2><span data-en="{{ $labelEn }}" data-jp="{{ $labelJp }}">{{ $label }}</span> <span class="cnt">{{ len .Pages }}</span></h2>
+{{/* 정렬: 인격·EGO 는 $sortKey(수감자 id 우선), 기프트는 키가 없어 id 오름차순으로 떨어진다.
+             제목 정렬은 언어마다 순서가 달라져 쓰지 않는다. */}}
+        {{ $items := slice }}
+        {{ range .Pages }}
+          {{ $pid := path.Base .RelPermalink }}
+          {{ $items = $items | append (dict "page" . "id" $pid "k" (index $sortKey $pid | default (int $pid))) }}
+        {{ end }}
         <ul class="browse-list">
-        {{ range .Pages.ByTitle }}
-          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ range sort $items "k" }}
+          {{ $id := .id }}
+          <li><a href="{{ .page.RelPermalink }}"
+            {{- with index $names "en" $key $id }} data-en="{{ . }}"{{ end }}
+            {{- with index $names "jp" $key $id }} data-jp="{{ . }}"{{ end }}>{{ .page.Title }}</a></li>
         {{ end }}
         </ul>
       </section>
     {{ end }}
   {{ end }}
-</main>
+  </main>
+  {{ partial "site-footer.html" . }}
+</div>
+
+{{/* 정적 UI 문구 kr 카탈로그 — simplePage()·footerUI() 가 참조 */}}
+<script>
+const UI_KR = UI_ALL.kr;   // 카탈로그는 baseof 가 3개 언어를 인라인한다
+</script>
+{{ $simplePageJs := resources.Get "js/simple-page.js" | fingerprint }}
+<script src="{{ $simplePageJs.RelPermalink }}"></script>
+
+<script>
+// [언어 전환] Alpine 컴포넌트가 없는 정적 페이지라 순수 JS. data-{lc} 가 있는 노드만 교체한다.
+// (번역이 없는 항목은 속성이 아예 없으므로 kr 이 그대로 남는다)
+(function () {
+  function applyLang(lc) {
+    document.querySelectorAll('[data-en], [data-jp]').forEach(function (el) {
+      if (el.dataset.krText === undefined) el.dataset.krText = el.textContent;
+      var v = (lc === 'kr') ? el.dataset.krText : el.getAttribute('data-' + lc);
+      el.textContent = v || el.dataset.krText;
+    });
+  }
+  applyLang(window.yeonsimLang());
+  window.addEventListener('yeonsim:lang', function (e) { applyLang(e.detail); });
+})();
+</script>
 {{ end }}

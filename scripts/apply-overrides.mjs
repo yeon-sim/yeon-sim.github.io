@@ -97,6 +97,13 @@ for (const ovPath of overrideFiles) {
   const tc = container(target);
   const oc = container(override);
 
+  // 최상위 병합 대상인가:
+  //  - 대상·패치 둘 다 컨테이너 없음 (최상위 키 맵 / 단일 레코드)
+  //  - 또는 "파일 단위 플래그": 대상엔 dataList/list 가 있어도 패치가 컨테이너 없이 최상위 키만 적은 경우.
+  //    (예: parsingdata/*_SkillTag.json 의 { "skillTag": true } — 타이밍 태그를 툴팁 없는 초록 텍스트로 렌더)
+  //    단 패치에 id 가 있으면 레코드 패치 오작성이므로 제외 → shape 오류로 남긴다.
+  const topLevelPatch = isObj(target) && isObj(override) && !oc && (!tc || !(KEY in override));
+
   if (tc && oc) {
     // 배열 컨테이너 → id 매칭
     const byId = new Map(tc.arr.map((r, i) => [String(r[KEY]), i]));
@@ -122,8 +129,8 @@ for (const ovPath of overrideFiles) {
         nNew++;
       }
     }
-  } else if (isObj(target) && isObj(override) && !tc && !oc) {
-    // 최상위 키 맵 / 단일 레코드 → 최상위 키 기준 deep-merge
+  } else if (topLevelPatch) {
+    // 최상위 키 맵 / 단일 레코드 / 파일 단위 플래그 → 최상위 키 기준 deep-merge
     const leaves = diffLeaves(target, override);
     const changed = leaves.filter((l) => !l.same);
     if (changed.length === 0) {

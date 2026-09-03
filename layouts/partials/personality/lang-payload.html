@@ -49,7 +49,7 @@
 
 {{- /* 시즌 (id → {title,name}); color 태그 → span */ -}}
 {{- $season := dict -}}
-{{- range $L.Season.dataList -}}
+{{- range $L.yeonsim.Season.dataList -}}
   {{- $season = merge $season (dict (string .id) (dict
     "title" (.title | replaceRE $colorRE "<span style=\"color:$1\">$2</span>")
     "name"  (.name  | replaceRE $colorRE "<span style=\"color:$1\">$2</span>"))) -}}
@@ -127,7 +127,22 @@
 
 {{- /* sin(죄악속성) 이름 (id → name) */ -}}
 {{- $sin := dict -}}
-{{- range $L.ColorType.list -}}{{- $sin = merge $sin (dict .id .name) -}}{{- end -}}
+{{- range $L.yeonsim.ColorType.list -}}{{- $sin = merge $sin (dict .id .name) -}}{{- end -}}
+
+{{- /* 수감자 이름 (pid "01"~"12" -> name).
+       ⚠️ Characters 에는 이벤트용 비-플레이어블 캐릭터(예: 400005)가 섞여 있고 앞으로 더 늘 수 있다.
+          사이트는 플레이어블 12명만 쓰므로 id 1~12 로 한정한다. */ -}}
+{{- $characterName := dict -}}
+{{- range $L.Characters.dataList -}}
+  {{- $cid := int .id -}}
+  {{- if and (ge $cid 1) (le $cid 12) -}}
+    {{- $characterName = merge $characterName (dict (printf "%02d" $cid) .name) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 기프트 카테고리 이름 (id -> name) — 인격/EGO 컨트롤 바의 키워드 칩용 */ -}}
+{{- $category := dict -}}
+{{- range $L.yeonsim.Categories.dataList -}}{{- if .name -}}{{- $category = merge $category (dict .id .name) -}}{{- end -}}{{- end -}}
 
 {{- return dict
       "lang" $lc
@@ -144,4 +159,6 @@
       "egoSkillAbName" $egoSkillAbName
       "egoName" $egoName
       "egoPassive" $egoPassive
-      "sin" $sin -}}
+      "sin" $sin
+      "category" $category
+      "characterName" $characterName -}}

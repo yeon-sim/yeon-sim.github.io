@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "Left-click to select a Gift.<br>Right-click or long-press to view its details.",
+    "Fusion Gifts have a red border.<br>Pack-exclusive Gifts have a yellow heptagonal frame.",
+    "Use the [-] [+] [++] buttons to view upgrade info.<br>Right-click or click outside to close the window.",
+    "If the Gift is used in a Fusion, the recipe is shown.<br>Click a Gift in the recipe to view its details.",
+    "Pack-exclusive Gifts show the banner of the Pack they appear in.<br>Click the banner to view the Pack's details.",
+    "This is the Pack's detail view.<br>You can check its floors and unique Gifts.",
+    "Click a material Gift in the recipe<br>to view that Gift's details.",
+    "Cursed and Blessed Gifts show their related Gifts."
+  ]
+}

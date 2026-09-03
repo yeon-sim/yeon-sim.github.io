@@ -9,13 +9,15 @@
   {{ $r := resources.FromString (printf "lang/gift-%s.json" $lc) (partial "egogift/lang-payload.html" $lc | jsonify) }}
   {{/* RelPermalink 평가가 발행을 트리거한다. 변수에 담아 출력은 내지 않는다. */}}
   {{ $published := $r.RelPermalink }}
-  {{/* 정적 UI 문구 카탈로그(KR_YeonSimUI 계열) → /lang/ui-{lc}.json */}}
-  {{ $ui := resources.FromString (printf "lang/ui-%s.json" $lc) (index (partialCached "lang.html" $lc $lc) "YeonSimUI" | jsonify) }}
+  {{/* 정적 UI 문구 카탈로그 → /lang/ui-{lc}.json.
+       ⚠️ 사이트는 이제 이 파일을 fetch 하지 않는다 — baseof 가 UI_ALL 로 인라인한다.
+          이미 배포된 옛 HTML(캐시)이 요청할 수 있어 발행은 유지한다. 정리 규칙은 partial 공유. */}}
+  {{ $ui := resources.FromString (printf "lang/ui-%s.json" $lc) (partialCached "ui-clean.html" $lc $lc | jsonify) }}
   {{ $uiPublished := $ui.RelPermalink }}
 {{ end }}
 {{/* 카테고리 — egogift/category.json(id·플래그) + KR_Categories(이름) 조인 */}}
 {{ $catNameMap := dict }}
-{{ range site.Data.lang.kr.egogift.KR_Categories.dataList }}{{ $catNameMap = merge $catNameMap (dict .id .name) }}{{ end }}
+{{ range site.Data.lang.kr.yeonsim.KR_Categories.dataList }}{{ $catNameMap = merge $catNameMap (dict .id .name) }}{{ end }}
 {{ $categories := slice }}
 {{ range where site.Data.egogift.category.dataList "hide" "ne" true }}{{ $categories = $categories | append (merge . (dict "name" (index $catNameMap .id))) }}{{ end }}
 
@@ -84,7 +86,7 @@
         <button
           class="filter-btn preset-panel-btn"
           x-show="!showPackPanel && panelMode === 'default'"
-          @click="showPresetModal = true"
+          @click="seedDefaultPresets(); showPresetModal = true"
         ><img class="filter-btn-icon" src="/images/ui/preset.png" alt=""><span x-text="ui('preset.observe')">이상 관측</span></button>
         <div class="preset-mode-actions" x-cloak x-show="!showPackPanel && panelMode === 'preset'">
           <button class="filter-btn preset-panel-btn" @click="exitPresetMode()"><img class="filter-btn-icon" src="/images/ui/preset_exit.png" alt=""><span x-text="ui('preset.observe_end')">관측 종료</span></button>
@@ -136,7 +138,7 @@
           class="filter-btn"
           :class="{ active: activeCategory === '{{ .id }}' }"
           @click="activeCategory = '{{ .id }}'"
-        ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt="">{{ .name }}</button>
+        ><img class="filter-btn-icon" src="/images/ui/{{ .id | lower }}.png" alt=""><span x-text="cName('{{ .id }}')">{{ .name }}</span></button>
         {{ end }}{{ end }}
       </div>
       <div class="controls-right">
@@ -150,12 +152,6 @@
           <button class="toggle-name-btn" x-cloak x-show="showPackPanel" @click="togglePackView()"><img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt=""><span x-text="packViewMode === 'detail' ? ui('toggle.detail') : ui('toggle.simple')"></span></button>
           <button class="reset-btn filter-btn mobile-only" @click="document.getElementById('reset-modal').classList.add('open')"><img class="filter-btn-icon" src="/images/ui/clear.png" alt=""><span x-text="ui('common.reset')">초기화</span></button>
         </div>
-        {{/* [스파이크] 클라이언트 사이드 언어 전환 토글 */}}
-        <div class="controls-right-row lang-switch">
-          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'kr' }" @click="setGiftLang('kr')">한국어</button>
-          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'en' }" @click="setGiftLang('en')">EN</button>
-          <button class="filter-btn lang-btn" :class="{ 'lang-btn--active': lang === 'jp' }" @click="setGiftLang('jp')">日本語</button>
-        </div>
       </div>
     </div>
   </div>
@@ -163,7 +159,9 @@
   {{/* ── 태그 패널 ── (경량화 id 기반 egogift/tag_categories + KR_Tags 이름 조회) */}}
   {{ $tagCategories := site.Data.egogift.tag_categories.dataList }}
   {{ $tagNameMap := dict }}
-  {{ range site.Data.lang.kr.egogift.KR_Tags }}{{ $tagNameMap = merge $tagNameMap (dict .id .name) }}{{ end }}
+  {{ range site.Data.lang.kr.yeonsim.KR_Tags }}{{ $tagNameMap = merge $tagNameMap (dict .id .name) }}{{ end }}
+  {{ $tagCatNameMap := dict }}
+  {{ range site.Data.lang.kr.yeonsim.KR_TagCategories.dataList }}{{ $tagCatNameMap = merge $tagCatNameMap (dict .id .name) }}{{ end }}
   <div class="tag-panel" x-cloak x-show="showTagPanel" x-transition>
     <div class="search-input-wrap">
       <input
@@ -182,13 +180,14 @@
       </button>
     </div>
     {{ range $tagCategories }}
-    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}'{{ index $tagNameMap . }}',{{ end }}].some(t => t.startsWith(tagFilter))">
-      <div class="tag-category-label">{{ .category }}</div>
+    <div class="tag-category-group" x-show="!tagFilter || [{{ range .tags }}tagName('{{ . }}', {{ index $tagNameMap . | jsonify }}),{{ end }}].some(t => t.startsWith(tagFilter))">
+      <div class="tag-category-label" x-text="tagCatName('{{ .category }}', {{ index $tagCatNameMap .category | jsonify }})">{{ index $tagCatNameMap .category }}</div>
       <div class="tag-category-tags">
-        {{ range .tags }}{{ $nm := index $tagNameMap . }}
+        {{ range .tags }}{{ $tid := . }}{{ $nm := index $tagNameMap . }}
         <button class="tag-btn"
-          x-show="!tagFilter || '{{ $nm }}'.startsWith(tagFilter)"
-          @click="search = (search ? search.trimEnd() + ', ' : '') + '#{{ $nm }}'; showTagPanel = false; tagFilter = ''; onSearch()">#{{ $nm }}</button>
+          x-show="!tagFilter || tagName('{{ $tid }}', {{ $nm | jsonify }}).startsWith(tagFilter)"
+          @click="search = (search ? search.trimEnd() + ', ' : '') + '#' + tagName('{{ $tid }}', {{ $nm | jsonify }}); showTagPanel = false; tagFilter = ''; onSearch()"
+          x-text="'#' + tagName('{{ $tid }}', {{ $nm | jsonify }})">#{{ $nm }}</button>
         {{ end }}
       </div>
     </div>
@@ -223,7 +222,7 @@
     </div>
     <template x-for="(group, groupIdx) in packGroups" :key="groupIdx">
       <div class="pack-group" x-show="(packDungeonMode === 'normal' ? group.dungeonIdx === 0 : group.dungeonIdx >= 1) && group.packs.some(id => appliedPackHas(id) && (!packFilter || themeNameOf(id, giftL).includes(packFilter)))">
-        <div class="pack-group-label" x-text="group.label"></div>
+        <div class="pack-group-label" x-text="packGroupLabel(group)"></div>
         <div class="pack-group-items">
           <template x-for="packId in group.packs" :key="packId">
             <div class="pack-panel-item"
@@ -277,7 +276,7 @@
               </div>
               <img class="pack-panel-banner"
                 x-show="packViewMode === 'simple'"
-                :src="`/images/banner/${packId}.png`"
+                :src="`/images/banner/${packId}_${lang}.png`"
                 onerror="this.src='/images/banner/pack_default.png'"
                 :alt="themeNameOf(packId, giftL)"
               >
@@ -398,7 +397,7 @@
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}">
         <span class="cat-name" x-text="cName('{{ $catId }}')">{{ $catName }}</span>
         <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
-        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.fusion')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -446,7 +445,7 @@
         <img class="cat-icon" src="/images/category/none.png" alt="범용">
         <span class="cat-name" x-text="cName('None')">범용</span>
         <span class="cat-count" x-text="`${checkedInCategory('None')} / {{ $noneCount }}`"></span>
-        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.fusion')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('None')} / ${comboTotalInCategory('None')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -495,7 +494,7 @@
         <img class="cat-icon" src="/images/category/{{ lower $catId }}.png" alt="{{ $catName }}" @click.stop="onPilgrimageIconClick()" style="cursor: pointer;">
         <span class="cat-name" x-text="cName('{{ $catId }}')">{{ $catName }}</span>
         <span class="cat-count" x-text="`${checkedInCategory('{{ $catId }}')} / {{ len (where $gifts "category" $catId) }}`"></span>
-        <span class="cat-combo-label" x-text="ui('gift.combo')">조합</span>
+        <span class="cat-combo-label" x-text="ui('gift.fusion')">조합</span>
         <span class="cat-count" x-text="`${comboCheckedInCategory('{{ $catId }}')} / ${comboTotalInCategory('{{ $catId }}')}`"></span>
       </div>
       <div class="gift-row" :class="{ 'show-name': showName }">
@@ -551,17 +550,17 @@
     <div class="float-toc-wrap" x-cloak x-show="!showPackPanel">
       <div class="float-toc-panel" x-show="showToc" x-transition>
         <button class="float-toc-item" @click="activeCategory = ''; showToc = false; window.scrollTo({top:0,behavior:'smooth'})">
-          <img src="/images/ui/all.png" alt="전체" class="float-toc-icon">
+          <img src="/images/ui/all.png" alt="전체" :alt="ui('common.all')" class="float-toc-icon">
           <span x-text="ui('common.all')">전체</span>
         </button>
         <button class="float-toc-item" @click="scrollToCategory('None')">
-          <img src="/images/ui/none.png" alt="범용" class="float-toc-icon">
+          <img src="/images/ui/none.png" alt="범용" :alt="cName('None')" class="float-toc-icon">
           <span x-text="cName('None')">범용</span>
         </button>
         {{ range $categories }}{{ if ne .id "None" }}
         <button class="float-toc-item" @click="scrollToCategory('{{ .id }}')"{{ if .easterEgg }} x-show="showPilgrimage"{{ end }}>
-          <img src="/images/ui/{{ lower .id }}.png" alt="{{ .name }}" class="float-toc-icon">
-          <span>{{ .name }}</span>
+          <img src="/images/ui/{{ lower .id }}.png" alt="{{ .name }}" :alt="cName('{{ .id }}')" class="float-toc-icon">
+          <span x-text="cName('{{ .id }}')">{{ .name }}</span>
         </button>
         {{ end }}{{ end }}
       </div>
@@ -658,12 +657,12 @@
               <template x-for="group in presetGiftsByCategory()" :key="group.catId">
                 <div class="preset-gift-category-group">
                   <div class="preset-gift-category-label">
-                    <img class="preset-gift-cat-icon" :src="`/images/category/${group.catId.toLowerCase()}.png`" :alt="group.name">
-                    <span x-text="group.name"></span>
+                    <img class="preset-gift-cat-icon" :src="`/images/category/${group.catId.toLowerCase()}.png`" :alt="cName(group.catId)">
+                    <span x-text="cName(group.catId)"></span>
                     <span class="preset-gift-count" x-text="`[${group.gifts.length} / ${group.total}]`"></span>
                     <template x-if="group.fusionTotal > 0">
                       <span class="preset-gift-combo-wrap">
-                        <span class="preset-gift-combo-label" x-text="ui('gift.combo')">조합</span>
+                        <span class="preset-gift-combo-label" x-text="ui('gift.fusion')">조합</span>
                         <span class="preset-gift-count" x-text="`[${group.fusionSelected} / ${group.fusionTotal}]`"></span>
                       </span>
                     </template>
@@ -672,7 +671,7 @@
                     <template x-for="giftId in group.gifts" :key="giftId">
                       <div class="fusion-recipe-card" :class="{ fusion: giftMap[giftId]?.isFusion && (giftMap[giftId]?.grade ?? 0) >= 4 }" @click.stop="openGiftPopup(giftId)">
                         <div class="fusion-icon-wrap">
-                          <img class="fusion-icon" :src="`/images/egogift/${giftId}.png`" :alt="itemNameMap[giftId] || giftId">
+                          <img class="fusion-icon" :src="`/images/egogift/${giftId}.png`" :alt="gName(giftId)">
                         </div>
                         <img class="fusion-frame" src="/images/egogift/gift_frame.png" alt="">
                         <div class="fusion-grade-wrap">
@@ -721,12 +720,12 @@
               <template x-for="group in shareGiftsByCategory()" :key="group.catId">
                 <div class="preset-gift-category-group">
                   <div class="preset-gift-category-label">
-                    <img class="preset-gift-cat-icon" :src="`/images/category/${group.catId.toLowerCase()}.png`" :alt="group.name">
-                    <span x-text="group.name"></span>
+                    <img class="preset-gift-cat-icon" :src="`/images/category/${group.catId.toLowerCase()}.png`" :alt="cName(group.catId)">
+                    <span x-text="cName(group.catId)"></span>
                     <span class="preset-gift-count" x-text="`[${group.gifts.length} / ${group.total}]`"></span>
                     <template x-if="group.fusionTotal > 0">
                       <span class="preset-gift-combo-wrap">
-                        <span class="preset-gift-combo-label" x-text="ui('gift.combo')">조합</span>
+                        <span class="preset-gift-combo-label" x-text="ui('gift.fusion')">조합</span>
                         <span class="preset-gift-count" x-text="`[${group.fusionSelected} / ${group.fusionTotal}]`"></span>
                       </span>
                     </template>
@@ -735,7 +734,7 @@
                     <template x-for="giftId in group.gifts" :key="giftId">
                       <div class="fusion-recipe-card" :class="{ fusion: giftMap[giftId]?.isFusion && (giftMap[giftId]?.grade ?? 0) >= 4 }" @click.stop="openGiftPopup(giftId)">
                         <div class="fusion-icon-wrap">
-                          <img class="fusion-icon" :src="`/images/egogift/${giftId}.png`" :alt="itemNameMap[giftId] || giftId">
+                          <img class="fusion-icon" :src="`/images/egogift/${giftId}.png`" :alt="gName(giftId)">
                         </div>
                         <img class="fusion-frame" src="/images/egogift/gift_frame.png" alt="">
                         <div class="fusion-grade-wrap">
@@ -855,7 +854,7 @@
                   <div class="pack-preset-preview-list">
                     <template x-for="packId in group.packs" :key="packId">
                       <img class="pack-preset-preview-img"
-                        :src="`/images/banner/${packId}.png`"
+                        :src="`/images/banner/${packId}_${lang}.png`"
                         onerror="this.src='/images/banner/pack_default.png'"
                         :title="themeNameOf(packId, giftL)"
                         @click="openPackPopup(packId)">
@@ -904,7 +903,7 @@
                   <div class="pack-preset-preview-list">
                     <template x-for="packId in group.packs" :key="packId">
                       <img class="pack-preset-preview-img"
-                        :src="`/images/banner/${packId}.png`"
+                        :src="`/images/banner/${packId}_${lang}.png`"
                         onerror="this.src='/images/banner/pack_default.png'"
                         :title="themeNameOf(packId, giftL)"
                         @click="openPackPopup(packId)">
@@ -1081,7 +1080,7 @@
             </div>
             <div class="gift-popup-packs" x-show="popup.packs && popup.packs.length">
               <template x-for="packId in popup.packs" :key="packId">
-                <img class="pack-banner" :src="`/images/banner/${packId}.png`" :alt="themeNameOf(packId, giftL)" onerror="this.src='/images/banner/pack_default.png'" @click.stop="openPackPopup(packId)">
+                <img class="pack-banner" :src="`/images/banner/${packId}_${lang}.png`" :alt="themeNameOf(packId, giftL)" onerror="this.src='/images/banner/pack_default.png'" @click.stop="openPackPopup(packId)">
               </template>
             </div>
           </div>
@@ -1195,7 +1194,7 @@
     <div class="modal-box pack-popup-box" x-show="packPopup" @contextmenu.prevent="packPopup = null">
       <div class="modal-header">
         <div class="pack-popup-title-row">
-          <img class="pack-popup-header-banner" :src="`/images/banner/${packPopup?.id}.png`" onerror="this.src='/images/banner/pack_default.png'">
+          <img class="pack-popup-header-banner" :src="`/images/banner/${packPopup?.id}_${lang}.png`" onerror="this.src='/images/banner/pack_default.png'">
           <span class="modal-title" x-text="packPopup?.name"></span>
         </div>
       </div>
@@ -1223,7 +1222,7 @@
               <template x-for="cond in (packPopup?.conditions || [])" :key="cond.dungeonIdx">
                 <div class="pack-popup-condition-row">
                   <span class="pack-popup-difficulty" x-text="[ui('pack.difficulty.normal'),ui('pack.difficulty.hard'),ui('pack.difficulty.parallel'),ui('pack.difficulty.extreme')][cond.dungeonIdx]"></span>
-                  <span class="pack-popup-floors" x-text="(function(c){ const sf = c.selectableFloors; if (sf && sf.length > 0) { const floors = sf.map(f=>f+1).sort((a,b)=>a-b); if (c.dungeonIdx <= 1) return floors.map(f=>f+'층').join(', '); const consec = floors.every((f,i)=>i===0||f===floors[i-1]+1); return consec && floors.length > 1 ? floors[0]+' ~ '+floors[floors.length-1]+'층' : floors.map(f=>f+'층').join(', '); } return ['','',' 6 ~ 10층','11 ~ 15층'][c.dungeonIdx]||''; })(cond)"></span>
+                  <span class="pack-popup-floors" x-text="packFloorsLabel(cond)"></span>
                 </div>
               </template>
             </div>
@@ -1342,7 +1341,9 @@ function packNameParts(packId, L) {
   }
 }
 
-const DUNGEON_NAMES = ['노말', '하드', '평행중첩', '익스트림'];
+// [언어 전환] 라벨은 여기서 문자열로 굽지 않고 구조만 담는다.
+// packGroups 는 로드 시 1회 계산되는 const 라 문자열을 구우면 언어 변경에 반응할 수 없다.
+// 렌더 시점에 packGroupLabel(g) 이 ui() 로 조립한다(= Alpine 이 자동 재평가).
 const packGroups = [];
 {
   const groupMap = {};
@@ -1355,18 +1356,15 @@ const packGroups = [];
         // 노말/하드: 층별로 개별 그룹
         for (const floor of sf) {
           const key = `${idx}_${floor}`;
-          if (!groupMap[key]) groupMap[key] = { label: `${DUNGEON_NAMES[idx]}\n${floor}층`, dungeonIdx: idx, sortKey: idx * 1000 + floor, packs: [] };
+          if (!groupMap[key]) groupMap[key] = { dungeonIdx: idx, floor, sortKey: idx * 1000 + floor, packs: [] };
           if (!groupMap[key].packs.includes(Number(packId))) groupMap[key].packs.push(Number(packId));
         }
       } else {
         // 평행중첩/익스트림: 층 범위로 하나의 그룹
-        let floorStr = '';
-        if (sf.length > 0) {
-          const consec = sf.every((f, i) => i === 0 || f === sf[i-1] + 1);
-          floorStr = ' ' + (consec && sf.length > 1 ? `${sf[0]} ~ ${sf[sf.length-1]}층` : sf.map(f => f + '층').join(', '));
-        }
         const key = `${idx}`;
-        if (!groupMap[key]) groupMap[key] = { label: DUNGEON_NAMES[idx] + (floorStr ? '\n' + floorStr.trim() : ''), dungeonIdx: idx, sortKey: idx * 1000, packs: [] };
+        // 현재 데이터에선 idx>=2 의 selectableFloors 가 비어 있어(=라벨은 난이도명만) 아래 floors 도 빈 배열.
+        // 게임 업데이트로 층이 생기면 packGroupLabel 이 범위/목록으로 조립한다.
+        if (!groupMap[key]) groupMap[key] = { dungeonIdx: idx, floors: sf, consecutive: sf.every((f, i) => i === 0 || f === sf[i-1] + 1), sortKey: idx * 1000, packs: [] };
         if (!groupMap[key].packs.includes(Number(packId))) groupMap[key].packs.push(Number(packId));
       }
     }
@@ -1379,7 +1377,7 @@ const packGroups = [];
       for (const p of [...(h5 ? h5.packs : []), ...(par ? par.packs : [])]) {
         if (!packs.includes(p)) packs.push(p);
       }
-      groupMap['1_5'] = { label: '하드\n5층\n&\n평행중첩', dungeonIdx: 1, sortKey: 1005, packs };
+      groupMap['1_5'] = { dungeonIdx: 1, floor: 5, mergedWith: 2, sortKey: 1005, packs };
       delete groupMap['2'];
     }
   }
@@ -1562,7 +1560,16 @@ const giftMap = {
 
 <script>
 {{/* [언어 전환] 정적 UI 문구 카탈로그(빌드타임 인라인 kr — SSR·초기 렌더용, fetch 불필요) */}}
-const UI_KR = {{ site.Data.lang.kr.KR_YeonSimUI | jsonify | safeJS }};
+const UI_KR = UI_ALL.kr;   // 카탈로그는 baseof 가 3개 언어를 인라인한다
+{{/* [언어] 가이드 문구 3개 언어 인라인 — data/lang/{lc}/yeonsim/{U}_Guide(.Preset).json.
+     합쳐 7KB 남짓이라 페이로드로 빼지 않고 인라인한다(UI_ALL 과 같은 판단).
+     가이드 모달은 기프트 페이지에만 있으므로 baseof 가 아니라 여기에 둔다. */}}
+const GUIDE_ALL = {
+  {{- range $i, $lc := slice "kr" "en" "jp" }}{{ if $i }},{{ end }}
+  {{- $Y := index (partialCached "lang.html" $lc $lc) "yeonsim" }}
+  "{{ $lc }}": { def: {{ (index $Y "Guide").pages | jsonify | safeJS }}, preset: {{ (index $Y "GuidePreset").pages | jsonify | safeJS }} }
+  {{- end }}
+};
 function checklist() {
   return {
     ...kwTooltipMixin(),
@@ -1581,10 +1588,10 @@ function checklist() {
     guideModal: false,
     guidePage: 1,
     sponsorModal: false,
-    guidePages: [{{ range site.Data.guide.default.pages }}`{{ . }}`,{{ end }}],
+    get guidePages()       { return (GUIDE_ALL[this.lang] || GUIDE_ALL.kr).def; },
     presetGuideModal: false,
     presetGuidePage: 1,
-    presetGuidePages: [{{ range site.Data.guide.preset.pages }}`{{ . }}`,{{ end }}],
+    get presetGuidePages() { return (GUIDE_ALL[this.lang] || GUIDE_ALL.kr).preset; },
     showToc: false,
     showPackPanel: false,
     packViewMode: 'detail',
@@ -1636,61 +1643,137 @@ function checklist() {
     // [스파이크] 클라이언트 사이드 언어 전환 — 기프트 텍스트 페이로드
     lang: 'kr',
     giftL: null,   // /lang/gift-{lc}.json (null 이면 빌드타임 kr 맵으로 폴백)
-    uiL: null,     // /lang/ui-{lc}.json (정적 UI 문구; null 이면 UI_KR 로 폴백)
+    uiL: null,     // 정적 UI 문구 (baseof 의 UI_ALL 에서 대입; null 이면 UI_KR 로 폴백)
 
+    // head 에서 미리 쏜 요청(__langPreload)이 있으면 그걸 쓴다 — 파싱과 병렬로 이미 날아오는 중.
+    // 언어가 다르거나(전환) 프리로드가 없으면 평소대로 fetch.
     async loadGiftLang() {
+      const lc = this.lang;
+      // kr 은 받지 않는다 — giftL 을 읽는 모든 지점(gName·cName·tagName·_sName·_sDesc·_tags·
+      // kw·giftUpgrades·giftDesc·themeNameOf·themeSpecialOf)에 빌드타임 kr 인라인 맵 폴백이 있어
+      // gift-kr.json(gzip 163KB)은 순수 중복이다. 다른 언어에서 kr 로 되돌아올 때도 여기서 비운다.
+      if (lc === 'kr') { this.giftL = null; window.__giftL = null; return; }
       try {
-        const res = await fetch(`/lang/gift-${this.lang}.json`);
-        if (res.ok) {
-          this.giftL = await res.json();
-          window.__giftL = this.giftL;   // 전역 함수(packNameParts·툴팁)용 브리지
+        const pre = window.__langPreload;
+        const data = (pre && pre.lc === lc)
+          ? await pre.promise
+          : await fetch(`/lang/gift-${lc}.json`).then(r => (r.ok ? r.json() : null));
+        if (data && this.lang === lc) {          // 대기 중 언어가 또 바뀌었으면 버린다
+          this.giftL = data;
+          window.__giftL = this.giftL;           // 전역 함수(packNameParts·툴팁)용 브리지
         }
       } catch (e) { /* 실패 시 기존 kr 유지 */ }
     },
-    async loadUI() {
-      if (this.lang === 'kr') { this.uiL = null; return; }   // kr 은 UI_KR 인라인 사용(무fetch)
-      try {
-        const res = await fetch(`/lang/ui-${this.lang}.json`);
-        if (res.ok) this.uiL = await res.json();
-      } catch (e) { /* 실패 시 UI_KR 폴백 */ }
+    // UI 문구는 baseof 가 3개 언어를 인라인(UI_ALL)하므로 네트워크 왕복이 없다.
+    loadUI() {
+      this.uiL = (this.lang === 'kr') ? null : (UI_ALL[this.lang] || null);
+      this._scheduleFitFilterTexts();
     },
     // 정적 UI 문구 조회 (선택 언어 → 없으면 kr → 없으면 키 자체)
     ui(key) { return (this.uiL && this.uiL[key]) || UI_KR[key] || key; },
-    setGiftLang(lc) {
+    // ── 필터 버튼 텍스트 맞춤 ──
+    // .filter-btn 은 고정폭이라 언어에 따라 문구가 길어지면(예: 화상→Burn, 파열→Rupture) 버튼을 넘친다.
+    // 버튼 크기는 그대로 두고 폰트만 줄인다. fitEgoName 과 동일한 축소 루프 방식.
+    // 버튼 내용이 넘치는 정도(px). 양수면 넘침.
+    // ⚠️ scrollWidth 를 쓰면 안 된다 — .filter-btn.active::after 가 position:absolute 로 버튼보다 크게
+    //    깔려 있어(PC 125%, 모바일 inset:-6px) 활성 버튼이 항상 "넘침"으로 잡힌다.
+    //    실제 콘텐츠인 flex 자식(아이콘·텍스트)의 필요 폭만으로 판정한다(의사요소는 children 에 없음).
+    _btnOverflow(btn) {
+      const cs = getComputedStyle(btn);
+      const inner = btn.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      const kids = Array.from(btn.children).filter(k => getComputedStyle(k).position !== 'absolute');
+      if (!kids.length) return 0;
+      const gap = parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0;
+      const ws = kids.map(k => k.getBoundingClientRect().width);
+      const need = cs.flexDirection.indexOf('column') === 0
+        ? Math.max.apply(null, ws)                                   // 세로 배치(모바일): 가장 넓은 자식
+        : ws.reduce((a, b) => a + b, 0) + gap * (kids.length - 1);   // 가로 배치(PC): 합계 + 간격
+      return need - inner;
+    },
+    fitFilterText(el) {
+      const btn = el && el.closest('.filter-btn');
+      if (!btn || btn.offsetParent === null) return;   // 숨겨진 버튼은 측정 불가(표시될 때 다시 호출됨)
+      el.style.fontSize = '';                          // 매번 기본값에서 재계산(언어 전환으로 짧아지면 다시 커져야 함)
+      // 하한 3px: 가장 긴 문구(Keywordless)가 좁은 화면에서도 들어가려면 이 정도까지 필요.
+      let f = parseFloat(getComputedStyle(el).fontSize) || 16, guard = 32;
+      while (guard-- > 0 && f > 3 && this._btnOverflow(btn) > 0.5) {
+        f -= 0.5;
+        el.style.fontSize = f + 'px';
+      }
+    },
+    // 모바일은 .filter-btn 이 width:auto 라 버튼이 텍스트만큼 늘어나 버튼 단위 넘침이 안 생긴다.
+    // 이때 실제 제약은 "행 전체가 화면 폭에 들어가는가" 이므로, 행 가용폭을 버튼 수로 나눠
+    // 균등 폭을 먼저 확정한다. 폰트 축소는 그 다음 버튼 단위로 각자 수행 → 폭은 균일, 글자는 최대 크기.
+    fitFilterRow(row) {
+      if (!row || row.offsetParent === null) return;
+      const btns = Array.from(row.querySelectorAll('.filter-btn')).filter(b => b.offsetParent !== null);
+      if (!btns.length) return;
+      btns.forEach(b => { b.style.width = ''; });
+      const cs = getComputedStyle(row);
+      const gap = parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0;
+      // 시각적 행별(= offsetTop 이 같은 것끼리) 필요 폭·개수. row.scrollWidth 는 위와 같은 이유로 못 쓴다.
+      const perTop = new Map();
+      btns.forEach(b => {
+        const k = Math.round(b.offsetTop);
+        const e = perTop.get(k) || { sum: 0, n: 0 };
+        e.sum += b.getBoundingClientRect().width; e.n++;
+        perTop.set(k, e);
+      });
+      let need = 0, perRow = 1;
+      perTop.forEach(e => { need = Math.max(need, e.sum + gap * (e.n - 1)); perRow = Math.max(perRow, e.n); });
+      if (need <= row.clientWidth + 0.5) return;   // 자연 폭으로 이미 들어감(PC·KR) → 손대지 않음
+      const w = (row.clientWidth - gap * (perRow - 1)) / perRow;
+      if (!(w > 0)) return;
+      btns.forEach(b => { b.style.width = w.toFixed(2) + 'px'; });
+    },
+    fitFilterTexts() {
+      // 이전 실행이 남긴 인라인 폭을 먼저 제거 — 안 지우면 리사이즈·언어 전환 때 옛 폭 기준으로 측정된다
+      document.querySelectorAll('.personality-filter-row .filter-btn, .controls-row-2 .filter-buttons .filter-btn')
+        .forEach(b => { b.style.width = ''; });
+      // 1) 균등 폭 확정(모바일에서 행이 넘칠 때만) → 2) 확정된 폭 안에서 버튼별 폰트 축소
+      document.querySelectorAll('.personality-filter-row, .controls-row-2 .filter-buttons')
+        .forEach(row => this.fitFilterRow(row));
+      document.querySelectorAll('.filter-btn span').forEach(el => this.fitFilterText(el));
+    },
+    _scheduleFitFilterTexts() {                        // 연속 호출 합치기(리사이즈·연속 로드)
+      clearTimeout(this._fitFilterTimer);
+      this._fitFilterTimer = setTimeout(() => this.$nextTick(() => this.fitFilterTexts()), 30);
+    },
+    setLang(lc) {
       if (lc === this.lang) return;
       this.lang = lc;
       localStorage.setItem('giftLang', lc);
       this.loadGiftLang();
       this.loadUI();
+      window.dispatchEvent(new CustomEvent('yeonsim:lang', { detail: lc }));   // 루트 밖(푸터) 알림
     },
     // 언어 의존 접근자 (giftL 우선, 없으면 빌드타임 kr 맵)
     gName(id)  { return (this.giftL && this.giftL.giftName[id]) || itemNameMap[id] || id; },
     cName(id)  { return (this.giftL && this.giftL.categoryName[id]) || catDisplayNameMap[id] || id; },
+    // 태그 패널 — id 기반 조회. 검색 토큰(#태그)도 이 값으로 넣어야 _tags(id) 매칭과 언어가 맞는다.
+    tagName(id, kr)    { return (this.giftL && this.giftL.tagName && this.giftL.tagName[id]) || kr; },
+    tagCatName(id, kr) { return (this.giftL && this.giftL.tagCatName && this.giftL.tagCatName[id]) || kr; },
     _sName(id) { return (this.giftL ? this.giftL.giftName[id] : itemNameMap[id]) || ''; },
     _sDesc(id) { return (this.giftL ? this.giftL.searchDesc[id] : searchDescMap[id]) || ''; },
     _tags(id)  { return (this.giftL ? this.giftL.giftTags[id] : itemTagsMap[id]) || []; },
 
     init() {
-      this.lang = localStorage.getItem('giftLang') || 'kr';
+      this.lang = window.yeonsimLang();
       this.loadGiftLang();
       this.loadUI();
       const saved = localStorage.getItem('egogift-checked');
+      // 웹폰트 로드 전에는 폭 측정이 어긋나므로 로드 완료 후 맞춘다
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.fitFilterTexts());
+      else this._scheduleFitFilterTexts();
+      window.addEventListener('resize', () => this._scheduleFitFilterTexts());
+      this.$watch('giftL', () => this._scheduleFitFilterTexts());
+      this.$watch('showPackPanel', () => this._scheduleFitFilterTexts());   // 패널 전환으로 버튼이 새로 드러남
+
       if (saved) this.checked = JSON.parse(saved);
+      this.presetAddPlaceholder = this._presetPlaceholder();   // 초기값 '이름' 이 EN/JP 에 새지 않게
       const savedPresets = localStorage.getItem('egogift-presets');
-      const presetsInitialized = localStorage.getItem('egogift-presets-initialized');
-      if (savedPresets) {
-        this.presets = JSON.parse(savedPresets);
-      }
-      if (!presetsInitialized) {
-        if (!savedPresets || this.presets.length === 0) {
-          const defaults = (typeof DEFAULT_PRESETS !== 'undefined') ? DEFAULT_PRESETS : [];
-          if (defaults.length > 0) {
-            this.presets = JSON.parse(JSON.stringify(defaults));
-            localStorage.setItem('egogift-presets', JSON.stringify(this.presets));
-          }
-        }
-        localStorage.setItem('egogift-presets-initialized', 'true');
-      }
+      if (savedPresets) this.presets = JSON.parse(savedPresets);
+      // 기본 프리셋 시드는 init() 이 아니라 모달을 처음 열 때(seedDefaultPresets). 언어 확정 후 넣기 위함.
       const savedPackPresets = localStorage.getItem('egogift-pack-presets');
       if (savedPackPresets) this.packPresets = JSON.parse(savedPackPresets);
       this.showName = localStorage.getItem('egogift-showname') === 'true';
@@ -1886,12 +1969,20 @@ function checklist() {
       }
     },
 
+    // 프리셋 이름 placeholder.
+    // 이스터에그(무작위 대사)는 한국어 전용 — 번역하면 원문 말맛이 사라지고, 출처를 모르는
+    // 사용자에겐 그냥 뜬금없는 문장이라 무의미하다. EN/JP 는 고정 문구("Name"/"名前")를 쓴다.
+    _presetPlaceholder() {
+      const fixed = this.ui('preset.name_placeholder');   // EN "Preset Name" / JP "名前"
+      if (this.lang !== 'kr') return fixed;
+      const pool = (typeof PRESET_PLACEHOLDER !== 'undefined' && PRESET_PLACEHOLDER.length)
+        ? PRESET_PLACEHOLDER : [fixed];
+      return pool[Math.floor(Math.random() * pool.length)];
+    },
+
     openPresetAddModal() {
       this.presetAddName = '';
-      const pool = (typeof PRESET_PLACEHOLDER !== 'undefined' && PRESET_PLACEHOLDER.length)
-        ? PRESET_PLACEHOLDER
-        : ['이름'];
-      this.presetAddPlaceholder = pool[Math.floor(Math.random() * pool.length)];
+      this.presetAddPlaceholder = this._presetPlaceholder();
       this.initPresetFromChecked();
       this.showPresetAddModal = true;
     },
@@ -1964,9 +2055,7 @@ function checklist() {
         this.showToast(this.ui('toast.name_required'), { selector: '.preset-add-shade', error: true });
         this.presetAddNameError = false;
         this.$nextTick(() => { this.presetAddNameError = true; });
-        const pool = (typeof PRESET_PLACEHOLDER !== 'undefined' && PRESET_PLACEHOLDER.length)
-          ? PRESET_PLACEHOLDER : ['이름'];
-        this.presetAddPlaceholder = pool[Math.floor(Math.random() * pool.length)];
+        this.presetAddPlaceholder = this._presetPlaceholder();
         return;
       }
       this.presets.push({
@@ -1978,6 +2067,22 @@ function checklist() {
       this.$nextTick(() => this.refreshPresetListScroll());
     },
 
+    // ── 기본 프리셋 시드 ──
+    // 모달을 처음 열 때 1회. init() 이 아닌 이유: 이 시점엔 언어가 확정돼 있어 그 언어의 이름으로 넣을 수 있다.
+    // 동기 대입이라 Alpine 이 페인트 전(마이크로태스크)에 플러시 → 빈 목록이 스쳐 보이지 않는다.
+    // ⚠️ 게이트를 먼저 닫는다 — 프리셋을 전부 지운 사용자에게 다음 오픈 때 재주입되면 안 된다.
+    seedDefaultPresets() {
+      if (localStorage.getItem('egogift-presets-initialized')) return;
+      localStorage.setItem('egogift-presets-initialized', 'true');
+      if (this.presets.length) return;
+      const defs = (typeof DEFAULT_PRESETS !== 'undefined') ? DEFAULT_PRESETS : [];
+      if (!defs.length) return;
+      this.presets = defs.map(d => ({
+        presetName: (d.name && (d.name[this.lang] || d.name.kr)) || '',
+        gifts: [...d.gifts],
+      }));
+      localStorage.setItem('egogift-presets', JSON.stringify(this.presets));
+    },
     openShareModal(idx) {
       this.sharePresetIdx = idx;
       this.showShareModal = true;
@@ -2101,7 +2206,9 @@ function checklist() {
           const isFusionCounted = id => comboResultIds.has(id) && (giftMap[id]?.grade ?? 0) >= 4;
           const fusionTotal = (allByCat[catId] || []).filter(isFusionCounted).length;
           const fusionSelected = gifts.filter(isFusionCounted).length;
-          return { catId, name: catDisplayNameMap[catId] || catId, gifts, total, fusionTotal, fusionSelected };
+          // ⚠️ 이름은 여기서 굽지 않는다 — 템플릿에서 cName(group.catId) 로 조회할 것.
+          //    x-for 가 반환한 객체에 이름을 담으면 giftL 로드/언어 전환 시점에 스냅샷이 남아 KR 로 굳는다.
+          return { catId, gifts, total, fusionTotal, fusionSelected };
         });
     },
 
@@ -2176,7 +2283,7 @@ function checklist() {
       const specificGiftIds = specificGiftPoolMap[String(packId)] || [];
       const specificGifts = specificGiftIds.map(id => ({
         id,
-        name: itemNameMap[String(id)] || String(id),
+        name: this.gName(String(id)),   // 언어 반영(빌드타임 kr 맵 직접 참조 금지)
         grade: gradeMap[String(id)] || '1',
         isSpecial: (giftMap[String(id)] || {}).isSpecial || false,
         category: (giftMap[String(id)] || {}).category || 'None',
@@ -2437,6 +2544,43 @@ function checklist() {
       return { simple: this.ui('toggle.simple'), detail: this.ui('toggle.detail'), hidden: this.ui('toggle.hidden') }[this.presetPackDisplay];
     },
 
+    // ── 테마팩 층 라벨 ── 카탈로그의 포맷 문자열({n}/{a}/{b})에 값을 끼워 넣는다.
+    // packGroups 는 구조만 갖고 있고, 문자열 조립은 전부 여기서 = 언어 변경에 자동 반응.
+    _fmt(key, vars) {
+      let t = this.ui(key);
+      for (const k in vars) t = t.split('{' + k + '}').join(vars[k]);
+      return t;
+    },
+    packFloor(n) { return this._fmt('pack.floor', { n }); },
+    packFloorRange(a, b) { return this._fmt('pack.floor_range', { a, b }); },
+    packGroupLabel(g) {
+      const DKEY = ['pack.difficulty.normal', 'pack.difficulty.hard', 'pack.difficulty.parallel', 'pack.difficulty.extreme'];
+      const name = this.ui(DKEY[g.dungeonIdx] || '');
+      // 하드 5층 + 평행중첩 병합 그룹
+      if (g.mergedWith != null) return name + '\n' + this.packFloor(g.floor) + '\n&\n' + this.ui(DKEY[g.mergedWith]);
+      if (g.floor != null) return name + '\n' + this.packFloor(g.floor);
+      if (g.floors && g.floors.length) {
+        const f = g.floors, last = f[f.length - 1];
+        const s = (g.consecutive && f.length > 1) ? this.packFloorRange(f[0], last)
+                                                 : f.map(x => this.packFloor(x)).join(this.ui('pack.floor_sep'));
+        return name + '\n' + s;
+      }
+      return name;
+    },
+    // 테마팩 팝업의 출현 층 표기 (조건 1건 기준)
+    packFloorsLabel(c) {
+      const sf = c.selectableFloors;
+      if (sf && sf.length > 0) {
+        const floors = sf.map(f => f + 1).sort((a, b) => a - b);
+        const consec = floors.every((f, i) => i === 0 || f === floors[i - 1] + 1);
+        if (c.dungeonIdx > 1 && consec && floors.length > 1) return this.packFloorRange(floors[0], floors[floors.length - 1]);
+        return floors.map(f => this.packFloor(f)).join(this.ui('pack.floor_sep'));
+      }
+      // 층 정보가 없는 평행중첩(6~10)·익스트림(11~15) — 게임 고정값
+      if (c.dungeonIdx === 2) return this.packFloorRange(6, 10);
+      if (c.dungeonIdx === 3) return this.packFloorRange(11, 15);
+      return '';
+    },
     presetDisplayGroups() {
       if (this.presetPackDisplay === 'hidden') return [];
       const ids = this.presetPackIds();
@@ -2445,7 +2589,7 @@ function checklist() {
       const set = new Set(ids.map(String));
       return packGroups
         .filter(g => this.packDungeonMode === 'normal' ? g.dungeonIdx === 0 : g.dungeonIdx >= 1)
-        .map(g => ({ label: g.label, packs: g.packs.filter(id => set.has(String(id))) }))
+        .map(g => ({ label: this.packGroupLabel(g), packs: g.packs.filter(id => set.has(String(id))) }))
         .filter(g => g.packs.length);
     },
 
@@ -2488,7 +2632,7 @@ function checklist() {
       if (!set.size) return [];
       return packGroups
         .filter(g => mode === 'normal' ? g.dungeonIdx === 0 : g.dungeonIdx >= 1)
-        .map(g => ({ label: g.label, packs: g.packs.filter(id => set.has(String(id))) }))
+        .map(g => ({ label: this.packGroupLabel(g), packs: g.packs.filter(id => set.has(String(id))) }))
         .filter(g => g.packs.length);
     },
     openPackPresetAddModal() {

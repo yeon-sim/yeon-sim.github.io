@@ -11,7 +11,7 @@ const render=s=>typeof s==="string"?s.replace(/^"|"$/g,"").split(BS+"n").join("\
 const J=v=>JSON.stringify(v===undefined||v===null?null:v);
 const onlyB=[...built.keys()].filter(id=>!R.has(id)), onlyR=[...R.keys()].filter(id=>!built.has(id));
 const f={grade:0,category:0,categoryOrigin:0,difficulty:0,packs:0,curse:0,bless:0,associated:0,tags:0,name:0,desc:0,upgrade:0};
-const n2=new Map(JSON.parse(fs.readFileSync("data/lang/kr/egogift/KR_Tags.json","utf8")).map(e=>[e.id,e.name]));
+const n2=new Map(JSON.parse(fs.readFileSync("data/lang/kr/yeonsim/KR_Tags.json","utf8")).map(e=>[e.id,e.name]));
 for(const [id,b] of built){ const r=R.get(id); if(!r)continue;
   if(J(b.grade)!==J(r.grade))f.grade++;
   if(J(b.category)!==J(r.category))f.category++;

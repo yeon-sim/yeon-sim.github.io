@@ -1,0 +1,196 @@
+테마팩 이름 + 언어별 렌더 폭
+생성: scripts/theme-name-widths.py
+
+· 폭 단위 = font-size 100px 기준 px. 실제 크기 S 에서는  폭 x S/100.
+· 배너 규격: 617x240 (static/images/banner/{id}.png)
+· 폰트  KR/EN = KOTRA_BOLD  ·  JP = logotypejp_mp_b_1.1
+  (KOTRA_BOLD 는 가나·한자를 빈 글리프로만 보유해 JP 에 쓸 수 없다)
+· 커닝  KOTRA_BOLD 1901쌍 반영 / logotypejp 커닝 테이블 없음(advance 합 = 정확)
+· 색상 태그(<color=...>)는 폭 계산에서 제외.
+⚠ KR/EN 과 JP 는 폰트가 달라 같은 크기라도 글자 크기 인상이 다르다(A: 0.872em vs 0.696em).
+  JP 비율은 '같은 font-size 에서의 폭 비교'일 뿐 시각적 크기 비교가 아니다.
+
+[전체] 117종   ─ EN비 = EN폭/KR폭,  JP비 = JP폭/KR폭
+----------------------------------------------------------------------------------------------------------------------
+  id    KR                           KR폭  EN                                         EN폭    EN비  JP                         JP폭    JP비
+  1001  잊혀진 자들                      521px  The Forgotten                             697px  1.34x  忘れ去られた者たち                 763px  1.46x
+  1002  속하지 못하는                     620px  The Outcast                               592px  0.95x  属せない                      336px  0.54x
+  1003  카지노 푸어                      521px  Flat-broke Gamblers                       998px  1.92x  カジノプアー                    427px  0.82x
+  1004  공장 자동화                      528px  Automated Factory                         944px  1.79x  工場自動化                     500px  0.95x
+  1005  사랑할 수 없는                    649px  The Unloving                              638px  0.98x  愛することのできない                788px  1.21x
+  1006  못과 망치                       424px  Nagel und Hammer                          936px  2.21x  釘と金鎚                      373px  0.88x
+  1007  신앙과 침식                      524px  Faith & Erosion                           729px  1.39x  信仰と侵蝕                     473px  0.90x
+  1008  마주하지 않는                     619px  The Unconfronting                         910px  1.47x  向き合わない                    515px  0.83x
+  1009  둥지, 공방, 기술                  719px  Nest, Workshop, and Technology           1615px  2.25x  巣、工房、技術                   700px  0.97x
+  1010  낙화                          197px  Falling Flowers                           724px  3.67x  落花                        200px  1.01x
+  1011  흘리는 것들                      521px  Tearful Things                            696px  1.34x  流す者たち                     430px  0.82x
+  1012  변하지 않는                      521px  The Unchanging                            784px  1.50x  変わらない                     413px  0.79x
+  1013  레이크 월드                      521px  Lake World                                548px  1.05x  レイクワールド                   500px  0.96x
+  1014  기어오는 심연                     617px  Crawling Abyss                            749px  1.21x  這い寄る深淵                    555px  0.90x
+  1015  악으로 규정되는                    718px  The Evil Defining                         820px  1.14x  悪に規定される                   605px  0.84x
+  1016  저택의 부산물                     619px  Dregs of the Manor                        961px  1.55x  邸宅の副産物                    581px  0.94x
+  1017  어느 세계                       423px  A Certain World                           799px  1.89x  とある世界                     428px  1.01x
+  1018  마음이 어긋나는                    719px  The Heartbreaking                         909px  1.26x  心の擦れ違う                    530px  0.74x
+  1019  다시 열린 라만차랜드                 944px  La Manchaland Re-opening                 1304px  1.38x  再び開かれたラ・マンチャランド          1199px  1.27x
+  1020  끝나지 않는 행렬                   748px  The Infinite Procession                  1103px  1.47x  終わらぬ行列                    535px  0.72x
+  1021  꿈이 끝나는                      521px  The Dream Ending                          888px  1.70x  夢の終わる                     435px  0.83x
+  1022  사대 가문과 욕망                   749px  Four Houses and Greed                    1136px  1.52x  四大家門と欲望                   673px  0.90x
+  1023  바라볼 수밖에 없는                  845px  The Surrendered Witnessing               1378px  1.63x  眺めることしかできない               866px  1.02x
+  1024  현혹, 방황, 불신                  725px  Charm, Wander, Doubt                     1138px  1.57x  眩惑・彷徨・不信                  800px  1.10x
+  1025  교본                          197px  Textbook                                  458px  2.32x  教本                        200px  1.01x
+  1026  검과 작품                       423px  Blade and Artwork                         929px  2.20x  剣と作品                      373px  0.88x
+  1027  끊어지지 않는                     620px  The Unsevering                            751px  1.21x  断ち切れない                    511px  0.82x
+  1101  헬스치킨                        395px  Hell's Chicken                            676px  1.71x  ヘルズチキン                    451px  1.14x
+  1102  우.미.다                       345px  S.E.A.                                    280px  0.81x  う・み・ダ                     424px  1.23x
+  1103  20번구의 기적                    648px  Miracle in District 20                   1017px  1.57x  20番区の奇跡                   611px  0.94x
+  1104  육참골단                        395px  Yield My Flesh to Claim Their Bones      1751px  4.44x  肉斬骨断                      400px  1.01x
+  1105  시간살인시간                      592px  Timekilling Time                          803px  1.36x  時間殺人時間                    600px  1.01x
+  1106  워프특급 살인사건                   814px  Murder on the WARP Express               1435px  1.76x  ワープ特急殺人事件                 807px  0.99x
+  1107  자색 정오의 시련                   748px  The Noon of Violet                        939px  1.26x  紫の白昼                      381px  0.51x
+  1108  1호선                         240px  Line 1                                    273px  1.14x  1号線                       265px  1.10x
+  1109  2호선                         258px  Line 2                                    291px  1.13x  2号線                       265px  1.03x
+  1110  3호선                         257px  Line 3                                    290px  1.13x  3号線                       265px  1.03x
+  1111  4호선 - 제 3 구간                781px  Line 4 - Section #3                       926px  1.19x  4号線 - 第3区間                737px  0.94x
+  1112  4호선 - 제 4 구간                791px  Line 4 - Section #4                       936px  1.18x  4号線 - 第4区間                737px  0.93x
+  1113  20번구의 기적 BokGak            1060px  Miracle in District 20 BokGak            1429px  1.35x  20番区の奇跡 BokGak           1015px  0.96x
+  1114  탄환이 찍은 마침표                  845px  Full-Stopped by a Bullet                 1165px  1.38x  弾丸が打った終止符                 828px  0.98x
+  1115  LCB 정기검진                    601px  LCB Regular Check-up                     1076px  1.79x  LCB定期検診                   589px  0.98x
+  1116  육참골단 BokGak                 807px  Yield My Flesh to Claim Their Bones      2163px  2.68x  肉斬骨断 BokGak               804px  1.00x
+  1117  심야청소                        395px  Nocturnal Sweeping                        978px  2.48x  深夜清掃                      400px  1.01x
+  1118  5호선                         255px  Line 5                                    288px  1.13x  5号線                       265px  1.04x
+  1119  증오와 절망                      523px  Hatred and Despair                        932px  1.78x  憎悪と絶望                     473px  0.90x
+  1120  시간살인시간 BokGak              1004px  Timekilling Time BokGak                  1215px  1.21x  時間殺人時間 BokGak            1004px  1.00x
+  1121  절차탁춘                        395px  Spring Cultivation                        863px  2.19x  切磋琢春                      400px  1.01x
+  1122  선의의 순례                      519px  Pilgrimage of Compassion                 1263px  2.44x  善意の巡礼                     481px  0.93x
+  1123  워프특급 살인사건 BokGak           1227px  Murder on the WARP Express BokGak        1847px  1.51x  ワープ特急殺人事件 BokGak         1211px  0.99x
+  1124  호박색 어스름의 시련                 944px  The Dusk of Amber                         967px  1.02x  琥珀の夕暮                     481px  0.51x
+  1125  LCB 정기검진 BokGak            1013px  LCB Regular Check-up BokGak              1488px  1.47x  LCB定期検診 BokGak            992px  0.98x
+  1126  타래 엮기                       423px  Twining Threads                           798px  1.89x  縒り合せ                      346px  0.82x
+  1127  심야청소 BokGak                 807px  Nocturnal Sweeping BokGak                1390px  1.72x  深夜清掃 BokGak               804px  1.00x
+  1128  경험기억                        394px  Mnestic Experience                        932px  2.36x  経験記憶                      400px  1.01x
+  1201  가르고 베는 이들                   746px  Slicers & Dicers                          750px  1.01x  斬り裂く者たち                   595px  0.80x
+  1202  베어낼 것                       423px  To be Cleaved                             680px  1.61x  斬るべきもの                    484px  1.14x
+  1203  꿰고 뚫는 이들                    647px  Piercers & Penetrators                   1083px  1.67x  刺し貫く者たち                   599px  0.93x
+  1204  꿰뚫을 것                       423px  To be Pierced                             649px  1.54x  貫くべきもの                    481px  1.14x
+  1205  부수고 깨뜨릴 이들                  843px  Crushers & Breakers                       979px  1.16x  壊し砕く者たち                   599px  0.71x
+  1206  바스라질 것                      521px  To be Crushed                             695px  1.33x  壊れるもの                     409px  0.78x
+  1301  억눌린 분노                      521px  Repressed Wrath                           828px  1.59x  抑圧された怒り                   604px  1.16x
+  1302  해방된 분노                      523px  Unbound Wrath                             777px  1.48x  解放された怒り                   604px  1.16x
+  1303  감정에 짓눌리는 것                  846px  Emotional Repression                     1040px  1.23x  感情に押し潰されるもの               935px  1.11x
+  1304  빠져드는 색욕                     620px  Addicting Lust                            704px  1.13x  のめり込む色欲                   606px  0.98x
+  1305  옭아매는 색욕                     620px  Tangling Lust                             637px  1.03x  縛り付ける色欲                   625px  1.01x
+  1306  감정에 홀리는 것                   748px  Emotional Seduction                      1004px  1.34x  感情に惑わされるもの                841px  1.13x
+  1307  헛도는 나태                      521px  Treadwheel Sloth                          849px  1.63x  空回りする怠惰                   620px  1.19x
+  1308  멎어버린 나태                     620px  Inert Sloth                               523px  0.84x  止まってしまった怠惰                808px  1.30x
+  1309  감정 앞에 게으른 것                 903px  Emotional Indolence                       989px  1.10x  感情の前に怠けたもの                873px  0.97x
+  1310  먹어치운 탐식                     620px  Devoured Gluttony                         923px  1.49x  食い尽くした暴食                  705px  1.14x
+  1311  넘쳐흐른 탐식                     620px  Excessive Gluttony                        904px  1.46x  溢れかえった暴食                  681px  1.10x
+  1312  감정에 굶주린 것                   747px  Emotional Craving                         884px  1.18x  感情に餓えたもの                  686px  0.92x
+  1313  전락하는 우울                     616px  Degraded Gloom                            829px  1.35x  戦略する憂鬱                    550px  0.89x
+  1314  가라앉은 우울                     619px  Sunk Gloom                                597px  0.96x  沈んだ憂鬱                     457px  0.74x
+  1315  감정에 침수된 것                   746px  Emotional Flood                           790px  1.06x  感情に沈水したもの                 784px  1.05x
+  1316  허세짙은 오만                     620px  Vain Pride                                489px  0.79x  虚勢の傲慢                     481px  0.78x
+  1317  독선적인 오만                     616px  Tyrannical Pride                          761px  1.24x  独善的な傲慢                    578px  0.94x
+  1318  감정에 복종한 것                   748px  Emotional Subservience                   1159px  1.55x  感情に服従したもの                 784px  1.05x
+  1319  초라한 질투                      521px  Insignificant Envy                        850px  1.63x  見窄らしい嫉妬                   629px  1.21x
+  1320  처량한 질투                      522px  Pitiful Envy                              543px  1.04x  哀れな嫉妬                     456px  0.87x
+  1321  감정으로 평가된 것                  845px  Emotional Judgment                        994px  1.18x  感情で評価されたもの                867px  1.03x
+  1401  타오르는 일렁임                    715px  Burning Haze                              638px  0.89x  燃え上がる揺らめき                 763px  1.07x
+  1402  화왕지절                        400px  Season of the Flame                       999px  2.50x  火旺の節                      381px  0.95x
+  1403  새어나온 적혈                     619px  Trickled Sanguine Blood                  1154px  1.86x  漏れ出した赤血                   630px  1.02x
+  1404  시산혈해                        395px  Mountain of Corpses, Sea of Blood        1691px  4.29x  屍山血海                      400px  1.01x
+  1405  어지러운 파동                     621px  Dizzying Waves                            757px  1.22x  ぐらつく波動                    502px  0.81x
+  1406  이상진역                        400px  Abnormal Seismic Zone                    1155px  2.89x  異常震域                      400px  1.00x
+  1407  부서뜨리는 외력                    718px  Crushing External Force                  1146px  1.60x  壊す外力                      375px  0.52x
+  1408  파죽지세                        395px  Unrelenting Might                         875px  2.22x  破竹の勢い                     461px  1.17x
+  1409  잠겨드는 아림                     620px  Sinking Pang                              612px  0.99x  沈む疼き                      352px  0.57x
+  1410  침잠쇄도                        394px  Sinking Deluge                            717px  1.82x  沈潜殺到                      400px  1.02x
+  1411  내쉬어진 한숨                     619px  Deep Sigh                                 492px  0.79x  吐かれた一息                    537px  0.87x
+  1412  순환호흡                        395px  Poised Breathing                          807px  2.05x  循環呼吸                      400px  1.01x
+  1413  차오르는 동력                     621px  Rising Power Supply                       980px  1.58x  満ちゆく動力                    525px  0.85x
+  1414  벽력섬전                        392px  Thunder and Lightning                    1097px  2.80x  霹靂閃電                      400px  1.02x
+  1501  N사 신 구인회                    622px  N Corp. New League of Nine Littérate     1917px  3.08x  N社 新九人会                   601px  0.97x
+  1502  개화하는 녹림                     620px  Efflorescing Greenery                    1062px  1.71x  開花する緑林                    550px  0.89x
+  1503  3호선 - 종착역                   654px  Line 3 - Terminus                         829px  1.27x  3号線 - 終着駅                 672px  1.03x
+  1504  영겁의 굴레                      520px  Bridle of Infinity                        792px  1.52x  永劫のくびき                    507px  0.97x
+  1505  우.미.다 게.판                   595px  S.E.A. C.R                                475px  0.80x  う・み・ダ・かに・バル               935px  1.57x
+  1506  끝도 없이 막힌 길                  775px  Impenetrable Path                         898px  1.16x  終わりなき袋小路                  704px  0.91x
+  1507  혈귀가 되지 못한 자들                973px  Who Couldn't be Bloodfiends              1437px  1.48x  血鬼になれなかった者たち              991px  1.02x
+  1508  아름다운 목소리                    719px  A Beautiful Voice                         852px  1.19x  美しい声                      354px  0.49x
+  1509  녹빛 여명의 시련                   744px  The Dawn of Green                         955px  1.28x  緑の黎明                      381px  0.51x
+  1510  어느 도서관의 어떤 책 속으로           1294px  Into a Certain Library's Book            1396px  1.08x  とある図書館の、ある本の中へ           1221px  0.94x
+  1511  코드 퍼플                       423px  Code Purple                               587px  1.39x  コードパープル                   481px  1.14x
+  1512  무게를 진 자들                    647px  Bearers of Weight                         889px  1.37x  重荷を背負った者たち                876px  1.35x
+  1513  1호선 : 광기                    525px  Line 1 : MADNESS                          841px  1.60x  1号線 : 狂気                  567px  1.08x
+  1514  축복의 카니발                     620px  Blessed Carnival                          783px  1.26x  祝福のカーニバル                  638px  1.03x
+  1515  페어리테일                       493px  Fairy Tale                                460px  0.93x  フェアリーテイル                  563px  1.14x
+  1516  핏물진 비린내                     619px  Bloodtinged Ichthyic Odor                1269px  2.05x  血なまぐさい臭い                  662px  1.07x
+  1517  즉결처형의 시간                    717px  Complete & Total Extermination           1557px  2.17x  即決処刑の時間                   681px  0.95x
+  1518  라만차랜드의 주인                   816px  The Master of La Manchaland              1436px  1.76x  ラ・マンチャランドの主               867px  1.06x
+  1519  삽시호                         296px  Chachihu                                  448px  1.51x  挿翅虎                       300px  1.01x
+  1520  한 봄 밤의 꿈 2                  671px  A Midspring Night's Dream 2              1405px  2.10x  とある春の夜の夢2                 755px  1.13x
+  3001  뽕.황                         228px  The B.E.                                  386px  1.69x  ポン・皇                      350px  1.53x
+
+[EN 이 긴 순] 상위 15 — 배너에서 가장 빡빡한 항목
+----------------------------------------------------------------------------------------------------------------------
+  1116      2163px  ( 2.68x)  Yield My Flesh to Claim Their Bones BokGak
+  1501      1917px  ( 3.08x)  N Corp. New League of Nine Littérateurs
+  1123      1847px  ( 1.51x)  Murder on the WARP Express BokGak
+  1104      1751px  ( 4.44x)  Yield My Flesh to Claim Their Bones
+  1404      1691px  ( 4.29x)  Mountain of Corpses, Sea of Blood
+  1009      1615px  ( 2.25x)  Nest, Workshop, and Technology
+  1517      1557px  ( 2.17x)  Complete & Total Extermination
+  1125      1488px  ( 1.47x)  LCB Regular Check-up BokGak
+  1507      1437px  ( 1.48x)  Who Couldn't be Bloodfiends
+  1518      1436px  ( 1.76x)  The Master of La Manchaland
+  1106      1435px  ( 1.76x)  Murder on the WARP Express
+  1113      1429px  ( 1.35x)  Miracle in District 20 BokGak
+  1520      1405px  ( 2.10x)  A Midspring Night's Dream 2
+  1510      1396px  ( 1.08x)  Into a Certain Library's Book
+  1127      1390px  ( 1.72x)  Nocturnal Sweeping BokGak
+
+[JP 이 긴 순] 상위 15 — 배너에서 가장 빡빡한 항목
+----------------------------------------------------------------------------------------------------------------------
+  1510      1221px  ( 0.94x)  とある図書館の、ある本の中へ
+  1123      1211px  ( 0.99x)  ワープ特急殺人事件 BokGak
+  1019      1199px  ( 1.27x)  再び開かれたラ・マンチャランド
+  1113      1015px  ( 0.96x)  20番区の奇跡 BokGak
+  1120      1004px  ( 1.00x)  時間殺人時間 BokGak
+  1125       992px  ( 0.98x)  LCB定期検診 BokGak
+  1507       991px  ( 1.02x)  血鬼になれなかった者たち
+  1303       935px  ( 1.11x)  感情に押し潰されるもの
+  1505       935px  ( 1.57x)  う・み・ダ・かに・バル
+  1512       876px  ( 1.35x)  重荷を背負った者たち
+  1309       873px  ( 0.97x)  感情の前に怠けたもの
+  1321       867px  ( 1.03x)  感情で評価されたもの
+  1518       867px  ( 1.06x)  ラ・マンチャランドの主
+  1023       866px  ( 1.02x)  眺めることしかできない
+  1306       841px  ( 1.13x)  感情に惑わされるもの
+
+[KR 이 긴 순] 상위 10 — 현재 배너 기준 폰트 크기를 정하는 항목
+----------------------------------------------------------------------------------------------------------------------
+  1510      1294px  어느 도서관의 어떤 책 속으로
+  1123      1227px  워프특급 살인사건 BokGak
+  1113      1060px  20번구의 기적 BokGak
+  1125      1013px  LCB 정기검진 BokGak
+  1120      1004px  시간살인시간 BokGak
+  1507       973px  혈귀가 되지 못한 자들
+  1019       944px  다시 열린 라만차랜드
+  1124       944px  호박색 어스름의 시련
+  1309       903px  감정 앞에 게으른 것 
+  1303       846px  감정에 짓눌리는 것
+
+[요약]
+----------------------------------------------------------------------------------------------------------------------
+  KR 폭   최소   197px / 평균   611px / 최대  1294px
+  EN 폭   최소   273px / 평균   925px / 최대  2163px
+  JP 폭   최소   200px / 평균   587px / 최대  1221px
+  EN 비율  최소 0.79x / 평균 1.59x / 최대 4.44x
+  JP 비율  최소 0.49x / 평균 0.97x / 최대 1.57x
+  → KR 최장에 맞춘 크기를 기준으로, EN 최장 항목은 그 크기의 60% 이하여야 들어간다.
+  → KR 최장에 맞춘 크기를 기준으로, JP 최장 항목은 그 크기의 106% 이하여야 들어간다.
+
+[경고] 폰트에 글리프가 없는 문자
+----------------------------------------------------------------------------------------------------------------------
+  [EN/KOTRA_BOLD] 'é' (U+00E9)  →  테마 1501
+  해당 글자는 배너에서 폴백 폰트로 떨어지거나 두부(□)로 나온다. 표기 교체나 폰트 보강이 필요하다.

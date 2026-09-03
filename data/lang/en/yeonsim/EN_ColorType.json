@@ -1,0 +1,32 @@
+{
+  "list": [
+    {
+      "id": "CRIMSON",
+      "name": "Wrath"
+    },
+    {
+      "id": "SCARLET",
+      "name": "Lust"
+    },
+    {
+      "id": "AMBER",
+      "name": "Sloth"
+    },
+    {
+      "id": "SHAMROCK",
+      "name": "Glut."
+    },
+    {
+      "id": "AZURE",
+      "name": "Gloom"
+    },
+    {
+      "id": "INDIGO",
+      "name": "Pride"
+    },
+    {
+      "id": "VIOLET",
+      "name": "Envy"
+    }
+  ]
+}

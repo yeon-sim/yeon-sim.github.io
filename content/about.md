@@ -1,6 +1,7 @@
 ---
 title: "사이트 소개"
 layout: "legal"
+i18n: "about"   # content/i18n/about-en.md 와 연결 (언어 전환용 번역본)
 description: "연심(連心)은 Limbus Company의 인격·E.G.O·기프트 정보를 정리한 비공식 팬 레퍼런스 사이트입니다."
 ---
 

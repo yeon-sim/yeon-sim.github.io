@@ -30,12 +30,53 @@
 }
 
 @font-face {
+  /* 라틴 레이어 — KOTRA_BOLD 에 Latin Extended-A/B 글리프가 하나도 없어(실측 0/128, 0/208)
+     'Ryōshū' 의 ō(U+014D)·ū(U+016B) 만 시스템 폰트로 폴백돼 한 단어 안에서 자형이 어긋났다.
+     마크론만 채우면 여전히 이질적이라 라틴 영역 전체를 이 폰트가 담당한다.
+     스택에서 KOTRA_BOLD 앞에 두고, unicode-range 로 라틴에만 한정한다(한글·일본어 무영향).
+     원본 Corporate-Logo-Bold-ver2.otf(2.7MB) → scripts/subset-latin-font.py 로 26KB 서브셋. */
+  font-family: 'Corporate-Logo-Latin';
+  src: url('/font/Corporate-Logo-Bold-latin.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0100-017F, U+0180-024F, U+2000-206F;
+  /* ⚠️ 수직 메트릭을 KOTRA_BOLD 와 동일하게 맞춘다(= em 대비 %).
+     원본 메트릭이 asc 88% / desc 12% / lineGap 50%(sTypo, USE_TYPO_METRICS=on) 로
+     lineGap 이 비정상적으로 커서, 그대로 두면 half-leading 이 커져 baseline 이 내려가
+     같은 줄의 한글보다 라틴 글자가 아래로 치우쳐 보인다(모달 버튼에서 특히 뚜렷).
+     KOTRA_BOLD(upm 1024): asc 950 / desc 400 / lineGap 136 → 아래 % 로 환산. */
+  ascent-override: 92.77%;
+  descent-override: 39.06%;
+  line-gap-override: 13.28%;
+}
+
+@font-face {
   /* 일본어 레이어 — KOTRA_BOLD 가 unicode-range 로 한글+라틴만 커버하므로,
      KOTRA_BOLD 스택의 일본어(가나·한자)는 이 폰트로 렌더된다. */
   font-family: 'logotypejp_mp_b_1.1';
   src: url('/font/logotypejp_mp_b_1.1.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  /* 일본어 전체 티어 — 사용자가 직접 입력한 일본어(프리셋 이름 등)용.
+     사이트 문안은 위 서브셋이 전부 커버하므로, 이 폰트는 "서브셋에 없는 글자가 실제로
+     화면에 나올 때만" 다운로드된다(CSS 폰트 매칭은 글자 단위). 평소엔 요청 0건.
+     ⚠️ unicode-range 필수 — 없으면 이모지 등 이 폰트에 없는 글자에서도 후보로 잡혀
+        1MB 를 받는다. 스택에서는 반드시 서브셋 '뒤'에 둘 것.
+     생성: scripts/subset-jp-font.py (서브셋과 같이 만들어진다) */
+  font-family: 'logotypejp-full';
+  src: url('/font/logotypejp_mp_b_1.1-full.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;   /* 1MB 라 로딩 중에도 시스템 폰트로 글자는 보이게 */
+  /* ⚠️ 이 폰트가 '실제로 가진' 범위만 적는다 — 없는 코드포인트를 넣으면
+        그 글자에서 1MB 를 받고도 결국 시스템 폰트로 떨어진다(순수 낭비).
+        · U+31F0-31FF(가타카나 확장)·U+3400-4DBF(한자 확장A): 원본이 0자 → 제외
+        · U+63F7(揷): 원본에 없는데 게임 패시브명 '揷翅虎' 에 쓰여 매번 트리거되므로 구멍을 냄
+        구멍은 subset-jp-font.py 가 "두 티어 모두 미커버" 로 보고한다. 새로 뜨면 여기에 반영할 것. */
+  unicode-range: U+3000-303F, U+3040-30FF, U+4E00-63F6, U+63F8-9FFF, U+F900-FAFF, U+FF00-FFEF;
 }
 
 [x-cloak] { display: none !important; }
@@ -55,7 +96,7 @@ input, button, select, textarea {
 }
 
 body {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'Malgun Gothic', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', 'Malgun Gothic', sans-serif;
   background: #120d08;
   color: #e0e0e0;
   padding: 1rem;
@@ -900,7 +941,7 @@ body {
   width: fit-content;
   max-width: 100%;
   text-align: center;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.81rem;
   white-space: nowrap;
   text-shadow: 1px 1px 1px #000;
@@ -1222,7 +1263,7 @@ body {
 .analytics-section-title {
   color: #aaa;
   font-size: 1rem;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   margin-bottom: 0.3rem;
 }
 .analytics-info-list {
@@ -1378,12 +1419,20 @@ body {
 }
 
 /* ── 페이지 내비게이션 ── */
-.site-nav {
+/* [언어 전환] 헤더 우측 묶음 — 위: 언어 토글 / 아래: 페이지 nav.
+   우측 정렬(margin-left:auto)은 이 래퍼가 맡고, .site-nav 는 래퍼 안에서 우측 끝에 붙는다. */
+.site-header-right {
   margin-left: auto;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+.site-nav {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  align-self: center;
 }
 .site-nav-link {
   color: #7a6555;
@@ -1444,7 +1493,7 @@ button.site-nav-link.site-nav-link--active {
   font-size: 1rem;
   font-weight: bold;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'Malgun Gothic', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', 'Malgun Gothic', sans-serif;
 }
 .modal-close {
   background: none;
@@ -1701,7 +1750,7 @@ button.site-nav-link.site-nav-link--active {
   font-weight: bold;
   color: #c8a84b;
   margin-bottom: 0.4rem;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
 }
 .changelog-date {
   font-size: 0.8rem;
@@ -1807,7 +1856,7 @@ button.site-nav-link.site-nav-link--active {
   cursor: pointer;
   color: #aaa;
   text-shadow: 0 1px 1px #000;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.72rem;
   padding: 0.1rem 0.4rem;
   flex: 1;
@@ -1877,7 +1926,7 @@ button.site-nav-link.site-nav-link--active {
   cursor: pointer;
   color: #aaa;
   text-shadow: 0 1px 1px #000;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.72rem;
   padding: calc(0.1rem + 3px) 0.5rem;
   white-space: nowrap;
@@ -2608,7 +2657,7 @@ button.site-nav-link.site-nav-link--active {
   object-fit: contain;
 }
 .gift-popup-hard span {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 1.2rem;
   margin-right: 0.6rem;
 }
@@ -2831,7 +2880,7 @@ button.site-nav-link.site-nav-link--active {
 .preset-item-cat-count {
   font-size: 0.75rem;
   color: #aaa;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
 }
 .preset-preview-actions {
   display: flex;
@@ -2960,7 +3009,7 @@ button.site-nav-link.site-nav-link--active {
   align-items: center;
   gap: 5px;
   font-size: 0.8rem;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   color: #c9a84c;
   padding-bottom: 2px;
   border-bottom: 1px solid #4a3d2e;
@@ -3014,7 +3063,7 @@ button.site-nav-link.site-nav-link--active {
 .delete-confirm-text {
   font-size: 0.9rem;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   text-align: left;
   word-break: break-all;
 }
@@ -3062,7 +3111,7 @@ button.site-nav-link.site-nav-link--active {
   background: rgba(30, 20, 10, 0.92);
   border: 1px solid #6b5230;
   color: #e0c98a;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.9rem;
   padding: 8px 20px;
   border-radius: 4px;
@@ -3086,7 +3135,7 @@ button.site-nav-link.site-nav-link--active {
   border-radius: 0;
   background: none;
   color: #ccc;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
   display: inline-flex;
@@ -3135,7 +3184,7 @@ button.site-nav-link.site-nav-link--active {
   font-size: 1.1rem;
 }
 .guide-page-indicator {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.85rem;
   color: #888;
 }
@@ -3192,7 +3241,7 @@ button.site-nav-link.site-nav-link--active {
   display: block;
 }
 .guide-page-counter {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.8rem;
   color: #c8a84b;
   min-width: 52px;
@@ -3285,7 +3334,7 @@ button.site-nav-link.site-nav-link--active {
   bottom: 29px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.95rem;
   white-space: nowrap;
   text-shadow: 1px 1px 3px #000;
@@ -3346,7 +3395,7 @@ button.site-nav-link.site-nav-link--active {
 }
 .pack-popup-difficulty {
   color: #c8a84b;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   min-width: 5rem;
 }
 .pack-popup-floors {
@@ -3362,7 +3411,7 @@ button.site-nav-link.site-nav-link--active {
   margin-top: 0.2rem;
 }
 .pack-popup-section-label {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   font-size: 0.85rem;
   color: #c8a84b;
   margin-bottom: 0.4rem;
@@ -3370,7 +3419,7 @@ button.site-nav-link.site-nav-link--active {
 .pack-popup-no-gifts {
   font-size: 0.85rem;
   color: #9c9c9c;
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   padding-left: 0.5rem;
 }
 .pack-popup-gift-list {
@@ -3566,7 +3615,7 @@ button.site-nav-link.site-nav-link--active {
   align-items: center;
   gap: 0.3rem;
   margin-bottom: 1rem;
-  font-family: 'LiberationSans', KOTRA_BOLD, 'logotypejp_mp_b_1.1';
+  font-family: 'LiberationSans', KOTRA_BOLD, 'logotypejp_mp_b_1.1', 'logotypejp-full';
   font-size: 1rem;
 }
 .gift-popup-related-label {
@@ -3574,7 +3623,7 @@ button.site-nav-link.site-nav-link--active {
 }
 
 .gift-popup-used-in-label {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   margin-top: 0px;
 }
 
@@ -3659,7 +3708,7 @@ button.site-nav-link.site-nav-link--active {
   flex-shrink: 0;
 }
 .buff-tooltip-name {
-  font-family: 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', sans-serif;
+  font-family: 'Corporate-Logo-Latin', 'KOTRA_BOLD', 'logotypejp_mp_b_1.1', 'logotypejp-full', sans-serif;
   color: #f7c100;
   font-size: 1.05rem;
   flex: 1;
@@ -4656,6 +4705,22 @@ button.site-nav-link.site-nav-link--active {
 .ego-picker-cardbtn { cursor: pointer; }
 .ego-picker-grid .ego-card-wrap,
 .ego-picker-grid .ego-card { width: 150px; }   /* 인격 선택 카드 폭(150px)과 통일 */
+/* ⚠️ EGO 카드 내부는 "%기반이라 폭만 바꾸면 된다"가 아니다. 프레임·CG·배너·등급태그는 %(폭 비례)지만
+   아래 값들은 고정 px 라 폭을 키워도 따라오지 않아, 폭만 119→150 하면 카드가 EGO 탭과 달라 보인다.
+   (실제 증상: 이름이 노란 배너 중심보다 아래로 치우침 — 배너는 width:85%라 커지는데 이름 박스는 32px 고정)
+   → 폭 배율(150/119)만큼 고정 px 값도 함께 확대해 EGO 탭 카드와 동일 비율 유지.
+   모바일은 피커 카드 폭(105px) = EGO 탭 카드 폭이라 확대가 필요 없으므로 min-width 로 PC 한정. */
+@media (min-width: 769px) {
+  .ego-picker-grid { --ego-k: calc(150 / 119); }
+  .ego-picker-grid .ego-card-wrap { padding-top: calc(18px * var(--ego-k)); }   /* 배지 걸침 공간 */
+  .ego-picker-grid .ego-cat { top: calc(22px * var(--ego-k)); }                 /* 죄악속성 배지 위치 */
+  .ego-picker-grid .ego-card { padding-bottom: calc(15px * var(--ego-k)); }     /* 배너·이름의 bottom:0 앵커 */
+  .ego-picker-grid .ego-cg-img { top: calc(5px * var(--ego-k)); }               /* CG 위치 */
+  .ego-picker-grid .ego-name {
+    height: calc(32px * var(--ego-k));
+    font-size: calc(0.55rem * var(--ego-k));
+  }
+}
 /* detail2(스킬 키워드) 장식 — 표시 여부는 인라인 :style(egoPickerDetail)이 제어(전역 detailMode와 독립). EGO 탭 자세히와 동일 양식 */
 .ego-picker-grid .ego-card-detail2 {
   flex-wrap: wrap;
@@ -5172,10 +5237,15 @@ button.site-nav-link.site-nav-link--active {
     flex-direction: column;
     gap: 0.5rem;
   }
-  .site-nav {
-    margin-left: 0;         /* 우측 끝 밀기 해제 */
+  /* 우측 끝 밀기 해제 후 전체폭 — 정렬 주체가 .site-header-right 로 바뀌었으므로 래퍼에 적용 */
+  .site-header-right {
+    margin-left: 0;
     width: 100%;
     align-self: stretch;
+    align-items: center;       /* 언어 토글도 가운데 */
+  }
+  .site-nav {
+    width: 100%;
     justify-content: center;   /* 페이지 버튼 가운데 정렬 */
   }
 }
@@ -5238,16 +5308,81 @@ button.site-nav-link.site-nav-link--active {
   border: 1px solid #6a5a3e;
 }
 
-/* [스파이크] 클라이언트 사이드 언어 전환 토글 */
-.lang-switch {
-  gap: 4px;
+/* [언어 전환] 헤더 우측 상단 언어 드롭다운 (수감자 드롭다운과 동일 양식) */
+.lang-dd {
+  position: relative;
 }
-.lang-btn {
-  min-width: 44px;
-  justify-content: center;
-  opacity: 0.55;
+/* .filter-btn(9-slice 이미지 테두리)을 쓰지 않는다 — 드롭다운 패널과 같은 순수 CSS 테두리로 통일.
+   부수 효과: fitFilterTexts() 의 '.filter-btn span' 대상에서도 빠져 폰트 축소가 걸리지 않는다. */
+.lang-dd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 104px;            /* 가장 긴 표기(English) 기준 */
+  height: 32px;
+  padding: 0 10px;
+  background: #1e150d;
+  border: 1px solid #4a3d2e;
+  border-radius: 8px;
+  color: #ccc;
+  font-family: inherit;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
 }
-.lang-btn--active {
-  opacity: 1;
-  outline: 1px solid #c9a84c;
+.lang-dd-btn:hover {
+  border-color: #6a5a3e;
+  color: #e6e0d6;
+}
+.lang-dd-btn.open {
+  border-color: #c9a84c;
+  color: #e6e0d6;
+}
+.lang-dd-caret {                 /* 아래 방향 삼각형 — 열리면 뒤집힘 */
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.7;
+  transition: transform 0.15s;
+}
+.lang-dd-btn.open .lang-dd-caret {
+  transform: rotate(180deg);
+}
+.lang-dd-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;                      /* 헤더 우측 끝이라 오른쪽 기준으로 펼친다 */
+  background: #1e150d;
+  border: 1px solid #4a3d2e;
+  border-radius: 8px;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  min-width: 100%;
+}
+.lang-dd-item {
+  padding: 0.35rem 0.7rem;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: #ccc;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+.lang-dd-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.lang-dd-item--active {
+  color: #c9a84c;
 }

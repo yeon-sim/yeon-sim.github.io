@@ -1,0 +1,44 @@
+{
+  "dataList": [
+    {
+      "id": "sin",
+      "name": "罪悪属性"
+    },
+    {
+      "id": "atkType",
+      "name": "攻撃属性"
+    },
+    {
+      "id": "damage",
+      "name": "ダメージ量"
+    },
+    {
+      "id": "power",
+      "name": "威力"
+    },
+    {
+      "id": "buff",
+      "name": "バフ"
+    },
+    {
+      "id": "debuff",
+      "name": "デバフ"
+    },
+    {
+      "id": "association",
+      "name": "所属"
+    },
+    {
+      "id": "timing",
+      "name": "タイミング"
+    },
+    {
+      "id": "formation",
+      "name": "編成"
+    },
+    {
+      "id": "etc",
+      "name": "その他"
+    }
+  ]
+}

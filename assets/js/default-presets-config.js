@@ -1,9 +1,13 @@
 // 신규 유저에게 제공할 기본 프리셋 목록
-// presetName : 프리셋 이름
-// gifts      : 포함할 기프트 ID 배열
+// name  : 언어별 프리셋 이름 (kr 은 필수 — 미지원 언어의 폴백)
+// gifts : 포함할 기프트 ID 배열 (언어와 무관하므로 한 벌만 유지한다)
+//
+// 주입 시점 = 프리셋 모달을 처음 열 때 (index.html seedDefaultPresets).
+// init() 가 아니라 그때인 이유: 그 시점엔 언어가 확정돼 있어 해당 언어 이름으로 넣을 수 있다.
+// 주입된 뒤에는 사용자 데이터이므로, 이후 언어를 바꿔도 이름은 주입 당시 언어로 남는다.
 const DEFAULT_PRESETS = [
     {
-        presetName: '턴 시작 시 키워드 부여',
+        name: { kr: '턴 시작 시 키워드 부여', en: 'Turn Start: Inflict Keywords', jp: 'ターン開始時キーワード付与' },
         gifts: [
             "9031",
             "9050",
@@ -23,7 +27,7 @@ const DEFAULT_PRESETS = [
         ]
     },
     {
-        presetName: '편성 1번 전용',
+        name: { kr: '편성 1번 전용', en: '#1 Deployed Only', jp: '編成1番専用' },
         gifts: [
             "9075",
             "9104",

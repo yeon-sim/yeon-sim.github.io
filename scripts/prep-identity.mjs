@@ -190,7 +190,7 @@ function findRecord(file, id) {
 }
 const krPers = `${DATA}/lang/kr/KR_Personalities.json`;
 const krEgos = `${DATA}/lang/kr/egoskill/KR_Egos.json`;
-const krSeason = `${DATA}/lang/kr/KR_Season.json`;
+const krSeason = `${DATA}/lang/kr/yeonsim/KR_Season.json`;
 const seasonIds = fs.existsSync(krSeason) ? new Set(listOf(readJson(krSeason)).map(r => +r.id)) : null;
 for (const { id, nn } of persons) {
   if (!findRecord(krPers, id)) warn.push(`이름 누락: KR_Personalities 에 ${id} 없음 (인격 이름 nil → 빌드/표시 문제)`);

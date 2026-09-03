@@ -1,7 +1,7 @@
 {
   "dataList": [
     {
-      "category": "죄악 속성",
+      "category": "sin",
       "tags": [
         "wrathResistance",
         "lustResistance",
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "category": "공격 속성",
+      "category": "atkType",
       "tags": [
         "attackResistance",
         "fixedDamage",
@@ -69,7 +69,7 @@
       ]
     },
     {
-      "category": "피해량",
+      "category": "damage",
       "tags": [
         "dealDamageUp",
         "dealDamageDown",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "category": "위력",
+      "category": "power",
       "tags": [
         "inflictAttackPowerUp",
         "coinPowerDown",
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "category": "버프",
+      "category": "buff",
       "tags": [
         "offenseLevelUp",
         "defenseLevelUp",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "category": "디버프",
+      "category": "debuff",
       "tags": [
         "offenseLevelDown",
         "defenseLevelDown",
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "category": "소속",
+      "category": "association",
       "tags": [
         "indexFinger",
         "sameFaction",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "category": "타이밍",
+      "category": "timing",
       "tags": [
         "substitute",
         "allyKilled",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "category": "편성",
+      "category": "formation",
       "tags": [
         "teamNumber1",
         "teamNumber2",
@@ -179,7 +179,7 @@
       ]
     },
     {
-      "category": "기타",
+      "category": "etc",
       "tags": [
         "egoResource",
         "egoSkill",

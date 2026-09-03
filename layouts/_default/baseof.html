@@ -19,6 +19,60 @@
   <link rel="apple-touch-icon" href="/favicon.png">
   {{ $style := resources.Get "css/style.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  <script>
+    /* [언어] 사이트 공통 언어 결정 — 모든 페이지·partial 이 이 함수 하나만 쓴다(규칙이 갈라지지 않게).
+       우선순위: 사용자가 명시적으로 고른 값(localStorage) > 브라우저 언어 > kr.
+       ⚠️ 감지 결과를 localStorage 에 쓰지 말 것 — 쓰는 순간 "사용자가 고른 kr" 과
+          "감지된 kr" 을 구분할 수 없어져 감지 규칙을 나중에 바꿔도 반영되지 않는다.
+       비용: navigator.languages 는 동기 프로퍼티라 네트워크·파싱 없음. Alpine 은 defer 라 이 스크립트가 먼저 실행된다. */
+    window.yeonsimLang = function () {
+      try {
+        var picked = localStorage.getItem('giftLang');
+        if (picked === 'kr' || picked === 'en' || picked === 'jp') return picked;
+      } catch (e) { /* 프라이빗 모드 등 — 감지로 진행 */ }
+      var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+      for (var i = 0; i < list.length; i++) {
+        var t = String(list[i]).toLowerCase();
+        if (t.indexOf('ko') === 0) return 'kr';
+        if (t.indexOf('ja') === 0) return 'jp';
+        if (t.indexOf('en') === 0) return 'en';
+      }
+      return 'en';   // 미지원 언어(예: de-DE 단독)는 한국어보다 영어가 낫다. 정본은 여전히 kr(SSR·폴백).
+    };
+  </script>
+  {{/* [언어] 정적 UI 문구 3개 언어 인라인 — 예전엔 /lang/ui-{lc}.json 을 fetch 했다.
+       페이로드가 gzip 1~2KB 라, 인라인하면 loadUI() 가 동기 대입이 되어
+       "첫 페인트(KR) → 네트워크 왕복 → UI 교체" 의 왕복 구간이 사라진다.
+       baseof 에 두는 이유: 푸터·헤더가 모든 레이아웃에서 ui() 를 쓰므로 한 곳에서 보장. */}}
+  <script>
+    var UI_ALL = {
+      {{- range $i, $lc := slice "kr" "en" "jp" }}{{ if $i }},{{ end }}
+      "{{ $lc }}": {{ partialCached "ui-clean.html" $lc $lc | jsonify | safeJS }}
+      {{- end }}
+    };
+  </script>
+  {{/* [언어] 언어 페이로드 선요청 — 파싱과 병렬로 띄운다.
+       예전엔 Alpine 의 init() 에서야 fetch 가 시작돼(2MB HTML 파싱 + DOMContentLoaded 이후)
+       왕복이 통째로 사용자 대기 시간이었다. 여기서 쏘면 파싱 중에 도착한다.
+       실패해도 loadGiftLang/loadPersonalityLang 이 스스로 다시 fetch 하므로 안전(순수 최적화). */}}
+  {{ $langPayload := "" }}
+  {{ if .IsHome }}{{ $langPayload = "gift" }}
+  {{ else if and (eq .Kind "section") (eq .Section "personality") }}{{ $langPayload = "personality" }}{{ end }}
+  {{ with $langPayload }}
+  <script>
+    (function () {
+      var lc = window.yeonsimLang();
+      if (lc === 'kr') return;   // kr 은 빌드타임 인라인 맵으로 충분 — 페이로드 불필요
+      try {
+        window.__langPreload = {
+          lc: lc,
+          promise: fetch('/lang/{{ . }}-' + lc + '.json').then(function (r) { return r.ok ? r.json() : null; })
+                     .catch(function () { return null; }),
+        };
+      } catch (e) { /* 프리로드 실패는 무시 — 컴포넌트가 다시 받는다 */ }
+    })();
+  </script>
+  {{ end }}
   <script defer src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Google AdSense -->

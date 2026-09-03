@@ -1,0 +1,44 @@
+{
+  "dataList": [
+    {
+      "id": "sin",
+      "name": "죄악 속성"
+    },
+    {
+      "id": "atkType",
+      "name": "공격 속성"
+    },
+    {
+      "id": "damage",
+      "name": "피해량"
+    },
+    {
+      "id": "power",
+      "name": "위력"
+    },
+    {
+      "id": "buff",
+      "name": "버프"
+    },
+    {
+      "id": "debuff",
+      "name": "디버프"
+    },
+    {
+      "id": "association",
+      "name": "소속"
+    },
+    {
+      "id": "timing",
+      "name": "타이밍"
+    },
+    {
+      "id": "formation",
+      "name": "편성"
+    },
+    {
+      "id": "etc",
+      "name": "기타"
+    }
+  ]
+}

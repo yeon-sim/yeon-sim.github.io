@@ -49,7 +49,7 @@
 {{- /* 카테고리 표시명 (해당 언어 값이 비면 kr 폴백) */ -}}
 {{- $catName := dict -}}
 {{- range $Lkr.egogift.Categories.dataList -}}{{- $catName = merge $catName (dict .id .name) -}}{{- end -}}
-{{- range $L.egogift.Categories.dataList -}}{{- if .name -}}{{- $catName = merge $catName (dict .id .name) -}}{{- end -}}{{- end -}}
+{{- range $L.yeonsim.Categories.dataList -}}{{- if .name -}}{{- $catName = merge $catName (dict .id .name) -}}{{- end -}}{{- end -}}
 
 {{- /* 카테고리 -> [기프트 이름] (수집 현황·검색용) */ -}}
 {{- $catGiftNames := dict -}}
@@ -69,8 +69,19 @@
   {{- if .specialName -}}{{- $themeSp = merge $themeSp (dict $tid .specialName) -}}{{- end -}}
 {{- end -}}
 
+{{- /* 태그 패널용 id→이름 (태그 152 / 태그 카테고리 10).
+       giftTags 는 "기프트별 태그 이름 배열"이라 패널(전체 태그 나열)에는 쓸 수 없어 별도 맵이 필요하다. */ -}}
+{{- $tagName := dict -}}
+{{- range $L.yeonsim.Tags -}}{{- if .name -}}{{- $tagName = merge $tagName (dict .id .name) -}}{{- end -}}{{- end -}}
+{{- $tagCatName := dict -}}
+{{- with $L.yeonsim.TagCategories -}}
+  {{- range .dataList -}}{{- if .name -}}{{- $tagCatName = merge $tagCatName (dict .id .name) -}}{{- end -}}{{- end -}}
+{{- end -}}
+
 {{- return dict
       "lang" $lc
+      "tagName" $tagName
+      "tagCatName" $tagCatName
       "giftName" $name
       "giftDesc" $desc
       "giftUpgrades" $ups

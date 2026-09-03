@@ -1,0 +1,44 @@
+{
+  "dataList": [
+    {
+      "id": "sin",
+      "name": "Sin Type"
+    },
+    {
+      "id": "atkType",
+      "name": "Atk Type"
+    },
+    {
+      "id": "damage",
+      "name": "Damage"
+    },
+    {
+      "id": "power",
+      "name": "Power"
+    },
+    {
+      "id": "buff",
+      "name": "Buff"
+    },
+    {
+      "id": "debuff",
+      "name": "Debuff"
+    },
+    {
+      "id": "association",
+      "name": "Association"
+    },
+    {
+      "id": "timing",
+      "name": "Timing"
+    },
+    {
+      "id": "formation",
+      "name": "Team"
+    },
+    {
+      "id": "etc",
+      "name": "Etc."
+    }
+  ]
+}

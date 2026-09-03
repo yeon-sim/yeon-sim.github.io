@@ -24,6 +24,14 @@
   @font-face { font-family: 'languagefont';             src: url('/font/languagefont.ttf') format('truetype'); }
   @font-face { font-family: 'logotypejp_mp_b_1.1';      src: url('/font/logotypejp_mp_b_1.1.woff2') format('woff2'); }
 
+  /* 스택 비교용 — style.css 의 KOTRA_BOLD 와 동일한 unicode-range 를 재현.
+     (범위를 안 걸면 일본어 빈 글리프가 폴백을 막아 실제 사이트와 다르게 보인다) */
+  @font-face {
+    font-family: 'KOTRA_SITE';
+    src: url('/font/KOTRA_BOLD.woff2') format('woff2');
+    unicode-range: U+0000-024F, U+2000-206F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: #120d08;                 /* 실제 앱과 동일한 어두운 배경 */
@@ -65,6 +73,12 @@
   .f-wthc06                   { font-family: 'wthc06'; }
   .f-languagefont             { font-family: 'languagefont'; }
   .f-logotypejp_mp_b_1\.1     { font-family: 'logotypejp_mp_b_1.1'; }
+
+  /* 스택 비교 섹션 */
+  h2 { font-size: 17px; color: #c9a84c; margin: 32px 0 4px; }
+  td.stack { font-size: 12px; color: #b8ab95; font-family: 'Consolas', monospace; white-space: pre-wrap; max-width: 320px; }
+  tr.current td { background: rgba(210, 59, 59, 0.10); }
+  tr.current td.fname, tr.current td.stack { color: #e79a9a; }
 </style>
 </head>
 <body>
@@ -72,6 +86,11 @@
   <p class="note">
     각 셀은 해당 폰트<b>만</b> 지정(폴백 없음)했습니다. 글자가 <b>안 보이거나(빈 글리프) 어색한 다른 폰트로 보이면</b> 그 언어를 커버하지 못하는 것입니다.
     샘플: 한글 <b>카지노 푸어</b> · English <b>Flat-broke Gamblers</b> · 日本語 <b>カジノプアー</b>
+  </p>
+  <p class="note">
+    <b>라틴 확장(마크론)</b> 열은 수감자 4번 료슈의 영문 표기 <b>Ryōshū</b> 입니다.
+    <b>ō</b>(U+014D)·<b>ū</b>(U+016B)는 Latin Extended-A 라, 기본 라틴만 가진 폰트는 이 두 글자에서 폴백이 발생해
+    <b>나머지 글자와 굵기·모양이 어긋나 보입니다.</b> 아래 표에서 이 열이 <b>다른 글자와 같은 폰트로 보이는지</b> 확인하세요.
   </p>
 
   <div class="controls">
@@ -86,6 +105,26 @@
         <th>한글 · 카지노 푸어</th>
         <th>English · Flat-broke Gamblers</th>
         <th>日本語 · カジノプアー</th>
+        <th>라틴 확장 · Ryōshū</th>
+      </tr>
+    </thead>
+    <tbody><!-- rows injected --></tbody>
+  </table>
+
+  <h2>스택 비교 — 실제 사이트에 적용했을 때</h2>
+  <p class="note">
+    위 표가 <b>폰트 하나하나</b>의 커버리지라면, 여기는 <b>font-family 스택 전체</b>의 결과입니다(실제 렌더와 동일).
+    KOTRA 는 style.css 와 <b>같은 unicode-range</b> 를 적용했습니다.
+    <b style="color:#e79a9a">붉은 행 = 현재 사이트 설정</b>. 세 열이 모두 같은 폰트로 보이는 스택을 고르시면 됩니다.
+  </p>
+  <table id="stbl">
+    <thead>
+      <tr>
+        <th>스택</th>
+        <th>font-family</th>
+        <th>한글 · 료슈</th>
+        <th>라틴 확장 · Ryōshū</th>
+        <th>日本語 · 良秀</th>
       </tr>
     </thead>
     <tbody><!-- rows injected --></tbody>
@@ -98,7 +137,7 @@
       'Mary_Jane_Antique','Mikodacs','PerfectDOSVGA437','SCDream5','katyoubb','wthc06',
       'languagefont','logotypejp_mp_b_1.1'
     ];
-    const KR = '카지노 푸어', EN = 'Flat-broke Gamblers', JP = 'カジノプアー';
+    const KR = '카지노 푸어', EN = 'Flat-broke Gamblers', JP = 'カジノプアー', EX = 'Ryōshū';
     const tbody = document.querySelector('#tbl tbody');
     for (const f of FONTS) {
       const tr = document.createElement('tr');
@@ -107,9 +146,40 @@
         `<td class="fname">${f}</td>` +
         `<td><span class="sample ${fc}">${KR}</span></td>` +
         `<td><span class="sample ${fc}">${EN}</span></td>` +
-        `<td><span class="sample ${fc}">${JP}</span></td>`;
+        `<td><span class="sample ${fc}">${JP}</span></td>` +
+        `<td><span class="sample ${fc}">${EX}</span></td>`;
       tbody.appendChild(tr);
     }
+    // ── 스택 비교 ── KOTRA_SITE = style.css 와 동일한 unicode-range 적용본
+    const JP_LAYER = "'logotypejp_mp_b_1.1'";
+    const STACKS = [
+      ['현재 설정 (라틴 확장 폴백 없음)', `'KOTRA_SITE', ${JP_LAYER}, sans-serif`, true],
+      ['+ Corporate-Logo-Bold-ver2', `'KOTRA_SITE', 'Corporate-Logo-Bold-ver2', ${JP_LAYER}, sans-serif`],
+      ['+ HigashiOme-Gothic-C-1.3', `'KOTRA_SITE', 'HigashiOme-Gothic-C-1.3', ${JP_LAYER}, sans-serif`],
+      ['+ LiberationSans', `'KOTRA_SITE', 'LiberationSans', ${JP_LAYER}, sans-serif`],
+      ['+ BebasKai', `'KOTRA_SITE', 'BebasKai', ${JP_LAYER}, sans-serif`],
+      ['+ Mikodacs', `'KOTRA_SITE', 'Mikodacs', ${JP_LAYER}, sans-serif`],
+    ];
+    const S_KR = '료슈', S_EX = 'Ryōshū', S_JP = '良秀';
+    const stbody = document.querySelector('#stbl tbody');
+    for (const [label, stack, isCurrent] of STACKS) {
+      const tr = document.createElement('tr');
+      if (isCurrent) tr.className = 'current';
+      const cell = txt => {
+        const td = document.createElement('td');
+        const sp = document.createElement('span');
+        sp.className = 'sample'; sp.textContent = txt; sp.style.fontFamily = stack;
+        td.appendChild(sp); return td;
+      };
+      const name = document.createElement('td');
+      name.className = 'fname'; name.textContent = label;
+      const st = document.createElement('td');
+      st.className = 'stack'; st.textContent = stack;
+      tr.append(name, cell(S_KR), cell(S_EX), cell(S_JP));
+      tr.insertBefore(st, tr.children[1]);
+      stbody.appendChild(tr);
+    }
+
     const size = document.getElementById('size'), sizeVal = document.getElementById('sizeVal');
     const apply = () => {
       sizeVal.textContent = size.value;

@@ -7,6 +7,8 @@ const PILGRIMAGE_HIDE_CLICK_COUNT = 5;
 const PRISONER_CATEGORY_CHANGE_PROB = 0.1;
 
 // 프리셋 이름 Placeholder 목록
+// ⚠️ 한국어 전용. EN/JP 는 이스터에그 없이 고정 문구(preset.name_placeholder_short)를 쓴다.
+//    → layouts/index.html 의 _presetPlaceholder() 가 lang 으로 분기한다.
 const PRESET_PLACEHOLDER = [
     "이름",
     "박제가 되어버린 천재를 아시오?",

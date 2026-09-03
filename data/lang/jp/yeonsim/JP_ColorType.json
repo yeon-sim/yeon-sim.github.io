@@ -1,0 +1,32 @@
+{
+  "list": [
+    {
+      "id": "CRIMSON",
+      "name": "憤怒"
+    },
+    {
+      "id": "SCARLET",
+      "name": "色欲"
+    },
+    {
+      "id": "AMBER",
+      "name": "怠惰"
+    },
+    {
+      "id": "SHAMROCK",
+      "name": "暴食"
+    },
+    {
+      "id": "AZURE",
+      "name": "憂鬱"
+    },
+    {
+      "id": "INDIGO",
+      "name": "傲慢"
+    },
+    {
+      "id": "VIOLET",
+      "name": "嫉妬"
+    }
+  ]
+}

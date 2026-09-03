@@ -11,46 +11,68 @@
     <div class="site-header-btns-row">
       <button class="guide-btn filter-btn" @click="guideModal = true; guidePage = 1">
         <img class="filter-btn-icon" src="/images/ui/guide.png" alt="">
-        <span>가이드</span>
+        <span x-text="ui('gift.guide')">가이드</span>
       </button>
       <button class="reset-btn filter-btn" @click="document.getElementById('reset-modal').classList.add('open')">
         <img class="filter-btn-icon" src="/images/ui/clear.png" alt="">
-        <span>초기화</span>
+        <span x-text="ui('common.reset')">초기화</span>
       </button>
     </div>
     <div class="site-header-btns-row">
       <button class="sort-btn filter-btn" @click="toggleSort()">
         <img class="filter-btn-icon" src="/images/ui/sort.png" alt="" style="width:20px;height:20px;">
-        <span x-text="sortMode === 'id' ? '등록순' : '등급순'"></span>
+        <span x-text="sortMode === 'id' ? ui('sort.by_id') : ui('sort.by_grade')"></span>
       </button>
       <button class="toggle-name-btn" @click="toggleNameDisplay()">
         <img class="filter-btn-icon" src="/images/ui/ui_switch.png" alt="">
-        <span x-text="showName ? '이름' : '이미지'"></span>
+        <span x-text="showName ? ui('toggle.name') : ui('toggle.image')"></span>
       </button>
     </div>
   </div>
   {{ end }}
+  {{/* [언어 전환] 헤더 우측 상단(페이지 nav 위). 헤더를 쓰는 모든 레이아웃이 setLang(lc) 을 제공한다
+       (기프트·수감자 = 각 페이지 컴포넌트, 소개·개인정보·전체목록 = simplePage()). */}}
+  <div class="site-header-right">
+    {{/* 드롭다운 열림 상태는 중첩 x-data 로 국소 보관 — 헤더를 쓰는 4개 컴포넌트를 건드리지 않는다.
+         lang·setLang 은 부모 스코프(각 페이지 컴포넌트 / simplePage)에서 온다.
+         언어명은 네이티브 표기라 번역하지 않는다. */}}
+    <div class="lang-dd" x-data="{ open: false, names: { kr: '한국어', en: 'English', jp: '日本語' } }"
+         @click.away="open = false" @keydown.escape="open = false">
+      <button type="button" class="lang-dd-btn" :class="{ open: open }"
+              @click="open = !open" :aria-expanded="open" aria-haspopup="listbox">
+        <span class="lang-dd-current" x-text="names[lang] || names.kr">한국어</span>
+        <span class="lang-dd-caret" aria-hidden="true"></span>
+      </button>
+      <div class="lang-dd-panel" x-show="open" style="display:none" role="listbox">
+        <template x-for="(label, code) in names" :key="code">
+          <button type="button" class="lang-dd-item" :class="{ 'lang-dd-item--active': lang === code }"
+                  role="option" :aria-selected="lang === code"
+                  @click="setLang(code); open = false" x-text="label"></button>
+        </template>
+      </div>
+    </div>
   <nav class="site-nav">
     {{ if eq $page "gift" }}
-    <button class="site-nav-link" :class="{ 'site-nav-link--active': !showPackPanel }" @click="showPackPanel = false; showTagPanel = false; tagFilter = ''; packFilter = ''"><img src="/images/ui/page_egogift.png" alt="">기프트</button>
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': !showPackPanel }" @click="showPackPanel = false; showTagPanel = false; tagFilter = ''; packFilter = ''"><img src="/images/ui/page_egogift.png" alt=""><span x-text="ui('nav.gift')">기프트</span></button>
     {{ else }}
-    <a class="site-nav-link" href="/"><img src="/images/ui/page_egogift.png" alt="">기프트</a>
+    <a class="site-nav-link" href="/"><img src="/images/ui/page_egogift.png" alt=""><span x-text="ui('nav.gift')">기프트</span></a>
     {{ end }}
     <span class="site-nav-sep"></span>
     {{ if eq $page "gift" }}
-    <button class="site-nav-link" :class="{ 'site-nav-link--active': showPackPanel }" @click="showPackPanel = !showPackPanel; showTagPanel = false; tagFilter = ''"><img src="/images/ui/page_theme.png" alt="">테마팩</button>
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': showPackPanel }" @click="showPackPanel = !showPackPanel; showTagPanel = false; tagFilter = ''"><img src="/images/ui/page_theme.png" alt=""><span x-html="ui('nav.pack')">테마팩</span></button>
     {{ else }}
-    <a class="site-nav-link" href="/#pack"><img src="/images/ui/page_theme.png" alt="">테마팩</a>
+    <a class="site-nav-link" href="/#pack"><img src="/images/ui/page_theme.png" alt=""><span x-html="ui('nav.pack')">테마팩</span></a>
     {{ end }}
     <span class="site-nav-sep"></span>
     {{ if eq $page "personality" }}
-    <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'personality' }" @click="pageMode = 'personality'"><img src="/images/ui/page_prisoner.png" alt="">수감자</button>
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'personality' }" @click="pageMode = 'personality'"><img src="/images/ui/page_prisoner.png" alt=""><span x-text="ui('nav.sinner')">수감자</span></button>
     <span class="site-nav-sep"></span>
-    <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'ego' }" @click="pageMode = 'ego'"><img src="/images/ui/page_egoskill.png" alt="">E.G.O</button>
+    <button class="site-nav-link" :class="{ 'site-nav-link--active': pageMode === 'ego' }" @click="pageMode = 'ego'"><img src="/images/ui/page_egoskill.png" alt=""><span x-text="ui('nav.ego')">E.G.O</span></button>
     {{ else }}
-    <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt="">수감자</a>
+    <a class="site-nav-link" href="/personality/"><img src="/images/ui/page_prisoner.png" alt=""><span x-text="ui('nav.sinner')">수감자</span></a>
     <span class="site-nav-sep"></span>
-    <a class="site-nav-link" href="/personality/#ego"><img src="/images/ui/page_egoskill.png" alt="">E.G.O</a>
+    <a class="site-nav-link" href="/personality/#ego"><img src="/images/ui/page_egoskill.png" alt=""><span x-text="ui('nav.ego')">E.G.O</span></a>
     {{ end }}
   </nav>
+  </div>
 </header>

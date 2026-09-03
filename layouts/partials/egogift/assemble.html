@@ -20,7 +20,7 @@
 {{- /* 2) 태그 id -> 이름 (Tags). 해당 언어 값이 비면 kr 로 폴백 */ -}}
 {{- $tagName := newScratch -}}
 {{- range $Lkr.egogift.Tags -}}{{- $tagName.Set .id .name -}}{{- end -}}
-{{- range $L.egogift.Tags -}}{{- if .name -}}{{- $tagName.Set .id .name -}}{{- end -}}{{- end -}}
+{{- range $L.yeonsim.Tags -}}{{- if .name -}}{{- $tagName.Set .id .name -}}{{- end -}}{{- end -}}
 
 {{- /* 3) 기프트 id -> [태그명] (경량화 152종, id→name) */ -}}
 {{- $tags := newScratch -}}

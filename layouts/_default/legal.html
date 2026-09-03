@@ -1,13 +1,42 @@
 {{ define "main" }}
-<div class="content-page" x-data="{ sponsorModal: false }">
+{{/* [언어 전환] 번역본은 content/i18n/{key}-{lc}.md (headless, URL 미생성).
+     단일 URL·클라이언트 전환이라는 사이트 관례를 지키기 위해 있는 언어를 모두 렌더하고 x-show 로 전환한다.
+     번역본 파일이 없는 언어는 kr 이 그대로 보인다(파일을 추가하면 자동 편입). */}}
+{{ $i18nKey := .Params.i18n | default "" }}
+{{ $tr := dict }}
+{{ if $i18nKey }}
+  {{ range $lc := slice "en" "jp" }}
+    {{ with site.GetPage (printf "/i18n/%s-%s" $i18nKey $lc) }}{{ $tr = merge $tr (dict $lc .) }}{{ end }}
+  {{ end }}
+{{ end }}
+{{/* kr 은 "번역본이 있는 언어가 아닐 때" 표시 */}}
+{{ $trQuoted := slice }}
+{{ range $lc, $_ := $tr }}{{ $trQuoted = $trQuoted | append (printf "'%s'" $lc) }}{{ end }}
+<div class="content-page" x-data="simplePage()">
   {{ partial "site-header.html" "page" }}
   {{ partial "sponsor-modal.html" . }}
   <main class="content-main">
     <article class="content-article">
-      <h1 class="content-title">{{ .Title }}</h1>
-      {{ .Content }}
+      {{/* kr(기본) */}}
+      <div{{ if $trQuoted }} x-show="![{{ delimit $trQuoted ", " }}].includes(lang)"{{ end }}>
+        <h1 class="content-title">{{ .Title }}</h1>
+        {{ .Content }}
+      </div>
+      {{ range $lc, $pg := $tr }}
+      <div x-show="lang === '{{ $lc }}'" style="display:none">
+        <h1 class="content-title">{{ $pg.Title }}</h1>
+        {{ $pg.Content }}
+      </div>
+      {{ end }}
     </article>
   </main>
   {{ partial "site-footer.html" . }}
 </div>
+
+{{/* 정적 UI 문구 kr 카탈로그 — simplePage()·footerUI() 가 참조 */}}
+<script>
+const UI_KR = UI_ALL.kr;   // 카탈로그는 baseof 가 3개 언어를 인라인한다
+</script>
+{{ $simplePageJs := resources.Get "js/simple-page.js" | fingerprint }}
+<script src="{{ $simplePageJs.RelPermalink }}"></script>
 {{ end }}

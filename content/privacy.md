@@ -1,6 +1,7 @@
 ---
 title: "개인정보처리방침"
 layout: "legal"
+i18n: "privacy"   # content/i18n/privacy-en.md 와 연결 (언어 전환용 번역본)
 description: "연심(連心)의 개인정보처리방침 — 쿠키, Google AdSense 광고, Google Analytics 사용에 관한 안내입니다."
 ---
 

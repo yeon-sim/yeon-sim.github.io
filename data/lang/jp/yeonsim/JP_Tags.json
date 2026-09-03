@@ -1,0 +1,610 @@
+[
+  {
+    "id": "wrathResistance",
+    "name": "憤怒耐性"
+  },
+  {
+    "id": "lustResistance",
+    "name": "色欲耐性"
+  },
+  {
+    "id": "slothResistance",
+    "name": "怠惰耐性"
+  },
+  {
+    "id": "gluttonyResistance",
+    "name": "暴食耐性"
+  },
+  {
+    "id": "gloomResistance",
+    "name": "憂鬱耐性"
+  },
+  {
+    "id": "prideResistance",
+    "name": "傲慢耐性"
+  },
+  {
+    "id": "envyResistance",
+    "name": "嫉妬耐性"
+  },
+  {
+    "id": "attackResistance",
+    "name": "物理耐性"
+  },
+  {
+    "id": "fixedDamage",
+    "name": "固定ダメージ"
+  },
+  {
+    "id": "slashResistance",
+    "name": "斬撃耐性"
+  },
+  {
+    "id": "slashSkill",
+    "name": "斬撃スキル"
+  },
+  {
+    "id": "slashPowerUp",
+    "name": "斬撃威力増加"
+  },
+  {
+    "id": "penetrateResistance",
+    "name": "貫通耐性"
+  },
+  {
+    "id": "penetrateSkill",
+    "name": "貫通スキル"
+  },
+  {
+    "id": "penetratePowerUp",
+    "name": "貫通威力増加"
+  },
+  {
+    "id": "hitResistance",
+    "name": "打撃耐性"
+  },
+  {
+    "id": "hitSkill",
+    "name": "打撃スキル"
+  },
+  {
+    "id": "hitPowerUp",
+    "name": "打撃威力増加"
+  },
+  {
+    "id": "ammoGain",
+    "name": "弾丸付与"
+  },
+  {
+    "id": "activateCombustion",
+    "name": "火傷発動"
+  },
+  {
+    "id": "inflictCombustionPotency",
+    "name": "火傷威力付与"
+  },
+  {
+    "id": "combustionCount",
+    "name": "火傷回数"
+  },
+  {
+    "id": "loseCombustionCount",
+    "name": "火傷回数減少"
+  },
+  {
+    "id": "inflictCombustionCount",
+    "name": "火傷回数付与"
+  },
+  {
+    "id": "activateLaceration",
+    "name": "出血発動"
+  },
+  {
+    "id": "lacerationPotency",
+    "name": "出血威力"
+  },
+  {
+    "id": "loseLacerationPotency",
+    "name": "出血威力減少"
+  },
+  {
+    "id": "inflictLacerationPotency",
+    "name": "出血威力付与"
+  },
+  {
+    "id": "lacerationCount",
+    "name": "出血回数"
+  },
+  {
+    "id": "loseLacerationCount",
+    "name": "出血回数減少"
+  },
+  {
+    "id": "inflictLacerationCount",
+    "name": "出血回数付与"
+  },
+  {
+    "id": "inflictVibrationPotency",
+    "name": "振動威力付与"
+  },
+  {
+    "id": "vibrationCount",
+    "name": "振動回数"
+  },
+  {
+    "id": "loseVibrationCount",
+    "name": "振動回数減少"
+  },
+  {
+    "id": "inflictVibrationCount",
+    "name": "振動回数付与"
+  },
+  {
+    "id": "vibrationHemorrhage",
+    "name": "振動 - 大量出血"
+  },
+  {
+    "id": "vibrationEverlasting",
+    "name": "振動 - 反響"
+  },
+  {
+    "id": "vibrationDistribution",
+    "name": "振動 - 分配"
+  },
+  {
+    "id": "vibrationDecay",
+    "name": "振動 - 崩壊"
+  },
+  {
+    "id": "vibrationChain",
+    "name": "振動 - 鎖"
+  },
+  {
+    "id": "vibrationScorch",
+    "name": "振動 - 灼熱"
+  },
+  {
+    "id": "vibrationSuperposition",
+    "name": "振動 - 重畳"
+  },
+  {
+    "id": "loseBurstPotency",
+    "name": "破裂威力減少"
+  },
+  {
+    "id": "inflictBurstPotency",
+    "name": "破裂威力付与"
+  },
+  {
+    "id": "inflictBurstCount",
+    "name": "破裂回数付与"
+  },
+  {
+    "id": "sinkingPotency",
+    "name": "沈潜威力"
+  },
+  {
+    "id": "inflictSinkingPotency",
+    "name": "沈潜威力付与"
+  },
+  {
+    "id": "sinkingCount",
+    "name": "沈潜回数"
+  },
+  {
+    "id": "inflictSinkingCount",
+    "name": "沈潜回数付与"
+  },
+  {
+    "id": "loseBreathPotency",
+    "name": "呼吸威力減少"
+  },
+  {
+    "id": "inflictBreathPotency",
+    "name": "呼吸威力付与"
+  },
+  {
+    "id": "inflictBreathCount",
+    "name": "呼吸回数付与"
+  },
+  {
+    "id": "inflictChargeBarrier",
+    "name": "充電力場付与"
+  },
+  {
+    "id": "chargePotency",
+    "name": "充電威力"
+  },
+  {
+    "id": "inflictChargePotency",
+    "name": "充電威力付与"
+  },
+  {
+    "id": "loseChargeCount",
+    "name": "充電回数減少"
+  },
+  {
+    "id": "inflictChargeCount",
+    "name": "充電回数付与"
+  },
+  {
+    "id": "useChargeCount",
+    "name": "充電回数消費"
+  },
+  {
+    "id": "dealDamageUp",
+    "name": "与ダメージ量減少"
+  },
+  {
+    "id": "dealDamageDown",
+    "name": "与ダメージ量増加"
+  },
+  {
+    "id": "takeDamageDown",
+    "name": "被ダメージ量減少"
+  },
+  {
+    "id": "takeDamageUp",
+    "name": "被ダメージ量増加"
+  },
+  {
+    "id": "inflictDamageUp",
+    "name": "ダメージ量増加付与"
+  },
+  {
+    "id": "inflictSlashDamageUp",
+    "name": "斬撃ダメージ量増加付与"
+  },
+  {
+    "id": "inflictPenetrateDamageUp",
+    "name": "貫通ダメージ量増加付与"
+  },
+  {
+    "id": "inflictHitDamageUp",
+    "name": "打撃ダメージ量増加付与"
+  },
+  {
+    "id": "dealCriticalDamageUp",
+    "name": "クリティカルダメージ量増加"
+  },
+  {
+    "id": "inflictCriticalDamageUp",
+    "name": "クリティカルダメージ量増加付与"
+  },
+  {
+    "id": "inflictAttackPowerUp",
+    "name": "攻撃威力増加付与"
+  },
+  {
+    "id": "coinPowerDown",
+    "name": "コイン威力減少"
+  },
+  {
+    "id": "coinPowerUp",
+    "name": "コイン威力増加"
+  },
+  {
+    "id": "plusCoinPowerUp",
+    "name": "加算コイン強化"
+  },
+  {
+    "id": "basePowerUp",
+    "name": "基本威力増加"
+  },
+  {
+    "id": "clashPowerDown",
+    "name": "マッチ威力減少"
+  },
+  {
+    "id": "clashPowerUp",
+    "name": "マッチ威力増加"
+  },
+  {
+    "id": "inflictPowerUp",
+    "name": "威力増加付与"
+  },
+  {
+    "id": "inflictPowerDown",
+    "name": "威力減少付与"
+  },
+  {
+    "id": "powerUp",
+    "name": "威力増加"
+  },
+  {
+    "id": "finalPowerDown",
+    "name": "最終威力減少"
+  },
+  {
+    "id": "finalPowerUp",
+    "name": "最終威力増加"
+  },
+  {
+    "id": "offenseLevelUp",
+    "name": "攻撃レベル増加"
+  },
+  {
+    "id": "defenseLevelUp",
+    "name": "防御レベル増加"
+  },
+  {
+    "id": "maxSpeedUp",
+    "name": "速度最大値増加"
+  },
+  {
+    "id": "minSpeedUp",
+    "name": "速度最小値増加"
+  },
+  {
+    "id": "healSp",
+    "name": "精神力回復"
+  },
+  {
+    "id": "healHp",
+    "name": "体力回復"
+  },
+  {
+    "id": "healHpUp",
+    "name": "体力回復増加"
+  },
+  {
+    "id": "inflictHaste",
+    "name": "クイック付与"
+  },
+  {
+    "id": "recoverStagger",
+    "name": "混乱解除"
+  },
+  {
+    "id": "removeNegativeEffect",
+    "name": "負の効果解除"
+  },
+  {
+    "id": "inflictProtection",
+    "name": "保護付与"
+  },
+  {
+    "id": "inflictShield",
+    "name": "バリア付与"
+  },
+  {
+    "id": "maxHpUp",
+    "name": "最大体力増加"
+  },
+  {
+    "id": "bless",
+    "name": "祝福"
+  },
+  {
+    "id": "offenseLevelDown",
+    "name": "攻撃レベル減少"
+  },
+  {
+    "id": "defenseLevelDown",
+    "name": "防御レベル減少"
+  },
+  {
+    "id": "loseSpeed",
+    "name": "速度減少"
+  },
+  {
+    "id": "inflictBind",
+    "name": "束縛付与"
+  },
+  {
+    "id": "maxSpeedDown",
+    "name": "速度最大値減少"
+  },
+  {
+    "id": "minSpeedDown",
+    "name": "速度最小値減少"
+  },
+  {
+    "id": "maxHpDown",
+    "name": "最大体力減少"
+  },
+  {
+    "id": "inflictFragile",
+    "name": "脆弱付与"
+  },
+  {
+    "id": "inflictParalyze",
+    "name": "麻痺付与"
+  },
+  {
+    "id": "stagger",
+    "name": "混乱"
+  },
+  {
+    "id": "curse",
+    "name": "呪い"
+  },
+  {
+    "id": "indexFinger",
+    "name": "人差し指"
+  },
+  {
+    "id": "sameFaction",
+    "name": "同一所属"
+  },
+  {
+    "id": "pinkyFinger",
+    "name": "小指"
+  },
+  {
+    "id": "ringFinger",
+    "name": "薬指"
+  },
+  {
+    "id": "thumb",
+    "name": "親指"
+  },
+  {
+    "id": "middleFinger",
+    "name": "中指"
+  },
+  {
+    "id": "substitute",
+    "name": "待機解除"
+  },
+  {
+    "id": "allyKilled",
+    "name": "味方死亡時"
+  },
+  {
+    "id": "regularEncounters",
+    "name": "通常戦闘"
+  },
+  {
+    "id": "focusedEncounters",
+    "name": "一方攻撃"
+  },
+  {
+    "id": "enemyKilled",
+    "name": "敵死亡時"
+  },
+  {
+    "id": "enemyDefeated",
+    "name": "敵撃破時"
+  },
+  {
+    "id": "onHit",
+    "name": "的中時"
+  },
+  {
+    "id": "combatStart",
+    "name": "戦闘開始時"
+  },
+  {
+    "id": "critical",
+    "name": "クリティカル"
+  },
+  {
+    "id": "turnStart",
+    "name": "ターン開始時"
+  },
+  {
+    "id": "turnEnd",
+    "name": "ターン終了時"
+  },
+  {
+    "id": "takeHit",
+    "name": "被撃時"
+  },
+  {
+    "id": "winClash",
+    "name": "マッチ勝利時"
+  },
+  {
+    "id": "teamNumber1",
+    "name": "編成1番"
+  },
+  {
+    "id": "teamNumber2",
+    "name": "編成2番"
+  },
+  {
+    "id": "teamNumber3",
+    "name": "編成3番"
+  },
+  {
+    "id": "teamNumber4",
+    "name": "編成4番"
+  },
+  {
+    "id": "teamNumber5",
+    "name": "編成5番"
+  },
+  {
+    "id": "teamNumber6",
+    "name": "編成6番"
+  },
+  {
+    "id": "teamNumber7",
+    "name": "編成7番"
+  },
+  {
+    "id": "teamNumber8",
+    "name": "編成8番"
+  },
+  {
+    "id": "4Faction",
+    "name": "4人"
+  },
+  {
+    "id": "egoResource",
+    "name": "E.G.Oコスト"
+  },
+  {
+    "id": "egoSkill",
+    "name": "E.G.Oスキル"
+  },
+  {
+    "id": "egoPassive",
+    "name": "E.G.Oパッシブ"
+  },
+  {
+    "id": "EX",
+    "name": "EX"
+  },
+  {
+    "id": "shop",
+    "name": "ショップ"
+  },
+  {
+    "id": "refresh",
+    "name": "更新"
+  },
+  {
+    "id": "liquor",
+    "name": "酒"
+  },
+  {
+    "id": "skill1",
+    "name": "スキル1"
+  },
+  {
+    "id": "skill2",
+    "name": "スキル2"
+  },
+  {
+    "id": "skill3",
+    "name": "スキル3"
+  },
+  {
+    "id": "additionalSkill",
+    "name": "スキル追加"
+  },
+  {
+    "id": "fusion",
+    "name": "合成"
+  },
+  {
+    "id": "coffee",
+    "name": "コーヒー"
+  },
+  {
+    "id": "cost",
+    "name": "コスト"
+  },
+  {
+    "id": "gainCost",
+    "name": "コスト獲得"
+  },
+  {
+    "id": "themePackExclusive",
+    "name": "パック限定"
+  },
+  {
+    "id": "keywordTrigger",
+    "name": "トリガー"
+  },
+  {
+    "id": "deployLevelUp",
+    "name": "編成レベル増加"
+  },
+  {
+    "id": "hidden",
+    "name": "隠し"
+  }
+]

@@ -1,0 +1,11 @@
+{{- /* 정적 UI 문구 카탈로그(KR_YeonSimUI 계열)에서 배포용 dict 를 만든다.
+       "__kr:" 키는 번역 작업용 한국어 원문(JSON 에 주석이 없어 항목으로 넣음)이라 제외.
+       인자: 언어 코드 ("kr"·"en"·"jp")
+       소비처: baseof.html 의 UI_ALL 인라인, index.html 의 /lang/ui-{lc}.json 발행 */ -}}
+{{- $lc := . -}}
+{{- $raw := index (index (partialCached "lang.html" $lc $lc) "yeonsim") "YeonSimUI" -}}
+{{- $out := dict -}}
+{{- range $k, $v := $raw -}}
+  {{- if not (hasPrefix $k "__kr:") -}}{{- $out = merge $out (dict $k $v) -}}{{- end -}}
+{{- end -}}
+{{- return $out -}}

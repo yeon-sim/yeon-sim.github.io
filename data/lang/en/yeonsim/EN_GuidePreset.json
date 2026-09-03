@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "Preset mode shows only the Gifts you have chosen.",
+    "When you press [Add], the currently selected Gifts are included automatically.<br>You can also build a Preset from another Preset's code or file.",
+    "Click a Preset to apply, edit, share, or delete it.",
+    "Applying a Preset shows its Gifts and the Packs you need.",
+    "Editing selects the Preset's Gifts.<br>Select or deselect Gifts to change the Preset.",
+    "Use Share to send a Preset to someone or back it up.",
+    "The list shows a quick summary of each Preset's Gift counts.",
+    "A few sample Presets are provided the first time you open this.<br>We hope you find them useful."
+  ]
+}
