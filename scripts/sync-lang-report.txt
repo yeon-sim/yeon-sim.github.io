@@ -1,8 +1,11 @@
-== sync-lang 리포트 (DRY-RUN) ==
-소스: C:\Program Files (x86)\Steam\steamapps\common\Limbus Company\LimbusCompany_Data\Assets\Resources_moved\Localize\kr
-동일 93 · 갱신 32 · 사이트 authoring 9 · 경고 0
+== sync-lang 리포트 (WRITE) ==
+소스: C:/Program Files (x86)/Steam/steamapps/common/Limbus Company/LimbusCompany_Data/Assets/Resources_moved/Localize
+언어: kr · en · jp
+  kr  동일 93 · 갱신 32 · authoring 9 · 후보 17 · 경고 0
+  en  동일 92 · 갱신 32 · authoring 9 · 후보 11 · 경고 0
+  jp  동일 94 · 갱신 31 · authoring 9 · 후보 18 · 경고 0
 
-## 갱신 대상
+## [kr] 갱신 대상
   egogift\KR_EgoGiftCategory.json
   egogift\KR_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
   egoskill\KR_Passive_Ego.json (레코드 47건 상이 — 토큰화/게임갱신)
@@ -36,7 +39,7 @@
   skill\KR_Skills_personality-11.json (레코드 6건 상이 — 토큰화/게임갱신)
   skill\KR_Skills_personality-12.json (레코드 11건 상이 — 토큰화/게임갱신)
 
-## 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
+## [kr] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
   yeonsim\KR_Categories.json
   yeonsim\KR_ColorType.json
   yeonsim\KR_Guide.json
@@ -47,7 +50,7 @@
   yeonsim\KR_Tags.json
   yeonsim\KR_YeonSimUI.json
 
-## 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
+## [kr] 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
    필요하면 `--adopt <파일명> --write` 로 1회 편입하면 이후 자동 동기화된다.
    참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
    (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
@@ -68,6 +71,139 @@
   KR_Skills_personality-a1c9p1.json  [skill] 참조 0
   KR_Skills_personality-a1c9p2.json  [skill] 참조 0
   KR_Skills_personality-x1p1c1.json  [skill] 참조 0
+
+## [en] 갱신 대상
+  egoskill\EN_Egos.json
+  egoskill\EN_Passive_Ego.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\EN_Skills_Ego-a1c5p2.json
+  egoskill\EN_Skills_Ego.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\EN_Skills_Ego_Personality-01.json
+  egoskill\EN_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\EN_Skills_Ego_Personality-03.json
+  egoskill\EN_Skills_Ego_Personality-04.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\EN_Skills_Ego_Personality-05.json
+  egoskill\EN_Skills_Ego_Personality-06.json
+  egoskill\EN_Skills_Ego_Personality-07.json
+  egoskill\EN_Skills_Ego_Personality-08.json
+  egoskill\EN_Skills_Ego_Personality-09.json
+  egoskill\EN_Skills_Ego_Personality-10.json
+  egoskill\EN_Skills_Ego_Personality-11.json
+  egoskill\EN_Skills_Ego_Personality-12.json
+  egoskill\EN_Skills_Ego_Personality-a1c9p3.json
+  EN_Personalities.json
+  parsingdata\EN_BattleKeywords-a1c8p3.json (레코드 1건 상이 — 토큰화/게임갱신)
+  parsingdata\EN_BattleKeywords-BossRaid.json
+  parsingdata\EN_BattleKeywords.json (레코드 2건 상이 — 토큰화/게임갱신)
+  parsingdata\EN_BattleKeywords_Mirror4.json (레코드 1건 상이 — 토큰화/게임갱신)
+  parsingdata\EN_BattleKeywords_Mirror5.json (레코드 1건 상이 — 토큰화/게임갱신)
+  parsingdata\EN_SkillTag.json
+  passive\EN_Passives.json
+  skill\EN_Skills_personality-02.json
+  skill\EN_Skills_personality-03.json
+  skill\EN_Skills_personality-05.json
+  skill\EN_Skills_personality-06.json
+  skill\EN_Skills_personality-07.json
+  skill\EN_Skills_personality-09.json
+  skill\EN_Skills_personality-11.json
+
+## [en] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
+  yeonsim\EN_Categories.json
+  yeonsim\EN_ColorType.json
+  yeonsim\EN_Guide.json
+  yeonsim\EN_GuidePreset.json
+  yeonsim\EN_Season.json
+  yeonsim\EN_SkillKeyword.json
+  yeonsim\EN_TagCategories.json
+  yeonsim\EN_Tags.json
+  yeonsim\EN_YeonSimUI.json
+
+## [en] 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
+   필요하면 `--adopt <파일명> --write` 로 1회 편입하면 이후 자동 동기화된다.
+   참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
+   (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
+  EN_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
+  EN_EGOgift.json  [egogift] 참조 54
+  EN_Egos-a1c9p3.json  [egoskill] 참조 5
+  EN_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
+  EN_Passive_Ego-a1c9p3.json  [egoskill] 참조 0
+  EN_Passives-BossRaid.json  [passive] 참조 0
+  EN_Passives-a1c9116.json  [passive] 참조 0
+  EN_Passives-x1p1c1.json  [passive] 참조 0
+  EN_Passives-ycgd.json  [passive] 참조 0
+  EN_Personalities-x1p1c1.json  [(root)] 참조 0
+  EN_Skills_personality-x1p1c1.json  [skill] 참조 0
+
+## [jp] 갱신 대상
+  egogift\JP_EGOgift_MirrorDungeon.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\JP_Egos.json
+  egoskill\JP_Passive_Ego.json
+  egoskill\JP_Skills_Ego-a1c5p2.json
+  egoskill\JP_Skills_Ego.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\JP_Skills_Ego_Personality-01.json
+  egoskill\JP_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\JP_Skills_Ego_Personality-03.json
+  egoskill\JP_Skills_Ego_Personality-04.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\JP_Skills_Ego_Personality-05.json
+  egoskill\JP_Skills_Ego_Personality-06.json
+  egoskill\JP_Skills_Ego_Personality-07.json
+  egoskill\JP_Skills_Ego_Personality-08.json
+  egoskill\JP_Skills_Ego_Personality-09.json
+  egoskill\JP_Skills_Ego_Personality-10.json
+  egoskill\JP_Skills_Ego_Personality-11.json
+  egoskill\JP_Skills_Ego_Personality-12.json
+  egoskill\JP_Skills_Ego_Personality-a1c9p2.json
+  egoskill\JP_Skills_Ego_Personality-a1c9p3.json
+  JP_Personalities.json
+  parsingdata\JP_BattleKeywords-BossRaid.json
+  parsingdata\JP_BattleKeywords.json (레코드 1건 상이 — 토큰화/게임갱신)
+  parsingdata\JP_SkillTag.json
+  passive\JP_Passives.json (레코드 3건 상이 — 토큰화/게임갱신)
+  skill\JP_Skills_personality-02.json
+  skill\JP_Skills_personality-03.json
+  skill\JP_Skills_personality-05.json
+  skill\JP_Skills_personality-06.json
+  skill\JP_Skills_personality-07.json
+  skill\JP_Skills_personality-09.json
+  skill\JP_Skills_personality-11.json
+
+## [jp] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
+  yeonsim\JP_Categories.json
+  yeonsim\JP_ColorType.json
+  yeonsim\JP_Guide.json
+  yeonsim\JP_GuidePreset.json
+  yeonsim\JP_Season.json
+  yeonsim\JP_SkillKeyword.json
+  yeonsim\JP_TagCategories.json
+  yeonsim\JP_Tags.json
+  yeonsim\JP_YeonSimUI.json
+
+## [jp] 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
+   필요하면 `--adopt <파일명> --write` 로 1회 편입하면 이후 자동 동기화된다.
+   참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
+   (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
+  JP_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
+  JP_EGOgift.json  [egogift] 참조 54
+  JP_Egos-a1c9p3.json  [egoskill] 참조 5
+  JP_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
+  JP_Passive_Ego-a1c9p2.json  [egoskill] 참조 0
+  JP_Passive_Ego-a1c9p3.json  [egoskill] 참조 0
+  JP_Passives-BossRaid.json  [passive] 참조 0
+  JP_Passives-a1c9116.json  [passive] 참조 0
+  JP_Passives-a1c9p1.json  [passive] 참조 0
+  JP_Passives-a1c9p2.json  [passive] 참조 0
+  JP_Passives-a1c9p3.json  [passive] 참조 0
+  JP_Passives-x1p1c1.json  [passive] 참조 0
+  JP_Passives-ycgd.json  [passive] 참조 0
+  JP_Personalities-a1c9p2.json  [(root)] 참조 0
+  JP_Personalities-x1p1c1.json  [(root)] 참조 0
+  JP_Skills_personality-a1c9p1.json  [skill] 참조 0
+  JP_Skills_personality-a1c9p2.json  [skill] 참조 0
+  JP_Skills_personality-x1p1c1.json  [skill] 참조 0
+
+## 언어 간 커버리지 (kr 기준)
+   여기 오른 항목은 그 언어에 파일이 없어 사이트가 한국어 폴백으로 표시한다.
+   클라이언트 원본에 실제로 없는 경우가 있으므로 경고는 아니다.
+  en: 없음 — egoskill/Skills_Ego_Personality-a1c9p2.json  (kr 에는 있음 → 해당 항목은 한국어로 표시됨)
 
 ## 경고
   (없음)

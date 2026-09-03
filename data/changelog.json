@@ -500,6 +500,14 @@
       "changes": [
         "English : 일부 기프트 태그의 오타가 수정되었습니다."
       ]
+    },{
+      "version": "1.17.2",
+      "date": "2026-09-03",
+      "target_game_date": "2026-09-03",
+      "target_game_version": "1.113.0",
+      "changes": [
+        "English, 日本語 : 일부 누락된 데이터가 추가되었습니다."
+      ]
     }
   ]
 }

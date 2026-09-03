@@ -23,6 +23,10 @@
     {
       "id": "resist_immune",
       "content": "Immune"
+    },
+    {
+      "id": "resist_unwatched",
+      "content": "Unobservable"
     }
   ]
 }
