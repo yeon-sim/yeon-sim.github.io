@@ -53,6 +53,27 @@
               ]
             }
           ]
+        },
+        {
+          "level": 5,
+          "name": "9장 2절",
+          "abName": "살갗 예언자",
+          "desc": "<style=\"highlight\">스킬 사용 시 필요한 탐식 E.G.O 자원 1 감소</style>\n[BeforeAttack] (<style=\"highlight\">최대 공명 수</style>)가 4 이상이면 공격 가중치 +1\n(<style=\"highlight\">최대 공명 수</style>)가 6 이상이면, 추가로 공격 가중치 +1\n\n<style=\"highlight\">[BeforeAttack] 모든 공격 대상과 자신의 [Combustion] 위력의 합 1당, 피해량 +5% (최대 100%)</style>",
+          "coinlist": [
+            {
+              "coindescs": [
+                {
+                  "desc": "[OnSucceedAttack] [Combustion] 3 부여<style=\"highlight\"></style>"
+                },
+                {
+                  "desc": "<style=\"highlight\">[OnSucceedAttack] [DefenseDown] 5 부여</style>"
+                },
+                {
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (<style=\"highlight\">최대 5. 이 효과로 대상의 [Combustion] 위력이 1 미만이 되지 않음)\n- 자신의 30을 초과하는 [Combustion]을 대상의 [Combustion]이 부족한 만큼 대신 전환 가능</style>"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -118,10 +139,36 @@
               ]
             }
           ]
+        },
+        {
+          "level": 5,
+          "name": "9장 2절",
+          "abName": "살갗 예언자",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n<style=\"highlight\">스킬 사용 시 필요한 탐식 E.G.O 자원 1 감소</style>\n[BeforeAttack] (<style=\"highlight\">최대 공명 수</style>)가 4 이상이면 공격 가중치 +1\n(<style=\"highlight\">최대 공명 수</style>)가 6 이상이면, 추가로 공격 가중치 +1\n\n<style=\"highlight\">[BeforeAttack] 모든 공격 대상과 자신의 [Combustion] 위력의 합 1당, 피해량 +6% (최대 120%)\n[DefeatDuel] 기본 위력 -10</style>",
+          "coinlist": [
+            {
+              "coindescs": [
+                {
+                  "desc": "<style=\"highlight\">[SuperCoin]</style>"
+                },
+                {
+                  "desc": "<style=\"highlight\">[OnSucceedAttack]</style> 다음 턴에 [Binding] 2 부여"
+                },
+                {
+                  "desc": "[OnSucceedAttack] [Combustion] 4 부여<style=\"highlight\"></style>"
+                },
+                {
+                  "desc": "<style=\"highlight\">[OnSucceedAttack] [DefenseDown] 5 부여</style>"
+                },
+                {
+                  "desc": "[OnSucceedAttack] 대상의 [Combustion] 2를 [DefenseDown] 1로 전환 (<style=\"highlight\">최대 5. 이 효과로 대상의 [Combustion] 위력이 1 미만이 되지 않음)\n- 자신의 30을 초과하는 [Combustion]을 대상의 [Combustion]이 부족한 만큼 대신 전환 가능</style>"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
-
     {
       "id": 2020611,
       "levelList": [
@@ -291,7 +338,7 @@
           "name": "영속",
           "abName": "시간오리",
           "desc": "[CantIdentify]\n무작위 대상 공격\n메인 공격 대상의 속도가 자신보다 느릴 때, 피해량 +(대상과의 속도 차이x<style=\"highlight\">2</style>)% (최대 <style=\"highlight\">16%</style>)\n[BeforeAttack] 최대 공명 수가 3 이상일 경우, 최대 공명 수만큼 [Vibration] 위력 부여 (최대 4)\n<style=\"highlight\">- [BeforeAttack] 최대 공명이 나태 완전 공명일 경우, [Vibration] 횟수 2 부여</style>",
-         "coinlist": [
+          "coinlist": [
             {
               "coindescs": [
                 {

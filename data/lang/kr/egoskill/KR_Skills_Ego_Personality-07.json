@@ -344,7 +344,7 @@
           "level": 1,
           "name": "흉탄",
           "abName": "흉탄의 사수",
-            "desc": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 [Breath] 1 얻음 (최대 3)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +3% (최대 15%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모",
+          "desc": "[CantIdentify]\n무작위 대상 공격\n[BeforeAttack] (최대 공명 수 + 1)만큼 [BoseProjektil]을 얻음 (최대 7)\n- 해당 공명이 완전 공명이면 [BoseProjektil]을 (최대 공명 수 + 2) 만큼 얻음\n[BeforeAttack] [BoseProjektil]당 피해량 +2% (최대 14%)\n[BeforeAttack] [BoseProjektil]당 [Breath] 1 얻음 (최대 3)\n[BeforeAttack] 자신의 [Breath] 5당 피해량 +3% (최대 15%)\n[BeforeAttack] 자신의 [Breath] 5 소모\n[EndSkill] [BoseProjektil] 전부 소모",
           "coinlist": [
             {
               "coindescs": [
@@ -435,7 +435,7 @@
                 {
                   "desc": "[OnSucceedAttackTail] [Vibration] 횟수 2 증가"
                 }
-              ]  
+              ]
             },
             {
               "coindescs": [
@@ -573,7 +573,7 @@
           ]
         }
       ]
-    },    
+    },
     {
       "id": 2070911,
       "levelList": [
@@ -581,7 +581,7 @@
           "level": 1,
           "name": "입주 신고",
           "abName": "Kqe-1j-23",
-          "desc": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +2% (최대 30%)",
+          "desc": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +2% (최대 30%)",
           "coinlist": [
             {
               "coindescs": [
@@ -616,7 +616,7 @@
           "level": 3,
           "name": "입주 신고",
           "abName": "Kqe-1j-23",
-          "desc": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +3% (최대 45%)\n<style=\"highlight\">- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1</style>",
+          "desc": "[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +3% (최대 45%)\n<style=\"highlight\">- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1</style>",
           "coinlist": [
             {
               "coindescs": [
@@ -651,7 +651,7 @@
           "level": 4,
           "name": "입주 신고",
           "abName": "Kqe-1j-23",
-          "desc": "<style=\"highlight\">메인 타겟의 [Combustion] 6당, 코인 위력 +1 (최대 3)</style>\n[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 [Charge] 횟수 1당, 피해량 +3% (최대 45%)\n- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1",
+          "desc": "<style=\"highlight\">메인 타겟의 [Combustion] 6당, 코인 위력 +1 (최대 3)</style>\n[BeforeAttack] (최대 공명 수 + 1)만큼 자신의 [Charge] 횟수 증가 (최대 7)\n- 질투 공명이 4 이상이면, 대신 자신의 [Charge] 횟수 7 증가\n[BeforeAttack] 자신의 [Charge] 횟수를 모두 소모. 소모한 충전 횟수 1당, 피해량 +3% (최대 45%)\n- [Charge] 횟수를 5 이상 소모했다면, 기본 위력 +1",
           "coinlist": [
             {
               "coindescs": [

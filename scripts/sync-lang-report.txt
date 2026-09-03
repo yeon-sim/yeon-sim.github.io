@@ -1,0 +1,70 @@
+== sync-lang 리포트 (WRITE) ==
+소스: C:\Program Files (x86)\Steam\steamapps\common\Limbus Company\LimbusCompany_Data\Assets\Resources_moved\Localize\kr
+동일 91 · 갱신 33 · 사이트 authoring 5 · 경고 0
+
+## 갱신 대상
+  egogift\KR_EgoGiftCategory.json
+  egogift\KR_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Egos.json
+  egoskill\KR_Passive_Ego.json (레코드 47건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego.json (레코드 75건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-04.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-05.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-06.json (레코드 3건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-07.json (레코드 5건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-08.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-09.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-10.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-11.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-12.json (레코드 3건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-a1c9p3.json (레코드 1건 상이 — 토큰화/게임갱신)
+  KR_ResistText.json
+  parsingdata\KR_SkillTag.json
+  passive\KR_Passives.json (레코드 130건 상이 — 토큰화/게임갱신)
+  passive\KR_Passives_check4.json (레코드 13건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills.json (레코드 198건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-01.json (레코드 15건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-02.json (레코드 11건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-03.json (레코드 6건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-04.json (레코드 9건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-05.json (레코드 11건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-06.json (레코드 19건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-07.json (레코드 7건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-08.json (레코드 8건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-09.json (레코드 5건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-10.json (레코드 5건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-11.json (레코드 6건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-12.json (레코드 11건 상이 — 토큰화/게임갱신)
+
+## 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
+  egogift\KR_Categories.json
+  egogift\KR_Tags.json
+  KR_ColorType.json
+  KR_Season.json
+  KR_SkillKeyword.json
+
+## 신규 접미사 후보 (클라이언트에만 있음 — 복사하지 않음)
+   필요하면 `--adopt <파일명> --write` 로 1회 편입하면 이후 자동 동기화된다.
+   참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
+   (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
+  KR_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
+  KR_Egos-a1c9p3.json  [egoskill] 참조 5
+  KR_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
+  KR_Passive_Ego-a1c9p2.json  [egoskill] 참조 0
+  KR_Passive_Ego-a1c9p3.json  [egoskill] 참조 0
+  KR_Passives-BossRaid.json  [passive] 참조 0
+  KR_Passives-a1c9116.json  [passive] 참조 0
+  KR_Passives-a1c9p1.json  [passive] 참조 0
+  KR_Passives-a1c9p2.json  [passive] 참조 0
+  KR_Passives-a1c9p3.json  [passive] 참조 0
+  KR_Passives-x1p1c1.json  [passive] 참조 0
+  KR_Passives-ycgd.json  [passive] 참조 0
+  KR_Personalities-a1c9p2.json  [(root)] 참조 0
+  KR_Personalities-x1p1c1.json  [(root)] 참조 0
+  KR_Skills_personality-a1c9p1.json  [skill] 참조 0
+  KR_Skills_personality-a1c9p2.json  [skill] 참조 0
+  KR_Skills_personality-x1p1c1.json  [skill] 참조 0
+
+## 경고
+  (없음)

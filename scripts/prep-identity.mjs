@@ -62,6 +62,14 @@ async function convert(src, dst) {            // PNG→webp(절반, q85)
     await sharp(src).resize(m.width >> 1, m.height >> 1).webp({ quality: QUALITY }).toFile(dst);
   }
 }
+// EGO 파일명은 id 에서 유도되지 않는다(변종 ego-a1c5p2 등) → 레코드가 실제로 든 파일을 찾는다
+function findFileWith(dir, prefix, match) {
+  if (!fs.existsSync(dir)) return null;
+  for (const f of fs.readdirSync(dir).filter(n => n.startsWith(prefix) && n.endsWith('.bytes'))) {
+    try { if (listOf(readJson(path.join(dir, f))).some(match)) return f.replace(/\.bytes$/, ''); } catch { }
+  }
+  return null;
+}
 function walkPng(dir) {                        // 재귀 .png 수집
   if (!fs.existsSync(dir)) return [];
   const out = [];
@@ -91,9 +99,11 @@ if (persons.length) {  // 공유 패시브 정의(신규 패시브 추가분) �
   dataN += copyBytes(`${SD}/passive/passive.bytes`, `${DATA}/personality/passive/passive.json`);
   dataN += copyBytes(`${SD}/passive/passive_check4.bytes`, `${DATA}/personality/passive/passive_check4.json`);
 }
-for (const { fileNum } of egos) {
-  dataN += copyBytes(`${SD}/ego/ego-${fileNum}.bytes`, `${DATA}/egoskill/ego-${fileNum}.json`);
-  dataN += copyBytes(`${SD}/skill/ego-skill-${fileNum}.bytes`, `${DATA}/egoskill/ego-skill-${fileNum}.json`);
+for (const e of egos) {
+  e.egoFile = findFileWith(`${SD}/ego`, 'ego-', r => +r.id === +e.id) || `ego-${e.fileNum}`;
+  const sf = findFileWith(`${SD}/skill`, 'ego-skill-', r => String(r.id).startsWith(e.id)) || `ego-skill-${e.fileNum}`;
+  dataN += copyBytes(`${SD}/ego/${e.egoFile}.bytes`, `${DATA}/egoskill/${e.egoFile}.json`);
+  dataN += copyBytes(`${SD}/skill/${sf}.bytes`, `${DATA}/egoskill/${sf}.json`);
 }
 
 // ── 2. illust-pivots (인격 있을 때) ────────────────────────────────────────
@@ -102,6 +112,8 @@ if (persons.length) {
   log('## illust-pivots');
   pivot = copyBytes(`${SD}/illust-pivots-unitinfo/illust-pivots-unitinfo.bytes`, `${DATA}/personality/illust-pivots-unitinfo.json`);
 }
+
+const idRe = (id) => new RegExp(`^${id}(_|$)`);
 
 // ── 0. preview 정리 (충돌 id 제거) ─────────────────────────────────────────
 log('## preview 정리');
@@ -121,11 +133,27 @@ for (const [file, wantIds] of [
     log(`  ${WRITE ? '제거' : '제거예정'}: ${path.basename(file)} 에서 ${removed}건`);
   }
 }
+// preview 이미지 삭제 (정식 편입된 id는 preview 이미지가 쓰이지 않음).
+// .clip 은 편집 원본이라 제외 (템플릿은 더미 id 19999/29999 라 원래 안 걸리지만 방어적으로).
+let previewImgN = 0;
+for (const [dir, wantIds] of [
+  [`${IMG}/personality/preview`, persons.map(p => p.id)],
+  [`${IMG}/egoskill/preview`, egos.map(e => e.id)],
+]) {
+  if (!fs.existsSync(dir)) continue;
+  for (const f of fs.readdirSync(dir)) {
+    if (/\.clip$/i.test(f)) continue;
+    if (!wantIds.some(id => idRe(id).test(path.basename(f, path.extname(f))))) continue;
+    if (WRITE) fs.unlinkSync(path.join(dir, f));
+    previewImgN++;
+    log(`  ${WRITE ? '삭제' : '삭제예정'}: preview 이미지 ${path.relative(IMG, path.join(dir, f))}`);
+  }
+}
+if (previewImgN) previewRemoved.push(`이미지:${previewImgN}`);
 
 // ── 5a. 이미지 (CG/info/profile/support/EGO CG + 스킬아이콘) ─────────────────
 log('## 이미지');
 let imgN = 0;
-const idRe = (id) => new RegExp(`^${id}(_|$)`);
 // 인격/EGO 유닛 이미지: Sprite/Unit + UserInfoSuppotPortrait 에서 id 매칭
 const unitPngs = [...walkPng(`${SPR}/Unit`), ...walkPng(`${SPR}/UserInfoSuppotPortrait`)];
 for (const { id } of [...persons, ...egos]) {
@@ -197,9 +225,9 @@ for (const { id, nn } of persons) {
   const info = findRecord(`${SD}/personality/personality-${nn}.bytes`, id);
   if (info && seasonIds && !seasonIds.has(+info.season)) warn.push(`season 누락: ${id} 의 season ${info.season} 이 KR_Season 에 없음 (빌드 실패 위험)`);
 }
-for (const { id, fileNum } of egos) {
+for (const { id, egoFile } of egos) {
   if (!findRecord(krEgos, id)) warn.push(`이름 누락: KR_Egos 에 ${id} 없음`);
-  const info = findRecord(`${SD}/ego/ego-${fileNum}.bytes`, id);
+  const info = findRecord(`${SD}/ego/${egoFile}.bytes`, id);
   if (info && seasonIds && info.season != null && !seasonIds.has(+info.season)) warn.push(`season 누락: EGO ${id} season ${info.season} 이 KR_Season 에 없음`);
 }
 if (previewRemoved.length && !WRITE) warn.push(`preview 충돌: ${previewRemoved.join(', ')} (--write 시 정리됨)`);

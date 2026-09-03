@@ -1,1 +1,97 @@
-[]
+[
+  {
+    "loc": "2090411 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 횟수 3 부여",
+    "after": "[OnSucceedAttack] [Vibration] 횟수 3 부여"
+  },
+  {
+    "loc": "2090411 Lv1 coin1.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2090411 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 3, 진동 횟수 5 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3, [Vibration] 횟수 5 부여"
+  },
+  {
+    "loc": "2090411 Lv3 coin1.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2090411 Lv3 coin1.3",
+    "before": "[OnSucceedAttackHead] 진동 폭발",
+    "after": "[OnSucceedAttackHead] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090411 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 3, 진동 횟수 7 부여",
+    "after": "[OnSucceedAttack] [Vibration] 3, [Vibration] 횟수 7 부여"
+  },
+  {
+    "loc": "2090411 Lv4 coin1.2",
+    "before": "[OnSucceedAttackHead] 다음 턴에 속박 2 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [Binding] 2 부여"
+  },
+  {
+    "loc": "2090411 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090421 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090421 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 3 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 3 부여"
+  },
+  {
+    "loc": "2090421 Lv3 coin1.3",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090421 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 5 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 5 부여"
+  },
+  {
+    "loc": "2090421 Lv4 coin1.3",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090511 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 나태 취약 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2090511 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 다음 턴에 나태 취약 1 부여",
+    "after": "[OnSucceedAttackHead] 다음 턴에 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2090511 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 다음 턴에 나태 취약 1 부여",
+    "after": "[OnSucceedAttack] 다음 턴에 [AmberTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2090521 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090521 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  },
+  {
+    "loc": "2090521 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 폭발",
+    "after": "[OnSucceedAttack] [VibrationExplosion]"
+  }
+]

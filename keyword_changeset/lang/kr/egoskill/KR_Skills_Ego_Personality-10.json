@@ -1,1 +1,117 @@
-[]
+[
+  {
+    "loc": "2100411 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 3 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 3 부여"
+  },
+  {
+    "loc": "2100411 Lv3 coin1.1",
+    "before": "[OnSucceedAttackHead] 파열 3 부여",
+    "after": "[OnSucceedAttackHead] [Burst] 3 부여"
+  },
+  {
+    "loc": "2100411 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 3 부여",
+    "after": "[OnSucceedAttack] [Burst] 3 부여"
+  },
+  {
+    "loc": "2100421 Lv1 coin1.1",
+    "before": "[OnSucceedAttackTail] 파열 횟수 2 증가",
+    "after": "[OnSucceedAttackTail] [Burst] 횟수 2 증가"
+  },
+  {
+    "loc": "2100421 Lv3 coin1.1",
+    "before": "[OnSucceedAttackTail] 파열 횟수 3 증가",
+    "after": "[OnSucceedAttackTail] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "2100421 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 3 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 3 부여"
+  },
+  {
+    "loc": "2100421 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 파열 횟수 3 증가",
+    "after": "[OnSucceedAttack] [Burst] 횟수 3 증가"
+  },
+  {
+    "loc": "2100421 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 방어 레벨 감소 5 부여",
+    "after": "[OnSucceedAttack] [DefenseDown] 5 부여"
+  },
+  {
+    "loc": "2100511 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 4 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100511 Lv4 coin1.3",
+    "before": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 공격 위력 감소 1, 수비 위력 감소 1 부여",
+    "after": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [Reduction] 1, [Disarming] 1 부여"
+  },
+  {
+    "loc": "2100521 Lv1 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+  },
+  {
+    "loc": "2100521 Lv1 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100521 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+  },
+  {
+    "loc": "2100521 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100521 Lv3 coin1.3",
+    "before": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 색욕 취약 1 부여",
+    "after": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [ScarletTakeDamageUp] 1 부여"
+  },
+  {
+    "loc": "2100521 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 화상 6 부여",
+    "after": "[OnSucceedAttack] 대상에게 [Combustion]이 없으면 [Combustion] 6 부여"
+  },
+  {
+    "loc": "2100521 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 화상 4 부여",
+    "after": "[OnSucceedAttack] [Combustion] 4 부여"
+  },
+  {
+    "loc": "2100521 Lv4 coin1.3",
+    "before": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 색욕 취약 2 부여",
+    "after": "[OnSucceedAttackTail] 대상의 [Combustion]이 10 이상이면 다음 턴에 [ScarletTakeDamageUp] 2 부여"
+  }
+]

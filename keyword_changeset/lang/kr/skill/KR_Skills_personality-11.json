@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "loc": "1110501 Lv1 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 3 증가",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 3 증가"
+  },
+  {
+    "loc": "1110501 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 자신의 진동 횟수만큼 흐트러짐 회복 (최대 10) ",
+    "after": "[OnSucceedAttackHead] 자신의 [Vibration] 횟수만큼 흐트러짐 회복 (최대 10) "
+  },
+  {
+    "loc": "1110501 Lv2 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 진동 횟수 2 증가\n자신의 진동 횟수가 6 이상이면 최종 위력 +1",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 [Vibration] 횟수 2 증가\n자신의 [Vibration] 횟수가 6 이상이면 최종 위력 +1"
+  },
+  {
+    "loc": "1110501 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수만큼 흐트러짐 회복 (최대 10) ",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수만큼 흐트러짐 회복 (최대 10) "
+  },
+  {
+    "loc": "1110501 Lv4 desc",
+    "before": "이 스킬이 버려지면 자신의 진동 횟수 4 증가\n[WhenUse] 자신의 진동 횟수 2 증가\n자신의 진동 횟수가 6 이상이면 최종 위력 +2",
+    "after": "이 스킬이 버려지면 자신의 [Vibration] 횟수 4 증가\n[WhenUse] 자신의 [Vibration] 횟수 2 증가\n자신의 [Vibration] 횟수가 6 이상이면 최종 위력 +2"
+  },
+  {
+    "loc": "1110501 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수만큼 흐트러짐 회복 (최대 10) ",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수만큼 흐트러짐 회복 (최대 10) "
+  },
+  {
+    "loc": "1110502 Lv1 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1110502 Lv1 coin1.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1110502 Lv1 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 1 부여",
+    "after": "[OnSucceedAttackHead] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1110502 Lv1 coin3.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 6 이상일 때, 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 6 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110502 Lv2 desc",
+    "before": "이 스킬이 버려지면 공격 레벨 증가 1을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 [AttackUp] 1을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1110502 Lv2 coin1.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1110502 Lv2 coin2.1",
+    "before": "[OnSucceedAttack] 진동 1 부여",
+    "after": "[OnSucceedAttack] [Vibration] 1 부여"
+  },
+  {
+    "loc": "1110502 Lv2 coin3.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 6 이상일 때, 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 6 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110502 Lv4 desc",
+    "before": "이 스킬이 버려지면 공격 레벨 증가 1을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "이 스킬이 버려지면 [AttackUp] 1을 얻음\n[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1110502 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1110502 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 2 부여",
+    "after": "[OnSucceedAttack] [Vibration] 2 부여"
+  },
+  {
+    "loc": "1110502 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 자신의 진동 횟수가 6 이상일 때, 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] 자신의 [Vibration] 횟수가 6 이상일 때, [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv3 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯의 스킬을 등급이 높은 순으로 버림.\n자신의 진동 횟수 10을 소모하여 코인 위력 +1",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯의 스킬을 등급이 높은 순으로 [Discard].\n자신의 [Vibration] 횟수 10을 소모하여 코인 위력 +1"
+  },
+  {
+    "loc": "1110503 Lv3 coin1.1",
+    "before": "[OnSucceedAttack] 진동 4 부여",
+    "after": "[OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1110503 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 횟수 3 증가",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [Vibration] 횟수 3 증가"
+  },
+  {
+    "loc": "1110503 Lv3 coin2.1",
+    "before": "[OnSucceedAttackHead] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttackHead] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv3 coin3.1",
+    "before": "[OnSucceedAttackHead] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttackHead] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv3 coin4.1",
+    "before": "[OnSucceedAttackHead] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttackHead] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv4 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯의 스킬을 등급이 높은 순으로 버림.\n자신의 진동 횟수 10을 소모하여 코인 위력 +2",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯의 스킬을 등급이 높은 순으로 [Discard].\n자신의 [Vibration] 횟수 10을 소모하여 코인 위력 +2"
+  },
+  {
+    "loc": "1110503 Lv4 coin1.1",
+    "before": "[OnSucceedAttack] 진동 4 부여",
+    "after": "[OnSucceedAttack] [Vibration] 4 부여"
+  },
+  {
+    "loc": "1110503 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 스킬 사용 시 진동 횟수를 소모했으면, 진동 횟수 3 증가",
+    "after": "[OnSucceedAttack] 스킬 사용 시 [Vibration] 횟수를 소모했으면, [Vibration] 횟수 3 증가"
+  },
+  {
+    "loc": "1110503 Lv4 coin2.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv4 coin3.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110503 Lv4 coin4.1",
+    "before": "[OnSucceedAttack] 진동 폭발. 대상의 진동 횟수 1 감소",
+    "after": "[OnSucceedAttack] [VibrationExplosion]. 대상의 [Vibration] 횟수 1 감소"
+  },
+  {
+    "loc": "1110504 Lv1 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1110504 Lv4 desc",
+    "before": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 버림",
+    "after": "[WhenUse] 자신의 모든 스킬 슬롯에서 등급이 가장 낮은 스킬 1개를 [Discard]"
+  },
+  {
+    "loc": "1110603 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 속도가 가장 느린 아군 2명에게 다음 턴에 신속 1 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 느린 아군 2명에게 다음 턴에 [Agility] 1 부여"
+  },
+  {
+    "loc": "1110603 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 속도가 가장 느린 아군 2명에게 다음 턴에 신속 2 부여",
+    "after": "[OnSucceedAttack] 속도가 가장 느린 아군 2명에게 다음 턴에 [Agility] 2 부여"
+  },
+  {
+    "loc": "1111303 Lv3 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Vibration]을 최대 3 소모\n- (소모한 [Vibration] x 2)만큼 자신의 진동 횟수 증가\n- 다음 턴에 (소모한 [Vibration] - 1)만큼 [Binding] 부여",
+    "after": "[OnSucceedAttack] 대상의 [Vibration]을 최대 3 소모\n- (소모한 [Vibration] x 2)만큼 자신의 [Vibration] 횟수 증가\n- 다음 턴에 (소모한 [Vibration] - 1)만큼 [Binding] 부여"
+  },
+  {
+    "loc": "1111303 Lv4 coin1.2",
+    "before": "[OnSucceedAttack] 대상의 [Vibration]을 최대 3 소모<style=\"highlight\"></style>\n- (소모한 [Vibration] x 2)만큼 자신의 진동 횟수 증가<style=\"highlight\"></style>\n- 다음 턴에 (소모한 [Vibration] - 1)만큼 [Binding] 부여<style=\"highlight\"></style>",
+    "after": "[OnSucceedAttack] 대상의 [Vibration]을 최대 3 소모<style=\"highlight\"></style>\n- (소모한 [Vibration] x 2)만큼 자신의 [Vibration] 횟수 증가<style=\"highlight\"></style>\n- 다음 턴에 (소모한 [Vibration] - 1)만큼 [Binding] 부여<style=\"highlight\"></style>"
+  }
+]
