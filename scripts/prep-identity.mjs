@@ -7,7 +7,7 @@ import path from 'path';
   목적: 갱신 때마다 대화로 반복하던 소스 탐색·복사·이미지 수집·누락 점검을
         결정용 요약 리포트 한 장으로 대체(속도·토큰 최소화).
 
-  담당: step 0(preview 정리) · 1(데이터 .bytes→.json) · 2(illust-pivots)
+  담당: step 0(preview 정리) · 1(데이터 .bytes→.json, data/buff 매핑 동기화 포함) · 2(illust-pivots)
         · 5(이미지 변환 + 버프 아이콘) + 감사(이름/season/누락 스킬아이콘/preview 충돌)
   비담당(검수 필요 → 리마인드만): apply-overrides · parse-keywords · hugo
 
@@ -106,6 +106,16 @@ for (const e of egos) {
   dataN += copyBytes(`${SD}/skill/${sf}.bytes`, `${DATA}/egoskill/${sf}.json`);
 }
 
+// 버프 정의(키워드 id → iconId 매핑). 사이트가 가진 파일만, 내용이 다를 때 갱신.
+// `*Ally` 변형 키워드(ChargeNoirAlly→ChargeNoir)는 이 매핑으로만 아이콘을 찾으므로 5b 의 선행 조건.
+const buffDataDir = `${DATA}/buff`;
+const buffDataFiles = fs.existsSync(buffDataDir) ? fs.readdirSync(buffDataDir).filter(f => f.endsWith('.json')) : [];
+for (const f of buffDataFiles) {
+  const src = `${SD}/buff/${f.replace(/\.json$/, '.bytes')}`;
+  const dst = `${buffDataDir}/${f}`;
+  if (fs.existsSync(src) && !fs.readFileSync(src).equals(fs.readFileSync(dst))) dataN += copyBytes(src, dst);
+}
+
 // ── 2. illust-pivots (인격 있을 때) ────────────────────────────────────────
 let pivot = false;
 if (persons.length) {
@@ -200,10 +210,17 @@ if (!fs.existsSync(pdDir)) {
 } else if (fs.existsSync(BUF)) {
   const pdText = fs.readdirSync(pdDir)
     .filter(f => f.endsWith('.json')).map(f => fs.readFileSync(path.join(pdDir, f), 'utf-8')).join('\n');
+  // 아이콘 이름 ≠ 키워드 id 인 경우: buff 정의의 iconId (parsingdata 에 정의된 id 만). dry-run 도 신규 매핑을 보도록 소스 우선.
+  const mappedIcons = new Set();
+  for (const f of buffDataFiles) {
+    const src = `${SD}/buff/${f.replace(/\.json$/, '.bytes')}`;
+    for (const r of listOf(readJson(fs.existsSync(src) ? src : `${buffDataDir}/${f}`)))
+      if (r.iconId && pdText.includes(`"${r.id}"`)) mappedIcons.add(r.iconId);
+  }
   for (const f of fs.readdirSync(BUF).filter(f => f.endsWith('.png'))) {
     const kw = path.basename(f, '.png');
     if (fs.existsSync(`${buffDst}/${f}`)) continue;          // 이미 있음
-    if (!pdText.includes(`"${kw}"`)) continue;               // parsingdata 미정의 → 스킵
+    if (!pdText.includes(`"${kw}"`) && !mappedIcons.has(kw)) continue;  // parsingdata 미정의·미매핑 → 스킵
     if (WRITE) { fs.mkdirSync(buffDst, { recursive: true }); fs.copyFileSync(`${BUF}/${f}`, `${buffDst}/${f}`); }
     buffNames.push(kw); buffN++;
     log(`  buff: ${kw} (${WRITE ? '복사' : '복사예정'})`);

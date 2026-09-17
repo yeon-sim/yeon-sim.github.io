@@ -5836,6 +5836,110 @@
       ]
     },
     {
+      "id": 1081601,
+      "attributeStockCondition": [
+        {
+          "type": "CRIMSON",
+          "value": 1
+        },
+        {
+          "type": "SCARLET",
+          "value": 1
+        },
+        {
+          "type": "VIOLET",
+          "value": 2
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ],
+      "controlValueList": [
+        10,
+        2,
+        8,
+        5
+      ]
+    },
+    {
+      "id": 1081602,
+      "controlValueList": [
+        10,
+        1,
+        2,
+        100,
+        5
+      ]
+    },
+    {
+      "id": 1081621,
+      "attributeResonanceCondition": [
+        {
+          "type": "SCARLET",
+          "value": 3
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    {
+      "id": 1041601,
+      "attributeStockCondition": [
+        {
+          "type": "AMBER",
+          "value": 1
+        },
+        {
+          "type": "INDIGO",
+          "value": 1
+        },
+        {
+          "type": "VIOLET",
+          "value": 2
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ],
+      "controlValueList": [
+        0, 0, 15, 30, 2, 2
+      ]
+    },
+    {
+      "id": 1041602,
+      "controlValueList": [
+        5, 0
+      ]
+    },
+    {
+      "id": 1041603,
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ],
+      "controlValueList": [
+        5, 0
+      ]
+    },
+    {
+      "id": 1041604,
+      "controlValueList": [
+        3, 5, 6, 3, 2, 10, 2
+      ]
+    },
+    {
+      "id": 1041621,
+      "attributeStockCondition": [
+        {
+          "type": "AMBER",
+          "value": 6
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    {
       "id": 1061601,
       "attributeStockCondition": [
         {

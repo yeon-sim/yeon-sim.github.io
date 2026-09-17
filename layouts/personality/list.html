@@ -598,7 +598,7 @@
   {{ $defSkillTypes := slice (dict "id" "GUARD" "name" "가드" "uk" "type.guard" "icon" "guard") (dict "id" "EVADE" "name" "회피" "uk" "type.evade" "icon" "evade") (dict "id" "COUNTER" "name" "반격" "uk" "type.counter" "icon" "counter") }}
   {{ $skillRows := slice (dict "key" "1" "label" "1스킬" "uk" "skill.tier1" "types" $atkSkillTypes) (dict "key" "2" "label" "2스킬" "uk" "skill.tier2" "types" $atkSkillTypes) (dict "key" "3" "label" "3스킬" "uk" "skill.tier3" "types" $atkSkillTypes) (dict "key" "def" "label" "수비" "uk" "skill.def" "types" $defSkillTypes) }}
   {{ $timingTop := slice (dict "id" "perm" "label" "상시" "uk" "timing.perm" "img" "season_0_kr" "imgL" "season_0") (dict "id" "walpurgis" "label" "발푸르기스의 밤" "uk" "timing.walpurgis" "img" "walpurgis_kr" "imgL" "walpurgis") (dict "id" "limited" "label" "한정" "uk" "timing.limited" "img" "limited") }}
-  {{ $timingSeasons := slice (dict "id" "s1" "label" "시즌 1" "uk" "timing.s1" "img" "season_1") (dict "id" "s2" "label" "시즌 2" "uk" "timing.s2" "img" "season_2") (dict "id" "s3" "label" "시즌 3" "uk" "timing.s3" "img" "season_3") (dict "id" "s4" "label" "시즌 4" "uk" "timing.s4" "img" "season_4") (dict "id" "s5" "label" "시즌 5" "uk" "timing.s5" "img" "season_5") (dict "id" "s6" "label" "시즌 6" "uk" "timing.s6" "img" "season_6") (dict "id" "s7" "label" "시즌 7" "uk" "timing.s7" "img" "season_7") }}
+  {{ $timingSeasons := slice (dict "id" "s1" "label" "시즌 1" "uk" "timing.s1" "img" "season_1") (dict "id" "s2" "label" "시즌 2" "uk" "timing.s2" "img" "season_2") (dict "id" "s3" "label" "시즌 3" "uk" "timing.s3" "img" "season_3") (dict "id" "s4" "label" "시즌 4" "uk" "timing.s4" "img" "season_4") (dict "id" "s5" "label" "시즌 5" "uk" "timing.s5" "img" "season_5") (dict "id" "s6" "label" "시즌 6" "uk" "timing.s6" "img" "season_6") (dict "id" "s7" "label" "시즌 7" "uk" "timing.s7" "img" "season_7") (dict "id" "s8" "label" "시즌 8" "uk" "timing.s8" "img" "season_8") }}
   <div class="modal-shade" :class="{ open: advancedSearchModal }" @click.self="advancedSearchModal = false">
     <div class="modal-box advanced-search-box" @click.stop>
       <div class="modal-header">
@@ -1126,9 +1126,9 @@
         {{ end }}
         {{ $egoSeason := index $seasonMap (string $egoSeasonId) }}
         {{ $egoSeasonName := cond (eq (int .season) 0) (index $seasonMap "0").name $egoSeason.name }}
-        {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~7=s1~s7, 발푸르기스=walpurgis) */}}
+        {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~8=s1~s8, 발푸르기스=walpurgis) */}}
         {{ $egoTimings := slice }}{{ $egoRawSeason := int .season }}
-        {{ if eq $egoRawSeason 0 }}{{ $egoTimings = $egoTimings | append "perm" }}{{ $eud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $eud (int .startDate)) (or (eq (int .endDate) -1) (lt $eud (int .endDate))) }}{{ $egoTimings = $egoTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $egoRawSeason 9000 }}{{ $egoTimings = $egoTimings | append "walpurgis" }}{{ else if eq $egoRawSeason 8000 }}{{ $egoTimings = $egoTimings | append "limited" }}{{ else if and (ge $egoRawSeason 1) (le $egoRawSeason 7) }}{{ $egoTimings = $egoTimings | append (printf "s%d" $egoRawSeason) }}{{ end }}
+        {{ if eq $egoRawSeason 0 }}{{ $egoTimings = $egoTimings | append "perm" }}{{ $eud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $eud (int .startDate)) (or (eq (int .endDate) -1) (lt $eud (int .endDate))) }}{{ $egoTimings = $egoTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $egoRawSeason 9000 }}{{ $egoTimings = $egoTimings | append "walpurgis" }}{{ else if eq $egoRawSeason 8000 }}{{ $egoTimings = $egoTimings | append "limited" }}{{ else if and (ge $egoRawSeason 1) (le $egoRawSeason 8) }}{{ $egoTimings = $egoTimings | append (printf "s%d" $egoRawSeason) }}{{ end }}
         {{ $egoUpdatedDate := printf "%s.%s.%s" (substr $d 0 4) (substr $d 4 2) (substr $d 6 2) }}
         {{ $corrosionId := printf "%d" (int .corrosionSkillId) }}
         {{ $awakeIconImg := printf "/images/egoskill/%s/%s_awaken_profile.webp" $num $idStr }}
@@ -1191,7 +1191,7 @@
       {{ $eColor := index $attrColorMap $eAttr | default "#ffffff" }}
       {{/* 출시시기 검색용 — season 기반 타이밍 태그 */}}
       {{ $pTimings := slice }}{{ $pRawSeason := int .season }}
-      {{ if eq $pRawSeason 0 }}{{ $pTimings = $pTimings | append "perm" }}{{ $peud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $peud (int .startDate)) (or (eq (int .endDate) -1) (lt $peud (int .endDate))) }}{{ $pTimings = $pTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $pRawSeason 9000 }}{{ $pTimings = $pTimings | append "walpurgis" }}{{ else if eq $pRawSeason 8000 }}{{ $pTimings = $pTimings | append "limited" }}{{ else if and (ge $pRawSeason 1) (le $pRawSeason 7) }}{{ $pTimings = $pTimings | append (printf "s%d" $pRawSeason) }}{{ end }}
+      {{ if eq $pRawSeason 0 }}{{ $pTimings = $pTimings | append "perm" }}{{ $peud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $peud (int .startDate)) (or (eq (int .endDate) -1) (lt $peud (int .endDate))) }}{{ $pTimings = $pTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $pRawSeason 9000 }}{{ $pTimings = $pTimings | append "walpurgis" }}{{ else if eq $pRawSeason 8000 }}{{ $pTimings = $pTimings | append "limited" }}{{ else if and (ge $pRawSeason 1) (le $pRawSeason 8) }}{{ $pTimings = $pTimings | append (printf "s%d" $pRawSeason) }}{{ end }}
       {{ $pEntry := dict "id" $eidStr "img" $pImg "eCgImg" $pImg "typeRank" 99 "updatedDate" (int .updatedDate) "egoType" $eType "attrType" $eAttr "attrColor" $eColor "name" .name "maxGaksung" (.maxGaksung | default 4 | int) "abName" (.abName | default "관측불가") "passives" (slice (dict "name" (.passiveName | default "관측불가") "desc" "")) "pIds" slice "formattedDate" $pFmtDate "seasonTitle" $pSeason.title "seasonName" $pSeason.name "seasonId" (int .season) "rawSeason" (int .season) "timing" $pTimings "requirementList" $pReq "resistList" $pRes "awakeSkillId" $pAwakeId "corrosionSkillId" $pCorrId "awakeIconImg" "" "corrosionIconImg" "" "skillKeywords" (.skillKeywords | default slice) "additionalSkills" slice "kw" "" "preview" true }}
       {{ $existing := index $egoMap $pcid | default slice }}
       {{ $egoMap = merge $egoMap (dict $pcid ($existing | append $pEntry)) }}
@@ -1312,7 +1312,7 @@
         {{ if $ppd }}{{ range $ppd.bp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ range $ppd.sp }}{{ range .ids }}{{ $rpIds = $rpIds | append . }}{{ end }}{{ end }}{{ end }}
         {{/* 출시시기 검색용 — season 기반 타이밍 태그 */}}
         {{ $rTimings := slice }}{{ $rRawSeason := int .season }}
-        {{ if eq $rRawSeason 0 }}{{ $rTimings = $rTimings | append "perm" }}{{ $rud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $rud (int .startDate)) (or (eq (int .endDate) -1) (lt $rud (int .endDate))) }}{{ $rTimings = $rTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rRawSeason 9000 }}{{ $rTimings = $rTimings | append "walpurgis" }}{{ else if eq $rRawSeason 8000 }}{{ $rTimings = $rTimings | append "limited" }}{{ else if and (ge $rRawSeason 1) (le $rRawSeason 7) }}{{ $rTimings = $rTimings | append (printf "s%d" $rRawSeason) }}{{ end }}
+        {{ if eq $rRawSeason 0 }}{{ $rTimings = $rTimings | append "perm" }}{{ $rud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $rud (int .startDate)) (or (eq (int .endDate) -1) (lt $rud (int .endDate))) }}{{ $rTimings = $rTimings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rRawSeason 9000 }}{{ $rTimings = $rTimings | append "walpurgis" }}{{ else if eq $rRawSeason 8000 }}{{ $rTimings = $rTimings | append "limited" }}{{ else if and (ge $rRawSeason 1) (le $rRawSeason 8) }}{{ $rTimings = $rTimings | append (printf "s%d" $rRawSeason) }}{{ end }}
         {{ $rowData = $rowData | append (dict "id" .id "sIds" $rsIds "pIds" $rpIds "skills" .skillKeywordList "name" ($rTitle | default "") "keywords" $rKws "colors" $rColors "sAt" $rAt "sCol" $rCol "timing" $rTimings "atkResist" .resistInfo.atkResistList "kw" $rKw) }}
       {{ end }}
       {{ $egoRowData := slice }}
@@ -1386,9 +1386,9 @@
           {{ $sAt := dict }}{{ $sCol := dict }}
           {{ range $skills }}{{ $t := printf "%d" (int .tier) }}{{ if not (index $sAt $t) }}{{ $sAt = merge $sAt (dict $t .at) }}{{ end }}{{ if not (index $sCol $t) }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $sCol = merge $sCol (dict $t $da) }}{{ end }}{{ end }}{{ end }}
           {{ range $defSkills }}{{ if not (index $sAt "def") }}{{ $sAt = merge $sAt (dict "def" .dt) }}{{ end }}{{ if not (index $sCol "def") }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $sCol = merge $sCol (dict "def" $da) }}{{ end }}{{ end }}{{ end }}
-          {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~7=s1~s7, 발푸르기스=walpurgis). season==0 은 updatedDate 로 시즌 파생 */}}
+          {{/* 출시시기 검색용 — season 기반 타이밍 태그(상시=perm, 시즌 1~8=s1~s8, 발푸르기스=walpurgis). season==0 은 updatedDate 로 시즌 파생 */}}
           {{ $timings := slice }}{{ $rawSeason := int .season }}
-          {{ if eq $rawSeason 0 }}{{ $timings = $timings | append "perm" }}{{ $ud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $ud (int .startDate)) (or (eq (int .endDate) -1) (lt $ud (int .endDate))) }}{{ $timings = $timings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rawSeason 9000 }}{{ $timings = $timings | append "walpurgis" }}{{ else if eq $rawSeason 8000 }}{{ $timings = $timings | append "limited" }}{{ else if and (ge $rawSeason 1) (le $rawSeason 7) }}{{ $timings = $timings | append (printf "s%d" $rawSeason) }}{{ end }}
+          {{ if eq $rawSeason 0 }}{{ $timings = $timings | append "perm" }}{{ $ud := int .updatedDate }}{{ range $.Site.Data.season.dataList }}{{ if and (ge $ud (int .startDate)) (or (eq (int .endDate) -1) (lt $ud (int .endDate))) }}{{ $timings = $timings | append (printf "s%d" (int .id)) }}{{ end }}{{ end }}{{ else if ge $rawSeason 9000 }}{{ $timings = $timings | append "walpurgis" }}{{ else if eq $rawSeason 8000 }}{{ $timings = $timings | append "limited" }}{{ else if and (ge $rawSeason 1) (le $rawSeason 8) }}{{ $timings = $timings | append (printf "s%d" $rawSeason) }}{{ end }}
           {{/* 수비 스킬: sync4에서 속성이 바뀌므로 g≤4 마지막 속성 사용 */}}
           {{ range $defSkills }}{{ $da := "" }}{{ range .sd }}{{ if le (int .g) 4 }}{{ $da = .a }}{{ end }}{{ end }}{{ if $da }}{{ $skillColors = $skillColors | append $da }}{{ end }}{{ end }}
           {{/* #검색(desc)용 id 목록. desc 원문은 skillDescMap/passiveMap 에 이미 있으므로 id 만 넘긴다. */}}
@@ -2336,7 +2336,7 @@ function personalityPage() {
     skillAtkFilter: { '1': [], '2': [], '3': [], def: [] },   // 스킬별 물리/수비 타입(1·2·3=SLASH/HIT/PENETRATE, def=GUARD/EVADE/COUNTER)
     skillSinFilter: { '1': [], '2': [], '3': [], def: [] },   // 스킬별 죄악속성(CRIMSON~VIOLET). sync4 기준
     openSkillDropdown: null,   // 스킬속성 드롭다운 열림 상태 ('{key}-atk' | '{key}-sin' | null)
-    timingFilter: [],          // 출시시기(season) 필터: 'perm' | 's1'~'s7' | 'walpurgis'
+    timingFilter: [],          // 출시시기(season) 필터: 'perm' | 's1'~'s8' | 'walpurgis'
     skillTypeInfo: { {{ range $atkSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }}, uk: '{{ .uk }}' }, {{ end }}{{ range $defSkillTypes }}'{{ .id }}': { icon: '/images/ui/{{ .icon }}.png', name: {{ .name | jsonify | safeJS }}, uk: '{{ .uk }}' }, {{ end }} },
     sinInfo: { {{ range $.Site.Data.lang.kr.yeonsim.KR_ColorType.list }}'{{ .id }}': { icon: '/images/sin/{{ index $sinIconMap .id }}.png', name: {{ .name | jsonify | safeJS }} }, {{ end }} },
     selectedPrisoner: null,

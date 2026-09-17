@@ -151,6 +151,9 @@
         },
         {
           "ability": "CanNotRetreat"
+        },
+        {
+          "ability": "TakingOtherStoryImmortalAbility"
         }
       ]
     },
@@ -208,6 +211,9 @@
         },
         {
           "ability": "CanNotRetreat"
+        },
+        {
+          "ability": "TakingOtherStoryImmortalAbility"
         }
       ]
     },
