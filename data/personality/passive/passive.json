@@ -5201,6 +5201,37 @@
       ]
     },
     {
+      "id": 1091701,
+      "attributeStockCondition": [
+        {
+          "type": "AMBER",
+          "value": 2
+        },
+        {
+          "type": "VIOLET",
+          "value": 1
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel2"
+      ]
+    },
+    {
+      "id": 1091702
+    },
+    {
+      "id": 1091721,
+      "attributeStockCondition": [
+        {
+          "type": "AMBER",
+          "value": 4
+        }
+      ],
+      "requireIDList": [
+        "CheckAwakenLevel3"
+      ]
+    },
+    {
       "id": 90001
     },
     {

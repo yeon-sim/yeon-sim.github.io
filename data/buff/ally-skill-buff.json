@@ -7745,7 +7745,7 @@
           "value": 8
         },
         {
-          "ability": "10416BuffChangerORE",
+          "ability": "10416BuffChangerImmediately",
           "value": 0,
           "buffData": {
             "activeRound": 1,
@@ -7834,6 +7834,143 @@
             "turn": 1
           },
           "value": 3
+        }
+      ]
+    },
+    {
+      "id": "ChargeKhakiAlly",
+      "iconId": "ChargeKhaki",
+      "subIdList": [
+        "Charge"
+      ],
+      "buffClass": "UsedTurnReportSinBuff",
+      "attributeType": "VIOLET",
+      "buffType": "Positive",
+      "canBeDespelled": true,
+      "destroyableOnDie": false,
+      "destroyableOnRetreat": true,
+      "destroyableOnZero": false,
+      "destroyableOnZeroTurn": false,
+      "destroyableOnBothZero": true,
+      "maxTurn": 20,
+      "list": [
+        {
+          "ability": "LoseTurnOnRoundEnd",
+          "value": 1
+        }
+      ],
+      "categoryKeywordList": [
+        "SIN",
+        "CHARGE"
+      ]
+    },
+    {
+      "id": "NoirScissorAlly",
+      "iconId": "ScissorsMark",
+      "buffClass": "NonvolatileBuff",
+      "buffType": "Negative",
+      "maxStack": 4,
+      "canBeDespelled": false,
+      "destroyableOnDie": true,
+      "destroyableOnRetreat": true,
+      "list": [
+        {
+          "ability": "NoirScissorAllyOnDie",
+          "value": 5,
+          "buffData": {
+            "buffKeyword": "AttackUp",
+            "stack": 1,
+            "turn": 0,
+            "activeRound": 1,
+            "limit": 3
+          }
+        },
+        {
+          "ability": "ActivateBuffEffectBackCenter"
+        }
+      ]
+    },
+    {
+      "id": "NoirScissorCut",
+      "iconId": "LargeTailoringShears",
+      "buffClass": "NonvolatileBuff",
+      "buffType": "Positive",
+      "maxStack": 2,
+      "canBeDespelled": false,
+      "destroyableOnDie": true,
+      "destroyableOnRetreat": true,
+      "list": [
+        {
+          "ability": "AtkDamageMultiplierByStack",
+          "value": 0.07
+        }
+      ]
+    },
+    {
+      "id": "NoirScissorShield",
+      "iconId": "TailoringSensibility",
+      "buffClass": "VolatileBuff",
+      "buffType": "Positive",
+      "maxStack": 1,
+      "canBeDespelled": false,
+      "destroyableOnDie": true,
+      "destroyableOnRetreat": true,
+      "list": [
+        {
+          "ability": "AtkAdder",
+          "value": 3
+        },
+        {
+          "ability": "DefAdder",
+          "value": 3
+        },
+        {
+          "ability": "NoirScissorShieldMpHeal_1",
+          "value": 5
+        },
+        {
+          "ability": "NoirScissorShieldAdditionalDmg",
+          "value": 0.05
+        },
+        {
+          "ability": "ActivateBuffEffectSkin"
+        }
+      ]
+    },
+    {
+      "id": "EmpathicDistressAlly",
+      "buffClass": "NonvolatileBuff",
+      "buffType": "Negative",
+      "canBeDespelled": true,
+      "destroyableOnDie": true,
+      "destroyableOnRetreat": true,
+      "maxStack": 5,
+      "list": [
+        {
+          "ability": "GiveBuffOnTakeAttackDamageAlly20910",
+          "value": 1,
+          "buffData": {
+            "buffKeyword": "Vibration",
+            "target": "Self",
+            "stack": 0,
+            "turn": 1,
+            "activeRound": 0
+          }
+        },
+        {
+          "ability": "GiveBuffOnTakeAttackDamageSelf20910",
+          "value": 1,
+          "buffData": {
+            "buffKeyword": "Vibration",
+            "target": "Self",
+            "stack": 2,
+            "turn": 0,
+            "activeRound": 0
+          }
+        },
+        {
+          "ability": "TakeCriticalAtkDamageMultiplierByBuffStackWithMax_Vibration_15",
+          "value": 0.01
         }
       ]
     }

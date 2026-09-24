@@ -1,9 +1,9 @@
 == sync-lang 리포트 (DRY-RUN) ==
 소스: C:/Program Files (x86)/Steam/steamapps/common/Limbus Company/LimbusCompany_Data/Assets/Resources_moved/Localize
 언어: kr · en · jp
-  kr  동일 125 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
-  en  동일 124 · 갱신 0 · authoring 9 · 후보 12 · 경고 0
-  jp  동일 125 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
+  kr  동일 126 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
+  en  동일 125 · 갱신 0 · authoring 9 · 후보 12 · 경고 0
+  jp  동일 126 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
 
 ## [kr] 갱신 대상
   (없음)
