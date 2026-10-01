@@ -1,17 +1,66 @@
 ## 데이터 (.bytes → .json)
-  복사예정: ego-2.bytes → egoskill\ego-2.json
-  복사예정: ego-skill-2.bytes → egoskill\ego-skill-2.json
-  복사예정: ego-5.bytes → egoskill\ego-5.json
-  복사예정: ego-skill-5.bytes → egoskill\ego-skill-5.json
+  복사예정: personality-03.bytes → personality\info\personality-03.json
+  복사예정: personality-skill-03.bytes → personality\skill\personality-skill-03.json
+  복사예정: personality-passive-03.bytes → personality\passive\personality-passive-03.json
+  복사예정: passive.bytes → personality\passive\passive.json
+  복사예정: passive_check4.bytes → personality\passive\passive_check4.json
+## illust-pivots
+  복사예정: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
 ## preview 정리
 ## 이미지
-  img: 20211_e_cg.png → egoskill\02\20211_e_cg.webp
-  img: 20211_awaken_profile.png → egoskill\02\20211_awaken_profile.webp
-  img: 20211_erosion_profile.png → egoskill\02\20211_erosion_profile.webp
-  img: 20211_profile_summary.png → egoskill\02\20211_profile_summary.webp
-  img: 20510_e_cg.png → egoskill\05\20510_e_cg.webp
-  img: 20510_awaken_profile.png → egoskill\05\20510_awaken_profile.webp
-  img: 20510_erosion_profile.png → egoskill\05\20510_erosion_profile.webp
-  img: 20510_profile_summary.png → egoskill\05\20510_profile_summary.webp
+  img: 10315_gacksung.png → personality\03\10315_gacksung.webp
+  img: 10315_normal.png → personality\03\10315_normal.webp
+  img: 10315_gacksung_info.png → personality\03\10315_gacksung_info.webp
+  img: 10315_normal_info.png → personality\03\10315_normal_info.webp
+  img: 10315_gacksung_profile.png → personality\03\10315_gacksung_profile.webp
+  img: 10315_normal_profile.png → personality\03\10315_normal_profile.webp
+  img: 10315_gacksung_profile_support_personality.png → personality\03\10315_gacksung_profile_support_personality.webp
+  img: 10315_normal_profile_support_personality.png → personality\03\10315_normal_profile_support_personality.webp
+  skillicon: 1031501
+  skillicon: 1031505
+  skillicon: 1031502
+  skillicon: 1031503
+  skillicon: 1031506
+  skillicon: 1031504
 ## 버프 아이콘
+  buff: BlackStigmata (복사예정)
+  buff: BlackStigmata_Panic (복사예정)
+  buff: BoneNail (복사예정)
+  buff: BuffetDream (복사예정)
+  buff: BuffetDreamEnd (복사예정)
+  buff: BuffetResolve (복사예정)
+  buff: BuffetRevival (복사예정)
+  buff: BuffetRouge (복사예정)
+  buff: BuffetScruple (복사예정)
+  buff: CeremonialNail (복사예정)
+  buff: ConfessionSecondPhase (복사예정)
+  buff: ConfessionThirdPhase (복사예정)
+  buff: ConnectionError_Panic (복사예정)
+  buff: Dominion (복사예정)
+  buff: EncompassingVoiceSecondPhase (복사예정)
+  buff: ExecutionNailSecondPhase (복사예정)
+  buff: ExecutionNailThirdPhase (복사예정)
+  buff: GoldenFabricWarderFirstPhase (복사예정)
+  buff: GoldenHideWarderFirstPhase (복사예정)
+  buff: GoldenNail (복사예정)
+  buff: GrandBuffet_Panic (복사예정)
+  buff: JeanneBlueprint (복사예정)
+  buff: JeanneCheat (복사예정)
+  buff: JeanneDesign (복사예정)
+  buff: JeanneLogos (복사예정)
+  buff: JeanneManager (복사예정)
+  buff: JeannePartner (복사예정)
+  buff: JeannePartnerTwo (복사예정)
+  buff: JeannePathos (복사예정)
+  buff: Jeanne_Panic (복사예정)
+  buff: LaRougeSuperior_Panic (복사예정)
+  buff: LeaderVoiceSecondPhase (복사예정)
+  buff: LeaderVoiceThirdPhase (복사예정)
+  buff: MarkingNail (복사예정)
+  buff: MeursaultBuffWarderFirstPhase (복사예정)
+  buff: RestrainingNailSecondPhase (복사예정)
+  buff: RestrainingNailThirdPhase (복사예정)
+  buff: SpreadingVoiceSecondPhase (복사예정)
+  buff: UnstableConnection (복사예정)
+  buff: VibrationFocusing (복사예정)
 ## 감사
