@@ -246,6 +246,10 @@ for (const { id, egoFile } of egos) {
   if (!findRecord(krEgos, id)) warn.push(`이름 누락: KR_Egos 에 ${id} 없음`);
   const info = findRecord(`${SD}/ego/${egoFile}.bytes`, id);
   if (info && seasonIds && info.season != null && !seasonIds.has(+info.season)) warn.push(`season 누락: EGO ${id} season ${info.season} 이 KR_Season 에 없음`);
+  // 각성 CG 는 게임이 출시 전 패치에 먼저 싣는 경우가 있어 이번 추출물엔 없을 수 있다 (20211·20510 사고)
+  const cg = `${id}_cg`;
+  const hasSrc = unitPngs.some(p => path.basename(p, '.png') === cg);
+  if (!hasSrc && !fs.existsSync(destForImg(cg))) warn.push(`EGO CG 누락: ${cg}.png (카드 이미지 — 소스·기존 webp 모두 없음. 이전 추출물의 Sprite/Unit/EgoCG 확인)`);
 }
 if (previewRemoved.length && !WRITE) warn.push(`preview 충돌: ${previewRemoved.join(', ')} (--write 시 정리됨)`);
 
