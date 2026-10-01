@@ -1,92 +1,17 @@
 ## 데이터 (.bytes → .json)
-  복사: personality-09.bytes → personality\info\personality-09.json
-  복사: personality-skill-09.bytes → personality\skill\personality-skill-09.json
-  복사: personality-passive-09.bytes → personality\passive\personality-passive-09.json
-  복사: passive.bytes → personality\passive\passive.json
-  복사: passive_check4.bytes → personality\passive\passive_check4.json
-  복사: ego-6.bytes → egoskill\ego-6.json
-  복사: ego-skill-6.bytes → egoskill\ego-skill-6.json
-  복사: ego-9.bytes → egoskill\ego-9.json
-  복사: ego-skill-9.bytes → egoskill\ego-skill-9.json
-  복사: ally-skill-buff.bytes → buff\ally-skill-buff.json
-## illust-pivots
-  복사: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
+  복사예정: ego-2.bytes → egoskill\ego-2.json
+  복사예정: ego-skill-2.bytes → egoskill\ego-skill-2.json
+  복사예정: ego-5.bytes → egoskill\ego-5.json
+  복사예정: ego-skill-5.bytes → egoskill\ego-skill-5.json
 ## preview 정리
 ## 이미지
-  img: 10917_gacksung.png → personality\09\10917_gacksung.webp
-  img: 10917_normal.png → personality\09\10917_normal.webp
-  img: 10917_gacksung_info.png → personality\09\10917_gacksung_info.webp
-  img: 10917_normal_info.png → personality\09\10917_normal_info.webp
-  img: 10917_gacksung_profile.png → personality\09\10917_gacksung_profile.webp
-  img: 10917_normal_profile.png → personality\09\10917_normal_profile.webp
-  img: 10917_gacksung_profile_support_personality.png → personality\09\10917_gacksung_profile_support_personality.webp
-  img: 10917_normal_profile_support_personality.png → personality\09\10917_normal_profile_support_personality.webp
-  img: 20610_e_cg.png → egoskill\06\20610_e_cg.webp
-  img: 20610_awaken_profile.png → egoskill\06\20610_awaken_profile.webp
-  img: 20610_erosion_profile.png → egoskill\06\20610_erosion_profile.webp
-  img: 20610_profile_summary.png → egoskill\06\20610_profile_summary.webp
-  img: 20910_e_cg.png → egoskill\09\20910_e_cg.webp
-  img: 20910_awaken_profile.png → egoskill\09\20910_awaken_profile.webp
-  img: 20910_erosion_profile.png → egoskill\09\20910_erosion_profile.webp
-  img: 20910_profile_summary.png → egoskill\09\20910_profile_summary.webp
-  skillicon: 1091701
-  skillicon: 1091702
-  skillicon: 1091703
-  skillicon: 1091704
-  skillicon: 1091705
-  skillicon: 1091706
+  img: 20211_e_cg.png → egoskill\02\20211_e_cg.webp
+  img: 20211_awaken_profile.png → egoskill\02\20211_awaken_profile.webp
+  img: 20211_erosion_profile.png → egoskill\02\20211_erosion_profile.webp
+  img: 20211_profile_summary.png → egoskill\02\20211_profile_summary.webp
+  img: 20510_e_cg.png → egoskill\05\20510_e_cg.webp
+  img: 20510_awaken_profile.png → egoskill\05\20510_awaken_profile.webp
+  img: 20510_erosion_profile.png → egoskill\05\20510_erosion_profile.webp
+  img: 20510_profile_summary.png → egoskill\05\20510_profile_summary.webp
 ## 버프 아이콘
-  buff: AlriunePetal (복사)
-  buff: AlriuneSillage (복사)
-  buff: AngryBlackYarn (복사)
-  buff: B3FreshMob (복사)
-  buff: BlackYarn_Panic (복사)
-  buff: BloodyMucusAlly (복사)
-  buff: BuffetField (복사)
-  buff: BuffetField_0 (복사)
-  buff: BuffetField_1 (복사)
-  buff: BuffetField_2 (복사)
-  buff: BuffetGold (복사)
-  buff: BuffetGoldenClothes (복사)
-  buff: BuffetShoes (복사)
-  buff: Buffet_Panic (복사)
-  buff: ChargeKhaki (복사)
-  buff: DamagedFabric (복사)
-  buff: EmpathicDistressAlly (복사)
-  buff: FinishedFabric (복사)
-  buff: FlowerLaurelWreath (복사)
-  buff: GourmandiseAlly (복사)
-  buff: HeavyBlackYarn (복사)
-  buff: HideBlackYarn (복사)
-  buff: LargeTailoringShears (복사)
-  buff: NoirField (복사)
-  buff: NoirScissorCut (복사)
-  buff: NoirScissorShield (복사)
-  buff: NoirShieldPiece (복사)
-  buff: NoirShieldUp (복사)
-  buff: NoirSquareCollapse (복사)
-  buff: PersonalityBreath (복사)
-  buff: PersonalityCharge (복사)
-  buff: PersonalityVibration (복사)
-  buff: RestrictBoss (복사)
-  buff: RestrictDef (복사)
-  buff: RestrictDenied (복사)
-  buff: RestrictFailed (복사)
-  buff: RestrictMob (복사)
-  buff: RestrictTier1 (복사)
-  buff: ScissorsMark (복사)
-  buff: SickBlackYarn (복사)
-  buff: SisyphusDiamond (복사)
-  buff: SisyphusOnyx (복사)
-  buff: SisyphusSapphire (복사)
-  buff: SpreadingDye (복사)
-  buff: StickyDye (복사)
-  buff: SupportAlly (복사)
-  buff: TailoringSensibility (복사)
-  buff: TailoringTarget (복사)
-  buff: TangleBlackYarn (복사)
-  buff: targetDye_Panic (복사)
-  buff: ThirdTailor_Panic (복사)
-  buff: ThreadDye (복사)
-  buff: VibrationResonance (복사)
 ## 감사

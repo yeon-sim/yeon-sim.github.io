@@ -1,12 +1,43 @@
-== sync-lang 리포트 (DRY-RUN) ==
+== sync-lang 리포트 (WRITE) ==
 소스: C:/Program Files (x86)/Steam/steamapps/common/Limbus Company/LimbusCompany_Data/Assets/Resources_moved/Localize
 언어: kr · en · jp
-  kr  동일 126 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
-  en  동일 125 · 갱신 0 · authoring 9 · 후보 12 · 경고 0
-  jp  동일 126 · 갱신 0 · authoring 9 · 후보 19 · 경고 0
+  kr  동일 94 · 갱신 32 · authoring 9 · 후보 21 · 경고 0
+  en  동일 121 · 갱신 4 · authoring 9 · 후보 14 · 경고 0
+  jp  동일 122 · 갱신 4 · authoring 9 · 후보 21 · 경고 0
 
 ## [kr] 갱신 대상
-  (없음)
+  egogift\KR_EgoGiftCategory.json
+  egogift\KR_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Passive_Ego.json (레코드 47건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego.json (레코드 75건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-02.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-04.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-05.json (레코드 5건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-06.json (레코드 3건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-07.json (레코드 5건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-08.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-09.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-10.json (레코드 4건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-11.json (레코드 2건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-12.json (레코드 3건 상이 — 토큰화/게임갱신)
+  egoskill\KR_Skills_Ego_Personality-a1c9p3.json (레코드 1건 상이 — 토큰화/게임갱신)
+  KR_ResistText.json
+  parsingdata\KR_SkillTag.json
+  passive\KR_Passives.json (레코드 130건 상이 — 토큰화/게임갱신)
+  passive\KR_Passives_check4.json (레코드 13건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills.json (레코드 198건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-01.json (레코드 15건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-02.json (레코드 11건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-03.json (레코드 6건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-04.json (레코드 9건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-05.json (레코드 11건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-06.json (레코드 19건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-07.json (레코드 7건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-08.json (레코드 8건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-09.json (레코드 5건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-10.json (레코드 5건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-11.json (레코드 6건 상이 — 토큰화/게임갱신)
+  skill\KR_Skills_personality-12.json (레코드 11건 상이 — 토큰화/게임갱신)
 
 ## [kr] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
   yeonsim\KR_Categories.json
@@ -24,6 +55,7 @@
    참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
    (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
   KR_BattleKeywords-a1c10p1.json  [parsingdata] 참조 0
+  KR_BattleKeywords-a1c10p3.json  [parsingdata] 참조 1
   KR_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
   KR_Egos-a1c9p3.json  [egoskill] 참조 5
   KR_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
@@ -42,9 +74,13 @@
   KR_Skills_personality-a1c9p2.json  [skill] 참조 0
   KR_Skills_personality-x1p1c1.json  [skill] 참조 0
   KR_UnitKeyword-a1c10p1.json  [unitkeyword] 참조 0
+  KR_UnitKeyword-a1c10p3.json  [unitkeyword] 참조 0
 
 ## [en] 갱신 대상
-  (없음)
+  egogift\EN_EgoGiftCategory.json
+  egogift\EN_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
+  EN_ResistText.json
+  parsingdata\EN_SkillTag.json
 
 ## [en] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
   yeonsim\EN_Categories.json
@@ -62,6 +98,7 @@
    참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
    (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
   EN_BattleKeywords-a1c10p1.json  [parsingdata] 참조 0
+  EN_BattleKeywords-a1c10p3.json  [parsingdata] 참조 1
   EN_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
   EN_Egos-a1c9p3.json  [egoskill] 참조 5
   EN_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
@@ -73,9 +110,13 @@
   EN_Personalities-x1p1c1.json  [(root)] 참조 0
   EN_Skills_personality-x1p1c1.json  [skill] 참조 0
   EN_UnitKeyword-a1c10p1.json  [unitkeyword] 참조 0
+  EN_UnitKeyword-a1c10p3.json  [unitkeyword] 참조 0
 
 ## [jp] 갱신 대상
-  (없음)
+  egogift\JP_EgoGiftCategory.json
+  egogift\JP_EGOgift_MirrorDungeon_7.json (레코드 4건 상이 — 토큰화/게임갱신)
+  JP_ResistText.json
+  parsingdata\JP_SkillTag.json
 
 ## [jp] 사이트 authoring (클라이언트에 없음 → 복사 대상 아님)
   yeonsim\JP_Categories.json
@@ -93,6 +134,7 @@
    참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
    (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
   JP_BattleKeywords-a1c10p1.json  [parsingdata] 참조 0
+  JP_BattleKeywords-a1c10p3.json  [parsingdata] 참조 1
   JP_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
   JP_Egos-a1c9p3.json  [egoskill] 참조 5
   JP_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
@@ -111,6 +153,7 @@
   JP_Skills_personality-a1c9p2.json  [skill] 참조 0
   JP_Skills_personality-x1p1c1.json  [skill] 참조 0
   JP_UnitKeyword-a1c10p1.json  [unitkeyword] 참조 0
+  JP_UnitKeyword-a1c10p3.json  [unitkeyword] 참조 0
 
 ## 언어 간 커버리지 (kr 기준)
    여기 오른 항목은 그 언어에 파일이 없어 사이트가 한국어 폴백으로 표시한다.
