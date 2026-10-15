@@ -28,7 +28,9 @@
           "upgradeLevel": 0,
           "localizeID": 9251,
           "abilityIDList": [
-            9251
+            9251,
+            92511,
+            92512
           ]
         }
       ],

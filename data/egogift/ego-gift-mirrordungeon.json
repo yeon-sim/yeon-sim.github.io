@@ -736,7 +736,14 @@
       ],
       "lockType": false,
 
-      "price": 212
+      "price": 212,
+      "upgradeDataList": [
+        {
+          "upgradeLevel": 0,
+          "localizeID": 9037,
+          "abilityIDList": [ 9037, 90371 ]
+        }
+      ]
     },
     {
       "id": 9038,

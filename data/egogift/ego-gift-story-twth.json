@@ -54,6 +54,7 @@
       "tag": [
         "TIER_2"
       ],
+      "keyword": "Laceration",
       "lockType": false,
       "price": 200
     },
@@ -146,7 +147,9 @@
           "localizeID": 9267,
           "abilityIDList": [
             9267,
-            92671
+            92671,
+            92672,
+            92673
           ]
         },
         {
@@ -154,7 +157,9 @@
           "localizeID": 19267,
           "abilityIDList": [
             19267,
-            92671
+            92671,
+            92672,
+            192673
           ]
         },
         {
@@ -163,7 +168,8 @@
           "abilityIDList": [
             19267,
             92671,
-            292672
+            192672,
+            292673
           ]
         }
       ],
@@ -191,6 +197,7 @@
       "tag": [
         "TIER_2"
       ],
+      "keyword": "Laceration",
       "lockType": false,
       "price": 200
     }

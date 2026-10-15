@@ -11,7 +11,7 @@ const lang=new Map();
 for(const f of fs.readdirSync(D+"/lang/kr/egogift").filter(f=>f.startsWith("KR_EGOgift")&&f.endsWith(".json")))
   for(const r of (JSON.parse(fs.readFileSync(D+"/lang/kr/egogift/"+f,"utf8")).dataList||[])) if(!lang.has(r.id))lang.set(r.id,r);
 const tagMap=new Map(readList(D+"/egogift/tag.json").map(r=>[r.id,r.tags]));
-const fusion=readList(D+"/fusion.json").map(f=>({result:Number(f.result),mats:f.materials.map(Number)}));
+const fusion=readList(D+"/egogift/fusion.json").map(f=>({result:Number(f.result),mats:f.materials.map(Number)}));
 const fusionResults=new Set(fusion.map(f=>f.result));
 const recipesOf=id=>fusion.filter(f=>f.result===id).map(f=>f.mats);
 const specInv=new Map();

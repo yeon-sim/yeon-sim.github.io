@@ -4300,7 +4300,14 @@
    "turnEnd"
   ],
   "difficulty": "normal",
-  "packs": []
+  "packs": [
+   1019,
+   1020,
+   1021,
+   1507,
+   1514,
+   1518
+  ]
  },
  {
   "id": 9206,
@@ -4471,7 +4478,10 @@
   "packs": [
    1019,
    1020,
-   1021
+   1021,
+   1507,
+   1514,
+   1518
   ]
  },
  {
@@ -5388,7 +5398,7 @@
  {
   "id": 9262,
   "name": "모든 것의 뼈대",
-  "category": "None",
+  "category": "Laceration",
   "desc": "약지 소속 인격 공격 종료시 대상에게 무작위 물리 내성 약화 1 부여 (턴당 2회)\n\n약지 소속 인격이 가하는 피해량 +10%",
   "grade": "2",
   "tags": [
@@ -5473,7 +5483,7 @@
   "id": 9267,
   "name": "달궈진 놋쇠",
   "category": "Combustion",
-  "desc": "[Combustion] 위력 최댓값 +11\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 +20%",
+  "desc": "[Combustion] 위력 최댓값 +11\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 발동으로 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 +20%",
   "grade": "4",
   "tags": [
    "combustionCount",
@@ -5489,13 +5499,13 @@
    {
     "name": "달궈진 놋쇠+",
     "category": "Combustion",
-    "desc": "[Combustion] 위력 최댓값 <style=\"upgradeHighlight\">+21</style>\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+25%</style>",
+    "desc": "[Combustion] 위력 최댓값 <style=\"upgradeHighlight\">+21</style>\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 발동으로 [Combustion] 피해를 입을 때, [Combustion] 위력만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+25%</style>",
     "tags": []
    },
    {
     "name": "달궈진 놋쇠++",
     "category": "Combustion",
-    "desc": "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 피해를 입을 때, ([Combustion] 위력 x <style=\"upgradeHighlight\">1.5</style>)만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+30%</style>",
+    "desc": "[Combustion] 위력 최댓값 +21\n\n전투 중 가장 처음으로 부여하는 [Combustion] 위력 부여 값 3배로 증가 (전투당 1회)\n\n적이 [Combustion] 발동으로 [Combustion] 피해를 입을 때, ([Combustion] 위력 x <style=\"upgradeHighlight\">1.5</style>)만큼 분노 피해\n\n[Combustion] 위력, [Combustion] 횟수 또는 특수 화상을 부여하는 스킬의 피해량 <style=\"upgradeHighlight\">+30%</style>",
     "tags": []
    }
   ]
@@ -5503,7 +5513,7 @@
  {
   "id": 9268,
   "name": "모든 것의 본능",
-  "category": "None",
+  "category": "Laceration",
   "desc": "턴 종료시, 무작위 약지 소속 인격 ([Laceration]을 보유한 적 수)명에게 다음 턴에 무작위 죄악 속성 <noparse>피해량 증가</noparse> 1 부여 (턴당 인격 별로 최대 1회, 집중 전투일 경우 부위로 판정)\n\n약지 소속 인격이 가하는 피해량 +10%",
   "grade": "2",
   "tags": [
@@ -5701,7 +5711,7 @@
   "id": 9280,
   "name": "본국검보[本國劍譜]",
   "category": "Slash",
-  "desc": "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n턴 시작시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여",
+  "desc": "적의 참격 내성이 1.5 이하인 경우, 참격 내성 +0.3\n참격 스킬 공격 레벨 +2\n참격 내성이 약점(내성 1.0 초과, 흐트러짐 제외)인 적 공격 시, 참격 피해량 +(5+대상의 참격 내성 x10)% (최대 25%).\n\n[Breath] 1당, 참격 스킬의 피해량 +1.5% (최대 30%)\n\n검계 소속 인격을 제외한 편성 순서가 가장 빠른 S사 소속 인격 1인을 검계 소속으로 취급하고, 매 턴 [BongukGiftEnhance] 부여\n\n턴 시작시, 검계 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n- 전투 시작 시 분노, 오만 스킬을 장착한 검계 소속 아군 인격에게 [BongukGiftEnhance] 1 부여",
   "grade": "4",
   "tags": [],
   "difficulty": "normal",
@@ -5709,6 +5719,141 @@
    1104,
    1116,
    1128
+  ]
+ },
+ {
+  "id": 9282,
+  "name": "날개 모양 양초",
+  "category": "Combustion",
+  "desc": "턴 시작시, <noparse>새벽 사무소</noparse> 소속 인격이 3인 이상일 때 발동 (편성 인원을 기준으로 함)\n첫 턴이면, 모든 아군에게 [DawnLight] 2 부여\n<noparse>새벽 사무소</noparse> 해결사 싱클레어가 전투 시작시 정신력을 10 회복하고, '불안정한 자아의 껍질' 패시브 효과로 불안정 E.G.O 밀랍날개 상태가 되는 정신력 조건이 25로 감소\n\n[<noparse>새벽 사무소</noparse> 소속 인격 전용 효과]\n기본 스킬의 공격 적중 시 대상에게 [Combustion] 2, [Vibration] 2 부여 (스킬당 1회)\n<noparse>새벽 사무소</noparse> 소속 인격을 [Combustion], [Vibration]을 부여하는 인격으로 취급됨\n- 이 효과로 인해서 기본 스킬이 [Combustion], [Vibration]을 부여하는 스킬로 취급됨\n스테이지 시작시 <noparse>새벽 사무소</noparse> 해결사 파우스트 인격이 전투에 등장해 있으면, [Firstlight] 1 부여",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1302,
+   1402
+  ]
+ },
+ {
+  "id": 9283,
+  "name": "상납된 시가",
+  "category": "Vibration",
+  "desc": "턴 시작시, 엄지 소속 인격이 3인 이상일 때 발동 (출격 인원을 기준으로 함)\n엄지 소속 인격이 턴 시작 시 [PlusCoinValueUp] 1, [AttackDmgUp] 2 얻음\n엄지 소속 인격 1명당 엄지 소속 인격이 [AttackUp] 1 얻음 (최대 4)\n대상이 보유한 [VibrationIgnition] 1당 피해량 +1% (최대 20%)\n- [Bullet]을 소모하는 스킬이면, 추가로 +1% (최대 20%)\n- 엄지 소속이면, 추가로 +1% (최대 20%)\n\n자신의 스킬 효과로 [VibrationExplosion]이 발동되었다면, 다음 턴에 [AttackUp] 2 얻음 (턴당 3회)\n\n거미집 엄지 아비 로쟈의 스킬 3 공격 종료시 거미집 엄지 제자 히스클리프에게 [EvolvingManual] 1 부여",
+  "grade": "4",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1025
+  ]
+ },
+ {
+  "id": 9284,
+  "name": "철 지난 르루주 옷",
+  "category": "None",
+  "desc": "아군이 기본 공격 스킬의 스킬 효과, 코인 효과로 체력 회복 시 50%만큼 추가 회복함 (턴당 3회, 소수점 <noparse>버림</noparse>)\n\n[오트쿠튀르::르루주 부티크 이스마엘 전용 효과]\n오트쿠튀르::르루주 붉은 신 싱클레어가 자신과 함께 전장에 있으면, 턴 시작시 [RougeIshmaelCocoon]을 1 얻고 [RougeIshmaelCocoon] 상태가 됨 (전투당 1회)\n- '<noparse>탈의실</noparse> 속으로...' 패시브 효과 중 '이번 전투에서 체력이 0이 되는 피해를 받았을 때, 해당 피해를 받지 않고, 즉시 [RougeIshmaelCocoon] 2를 얻고 [RougeIshmaelCocoon] 상태가 됨 (전투당 1회)' 효과가 발동했으면, 전용 효과는 발동 하지 않음\n- 전용 효과 발동 시 '<noparse>탈의실</noparse> 속으로...' 패시브 효과 중 '이번 전투에서 체력이 0이 되는 피해를 받았을 때, 해당 피해를 받지 않고, 즉시 [RougeIshmaelCocoon] 2를 얻고 [RougeIshmaelCocoon] 상태가 됨 (전투당 1회)' 효과가 발동하지 않음",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1031
+  ]
+ },
+ {
+  "id": 9285,
+  "name": "탄산 음료",
+  "category": "None",
+  "desc": "이번 턴에 자신의 스킬 및 코인 효과로 체력 회복을 한 번 이상 시도한 수감자가 다음 턴에 스킬로 가하는 피해량 +10%, (해당 턴 시도된 회복 수치의 합 / 10)만큼 [AttackUp] 얻음 (최대 6, 소수점 <noparse>버림</noparse>)\n\n전장에 같은 소속 인격이 있으면, 자신을 제외한 같은 소속 인격이 위 효과로 얻은 [AttackUp]의 절반만큼 [AttackUp] 얻음 (최소 1, 턴당 최대 3까지 얻음, 소수점 <noparse>버림</noparse>)",
+  "grade": "2",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1031
+  ]
+ },
+ {
+  "id": 9286,
+  "name": "르누아르 메종 슬랙스",
+  "category": "Vibration",
+  "desc": "[Charge] 위력이 2 이상인 아군이 [VibrationExplosion] 시 아래 효과 적용\n- (자신의 [Charge] 위력 x 횟수)만큼 질투 피해를 줌 (스킬당 2회, 1회당 최대 100)\n- 위 효과로 질투 피해를 2번 주었으면, 다음 턴에 대상에게 [Binding] 3 부여\n\n아군이 스킬로 [VibrationExplosion] 시 [VibrationExplosion]마다 (자신의 [Charge] 위력 / 3)만큼 다음 턴에 [AttackUp] 얻음 (턴당 최대 5, 소수점 <noparse>버림</noparse>)",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1030
+  ]
+ },
+ {
+  "id": 9287,
+  "name": "르누아르 메리 제인",
+  "category": "Charge",
+  "desc": "전투 시작 시 가장 보호막을 많이 보유한 인격의 공격 적중 시 현재 보호막의 50%만큼 나태 피해를 줌 (스킬당 2회, 1회당 최대 100, 소수점 <noparse>버림</noparse>)\n- 보호막 수치가 동일한 인격이 2명 이상이면, 편성 순서 순으로 적용\n\n[PersonalityCharge]이면, 대신 보호막의 100%만큼 나태 피해를 줌 (스킬당 3회, 1회당 최대 100, 소수점 <noparse>버림</noparse>)",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1030
+  ]
+ },
+ {
+  "id": 9288,
+  "name": "바느질의 왕의 시침핀",
+  "category": "Charge",
+  "desc": "턴 시작 시 [SewingKingMark]이 있는 적이 없으면, 무작위 적에게 [SewingKingMark] 부여 (집중 전투인 경우, 부위로 판정)",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1029
+  ]
+ },
+ {
+  "id": 9289,
+  "name": "연골",
+  "category": "Charge",
+  "desc": "[Charge] 횟수 또는 특수 [Charge]을 소모하는 스킬의 피해량 +(자신의 [Charge] 위력 x 2)% (최대 10%)\n\n턴 종료 시 이번 턴에 [Charge] 횟수 또는 특수 [Charge]을 소모했으면, 다음 턴에 [Agility] 1 얻음\n\n대상의 속도가 자신보다 낮으면, 합 위력 +1\n- 자신이 시지프 소속이면, 대신 최종 위력 +1",
+  "grade": "3",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1029
+  ]
+ },
+ {
+  "id": 9290,
+  "name": "담요",
+  "category": "Charge",
+  "desc": "이번 턴에 수비 스킬을 장착한 인격이 적의 공격으로 받는 피해량 -20%\n- 전투 종료 시 자신이 [PersonalityCharge]이면, 다음 턴에 [AttackUp] 2 얻음\n- 전투 종료 시 자신이 시지프 소속이면, 다음 턴에 [ResultEnhancement] 1 얻음",
+  "grade": "2",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1028
+  ]
+ },
+ {
+  "id": 9291,
+  "name": "꽃가위",
+  "category": "Charge",
+  "desc": "[편성 순서 1번 인격 전용 효과]\n\n시지프 소속 인격 또는 [PersonalityCharge]의 기본 스킬의 마지막 코인 적중 시 메인 타겟에게 해당 코인 최종 피해량의 5%만큼 참격 피해를 줌 (스킬당 1회)",
+  "grade": "2",
+  "tags": [],
+  "difficulty": "normal",
+  "packs": [
+   1028
+  ],
+  "upgrade": [
+   {
+    "name": "꽃가위+",
+    "category": "Charge",
+    "desc": "[편성 순서 1번 인격 전용 효과]\n\n시지프 소속 인격 또는 [PersonalityCharge]의 기본 스킬의 마지막 코인 적중 시 메인 타겟에게 해당 코인 최종 피해량의 <style=\"upgradeHighlight\">10%</style>만큼 참격 피해를 줌 (스킬당 1회)",
+    "tags": []
+   },
+   {
+    "name": "꽃가위++",
+    "category": "Charge",
+    "desc": "[편성 순서 1번 인격 전용 효과]\n\n시지프 소속 인격 또는 [PersonalityCharge]의 기본 스킬의 마지막 코인 적중 시 메인 타겟에게 해당 코인 최종 피해량의 <style=\"upgradeHighlight\">15%</style>만큼 참격 피해를 줌 (스킬당 1회)",
+    "tags": []
+   }
   ]
  },
  {
@@ -8556,7 +8701,7 @@
   "id": 9817,
   "name": "파란 별조각",
   "category": "Sinking",
-  "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 -1 (정신력이 없는 적은 [Sinking] 위력이 25 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] 2 부여 (턴당 최대 2회)",
+  "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 -1 (정신력이 없는 적은 [Sinking] 위력이 25 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, 다음 턴에 [DefenseDown] 2 부여 (턴당 최대 2회)",
   "grade": "3",
   "tags": [
    "finalPowerDown",
@@ -8570,13 +8715,13 @@
    {
     "name": "파란 별조각+",
     "category": "Sinking",
-    "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-2</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">15</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] <style=\"upgradeHighlight\">3</style> 부여 (턴당 최대 2회)",
+    "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-2</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">15</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, 다음 턴에 [DefenseDown] <style=\"upgradeHighlight\">3</style> 부여 (턴당 최대 2회)",
     "tags": []
    },
    {
     "name": "파란 별조각++",
     "category": "Sinking",
-    "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-3</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">10</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, [DefenseDown] 3 부여 (턴당 최대 <style=\"upgradeHighlight\">3</style>회)",
+    "desc": "사기저하 또는 패닉 상태인 적의 스킬 최종 위력 <style=\"upgradeHighlight\">-3</style> (정신력이 없는 적은 [Sinking] 위력이 <style=\"upgradeHighlight\">10</style> 이상일 때 발동)\n- 해당 적에게 [Sinking] 위력, [Sinking] 횟수 또는 특수 침잠을 부여하는 스킬로 피해를 입힐 경우, 다음 턴에 [DefenseDown] 3 부여 (턴당 최대 <style=\"upgradeHighlight\">3</style>회)",
     "tags": []
    }
   ]
@@ -8987,7 +9132,7 @@
   "id": 9841,
   "name": "C형 정리 요원 장비 세트",
   "category": "Charge",
-  "desc": "[Charge] 횟수 또는 특수 충전을 획득하는 스킬 사용 종료 시, 획득한 수치만큼 [EmergencyChargeForceField] 얻음 (인격당 최대 7)\n\n[Charge] 횟수 또는 특수 충전을 소모하는 스킬의 피해량 +([Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유한 인격이 편성된 수)% (편성 인원 포함)\n\n[Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬 1의 합 위력 +3, 피해량 +15%\n- 해당 스킬 사용 시, [Charge] 횟수 4, [ChargeForceField] 1 얻음 (인격당 턴당 1회)\n\nW사 소속 인격이면, 아래의 효과 적용\n- 스킬(E.G.O 스킬 포함)로 적에게 피해를 입혔다면, [TakeHpHealReduce] 2 부여 (중첩 불가)\n- 전투 중 스킬의 직접적인 피해를 제외한 효과에 의해 체력 피해를 입었다면, [ChargeForceField] 5 얻음 (인격당 턴당 1회)\n- 스킬 2의 합 위력 +3, 피해량 +15%\n- 턴 시작 시, 이번 턴 동안 스킬 3의 피해량 +(전투에 참여한 W사 소속 인격 수 x 6.25)%\n- 턴 시작 시, W사 2등급 직원에게 [PlusCoinValueUp] 1 부여\n- 턴 시작 시, [ChargeLoad]를 (전투에 참여한 W사 소속 인격 수/3)만큼 얻음 (최대 2. 소수점 내림)",
+  "desc": "[Charge] 횟수 또는 특수 충전을 획득하는 스킬 사용 종료 시, 획득한 수치만큼 [EmergencyChargeForceField] 얻음 (인격당 최대 7)\n\n[Charge] 횟수 또는 특수 충전을 소모하는 스킬의 피해량 +([Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬을 보유한 인격이 편성된 수)% (편성 인원 포함)\n\n[Charge] 횟수 또는 특수 충전을 획득하거나 소모하는 스킬 1의 합 위력 +3, 피해량 +15%\n- 해당 스킬 사용 시, [Charge] 횟수 4, [ChargeForceField] 1 얻음 (인격당 턴당 1회)\n\nW사 소속 인격이면, 아래의 효과 적용\n- 스킬(E.G.O 스킬 포함)로 적에게 피해를 입혔다면, [TakeHpHealReduce] 2 부여 (중첩 불가)\n- 전투 중 스킬의 직접적인 피해를 제외한 효과에 의해 체력 피해를 입었다면, [ChargeForceField] 5 얻음 (인격당 턴당 1회)\n- 스킬 2의 합 위력 +3, 피해량 +15%\n- 턴 시작 시, 이번 턴 동안 스킬 3의 피해량 +(전투에 참여한 W사 소속 인격 수 x 6.25)%\n- 턴 시작 시, W사 2등급 직원에게 [PlusCoinValueUp] 1 부여\n- 턴 시작 시, [ChargeLoad]를 (전투에 참여한 W사 소속 인격 수/3)만큼 얻음 (최대 2. 소수점 내림)\n편성 순서가 가장 빠른 자신의 기본 스킬로 [DimensionRift]을 부여하는 인격 중 W사 소속이 아닌 인격 1인을 W사 소속으로 취급함",
   "grade": "4",
   "tags": [
    "fusion",

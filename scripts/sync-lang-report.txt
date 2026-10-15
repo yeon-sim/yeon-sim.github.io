@@ -1,9 +1,9 @@
 == sync-lang 리포트 (WRITE) ==
 소스: C:/Program Files (x86)/Steam/steamapps/common/Limbus Company/LimbusCompany_Data/Assets/Resources_moved/Localize
 언어: kr · en · jp
-  kr  동일 127 · 갱신 0 · authoring 9 · 후보 20 · 경고 0
-  en  동일 126 · 갱신 0 · authoring 9 · 후보 13 · 경고 0
-  jp  동일 126 · 갱신 0 · authoring 9 · 후보 21 · 경고 0
+  kr  동일 128 · 갱신 0 · authoring 9 · 후보 20 · 경고 0
+  en  동일 127 · 갱신 0 · authoring 9 · 후보 13 · 경고 0
+  jp  동일 127 · 갱신 0 · authoring 9 · 후보 21 · 경고 0
 
 ## [kr] 갱신 대상
   (없음)
@@ -95,8 +95,8 @@
    참조 = 파일의 id 중 사이트 데이터·클라이언트 텍스트가 언급하는 수. 힌트일 뿐이다
    (hidden 레코드·미사용 정의도 걸리므로, 0이 아니어도 필요하다는 뜻은 아니다).
   JP_BattleKeywords-a1c10p1.json  [parsingdata] 참조 0
-  JP_BattleKeywords-a1c10p3.json  [parsingdata] 참조 1
   JP_BattleKeywords_Refraction6.json  [parsingdata] 참조 0
+  JP_EGOgift_MirrorDungeon_8.json  [egogift] 참조 0
   JP_Egos-a1c9p3.json  [egoskill] 참조 5
   JP_Passive_Ego-a1c5p2.json  [egoskill] 참조 0
   JP_Passive_Ego-a1c9p2.json  [egoskill] 참조 0
@@ -120,7 +120,7 @@
    여기 오른 항목은 그 언어에 파일이 없어 사이트가 한국어 폴백으로 표시한다.
    클라이언트 원본에 실제로 없는 경우가 있으므로 경고는 아니다.
   en: 없음 — egoskill/Skills_Ego_Personality-a1c9p2.json  (kr 에는 있음 → 해당 항목은 한국어로 표시됨)
-  jp: 없음 — parsingdata/BattleKeywords-a1c10p3.json  (kr 에는 있음 → 해당 항목은 한국어로 표시됨)
+  jp: 없음 — egogift/EGOgift_MirrorDungeon_8.json  (kr 에는 있음 → 해당 항목은 한국어로 표시됨)
 
 ## 경고
   (없음)
