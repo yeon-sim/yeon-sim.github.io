@@ -14,6 +14,7 @@
 import json, glob, re, sys
 from fontTools.ttLib import TTFont
 from fontTools import subset
+from fontTools.pens.boundsPen import BoundsPen
 
 # 구멍 보고가 일본어 글자를 찍으므로 콘솔이 cp949 여도 죽지 않게 (Windows)
 try:
@@ -81,10 +82,21 @@ codepoints = sorted(ord(c) for c in chars)
 print(f"[수집] JP 파일 {files}개 → 고유 문자 {len(codepoints)}자")
 
 # 4) 서브셋 → woff2
+#    ⚠️ 원본은 5천여 코드포인트를 '빈 글리프'(윤곽 없음)에 매핑해 둔다(예: 宁 U+5B81).
+#       cmap 에 남겨두면 브라우저가 "이 폰트가 가졌다" 고 보고 폴백하지 않아 글자가 공백으로 나온다
+#       (영작오 [宁作吾] 사고). 공백 문자가 아닌 빈 글리프는 빼서 폴백 폰트로 넘긴다.
+_src = TTFont(SRC)
+_gs = _src.getGlyphSet()
+def _is_empty(g):
+    pen = BoundsPen(_gs)
+    _gs[g].draw(pen)
+    return pen.bounds is None
+EMPTY = {c for c, g in _src.getBestCmap().items() if not chr(c).isspace() and _is_empty(g)}
+
 def build(unicodes, out):
     font = TTFont(SRC)
     ss = subset.Subsetter(subset.Options(flavor="woff2", ignore_missing_unicodes=True))
-    ss.populate(unicodes=unicodes)
+    ss.populate(unicodes=[c for c in unicodes if c not in EMPTY])
     ss.subset(font)
     font.flavor = "woff2"
     font.save(out)

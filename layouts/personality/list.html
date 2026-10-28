@@ -2428,8 +2428,10 @@ function personalityPage() {
     },
     get egoAdditionalCorrosionSkills() {
       const addSkills = this.egoDetail?.additionalSkills ?? [];
+      // 추가 각성 스킬이 기본 침식 스킬을 그대로 공유하는 경우가 있어(예: 20211 구멍) 중복 id 는 제외
+      const seen = new Set([this.egoDetail?.corrosionSkillId]);
       return addSkills
-        .filter(s => this.egoSync >= s.level && s.corrosionId && s.corrosionId !== '0')
+        .filter(s => this.egoSync >= s.level && s.corrosionId && s.corrosionId !== '0' && !seen.has(s.corrosionId) && seen.add(s.corrosionId))
         .map(s => {
           const sd = egoSkillMap?.[s.corrosionId];
           if (!sd) return null;

@@ -1,0 +1,10 @@
+# production 환경 전용 설정 (배포 워크플로 HUGO_ENVIRONMENT=production, 로컬 `hugo` 빌드도 production).
+# `hugo server`(development)에는 적용되지 않으므로 로컬에서는 테스트 페이지를 그대로 쓸 수 있다.
+#
+# static 마운트를 선언하면 static 의 기본 마운트만 대체된다(content·layouts 등은 기본값 유지).
+[module]
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+    # 개발용 테스트 페이지 — 배포본에서 제외
+    excludeFiles = ['font-test.html', 'theme-name-fit-test.html']
