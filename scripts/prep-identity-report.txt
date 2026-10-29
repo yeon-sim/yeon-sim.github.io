@@ -1,157 +1,46 @@
 ## 데이터 (.bytes → .json)
-  복사: personality-10.bytes → personality\info\personality-10.json
-  복사: personality-skill-10.bytes → personality\skill\personality-skill-10.json
-  복사: personality-passive-10.bytes → personality\passive\personality-passive-10.json
-  복사: passive.bytes → personality\passive\passive.json
-  복사: passive_check4.bytes → personality\passive\passive_check4.json
-  복사: ally-skill-buff.bytes → buff\ally-skill-buff.json
+  복사예정: personality-06.bytes → personality\info\personality-06.json
+  복사예정: personality-skill-06.bytes → personality\skill\personality-skill-06.json
+  복사예정: personality-passive-06.bytes → personality\passive\personality-passive-06.json
+  복사예정: personality-07.bytes → personality\info\personality-07.json
+  복사예정: personality-skill-07.bytes → personality\skill\personality-skill-07.json
+  복사예정: personality-passive-07.bytes → personality\passive\personality-passive-07.json
+  복사예정: passive.bytes → personality\passive\passive.json
+  복사예정: passive_check4.bytes → personality\passive\passive_check4.json
 ## illust-pivots
-  복사: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
+  복사예정: illust-pivots-unitinfo.bytes → personality\illust-pivots-unitinfo.json
 ## preview 정리
 ## 이미지
-  img: 11016_gacksung.png → personality\10\11016_gacksung.webp
-  img: 11016_normal.png → personality\10\11016_normal.webp
-  img: 11016_gacksung_info.png → personality\10\11016_gacksung_info.webp
-  img: 11016_normal_info.png → personality\10\11016_normal_info.webp
-  img: 11016_gacksung_profile.png → personality\10\11016_gacksung_profile.webp
-  img: 11016_normal_profile.png → personality\10\11016_normal_profile.webp
-  img: 11016_gacksung_profile_support_personality.png → personality\10\11016_gacksung_profile_support_personality.webp
-  img: 11016_normal_profile_support_personality.png → personality\10\11016_normal_profile_support_personality.webp
-  skillicon: 1100101
-  skillicon: 1100102
-  skillicon: 1100103
-  skillicon: 1100104
-  skillicon: 1100201
-  skillicon: 1100202
-  skillicon: 1100203
-  skillicon: 1100204
-  skillicon: 1100301
-  skillicon: 1100302
-  skillicon: 1100303
-  skillicon: 1100304
-  skillicon: 1100304_4
-  skillicon: 1100401
-  skillicon: 1100402
-  skillicon: 1100403
-  skillicon: 1100404
-  skillicon: 1100404_4
-  skillicon: 1100501
-  skillicon: 1100502
-  skillicon: 1100503
-  skillicon: 1100504
-  skillicon: 1100601
-  skillicon: 1100602
-  skillicon: 1100603
-  skillicon: 1100604
-  skillicon: 1100604_4
-  skillicon: 1100701
-  skillicon: 1100702
-  skillicon: 1100703
-  skillicon: 1100704
-  skillicon: 1100704_4
-  skillicon: 1100801
-  skillicon: 1100802
-  skillicon: 1100803
-  skillicon: 1100804
-  skillicon: 1100804_4
-  skillicon: 1100901
-  skillicon: 1100902
-  skillicon: 1100903
-  skillicon: 1100904
-  skillicon: 1100904_4
-  skillicon: 1100905
-  skillicon: 1101001
-  skillicon: 1101002
-  skillicon: 1101003
-  skillicon: 1101004
-  skillicon: 1101004_4
-  skillicon: 1101101
-  skillicon: 1101102
-  skillicon: 1101103
-  skillicon: 1101104
-  skillicon: 1101105
-  skillicon: 1101201
-  skillicon: 1101202
-  skillicon: 1101203
-  skillicon: 1101204
-  skillicon: 1101301
-  skillicon: 1101302
-  skillicon: 1101303
-  skillicon: 1101304
-  skillicon: 1101304_4
-  skillicon: 1101401
-  skillicon: 1101402
-  skillicon: 1101403
-  skillicon: 1101404
-  skillicon: 1101501
-  skillicon: 1101502
-  skillicon: 1101503
-  skillicon: 1101504
-  skillicon: 1101504_4
-  skillicon: 1101505
-  skillicon: 1101505_4
-  skillicon: 1101601
-  skillicon: 1101602
-  skillicon: 1101603
-  skillicon: 1101604
-  skillicon: 1101604_4
-  skillicon: 1101605
-  skillicon: 1101606
-  skillicon: 1101607
-  skillicon: 1101608
-  skillicon: 1101609
-  skillicon: 1101610
-  skillicon: 1101611
-  skillicon: 1101612
-  skillicon: 1101613
+  img: 10617_gacksung.png → personality\06\10617_gacksung.webp
+  img: 10617_normal.png → personality\06\10617_normal.webp
+  img: 10617_gacksung_info.png → personality\06\10617_gacksung_info.webp
+  img: 10617_normal_info.png → personality\06\10617_normal_info.webp
+  img: 10617_gacksung_profile.png → personality\06\10617_gacksung_profile.webp
+  img: 10617_normal_profile.png → personality\06\10617_normal_profile.webp
+  img: 10617_gacksung_profile_support_personality.png → personality\06\10617_gacksung_profile_support_personality.webp
+  img: 10617_normal_profile_support_personality.png → personality\06\10617_normal_profile_support_personality.webp
+  img: 10717_gacksung.png → personality\07\10717_gacksung.webp
+  img: 10717_normal.png → personality\07\10717_normal.webp
+  img: 10717_gacksung_info.png → personality\07\10717_gacksung_info.webp
+  img: 10717_normal_info.png → personality\07\10717_normal_info.webp
+  img: 10717_gacksung_profile.png → personality\07\10717_gacksung_profile.webp
+  img: 10717_normal_profile.png → personality\07\10717_normal_profile.webp
+  img: 10717_gacksung_profile_support_personality.png → personality\07\10717_gacksung_profile_support_personality.webp
+  img: 10717_normal_profile_support_personality.png → personality\07\10717_normal_profile_support_personality.webp
+  skillicon: 1061501
+  skillicon: 1061502
+  skillicon: 1061503
+  skillicon: 1061504
+  skillicon: 1061701
+  skillicon: 1061702
+  skillicon: 1061703
+  skillicon: 1061704
+  skillicon: 1061705
+  skillicon: 1061705_4
+  skillicon: 1071701
+  skillicon: 1071702
+  skillicon: 1071703
+  skillicon: 1071704
+  skillicon: 1071705
 ## 버프 아이콘
-  buff: BlackStigmata (복사)
-  buff: BlackStigmata_Panic (복사)
-  buff: BoneNail (복사)
-  buff: BoneNailSinclair (복사)
-  buff: BuffetDream (복사)
-  buff: BuffetDreamEnd (복사)
-  buff: BuffetFriendShield (복사)
-  buff: BuffetResolve (복사)
-  buff: BuffetRevival (복사)
-  buff: BuffetRouge (복사)
-  buff: BuffetScruple (복사)
-  buff: BuffetSinclair (복사)
-  buff: BuffetThirst (복사)
-  buff: CeremonialNail (복사)
-  buff: ConfessionSecondPhase (복사)
-  buff: ConfessionThirdPhase (복사)
-  buff: ConnectionError_Panic (복사)
-  buff: DinnerField (복사)
-  buff: Dominion (복사)
-  buff: EncompassingVoiceSecondPhase (복사)
-  buff: ExecutionNailSecondPhase (복사)
-  buff: ExecutionNailThirdPhase (복사)
-  buff: GoldenFabricWarderFirstPhase (복사)
-  buff: GoldenHideWarderFirstPhase (복사)
-  buff: GoldenNail (복사)
-  buff: GrandBuffet_Panic (복사)
-  buff: HungrySinclair (복사)
-  buff: JeanneBlueprint (복사)
-  buff: JeanneCheat (복사)
-  buff: JeanneDesign (복사)
-  buff: JeanneLogos (복사)
-  buff: JeanneManager (복사)
-  buff: JeannePartner (복사)
-  buff: JeannePartnerTwo (복사)
-  buff: JeannePathos (복사)
-  buff: Jeanne_Panic (복사)
-  buff: LaRougeSuperior_Panic (복사)
-  buff: LeaderVoiceSecondPhase (복사)
-  buff: LeaderVoiceThirdPhase (복사)
-  buff: LensmanPower (복사)
-  buff: MarkingNail (복사)
-  buff: MeursaultBuffWarderFirstPhase (복사)
-  buff: RestrainingNailSecondPhase (복사)
-  buff: RestrainingNailThirdPhase (복사)
-  buff: RougeFamilySinclair (복사)
-  buff: SlaveHunersPower (복사)
-  buff: SpreadingVoiceSecondPhase (복사)
-  buff: TransformSinclair (복사)
-  buff: UnstableConnection (복사)
 ## 감사

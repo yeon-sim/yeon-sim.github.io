@@ -207,7 +207,11 @@ const pdDir = `${DATA}/lang/kr/parsingdata`;
 let buffN = 0, buffNames = [];
 if (!fs.existsSync(pdDir)) {
   warn.push('parsingdata 없음 → 버프 아이콘 누락 점검 불가 (사용자 lang 배치 확인)');
-} else if (fs.existsSync(BUF)) {
+} else {
+  // 부분 추출이면 --from 의 Buf 에 기존 아이콘이 없다(실사고: NiddlePin). 형제 AssetRipper* 추출본을 최신순으로 폴백.
+  const root = path.dirname(path.resolve(FROM));
+  const bufDirs = [BUF, ...fs.readdirSync(root).filter(n => /^AssetRipper/.test(n)).sort().reverse()
+    .map(n => path.join(root, n, 'Assets/Resources_moved/Buf')).filter(d => d !== BUF)].filter(d => fs.existsSync(d));
   const pdText = fs.readdirSync(pdDir)
     .filter(f => f.endsWith('.json')).map(f => fs.readFileSync(path.join(pdDir, f), 'utf-8')).join('\n');
   // 아이콘 이름 ≠ 키워드 id 인 경우: buff 정의의 iconId (parsingdata 에 정의된 id 만). dry-run 도 신규 매핑을 보도록 소스 우선.
@@ -217,13 +221,13 @@ if (!fs.existsSync(pdDir)) {
     for (const r of listOf(readJson(fs.existsSync(src) ? src : `${buffDataDir}/${f}`)))
       if (r.iconId && pdText.includes(`"${r.id}"`)) mappedIcons.add(r.iconId);
   }
-  for (const f of fs.readdirSync(BUF).filter(f => f.endsWith('.png'))) {
+  for (const dir of bufDirs) for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.png'))) {
     const kw = path.basename(f, '.png');
-    if (fs.existsSync(`${buffDst}/${f}`)) continue;          // 이미 있음
+    if (fs.existsSync(`${buffDst}/${f}`) || buffNames.includes(kw)) continue;  // 이미 있음
     if (!pdText.includes(`"${kw}"`) && !mappedIcons.has(kw)) continue;  // parsingdata 미정의·미매핑 → 스킵
-    if (WRITE) { fs.mkdirSync(buffDst, { recursive: true }); fs.copyFileSync(`${BUF}/${f}`, `${buffDst}/${f}`); }
+    if (WRITE) { fs.mkdirSync(buffDst, { recursive: true }); fs.copyFileSync(`${dir}/${f}`, `${buffDst}/${f}`); }
     buffNames.push(kw); buffN++;
-    log(`  buff: ${kw} (${WRITE ? '복사' : '복사예정'})`);
+    log(`  buff: ${kw} (${WRITE ? '복사' : '복사예정'}${dir === BUF ? '' : ` — 폴백 ${path.relative(root, dir).split(path.sep)[0]}`})`);
   }
 }
 
