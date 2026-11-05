@@ -9117,7 +9117,7 @@
           "canChangeTarget": true,
           "skillMotion": "S1",
           "range" : 9,
-          "specialDuelIndex" : 1,
+          "specialDuelIndex" : 0,
           "viewType": "BATTLE",
           "parryingCloseType": "NEAR",
           "abilityScriptList": [
@@ -12037,7 +12037,7 @@
               }
             },
             {
-              "scriptName": "SkillGlitterFxByBuff",
+              "scriptName": "CommonSkillSlotEffect",
               "buffData": {
                 "buffKeyword": "StigmaWorkshopHandStep1",
                 "buffOwner": "Self",
@@ -12107,7 +12107,7 @@
               }
             },
             {
-              "scriptName": "SkillGlitterFxByBuff",
+              "scriptName": "CommonSkillSlotEffect",
               "buffData": {
                 "buffKeyword": "StigmaWorkshopHandStep1",
                 "buffOwner": "Self",

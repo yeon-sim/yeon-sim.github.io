@@ -109,7 +109,7 @@
       "id": 11102,
       "updatedDate": 20230227,
       "appearance": "11102_Outis_SwordGroupAppearance",
-      "unitKeywordList": [ "CLAN", "SMALL" ],
+      "unitKeywordList": [ "CLAN", "SMALL", "SALSOO" ],
       "associationList": [ "BLADE_LINEAGE" ],
       "defenseSkillIDList": [
         1110204

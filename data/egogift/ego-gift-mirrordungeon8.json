@@ -7,7 +7,10 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9286,
-          "abilityIDList": [ 9286, 92861 ]
+          "abilityIDList": [
+            9286,
+            92861
+          ]
         }
       ],
       "tag": [
@@ -24,7 +27,9 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9287,
-          "abilityIDList": [ 9287 ]
+          "abilityIDList": [
+            9287
+          ]
         }
       ],
       "tag": [
@@ -41,7 +46,10 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9284,
-          "abilityIDList": [ 9284, 92841 ]
+          "abilityIDList": [
+            9284,
+            92841
+          ]
         }
       ],
       "tag": [
@@ -58,7 +66,9 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9285,
-          "abilityIDList": [ 9285 ]
+          "abilityIDList": [
+            9285
+          ]
         }
       ],
       "tag": [
@@ -75,7 +85,9 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9288,
-          "abilityIDList": [ 9288 ]
+          "abilityIDList": [
+            9288
+          ]
         }
       ],
       "tag": [
@@ -92,7 +104,9 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9289,
-          "abilityIDList": [ 9289 ]
+          "abilityIDList": [
+            9289
+          ]
         }
       ],
       "tag": [
@@ -109,7 +123,9 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9290,
-          "abilityIDList": [ 9290 ]
+          "abilityIDList": [
+            9290
+          ]
         }
       ],
       "tag": [
@@ -126,17 +142,23 @@
         {
           "upgradeLevel": 0,
           "localizeID": 9291,
-          "abilityIDList": [ 9291 ]
+          "abilityIDList": [
+            9291
+          ]
         },
         {
           "upgradeLevel": 1,
           "localizeID": 19291,
-          "abilityIDList": [ 19291 ]
+          "abilityIDList": [
+            19291
+          ]
         },
         {
           "upgradeLevel": 2,
           "localizeID": 29291,
-          "abilityIDList": [ 29291 ]
+          "abilityIDList": [
+            29291
+          ]
         }
       ],
       "tag": [
@@ -145,6 +167,56 @@
       "keyword": "Charge",
       "lockType": false,
       "price": 204
+    },
+    {
+      "id": 9301,
+      "attributeType": "AZURE",
+      "upgradeDataList": [
+        {
+          "upgradeLevel": 0,
+          "localizeID": 9301,
+          "abilityIDList": [
+            9432,
+            94321,
+            9436,
+            94361,
+            93011,
+            93012,
+            93013,
+            93014,
+            93015
+          ]
+        }
+      ],
+      "tag": [
+        "TIER_4"
+      ],
+      "keyword": "Sinking",
+      "lockType": false,
+      "price": 404,
+      "difficulty": "hard"
+    },
+    {
+      "id": 9302,
+      "attributeType": "INDIGO",
+      "upgradeDataList": [
+        {
+          "upgradeLevel": 0,
+          "localizeID": 9302,
+          "abilityIDList": [
+            9302,
+            93021,
+            93022,
+            93023
+          ]
+        }
+      ],
+      "tag": [
+        "TIER_3"
+      ],
+      "keyword": "None",
+      "lockType": false,
+      "price": 250
     }
   ]
 }

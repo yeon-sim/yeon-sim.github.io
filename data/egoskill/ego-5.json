@@ -69,7 +69,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -146,7 +146,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -224,7 +224,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -302,7 +302,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -318,10 +318,7 @@
       "egoType": "TETH",
       "season": 9101,
       "walpurgisType": "LC",
-      "egoKeywordList": [
-        "WALPURGIS",
-        "LAIBRARY_OF_RUINA"
-      ],
+      "egoKeywordList": [ "WALPURGIS", "LAIBRARY_OF_RUINA" ],
       "attributeResistList": [
         {
           "type": "CRIMSON",
@@ -381,7 +378,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -455,7 +452,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -533,7 +530,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -616,7 +613,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -695,7 +692,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "awakeningPassiveList": [
@@ -707,7 +704,7 @@
     },
     {
       "id": 20510,
-      "updatedDate": 20261001,
+      "updatedDate": 20261008,
       "characterId": 5,
       "egoType": "WAW",
       "season": 8,
@@ -778,7 +775,7 @@
         },
         {
           "section": 0,
-          "probability": 1
+          "probability": 1.0
         }
       ],
       "equipPassiveList": [
