@@ -46,6 +46,8 @@ const EXCLUDE_NAMES = new Set([
   "경혈", // [BloodArmorPersonalityFirst] — 스킬명 "산초/돈키호테류 경혈"
   "앙갚음", // [AaCePbBe] — 스킬명 "정의로운 앙갚음"
   "파탄", // [WanderingFootsteps_LowMorale] — 스킬명 "…파탄하라"
+  "연", // [ComboSkill] — 한 글자. "연결/연계/연속" 안의 "연" 오탐
+  "밀랍날개", // [WaxWing_LowMorale] — 발푸 10 보스 버프. 싱클레어 "불안정 E.G.O::밀랍날개" 상태명 오탐
 ]);
 // 키워드가 더 긴 단어의 일부로 들어간 복합어 (해당 문자열 안은 통째로 보호 → 부분 매칭 방지)
 //   ex. "보호막"은 키워드 아님인데 "보호"(Protection)가 잡혀 "[Protection]막"이 되는 것을 막음
@@ -66,6 +68,7 @@ const PROTECT_WORDS = new Set([
   "<피주머니>", // [BloodPocket] — <혈귀>처럼 상태 참조, 평문 유지
   "오혈읍루", // "오혈"(CondensedBlood) — 스킬명
   "마지막 탄환", // "탄환"(Bullet) — 스킬명 ("탄환"은 다른 곳에서 정상 토큰화됨)
+  "'눈물로 벼려낸 검'", // [DespairKnightEGOSword] — 따옴표로 감싼 E.G.O 스킬명 참조
   "못한", "못했", // "못하다"(실패) 안의 "못"(NailPersonality) 오탐. "못 N 부여"·"못이" 는 정상 토큰화
   "소수점 버림", // "버림"(Discard) 오탐 — 소수점 내림. ("…개를 버림"·"순으로 버림" 은 [Discard] 로 토큰화)
   // 'X 속성의 Y' = 공명 속성 레벨 참조 (Y 디버프/버프 키워드 아님). 긴 복합형 우선.
